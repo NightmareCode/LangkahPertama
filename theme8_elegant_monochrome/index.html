@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walimatul Urus - Fatiha & Irfan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="../TemplateAssets/LaguBackground.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Audio Control -->
+    <div id="music-control" class="music-btn">
+        <span class="icon">♫</span>
+    </div>
+
+    <!-- Intro / Cover Page -->
+    <div id="cover-page" class="cover-page">
+        <div class="cover-content slide-in">
+            <div class="line-top"></div>
+            <p class="subtitle tracking-wide">THE WEDDING OF</p>
+            <h1 class="cover-title">FATIHA</h1>
+            <div class="ampersand-box">
+                <div class="line-h"></div>
+                <span class="ampersand">&</span>
+                <div class="line-h"></div>
+            </div>
+            <h1 class="cover-title">IRFAN</h1>
+            <p class="date tracking-wide">12 . 12 . 2026</p>
+            <div class="line-bottom"></div>
+            <p class="guest-label mt-4">Kepada Tetamu Kehormat</p>
+            <button id="open-btn" class="btn-mono">BUKA UNDANGAN</button>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div id="main-content" class="hidden">
+        
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-bg">
+                <img src="../TemplateAssets/galleri1.jpg" alt="Fatiha & Irfan" class="hero-img grayscale">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-text slide-in">
+                <p class="script-text">Walimatul Urus</p>
+                <h1 class="hero-title">Fatiha <span class="light">&</span> Irfan</h1>
+                <p class="hero-date tracking-wide">SABTU | 12 DISEMBER 2026</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Verse Section -->
+            <section class="verse section bg-black text-white text-center">
+                <div class="container slide-in">
+                    <p class="arabic silver-text">وَمِنْ ءَايَـٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا...</p>
+                    <p class="translation italic mt-3 text-gray">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu bersenang hati dan hidup mesra dengannya..."</p>
+                    <p class="verse-ref silver-text mt-2 font-bold">(Ar-Rum: 21)</p>
+                </div>
+            </section>
+
+            <!-- Couple Info -->
+            <section class="couple section bg-white">
+                <div class="container">
+                    <h3 class="section-title text-center slide-in">MEMPELAI</h3>
+                    <div class="couple-grid">
+                        <!-- Bride -->
+                        <div class="couple-card slide-in-left">
+                            <div class="avatar-mono">
+                                <img src="../TemplateAssets/PengantinPerempuan.png" alt="Bride" class="avatar-img grayscale">
+                            </div>
+                            <h3 class="name serif">Nur Fatiha Binti Ahmad</h3>
+                            <p class="parents text-gray">Puteri kepada pasangan<br>En. Ahmad & Pn. Aminah</p>
+                        </div>
+
+                        <div class="divider-vertical slide-in">
+                            <div class="v-line"></div>
+                            <span class="script-text amp">&</span>
+                            <div class="v-line"></div>
+                        </div>
+
+                        <!-- Groom -->
+                        <div class="couple-card slide-in-right">
+                            <div class="avatar-mono">
+                                <img src="../TemplateAssets/PengantinLelaki.png" alt="Groom" class="avatar-img grayscale">
+                            </div>
+                            <h3 class="name serif">Mohd Irfan Bin Rahman</h3>
+                            <p class="parents text-gray">Putera kepada pasangan<br>En. Rahman & Pn. Salmah</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Love Story -->
+            <section class="story section bg-black text-white">
+                <div class="container">
+                    <h3 class="section-title text-white text-center slide-in" style="color: var(--warm-white) !important;">KISAH CINTA KAMI</h3>
+                    <div class="mono-timeline">
+                        <div class="mt-item slide-in-left">
+                            <div class="mt-year">2018</div>
+                            <h4 class="serif" style="color: var(--burgundy);">Pertemuan Pertama</h4>
+                            <p class="mt-2" style="color: var(--text-warm);">Takdir menemukan kami secara kebetulan di sebuah kafe perpustakaan universiti. Secawan kopi yang tertumpah memulakan sebuah perbualan santai yang akhirnya mengikat dua jiwa. Dari pandangan pertama, kami tahu ada sesuatu yang istimewa menanti kami.</p>
+                        </div>
+                        <div class="mt-item slide-in-right">
+                            <div class="mt-year">2023</div>
+                            <h4 class="serif" style="color: var(--burgundy);">Sebentuk Cincin, Sejuta Makna</h4>
+                            <p class="mt-2" style="color: var(--text-warm);">Selepas lima tahun menyulam cinta menempuh suka dan duka, dia melutut membawa seribu harapan di bawah langit senja. Tiada kata-kata mewah, hanya sebuah keikhlasan. Dengan deraian air mata gembira, lamarannya disahut dengan kalimah 'Ya'.</p>
+                        </div>
+                        <div class="mt-item slide-in-left">
+                            <div class="mt-year">2026</div>
+                            <h4 class="serif" style="color: var(--burgundy);">Menuju Ikatan Suci</h4>
+                            <p class="mt-2" style="color: var(--text-warm);">Hari ini, kami melangkah ke fasa baru kehidupan. Dengan restu keluarga tercinta dan diiringi doa para tetamu, kami membina mahligai impian kami bersama. Semoga ikatan ini kekal utuh hingga ke syurga abadi.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="event section bg-white">
+                <div class="container">
+                    <h3 class="section-title text-center slide-in">ATURCARA MAJLIS</h3>
+                    
+                    <div class="countdown-mono slide-in mb-5">
+                        <div class="cd-box"><span id="days">00</span><small>HARI</small></div>
+                        <div class="cd-box"><span id="hours">00</span><small>JAM</small></div>
+                        <div class="cd-box"><span id="minutes">00</span><small>MINIT</small></div>
+                        <div class="cd-box"><span id="seconds">00</span><small>SAAT</small></div>
+                    </div>
+
+                    <div class="events-flex">
+                        <div class="ev-card slide-in-left">
+                            <div class="ev-header bg-black text-white">AKAD NIKAH</div>
+                            <div class="ev-body">
+                                <p class="font-bold">Sabtu, 12 Disember 2026</p>
+                                <p class="text-gray">08:00 Pagi - 10:00 Pagi</p>
+                                <p class="italic mt-2">Masjid Al-Akbar</p>
+                                <button class="btn-mono-outline mt-3">LIHAT PETA</button>
+                            </div>
+                        </div>
+                        <div class="ev-card slide-in-right">
+                            <div class="ev-header bg-black text-white">MAJLIS RESEPSI</div>
+                            <div class="ev-body">
+                                <p class="font-bold">Sabtu, 12 Disember 2026</p>
+                                <p class="text-gray">11:00 Pagi - 14:00 Petang</p>
+                                <p class="italic mt-2">Dewan Hotel Perdana</p>
+                                <button class="btn-mono-outline mt-3">LIHAT PETA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary -->
+            <section class="itinerary section bg-black text-white">
+                <div class="container">
+                    <h3 class="section-title silver-text text-center slide-in mb-4">TENTATIF MAJLIS</h3>
+                    <div class="itin-grid slide-in">
+                        <div class="itin-item">
+                            <span class="itin-time silver-text">11:00</span>
+                            <span class="itin-label text-gray">Ketibaan Tetamu</span>
+                        </div>
+                        <div class="itin-item">
+                            <span class="itin-time silver-text">13:00</span>
+                            <span class="itin-label text-gray">Ketibaan Pengantin & Kompang</span>
+                        </div>
+                        <div class="itin-item">
+                            <span class="itin-time silver-text">13:30</span>
+                            <span class="itin-label text-gray">Makan Beradab & Bersanding</span>
+                        </div>
+                        <div class="itin-item">
+                            <span class="itin-time silver-text">14:30</span>
+                            <span class="itin-label text-gray">Sesi Bergambar</span>
+                        </div>
+                        <div class="itin-item">
+                            <span class="itin-time silver-text">16:00</span>
+                            <span class="itin-label text-gray">Majlis Bersurai</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="gallery section bg-white">
+                <div class="container">
+                    <h3 class="section-title text-center slide-in">GALERI</h3>
+                    <div class="mono-gallery">
+                        <div class="mg-item tall slide-in-left"><img src="../TemplateAssets/galleri1.jpg" alt="Gallery" class="grayscale-hover"></div>
+                        <div class="mg-item slide-in-right"><img src="../TemplateAssets/galleri2.jpg" alt="Gallery" class="grayscale-hover"></div>
+                        <div class="mg-item slide-in-left"><img src="../TemplateAssets/gelleri3.jpeg" alt="Gallery" class="grayscale-hover"></div>
+                        <div class="mg-item wide slide-in-right"><img src="../TemplateAssets/galleri4.jpg" alt="Gallery" class="grayscale-hover"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift -->
+            <section class="gift section bg-black text-white text-center">
+                <div class="container slide-in">
+                    <h3 class="section-title silver-text mb-4">SUMBANGAN HADIAH</h3>
+                    <p class="text-gray mb-4">Doa anda sangat bermakna bagi kami.</p>
+                    <div class="qr-wrapper">
+                        <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code" class="qr-mono">
+                    </div>
+                    <p class="silver-text font-bold mt-3" style="font-size: 22px; letter-spacing: 3px;">A.N FATIHA</p>
+                </div>
+            </section>
+            
+            <footer class="footer section bg-white text-center">
+                <div class="thin-line mx-auto mb-4"></div>
+                <p class="text-gray italic">Terima kasih atas doa dan kehadiran anda.</p>
+                <h2 class="script-text mt-3" style="font-size: 48px;">Fatiha & Irfan</h2>
+                <img src="../TemplateAssets/logo.png?v=2" style="height: 45px; width: auto; max-width: 150px; object-fit: contain; margin: 30px auto 10px; display: block; filter: sepia(100%) hue-rotate(-30deg) saturate(1.5);" alt="Langkah Pertama Logo">
+                <p class="text-gray" style="font-size: 11px; letter-spacing: 3px;">CREATED BY LANGKAH PERTAMA</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

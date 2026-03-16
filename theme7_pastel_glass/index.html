@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walimatul Urus - Fatiha & Irfan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Satisfy&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Abstract Animated Background -->
+    <div class="glass-bg">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="../TemplateAssets/LaguBackground.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Audio Control -->
+    <div id="music-control" class="music-btn glass-panel">
+        <span class="icon">♪</span>
+    </div>
+
+    <!-- Intro / Cover Page -->
+    <div id="cover-page" class="cover-page">
+        <div class="cover-content glass-panel float-up">
+            <h4 class="cursive-title text-gradient">Walimatul Urus</h4>
+            <h1 class="title">FATIHA<br><span class="ampersand">&</span><br>IRFAN</h1>
+            <p class="date">12 Disember 2026</p>
+            <div class="guest-box">
+                <p>Khusus Untuk:</p>
+                <div class="highlight">Tetamu Kehormat</div>
+            </div>
+            <button id="open-btn" class="btn-glass">Buka Undangan</button>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div id="main-content" class="hidden">
+        
+        <!-- Header Image -->
+        <header class="hero section">
+            <div class="hero-image glass-panel p-0 float-up delay-1">
+                <img src="../TemplateAssets/galleri1.jpg" alt="Fatiha & Irfan" class="hero-img">
+                <div class="hero-text glass-panel float-up delay-2">
+                    <h2 class="cursive-title text-gradient">Walimatul Urus</h2>
+                    <h1 class="title">Fatiha & Irfan</h1>
+                    <p class="date tracking-in">12.12.2026</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-wrapper">
+            <!-- Verse Section -->
+            <section class="verse section">
+                <div class="glass-panel text-center float-up">
+                    <p class="arabic text-primary">وَمِنْ ءَايَـٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا...</p>
+                    <p class="translation italic mt-3 text-muted">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu bersenang hati dan hidup mesra dengannya..."</p>
+                    <p class="verse-ref mt-2 text-primary font-bold">(Ar-Rum: 21)</p>
+                </div>
+            </section>
+
+            <!-- Couple Info -->
+            <section class="couple section">
+                <h3 class="section-title text-gradient text-center mb-5">Mempelai</h3>
+                <div class="couple-layout">
+                    <!-- Bride -->
+                    <div class="couple-card glass-panel text-center float-up">
+                        <div class="avatar-ring">
+                            <img src="../TemplateAssets/PengantinPerempuan.png" alt="Bride" class="avatar-img">
+                        </div>
+                        <h3 class="name font-serif text-primary">Nur Fatiha Ahmad</h3>
+                        <p class="parents text-muted mt-2">Puteri kepada pasangan<br>En. Ahmad & Pn. Aminah</p>
+                    </div>
+
+                    <div class="connector text-gradient float-up delay-1">&</div>
+
+                    <!-- Groom -->
+                    <div class="couple-card glass-panel text-center float-up delay-2">
+                        <div class="avatar-ring">
+                            <img src="../TemplateAssets/PengantinLelaki.png" alt="Groom" class="avatar-img">
+                        </div>
+                        <h3 class="name font-serif text-primary">Mohd Irfan Rahman</h3>
+                        <p class="parents text-muted mt-2">Putera kepada pasangan<br>En. Rahman & Pn. Salmah</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Love Story -->
+            <section class="story section">
+                <h3 class="section-title text-gradient text-center mb-5">Kisah Cinta Kami</h3>
+                <div class="glass-timeline">
+                    <!-- 2018 -->
+                    <div class="t-item float-up">
+                        <div class="t-year glass-panel">2018</div>
+                        <div class="t-content glass-panel">
+                            <h4 class="text-primary font-serif">Pertemuan Pertama</h4>
+                            <p class="text-muted mt-2">Takdir menemukan kami secara kebetulan di sebuah kafe perpustakaan universiti. Secawan kopi yang tertumpah memulakan sebuah perbualan santai yang akhirnya mengikat dua jiwa. Dari pandangan pertama, kami tahu ada sesuatu yang istimewa menanti kami.</p>
+                        </div>
+                    </div>
+                    <!-- 2023 -->
+                    <div class="t-item float-up delay-1">
+                        <div class="t-year glass-panel">2023</div>
+                        <div class="t-content glass-panel">
+                            <h4 class="text-primary font-serif">Sebentuk Cincin</h4>
+                            <p class="text-muted mt-2">Selepas lima tahun menyulam cinta menempuh suka dan duka, dia melutut membawa seribu harapan di bawah langit senja. Tiada kata-kata mewah, hanya sebuah keikhlasan. Dengan deraian air mata gembira, lamarannya disahut dengan kalimah 'Ya'.</p>
+                        </div>
+                    </div>
+                    <!-- 2026 -->
+                    <div class="t-item float-up delay-2">
+                        <div class="t-year glass-panel">2026</div>
+                        <div class="t-content glass-panel">
+                            <h4 class="text-primary font-serif">Ikatan Suci</h4>
+                            <p class="text-muted mt-2">Hari ini, kami melangkah ke fasa baru kehidupan. Dengan restu keluarga tercinta dan diiringi doa para tetamu, kami membina mahligai impian kami bersama. Semoga ikatan ini kekal utuh hingga ke syurga abadi.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Details -->
+            <section class="event section">
+                <h3 class="section-title text-gradient text-center mb-5">Aturcara Majlis</h3>
+                
+                <div class="countdown-glass glass-panel float-up mb-5">
+                    <div class="c-box"><span id="days">00</span><small>HARI</small></div>
+                    <div class="c-divider">:</div>
+                    <div class="c-box"><span id="hours">00</span><small>JAM</small></div>
+                    <div class="c-divider">:</div>
+                    <div class="c-box"><span id="minutes">00</span><small>MIN</small></div>
+                    <div class="c-divider">:</div>
+                    <div class="c-box"><span id="seconds">00</span><small>SAAT</small></div>
+                </div>
+
+                <div class="events-grid">
+                    <div class="glass-panel text-center float-up">
+                        <h4 class="font-serif text-primary border-b-glass mb-3 pb-2">Akad Nikah</h4>
+                        <p class="font-bold">12 Disember 2026</p>
+                        <p class="text-muted text-sm my-2">08:00 Pagi - 10:00 Pagi</p>
+                        <p class="italic">Masjid Al-Akbar</p>
+                        <button class="btn-glass btn-sm mt-3 w-full">G-Maps</button>
+                    </div>
+                    <div class="glass-panel text-center float-up delay-1">
+                        <h4 class="font-serif text-primary border-b-glass mb-3 pb-2">Majlis Resepsi</h4>
+                        <p class="font-bold">12 Disember 2026</p>
+                        <p class="text-muted text-sm my-2">11:00 Pagi - 14:00 Petang</p>
+                        <p class="italic">Dewan Hotel Perdana</p>
+                        <button class="btn-glass btn-sm mt-3 w-full">G-Maps</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary -->
+            <section class="itinerary section">
+                <div class="glass-panel float-up text-center">
+                    <h3 class="section-title text-gradient mb-4">Tentatif Majlis</h3>
+                    <div class="text-left w-full max-w-sm mx-auto">
+                        <div class="itd-row border-b-glass pb-3 mb-3">
+                            <span class="font-bold text-primary mr-3 text-lg">11:00 Pagi</span>
+                            <span class="text-muted">Ketibaan Tetamu</span>
+                        </div>
+                        <div class="itd-row border-b-glass pb-3 mb-3">
+                            <span class="font-bold text-primary mr-3 text-lg">1:00 Petang</span>
+                            <span class="text-muted">Ketibaan Pengantin</span>
+                        </div>
+                        <div class="itd-row border-b-glass pb-3 mb-3">
+                            <span class="font-bold text-primary mr-3 text-lg">1:30 Petang</span>
+                            <span class="text-muted">Makan Beradab</span>
+                        </div>
+                        <div class="itd-row border-b-glass pb-3 mb-3">
+                            <span class="font-bold text-primary mr-3 text-lg">2:30 Petang</span>
+                            <span class="text-muted">Sesi Bergambar</span>
+                        </div>
+                        <div class="itd-row">
+                            <span class="font-bold text-primary mr-3 text-lg">4:00 Petang</span>
+                            <span class="text-muted">Majlis Bersurai</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="gallery section">
+                <h3 class="section-title text-gradient text-center mb-5">Galeri Kaca</h3>
+                <div class="glass-gallery">
+                    <div class="g-wrap float-up span-2"><img src="../TemplateAssets/galleri1.jpg" alt="Gallery"></div>
+                    <div class="g-wrap float-up delay-1"><img src="../TemplateAssets/galleri2.jpg" alt="Gallery"></div>
+                    <div class="g-wrap float-up delay-2"><img src="../TemplateAssets/gelleri3.jpeg" alt="Gallery"></div>
+                    <div class="g-wrap float-up span-2"><img src="../TemplateAssets/galleri4.jpg" alt="Gallery"></div>
+                </div>
+            </section>
+
+            <!-- Gift -->
+            <section class="gift section text-center">
+                <div class="glass-panel float-up">
+                    <h3 class="section-title text-gradient mb-4">Sumbangan Hadiah</h3>
+                    <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code" class="qr-glass mb-4">
+                    <p class="font-serif text-primary text-xl">A.N FATIHA</p>
+                    <p class="text-muted mt-2">BCA - 1234567890</p>
+                </div>
+            </section>
+            
+            <footer class="footer section text-center">
+                <p class="text-muted italic mb-4">Terima kasih atas doa dan kehadiran anda.</p>
+                <h2 class="cursive-title text-gradient text-3xl">Fatiha & Irfan</h2>
+                <img src="../TemplateAssets/logo.png?v=3" style="height: 40px; width: auto; max-width: 150px; object-fit: contain; margin: 30px auto 10px; display: block; filter: brightness(0.4) sepia(1) hue-rotate(220deg) saturate(3);" alt="Langkah Pertama Logo">
+                <p class="text-xs text-muted" style="letter-spacing: 2px;">CREATED BY LANGKAH PERTAMA</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langkah Pertama Catalog</title>
+    <link rel="icon" href="TemplateAssets/logo.png" type="image/png">
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #cba87c;
+            --primary-dark: #967d5b;
+            --bg-body: #faf8f5;
+            --text-dark: #2d2a26;
+            --text-light: #706f6c;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav & Header */
+        header {
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: linear-gradient(to bottom, #fff, var(--bg-body));
+            position: relative;
+        }
+        
+        .logo-container {
+            max-width: 250px;
+            margin: 0 auto 20px;
+            padding: 10px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Catalog Grid */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .theme-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(203, 168, 124, 0.2);
+        }
+
+        .theme-image-wrapper {
+            height: 380px; /* Taller for better preview */
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .theme-image-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 400%;  
+            height: 400%; /* Reset to normal 100vh proportional height */
+            transform: scale(0.25);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none; 
+            transition: opacity 0.5s ease;
+        }
+
+        .theme-image-wrapper .cover-iframe {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .theme-image-wrapper .preview-iframe {
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        /* On Hover: Hide static cover, show animated iframe */
+        .theme-card:hover .theme-image-wrapper .cover-iframe {
+            opacity: 0;
+        }
+
+        .theme-card:hover .theme-image-wrapper .preview-iframe {
+            opacity: 1;
+            z-index: 3;
+        }
+
+        /* Removing the old img-overlay since iframes provide the actual look */
+
+        .theme-details {
+            padding: 35px 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-tags {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .theme-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .theme-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .view-btn {
+            display: inline-block;
+            background: var(--text-dark);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-btn::after {
+            content: "→";
+            margin-left: 8px;
+            transition: margin 0.3s;
+        }
+
+        .view-btn:hover {
+            background: var(--primary);
+            box-shadow: 0 5px 20px rgba(203, 168, 124, 0.4);
+        }
+        
+        .view-btn:hover::after {
+            margin-left: 12px;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer img {
+            height: 40px;
+            width: auto;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            background: #fff;
+            padding: 5px 15px;
+            border-radius: 8px;
+            mix-blend-mode: multiply;
+        }
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .catalog-container { gap: 30px; padding: 20px 20px 80px; }
+            header { padding: 60px 20px 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="TemplateAssets/logo.png?v=2" alt="Langkah Pertama Logo">
+        </div>
+        <h1>Langkah Pertama</h1>
+        <p class="subtitle">Koleksi Tema Undangan Perkahwinan Digital Eklsklusif.<br>Pilih estetika yang mewakili kisah cinta anda.</p>
+    </header>
+
+    <div class="catalog-container">
+        <!-- Theme 1 -->
+        <div class="theme-card theme-1">
+            <div class="theme-image-wrapper">
+                <!-- Static Cover Iframe -->
+                <iframe src="theme1_minimalist/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <!-- Auto-scrolling Preview Iframe (Hidden until Hover) -->
+                <iframe src="theme1_minimalist/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Clean • Moden</p>
+                <h3 class="theme-title">Tema 1: Minimalist</h3>
+                <p class="theme-desc">Rekaan suci putih, berfokus kepada elegan minimalism. Sesuai untuk pasangan yang menginginkan kesederhanaan yang mewah dan moden.</p>
+                <a href="theme1_minimalist/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 2 -->
+        <div class="theme-card theme-2">
+            <div class="theme-image-wrapper">
+                <iframe src="theme2_royal_dark/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme2_royal_dark/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Eksklusif • Mewah</p>
+                <h3 class="theme-title">Tema 2: Royal Dark</h3>
+                <p class="theme-desc">Warna hitam malam yang dramatik disepadankan dengan elemen emas murni. Memberikan aura eksklusif, mahal, dan megah seperti perkahwinan diraja.</p>
+                <a href="theme2_royal_dark/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 3 -->
+        <div class="theme-card theme-3">
+            <div class="theme-image-wrapper">
+                <iframe src="theme3_boho_floral/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme3_boho_floral/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Semulajadi • Romantik</p>
+                <h3 class="theme-title">Tema 3: Boho Floral</h3>
+                <p class="theme-desc">Dihiasi elemen flora, warna tanah (earth tones), dan organik. Membawa perasaan santai dan romantis, sangat sesuai untuk perkahwinan terbuka atau tema kebun.</p>
+                <a href="theme3_boho_floral/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 4 -->
+        <div class="theme-card theme-4">
+            <div class="theme-image-wrapper">
+                <iframe src="theme4_modern_geometric/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme4_modern_geometric/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Unik • Kontemporari</p>
+                <h3 class="theme-title">Tema 4: Modern Geometric</h3>
+                <p class="theme-desc">Gabungan harmoni tona biru gelap yang tenang bersama bentuk geometri yang tersusun. Mewakili keteguhan dan cinta kontemporari pasangan.</p>
+                <a href="theme4_modern_geometric/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 5 -->
+        <div class="theme-card theme-5">
+            <div class="theme-image-wrapper">
+                <iframe src="theme5_classic_romantic/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme5_classic_romantic/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Klalsik • Lembut</p>
+                <h3 class="theme-title">Tema 5: Classic Romantic</h3>
+                <p class="theme-desc">Tona warna merah jambu lembut, hiasan melengkung bagaikan ikal rambut puteri saga. Estetika klasik cinta abadi sepanjang zaman.</p>
+                <a href="theme5_classic_romantic/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 6 -->
+        <div class="theme-card theme-6">
+            <div class="theme-image-wrapper">
+                <iframe src="theme6_rustic_vintage/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme6_rustic_vintage/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Tradisional • Hangat</p>
+                <h3 class="theme-title">Tema 6: Rustic Vintage</h3>
+                <p class="theme-desc">Rasa nostalgia dipancarkan menerusi tekstur kayu dan kertas lama. Tema sepia yang hangat, sesuai untuk pasangan bergaya retro dan pedesaan.</p>
+                <a href="theme6_rustic_vintage/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 7 -->
+        <div class="theme-card theme-7">
+            <div class="theme-image-wrapper">
+                <iframe src="theme7_pastel_glass/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme7_pastel_glass/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Dreamy • Futuristik</p>
+                <h3 class="theme-title">Tema 7: Pastel Glass</h3>
+                <p class="theme-desc">Panel kaca beku terapung di atas latar gradien pastel. Estetika glassmorphism moden yang memukau dan terasa seperti impian, sangat unik dan futuristik.</p>
+                <a href="theme7_pastel_glass/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+
+        <!-- Theme 8 -->
+        <div class="theme-card theme-8">
+            <div class="theme-image-wrapper">
+                <iframe src="theme8_elegant_monochrome/index.html" class="cover-iframe" tabindex="-1"></iframe>
+                <iframe src="theme8_elegant_monochrome/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
+            </div>
+            <div class="theme-details">
+                <p class="theme-tags">Eksklusif • Abadi</p>
+                <h3 class="theme-title">Tema 8: Elegant Monochrome</h3>
+                <p class="theme-desc">Ketegasan hitam putih ibarat majalah fesyen mewah. Tipografi bold dan ruang kosong yang dramatis, untuk pasangan bergaya sofistikated dan timeless.</p>
+                <a href="theme8_elegant_monochrome/index.html" class="view-btn">Lihat Tema</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="TemplateAssets/logo.png?v=2" alt="Icon">
+        <p>&copy; 2026 Langkah Pertama. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

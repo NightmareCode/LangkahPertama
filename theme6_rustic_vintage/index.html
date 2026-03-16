@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walimatul Urus - Fatiha & Irfan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="../TemplateAssets/LaguBackground.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Audio Control -->
+    <div id="music-control" class="music-btn rustic-shadow">
+        <span class="icon">🎵</span>
+    </div>
+
+    <!-- Intro / Cover Page -->
+    <div id="cover-page" class="cover-page wood-texture">
+        <div class="cover-content stamp-in">
+            <h4 class="cursive-text rustic-brown">Walimatul Urus</h4>
+            <h1 class="title">FATIHA<br><span class="ampersand">&</span><br>IRFAN</h1>
+            <p class="date">12 Disember 2026</p>
+            <p class="guest-name">Kepada: <span class="highlight">Tetamu Kehormat</span></p>
+            <button id="open-btn" class="btn-rustic">Buka Undangan</button>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div id="main-content" class="hidden">
+        
+        <!-- Header Image -->
+        <header class="hero section">
+            <div class="hero-image-wrapper border-frame">
+                <img src="../TemplateAssets/galleri1.jpg" alt="Fatiha & Irfan" class="hero-img filter-sepia">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-card paper-texture stamp-in delay-1">
+                <h2 class="cursive-text rustic-brown">Walimatul Urus</h2>
+                <h1 class="title">Fatiha <span class="ampersand">&</span> Irfan</h1>
+                <p class="date">Sabtu | 12.12.2026</p>
+            </div>
+        </header>
+
+        <main class="content-wrapper wood-bg">
+            <div class="paper-container">
+                <!-- Verse Section -->
+                <section class="verse section text-center">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30' fill='%236B4A34'><path d='M50,0 C60,15 80,15 100,0 L100,5 C80,20 60,20 50,5 C40,20 20,20 0,5 L0,0 C20,15 40,15 50,0 Z'/><path d='M50,15 C55,25 65,25 75,15 C65,30 55,30 50,20 C45,30 35,30 25,15 C35,25 45,25 50,15 Z'/></svg>" class="ornament" alt="ornament">
+                    <p class="arabic rustic-brown">وَمِنْ ءَايَـٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًۭا لِّتَسْكُنُوٓا۟ إِلَيْهَا...</p>
+                    <p class="translation italic mt-3">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu bersenang hati dan hidup mesra dengannya..."</p>
+                    <p class="verse-ref mt-2">(Surah Ar-Rum: 21)</p>
+                </section>
+
+                <!-- Couple Info -->
+                <section class="couple section">
+                    <h3 class="section-title rustic-brown text-center mb-4">Mempelai</h3>
+                    <div class="couple-layout">
+                        <!-- Bride -->
+                        <div class="couple-card fade-in-up">
+                            <div class="avatar-frame">
+                                <img src="../TemplateAssets/PengantinPerempuan.png" alt="Bride" class="avatar-img filter-sepia">
+                            </div>
+                            <h3 class="name">Nur Fatiha Binti Ahmad</h3>
+                            <p class="parents italic">Puteri kepada pasangan<br>En. Ahmad & Pn. Aminah</p>
+                        </div>
+
+                        <div class="connector stamp-in delay-1">&</div>
+
+                        <!-- Groom -->
+                        <div class="couple-card fade-in-up delay-2">
+                            <div class="avatar-frame">
+                                <img src="../TemplateAssets/PengantinLelaki.png" alt="Groom" class="avatar-img filter-sepia">
+                            </div>
+                            <h3 class="name">Mohd Irfan Bin Rahman</h3>
+                            <p class="parents italic">Putera kepada pasangan<br>En. Rahman & Pn. Salmah</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Love Story -->
+                <section class="story section">
+                    <h3 class="section-title rustic-brown text-center mb-5">Kisah Cinta Kami</h3>
+                    <div class="rustic-timeline">
+                        <div class="r-timeline-item fade-in-up">
+                            <div class="wax-seal">2018</div>
+                            <div class="r-content paper-texture">
+                                <h4 class="rustic-brown">Pertemuan Pertama</h4>
+                                <p>Takdir menemukan kami secara kebetulan di sebuah kafe perpustakaan universiti. Secawan kopi yang tertumpah memulakan sebuah perbualan santai yang akhirnya mengikat dua jiwa. Dari pandangan pertama, kami tahu ada sesuatu yang istimewa menanti kami.</p>
+                            </div>
+                        </div>
+                        <div class="r-timeline-item fade-in-up delay-1">
+                            <div class="wax-seal">2023</div>
+                            <div class="r-content paper-texture">
+                                <h4 class="rustic-brown">Sebentuk Cincin, Sejuta Makna</h4>
+                                <p>Selepas lima tahun menyulam cinta menempuh suka dan duka, dia melutut membawa seribu harapan di bawah langit senja. Tiada kata-kata mewah, hanya sebuah keikhlasan. Dengan deraian air mata gembira, lamarannya disahut dengan kalimah 'Ya'.</p>
+                            </div>
+                        </div>
+                        <div class="r-timeline-item fade-in-up delay-2">
+                            <div class="wax-seal">2026</div>
+                            <div class="r-content paper-texture">
+                                <h4 class="rustic-brown">Menuju Ikatan Suci</h4>
+                                <p>Hari ini, kami melangkah ke fasa baru kehidupan. Dengan restu keluarga tercinta dan diiringi doa para tetamu, kami membina mahligai impian kami bersama. Semoga ikatan ini kekal utuh hingga ke syurga abadi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Event Details -->
+                <section class="event section">
+                    <h3 class="section-title rustic-brown text-center mb-5">Aturcara Majlis</h3>
+                    
+                    <div class="countdown-rustic stamp-in mb-5">
+                        <div class="c-box"><span id="days">00</span><small>Hari</small></div>
+                        <div class="c-box"><span id="hours">00</span><small>Jam</small></div>
+                        <div class="c-box"><span id="minutes">00</span><small>Minit</small></div>
+                        <div class="c-box"><span id="seconds">00</span><small>Saat</small></div>
+                    </div>
+
+                    <div class="events-grid">
+                        <div class="e-card paper-texture fade-in-up">
+                            <h4 class="rustic-brown border-bottom">Akad Nikah</h4>
+                            <p class="bold mt-3">Sabtu, 12 Disember 2026</p>
+                            <p>08:00 Pagi - 10:00 Pagi</p>
+                            <p class="italic">Masjid Al-Akbar</p>
+                            <button class="btn-rustic-outline mt-3">Lihat Peta</button>
+                        </div>
+                        <div class="e-card paper-texture fade-in-up delay-1">
+                            <h4 class="rustic-brown border-bottom">Majlis Resepsi</h4>
+                            <p class="bold mt-3">Sabtu, 12 Disember 2026</p>
+                            <p>11:00 Pagi - 14:00 Petang</p>
+                            <p class="italic">Dewan Hotel Perdana</p>
+                            <button class="btn-rustic-outline mt-3">Lihat Peta</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Itinerary -->
+                <section class="itinerary section">
+                    <h3 class="section-title rustic-brown text-center mb-4">Tentatif Majlis</h3>
+                    <div class="itinerary-board paper-texture stamp-in">
+                        <div class="it-row">
+                            <div class="it-time rustic-brown">11:00 Pagi</div>
+                            <div class="it-desc">Ketibaan Tetamu</div>
+                        </div>
+                        <div class="it-row">
+                            <div class="it-time rustic-brown">1:00 Petang</div>
+                            <div class="it-desc">Ketibaan Pengantin & Kompang</div>
+                        </div>
+                        <div class="it-row">
+                            <div class="it-time rustic-brown">1:30 Petang</div>
+                            <div class="it-desc">Makan Beradab & Bersanding</div>
+                        </div>
+                        <div class="it-row">
+                            <div class="it-time rustic-brown">2:30 Petang</div>
+                            <div class="it-desc">Sesi Bergambar</div>
+                        </div>
+                        <div class="it-row">
+                            <div class="it-time rustic-brown">4:00 Petang</div>
+                            <div class="it-desc">Majlis Bersurai</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gallery -->
+                <section class="gallery section">
+                    <h3 class="section-title rustic-brown text-center mb-4">Potret Kenangan</h3>
+                    <div class="polaroid-gallery">
+                        <div class="polaroid stamp-in rotate-left">
+                            <img src="../TemplateAssets/galleri1.jpg" alt="Gallery">
+                        </div>
+                        <div class="polaroid stamp-in rotate-right delay-1">
+                            <img src="../TemplateAssets/galleri2.jpg" alt="Gallery">
+                        </div>
+                        <div class="polaroid stamp-in rotate-left delay-2">
+                            <img src="../TemplateAssets/gelleri3.jpeg" alt="Gallery">
+                        </div>
+                        <div class="polaroid stamp-in rotate-right">
+                            <img src="../TemplateAssets/galleri4.jpg" alt="Gallery">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gift -->
+                <section class="gift section text-center">
+                    <h3 class="section-title rustic-brown mb-4">Sumbangan Hadiah</h3>
+                    <div class="gift-board paper-texture stamp-in">
+                        <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code" class="qr-rustic">
+                        <p class="rustic-brown bold mt-3" style="font-size: 20px;">A.N FATIHA</p>
+                        <p class="italic text-muted">BCA - 1234567890</p>
+                    </div>
+                </section>
+                
+                <footer class="footer section text-center">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30' fill='%236B4A34'><path d='M50,0 C60,15 80,15 100,0 L100,5 C80,20 60,20 50,5 C40,20 20,20 0,5 L0,0 C20,15 40,15 50,0 Z'/></svg>" class="ornament mb-4" alt="ornament">
+                    <p class="italic">Terima kasih atas doa dan kehadiran anda.</p>
+                    <h2 class="cursive-text rustic-brown mt-3">Fatiha & Irfan</h2>
+                    <img src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 25px auto 10px; display: block; filter: sepia(100%) hue-rotate(-30deg) saturate(1.5) contrast(1.2);" alt="Langkah Pertama Logo">
+                    <p class="created-by text-muted">Created by Langkah Pertama</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fatiha & Irfan | Modern Geometric</title>
+    <!-- Geometric fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <!-- Opening Cover Overlay -->
+        <div id="cover" class="cover-overlay active">
+            <div class="diagonal-bg"></div>
+            <div class="cover-content">
+                <p class="subtitle txt-accent">WALIMATUL URUS</p>
+                <h1 class="title txt-dark">FATIHA<br><span class="txt-accent">×</span><br>IRFAN</h1>
+                <div class="recipient-box">
+                    <p class="txt-muted">TETAMU</p>
+                    <h3 id="guest-name" class="txt-dark">Name</h3>
+                </div>
+                <button id="open-btn" class="btn-geo pulse-geo">BUKA UNDANGAN</button>
+            </div>
+        </div>
+
+        <!-- Sticky Music Player -->
+        <div id="music-player" class="music-player">
+            <div class="vinyl record-anim">▶</div>
+            <audio id="bg-music" loop src="../TemplateAssets/LaguBackground.mp3"></audio>
+        </div>
+
+        <main id="main-content" class="hidden">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="geo-frame slide-up-fast">
+                    <img src="../TemplateAssets/galleri1.jpg" class="hero-img" style="object-fit: cover; display: block;" alt="Hero">
+                </div>
+                <!-- Box revealing out from the image -->
+                <div class="hero-box slide-right-fast">
+                    <h2 class="title txt-dark">FATIHA<br>& IRFAN</h2>
+                    <p class="date txt-accent">12.12.2026</p>
+                </div>
+            </section>
+
+            <!-- Quranic Verse Section -->
+            <section class="verse section bg-dark">
+                <div class="container reveal-strip">
+                    <p class="arabic txt-light">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا...</p>
+                    <p class="translation delay-1 txt-muted">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..."</p>
+                    <p class="verse-ref txt-accent delay-2">QS. AR-RUM : 21</p>
+                </div>
+            </section>
+
+            <!-- Couple Section: Asymmetric grid -->
+            <section class="couple section">
+                <div class="container">
+                    <h3 class="section-title txt-dark reveal-strip">PENGANTIN</h3>
+                    
+                    <div class="geo-grid">
+                        <div class="grid-item slide-up-fast">
+                            <img src="../TemplateAssets/PengantinLelaki.png" class="avatar-img square" style="object-fit: cover; display: block;" alt="Pengantin Lelaki">
+                            <h4 class="name txt-dark">IRFAN M.</h4>
+                            <p class="parents txt-muted">Anak lelaki kepada En. ...</p>
+                        </div>
+                        
+                        <div class="grid-connector reveal-strip"><span class="txt-accent">+</span></div>
+                        
+                        <div class="grid-item align-right slide-up-fast delay-1">
+                            <img src="../TemplateAssets/PengantinPerempuan.png" class="avatar-img rect" style="object-fit: cover; display: block;" alt="Pengantin Perempuan">
+                            <h4 class="name txt-dark">FATIHA R.</h4>
+                            <p class="parents txt-muted">Anak perempuan kepada En. ...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Love Story Section -->
+            <section class="story section bg-light-gray">
+                <div class="container">
+                    <h3 class="section-title txt-dark reveal-strip">GARIS MASA</h3>
+                    <div class="timeline">
+                        <div class="timeline-box slide-left-fast">
+                            <h4 class="year txt-accent">2018</h4>
+                            <div class="story-content">
+                                <h5>01 // PERMULAAN</h5>
+                                <p>Pertemuan tak diduga yang membuahkan hasil. Sebuah perbualan kosong memikat detik-detik berharga dari pandangan pertama.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-box slide-right-fast delay-1 offset-right">
+                            <h4 class="year txt-accent">2023</h4>
+                            <div class="story-content">
+                                <h5>02 // JANJI SETIA</h5>
+                                <p>Berbekalkan keikhlasan dan restu, luahan hatinya disampaikan bersama sebutir cincin kenangan penanda komitmen abadi.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-box slide-left-fast">
+                            <h4 class="year txt-accent">2026</h4>
+                            <div class="story-content">
+                                <h5>03 // HARI BAHAGIA</h5>
+                                <p>Satu lembaran baru dibuka, melangkah berdua mencipta kisah hidup yang kekal selamanya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Section -->
+            <section class="event section">
+                <div class="container">
+                    <h3 class="section-title txt-dark reveal-strip">ATURCARA MAJLIS</h3>
+                    
+                    <div class="countdown-bar reveal-strip">
+                        <div class="time"><span id="days">00</span>H</div>
+                        <div class="time"><span id="hours">00</span>J</div>
+                        <div class="time"><span id="minutes">00</span>M</div>
+                        <div class="time"><span id="seconds">00</span>S</div>
+                    </div>
+
+                    <div class="events-wrapper">
+                        <div class="event-card dark-card slide-up-fast">
+                            <h4 class="txt-accent">01 // AKAD NIKAH</h4>
+                            <p class="date-text txt-light">SABTU, 12 DIS 2026</p>
+                            <p class="time-text txt-muted">08:00 - 10:00</p>
+                            <p class="location txt-light">MASJID AL-AKBAR</p>
+                            <button class="btn-geo-outline mt-3">PETA</button>
+                        </div>
+
+                        <div class="event-card light-card slide-up-fast delay-1">
+                            <h4 class="txt-dark">02 // RESEPSI</h4>
+                            <p class="date-text txt-dark">SABTU, 12 DIS 2026</p>
+                            <p class="time-text txt-muted">11:00 - 14:00</p>
+                            <p class="location txt-dark">DEWAN PERDANA</p>
+                            <button class="btn-geo-solid mt-3">PETA</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery section bg-dark">
+                <div class="container">
+                    <h3 class="section-title txt-light reveal-strip">GALERI</h3>
+                    <div class="geo-gallery">
+                        <img src="../TemplateAssets/galleri1.jpg" class="block span-2 reveal-strip" style="object-fit: cover; width: 100%; height: 100%; border-radius: 20px;" alt="Gallery 1">
+                        <img src="../TemplateAssets/galleri2.jpg" class="block reveal-strip delay-1" style="object-fit: cover; width: 100%; height: 100%; border-radius: 20px;" alt="Gallery 2">
+                        <img src="../TemplateAssets/gelleri3.jpeg" class="block reveal-strip delay-2" style="object-fit: cover; width: 100%; height: 100%; border-radius: 20px;" alt="Gallery 3">
+                        <img src="../TemplateAssets/galleri4.jpg" class="block span-2-row reveal-strip" style="object-fit: cover; width: 100%; height: 100%; border-radius: 20px;" alt="Gallery 4">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift Section -->
+            <section class="gift section">
+                <div class="container reveal-strip">
+                    <h3 class="section-title txt-dark">HADIAH</h3>
+                    <div class="gift-box geo-box bg-light-gray" style="text-align: center; padding: 30px;">
+                        <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code Sumbangan" style="max-width: 250px; width: 100%; margin-bottom: 15px; border: 4px solid var(--primary-accent);">
+                        <p class="name txt-dark" style="font-weight: 700; font-size: 20px; letter-spacing: 2px;">A.N FATIHA</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary Section -->
+            <section class="itinerary section bg-accent">
+                <div class="container slide-up-fast">
+                    <h3 class="section-title txt-light">TENTATIF MAJLIS</h3>
+                    <div class="geo-form" style="text-align: left; padding: 40px; background: var(--bg-light-gray);">
+                        <div style="margin-bottom: 20px; border-left: 4px solid var(--primary-dark); padding-left: 15px;">
+                            <h4 class="txt-accent" style="margin-bottom: 5px;">11:00 PAGI</h4>
+                            <p class="txt-dark" style="margin: 0; font-weight: 500;">KETIBAAN TETAMU</p>
+                        </div>
+                        <div style="margin-bottom: 20px; border-left: 4px solid var(--primary-dark); padding-left: 15px;">
+                            <h4 class="txt-accent" style="margin-bottom: 5px;">1:00 PETANG</h4>
+                            <p class="txt-dark" style="margin: 0; font-weight: 500;">KETIBAAN PENGANTIN & KOMPANG</p>
+                        </div>
+                        <div style="margin-bottom: 20px; border-left: 4px solid var(--primary-dark); padding-left: 15px;">
+                            <h4 class="txt-accent" style="margin-bottom: 5px;">1:30 PETANG</h4>
+                            <p class="txt-dark" style="margin: 0; font-weight: 500;">MAKAN BERADAB & BERSANDING</p>
+                        </div>
+                        <div style="margin-bottom: 20px; border-left: 4px solid var(--primary-dark); padding-left: 15px;">
+                            <h4 class="txt-accent" style="margin-bottom: 5px;">2:30 PETANG</h4>
+                            <p class="txt-dark" style="margin: 0; font-weight: 500;">SESI BERGAMBAR</p>
+                        </div>
+                        <div style="border-left: 4px solid var(--primary-dark); padding-left: 15px;">
+                            <h4 class="txt-accent" style="margin-bottom: 5px;">4:00 PETANG</h4>
+                            <p class="txt-dark" style="margin: 0; font-weight: 500;">MAJLIS BERSURAI</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer section bg-dark text-center">
+                <h3 class="title txt-light">FATIHA<span class="txt-accent">×</span>IRFAN</h3>
+                <img src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 15px auto 10px; display: block; opacity: 0.95; background: #fff; padding: 5px 15px; border-radius: 8px;" alt="Langkah Pertama Logo">
+                <p class="created-by txt-muted mt-3">TAMAT // DIBINA OLEH LANGKAH PERTAMA</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

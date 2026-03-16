@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Wedding of Fatiha & Irfan</title>
+    <!-- Choosing luxurious fonts for Royal Theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <!-- Opening Cover Overlay -->
+        <div id="cover" class="cover-overlay active">
+            <div class="cover-bg animate-zoom"></div>
+            <div class="cover-content">
+                <p class="subtitle gold-text">WALIMATUL URUS DIRAJA</p>
+                <h1 class="title">Fatiha & Irfan</h1>
+                <div class="recipient-box">
+                    <p>Ke hadapan Tetamu Dihormati,</p>
+                    <h3 id="guest-name" class="gold-text">Nama Tetamu</h3>
+                </div>
+                <button id="open-btn" class="btn-royal pulse">Buka Undangan</button>
+            </div>
+        </div>
+
+            <!-- Sticky Music Player -->
+        <div id="music-player" class="music-player">
+            <div class="vinyl record-anim">🎵</div>
+            <audio id="bg-music" loop src="../TemplateAssets/LaguBackground.mp3"></audio>
+        </div>
+
+        <main id="main-content" class="hidden">
+            <!-- Hero Section -->
+            <section class="hero section">
+                <div class="hero-bg animate-zoom">
+                    <img src="../TemplateAssets/galleri4.jpg" class="hero-img" alt="Hero Image">
+                </div>
+                <div class="hero-text slide-in-bottom">
+                    <p class="subtitle gold-text">SIMPAN TARIKH</p>
+                    <h2 class="title">Fatiha <br>&<br> Irfan</h2>
+                    <p class="date">12 | 12 | 2026</p>
+                </div>
+            </section>
+
+            <!-- Quranic Verse Section -->
+            <section class="verse section dark-bg">
+                <div class="container slide-in-left">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' fill='%23d4af37'><polygon points='50,0 100,20 0,20'/></svg>" class="ornament top" alt="ornament">
+                    <p class="arabic gold-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا...</p>
+                    <p class="translation delay-1">"And among His Signs is this, that He created for you mates from among yourselves..."</p>
+                    <p class="verse-ref gold-text delay-2">QS. Ar-Rum : 21</p>
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' fill='%23d4af37'><polygon points='50,20 100,0 0,0'/></svg>" class="ornament bottom" alt="ornament">
+                </div>
+            </section>
+
+            <!-- Couple Section: Alternating Left / Right layout -->
+            <section class="couple section">
+                <div class="container">
+                    <h3 class="section-title gold-text slide-in-bottom">Pengantin</h3>
+                    
+                    <div class="couple-card align-left slide-in-left">
+                        <img src="../TemplateAssets/PengantinLelaki.png" class="avatar-img border-gold" style="object-fit: cover; display: block;" alt="Pengantin Lelaki">
+                        <div class="info">
+                            <h4 class="name">Irfan Maulana</h4>
+                            <p class="parents">Anak lelaki kepada En. ... <br>& Pn. ...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="connector slide-in-bottom"><span class="gold-text">&</span></div>
+                    
+                    <div class="couple-card align-right slide-in-right">
+                        <div class="info">
+                            <h4 class="name">Fatiha Rahma</h4>
+                            <p class="parents">Anak perempuan kepada En. ... <br>& Pn. ...</p>
+                        </div>
+                        <img src="../TemplateAssets/PengantinPerempuan.png" class="avatar-img border-gold" style="object-fit: cover; display: block;" alt="Pengantin Perempuan">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Love Story Section -->
+            <section class="story section dark-bg">
+                <div class="container">
+                    <h3 class="section-title gold-text slide-in-bottom">Perjalanan Kami</h3>
+                    <div class="timeline">
+                        <div class="timeline-item slide-in-right">
+                            <div class="year gold-bg">2018</div>
+                            <div class="story-content">
+                                <h5>Pertemuan Pertama</h5>
+                                <p>Takdir menemukan kami secara kebetulan di sebuah kafe perpustakaan universiti. Secawan kopi yang tertumpah memulakan sebuah perbualan santai yang akhirnya mengikat dua jiwa. Dari pandangan pertama, kami tahu ada sesuatu yang istimewa menanti kami.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item slide-in-left">
+                            <div class="year gold-bg">2023</div>
+                            <div class="story-content">
+                                <h5>Sebentuk Cincin, Sejuta Makna</h5>
+                                <p>Selepas lima tahun menyulam cinta menempuh suka dan duka, dia melutut membawa seribu harapan di bawah langit senja. Tiada kata-kata mewah, hanya sebuah keikhlasan. Dengan deraian air mata gembira, lamarannya disahut dengan kalimah 'Ya'.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item slide-in-right">
+                            <div class="year gold-bg">2026</div>
+                            <div class="story-content">
+                                <h5>Menuju Ikatan Suci</h5>
+                                <p>Hari ini, kami melangkah ke fasa baru kehidupan. Dengan restu keluarga tercinta dan diiringi doa para tetamu, kami membina mahligai impian kami bersama. Semoga ikatan ini kekal utuh hingga ke Jannah.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Section -->
+            <section class="event section">
+                <div class="container">
+                    <h3 class="section-title gold-text slide-in-bottom">Butiran Majlis</h3>
+                    
+                    <div class="countdown-box slide-in-bottom">
+                        <div class="time gold-border"><span id="days">00</span><small>H</small></div>
+                        <div class="time gold-border"><span id="hours">00</span><small>J</small></div>
+                        <div class="time gold-border"><span id="minutes">00</span><small>M</small></div>
+                        <div class="time gold-border"><span id="seconds">00</span><small>S</small></div>
+                    </div>
+
+                    <div class="events-wrapper">
+                        <div class="event-card slide-in-left">
+                            <div class="event-icon">💍</div>
+                            <h4>Majlis Akad Nikah</h4>
+                            <p class="date-text gold-text">12 Dis 2026</p>
+                            <p class="time-text">08:00 Pagi</p>
+                            <p class="location">Masjid Al-Akbar</p>
+                            <button class="btn-outline-gold">Lihat Peta</button>
+                        </div>
+
+                        <div class="event-card slide-in-right">
+                            <div class="event-icon">🥂</div>
+                            <h4>Majlis Resepsi</h4>
+                            <p class="date-text gold-text">12 Dis 2026</p>
+                            <p class="time-text">11:00 Pagi</p>
+                            <p class="location">Dewan Hotel Perdana</p>
+                            <button class="btn-outline-gold">Lihat Peta</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery section dark-bg">
+                <div class="container">
+                    <h3 class="section-title gold-text slide-in-bottom">Memori Kami</h3>
+                    <div class="royal-gallery">
+                        <img src="../TemplateAssets/galleri1.jpg" class="g-item i1 slide-in-left" style="object-fit: cover;" alt="Gallery 1">
+                        <img src="../TemplateAssets/galleri2.jpg" class="g-item i2 slide-in-right" style="object-fit: cover;" alt="Gallery 2">
+                        <img src="../TemplateAssets/gelleri3.jpeg" class="g-item i3 slide-in-bottom" style="object-fit: cover;" alt="Gallery 3">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift & RSVP Section -->
+            <section class="gift-rsvp section">
+                <div class="container grid-desktop">
+                    <div class="gift-box slide-in-left">
+                        <h3 class="section-title gold-text">Hadiah Perkahwinan</h3>
+                        <p class="text-center">Doa anda adalah keutamaan kami. Jika anda ingin memberi hadiah kongsikan melalui:</p>
+                        <div class="bank-card gold-border" style="padding: 20px; text-align: center; background: rgba(255,255,255,0.02);">
+                            <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code Sumbangan" style="max-width: 250px; width: 100%; border-radius: 10px; margin-bottom: 15px; border: 2px solid rgba(212,175,55,0.5);">
+                            <p class="name gold-text" style="font-family: var(--font-serif); font-size: 22px;">A.N Fatiha</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-box slide-in-right" style="margin-top:0; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+                        <h3 class="section-title gold-text" style="text-align: center; margin-bottom: 30px;">Tentatif Majlis</h3>
+                        <div style="text-align: left;">
+                            <div style="margin-bottom: 20px; border-left: 2px solid rgba(212,175,55,0.5); padding-left: 15px;">
+                                <h4 class="gold-text" style="margin-bottom: 5px;">11:00 Pagi</h4>
+                                <p class="text-muted" style="margin: 0;">Ketibaan Tetamu</p>
+                            </div>
+                            <div style="margin-bottom: 20px; border-left: 2px solid rgba(212,175,55,0.5); padding-left: 15px;">
+                                <h4 class="gold-text" style="margin-bottom: 5px;">1:00 Petang</h4>
+                                <p class="text-muted" style="margin: 0;">Ketibaan Pengantin & Kompang</p>
+                            </div>
+                            <div style="margin-bottom: 20px; border-left: 2px solid rgba(212,175,55,0.5); padding-left: 15px;">
+                                <h4 class="gold-text" style="margin-bottom: 5px;">1:30 Petang</h4>
+                                <p class="text-muted" style="margin: 0;">Makan Beradab & Bersanding</p>
+                            </div>
+                            <div style="margin-bottom: 20px; border-left: 2px solid rgba(212,175,55,0.5); padding-left: 15px;">
+                                <h4 class="gold-text" style="margin-bottom: 5px;">2:30 Petang</h4>
+                                <p class="text-muted" style="margin: 0;">Sesi Bergambar</p>
+                            </div>
+                            <div style="border-left: 2px solid rgba(212,175,55,0.5); padding-left: 15px;">
+                                <h4 class="gold-text" style="margin-bottom: 5px;">4:00 Petang</h4>
+                                <p class="text-muted" style="margin: 0;">Majlis Bersurai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer section dark-bg">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' fill='%23d4af37'><polygon points='50,0 100,20 0,20'/></svg>" class="ornament top" alt="ornament">
+                <p>Kami tidak sabar untuk berkongsi kegembiraan bersama anda.</p>
+                <h3 class="title gold-text">Fatiha & Irfan</h3>
+                <img src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 15px auto 10px; display: block; opacity: 0.95; background: #fff; padding: 5px 15px; border-radius: 8px;" alt="Langkah Pertama Logo">
+                <p class="created-by">Created by Langkah Pertama</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

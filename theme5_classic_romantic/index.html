@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Wedding of Fatiha & Irfan</title>
+    <!-- Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mobile-container">
+        
+        <!-- Opening Cover Overlay -->
+        <div id="cover" class="cover-overlay active">
+            <div class="floral-frame"></div>
+            <div class="cover-content">
+                <p class="subtitle text-rose">Anda dijemput ke majlis perkahwinan</p>
+                <h1 class="title text-rose">Fatiha & Irfan</h1>
+                <div class="recipient-box">
+                    <p class="text-muted">Buat</p>
+                    <h3 id="guest-name" class="text-dark">Tetamu Dihormati</h3>
+                </div>
+                <!-- Action button -->
+                <button id="open-btn" class="btn-romantic pulse-glow">Buka Undangan</button>
+            </div>
+        </div>
+
+        <!-- Sticky Music Player -->
+        <div id="music-player" class="music-player">
+            <div class="vinyl record-anim">🤍</div>
+            <audio id="bg-music" loop src="../TemplateAssets/LaguBackground.mp3"></audio>
+        </div>
+
+        <main id="main-content" class="hidden">
+            <!-- Hero Section -->
+            <section class="hero section bg-blush">
+                <div class="oval-frame blur-in">
+                    <img src="../TemplateAssets/galleri1.jpg" class="hero-img" style="object-fit: cover; display: block;" alt="Hero">
+                </div>
+                <div class="hero-text fade-in-soft delay-1">
+                    <h2 class="title text-rose">Fatiha & Irfan</h2>
+                    <p class="date text-muted">12 Disember 2026</p>
+                </div>
+            </section>
+
+            <!-- Quranic Verse Section -->
+            <section class="verse section bg-white">
+                <div class="container text-center blur-in">
+                    <div class="floral-icon text-rose">❀</div>
+                    <p class="arabic text-dark">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا...</p>
+                    <p class="translation delay-1 text-muted">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..."</p>
+                    <p class="verse-ref text-rose delay-2">- QS. Ar-Rum : 21 -</p>
+                </div>
+            </section>
+
+            <!-- Couple Section: Soft overlapping circles -->
+            <section class="couple section bg-blush">
+                <div class="container text-center">
+                    <h3 class="section-title text-rose blur-in">Pengantin</h3>
+                    
+                    <div class="couple-wrapper">
+                        <div class="couple-card fade-in-soft">
+                            <img src="../TemplateAssets/PengantinPerempuan.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Perempuan">
+                            <h4 class="name text-rose">Fatiha Rahma</h4>
+                            <p class="parents text-muted">Anak perempuan kepada En. & Pn.</p>
+                        </div>
+                        
+                        <div class="connector blur-in delay-1"><span class="text-rose">&</span></div>
+                        
+                        <div class="couple-card fade-in-soft delay-2">
+                            <img src="../TemplateAssets/PengantinLelaki.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Lelaki">
+                            <h4 class="name text-rose">Irfan Maulana</h4>
+                            <p class="parents text-muted">Anak lelaki kepada En. & Pn.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Love Story Section -->
+            <section class="story section bg-white">
+                <div class="container">
+                    <h3 class="section-title text-rose blur-in">Perjalanan Kami</h3>
+                    <div class="romantic-timeline">
+                        <div class="timeline-box fade-in-soft shadow-soft">
+                            <div class="year bg-rose text-white">2018</div>
+                            <h5 class="text-rose">Bab Pertama</h5>
+                            <p class="text-muted">Bermula dengan senyuman mesra yang tak disengajakan. Tatapan mata yang mengunci hati memulakan detik-detik pertemuan kami.</p>
+                        </div>
+                        <div class="timeline-box fade-in-soft delay-1 shadow-soft">
+                            <div class="year bg-rose text-white">2023</div>
+                            <h5 class="text-rose">Janji Setia Abadi</h5>
+                            <p class="text-muted">Dalam hening malam berlatarkan bintang yang bergemerlapan, kata janji keramat dilafazkan lalu dijawab dengan deraian air mata suka.</p>
+                        </div>
+                        <div class="timeline-box fade-in-soft shadow-soft">
+                            <div class="year bg-rose text-white">2026</div>
+                            <h5 class="text-rose">Hingga Akhir Hayat</h5>
+                            <p class="text-muted">Majlis restu penyatuan dua jiwa diikat di atas pelamin indah disaksikan keluarga. Takdir yang paling terindah memihak pada kami.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Section -->
+            <section class="event section bg-blush">
+                <div class="container">
+                    <h3 class="section-title text-rose blur-in">Majlis Perkahwinan</h3>
+                    
+                    <div class="countdown-soft fade-in-soft">
+                        <div class="time"><span id="days" class="text-rose">00</span><small>Hari</small></div>
+                        <div class="time"><span id="hours" class="text-rose">00</span><small>Jam</small></div>
+                        <div class="time"><span id="minutes" class="text-rose">00</span><small>Minit</small></div>
+                        <div class="time"><span id="seconds" class="text-rose">00</span><small>Saat</small></div>
+                    </div>
+
+                    <div class="events-wrapper">
+                        <div class="event-card fade-in-soft shadow-soft bg-white text-center">
+                            <div class="ring-icon text-rose">💍</div>
+                            <h4 class="text-dark">Majlis Akad Nikah</h4>
+                            <p class="date-text text-rose">Sabtu, 12 Dis 2026</p>
+                            <p class="time-text text-muted">08:00 Pagi</p>
+                            <p class="location text-dark">Masjid Al-Akbar</p>
+                            <button class="btn-romantic-outline mt-3">Lihat Peta</button>
+                        </div>
+
+                        <div class="event-card fade-in-soft delay-1 shadow-soft bg-white text-center">
+                            <div class="ring-icon text-rose">🕊️</div>
+                            <h4 class="text-dark">Majlis Resepsi</h4>
+                            <p class="date-text text-rose">Sabtu, 12 Dis 2026</p>
+                            <p class="time-text text-muted">11:00 Pagi</p>
+                            <p class="location text-dark">Dewan Hotel Perdana</p>
+                            <button class="btn-romantic-outline mt-3">Lihat Peta</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="gallery section bg-white">
+                <div class="container">
+                    <h3 class="section-title text-rose blur-in">Memori Terindah</h3>
+                    <div class="soft-gallery">
+                        <img src="../TemplateAssets/galleri1.jpg" class="s-item blur-in" style="object-fit: cover;" alt="Gallery 1">
+                        <img src="../TemplateAssets/galleri2.jpg" class="s-item blur-in delay-1" style="object-fit: cover;" alt="Gallery 2">
+                        <img src="../TemplateAssets/gelleri3.jpeg" class="s-item blur-in delay-2" style="object-fit: cover;" alt="Gallery 3">
+                        <img src="../TemplateAssets/galleri4.jpg" class="s-item wide blur-in shadow-soft" style="object-fit: cover;" alt="Gallery 4">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gift & RSVP Section -->
+            <section class="rvsp-gift section bg-blush">
+                <div class="container rvsp-gift-wrapper">
+                    <!-- Gift -->
+                    <div class="gift-section fade-in-soft text-center mb-5">
+                        <h3 class="section-title text-rose">Sumbangan Hadiah</h3>
+                        <p class="text-muted mb-3">Doa anda adalah hadiah yang paling bermakna bagi kami.</p>
+                        <div class="bank-card bg-white shadow-soft" style="padding: 25px; text-align: center; border-radius: 12px;">
+                            <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code Sumbangan" style="max-width: 250px; width: 100%; border-radius: 10px; margin-bottom: 15px; border: 1px solid var(--rose-light);">
+                            <p class="name text-dark" style="font-family: var(--font-serif); font-size: 22px; margin: 0;">A.N Fatiha</p>
+                        </div>
+                    </div>
+
+                    <!-- Itinerary -->
+                    <div class="itinerary-section fade-in-soft delay-1 bg-white shadow-soft p-4 round-box">
+                        <h3 class="section-title text-rose">Tentatif Majlis</h3>
+                        <div style="text-align: left; padding: 10px;">
+                            <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--rose-light);">
+                                <h4 class="text-rose" style="margin-bottom: 5px;">11:00 Pagi</h4>
+                                <p class="text-dark" style="margin: 0;">Ketibaan Tetamu</p>
+                            </div>
+                            <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--rose-light);">
+                                <h4 class="text-rose" style="margin-bottom: 5px;">1:00 Petang</h4>
+                                <p class="text-dark" style="margin: 0;">Ketibaan Pengantin & Kompang</p>
+                            </div>
+                            <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--rose-light);">
+                                <h4 class="text-rose" style="margin-bottom: 5px;">1:30 Petang</h4>
+                                <p class="text-dark" style="margin: 0;">Makan Beradab & Bersanding</p>
+                            </div>
+                            <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--rose-light);">
+                                <h4 class="text-rose" style="margin-bottom: 5px;">2:30 Petang</h4>
+                                <p class="text-dark" style="margin: 0;">Sesi Bergambar</p>
+                            </div>
+                            <div style="position: relative; padding-left: 20px; border-left: 2px solid var(--rose-light);">
+                                <h4 class="text-rose" style="margin-bottom: 5px;">4:00 Petang</h4>
+                                <p class="text-dark" style="margin: 0;">Majlis Bersurai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer section bg-white text-center">
+                <div class="floral-icon text-rose mb-3">❀</div>
+                <p class="text-muted">Terima kasih kerana berkongsi kegembiraan kami.</p>
+                <h3 class="title text-rose mt-2 mb-2">Fatiha & Irfan</h3>
+                <img src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 15px auto 10px; display: block; opacity: 0.9; mix-blend-mode: multiply;" alt="Langkah Pertama Logo">
+                <p class="created-by text-muted">Created by Langkah Pertama</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
