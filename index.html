@@ -1,385 +1,1422 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Langkah Pertama Catalog</title>
+    <title>Langkah Pertama — Web Design &amp; Development Studio</title>
     <link rel="icon" href="TemplateAssets/logo.png" type="image/png">
 
     <!-- Open Graph / WhatsApp / Telegram Preview -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/">
-    <meta property="og:title" content="Langkah Pertama - Undangan Digital Eksklusif">
-    <meta property="og:description" content="Koleksi tema undangan perkahwinan digital premium. Pilih estetika yang mewakili kisah cinta anda.">
+    <meta property="og:title" content="Langkah Pertama — Web Design &amp; Development Studio">
+    <meta property="og:description" content="Full-stack websites, dashboards, digital restaurant menus, wedding invitations, inventory systems &amp; web design. Custom-built, beautifully crafted.">
     <meta property="og:image" content="https://langkahpertama.website/TemplateAssets/logo.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
 
     <!-- Twitter Card (also used by Telegram) -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Langkah Pertama - Undangan Digital Eksklusif">
-    <meta name="twitter:description" content="Koleksi tema undangan perkahwinan digital premium. Pilih estetika yang mewakili kisah cinta anda.">
+    <meta name="twitter:title" content="Langkah Pertama — Web Design &amp; Development Studio">
+    <meta name="twitter:description" content="Full-stack websites, dashboards, digital restaurant menus, wedding invitations, inventory systems &amp; web design. Custom-built, beautifully crafted.">
     <meta name="twitter:image" content="https://langkahpertama.website/TemplateAssets/logo.png">
 
     <!-- General Meta -->
-    <meta name="description" content="Koleksi tema undangan perkahwinan digital premium. Pilih estetika yang mewakili kisah cinta anda.">
+    <meta name="description" content="Langkah Pertama is a web design &amp; development studio crafting full-stack websites, business dashboards, digital restaurant menus, wedding invitations and inventory systems.">
 
-    <!-- Modern Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #cba87c;
-            --primary-dark: #967d5b;
-            --bg-body: #faf8f5;
-            --text-dark: #2d2a26;
-            --text-light: #706f6c;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+            --bg: #0b0a09;
+            --bg-soft: #131110;
+            --bg-card: #161412;
+            --line: rgba(255, 255, 255, 0.08);
+            --gold: #cba87c;
+            --gold-light: #e9d5ae;
+            --gold-dark: #96774e;
+            --rose: #c9908f;
+            --teal: #4f9a93;
+            --text: #f2ede4;
+            --text-dim: #a39c90;
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans: 'Inter', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Nav & Header */
-        header {
-            text-align: center;
-            padding: 50px 20px 40px;
-            background: linear-gradient(to bottom, #fff, var(--bg-body));
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: var(--gold); color: #0b0a09; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        section { position: relative; scroll-margin-top: 90px; }
+
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============ Film grain overlay ============ */
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* ============ Reveal-on-scroll system ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Navigation ============ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled {
+            background: rgba(11, 10, 9, 0.78);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            border-bottom-color: var(--line);
+        }
+        .nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .monogram {
+            width: 42px; height: 42px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            transition: all 0.4s;
+        }
+        .brand:hover .monogram {
+            background: var(--gold);
+            color: #0b0a09;
+            box-shadow: 0 0 24px rgba(203, 168, 124, 0.45);
+        }
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .brand-name small {
+            display: block;
+            font-family: var(--sans);
+            font-size: 0.58rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.86rem;
+            font-weight: 500;
+            letter-spacing: 0.4px;
             position: relative;
+            transition: color 0.3s;
         }
-        
-        .logo-container {
-            max-width: 250px;
-            margin: 0 auto 20px;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -6px;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.35s var(--ease);
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 9px 22px;
+            border-radius: 30px;
+            transition: all 0.35s !important;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #0b0a09 !important;
+            box-shadow: 0 4px 24px rgba(203, 168, 124, 0.35);
+        }
+        .nav-cta::after { display: none; }
+
+        /* Mobile menu */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 102;
+            padding: 8px;
+        }
+        .menu-btn span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: 0.35s var(--ease);
+        }
+        .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-btn.open span:nth-child(2) { opacity: 0; }
+        .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 10, 9, 0.92);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            z-index: 101;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s;
+        }
+        .mobile-menu.open { opacity: 1; visibility: visible; }
+        .mobile-menu a {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--text);
+            text-decoration: none;
             padding: 10px;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), color 0.3s;
         }
-        
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            mix-blend-mode: multiply;
+        .mobile-menu.open a { opacity: 1; transform: none; }
+        .mobile-menu a:hover { color: var(--gold); }
+
+        /* ============ Hero ============ */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 140px 0 80px;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .orb-gold {
+            width: 520px; height: 520px;
+            background: radial-gradient(circle, rgba(203,168,124,0.32), transparent 65%);
+            top: -120px; right: -100px;
+            animation: drift1 16s ease-in-out infinite;
+        }
+        .orb-rose {
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(201,144,143,0.18), transparent 65%);
+            bottom: -80px; left: -120px;
+            animation: drift2 20s ease-in-out infinite;
+        }
+        .orb-teal {
+            width: 340px; height: 340px;
+            background: radial-gradient(circle, rgba(79,154,147,0.14), transparent 65%);
+            top: 35%; left: 42%;
+            animation: drift3 24s ease-in-out infinite;
+        }
+        @keyframes drift1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-60px, 50px); }
+        }
+        @keyframes drift2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(70px, -40px); }
+        }
+        @keyframes drift3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -60px) scale(1.15); }
+        }
+
+        .hero .wrap { position: relative; z-index: 2; }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.74rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 28px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 36px; height: 1px;
+            background: var(--gold);
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(2.5rem, 6.4vw, 4.8rem);
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            max-width: 880px;
+        }
+        h1 em {
+            font-style: italic;
+            color: var(--gold);
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
+        .rotator {
+            display: inline-block;
+            position: relative;
+            vertical-align: bottom;
+            min-width: 1ch;
+            white-space: nowrap;
+        }
+        .rotator .word {
+            display: inline-block;
+            background: linear-gradient(100deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+        }
+        .rotator .word.out { opacity: 0; transform: translateY(-0.6em); }
+        .rotator .word.pre { opacity: 0; transform: translateY(0.6em); transition: none; }
+
+        .hero-sub {
+            margin-top: 30px;
+            max-width: 560px;
+            color: var(--text-dim);
+            font-size: 1.06rem;
             font-weight: 300;
         }
 
-        /* Catalog Grid */
-        .catalog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+        .hero-actions {
+            margin-top: 44px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
         }
 
-        .theme-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            top: 0;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            letter-spacing: 0.3px;
+            padding: 16px 34px;
+            border-radius: 40px;
+            transition: all 0.35s var(--ease);
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: linear-gradient(110deg, var(--gold-light), var(--gold));
+            color: #14110c;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(203, 168, 124, 0.35);
+        }
+        .btn-ghost {
+            border: 1px solid var(--line);
+            color: var(--text);
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+        .btn .arrow { transition: transform 0.35s var(--ease); }
+        .btn:hover .arrow { transform: translateX(5px); }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .scroll-hint .line {
+            width: 1px; height: 44px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2.2s ease-in-out infinite;
+            transform-origin: top;
+        }
+        @keyframes scrollPulse {
+            0% { transform: scaleY(0); opacity: 0; }
+            35% { transform: scaleY(1); opacity: 1; }
+            100% { transform: scaleY(1); opacity: 0; }
         }
 
-        .theme-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 50px rgba(203, 168, 124, 0.2);
-        }
-
-        .theme-image-wrapper {
-            height: 380px; /* Taller for better preview */
+        /* ============ Marquee ============ */
+        .marquee {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 22px 0;
             overflow: hidden;
+            background: var(--bg-soft);
             position: relative;
-            background: #111;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 36s linear infinite;
+        }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        .marquee-track span {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            white-space: nowrap;
+            padding-right: 28px;
+        }
+        .marquee-track span i {
+            font-style: normal;
+            color: var(--gold);
+            padding-right: 28px;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
-        .theme-image-wrapper iframe {
+        /* ============ Section headers ============ */
+        .sec-head { margin-bottom: 64px; }
+        .sec-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .sec-eyebrow::before {
+            content: '';
+            width: 28px; height: 1px;
+            background: var(--gold);
+        }
+        h2 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            line-height: 1.2;
+            max-width: 640px;
+        }
+        h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .sec-desc {
+            margin-top: 18px;
+            color: var(--text-dim);
+            max-width: 540px;
+            font-weight: 300;
+        }
+
+        /* ============ Services ============ */
+        #services { padding: 120px 0 40px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+        .svc {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 36px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.45s var(--ease), border-color 0.45s, box-shadow 0.45s;
+        }
+        .svc::before {
+            content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 400%;  
-            height: 400%; /* Reset to normal 100vh proportional height */
-            transform: scale(0.25);
-            transform-origin: top left;
-            border: none;
-            pointer-events: none; 
-            transition: opacity 0.5s ease;
+            top: -60%; left: 50%;
+            width: 130%; height: 100%;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse at top, rgba(203,168,124,0.12), transparent 65%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .svc:hover {
+            transform: translateY(-8px);
+            border-color: rgba(203, 168, 124, 0.4);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+        }
+        .svc:hover::before { opacity: 1; }
+        .svc-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            background: rgba(203, 168, 124, 0.1);
+            border: 1px solid rgba(203, 168, 124, 0.25);
+            display: grid;
+            place-items: center;
+            margin-bottom: 24px;
+            color: var(--gold);
+            transition: all 0.45s var(--ease);
+        }
+        .svc:hover .svc-icon {
+            background: var(--gold);
+            color: #14110c;
+            box-shadow: 0 8px 24px rgba(203, 168, 124, 0.35);
+        }
+        .svc h3 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.28rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .svc p {
+            color: var(--text-dim);
+            font-size: 0.92rem;
+            font-weight: 300;
+        }
+        .tag-live {
+            font-family: var(--sans);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #0b0a09;
+            background: linear-gradient(110deg, var(--gold-light), var(--gold));
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .tag-soon {
+            font-family: var(--sans);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            border: 1px solid var(--line);
+            padding: 3px 10px;
+            border-radius: 20px;
         }
 
-        .theme-image-wrapper .cover-iframe {
-            opacity: 1;
+        /* ============ Featured Work ============ */
+        #work { padding: 120px 0; }
+        .feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-card), #1a1612);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature::after {
+            content: '';
+            position: absolute;
+            top: -40%; right: -20%;
+            width: 60%; height: 120%;
+            background: radial-gradient(circle, rgba(203,168,124,0.1), transparent 60%);
+            pointer-events: none;
+        }
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(203, 168, 124, 0.4);
+            padding: 7px 16px;
+            border-radius: 30px;
+            margin-bottom: 26px;
+        }
+        .feature-badge .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #6fcf97;
+            box-shadow: 0 0 10px #6fcf97;
+            animation: blink 2s ease-in-out infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+        .feature h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .feature h3 em { font-style: italic; color: var(--gold); }
+        .feature > div p {
+            color: var(--text-dim);
+            font-weight: 300;
+            margin-bottom: 26px;
+        }
+        .feature-list {
+            list-style: none;
+            margin-bottom: 36px;
+            display: grid;
+            gap: 12px;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text);
+        }
+        .feature-list li::before {
+            content: '✦';
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        /* Phone mockups */
+        .phones {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            min-height: 600px;
+            z-index: 1;
+        }
+        .phone {
+            width: 264px;
+            height: 572px;
+            background: #1d1a17;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 38px;
+            padding: 10px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0,0,0,0.4);
+            position: relative;
+        }
+        .phone .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+        }
+        .phone .notch {
+            position: absolute;
+            top: 18px; left: 50%;
+            transform: translateX(-50%);
+            width: 86px; height: 18px;
+            background: #1d1a17;
+            border-radius: 12px;
+            z-index: 5;
+        }
+        .phone iframe {
+            width: 375px;
+            height: 812px;
+            border: none;
+            transform: scale(0.652);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+        .phone-front {
+            z-index: 2;
+            animation: phoneFloat 7s ease-in-out infinite;
+        }
+        .phone-back {
+            position: absolute;
+            top: 36px;
+            transform: rotate(-8deg) translateX(-128px) scale(0.92);
+            opacity: 0.55;
+            z-index: 1;
+            animation: phoneFloatBack 8s ease-in-out infinite;
+        }
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+        @keyframes phoneFloatBack {
+            0%, 100% { transform: rotate(-8deg) translateX(-128px) scale(0.92) translateY(0); }
+            50% { transform: rotate(-8deg) translateX(-128px) scale(0.92) translateY(12px); }
+        }
+
+        /* Coming soon teasers */
+        .teasers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 26px;
+        }
+        .teaser {
+            border: 1px dashed rgba(255, 255, 255, 0.14);
+            border-radius: 20px;
+            padding: 34px 30px;
+            transition: border-color 0.4s, transform 0.45s var(--ease);
+            background: rgba(255, 255, 255, 0.012);
+        }
+        .teaser:hover {
+            border-color: rgba(203, 168, 124, 0.45);
+            transform: translateY(-6px);
+        }
+        .teaser h4 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin: 14px 0 8px;
+        }
+        .teaser p {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            font-weight: 300;
+        }
+
+        /* ============ About ============ */
+        #about {
+            padding: 120px 0;
+            background: var(--bg-soft);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: start;
+        }
+        .about-text p {
+            color: var(--text-dim);
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-size: 1.02rem;
+        }
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+        .quote {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gold);
+            border-left: 2px solid var(--gold);
+            padding-left: 24px;
+            margin: 34px 0 0;
+            line-height: 1.5;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+        .stat {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 34px 28px;
+            transition: border-color 0.4s, transform 0.45s var(--ease);
+        }
+        .stat:hover {
+            border-color: rgba(203, 168, 124, 0.4);
+            transform: translateY(-5px);
+        }
+        .stat .num {
+            font-family: var(--serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat .num sup {
+            font-size: 1.4rem;
+            color: var(--gold-light);
+        }
+        .stat .label {
+            margin-top: 10px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        /* ============ Process ============ */
+        #process { padding: 120px 0; }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            counter-reset: step;
+        }
+        .step {
+            position: relative;
+            padding: 34px 26px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: var(--bg-card);
+            transition: border-color 0.4s, transform 0.45s var(--ease);
+        }
+        .step:hover {
+            border-color: rgba(203, 168, 124, 0.4);
+            transform: translateY(-6px);
+        }
+        .step .n {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 2.6rem;
+            background: linear-gradient(120deg, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            line-height: 1;
+        }
+        .step h4 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 18px 0 8px;
+        }
+        .step p {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            font-weight: 300;
+        }
+
+        /* ============ Contact ============ */
+        #contact {
+            padding: 140px 0 150px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #contact .orb-gold {
+            top: auto; bottom: -260px;
+            left: 50%; right: auto;
+            transform: translateX(-50%);
+            opacity: 0.35;
+        }
+        #contact .sec-eyebrow { justify-content: center; }
+        #contact .sec-eyebrow::after {
+            content: '';
+            width: 28px; height: 1px;
+            background: var(--gold);
+        }
+        #contact h2 {
+            margin: 0 auto;
+            max-width: 760px;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+        }
+        #contact .sec-desc {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .contact-actions {
+            margin-top: 48px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            position: relative;
             z-index: 2;
         }
 
-        .theme-image-wrapper .preview-iframe {
-            opacity: 0;
-            z-index: 1;
-        }
-        
-        /* On Hover: Hide static cover, show animated iframe */
-        .theme-card:hover .theme-image-wrapper .cover-iframe {
-            opacity: 0;
-        }
-
-        .theme-card:hover .theme-image-wrapper .preview-iframe {
-            opacity: 1;
-            z-index: 3;
-        }
-
-        /* Removing the old img-overlay since iframes provide the actual look */
-
-        .theme-details {
-            padding: 35px 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .theme-tags {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .theme-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .theme-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .view-btn {
-            display: inline-block;
-            background: var(--text-dark);
-            color: #fff;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .view-btn::after {
-            content: "→";
-            margin-left: 8px;
-            transition: margin 0.3s;
-        }
-
-        .view-btn:hover {
-            background: var(--primary);
-            box-shadow: 0 5px 20px rgba(203, 168, 124, 0.4);
-        }
-        
-        .view-btn:hover::after {
-            margin-left: 12px;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Footer */
+        /* ============ Footer ============ */
         footer {
-            background-color: #111;
-            color: #fff;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
+            border-top: 1px solid var(--line);
+            padding: 44px 0;
+            background: var(--bg-soft);
+        }
+        .footer-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-inner .brand-name { font-size: 0.95rem; }
+        .footer-links {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.82rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .copyright {
+            color: var(--text-dim);
+            font-size: 0.78rem;
         }
 
-        footer img {
-            height: 40px;
-            width: auto;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            background: #fff;
-            padding: 5px 15px;
-            border-radius: 8px;
-            mix-blend-mode: multiply;
+        /* ============ Responsive ============ */
+        @media (max-width: 980px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .teasers { grid-template-columns: 1fr 1fr 1fr; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .feature { grid-template-columns: 1fr; padding: 44px 32px; gap: 50px; }
+            .about-grid { grid-template-columns: 1fr; gap: 50px; }
+            .phones { min-height: 640px; }
         }
-        footer p {
-            color: var(--text-light);
-            font-size: 0.9rem;
+        @media (max-width: 700px) {
+            .nav-links { display: none; }
+            .menu-btn { display: block; }
+            .services-grid { grid-template-columns: 1fr; }
+            .teasers { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .stat { padding: 26px 20px; }
+            .stat .num { font-size: 2.2rem; }
+            #services, #work, #about, #process { padding: 80px 0; }
+            #services { padding-bottom: 20px; }
+            .hero { padding: 120px 0 100px; }
+            .hero-sub { font-size: 0.98rem; }
+            .phone-back { display: none; }
+            .phones { min-height: 600px; }
+            .feature { padding: 36px 22px; }
+            .scroll-hint { display: none; }
+        }
+        @media (max-height: 700px) {
+            .hero { padding: 110px 0 60px; }
+            .scroll-hint { display: none; }
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .catalog-container { gap: 30px; padding: 20px 20px 80px; }
-            header { padding: 60px 20px 40px; }
+        /* ============ Reduced motion ============ */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .orb, .marquee-track, .phone-front, .phone-back,
+            .scroll-hint .line, .feature-badge .dot { animation: none !important; }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            * { transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="TemplateAssets/logo.png?v=2" alt="Langkah Pertama Logo">
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ============ NAV ============ -->
+    <nav id="nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="#" class="brand" aria-label="Langkah Pertama — back to top">
+                <span class="monogram">LP</span>
+                <span class="brand-name">Langkah Pertama
+                    <small>Digital Studio</small>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+            </ul>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <h1>Langkah Pertama</h1>
-        <p class="subtitle">Koleksi Tema Undangan Perkahwinan Digital Eklsklusif.<br>Pilih estetika yang mewakili kisah cinta anda.</p>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" style="transition-delay:0.05s">Services</a>
+        <a href="#work" style="transition-delay:0.12s">Work</a>
+        <a href="#about" style="transition-delay:0.19s">About</a>
+        <a href="#process" style="transition-delay:0.26s">Process</a>
+        <a href="#contact" style="transition-delay:0.33s">Let's Talk</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+        <div class="orb orb-gold" aria-hidden="true"></div>
+        <div class="orb orb-rose" aria-hidden="true"></div>
+        <div class="orb orb-teal" aria-hidden="true"></div>
+        <div class="wrap">
+            <p class="hero-eyebrow reveal">Web Design &amp; Development Studio</p>
+            <h1 class="reveal" style="--d:0.1s">
+                I design &amp; build<br>
+                <em><span class="rotator" id="rotator"><span class="word">full-stack websites</span></span></em><br>
+                that move your business forward.
+            </h1>
+            <p class="hero-sub reveal" style="--d:0.22s">
+                From elegant landing pages to complete business systems — every project
+                is custom-coded, mobile-first, and built to leave an impression.
+                Your first step starts here.
+            </p>
+            <div class="hero-actions reveal" style="--d:0.34s">
+                <a href="#work" class="btn btn-gold">View My Work <span class="arrow">→</span></a>
+                <a href="#contact" class="btn btn-ghost">Start a Project</a>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true">
+            <span>Scroll</span>
+            <span class="line"></span>
+        </div>
     </header>
 
-    <div class="catalog-container">
-        <!-- Theme 1 -->
-        <div class="theme-card theme-1">
-            <div class="theme-image-wrapper">
-                <!-- Static Cover Iframe -->
-                <iframe src="theme1_minimalist/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <!-- Auto-scrolling Preview Iframe (Hidden until Hover) -->
-                <iframe src="theme1_minimalist/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Clean • Moden</p>
-                <h3 class="theme-title">Tema 1: Minimalist</h3>
-                <p class="theme-desc">Rekaan suci putih, berfokus kepada elegan minimalism. Sesuai untuk pasangan yang menginginkan kesederhanaan yang mewah dan moden.</p>
-                <a href="theme1_minimalist/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 2 -->
-        <div class="theme-card theme-2">
-            <div class="theme-image-wrapper">
-                <iframe src="theme2_royal_dark/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme2_royal_dark/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Eksklusif • Mewah</p>
-                <h3 class="theme-title">Tema 2: Royal Dark</h3>
-                <p class="theme-desc">Warna hitam malam yang dramatik disepadankan dengan elemen emas murni. Memberikan aura eksklusif, mahal, dan megah seperti perkahwinan diraja.</p>
-                <a href="theme2_royal_dark/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 3 -->
-        <div class="theme-card theme-3">
-            <div class="theme-image-wrapper">
-                <iframe src="theme3_boho_floral/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme3_boho_floral/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Semulajadi • Romantik</p>
-                <h3 class="theme-title">Tema 3: Boho Floral</h3>
-                <p class="theme-desc">Dihiasi elemen flora, warna tanah (earth tones), dan organik. Membawa perasaan santai dan romantis, sangat sesuai untuk perkahwinan terbuka atau tema kebun.</p>
-                <a href="theme3_boho_floral/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 4 -->
-        <div class="theme-card theme-4">
-            <div class="theme-image-wrapper">
-                <iframe src="theme4_modern_geometric/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme4_modern_geometric/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Unik • Kontemporari</p>
-                <h3 class="theme-title">Tema 4: Modern Geometric</h3>
-                <p class="theme-desc">Gabungan harmoni tona biru gelap yang tenang bersama bentuk geometri yang tersusun. Mewakili keteguhan dan cinta kontemporari pasangan.</p>
-                <a href="theme4_modern_geometric/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 5 -->
-        <div class="theme-card theme-5">
-            <div class="theme-image-wrapper">
-                <iframe src="theme5_classic_romantic/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme5_classic_romantic/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Klalsik • Lembut</p>
-                <h3 class="theme-title">Tema 5: Classic Romantic</h3>
-                <p class="theme-desc">Tona warna merah jambu lembut, hiasan melengkung bagaikan ikal rambut puteri saga. Estetika klasik cinta abadi sepanjang zaman.</p>
-                <a href="theme5_classic_romantic/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 6 -->
-        <div class="theme-card theme-6">
-            <div class="theme-image-wrapper">
-                <iframe src="theme6_rustic_vintage/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme6_rustic_vintage/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Tradisional • Hangat</p>
-                <h3 class="theme-title">Tema 6: Rustic Vintage</h3>
-                <p class="theme-desc">Rasa nostalgia dipancarkan menerusi tekstur kayu dan kertas lama. Tema sepia yang hangat, sesuai untuk pasangan bergaya retro dan pedesaan.</p>
-                <a href="theme6_rustic_vintage/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 7 -->
-        <div class="theme-card theme-7">
-            <div class="theme-image-wrapper">
-                <iframe src="theme7_pastel_glass/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme7_pastel_glass/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Dreamy • Futuristik</p>
-                <h3 class="theme-title">Tema 7: Pastel Glass</h3>
-                <p class="theme-desc">Panel kaca beku terapung di atas latar gradien pastel. Estetika glassmorphism moden yang memukau dan terasa seperti impian, sangat unik dan futuristik.</p>
-                <a href="theme7_pastel_glass/index.html" class="view-btn">Lihat Tema</a>
-            </div>
-        </div>
-
-        <!-- Theme 8 -->
-        <div class="theme-card theme-8">
-            <div class="theme-image-wrapper">
-                <iframe src="theme8_elegant_monochrome/index.html" class="cover-iframe" tabindex="-1"></iframe>
-                <iframe src="theme8_elegant_monochrome/index.html#preview" class="preview-iframe" tabindex="-1"></iframe>
-            </div>
-            <div class="theme-details">
-                <p class="theme-tags">Eksklusif • Abadi</p>
-                <h3 class="theme-title">Tema 8: Elegant Monochrome</h3>
-                <p class="theme-desc">Ketegasan hitam putih ibarat majalah fesyen mewah. Tipografi bold dan ruang kosong yang dramatis, untuk pasangan bergaya sofistikated dan timeless.</p>
-                <a href="theme8_elegant_monochrome/index.html" class="view-btn">Lihat Tema</a>
-            </div>
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track" id="marqueeTrack">
+            <span>Full-Stack Development <i>✦</i></span>
+            <span>Web Design <i>✦</i></span>
+            <span>Business Dashboards <i>✦</i></span>
+            <span>Digital Restaurant Menus <i>✦</i></span>
+            <span>Wedding Invitations <i>✦</i></span>
+            <span>Inventory Systems <i>✦</i></span>
+            <span>Landing Pages <i>✦</i></span>
         </div>
     </div>
 
+    <!-- ============ SERVICES ============ -->
+    <section id="services">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <p class="sec-eyebrow">What I Do</p>
+                <h2>One developer. <em>Every layer</em> of your digital presence.</h2>
+                <p class="sec-desc">Whatever your business needs to live online — I design it, build it, and ship it. No templates, no shortcuts.</p>
+            </div>
+            <div class="services-grid">
+                <div class="svc reveal">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Full-Stack Web Building</h3>
+                    <p>Complete web applications from front-end to database — authentication, payments, hosting and everything in between.</p>
+                </div>
+                <div class="svc reveal" style="--d:0.08s">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                    </div>
+                    <h3>Web Dashboards</h3>
+                    <p>Admin panels and analytics dashboards that turn your raw business data into clear, real-time visual insight.</p>
+                </div>
+                <div class="svc reveal" style="--d:0.16s">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><circle cx="5.5" cy="6.5" r="0.5" fill="currentColor"/><circle cx="8" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                    </div>
+                    <h3>Webpages &amp; Landing Pages</h3>
+                    <p>Fast, beautiful pages designed to convert visitors into customers — for launches, campaigns and company profiles.</p>
+                </div>
+                <div class="svc reveal">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M3 11a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2M5 9V7a7 7 0 0 1 14 0v2M3 11l1.5 8a2 2 0 0 0 2 1.6h11a2 2 0 0 0 2-1.6L21 11"/></svg>
+                    </div>
+                    <h3>Digital Menus for Restaurants</h3>
+                    <p>QR-scannable digital menus your customers open instantly — update prices and dishes anytime, no reprinting ever.</p>
+                </div>
+                <div class="svc reveal" style="--d:0.08s">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    </div>
+                    <h3>Digital Wedding Invitations <span class="tag-live">Live</span></h3>
+                    <p>Interactive wedding invitations with music, galleries, countdowns and RSVP — shared with one link. 8 themes ready now.</p>
+                </div>
+                <div class="svc reveal" style="--d:0.16s">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><polyline points="3.3 8.3 12 13 20.7 8.3"/><line x1="12" y1="22" x2="12" y2="13"/></svg>
+                    </div>
+                    <h3>Inventory Systems</h3>
+                    <p>Stock tracking, low-stock alerts and reporting tools built around how your business actually operates.</p>
+                </div>
+                <div class="svc reveal">
+                    <div class="svc-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Modern UI/UX design with intention behind every pixel — clean layouts, smooth motion and brands people remember.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURED WORK ============ -->
+    <section id="work">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <p class="sec-eyebrow">Featured Work</p>
+                <h2>Real products. <em>Live</em> and loved.</h2>
+                <p class="sec-desc">Don't take my word for it — open the work itself. Everything below is custom-coded and running in production.</p>
+            </div>
+
+            <div class="feature reveal">
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> Live Project</span>
+                    <h3>Langkah Pertama —<br><em>Digital Wedding Invitations</em></h3>
+                    <p>A full collection of interactive wedding invitations, each one designed as a tiny experience: background music, photo galleries, countdown timers, maps and RSVP — all opened from a single shareable link.</p>
+                    <ul class="feature-list">
+                        <li>8 unique themes, from minimalist to royal dark</li>
+                        <li>Background music, gallery &amp; live countdown</li>
+                        <li>Mobile-first — made for WhatsApp sharing</li>
+                        <li>100% custom-coded, zero templates</li>
+                    </ul>
+                    <a href="wedding/" class="btn btn-gold">Explore the Collection <span class="arrow">→</span></a>
+                </div>
+                <div class="phones" aria-hidden="true">
+                    <div class="phone phone-back">
+                        <div class="screen">
+                            <iframe src="theme1_minimalist/index.html" tabindex="-1" loading="lazy" title="Minimalist wedding invitation theme preview"></iframe>
+                        </div>
+                        <div class="notch"></div>
+                    </div>
+                    <div class="phone phone-front">
+                        <div class="screen">
+                            <iframe src="theme2_royal_dark/index.html#preview" tabindex="-1" loading="lazy" title="Royal Dark wedding invitation theme preview"></iframe>
+                        </div>
+                        <div class="notch"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teasers">
+                <div class="teaser reveal">
+                    <span class="tag-soon">In Development</span>
+                    <h4>Digital Restaurant Menu</h4>
+                    <p>QR-powered menus with instant updates and a beautiful browsing experience.</p>
+                </div>
+                <div class="teaser reveal" style="--d:0.08s">
+                    <span class="tag-soon">In Development</span>
+                    <h4>Business Dashboard</h4>
+                    <p>A real-time analytics panel that makes business numbers actually readable.</p>
+                </div>
+                <div class="teaser reveal" style="--d:0.16s">
+                    <span class="tag-soon">In Development</span>
+                    <h4>Inventory System</h4>
+                    <p>Smart stock management with alerts, reports and effortless daily workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about">
+        <div class="wrap">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="sec-head reveal" style="margin-bottom:34px">
+                        <p class="sec-eyebrow">About</p>
+                        <h2>The builder behind <em>Langkah Pertama</em></h2>
+                    </div>
+                    <p class="reveal">Hi — I'm a full-stack web developer and designer based in Malaysia, and <strong>Langkah Pertama</strong> ("the first step") is my studio. The name is a promise: whether you're a couple sending out your wedding invitations or a restaurant going digital for the first time, I build the first step of your online journey — properly.</p>
+                    <p class="reveal" style="--d:0.1s">I work across the whole stack: <strong>design, front-end, back-end and deployment</strong>. That means no hand-offs, no miscommunication between "the designer" and "the developer" — one person who cares about the result, end to end.</p>
+                    <p class="reveal" style="--d:0.2s">Every project ships hand-coded. No drag-and-drop builders, no recycled templates — just fast, clean work that's truly yours.</p>
+                    <p class="quote reveal" style="--d:0.3s">"Every big journey begins with a first step. Let me build yours."</p>
+                </div>
+                <div class="stats">
+                    <div class="stat reveal">
+                        <div class="num"><span class="count" data-target="8">0</span></div>
+                        <div class="label">Invitation themes live</div>
+                    </div>
+                    <div class="stat reveal" style="--d:0.08s">
+                        <div class="num"><span class="count" data-target="7">0</span></div>
+                        <div class="label">Services offered</div>
+                    </div>
+                    <div class="stat reveal" style="--d:0.16s">
+                        <div class="num"><span class="count" data-target="100">0</span><sup>%</sup></div>
+                        <div class="label">Custom-coded work</div>
+                    </div>
+                    <div class="stat reveal" style="--d:0.24s">
+                        <div class="num"><span class="count" data-target="1">0</span></div>
+                        <div class="label">Point of contact — me</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <p class="sec-eyebrow">How It Works</p>
+                <h2>From idea to <em>launch</em> — without the headache.</h2>
+            </div>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="n">01</div>
+                    <h4>Discover</h4>
+                    <p>We talk about your goals, your audience and what success looks like. You speak business — I translate it into tech.</p>
+                </div>
+                <div class="step reveal" style="--d:0.08s">
+                    <div class="n">02</div>
+                    <h4>Design</h4>
+                    <p>I craft the look and feel first, so you see exactly what you're getting before a single line of code is locked in.</p>
+                </div>
+                <div class="step reveal" style="--d:0.16s">
+                    <div class="n">03</div>
+                    <h4>Build</h4>
+                    <p>Clean, hand-written code — fast to load, easy to maintain, and tested on the devices your customers actually use.</p>
+                </div>
+                <div class="step reveal" style="--d:0.24s">
+                    <div class="n">04</div>
+                    <h4>Launch &amp; Support</h4>
+                    <p>Your project goes live, and I stay around for tweaks, updates and growth. You're never left on your own.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+        <div class="orb orb-gold" aria-hidden="true"></div>
+        <div class="wrap">
+            <p class="sec-eyebrow reveal">Get In Touch</p>
+            <h2 class="reveal" style="--d:0.1s">Have a project in mind?<br>Let's take the <em>first step</em> together.</h2>
+            <p class="sec-desc reveal" style="--d:0.2s">Tell me what you're building — a website, a dashboard, a digital menu or a wedding invitation — and I'll get back to you with ideas.</p>
+            <div class="contact-actions reveal" style="--d:0.3s">
+                <a href="mailto:airgas.technology.sdn.bhd@gmail.com?subject=Project%20Inquiry%20—%20Langkah%20Pertama" class="btn btn-gold">Email Me <span class="arrow">→</span></a>
+                <a href="wedding/" class="btn btn-ghost">Browse Wedding Invitations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
     <footer>
-        <img src="TemplateAssets/logo.png?v=2" alt="Icon">
-        <p>&copy; 2026 Langkah Pertama. All rights reserved.</p>
+        <div class="footer-inner">
+            <a href="#" class="brand" aria-label="Langkah Pertama — back to top">
+                <span class="monogram">LP</span>
+                <span class="brand-name">Langkah Pertama
+                    <small>Digital Studio</small>
+                </span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="wedding/">Wedding Invitations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p class="copyright">&copy; 2026 Langkah Pertama. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            /* ---- Nav scroll state ---- */
+            var nav = document.getElementById('nav');
+            function onScroll() {
+                nav.classList.toggle('scrolled', window.scrollY > 40);
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            /* ---- Mobile menu ---- */
+            var menuBtn = document.getElementById('menuBtn');
+            var mobileMenu = document.getElementById('mobileMenu');
+            function closeMenu() {
+                menuBtn.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            menuBtn.addEventListener('click', function () {
+                var open = !mobileMenu.classList.contains('open');
+                menuBtn.classList.toggle('open', open);
+                mobileMenu.classList.toggle('open', open);
+                menuBtn.setAttribute('aria-expanded', String(open));
+                document.body.style.overflow = open ? 'hidden' : '';
+                if (open) {
+                    // wait for the menu to become visible before moving focus
+                    setTimeout(function () { mobileMenu.querySelector('a').focus(); }, 60);
+                }
+            });
+            mobileMenu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', closeMenu);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (!mobileMenu.classList.contains('open')) return;
+                if (e.key === 'Escape') {
+                    closeMenu();
+                    menuBtn.focus();
+                } else if (e.key === 'Tab') {
+                    // keep focus cycling between the menu links and the toggle button
+                    var focusables = Array.prototype.slice.call(mobileMenu.querySelectorAll('a'));
+                    focusables.push(menuBtn);
+                    var i = focusables.indexOf(document.activeElement);
+                    if (i === -1) { e.preventDefault(); focusables[0].focus(); return; }
+                    if (!e.shiftKey && i === focusables.length - 1) { e.preventDefault(); focusables[0].focus(); }
+                    if (e.shiftKey && i === 0) { e.preventDefault(); focusables[focusables.length - 1].focus(); }
+                }
+            });
+
+            /* ---- Reveal on scroll ---- */
+            var revealEls = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window && !reduceMotion) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('in');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                revealEls.forEach(function (el) { io.observe(el); });
+            } else {
+                revealEls.forEach(function (el) { el.classList.add('in'); });
+            }
+
+            /* ---- Rotating hero word ---- */
+            var words = [
+                'full-stack websites',
+                'business dashboards',
+                'digital restaurant menus',
+                'wedding invitations',
+                'inventory systems',
+                'landing pages'
+            ];
+            var rotator = document.getElementById('rotator');
+            var wordEl = rotator.querySelector('.word');
+            var wi = 0;
+            if (!reduceMotion) {
+                setInterval(function () {
+                    wi = (wi + 1) % words.length;
+                    wordEl.classList.add('out');
+                    setTimeout(function () {
+                        wordEl.textContent = words[wi];
+                        wordEl.classList.remove('out');
+                        wordEl.classList.add('pre');
+                        // force reflow so the 'pre' position applies before animating in
+                        void wordEl.offsetWidth;
+                        wordEl.classList.remove('pre');
+                    }, 460);
+                }, 3000);
+            }
+
+            /* ---- Stat counters ---- */
+            var counters = document.querySelectorAll('.count');
+            function animateCount(el) {
+                var target = parseInt(el.getAttribute('data-target'), 10);
+                if (reduceMotion) { el.textContent = target; return; }
+                var dur = 1400;
+                var start = null;
+                function tick(ts) {
+                    if (!start) start = ts;
+                    var p = Math.min((ts - start) / dur, 1);
+                    var eased = 1 - Math.pow(1 - p, 3);
+                    el.textContent = Math.round(eased * target);
+                    if (p < 1) requestAnimationFrame(tick);
+                }
+                requestAnimationFrame(tick);
+            }
+            if ('IntersectionObserver' in window) {
+                var cio = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            animateCount(e.target);
+                            cio.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                counters.forEach(function (el) { cio.observe(el); });
+            } else {
+                counters.forEach(function (el) {
+                    el.textContent = el.getAttribute('data-target');
+                });
+            }
+
+            /* ---- Duplicate marquee content for seamless loop ---- */
+            var track = document.getElementById('marqueeTrack');
+            Array.prototype.slice.call(track.children).forEach(function (el) {
+                track.appendChild(el.cloneNode(true));
+            });
+        })();
+    </script>
 
 </body>
 </html>
