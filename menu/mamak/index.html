@@ -412,6 +412,31 @@
             margin-right: 10px;
         }
 
+        /* back to top */
+        .to-top {
+            position: fixed;
+            right: 14px;
+            bottom: 18px;
+            z-index: 85;
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--ink);
+            background: var(--yellow);
+            color: var(--ink);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 4px 4px 0 var(--ink);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(14px);
+            transition: opacity 0.35s, transform 0.35s var(--ease), visibility 0.35s, background 0.2s, color 0.2s, bottom 0.4s var(--ease);
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--red); color: var(--white); }
+        /* hop above the cart bar when it is visible */
+        .cart-bar.show ~ .to-top { bottom: 92px; }
+
         .sheet-backdrop {
             position: fixed;
             inset: 0;
@@ -679,6 +704,10 @@
     <p class="demo-note">Demo sahaja — pesanan akan terbuka dalam WhatsApp sebagai contoh.</p>
 </div>
 
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 (function () {
     'use strict';
@@ -805,6 +834,15 @@
     var track = document.getElementById('tickerTrack');
     Array.prototype.slice.call(track.children).forEach(function (el) {
         track.appendChild(el.cloneNode(true));
+    });
+
+    /* ---- back to top ---- */
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
 
     /* ---- scrollspy ---- */

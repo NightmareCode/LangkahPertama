@@ -292,6 +292,29 @@
         .fine a { color: var(--wax); text-decoration: none; }
         .fine a:hover { text-decoration: underline; }
 
+        /* back to top */
+        .to-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 50;
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--ink);
+            background: #fffdf6;
+            color: var(--ink);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 3px 3px 0 rgba(46, 37, 25, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(14px) rotate(2deg);
+            transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.3s, color 0.3s;
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: rotate(2deg); }
+        .to-top:hover { background: var(--ink); color: #fffdf6; }
+
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1 !important; transform: rotate(var(--tilt)) !important; transition: none !important; }
             * { transition-duration: 0.01ms !important; }
@@ -348,10 +371,21 @@
     <p class="fine reveal">Demo oleh <a href="../">Langkah Pertama</a> © 2026 — semua restoran &amp; harga adalah rekaan. Foto: Wikimedia Commons / Openverse (lihat <a href="../assets/menu/CREDITS.txt">kredit</a>).</p>
 </div>
 
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 (function () {
     'use strict';
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
     var els = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window && !reduceMotion) {
         var io = new IntersectionObserver(function (entries) {

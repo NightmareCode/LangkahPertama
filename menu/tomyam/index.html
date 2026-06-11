@@ -477,6 +477,37 @@
             margin-right: 10px;
         }
 
+        /* back to top — sits above the bottom nav, hops over the cart bar */
+        .to-top {
+            position: fixed;
+            right: 14px;
+            bottom: 86px;
+            z-index: 85;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(61, 255, 160, 0.55);
+            background: rgba(17, 20, 29, 0.85);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            color: var(--neon);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 0 16px rgba(61, 255, 160, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.25s, color 0.25s, box-shadow 0.25s, bottom 0.45s var(--ease);
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover {
+            background: var(--neon);
+            color: #06130c;
+            box-shadow: 0 0 24px rgba(61, 255, 160, 0.55);
+        }
+        .cart-bar.show ~ .to-top { bottom: 148px; }
+
         .sheet-backdrop {
             position: fixed;
             inset: 0;
@@ -761,6 +792,10 @@
     <p class="demo-note">Demo sahaja — pesanan akan terbuka dalam WhatsApp sebagai contoh.</p>
 </div>
 
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 (function () {
     'use strict';
@@ -878,6 +913,15 @@
     } else {
         revealEls.forEach(function (el) { el.classList.add('in'); });
     }
+
+    /* ---- back to top ---- */
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
 
     /* ---- bottom-nav scrollspy ---- */
     var navs = Array.prototype.slice.call(document.querySelectorAll('.bnav'));
