@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c2017">
+    <title>Sawadee Tomyam House — Menu Digital | Demo oleh Langkah Pertama</title>
+    <link rel="icon" href="../../assets/logo-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/menu/tomyam/">
+    <meta property="og:title" content="Sawadee Tomyam House — Menu Digital">
+    <meta property="og:description" content="Demo menu digital untuk restoran tomyam — pilih tahap pedas, pesan terus ke WhatsApp. Dibina oleh Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/logo-512.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sawadee Tomyam House — Menu Digital">
+    <meta name="twitter:description" content="Demo menu digital untuk restoran tomyam — pilih tahap pedas, pesan terus ke WhatsApp.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/logo-512.png">
+    <meta name="description" content="Demo menu digital untuk restoran tomyam Thai di Malaysia — tahap pedas boleh pilih, pesanan WhatsApp. Dibina oleh Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0c2017;
+            --bg-soft: #10271c;
+            --card: #143023;
+            --card-2: #183a2a;
+            --line: rgba(255, 255, 255, 0.1);
+            --gold: #f0c75e;
+            --gold-deep: #d9a93f;
+            --chili: #ff5a45;
+            --chili-deep: #e8402c;
+            --lime: #b9e26b;
+            --cream: #f6f2e4;
+            --dim: #b9c5ae;
+            --sans: 'Kanit', 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--cream);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--gold); color: #14290e; }
+
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(540px 380px at 90% 0%, rgba(240, 199, 94, 0.08), transparent 65%),
+                radial-gradient(480px 360px at 0% 100%, rgba(255, 90, 69, 0.06), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Thai temple-roof zigzag band */
+        .zigzag {
+            height: 12px;
+            background:
+                linear-gradient(135deg, var(--gold) 25%, transparent 25%) 0 0 / 16px 16px,
+                linear-gradient(225deg, var(--gold) 25%, transparent 25%) 0 0 / 16px 16px;
+            opacity: 0.85;
+        }
+
+        .page {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 18px 150px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============ Reveal ============ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Header ============ */
+        header { padding: 26px 0 18px; }
+        .resto-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .halal-chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--lime);
+            border: 1px solid rgba(185, 226, 107, 0.45);
+            border-radius: 7px;
+            padding: 5px 10px;
+            background: rgba(185, 226, 107, 0.07);
+        }
+        .demo-chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            border: 1px solid rgba(240, 199, 94, 0.45);
+            border-radius: 7px;
+            padding: 5px 10px;
+            background: rgba(240, 199, 94, 0.07);
+            text-decoration: none;
+        }
+        .sawadee {
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.05rem, 8.6vw, 2.8rem);
+            line-height: 1.08;
+            letter-spacing: -0.4px;
+        }
+        h1 .tom {
+            background: linear-gradient(100deg, var(--chili), #ff8a3d 60%, var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .tagline {
+            color: var(--dim);
+            font-weight: 300;
+            font-size: 0.94rem;
+            margin-top: 6px;
+        }
+        .info-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .info-chips span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 300;
+            font-size: 0.74rem;
+            color: var(--dim);
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 6px 13px;
+        }
+        .open-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--lime);
+            box-shadow: 0 0 8px var(--lime);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+
+        /* ============ Search ============ */
+        .search-wrap { position: relative; margin: 18px 0 6px; }
+        .search-wrap input {
+            width: 100%;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 13px 18px 13px 46px;
+            color: var(--cream);
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        .search-wrap input::placeholder { color: #79927f; }
+        .search-wrap input:focus { border-color: rgba(240, 199, 94, 0.55); outline: none; }
+        .search-wrap .icon {
+            position: absolute;
+            left: 16px; top: 50%;
+            transform: translateY(-50%);
+            color: #79927f;
+            pointer-events: none;
+        }
+
+        /* ============ Tabs ============ */
+        .tabs {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(12, 32, 23, 0.92);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            margin: 14px -18px 8px;
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab {
+            flex-shrink: 0;
+            font-weight: 500;
+            font-size: 0.82rem;
+            color: var(--dim);
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 8px 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .tab.active {
+            color: #1e2a0c;
+            background: linear-gradient(110deg, #ffe49a, var(--gold));
+            border-color: transparent;
+            box-shadow: 0 4px 18px rgba(240, 199, 94, 0.35);
+        }
+
+        /* ============ Signature hero ============ */
+        .signature {
+            margin: 22px 0 8px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 90, 69, 0.45);
+            background:
+                radial-gradient(420px 200px at 100% 0%, rgba(255, 90, 69, 0.18), transparent 70%),
+                linear-gradient(135deg, var(--card-2), var(--card));
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .signature .label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--chili);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .signature .row { display: flex; align-items: center; gap: 18px; }
+        .signature .big-emoji {
+            font-size: 3.4rem;
+            line-height: 1;
+            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.45));
+            animation: floaty 5s ease-in-out infinite;
+        }
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0) rotate(-4deg); }
+            50% { transform: translateY(-7px) rotate(4deg); }
+        }
+        .signature h3 { font-size: 1.25rem; font-weight: 700; }
+        .signature p { color: var(--dim); font-weight: 300; font-size: 0.85rem; margin-top: 3px; }
+        .signature .price-add {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .price {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--gold);
+        }
+
+        .add-btn {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #1e2a0c;
+            background: linear-gradient(110deg, #ffe49a, var(--gold));
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s;
+        }
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(240, 199, 94, 0.4);
+        }
+        .add-btn:active { transform: scale(0.94); }
+
+        /* ============ Hot strip ============ */
+        .hot-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin: 26px 0 14px;
+        }
+        h2 { font-size: 1.28rem; font-weight: 700; letter-spacing: -0.2px; }
+        .hot-head .hint { font-weight: 300; font-size: 0.72rem; color: var(--dim); }
+        .hot-strip {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 4px 18px 14px;
+            margin: 0 -18px;
+            scrollbar-width: none;
+        }
+        .hot-strip::-webkit-scrollbar { display: none; }
+        .hot-card {
+            scroll-snap-align: start;
+            flex: 0 0 168px;
+            background: linear-gradient(160deg, var(--card-2), var(--card));
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 16px 14px 14px;
+            position: relative;
+            transition: transform 0.3s var(--ease), border-color 0.3s;
+        }
+        .hot-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(240, 199, 94, 0.4);
+        }
+        .hot-card .flame {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(255, 90, 69, 0.16);
+            border: 1px solid rgba(255, 90, 69, 0.4);
+            border-radius: 16px;
+            padding: 2px 8px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--chili);
+        }
+        .hot-card .emoji { font-size: 2.3rem; line-height: 1.2; }
+        .hot-card h4 { font-size: 0.92rem; font-weight: 600; margin-top: 8px; line-height: 1.3; }
+        .hot-card .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        /* ============ Menu items ============ */
+        section.menu-sec { padding-top: 14px; scroll-margin-top: 92px; }
+        .sec-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0 4px;
+        }
+        .sec-title .emo { font-size: 1.35rem; }
+        .sec-title h2 { font-size: 1.2rem; }
+        .sec-title .count {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--dim);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 2px 9px;
+            margin-left: auto;
+        }
+
+        .item {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-top: 12px;
+            transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+        }
+        .item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(240, 199, 94, 0.35);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+        }
+        .item .main-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .item .thumb {
+            flex-shrink: 0;
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 1.7rem;
+            background: linear-gradient(150deg, rgba(255, 90, 69, 0.16), rgba(240, 199, 94, 0.07));
+            border: 1px solid rgba(240, 199, 94, 0.2);
+        }
+        .item .mid { flex: 1; min-width: 0; }
+        .item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+        .item .desc {
+            color: var(--dim);
+            font-weight: 300;
+            font-size: 0.78rem;
+            margin-top: 2px;
+        }
+        .item .meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .badge {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 0.5px;
+            border-radius: 10px;
+            padding: 2px 7px;
+        }
+        .badge.hot { color: var(--chili); border: 1px solid rgba(255, 90, 69, 0.45); background: rgba(255, 90, 69, 0.08); }
+        .badge.star { color: var(--gold); border: 1px solid rgba(240, 199, 94, 0.45); background: rgba(240, 199, 94, 0.08); }
+        .badge.vege { color: var(--lime); border: 1px solid rgba(185, 226, 107, 0.45); background: rgba(185, 226, 107, 0.08); }
+        .item .right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        /* spice level picker */
+        .spice-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 11px;
+            padding-top: 11px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+        .spice-row .lbl {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 1px;
+            color: var(--dim);
+            margin-right: 2px;
+        }
+        .spice-chip {
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.7rem;
+            color: var(--dim);
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 4px 12px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .spice-chip.sel {
+            color: #2a1006;
+            font-weight: 700;
+            background: linear-gradient(110deg, #ff8a6e, var(--chili));
+            border-color: transparent;
+            box-shadow: 0 3px 12px rgba(255, 90, 69, 0.35);
+        }
+
+        .spice-note {
+            color: var(--dim);
+            font-weight: 300;
+            font-size: 0.72rem;
+            margin: 10px 2px 0;
+        }
+
+        .empty-note {
+            display: none;
+            text-align: center;
+            color: var(--dim);
+            font-weight: 300;
+            padding: 50px 20px;
+            font-size: 0.9rem;
+        }
+        .page.searching .empty-note.show { display: block; }
+
+        /* ============ Cart bar + sheet ============ */
+        .cart-bar {
+            position: fixed;
+            left: 50%;
+            bottom: 18px;
+            transform: translate(-50%, 140%);
+            width: min(604px, calc(100% - 36px));
+            background: linear-gradient(110deg, #ffe49a, var(--gold));
+            color: #1e2a0c;
+            border: none;
+            border-radius: 18px;
+            padding: 15px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--sans);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 16px 40px rgba(240, 199, 94, 0.3);
+            transition: transform 0.45s var(--ease);
+            z-index: 90;
+        }
+        .cart-bar.show { transform: translate(-50%, 0); }
+        .cart-bar .qty-pill {
+            background: #1e2a0c;
+            color: var(--gold);
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            margin-right: 10px;
+        }
+
+        .sheet-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 12, 8, 0.68);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s, visibility 0.35s;
+            z-index: 95;
+        }
+        .sheet-backdrop.open { opacity: 1; visibility: visible; }
+
+        .sheet {
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 105%);
+            width: min(640px, 100%);
+            max-height: 86svh;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-bottom: none;
+            border-radius: 24px 24px 0 0;
+            padding: 20px 22px 26px;
+            z-index: 100;
+            transition: transform 0.5s var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+        .sheet.open { transform: translate(-50%, 0); }
+        .sheet:focus { outline: none; }
+        .sheet .grab {
+            width: 44px; height: 4px;
+            border-radius: 4px;
+            background: var(--line);
+            margin: 0 auto 16px;
+        }
+        .sheet h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sheet .clear-btn {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--chili);
+            background: none;
+            border: 1px solid rgba(255, 90, 69, 0.4);
+            border-radius: 12px;
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+        .sheet .lines {
+            overflow-y: auto;
+            margin: 14px 0;
+            flex: 1;
+            min-height: 60px;
+        }
+        .sheet .line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+        .sheet .line .nm { flex: 1; font-size: 0.88rem; font-weight: 500; }
+        .sheet .line .nm small {
+            display: block;
+            color: var(--chili);
+            font-weight: 400;
+            font-size: 0.68rem;
+        }
+        .sheet .line .pr {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--dim);
+        }
+        .stepper { display: flex; align-items: center; gap: 10px; }
+        .stepper button {
+            width: 40px; height: 40px;
+            border-radius: 11px;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--cream);
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 1.05rem;
+            line-height: 1;
+        }
+        .stepper .q {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            min-width: 18px;
+            text-align: center;
+        }
+        .sheet .field { margin-top: 10px; }
+        .sheet .field input {
+            width: 100%;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 11px 14px;
+            color: var(--cream);
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.88rem;
+        }
+        .sheet .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 16px 0 4px;
+            font-weight: 800;
+        }
+        .sheet .total-row .price { font-size: 1.1rem; }
+        .wa-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 12px;
+            background: #25d366;
+            color: #06250f;
+            border: none;
+            border-radius: 14px;
+            padding: 15px;
+            font-family: var(--sans);
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s;
+        }
+        .wa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 26px rgba(37, 211, 102, 0.35);
+        }
+        .sheet .demo-note {
+            text-align: center;
+            font-weight: 300;
+            font-size: 0.68rem;
+            color: var(--dim);
+            margin-top: 10px;
+        }
+
+        /* ============ Studio CTA / footer ============ */
+        .studio-cta {
+            margin-top: 54px;
+            border: 1px dashed rgba(240, 199, 94, 0.4);
+            border-radius: 20px;
+            padding: 26px 22px;
+            text-align: center;
+            background: rgba(240, 199, 94, 0.04);
+        }
+        .studio-cta .mono-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .studio-cta h3 { font-size: 1.15rem; font-weight: 700; margin: 10px 0 6px; }
+        .studio-cta p {
+            color: var(--dim);
+            font-weight: 300;
+            font-size: 0.84rem;
+            max-width: 420px;
+            margin: 0 auto 16px;
+        }
+        .studio-cta .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.84rem;
+            text-decoration: none;
+            border-radius: 22px;
+            padding: 11px 20px;
+        }
+        .cta-link.gold {
+            background: linear-gradient(110deg, #ffe49a, var(--gold));
+            color: #1e2a0c;
+        }
+        .cta-link.ghost { border: 1px solid var(--line); color: var(--cream); }
+        .cta-link:hover { filter: brightness(1.08); }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--dim);
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+        }
+        footer.page-foot a { color: var(--gold); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .open-dot, .signature .big-emoji { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>
+            .reveal { opacity: 1; transform: none; }
+            .search-wrap, .cart-bar { display: none; }
+        </style>
+    </noscript>
+</head>
+<body>
+<div class="zigzag" aria-hidden="true"></div>
+<div class="page" id="page">
+
+    <header>
+        <div class="resto-top reveal">
+            <span class="halal-chip">✓ HALAL</span>
+            <a class="demo-chip" href="../">DEMO 3/3 · TUKAR TEMA ↗</a>
+        </div>
+        <p class="sawadee reveal" style="--d:0.04s">Sawadee kha! 🙏</p>
+        <h1 class="reveal" style="--d:0.08s"><span class="tom">Tomyam</span> House 🇹🇭</h1>
+        <p class="tagline reveal" style="--d:0.14s">Pedas sampai berpeluh, sedap sampai jilat jari. Aroi mak mak!</p>
+        <div class="info-chips reveal" style="--d:0.2s">
+            <span><span class="open-dot"></span> Buka 5 ptg – 3 pagi</span>
+            <span>🐟 Ikan segar setiap hari</span>
+            <span>📍 Wakaf Che Yeh, Kelantan</span>
+        </div>
+        <div class="search-wrap reveal" style="--d:0.26s">
+            <span class="icon" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+            </span>
+            <input type="search" id="searchBox" placeholder="Cari... cth: tomyam, siakap, paprik" aria-label="Cari dalam menu">
+        </div>
+    </header>
+
+    <nav class="tabs" id="tabs" aria-label="Kategori menu">
+        <a href="#sec-hot" class="tab active">🔥 Hot</a>
+        <a href="#sec-tomyam" class="tab">🍲 Tomyam</a>
+        <a href="#sec-seafood" class="tab">🦐 Seafood</a>
+        <a href="#sec-goreng" class="tab">🥘 Goreng</a>
+        <a href="#sec-nasi" class="tab">🍚 Nasi &amp; Mee</a>
+        <a href="#sec-minuman" class="tab">🧋 Minuman</a>
+    </nav>
+
+    <!-- Signature dish -->
+    <div class="signature reveal" id="signatureCard"></div>
+    <p class="spice-note reveal">🌶 Tahap pedas boleh pilih pada setiap hidangan — Sikit untuk yang baru, Sedang (biasa), Power untuk yang berani.</p>
+
+    <!-- Hot orders -->
+    <section class="menu-sec" id="sec-hot">
+        <div class="hot-head reveal">
+            <h2>🔥 Ramai Order</h2>
+            <span class="hint">← geser untuk lagi →</span>
+        </div>
+        <div class="hot-strip" id="hotStrip"></div>
+    </section>
+
+    <div id="menuRoot"></div>
+
+    <p class="empty-note" id="emptyNote">😅 Tak jumpa pulak. Cuba cari "tomyam" ke, "siakap" ke...</p>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="mono-tag">// Suka menu ini?</span>
+        <h3>Nak menu digital untuk kedai tomyam anda?</h3>
+        <p>Pelanggan pilih sendiri tahap pedas, pesanan terus masuk WhatsApp anda. Siap dalam beberapa hari — tak payah cetak menu lagi.</p>
+        <div class="row">
+            <a class="cta-link gold" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20menu%20digital%20untuk%20restoran%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link ghost" href="../../">Lihat Studio</a>
+        </div>
+        <div class="row" style="margin-top:12px">
+            <a class="cta-link ghost" href="../mamak/">🍛 Tema Mamak</a>
+            <a class="cta-link ghost" href="../luxe/">🥂 Tema Fine Dining</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        DEMO MENU — DIBINA OLEH <a href="../../">LANGKAH PERTAMA</a> © 2026
+    </footer>
+</div>
+
+<!-- Cart -->
+<button class="cart-bar" id="cartBar" aria-label="Lihat pesanan">
+    <span><span class="qty-pill" id="cartQty">0</span> Lihat Pesanan</span>
+    <span class="price" style="color:#1e2a0c" id="cartTotal">RM 0.00</span>
+</button>
+
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Pesanan anda" tabindex="-1">
+    <div class="grab" aria-hidden="true"></div>
+    <h3>Pesanan Anda <button class="clear-btn" id="clearCart">KOSONGKAN</button></h3>
+    <div class="lines" id="cartLines"></div>
+    <div class="field"><input type="text" id="custName" placeholder="Nama anda (untuk tapau / delivery)"></div>
+    <div class="field"><input type="text" id="custTable" placeholder="No. meja (jika makan di sini)"></div>
+    <div class="total-row"><span>Jumlah</span> <span class="price" id="sheetTotal">RM 0.00</span></div>
+    <a class="wa-btn" id="waSend" href="#" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Hantar Pesanan ke WhatsApp
+    </a>
+    <p class="demo-note">Demo sahaja — pesanan akan terbuka dalam WhatsApp sebagai contoh.</p>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    // minimal closest() polyfill for very old browsers
+    if (!Element.prototype.closest) {
+        Element.prototype.matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
+        Element.prototype.closest = function (s) {
+            var el = this;
+            while (el && el.nodeType === 1) {
+                if (el.matches(s)) return el;
+                el = el.parentElement;
+            }
+            return null;
+        };
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ================= MENU DATA ================= */
+    var MENU = [
+        // --- Tomyam (semua boleh pilih tahap pedas) ---
+        { id: 't1', cat: 'tomyam', emoji: '🍲', name: 'Tomyam Campur', desc: 'Udang, sotong, ayam, cendawan — kuah merah asli Thai.', price: 12.90, hot: true, spice: true },
+        { id: 't2', cat: 'tomyam', emoji: '🍗', name: 'Tomyam Ayam', desc: 'Pilihan bajet, rasa tetap juara.', price: 10.90, spice: true },
+        { id: 't3', cat: 'tomyam', emoji: '🦐', name: 'Tomyam Seafood', desc: 'Lautan dalam mangkuk — udang, sotong, ikan, kerang.', price: 16.90, hot: true, spice: true },
+        { id: 't4', cat: 'tomyam', emoji: '🥛', name: 'Tomyam Susu Campur', desc: 'Berkrim, masam, pedas — tiga serangkai bahaya.', price: 13.90, spice: true },
+        { id: 't5', cat: 'tomyam', emoji: '🦀', name: 'Tomyam Ketam', desc: 'Ketam segar penuh isi, kuah pekat berapi.', price: 19.90, spice: true },
+
+        // --- Seafood ---
+        { id: 's1', cat: 'seafood', emoji: '🐟', name: 'Siakap 3 Rasa', desc: 'Masam, manis, pedas — goreng garing, sos melimpah.', price: 38.90, star: true, hot: true, spice: true },
+        { id: 's2', cat: 'seafood', emoji: '🍋', name: 'Siakap Stim Limau', desc: 'Stim ala Thai, kuah limau cili padi yang menyengat.', price: 36.90, spice: true },
+        { id: 's3', cat: 'seafood', emoji: '🦑', name: 'Sotong Goreng Tepung', desc: 'Rangup di luar, lembut di dalam. Sos thai cicah.', price: 16.90, hot: true },
+        { id: 's4', cat: 'seafood', emoji: '🍤', name: 'Udang Goreng Kam Heong', desc: 'Wangi rempah kari & daun kari, confirm tambah nasi.', price: 22.90, spice: true },
+        { id: 's5', cat: 'seafood', emoji: '🦀', name: 'Ketam Cili Padi', desc: 'Untuk yang berani — cili padi tak bertapis.', price: 28.90, spice: true },
+
+        // --- Goreng-goreng ---
+        { id: 'g1', cat: 'goreng', emoji: '🥬', name: 'Kailan Ikan Masin', desc: 'Garing ikan masin, kailan rangup. Wajib ada atas meja.', price: 12.90, vege: false },
+        { id: 'g2', cat: 'goreng', emoji: '🍳', name: 'Telur Dadar Thai', desc: 'Tebal, gebu, bawang banyak. Comfort food sejati.', price: 7.90 },
+        { id: 'g3', cat: 'goreng', emoji: '🌿', name: 'Kangkung Belacan', desc: 'Belacan homemade, api besar, wok hei power.', price: 10.90, spice: true },
+        { id: 'g4', cat: 'goreng', emoji: '🍃', name: 'Ayam Goreng Pandan', desc: 'Ayam berbungkus daun pandan, wangi tak terkata.', price: 15.90, hot: true },
+        { id: 'g5', cat: 'goreng', emoji: '🥩', name: 'Daging Masak Merah Thai', desc: 'Daging lembut bersos merah Thai pekat.', price: 16.90, spice: true },
+        { id: 'g6', cat: 'goreng', emoji: '🌶️', name: 'Paprik Ayam', desc: 'Sos paprik asli — manis pedas seimbang.', price: 12.90, hot: true, spice: true },
+
+        // --- Nasi & Mee ---
+        { id: 'n1', cat: 'nasi', emoji: '🍚', name: 'Nasi Putih', desc: 'Wajib ada. Panas berasap.', price: 2.00, vege: true },
+        { id: 'n2', cat: 'nasi', emoji: '🍛', name: 'Nasi Goreng Paprik', desc: 'Nasi goreng bersiram sos paprik ayam.', price: 11.90, hot: true, spice: true },
+        { id: 'n3', cat: 'nasi', emoji: '🥡', name: 'Nasi Goreng Tomyam', desc: 'Rasa tomyam dalam bentuk nasi goreng. Genius.', price: 10.90, spice: true },
+        { id: 'n4', cat: 'nasi', emoji: '🍜', name: 'Pad Thai', desc: 'Kuey teow Thai asli — kacang tumbuk, limau, taugeh.', price: 12.90 },
+        { id: 'n5', cat: 'nasi', emoji: '🍝', name: 'Kuey Teow Ladna', desc: 'Kuah berkanji pekat, sayur & ayam.', price: 11.90 },
+
+        // --- Minuman ---
+        { id: 'd1', cat: 'minuman', emoji: '🧋', name: 'Teh Ais Thai (Cha Yen)', desc: 'Oren lembut, manis susu — original dari Siam.', price: 4.50, hot: true },
+        { id: 'd2', cat: 'minuman', emoji: '🥥', name: 'Coconut Shake', desc: 'Kelapa muda blend dengan aiskrim vanila.', price: 7.90, star: true },
+        { id: 'd3', cat: 'minuman', emoji: '🍑', name: 'Air Longan', desc: 'Longan sejuk, manis semula jadi.', price: 4.90 },
+        { id: 'd4', cat: 'minuman', emoji: '🌿', name: 'Sirap Selasih', desc: 'Sirap bunga ros dengan biji selasih.', price: 3.50 },
+        { id: 'd5', cat: 'minuman', emoji: '🥭', name: 'Jus Mangga', desc: 'Mangga harum manis, blend segar.', price: 6.90 }
+    ];
+
+    var CATS = [
+        { key: 'tomyam', id: 'sec-tomyam', emo: '🍲', title: 'Tomyam' },
+        { key: 'seafood', id: 'sec-seafood', emo: '🦐', title: 'Ikan & Seafood' },
+        { key: 'goreng', id: 'sec-goreng', emo: '🥘', title: 'Goreng-Goreng' },
+        { key: 'nasi', id: 'sec-nasi', emo: '🍚', title: 'Nasi & Mee' },
+        { key: 'minuman', id: 'sec-minuman', emo: '🧋', title: 'Minuman Thai' }
+    ];
+
+    var SPICE_LEVELS = ['Sikit', 'Sedang', 'Power 🔥'];
+    var spiceSel = {}; // itemId -> level index (default 1 Sedang)
+
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function badges(it) {
+        var b = '';
+        if (it.hot) b += '<span class="badge hot">🔥 RAMAI ORDER</span>';
+        if (it.star) b += '<span class="badge star">⭐ JUARA MENU</span>';
+        if (it.vege) b += '<span class="badge vege">🌿 VEGE</span>';
+        return b;
+    }
+
+    function spiceRow(it) {
+        if (!it.spice) return '';
+        var h = '<div class="spice-row"><span class="lbl">PEDAS:</span>';
+        SPICE_LEVELS.forEach(function (lv, i) {
+            h += '<button class="spice-chip' + (i === 1 ? ' sel' : '') + '" data-spice="' + it.id + '" data-level="' + i + '" aria-pressed="' + (i === 1) + '" aria-label="Tahap pedas: ' + lv + '">' + lv + '</button>';
+        });
+        return h + '</div>';
+    }
+
+    /* ---- render sections ---- */
+    var root = document.getElementById('menuRoot');
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec" id="' + c.id + '">';
+        html += '<div class="sec-title reveal"><span class="emo">' + c.emo + '</span><h2>' + c.title + '</h2><span class="count">' + items.length + ' ITEM</span></div>';
+        items.forEach(function (it) {
+            if (it.spice) spiceSel[it.id] = 1;
+            html += '<div class="item reveal" data-name="' + esc(it.name.toLowerCase()) + '">' +
+                '<div class="main-row">' +
+                '<div class="thumb">' + it.emoji + '</div>' +
+                '<div class="mid"><h4>' + esc(it.name) + '</h4>' +
+                '<p class="desc">' + esc(it.desc) + '</p>' +
+                '<div class="meta">' + badges(it) + '</div></div>' +
+                '<div class="right"><span class="price">' + fmt(it.price) + '</span>' +
+                '<button class="add-btn" data-add="' + it.id + '">+ Tambah</button></div>' +
+                '</div>' + spiceRow(it) + '</div>';
+        });
+        html += '</section>';
+    });
+    root.innerHTML = html;
+
+    /* ---- hot strip ---- */
+    var hotStrip = document.getElementById('hotStrip');
+    var hotHtml = '';
+    MENU.filter(function (m) { return m.hot; }).forEach(function (it) {
+        hotHtml += '<div class="hot-card reveal"><span class="flame">🔥 LAKU</span>' +
+            '<div class="emoji">' + it.emoji + '</div><h4>' + esc(it.name) + '</h4>' +
+            '<div class="bottom"><span class="price">' + fmt(it.price) + '</span>' +
+            '<button class="add-btn" data-add="' + it.id + '">+</button></div></div>';
+    });
+    hotStrip.innerHTML = hotHtml;
+
+    /* ---- signature card ---- */
+    var sig = MENU.filter(function (m) { return m.star && m.cat === 'seafood'; })[0];
+    document.getElementById('signatureCard').innerHTML =
+        '<div class="label"><span class="open-dot"></span> SIGNATURE KEDAI — WAJIB CUBA</div>' +
+        '<div class="row"><div class="big-emoji">' + sig.emoji + '</div>' +
+        '<div><h3>' + esc(sig.name) + '</h3><p>' + esc(sig.desc) + '</p>' +
+        '<div class="price-add"><span class="price">' + fmt(sig.price) + '</span>' +
+        '<button class="add-btn" data-add="' + sig.id + '">+ Tambah</button></div></div></div>';
+
+    /* ---- reveal ---- */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    /* ---- scrollspy ---- */
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    var secs = ['sec-hot', 'sec-tomyam', 'sec-seafood', 'sec-goreng', 'sec-nasi', 'sec-minuman']
+        .map(function (id) { return document.getElementById(id); });
+    function spy() {
+        var y = window.scrollY + 120;
+        var active = -1;
+        secs.forEach(function (s, i) {
+            // ignore sections hidden by search filtering
+            if (!s || s.offsetParent === null) return;
+            if (active === -1) active = i;          // first visible section as default
+            if (s.offsetTop <= y) active = i;
+        });
+        tabs.forEach(function (t, i) { t.classList.toggle('active', i === active); });
+    }
+    window.addEventListener('scroll', spy, { passive: true });
+    spy();
+
+    /* ---- search ---- */
+    var page = document.getElementById('page');
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase();
+        page.classList.toggle('searching', q.length > 0);
+        var any = false;
+        document.querySelectorAll('.item').forEach(function (el) {
+            var show = !q || el.getAttribute('data-name').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        document.querySelectorAll('#menuRoot .menu-sec').forEach(function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        document.getElementById('sec-hot').style.display = q ? 'none' : '';
+        document.getElementById('signatureCard').style.display = q ? 'none' : '';
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    /* ---- cart (key = itemId|spiceLevel) ---- */
+    var cart = {};
+    var cartBar = document.getElementById('cartBar');
+    var cartQty = document.getElementById('cartQty');
+    var cartTotal = document.getElementById('cartTotal');
+    var sheet = document.getElementById('sheet');
+    var backdrop = document.getElementById('sheetBackdrop');
+    var lines = document.getElementById('cartLines');
+    var sheetTotal = document.getElementById('sheetTotal');
+    var waSend = document.getElementById('waSend');
+
+    function byId(id) { return MENU.filter(function (m) { return m.id === id; })[0]; }
+    function keyItem(k) { return byId(k.split('|')[0]); }
+    function keySpice(k) {
+        var p = k.split('|');
+        return p.length > 1 ? SPICE_LEVELS[parseInt(p[1], 10)] : null;
+    }
+
+    function cartCount() {
+        var n = 0;
+        for (var k in cart) n += cart[k];
+        return n;
+    }
+    function cartSum() {
+        var s = 0;
+        for (var k in cart) s += keyItem(k).price * cart[k];
+        return s;
+    }
+
+    function renderCart() {
+        var n = cartCount();
+        cartQty.textContent = n;
+        cartTotal.textContent = fmt(cartSum());
+        cartBar.classList.toggle('show', n > 0);
+        if (n === 0) closeSheet();
+
+        var h = '';
+        for (var k in cart) {
+            var it = keyItem(k);
+            var sp = keySpice(k);
+            h += '<div class="line"><span class="nm">' + it.emoji + ' ' + esc(it.name) +
+                (sp ? '<small>🌶 Pedas: ' + sp + '</small>' : '') + '</span>' +
+                '<span class="pr">' + fmt(it.price * cart[k]) + '</span>' +
+                '<span class="stepper">' +
+                '<button data-dec="' + k + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button data-inc="' + k + '" aria-label="Tambah ' + esc(it.name) + '">+</button>' +
+                '</span></div>';
+        }
+        lines.innerHTML = h || '<p style="color:var(--dim);font-weight:300;font-size:0.85rem;text-align:center;padding:18px 0">Belum ada pesanan lagi.</p>';
+        sheetTotal.textContent = fmt(cartSum());
+        updateWaLink();
+    }
+
+    function updateWaLink() {
+        var msg = encodeURIComponent('*Pesanan — Sawadee Tomyam House (DEMO)*') + '%0A%0A';
+        for (var k in cart) {
+            var it = keyItem(k);
+            var sp = keySpice(k);
+            var line = cart[k] + 'x ' + it.name + (sp ? ' (Pedas ' + sp.replace(' 🔥', '') + ')' : '') + ' — ' + fmt(it.price * cart[k]);
+            msg += encodeURIComponent(line) + '%0A';
+        }
+        msg += '%0A' + encodeURIComponent('*Jumlah: ' + fmt(cartSum()) + '*') + '%0A';
+        var nm = document.getElementById('custName').value.trim();
+        var tb = document.getElementById('custTable').value.trim();
+        if (nm) msg += encodeURIComponent('Nama: ' + nm) + '%0A';
+        if (tb) msg += encodeURIComponent('Meja: ' + tb) + '%0A';
+        msg += '%0A' + encodeURIComponent('_Dihantar dari menu digital demo Langkah Pertama_');
+        waSend.href = 'https://wa.me/60172888202?text=' + msg;
+    }
+    document.getElementById('custName').addEventListener('input', updateWaLink);
+    document.getElementById('custTable').addEventListener('input', updateWaLink);
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        var wasOpen = sheet.classList.contains('open');
+        sheet.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        if (wasOpen && cartCount() > 0) {
+            var target = (lastFocus && lastFocus !== document.body && document.contains(lastFocus)) ? lastFocus : cartBar;
+            if (target && target.focus) target.focus();
+        }
+    }
+
+    cartBar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') {
+            closeSheet();
+        } else if (e.key === 'Tab') {
+            var f = Array.prototype.filter.call(
+                sheet.querySelectorAll('button, input, a[href]'),
+                function (el) { return el.offsetParent !== null; }
+            );
+            if (!f.length) return;
+            var i = f.indexOf(document.activeElement);
+            if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+            else if (e.shiftKey && (i === 0 || i === -1)) { e.preventDefault(); f[f.length - 1].focus(); }
+        }
+    });
+    document.getElementById('clearCart').addEventListener('click', function () {
+        cart = {};
+        renderCart();
+    });
+
+    /* delegated clicks: add, steppers, spice chips */
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest('button');
+        if (!t) return;
+        var add = t.getAttribute('data-add');
+        var inc = t.getAttribute('data-inc');
+        var dec = t.getAttribute('data-dec');
+        var spiceId = t.getAttribute('data-spice');
+        if (spiceId) {
+            var lvl = parseInt(t.getAttribute('data-level'), 10);
+            spiceSel[spiceId] = lvl;
+            document.querySelectorAll('[data-spice="' + spiceId + '"]').forEach(function (c) {
+                var on = parseInt(c.getAttribute('data-level'), 10) === lvl;
+                c.classList.toggle('sel', on);
+                c.setAttribute('aria-pressed', String(on));
+            });
+        } else if (add) {
+            var it = byId(add);
+            var key = it.spice ? add + '|' + spiceSel[add] : add;
+            cart[key] = (cart[key] || 0) + 1;
+            renderCart();
+            if (!reduceMotion) {
+                cartBar.style.transform = 'translate(-50%, 0) scale(1.04)';
+                setTimeout(function () { cartBar.style.transform = ''; }, 160);
+            }
+        } else if (inc) {
+            cart[inc]++;
+            renderCart();
+        } else if (dec) {
+            cart[dec]--;
+            if (cart[dec] <= 0) delete cart[dec];
+            renderCart();
+        }
+    });
+
+    renderCart();
+})();
+</script>
+</body>
+</html>
