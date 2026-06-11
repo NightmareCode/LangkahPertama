@@ -3,42 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0c2017">
-    <title>Sawadee Tomyam House — Menu Digital | Demo oleh Langkah Pertama</title>
+    <meta name="theme-color" content="#0a0c12">
+    <title>Tomyam Halilintar — Menu Digital | Demo Langkah Pertama</title>
     <link rel="icon" href="../../assets/logo-512.png" type="image/png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/menu/tomyam/">
-    <meta property="og:title" content="Sawadee Tomyam House — Menu Digital">
-    <meta property="og:description" content="Demo menu digital untuk restoran tomyam — pilih tahap pedas, pesan terus ke WhatsApp. Dibina oleh Langkah Pertama.">
-    <meta property="og:image" content="https://langkahpertama.website/assets/logo-512.png">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Sawadee Tomyam House — Menu Digital">
-    <meta name="twitter:description" content="Demo menu digital untuk restoran tomyam — pilih tahap pedas, pesan terus ke WhatsApp.">
-    <meta name="twitter:image" content="https://langkahpertama.website/assets/logo-512.png">
-    <meta name="description" content="Demo menu digital untuk restoran tomyam Thai di Malaysia — tahap pedas boleh pilih, pesanan WhatsApp. Dibina oleh Langkah Pertama.">
+    <meta property="og:title" content="Tomyam Halilintar — Menu Digital">
+    <meta property="og:description" content="Demo menu digital gaya pasar malam neon — pilih tahap pedas, pesan terus ke WhatsApp. Dibina oleh Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/menu/img/hub-tomyam.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomyam Halilintar — Menu Digital">
+    <meta name="twitter:description" content="Demo menu digital gaya pasar malam neon — pilih tahap pedas, pesan terus ke WhatsApp.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/menu/img/hub-tomyam.jpg">
+    <meta name="description" content="Demo menu digital untuk restoran tomyam — gaya neon pasar malam, tahap pedas boleh pilih, pesanan WhatsApp. Restoran rekaan oleh Langkah Pertama.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #0c2017;
-            --bg-soft: #10271c;
-            --card: #143023;
-            --card-2: #183a2a;
+            --night: #0a0c12;
+            --night-2: #11141d;
+            --panel: #161a26;
             --line: rgba(255, 255, 255, 0.1);
-            --gold: #f0c75e;
-            --gold-deep: #d9a93f;
-            --chili: #ff5a45;
-            --chili-deep: #e8402c;
-            --lime: #b9e26b;
-            --cream: #f6f2e4;
-            --dim: #b9c5ae;
+            --pink: #ff2e88;
+            --pink-soft: #ff7eb6;
+            --neon: #3dffa0;
+            --amber: #ffc24b;
+            --txt: #f2f4fa;
+            --dim: #9aa3b8;
             --sans: 'Kanit', 'Segoe UI', sans-serif;
-            --mono: 'JetBrains Mono', Consolas, monospace;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -48,17 +45,17 @@
 
         body {
             font-family: var(--sans);
-            background: var(--bg);
-            color: var(--cream);
+            background: var(--night);
+            color: var(--txt);
             line-height: 1.55;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        ::selection { background: var(--gold); color: #14290e; }
+        ::selection { background: var(--pink); color: #fff; }
 
         a:focus-visible, button:focus-visible, input:focus-visible {
-            outline: 2px solid var(--gold);
+            outline: 2px solid var(--neon);
             outline-offset: 3px;
             border-radius: 6px;
         }
@@ -68,459 +65,397 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(540px 380px at 90% 0%, rgba(240, 199, 94, 0.08), transparent 65%),
-                radial-gradient(480px 360px at 0% 100%, rgba(255, 90, 69, 0.06), transparent 65%);
+                radial-gradient(480px 320px at 88% -4%, rgba(255, 46, 136, 0.16), transparent 65%),
+                radial-gradient(460px 320px at 4% 30%, rgba(61, 255, 160, 0.07), transparent 65%),
+                radial-gradient(500px 380px at 70% 105%, rgba(255, 46, 136, 0.08), transparent 65%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Thai temple-roof zigzag band */
-        .zigzag {
-            height: 12px;
-            background:
-                linear-gradient(135deg, var(--gold) 25%, transparent 25%) 0 0 / 16px 16px,
-                linear-gradient(225deg, var(--gold) 25%, transparent 25%) 0 0 / 16px 16px;
-            opacity: 0.85;
-        }
-
         .page {
-            max-width: 640px;
+            max-width: 660px;
             margin: 0 auto;
-            padding: 0 18px 150px;
+            padding: 0 16px 190px;
             position: relative;
             z-index: 1;
         }
 
-        /* ============ Reveal ============ */
         .reveal {
             opacity: 0;
-            transform: translateY(26px);
+            transform: translateY(24px);
             transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
             transition-delay: var(--d, 0s);
         }
         .reveal.in { opacity: 1; transform: none; }
 
-        /* ============ Header ============ */
-        header { padding: 26px 0 18px; }
-        .resto-top {
+        /* ============ Header — neon sign ============ */
+        header { padding: 30px 0 8px; }
+        .top-row {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .halal-chip {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            letter-spacing: 1.5px;
-            color: var(--lime);
-            border: 1px solid rgba(185, 226, 107, 0.45);
-            border-radius: 7px;
-            padding: 5px 10px;
-            background: rgba(185, 226, 107, 0.07);
-        }
-        .demo-chip {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            border: 1px solid rgba(240, 199, 94, 0.45);
-            border-radius: 7px;
-            padding: 5px 10px;
-            background: rgba(240, 199, 94, 0.07);
-            text-decoration: none;
-        }
-        .sawadee {
-            font-weight: 300;
-            font-size: 1rem;
-            color: var(--gold);
-            letter-spacing: 3px;
+            align-items: center;
+            margin-bottom: 26px;
+            font-size: 0.64rem;
+            font-weight: 500;
+            letter-spacing: 2px;
             text-transform: uppercase;
+        }
+        .top-row a {
+            color: var(--neon);
+            text-decoration: none;
+            border: 1px solid rgba(61, 255, 160, 0.4);
+            border-radius: 6px;
+            padding: 5px 11px;
+            background: rgba(61, 255, 160, 0.06);
+        }
+        .top-row .halal {
+            color: var(--amber);
+            border: 1px solid rgba(255, 194, 75, 0.4);
+            border-radius: 6px;
+            padding: 5px 11px;
+        }
+
+        .thai-deco {
+            font-weight: 300;
+            font-size: 0.85rem;
+            color: var(--pink-soft);
+            letter-spacing: 4px;
         }
         h1 {
             font-weight: 800;
-            font-size: clamp(2.05rem, 8.6vw, 2.8rem);
-            line-height: 1.08;
-            letter-spacing: -0.4px;
+            font-style: italic;
+            font-size: clamp(2.3rem, 10vw, 3.4rem);
+            line-height: 1.02;
+            text-transform: uppercase;
+            margin-top: 4px;
         }
-        h1 .tom {
-            background: linear-gradient(100deg, var(--chili), #ff8a3d 60%, var(--gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
+        h1 .neon-pink {
+            color: var(--pink);
+            text-shadow: 0 0 8px rgba(255, 46, 136, 0.8), 0 0 28px rgba(255, 46, 136, 0.5);
+            animation: flicker 5s linear infinite;
+        }
+        h1 .neon-green {
+            color: var(--neon);
+            text-shadow: 0 0 8px rgba(61, 255, 160, 0.8), 0 0 28px rgba(61, 255, 160, 0.45);
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            3% { opacity: 0.6; }
+            5% { opacity: 1; }
+            52% { opacity: 1; }
+            54% { opacity: 0.5; }
+            55% { opacity: 1; }
         }
         .tagline {
-            color: var(--dim);
             font-weight: 300;
-            font-size: 0.94rem;
-            margin-top: 6px;
+            color: var(--dim);
+            margin-top: 8px;
+            font-size: 0.93rem;
         }
-        .info-chips {
+        .info-row {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 15px;
+            margin-top: 14px;
         }
-        .info-chips span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .info-row span {
             font-weight: 300;
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             color: var(--dim);
-            background: var(--card);
+            background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 6px 13px;
+            border-radius: 8px;
+            padding: 5px 12px;
         }
         .open-dot {
+            display: inline-block;
             width: 8px; height: 8px;
             border-radius: 50%;
-            background: var(--lime);
-            box-shadow: 0 0 8px var(--lime);
+            background: var(--neon);
+            box-shadow: 0 0 9px var(--neon);
+            margin-right: 6px;
             animation: pulse 2s ease-in-out infinite;
         }
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.35; }
+            50% { opacity: 0.3; }
         }
 
         /* ============ Search ============ */
-        .search-wrap { position: relative; margin: 18px 0 6px; }
+        .search-wrap { position: relative; margin: 20px 0 8px; }
         .search-wrap input {
             width: 100%;
-            background: var(--card);
+            background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 13px 18px 13px 46px;
-            color: var(--cream);
+            border-radius: 12px;
+            padding: 13px 16px 13px 46px;
+            color: var(--txt);
             font-family: var(--sans);
             font-weight: 300;
             font-size: 0.95rem;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .search-wrap input::placeholder { color: #79927f; }
-        .search-wrap input:focus { border-color: rgba(240, 199, 94, 0.55); outline: none; }
+        .search-wrap input::placeholder { color: #5d667e; }
+        .search-wrap input:focus {
+            border-color: var(--pink);
+            box-shadow: 0 0 14px rgba(255, 46, 136, 0.25);
+            outline: none;
+        }
         .search-wrap .icon {
             position: absolute;
-            left: 16px; top: 50%;
+            left: 15px; top: 50%;
             transform: translateY(-50%);
-            color: #79927f;
+            color: #5d667e;
             pointer-events: none;
-        }
-
-        /* ============ Tabs ============ */
-        .tabs {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(12, 32, 23, 0.92);
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-            margin: 14px -18px 8px;
-            padding: 12px 18px;
-            border-bottom: 1px solid var(--line);
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-        .tabs::-webkit-scrollbar { display: none; }
-        .tab {
-            flex-shrink: 0;
-            font-weight: 500;
-            font-size: 0.82rem;
-            color: var(--dim);
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 22px;
-            padding: 8px 16px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .tab.active {
-            color: #1e2a0c;
-            background: linear-gradient(110deg, #ffe49a, var(--gold));
-            border-color: transparent;
-            box-shadow: 0 4px 18px rgba(240, 199, 94, 0.35);
         }
 
         /* ============ Signature hero ============ */
         .signature {
-            margin: 22px 0 8px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 90, 69, 0.45);
-            background:
-                radial-gradient(420px 200px at 100% 0%, rgba(255, 90, 69, 0.18), transparent 70%),
-                linear-gradient(135deg, var(--card-2), var(--card));
-            padding: 22px;
+            margin: 18px 0 6px;
             position: relative;
+            border-radius: 18px;
             overflow: hidden;
-        }
-        .signature .label {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--chili);
+            border: 1px solid rgba(255, 46, 136, 0.5);
+            box-shadow: 0 0 30px rgba(255, 46, 136, 0.18);
+            min-height: 240px;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
+            align-items: flex-end;
         }
-        .signature .row { display: flex; align-items: center; gap: 18px; }
-        .signature .big-emoji {
-            font-size: 3.4rem;
-            line-height: 1;
-            filter: drop-shadow(0 6px 16px rgba(0,0,0,0.45));
-            animation: floaty 5s ease-in-out infinite;
+        .signature img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        @keyframes floaty {
-            0%, 100% { transform: translateY(0) rotate(-4deg); }
-            50% { transform: translateY(-7px) rotate(4deg); }
+        .signature .ov {
+            position: relative;
+            width: 100%;
+            padding: 50px 18px 16px;
+            background: linear-gradient(to top, rgba(10, 12, 18, 0.96) 25%, rgba(10, 12, 18, 0.4) 70%, transparent);
         }
-        .signature h3 { font-size: 1.25rem; font-weight: 700; }
-        .signature p { color: var(--dim); font-weight: 300; font-size: 0.85rem; margin-top: 3px; }
-        .signature .price-add {
+        .signature .lbl {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--neon);
+            text-shadow: 0 0 10px rgba(61, 255, 160, 0.6);
+        }
+        .signature h3 {
+            font-weight: 800;
+            font-style: italic;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            margin: 4px 0 2px;
+        }
+        .signature p { font-weight: 300; font-size: 0.82rem; color: var(--dim); }
+        .signature .row {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 10px;
         }
-
         .price {
-            font-family: var(--mono);
             font-weight: 700;
-            font-size: 0.92rem;
-            color: var(--gold);
+            color: var(--amber);
+            font-size: 0.95rem;
         }
 
         .add-btn {
             font-family: var(--sans);
             font-weight: 700;
-            font-size: 0.8rem;
-            color: #1e2a0c;
-            background: linear-gradient(110deg, #ffe49a, var(--gold));
+            font-size: 0.78rem;
+            color: #06130c;
+            background: var(--neon);
             border: none;
-            border-radius: 20px;
+            border-radius: 9px;
             padding: 8px 16px;
             cursor: pointer;
-            transition: transform 0.25s var(--ease), box-shadow 0.25s;
+            box-shadow: 0 0 14px rgba(61, 255, 160, 0.35);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s;
         }
-        .add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(240, 199, 94, 0.4);
-        }
+        .add-btn:hover { transform: translateY(-2px); box-shadow: 0 0 22px rgba(61, 255, 160, 0.55); }
         .add-btn:active { transform: scale(0.94); }
 
-        /* ============ Hot strip ============ */
-        .hot-head {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin: 26px 0 14px;
-        }
-        h2 { font-size: 1.28rem; font-weight: 700; letter-spacing: -0.2px; }
-        .hot-head .hint { font-weight: 300; font-size: 0.72rem; color: var(--dim); }
-        .hot-strip {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            padding: 4px 18px 14px;
-            margin: 0 -18px;
-            scrollbar-width: none;
-        }
-        .hot-strip::-webkit-scrollbar { display: none; }
-        .hot-card {
-            scroll-snap-align: start;
-            flex: 0 0 168px;
-            background: linear-gradient(160deg, var(--card-2), var(--card));
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 16px 14px 14px;
-            position: relative;
-            transition: transform 0.3s var(--ease), border-color 0.3s;
-        }
-        .hot-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(240, 199, 94, 0.4);
-        }
-        .hot-card .flame {
-            position: absolute;
-            top: 10px; right: 10px;
-            background: rgba(255, 90, 69, 0.16);
-            border: 1px solid rgba(255, 90, 69, 0.4);
-            border-radius: 16px;
-            padding: 2px 8px;
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            color: var(--chili);
-        }
-        .hot-card .emoji { font-size: 2.3rem; line-height: 1.2; }
-        .hot-card h4 { font-size: 0.92rem; font-weight: 600; margin-top: 8px; line-height: 1.3; }
-        .hot-card .bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        /* ============ Menu items ============ */
-        section.menu-sec { padding-top: 14px; scroll-margin-top: 92px; }
+        /* ============ Sections — horizontal photo cards ============ */
+        section.menu-sec { padding-top: 8px; scroll-margin-top: 20px; }
         .sec-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 22px 0 4px;
+            display: inline-block;
+            font-weight: 800;
+            font-style: italic;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin: 26px 0 4px;
+            position: relative;
+            padding-bottom: 6px;
         }
-        .sec-title .emo { font-size: 1.35rem; }
-        .sec-title h2 { font-size: 1.2rem; }
-        .sec-title .count {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            color: var(--dim);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 2px 9px;
-            margin-left: auto;
+        .sec-title::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--pink);
+            box-shadow: 0 0 10px var(--pink);
+            border-radius: 2px;
         }
+        .sec-note { font-weight: 300; font-size: 0.72rem; color: var(--dim); margin-left: 10px; }
 
         .item {
-            background: var(--card);
+            display: flex;
+            background: var(--panel);
             border: 1px solid var(--line);
             border-radius: 16px;
-            padding: 14px 16px;
-            margin-top: 12px;
+            overflow: hidden;
+            margin-top: 14px;
             transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
         }
         .item:hover {
-            transform: translateY(-3px);
-            border-color: rgba(240, 199, 94, 0.35);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+            transform: translateX(4px);
+            border-color: rgba(255, 46, 136, 0.5);
+            box-shadow: -6px 0 22px rgba(255, 46, 136, 0.12);
         }
-        .item .main-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .item .ph {
+            flex: 0 0 122px;
+            position: relative;
         }
-        .item .thumb {
-            flex-shrink: 0;
-            width: 56px; height: 56px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            font-size: 1.7rem;
-            background: linear-gradient(150deg, rgba(255, 90, 69, 0.16), rgba(240, 199, 94, 0.07));
-            border: 1px solid rgba(240, 199, 94, 0.2);
+        .item .ph img {
+            width: 100%;
+            height: 100%;
+            min-height: 122px;
+            object-fit: cover;
+            display: block;
+            background: var(--night-2);
         }
-        .item .mid { flex: 1; min-width: 0; }
+        .item .ph .laris {
+            position: absolute;
+            top: 8px; left: 8px;
+            font-size: 0.52rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #06130c;
+            background: var(--neon);
+            border-radius: 6px;
+            padding: 2px 7px;
+            box-shadow: 0 0 10px rgba(61, 255, 160, 0.6);
+        }
+        .item .body { flex: 1; padding: 12px 14px; min-width: 0; }
         .item h4 {
-            font-size: 0.95rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            flex-wrap: wrap;
+            font-size: 0.97rem;
+            line-height: 1.2;
         }
         .item .desc {
-            color: var(--dim);
             font-weight: 300;
-            font-size: 0.78rem;
-            margin-top: 2px;
+            font-size: 0.74rem;
+            color: var(--dim);
+            margin-top: 3px;
         }
-        .item .meta {
+        .item .foot {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 6px;
-        }
-        .badge {
-            font-family: var(--mono);
-            font-size: 0.56rem;
-            letter-spacing: 0.5px;
-            border-radius: 10px;
-            padding: 2px 7px;
-        }
-        .badge.hot { color: var(--chili); border: 1px solid rgba(255, 90, 69, 0.45); background: rgba(255, 90, 69, 0.08); }
-        .badge.star { color: var(--gold); border: 1px solid rgba(240, 199, 94, 0.45); background: rgba(240, 199, 94, 0.08); }
-        .badge.vege { color: var(--lime); border: 1px solid rgba(185, 226, 107, 0.45); background: rgba(185, 226, 107, 0.08); }
-        .item .right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            justify-content: space-between;
             gap: 8px;
-            flex-shrink: 0;
+            margin-top: 9px;
         }
 
-        /* spice level picker */
+        /* spice picker — neon */
         .spice-row {
             display: flex;
             align-items: center;
-            gap: 7px;
-            margin-top: 11px;
-            padding-top: 11px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 9px;
         }
         .spice-row .lbl {
-            font-family: var(--mono);
-            font-size: 0.58rem;
-            letter-spacing: 1px;
+            font-size: 0.56rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             color: var(--dim);
-            margin-right: 2px;
         }
         .spice-chip {
             font-family: var(--sans);
             font-weight: 500;
-            font-size: 0.7rem;
+            font-size: 0.66rem;
             color: var(--dim);
-            background: var(--bg-soft);
+            background: var(--night-2);
             border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 4px 12px;
+            border-radius: 14px;
+            padding: 3px 11px;
             cursor: pointer;
-            transition: all 0.25s;
+            transition: all 0.2s;
         }
         .spice-chip.sel {
-            color: #2a1006;
+            color: #fff;
             font-weight: 700;
-            background: linear-gradient(110deg, #ff8a6e, var(--chili));
-            border-color: transparent;
-            box-shadow: 0 3px 12px rgba(255, 90, 69, 0.35);
+            background: var(--pink);
+            border-color: var(--pink);
+            box-shadow: 0 0 12px rgba(255, 46, 136, 0.55);
         }
-
         .spice-note {
-            color: var(--dim);
             font-weight: 300;
             font-size: 0.72rem;
+            color: var(--dim);
             margin: 10px 2px 0;
         }
 
         .empty-note {
             display: none;
             text-align: center;
-            color: var(--dim);
             font-weight: 300;
-            padding: 50px 20px;
-            font-size: 0.9rem;
+            color: var(--dim);
+            padding: 46px 20px;
         }
         .page.searching .empty-note.show { display: block; }
+
+        /* ============ Bottom category bar ============ */
+        .bottom-nav {
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: min(660px, 100%);
+            background: rgba(17, 20, 29, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--line);
+            display: flex;
+            z-index: 80;
+            padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+        }
+        .bnav {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+            text-decoration: none;
+            color: var(--dim);
+            font-weight: 500;
+            font-size: 0.58rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 6px 2px;
+            border-radius: 10px;
+            transition: color 0.25s, text-shadow 0.25s;
+        }
+        .bnav .ico { font-size: 1.15rem; line-height: 1.2; filter: grayscale(0.6); transition: filter 0.25s, transform 0.25s; }
+        .bnav.active { color: var(--neon); text-shadow: 0 0 10px rgba(61, 255, 160, 0.6); }
+        .bnav.active .ico { filter: none; transform: translateY(-2px); }
 
         /* ============ Cart bar + sheet ============ */
         .cart-bar {
             position: fixed;
             left: 50%;
-            bottom: 18px;
-            transform: translate(-50%, 140%);
-            width: min(604px, calc(100% - 36px));
-            background: linear-gradient(110deg, #ffe49a, var(--gold));
-            color: #1e2a0c;
+            bottom: 76px;
+            transform: translate(-50%, 220%);
+            width: min(620px, calc(100% - 28px));
+            background: var(--neon);
+            color: #06130c;
             border: none;
-            border-radius: 18px;
-            padding: 15px 22px;
+            border-radius: 14px;
+            padding: 14px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -528,17 +463,16 @@
             font-weight: 800;
             font-size: 0.95rem;
             cursor: pointer;
-            box-shadow: 0 16px 40px rgba(240, 199, 94, 0.3);
+            box-shadow: 0 0 28px rgba(61, 255, 160, 0.4);
             transition: transform 0.45s var(--ease);
             z-index: 90;
         }
         .cart-bar.show { transform: translate(-50%, 0); }
         .cart-bar .qty-pill {
-            background: #1e2a0c;
-            color: var(--gold);
-            border-radius: 12px;
+            background: #06130c;
+            color: var(--neon);
+            border-radius: 10px;
             padding: 2px 10px;
-            font-family: var(--mono);
             font-size: 0.78rem;
             margin-right: 10px;
         }
@@ -546,7 +480,7 @@
         .sheet-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(5, 12, 8, 0.68);
+            background: rgba(4, 5, 9, 0.7);
             -webkit-backdrop-filter: blur(4px);
             backdrop-filter: blur(4px);
             opacity: 0;
@@ -561,13 +495,13 @@
             left: 50%;
             bottom: 0;
             transform: translate(-50%, 105%);
-            width: min(640px, 100%);
+            width: min(660px, 100%);
             max-height: 86svh;
-            background: var(--bg-soft);
+            background: var(--night-2);
             border: 1px solid var(--line);
             border-bottom: none;
-            border-radius: 24px 24px 0 0;
-            padding: 20px 22px 26px;
+            border-radius: 22px 22px 0 0;
+            padding: 20px 20px 26px;
             z-index: 100;
             transition: transform 0.5s var(--ease);
             display: flex;
@@ -579,76 +513,66 @@
             width: 44px; height: 4px;
             border-radius: 4px;
             background: var(--line);
-            margin: 0 auto 16px;
+            margin: 0 auto 14px;
         }
         .sheet h3 {
-            font-size: 1.15rem;
             font-weight: 800;
+            font-style: italic;
+            font-size: 1.2rem;
+            text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .sheet .clear-btn {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            color: var(--chili);
+            font-family: var(--sans);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--pink);
             background: none;
-            border: 1px solid rgba(255, 90, 69, 0.4);
-            border-radius: 12px;
+            border: 1px solid rgba(255, 46, 136, 0.5);
+            border-radius: 10px;
             padding: 4px 10px;
             cursor: pointer;
         }
-        .sheet .lines {
-            overflow-y: auto;
-            margin: 14px 0;
-            flex: 1;
-            min-height: 60px;
-        }
+        .sheet .lines { overflow-y: auto; margin: 12px 0; flex: 1; min-height: 60px; }
         .sheet .line {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
         }
-        .sheet .line .nm { flex: 1; font-size: 0.88rem; font-weight: 500; }
+        .sheet .line .nm { flex: 1; font-weight: 500; font-size: 0.88rem; }
         .sheet .line .nm small {
             display: block;
-            color: var(--chili);
             font-weight: 400;
+            color: var(--pink-soft);
             font-size: 0.68rem;
         }
-        .sheet .line .pr {
-            font-family: var(--mono);
-            font-size: 0.78rem;
-            color: var(--dim);
-        }
-        .stepper { display: flex; align-items: center; gap: 10px; }
+        .sheet .line .pr { font-weight: 600; font-size: 0.8rem; color: var(--amber); }
+        .stepper { display: flex; align-items: center; gap: 9px; }
         .stepper button {
             width: 40px; height: 40px;
-            border-radius: 11px;
+            border-radius: 10px;
             border: 1px solid var(--line);
-            background: var(--card);
-            color: var(--cream);
-            font-weight: 800;
+            background: var(--panel);
+            color: var(--txt);
+            font-weight: 700;
             cursor: pointer;
             font-size: 1.05rem;
             line-height: 1;
         }
-        .stepper .q {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            min-width: 18px;
-            text-align: center;
-        }
+        .stepper .q { font-weight: 700; min-width: 18px; text-align: center; }
         .sheet .field { margin-top: 10px; }
         .sheet .field input {
             width: 100%;
-            background: var(--card);
+            background: var(--panel);
             border: 1px solid var(--line);
-            border-radius: 12px;
+            border-radius: 11px;
             padding: 11px 14px;
-            color: var(--cream);
+            color: var(--txt);
             font-family: var(--sans);
             font-weight: 300;
             font-size: 0.88rem;
@@ -657,10 +581,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 16px 0 4px;
+            margin: 14px 0 4px;
             font-weight: 800;
+            font-style: italic;
+            text-transform: uppercase;
         }
-        .sheet .total-row .price { font-size: 1.1rem; }
+        .sheet .total-row .price { font-size: 1.15rem; }
         .wa-btn {
             display: flex;
             align-items: center;
@@ -671,7 +597,7 @@
             background: #25d366;
             color: #06250f;
             border: none;
-            border-radius: 14px;
+            border-radius: 13px;
             padding: 15px;
             font-family: var(--sans);
             font-weight: 800;
@@ -680,10 +606,7 @@
             text-decoration: none;
             transition: transform 0.25s var(--ease), box-shadow 0.25s;
         }
-        .wa-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 26px rgba(37, 211, 102, 0.35);
-        }
+        .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(37, 211, 102, 0.35); }
         .sheet .demo-note {
             text-align: center;
             font-weight: 300;
@@ -694,65 +617,61 @@
 
         /* ============ Studio CTA / footer ============ */
         .studio-cta {
-            margin-top: 54px;
-            border: 1px dashed rgba(240, 199, 94, 0.4);
-            border-radius: 20px;
+            margin-top: 50px;
+            border: 1px dashed rgba(255, 46, 136, 0.5);
+            border-radius: 18px;
             padding: 26px 22px;
             text-align: center;
-            background: rgba(240, 199, 94, 0.04);
+            background: rgba(255, 46, 136, 0.04);
         }
-        .studio-cta .mono-tag {
-            font-family: var(--mono);
+        .studio-cta .lbl {
             font-size: 0.6rem;
-            letter-spacing: 2.5px;
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--pink-soft);
         }
-        .studio-cta h3 { font-size: 1.15rem; font-weight: 700; margin: 10px 0 6px; }
+        .studio-cta h3 {
+            font-weight: 800;
+            font-style: italic;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin: 10px 0 6px;
+        }
         .studio-cta p {
-            color: var(--dim);
             font-weight: 300;
+            color: var(--dim);
             font-size: 0.84rem;
-            max-width: 420px;
+            max-width: 430px;
             margin: 0 auto 16px;
         }
-        .studio-cta .row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
         .cta-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             font-weight: 600;
-            font-size: 0.84rem;
+            font-size: 0.8rem;
             text-decoration: none;
-            border-radius: 22px;
+            border-radius: 11px;
             padding: 11px 20px;
         }
-        .cta-link.gold {
-            background: linear-gradient(110deg, #ffe49a, var(--gold));
-            color: #1e2a0c;
-        }
-        .cta-link.ghost { border: 1px solid var(--line); color: var(--cream); }
-        .cta-link:hover { filter: brightness(1.08); }
+        .cta-link.neon { background: var(--neon); color: #06130c; box-shadow: 0 0 16px rgba(61, 255, 160, 0.35); }
+        .cta-link.ghost { border: 1px solid var(--line); color: var(--txt); }
+        .cta-link:hover { filter: brightness(1.1); }
 
         footer.page-foot {
             text-align: center;
-            margin-top: 30px;
-            color: var(--dim);
-            font-family: var(--mono);
-            font-size: 0.62rem;
+            margin-top: 28px;
+            font-weight: 300;
+            font-size: 0.66rem;
             letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
         }
-        footer.page-foot a { color: var(--gold); text-decoration: none; }
+        footer.page-foot a { color: var(--neon); text-decoration: none; }
         footer.page-foot a:hover { text-decoration: underline; }
 
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .open-dot, .signature .big-emoji { animation: none !important; }
+            .open-dot, h1 .neon-pink { animation: none !important; }
             .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
             * { transition-duration: 0.01ms !important; }
         }
@@ -765,80 +684,66 @@
     </noscript>
 </head>
 <body>
-<div class="zigzag" aria-hidden="true"></div>
 <div class="page" id="page">
 
     <header>
-        <div class="resto-top reveal">
-            <span class="halal-chip">✓ HALAL</span>
-            <a class="demo-chip" href="../">DEMO 3/3 · TUKAR TEMA ↗</a>
+        <div class="top-row reveal">
+            <a href="../">⟵ DEMO 3/3 · TUKAR TEMA</a>
+            <span class="halal">✓ HALAL · REKAAN</span>
         </div>
-        <p class="sawadee reveal" style="--d:0.04s">Sawadee kha! 🙏</p>
-        <h1 class="reveal" style="--d:0.08s"><span class="tom">Tomyam</span> House 🇹🇭</h1>
-        <p class="tagline reveal" style="--d:0.14s">Pedas sampai berpeluh, sedap sampai jilat jari. Aroi mak mak!</p>
-        <div class="info-chips reveal" style="--d:0.2s">
-            <span><span class="open-dot"></span> Buka 5 ptg – 3 pagi</span>
-            <span>🐟 Ikan segar setiap hari</span>
-            <span>📍 Wakaf Che Yeh, Kelantan</span>
+        <p class="thai-deco reveal" style="--d:0.04s">สวัสดี · SAWADEE KHA 🙏</p>
+        <h1 class="reveal" style="--d:0.08s"><span class="neon-pink">Tomyam</span> <span class="neon-green">Halilintar</span></h1>
+        <p class="tagline reveal" style="--d:0.14s">Pedas menyambar macam petir — sekali rasa, terus berpeluh bahagia.</p>
+        <div class="info-row reveal" style="--d:0.2s">
+            <span><span class="open-dot"></span>Buka 5 ptg – 3 pagi</span>
+            <span>🐟 Ikan segar harian</span>
+            <span>📍 Medan Neon, Jalan Halilintar, Shah Alam</span>
         </div>
         <div class="search-wrap reveal" style="--d:0.26s">
             <span class="icon" aria-hidden="true">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
             </span>
-            <input type="search" id="searchBox" placeholder="Cari... cth: tomyam, siakap, paprik" aria-label="Cari dalam menu">
+            <input type="search" id="searchBox" placeholder="Cari... tomyam, siakap, paprik" aria-label="Cari dalam menu">
         </div>
     </header>
 
-    <nav class="tabs" id="tabs" aria-label="Kategori menu">
-        <a href="#sec-hot" class="tab active">🔥 Hot</a>
-        <a href="#sec-tomyam" class="tab">🍲 Tomyam</a>
-        <a href="#sec-seafood" class="tab">🦐 Seafood</a>
-        <a href="#sec-goreng" class="tab">🥘 Goreng</a>
-        <a href="#sec-nasi" class="tab">🍚 Nasi &amp; Mee</a>
-        <a href="#sec-minuman" class="tab">🧋 Minuman</a>
-    </nav>
-
-    <!-- Signature dish -->
+    <!-- Signature -->
     <div class="signature reveal" id="signatureCard"></div>
-    <p class="spice-note reveal">🌶 Tahap pedas boleh pilih pada setiap hidangan — Sikit untuk yang baru, Sedang (biasa), Power untuk yang berani.</p>
-
-    <!-- Hot orders -->
-    <section class="menu-sec" id="sec-hot">
-        <div class="hot-head reveal">
-            <h2>🔥 Ramai Order</h2>
-            <span class="hint">← geser untuk lagi →</span>
-        </div>
-        <div class="hot-strip" id="hotStrip"></div>
-    </section>
+    <p class="spice-note reveal">🌶 Tahap pedas boleh pilih pada setiap hidangan — Sikit untuk yang baru, Sedang (biasa), Halilintar untuk yang berani.</p>
 
     <div id="menuRoot"></div>
 
     <p class="empty-note" id="emptyNote">😅 Tak jumpa pulak. Cuba cari "tomyam" ke, "siakap" ke...</p>
 
-    <!-- Studio CTA -->
     <div class="studio-cta reveal">
-        <span class="mono-tag">// Suka menu ini?</span>
-        <h3>Nak menu digital untuk kedai tomyam anda?</h3>
-        <p>Pelanggan pilih sendiri tahap pedas, pesanan terus masuk WhatsApp anda. Siap dalam beberapa hari — tak payah cetak menu lagi.</p>
+        <span class="lbl">// Suka menu ini?</span>
+        <h3>Kedai tomyam anda seterusnya</h3>
+        <p>Pelanggan pilih sendiri tahap pedas, pesanan terus masuk WhatsApp anda. Menu bergambar sebenar, siap dalam beberapa hari.</p>
         <div class="row">
-            <a class="cta-link gold" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20menu%20digital%20untuk%20restoran%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
-            <a class="cta-link ghost" href="../../">Lihat Studio</a>
-        </div>
-        <div class="row" style="margin-top:12px">
-            <a class="cta-link ghost" href="../mamak/">🍛 Tema Mamak</a>
-            <a class="cta-link ghost" href="../luxe/">🥂 Tema Fine Dining</a>
+            <a class="cta-link neon" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20menu%20digital%20untuk%20restoran%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link ghost" href="../mamak/">Tema Mamak</a>
+            <a class="cta-link ghost" href="../luxe/">Tema Fine Dining</a>
         </div>
     </div>
 
     <footer class="page-foot">
-        DEMO MENU — DIBINA OLEH <a href="../../">LANGKAH PERTAMA</a> © 2026
+        Demo — dibina oleh <a href="../../">Langkah Pertama</a> © 2026 · Restoran rekaan
     </footer>
 </div>
+
+<!-- Bottom category nav -->
+<nav class="bottom-nav" id="bottomNav" aria-label="Kategori menu">
+    <a href="#sec-tomyam" class="bnav active"><span class="ico">🍲</span>Tomyam</a>
+    <a href="#sec-seafood" class="bnav"><span class="ico">🦐</span>Seafood</a>
+    <a href="#sec-goreng" class="bnav"><span class="ico">🥘</span>Goreng</a>
+    <a href="#sec-nasi" class="bnav"><span class="ico">🍚</span>Nasi/Mee</a>
+    <a href="#sec-minuman" class="bnav"><span class="ico">🧋</span>Minuman</a>
+</nav>
 
 <!-- Cart -->
 <button class="cart-bar" id="cartBar" aria-label="Lihat pesanan">
     <span><span class="qty-pill" id="cartQty">0</span> Lihat Pesanan</span>
-    <span class="price" style="color:#1e2a0c" id="cartTotal">RM 0.00</span>
+    <span style="font-weight:800" id="cartTotal">RM 0.00</span>
 </button>
 
 <div class="sheet-backdrop" id="sheetBackdrop"></div>
@@ -860,7 +765,6 @@
 (function () {
     'use strict';
 
-    // minimal closest() polyfill for very old browsers
     if (!Element.prototype.closest) {
         Element.prototype.matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
         Element.prototype.closest = function (s) {
@@ -874,69 +778,51 @@
     }
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var IMG = '../../assets/menu/img/';
 
-    /* ================= MENU DATA ================= */
+    /* ================= MENU ================= */
     var MENU = [
-        // --- Tomyam (semua boleh pilih tahap pedas) ---
-        { id: 't1', cat: 'tomyam', emoji: '🍲', name: 'Tomyam Campur', desc: 'Udang, sotong, ayam, cendawan — kuah merah asli Thai.', price: 12.90, hot: true, spice: true },
-        { id: 't2', cat: 'tomyam', emoji: '🍗', name: 'Tomyam Ayam', desc: 'Pilihan bajet, rasa tetap juara.', price: 10.90, spice: true },
-        { id: 't3', cat: 'tomyam', emoji: '🦐', name: 'Tomyam Seafood', desc: 'Lautan dalam mangkuk — udang, sotong, ikan, kerang.', price: 16.90, hot: true, spice: true },
-        { id: 't4', cat: 'tomyam', emoji: '🥛', name: 'Tomyam Susu Campur', desc: 'Berkrim, masam, pedas — tiga serangkai bahaya.', price: 13.90, spice: true },
-        { id: 't5', cat: 'tomyam', emoji: '🦀', name: 'Tomyam Ketam', desc: 'Ketam segar penuh isi, kuah pekat berapi.', price: 19.90, spice: true },
-
-        // --- Seafood ---
-        { id: 's1', cat: 'seafood', emoji: '🐟', name: 'Siakap 3 Rasa', desc: 'Masam, manis, pedas — goreng garing, sos melimpah.', price: 38.90, star: true, hot: true, spice: true },
-        { id: 's2', cat: 'seafood', emoji: '🍋', name: 'Siakap Stim Limau', desc: 'Stim ala Thai, kuah limau cili padi yang menyengat.', price: 36.90, spice: true },
-        { id: 's3', cat: 'seafood', emoji: '🦑', name: 'Sotong Goreng Tepung', desc: 'Rangup di luar, lembut di dalam. Sos thai cicah.', price: 16.90, hot: true },
-        { id: 's4', cat: 'seafood', emoji: '🍤', name: 'Udang Goreng Kam Heong', desc: 'Wangi rempah kari & daun kari, confirm tambah nasi.', price: 22.90, spice: true },
-        { id: 's5', cat: 'seafood', emoji: '🦀', name: 'Ketam Cili Padi', desc: 'Untuk yang berani — cili padi tak bertapis.', price: 28.90, spice: true },
-
-        // --- Goreng-goreng ---
-        { id: 'g1', cat: 'goreng', emoji: '🥬', name: 'Kailan Ikan Masin', desc: 'Garing ikan masin, kailan rangup. Wajib ada atas meja.', price: 12.90, vege: false },
-        { id: 'g2', cat: 'goreng', emoji: '🍳', name: 'Telur Dadar Thai', desc: 'Tebal, gebu, bawang banyak. Comfort food sejati.', price: 7.90 },
-        { id: 'g3', cat: 'goreng', emoji: '🌿', name: 'Kangkung Belacan', desc: 'Belacan homemade, api besar, wok hei power.', price: 10.90, spice: true },
-        { id: 'g4', cat: 'goreng', emoji: '🍃', name: 'Ayam Goreng Pandan', desc: 'Ayam berbungkus daun pandan, wangi tak terkata.', price: 15.90, hot: true },
-        { id: 'g5', cat: 'goreng', emoji: '🥩', name: 'Daging Masak Merah Thai', desc: 'Daging lembut bersos merah Thai pekat.', price: 16.90, spice: true },
-        { id: 'g6', cat: 'goreng', emoji: '🌶️', name: 'Paprik Ayam', desc: 'Sos paprik asli — manis pedas seimbang.', price: 12.90, hot: true, spice: true },
-
-        // --- Nasi & Mee ---
-        { id: 'n1', cat: 'nasi', emoji: '🍚', name: 'Nasi Putih', desc: 'Wajib ada. Panas berasap.', price: 2.00, vege: true },
-        { id: 'n2', cat: 'nasi', emoji: '🍛', name: 'Nasi Goreng Paprik', desc: 'Nasi goreng bersiram sos paprik ayam.', price: 11.90, hot: true, spice: true },
-        { id: 'n3', cat: 'nasi', emoji: '🥡', name: 'Nasi Goreng Tomyam', desc: 'Rasa tomyam dalam bentuk nasi goreng. Genius.', price: 10.90, spice: true },
-        { id: 'n4', cat: 'nasi', emoji: '🍜', name: 'Pad Thai', desc: 'Kuey teow Thai asli — kacang tumbuk, limau, taugeh.', price: 12.90 },
-        { id: 'n5', cat: 'nasi', emoji: '🍝', name: 'Kuey Teow Ladna', desc: 'Kuah berkanji pekat, sayur & ayam.', price: 11.90 },
-
-        // --- Minuman ---
-        { id: 'd1', cat: 'minuman', emoji: '🧋', name: 'Teh Ais Thai (Cha Yen)', desc: 'Oren lembut, manis susu — original dari Siam.', price: 4.50, hot: true },
-        { id: 'd2', cat: 'minuman', emoji: '🥥', name: 'Coconut Shake', desc: 'Kelapa muda blend dengan aiskrim vanila.', price: 7.90, star: true },
-        { id: 'd3', cat: 'minuman', emoji: '🍑', name: 'Air Longan', desc: 'Longan sejuk, manis semula jadi.', price: 4.90 },
-        { id: 'd4', cat: 'minuman', emoji: '🌿', name: 'Sirap Selasih', desc: 'Sirap bunga ros dengan biji selasih.', price: 3.50 },
-        { id: 'd5', cat: 'minuman', emoji: '🥭', name: 'Jus Mangga', desc: 'Mangga harum manis, blend segar.', price: 6.90 }
+        // Tomyam
+        { id: 'ty-t1', cat: 'tomyam', name: 'Tomyam Campur', desc: 'Udang, sotong, ayam, cendawan — kuah merah asli.', price: 12.90, hot: true, spice: true },
+        { id: 'ty-t2', cat: 'tomyam', name: 'Tomyam Seafood', desc: 'Lautan dalam mangkuk — udang, sotong, ikan, kerang.', price: 16.90, hot: true, spice: true },
+        { id: 'ty-t3', cat: 'tomyam', name: 'Tomyam Susu', desc: 'Berkrim, masam, pedas — tiga serangkai bahaya.', price: 13.90, spice: true },
+        { id: 'ty-t4', cat: 'tomyam', name: 'Tomyam Ketam', desc: 'Ketam segar penuh isi, kuah pekat berapi.', price: 19.90, spice: true },
+        // Seafood
+        { id: 'ty-s1', cat: 'seafood', name: 'Siakap 3 Rasa', desc: 'Masam, manis, pedas — goreng garing, sos melimpah.', price: 38.90, star: true, hot: true, spice: true },
+        { id: 'ty-s2', cat: 'seafood', name: 'Siakap Stim Limau', desc: 'Stim ala Thai, kuah limau cili padi menyengat.', price: 36.90, spice: true },
+        { id: 'ty-s3', cat: 'seafood', name: 'Sotong Goreng Tepung', desc: 'Rangup di luar, lembut di dalam. Sos Thai cicah.', price: 16.90, hot: true },
+        { id: 'ty-s4', cat: 'seafood', name: 'Udang Kam Heong', desc: 'Wangi rempah & daun kari — memang tambah nasi.', price: 22.90, spice: true },
+        // Goreng
+        { id: 'ty-g1', cat: 'goreng', name: 'Kailan Ikan Masin', desc: 'Garing ikan masin, kailan rangup.', price: 12.90 },
+        { id: 'ty-g2', cat: 'goreng', name: 'Telur Dadar Thai', desc: 'Tebal, gebu, bawang banyak.', price: 7.90 },
+        { id: 'ty-g3', cat: 'goreng', name: 'Kangkung Belacan', desc: 'Belacan homemade, api besar, wok hei power.', price: 10.90, spice: true },
+        { id: 'ty-g4', cat: 'goreng', name: 'Ayam Goreng Pandan', desc: 'Berbungkus daun pandan, wangi tak terkata.', price: 15.90, hot: true },
+        { id: 'ty-g5', cat: 'goreng', name: 'Paprik Ayam', desc: 'Sos paprik asli — manis pedas seimbang.', price: 12.90, hot: true, spice: true },
+        // Nasi & Mee
+        { id: 'ty-n1', cat: 'nasi', name: 'Nasi Goreng Tomyam', desc: 'Rasa tomyam dalam bentuk nasi goreng. Bijak.', price: 10.90, spice: true },
+        { id: 'ty-n2', cat: 'nasi', name: 'Pad Thai', desc: 'Kuey teow Thai asli — kacang tumbuk, limau, taugeh.', price: 12.90 },
+        { id: 'ty-n3', cat: 'nasi', name: 'Kuey Teow Ladna', desc: 'Kuah berkanji pekat, sayur & ayam.', price: 11.90 },
+        // Minuman
+        { id: 'ty-d1', cat: 'minuman', name: 'Teh Ais Thai (Cha Yen)', desc: 'Oren lembut, manis susu — asli dari Siam.', price: 4.50, hot: true },
+        { id: 'ty-d2', cat: 'minuman', name: 'Coconut Shake', desc: 'Kelapa muda kisar dengan aiskrim vanila.', price: 7.90, star: true },
+        { id: 'ty-d3', cat: 'minuman', name: 'Air Longan', desc: 'Longan sejuk, manis semula jadi.', price: 4.90 }
     ];
 
     var CATS = [
-        { key: 'tomyam', id: 'sec-tomyam', emo: '🍲', title: 'Tomyam' },
-        { key: 'seafood', id: 'sec-seafood', emo: '🦐', title: 'Ikan & Seafood' },
-        { key: 'goreng', id: 'sec-goreng', emo: '🥘', title: 'Goreng-Goreng' },
-        { key: 'nasi', id: 'sec-nasi', emo: '🍚', title: 'Nasi & Mee' },
-        { key: 'minuman', id: 'sec-minuman', emo: '🧋', title: 'Minuman Thai' }
+        { key: 'tomyam', id: 'sec-tomyam', title: 'Tomyam', note: 'kuah berapi' },
+        { key: 'seafood', id: 'sec-seafood', title: 'Ikan & Seafood', note: 'segar dari laut' },
+        { key: 'goreng', id: 'sec-goreng', title: 'Goreng-Goreng', note: 'api besar' },
+        { key: 'nasi', id: 'sec-nasi', title: 'Nasi & Mee', note: 'pengalas perut' },
+        { key: 'minuman', id: 'sec-minuman', title: 'Minuman Thai', note: 'pemadam api' }
     ];
 
-    var SPICE_LEVELS = ['Sikit', 'Sedang', 'Power 🔥'];
-    var spiceSel = {}; // itemId -> level index (default 1 Sedang)
+    var SPICE_LEVELS = ['Sikit', 'Sedang', 'Halilintar ⚡'];
+    var spiceSel = {};
 
     function fmt(n) { return 'RM ' + n.toFixed(2); }
     function esc(s) {
         return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
                 .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    }
-
-    function badges(it) {
-        var b = '';
-        if (it.hot) b += '<span class="badge hot">🔥 RAMAI ORDER</span>';
-        if (it.star) b += '<span class="badge star">⭐ JUARA MENU</span>';
-        if (it.vege) b += '<span class="badge vege">🌿 VEGE</span>';
-        return b;
     }
 
     function spiceRow(it) {
@@ -948,48 +834,37 @@
         return h + '</div>';
     }
 
-    /* ---- render sections ---- */
+    /* ---- render ---- */
     var root = document.getElementById('menuRoot');
     var html = '';
     CATS.forEach(function (c) {
         var items = MENU.filter(function (m) { return m.cat === c.key; });
         html += '<section class="menu-sec" id="' + c.id + '">';
-        html += '<div class="sec-title reveal"><span class="emo">' + c.emo + '</span><h2>' + c.title + '</h2><span class="count">' + items.length + ' ITEM</span></div>';
+        html += '<div class="reveal"><span class="sec-title">' + c.title + '</span><span class="sec-note">' + c.note + ' · ' + items.length + ' item</span></div>';
         items.forEach(function (it) {
             if (it.spice) spiceSel[it.id] = 1;
             html += '<div class="item reveal" data-name="' + esc(it.name.toLowerCase()) + '">' +
-                '<div class="main-row">' +
-                '<div class="thumb">' + it.emoji + '</div>' +
-                '<div class="mid"><h4>' + esc(it.name) + '</h4>' +
+                '<div class="ph">' + (it.hot ? '<span class="laris">LARIS</span>' : '') +
+                '<img src="' + IMG + it.id + '.jpg" alt="' + esc(it.name) + '" loading="lazy"></div>' +
+                '<div class="body"><h4>' + esc(it.name) + '</h4>' +
                 '<p class="desc">' + esc(it.desc) + '</p>' +
-                '<div class="meta">' + badges(it) + '</div></div>' +
-                '<div class="right"><span class="price">' + fmt(it.price) + '</span>' +
-                '<button class="add-btn" data-add="' + it.id + '">+ Tambah</button></div>' +
-                '</div>' + spiceRow(it) + '</div>';
+                spiceRow(it) +
+                '<div class="foot"><span class="price">' + fmt(it.price) + '</span>' +
+                '<button class="add-btn" data-add="' + it.id + '">+ Tambah</button></div></div></div>';
         });
         html += '</section>';
     });
     root.innerHTML = html;
 
-    /* ---- hot strip ---- */
-    var hotStrip = document.getElementById('hotStrip');
-    var hotHtml = '';
-    MENU.filter(function (m) { return m.hot; }).forEach(function (it) {
-        hotHtml += '<div class="hot-card reveal"><span class="flame">🔥 LAKU</span>' +
-            '<div class="emoji">' + it.emoji + '</div><h4>' + esc(it.name) + '</h4>' +
-            '<div class="bottom"><span class="price">' + fmt(it.price) + '</span>' +
-            '<button class="add-btn" data-add="' + it.id + '">+</button></div></div>';
-    });
-    hotStrip.innerHTML = hotHtml;
-
-    /* ---- signature card ---- */
-    var sig = MENU.filter(function (m) { return m.star && m.cat === 'seafood'; })[0];
+    /* ---- signature ---- */
+    var sig = MENU.filter(function (m) { return m.id === 'ty-s1'; })[0];
+    spiceSel[sig.id] = spiceSel[sig.id] || 1;
     document.getElementById('signatureCard').innerHTML =
-        '<div class="label"><span class="open-dot"></span> SIGNATURE KEDAI — WAJIB CUBA</div>' +
-        '<div class="row"><div class="big-emoji">' + sig.emoji + '</div>' +
-        '<div><h3>' + esc(sig.name) + '</h3><p>' + esc(sig.desc) + '</p>' +
-        '<div class="price-add"><span class="price">' + fmt(sig.price) + '</span>' +
-        '<button class="add-btn" data-add="' + sig.id + '">+ Tambah</button></div></div></div>';
+        '<img src="' + IMG + sig.id + '.jpg" alt="' + esc(sig.name) + '">' +
+        '<div class="ov"><span class="lbl">⚡ SIGNATURE KEDAI — WAJIB CUBA</span>' +
+        '<h3>' + esc(sig.name) + '</h3><p>' + esc(sig.desc) + '</p>' +
+        '<div class="row"><span class="price">' + fmt(sig.price) + '</span>' +
+        '<button class="add-btn" data-add="' + sig.id + '">+ Tambah</button></div></div>';
 
     /* ---- reveal ---- */
     var revealEls = document.querySelectorAll('.reveal');
@@ -998,26 +873,24 @@
             entries.forEach(function (e) {
                 if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -25px 0px' });
         revealEls.forEach(function (el) { io.observe(el); });
     } else {
         revealEls.forEach(function (el) { el.classList.add('in'); });
     }
 
-    /* ---- scrollspy ---- */
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
-    var secs = ['sec-hot', 'sec-tomyam', 'sec-seafood', 'sec-goreng', 'sec-nasi', 'sec-minuman']
-        .map(function (id) { return document.getElementById(id); });
+    /* ---- bottom-nav scrollspy ---- */
+    var navs = Array.prototype.slice.call(document.querySelectorAll('.bnav'));
+    var secs = CATS.map(function (c) { return document.getElementById(c.id); });
     function spy() {
-        var y = window.scrollY + 120;
+        var y = window.scrollY + 150;
         var active = -1;
         secs.forEach(function (s, i) {
-            // ignore sections hidden by search filtering
             if (!s || s.offsetParent === null) return;
-            if (active === -1) active = i;          // first visible section as default
+            if (active === -1) active = i;
             if (s.offsetTop <= y) active = i;
         });
-        tabs.forEach(function (t, i) { t.classList.toggle('active', i === active); });
+        navs.forEach(function (t, i) { t.classList.toggle('active', i === active); });
     }
     window.addEventListener('scroll', spy, { passive: true });
     spy();
@@ -1039,9 +912,9 @@
             var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
             sec.style.display = vis ? '' : 'none';
         });
-        document.getElementById('sec-hot').style.display = q ? 'none' : '';
         document.getElementById('signatureCard').style.display = q ? 'none' : '';
         emptyNote.classList.toggle('show', q.length > 0 && !any);
+        spy();
     });
 
     /* ---- cart (key = itemId|spiceLevel) ---- */
@@ -1061,17 +934,8 @@
         var p = k.split('|');
         return p.length > 1 ? SPICE_LEVELS[parseInt(p[1], 10)] : null;
     }
-
-    function cartCount() {
-        var n = 0;
-        for (var k in cart) n += cart[k];
-        return n;
-    }
-    function cartSum() {
-        var s = 0;
-        for (var k in cart) s += keyItem(k).price * cart[k];
-        return s;
-    }
+    function cartCount() { var n = 0; for (var k in cart) n += cart[k]; return n; }
+    function cartSum() { var s = 0; for (var k in cart) s += keyItem(k).price * cart[k]; return s; }
 
     function renderCart() {
         var n = cartCount();
@@ -1084,7 +948,7 @@
         for (var k in cart) {
             var it = keyItem(k);
             var sp = keySpice(k);
-            h += '<div class="line"><span class="nm">' + it.emoji + ' ' + esc(it.name) +
+            h += '<div class="line"><span class="nm">' + esc(it.name) +
                 (sp ? '<small>🌶 Pedas: ' + sp + '</small>' : '') + '</span>' +
                 '<span class="pr">' + fmt(it.price * cart[k]) + '</span>' +
                 '<span class="stepper">' +
@@ -1099,11 +963,11 @@
     }
 
     function updateWaLink() {
-        var msg = encodeURIComponent('*Pesanan — Sawadee Tomyam House (DEMO)*') + '%0A%0A';
+        var msg = encodeURIComponent('*Pesanan — Tomyam Halilintar (DEMO)*') + '%0A%0A';
         for (var k in cart) {
             var it = keyItem(k);
             var sp = keySpice(k);
-            var line = cart[k] + 'x ' + it.name + (sp ? ' (Pedas ' + sp.replace(' 🔥', '') + ')' : '') + ' — ' + fmt(it.price * cart[k]);
+            var line = cart[k] + 'x ' + it.name + (sp ? ' (Pedas ' + sp.replace(' ⚡', '') + ')' : '') + ' — ' + fmt(it.price * cart[k]);
             msg += encodeURIComponent(line) + '%0A';
         }
         msg += '%0A' + encodeURIComponent('*Jumlah: ' + fmt(cartSum()) + '*') + '%0A';
@@ -1158,7 +1022,6 @@
         renderCart();
     });
 
-    /* delegated clicks: add, steppers, spice chips */
     document.addEventListener('click', function (e) {
         var t = e.target.closest('button');
         if (!t) return;
@@ -1180,8 +1043,8 @@
             cart[key] = (cart[key] || 0) + 1;
             renderCart();
             if (!reduceMotion) {
-                cartBar.style.transform = 'translate(-50%, 0) scale(1.04)';
-                setTimeout(function () { cartBar.style.transform = ''; }, 160);
+                cartBar.style.transform = 'translate(-50%, 0) scale(1.03)';
+                setTimeout(function () { cartBar.style.transform = ''; }, 150);
             }
         } else if (inc) {
             cart[inc]++;

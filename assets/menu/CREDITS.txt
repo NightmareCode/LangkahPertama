@@ -1,0 +1,63 @@
+Food photo credits - Langkah Pertama menu demos
+All photos resized; sources and licenses below.
+
+mk-r1.jpg - roti canai (Malaysian flatbread with dhal curry) - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Roti_canai_with_dal_in_Kuala_Lumpur,_July_2014.jpg
+mk-r2.jpg - roti telur (egg-filled roti canai) - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Roti_Telur_and_Teh_Tarik.jpg
+mk-r3.jpg - roti tisu (tall crispy tissue bread cone) - CC BY-SA 4.0 - https://commons.wikimedia.org/wiki/File:Roti_Tisu.jpg
+mk-r4.jpg - roti boom (small round sweet roti) - CC BY-SA 2.0 - https://commons.wikimedia.org/wiki/File:Roti_Bom_(8653052485).jpg
+mk-r5.jpg - roti sardin (sardine stuffed murtabak/roti) - CC0 - https://commons.wikimedia.org/wiki/File:Roti_sardin_20231105_101634.jpg
+mk-r6.jpg - thosai / dosa (south indian crepe) - CC0 - https://commons.wikimedia.org/wiki/File:Thosai_-_Vel_South_Indian_Kitchen_%2B_Bar.jpg
+mk-r7.jpg - chapati flatbread - CC0 - https://commons.wikimedia.org/wiki/File:Chapati-1.jpg
+mk-n1.jpg - nasi lemak with fried chicken and sambal - CC BY-SA 2.0 - commons (File:Nasi Lemak (8654151798).jpg)
+mk-n2.jpg - nasi kandar (rice with mixed curries, Penang) - Public domain - commons (File:NasiKandar.jpg)
+mk-n3.jpg - mutton biryani rice (nasi briyani kambing) - CC BY-SA 4.0 - commons (File:A home made plate of mutton biryani served with chicken kassa cooked in the bengali style.jpg)
+mk-n4.jpg - nasi goreng kampung (Malay village fried rice) - CC BY 2.0 - commons (File:Nasi Goreng Kampung (11967588375).jpg)
+mk-n5.jpg - nasi goreng USA / fried rice with prawn squid chicken - CC BY-SA 4.0 - commons (File:Nasi goreng udang ayam sotong.jpg, described as 'Rupa sebenar nasi goreng USA')
+mk-n6.jpg - nasi goreng pattaya (omelette-wrapped fried rice) - CC BY-SA 3.0 - commons (File:Nasi goreng Pattaya.JPG)
+mk-m1.jpg - mee goreng mamak (Malaysian fried yellow noodles) - CC BY-SA 4.0 - commons
+mk-m2.jpg - maggi goreng (fried instant noodles Malaysia) - CC BY 2.0 - commons
+mk-m3.jpg - char kway teow / kuey teow goreng - CC0 - commons
+mk-m4.jpg - bihun sup / rice vermicelli chicken soup - CC0 - commons
+mk-w1.jpg - chicken chop with fries and coleslaw - CC (Wikimedia Commons) - https://commons.wikimedia.org/wiki/File:Chicken_Chop_With_French_Fries_and_Coleslaw.jpg
+mk-w2.jpg - fish and chips - CC0 - commons
+mk-d1.jpg - teh tarik (Malaysian pulled milk tea) - CC BY-SA 2.0 - commons - https://commons.wikimedia.org/wiki/File:Teh_Tarik.jpg
+mk-d2.jpg - milo dinosaur (iced milo with milo powder heap) - CC BY-SA 4.0 - commons - https://commons.wikimedia.org/wiki/File:Milo_dinosaur_-_a_cup_of_Milo_with_undissolved_Milo_powder_added_on_top.jpg
+mk-d3.jpg - iced lemon tea (teh o ais limau) - CC BY-SA 4.0 - commons - https://commons.wikimedia.org/wiki/File:Iced_lemon_tea_(2015-08-20).JPG
+mk-d4.jpg - sirap bandung (rose syrup milk drink) - CC BY 4.0 - commons - https://commons.wikimedia.org/wiki/File:Sirap_bandung_3.jpg
+mk-d5.jpg - kopi o (black coffee kopitiam) - CC BY-SA 2.0 - commons - https://commons.wikimedia.org/wiki/File:Kopi_O.jpg
+hub-mamak.jpg - mamak stall / roti canai spread on table (cover shot) - CC BY-SA 4.0 - commons - https://commons.wikimedia.org/wiki/File:Roti_canai_and_Teh_Tarik,_a_typical_Malaysian_breakfast.jpg
+lx-s1.jpg - scallop crudo fine dining plating - CC BY 2.0 - commons
+lx-s2.jpg - burrata heirloom tomato fine dining plate - CC0 - commons
+lx-s3.jpg - beef tataki fine dining plating - CC BY 2.0 - commons
+lx-s4.jpg - mushroom veloute soup fine dining - CC BY 3.0 - commons
+lx-hero.jpg - fine dining tasting course elegant dark plating (cover shot) - CC BY-SA 2.0 - commons
+hub-luxe.jpg - elegant fine dining restaurant plated dish (cover shot) - CC BY 2.0 - commons
+lx-m1.jpg - wagyu steak sliced fine dining plating - CC0 - https://commons.wikimedia.org/wiki/File:Wagyu_forefillet_-_Flat_Iron_2026-02-24.jpg
+lx-m2.jpg - pan seared barramundi fish fillet fine dining - CC BY-SA 2.0 - https://commons.wikimedia.org/wiki/File:Roasted_Barramundi_Fillet_-_Windsor_Hotel_(56397403).jpg
+lx-m3.jpg - grilled lobster plated fine dining - CC BY 2.0 - https://commons.wikimedia.org/wiki/File:Grilled_Lobster_(8558909573).jpg
+lx-m4.jpg - truffle risotto fine dining plate - CC BY 2.0 - https://commons.wikimedia.org/wiki/File:Risotto_with_White_Truffles_from_Alba.jpg
+lx-d1.jpg - souffle dessert ramekin - CC BY-SA 3.0 - https://commons.wikimedia.org/wiki/File:Chocolate_souffle1.JPG
+lx-d2.jpg - chocolate sphere dessert fine dining - CC0 - https://commons.wikimedia.org/wiki/File:Tiramisu_Bombe_at_Outrigger_Konotta,_Maldives.jpg
+lx-d3.jpg - creme brulee dessert - CC0 - https://commons.wikimedia.org/wiki/File:Cr%C3%A8me_br%C3%BBl%C3%A9e_at_restaurant_in_Zushi.jpg
+ty-t1.jpg - tom yum goong soup (Thai hot and sour soup with prawns) - CC BY 2.0 - commons
+ty-t2.jpg - tom yum seafood soup - CC BY 2.0 - openverse (https://www.flickr.com/photos/21045446@N00/14310408120)
+ty-t3.jpg - tom yum nam khon creamy milky tom yum - CC BY-SA 3.0 - commons
+ty-t4.jpg - crab in soup / chili crab - CC BY-SA 2.0 - commons
+ty-s1.jpg - siakap tiga rasa / Thai three-flavour fried whole sea bass - CC BY-SA 3.0 - commons
+ty-s2.jpg - pla kapong neung manao / Thai steamed sea bass lime - Public domain - commons
+ty-s3.jpg - fried calamari / sotong goreng tepung - CC0 - commons
+ty-s4.jpg - kam heong butter prawns / fried prawns Malaysian style - CC BY-SA 3.0 - commons
+ty-g1.jpg - stir fried kailan with salted fish (kailan ikan masin) - CC BY-SA 3.0 - commons (File:Phak kana nam man hoi.jpg)
+ty-g2.jpg - thai omelette (khai jiao) fluffy fried egg - CC BY 4.0 - commons (File:Khai Jiao.jpg)
+ty-g3.jpg - stir fried water spinach kangkung belacan - CC BY-SA 2.0 - commons (File:Kangkung Belacan.jpg)
+ty-g4.jpg - pandan leaf wrapped fried chicken (gai hor bai toey) - CC BY 2.0 - commons (File:Pandan Chicken (7005976636).jpg)
+ty-g5.jpg - pad prik / paprik chicken Thai stir fry - CC BY-SA 2.0 - commons (File:Pat Prik Gai, Sea Thai Restaurant, Ballys, Las Vegas, NV.jpg)
+ty-n1.jpg - nasi goreng tom yum fried rice - CC0 - commons (File:Tom Yum Seafood Fried Rice - Thai Pad Thai 2023-06-04.jpg)
+ty-n2.jpg - pad thai noodles - CC0 - commons (File:Pad Thai Noodles - Little Thai, Brighton 2024-03-21.jpg)
+ty-n3.jpg - rat na / lad na noodles in gravy - CC BY-SA 2.0 - commons (File:Kuay-tiew rad na.jpg)
+ty-d1.jpg - thai iced milk tea (cha yen) - CC BY 2.0 - commons (File:Thai iced milk tea.jpg)
+ty-d2.jpg - coconut milkshake / coconut shake - CC BY-SA 4.0 - commons (File:COCONUT MILKSHAKE.jpg)
+ty-d3.jpg - longan drink iced - CC BY-SA 4.0 - commons (File:Air Mata Kuching ( Sweet Monk Fruit Longan Dessert ).jpg)
+hub-tomyam.jpg - tom yum pot (same as ty-t1) - CC BY 2.0 - see ty-t1
+
+Generated 2026-06-12
