@@ -334,7 +334,47 @@
             pointer-events: none;
         }
         #hero3d.ready { opacity: 1; }
-        #hero3d canvas { display: block; }
+        #hero3d canvas {
+            display: block;
+            pointer-events: auto; /* the model is interactive: drag to spin, tap to pulse */
+            touch-action: pan-y;  /* vertical swipes keep scrolling the page on mobile */
+        }
+
+        .drag-hint {
+            position: absolute;
+            right: 7%;
+            bottom: 96px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dim);
+            opacity: 0;
+            transition: opacity 0.8s ease 0.5s;
+            pointer-events: none;
+        }
+        .drag-hint .ico {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 0.9rem;
+            animation: hintSpin 6s linear infinite;
+        }
+        @keyframes hintSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .drag-hint.show { opacity: 0.65; }
+        .drag-hint.off { opacity: 0 !important; transition: opacity 0.5s; }
+        @media (max-width: 980px) {
+            .drag-hint { right: 50%; transform: translateX(50%); bottom: 72px; }
+        }
+        @media (max-height: 700px) {
+            .drag-hint { display: none; }
+        }
         .hero .wrap { position: relative; z-index: 2; width: 100%; }
 
         .hero-eyebrow {
@@ -1156,6 +1196,7 @@
                 <a href="#contact" class="btn btn-ghost" data-magnet>Start a Project</a>
             </div>
         </div>
+        <div class="drag-hint" id="dragHint" aria-hidden="true"><span class="ico">⟳</span> Drag to spin — tap to pulse</div>
         <div class="hero-meta" aria-hidden="true">
             <div class="wrap">
                 <span class="hide-sm">LANGKAH PERTAMA — EST. 2026</span>
@@ -1736,6 +1777,92 @@
             var scrollT = 0;
             var visible = true, started = false, rafId = null;
 
+            /* ---- interactive spin / pulse state ---- */
+            var velY = 0;          // extra spin velocity from drags/flicks (rad/s)
+            var userRotX = 0;      // accumulated tilt from vertical drags
+            var pulseT = 0;        // 1 -> 0 after a tap
+            var dragging = false;
+            var lastX = 0, lastY = 0, downT = 0, movedPx = 0;
+            var glowMats = [];
+            var raycaster = new THREE.Raycaster();
+            var ndc = new THREE.Vector2();
+            var hitSphere = null;
+            var hint = document.getElementById('dragHint');
+            var hintOff = false;
+
+            function dismissHint() {
+                if (hintOff || !hint) return;
+                hintOff = true;
+                hint.classList.add('off');
+            }
+
+            function hitTest(e) {
+                if (!hitSphere) return false;
+                var rect = renderer.domElement.getBoundingClientRect();
+                ndc.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                ndc.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                raycaster.setFromCamera(ndc, camera);
+                return raycaster.intersectObject(hitSphere, false).length > 0;
+            }
+
+            function pulse() {
+                pulseT = 1;
+                velY += 1.8;
+            }
+
+            function collectGlowMats() {
+                rig.traverse(function (o) {
+                    if (o.isMesh && o.material && o.material.emissive &&
+                        (o.material.emissive.r + o.material.emissive.g + o.material.emissive.b) > 0.1) {
+                        glowMats.push({ m: o.material, base: o.material.emissiveIntensity || 1 });
+                    }
+                });
+            }
+
+            function wireInput() {
+                var cv = renderer.domElement;
+                cv.addEventListener('pointerdown', function (e) {
+                    if (!rig || !hitTest(e)) return;
+                    dragging = true;
+                    movedPx = 0;
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    downT = performance.now();
+                    try { cv.setPointerCapture(e.pointerId); } catch (err) { /* synthetic events */ }
+                    cv.style.cursor = 'grabbing';
+                    if (e.pointerType === 'mouse') e.preventDefault();
+                });
+                cv.addEventListener('pointermove', function (e) {
+                    if (!dragging) {
+                        if (e.pointerType === 'mouse') {
+                            cv.style.cursor = (rig && hitTest(e)) ? 'grab' : 'default';
+                        }
+                        return;
+                    }
+                    var dx = e.clientX - lastX;
+                    var dy = e.clientY - lastY;
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    movedPx += Math.abs(dx) + Math.abs(dy);
+                    rig.rotation.y += dx * 0.006;            // direct spin while dragging
+                    velY = dx * 0.18;                        // remember flick speed for inertia
+                    userRotX = Math.max(-0.55, Math.min(0.55, userRotX + dy * 0.004));
+                    if (movedPx > 12) dismissHint();
+                });
+                function endDrag() {
+                    if (!dragging) return;
+                    dragging = false;
+                    cv.style.cursor = 'grab';
+                    // small + quick movement counts as a tap -> pulse
+                    if (performance.now() - downT < 350 && movedPx < 8) {
+                        pulse();
+                        dismissHint();
+                    }
+                }
+                cv.addEventListener('pointerup', endDrag);
+                cv.addEventListener('pointercancel', endDrag);
+            }
+
             if (!('ontouchstart' in window)) {
                 window.addEventListener('pointermove', function (e) {
                     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -1767,19 +1894,28 @@
                 var dt = Math.min(clock.getDelta(), 0.05);
                 var t = clock.elapsedTime;
 
+                // decay interactive forces
+                velY *= Math.exp(-dt * 1.6);                      // flick inertia fades out
+                if (!dragging) userRotX *= Math.exp(-dt * 1.1);   // tilt relaxes back
+                pulseT = Math.max(0, pulseT - dt * 1.1);
+                var pb = Math.sin(Math.min(pulseT, 1) * Math.PI); // pulse bump: 0 -> 1 -> 0
+
                 if (rig) {
-                    // idle spin + scroll-driven rotation
-                    rig.rotation.y += dt * 0.18;
-                    rig.rotation.x = 0.12 + Math.sin(t * 0.4) * 0.04 + scrollT * 0.7 + smY * 0.16;
+                    // idle spin + flick inertia + scroll-driven rotation + drag tilt
+                    rig.rotation.y += dt * (0.18 + velY);
+                    rig.rotation.x = 0.12 + Math.sin(t * 0.4) * 0.04 + scrollT * 0.7 + smY * 0.16 + userRotX;
                     rig.rotation.z = smX * 0.1;
                     rig.position.y = 0.15 + Math.sin(t * 0.7) * 0.12 - scrollT * 1.4;
-                    var s = 1 - scrollT * 0.18;
+                    var s = (1 - scrollT * 0.18) * (1 + pb * 0.06);
                     rig.scale.setScalar(s);
                 }
-                if (ringB) ringB.rotation.z += dt * 0.3;
-                if (ringC) ringC.rotation.z -= dt * 0.22;
-                if (satRig) satRig.rotation.z += dt * 0.45;
-                particles.rotation.y += dt * 0.02;
+                if (ringB) ringB.rotation.z += dt * (0.3 + pulseT * 1.2);
+                if (ringC) ringC.rotation.z -= dt * (0.22 + pulseT * 0.9);
+                if (satRig) satRig.rotation.z += dt * 0.45 * (1 + pulseT * 3);
+                for (var gi = 0; gi < glowMats.length; gi++) {
+                    glowMats[gi].m.emissiveIntensity = glowMats[gi].base * (1 + pb * 2.4);
+                }
+                particles.rotation.y += dt * (0.02 + pulseT * 0.12);
 
                 // smooth mouse parallax
                 smX += (mouseX - smX) * 0.04;
@@ -1811,12 +1947,27 @@
                 resize();
                 container.classList.add('ready');
                 if (reduceMotion) {
-                    // static render — no animation
+                    // static render — no animation, no interaction
                     if (rig) { rig.rotation.y = 0.7; rig.rotation.x = 0.18; }
                     renderer.render(scene, camera);
                 } else {
+                    // invisible proxy sphere for forgiving grab/tap hit-testing
+                    hitSphere = new THREE.Mesh(
+                        new THREE.SphereGeometry(3.0, 12, 8),
+                        new THREE.MeshBasicMaterial({ visible: false })
+                    );
+                    rig.add(hitSphere);
+                    collectGlowMats();
+                    wireInput();
+                    if (hint) hint.classList.add('show');
                     rafId = requestAnimationFrame(loop);
                 }
+                // small debug/test handle
+                window.__lpHero = {
+                    pulse: pulse,
+                    get rotY() { return rig ? rig.rotation.y : null; },
+                    get spinVel() { return velY; }
+                };
             }
         } catch (err) {
             // WebGL / module / CDN failure — page works fine without the 3D layer
