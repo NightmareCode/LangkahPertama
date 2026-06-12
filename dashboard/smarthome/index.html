@@ -347,6 +347,12 @@
             transition: background 0.3s, border-color 0.3s;
             flex-shrink: 0;
         }
+        .switch::before {
+            /* invisible halo: grows the touch target to ~46px tall without changing looks */
+            content: '';
+            position: absolute;
+            inset: -10px;
+        }
         .switch::after {
             content: '';
             position: absolute;

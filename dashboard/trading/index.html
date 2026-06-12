@@ -226,7 +226,11 @@
         }
 
         /* ============ Positions table ============ */
-        .pos-table { width: 100%; border-collapse: collapse; }
+        .pos-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .pos-table { width: 100%; min-width: 430px; border-collapse: collapse; }
         .pos-table th {
             font-family: var(--mono);
             font-size: 0.56rem;
@@ -356,6 +360,9 @@
             .kpis { grid-template-columns: 1fr 1fr; }
             .grid { grid-template-columns: 1fr; }
             .grid2 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .tv-frame[style*="480"] { height: 390px !important; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -538,6 +545,7 @@
                 <h3>Desk Positions</h3>
                 <span class="sub">FICTIONAL BOOK · ILLUSTRATION ONLY</span>
             </div>
+            <div class="pos-scroll">
             <table class="pos-table">
                 <thead>
                     <tr><th>Symbol</th><th>Qty</th><th>Entry</th><th>Last</th><th>P/L</th></tr>
@@ -560,7 +568,8 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="pos-note">Position book is fictional and static — for layout illustration. Live books connect to your broker / OMS API.</p>
+            </div>
+            <p class="pos-note">Position book is fictional and static — for layout illustration. Live books connect to your broker / OMS API. Swipe the table sideways on small screens.</p>
         </div>
 
         <div class="card">
