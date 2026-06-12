@@ -79,10 +79,52 @@
             transition: opacity 1.4s ease 0.2s;
             pointer-events: none;
         }
-        #bg3d.ready { opacity: 0.6; }
+        #bg3d.ready { opacity: 0.9; }
         #bg3d canvas { display: block; }
         @media (max-width: 640px) {
-            #bg3d.ready { opacity: 0.42; }
+            #bg3d.ready { opacity: 0.6; }
+        }
+
+        /* hero opening — the ring spins large behind this empty space */
+        .hero {
+            min-height: 82svh;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero .hero-mid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px 0 40px;
+        }
+        .hero .hero-mid h1 { max-width: 640px; }
+        .hero .hero-mid .lede { margin-left: auto; margin-right: auto; }
+        .scroll-cue {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dim);
+            padding-bottom: 8px;
+        }
+        .scroll-cue .line {
+            width: 1px;
+            height: 38px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+            animation: cuePulse 2.2s ease-in-out infinite;
+            transform-origin: top;
+        }
+        @keyframes cuePulse {
+            0% { transform: scaleY(0); opacity: 0; }
+            35% { transform: scaleY(1); opacity: 1; }
+            100% { transform: scaleY(1); opacity: 0; }
         }
 
         .reveal {
@@ -149,14 +191,17 @@
             display: flex;
             align-items: stretch;
             gap: 0;
-            background: var(--card);
+            background: rgba(32, 36, 47, 0.52);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
             border: 1px solid var(--line);
             border-radius: 20px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
+            transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s, background 0.4s;
         }
+        .demo:hover { background: rgba(32, 36, 47, 0.72); }
         .demo:hover {
             transform: translateY(-5px);
             box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
@@ -323,6 +368,7 @@
 
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .scroll-cue .line { animation: none !important; }
             * { transition-duration: 0.01ms !important; }
         }
     </style>
@@ -332,14 +378,21 @@
 <div id="bg3d" aria-hidden="true"></div>
 <div class="wrap">
 
-    <div class="top-row reveal">
-        <a class="back" href="../">← Langkah Pertama Studio</a>
-        <span class="stamp">DEMO COLLECTION</span>
-    </div>
-
-    <p class="kicker reveal" style="--d:0.05s">// Web Dashboards — Live Demos</p>
-    <h1 class="reveal" style="--d:0.1s">Four industries, four dashboards.</h1>
-    <p class="lede reveal" style="--d:0.18s">The same data can tell its story in very different ways. Each demo below is purpose-built for its industry — its own design, colors and way of thinking.</p>
+    <header class="hero">
+        <div class="top-row reveal">
+            <a class="back" href="../">← Langkah Pertama Studio</a>
+            <span class="stamp">DEMO COLLECTION</span>
+        </div>
+        <div class="hero-mid">
+            <p class="kicker reveal" style="--d:0.05s">// Web Dashboards — Live Demos</p>
+            <h1 class="reveal" style="--d:0.1s">Four industries,<br>four dashboards.</h1>
+            <p class="lede reveal" style="--d:0.18s">The same data can tell its story in very different ways. Each demo is purpose-built for its industry — its own design, colors and way of thinking.</p>
+        </div>
+        <div class="scroll-cue reveal" style="--d:0.26s" aria-hidden="true">
+            <span>Scroll</span>
+            <span class="line"></span>
+        </div>
+    </header>
 
     <div class="list">
         <a class="demo demo-resto reveal" style="--d:0.08s" href="restoran/" aria-label="Open the Mamak Kilat restaurant dashboard demo (Malay interface)">
@@ -478,10 +531,10 @@
         var scene = new THREE.Scene();
         var pmrem = new THREE.PMREMGenerator(renderer);
         scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-        scene.fog = new THREE.Fog(0x191c26, 9, 18);
+        scene.fog = new THREE.Fog(0x191c26, 10, 22);
 
         var camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 50);
-        camera.position.set(0, 4.4, 9.4);
+        camera.position.set(0, 2.9, 7.6);
 
         var key = new THREE.DirectionalLight(0xdfe6ff, 1.1);
         key.position.set(4, 7, 5);
@@ -497,7 +550,7 @@
                     bars.push({ m: o, i: parseInt(o.name.slice(3), 10) });
                 }
             });
-            rig.position.y = -1.1;
+            rig.position.y = -0.7;
             scene.add(gltf.scene);
             start();
         }, undefined, function () {
@@ -544,8 +597,8 @@
                                   + 0.12 * Math.sin(t * 2.2 + bar.i * 1.1);
             }
             camera.position.x = smX * 0.7;
-            camera.position.y = 4.4 - smY * 0.4 - Math.min(scrollT * 0.002, 1.2);
-            camera.lookAt(0, 0.4, 0);
+            camera.position.y = 2.9 - smY * 0.4 - Math.min(scrollT * 0.0016, 1.0);
+            camera.lookAt(0, 0.55, 0);
 
             renderer.render(scene, camera);
         }
