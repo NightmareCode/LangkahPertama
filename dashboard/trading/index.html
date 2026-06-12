@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0d12">
+    <title>Menara Capital — Trading Desk | Demo by Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/dashboard/trading/">
+    <meta property="og:title" content="Menara Capital — Trading Desk">
+    <meta property="og:description" content="A trading dashboard demo wired to real live market data — interactive candlestick charts, ticker tape and market movers via TradingView. Built by Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Menara Capital — Trading Desk">
+    <meta name="twitter:description" content="A trading dashboard demo with real live market data via TradingView.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="description" content="Trading desk dashboard demo with real live market data — interactive charts, ticker tape, market overview via TradingView widgets. A fictional firm by Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0a0d12;
+            --panel: #10141b;
+            --panel-2: #141923;
+            --line: rgba(140, 160, 180, 0.14);
+            --green: #00c896;
+            --red: #ff5b5b;
+            --amber: #ffb648;
+            --txt: #e8edf4;
+            --dim: #8294a8;
+            --sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+            --mono: 'IBM Plex Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--green); color: #04261c; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--green);
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(600px 400px at 90% -8%, rgba(0, 200, 150, 0.07), transparent 65%),
+                radial-gradient(520px 400px at 0% 105%, rgba(255, 91, 91, 0.05), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 18px 90px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Top bar ============ */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 0 12px;
+            flex-wrap: wrap;
+        }
+        .brand { display: flex; align-items: center; gap: 11px; }
+        .brand .chip-logo {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #00c896, #007a5e);
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(0, 200, 150, 0.3);
+        }
+        .brand h1 { font-size: 1.02rem; font-weight: 700; line-height: 1.2; }
+        .brand small {
+            display: block;
+            font-family: var(--mono);
+            font-weight: 400;
+            font-size: 0.62rem;
+            color: var(--dim);
+        }
+        .top-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .demo-chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--green);
+            background: rgba(0, 200, 150, 0.07);
+            border: 1px solid rgba(0, 200, 150, 0.35);
+            border-radius: 8px;
+            padding: 6px 11px;
+            text-decoration: none;
+        }
+        .demo-chip:hover { background: rgba(0, 200, 150, 0.14); }
+
+        .live-strip {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin: 2px 0 12px;
+            flex-wrap: wrap;
+        }
+        .live-strip .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 10px var(--green);
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .live-strip b { color: var(--green); }
+
+        /* ============ Cards ============ */
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            overflow: hidden;
+            min-width: 0;
+        }
+        .card .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 14px 16px 12px;
+        }
+        .card .head h3 { font-size: 0.9rem; font-weight: 700; }
+        .card .head .sub {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: var(--dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* widget frames */
+        .tv-frame { border-top: 1px solid var(--line); }
+        .tape-card { margin-top: 4px; border-radius: 12px; }
+
+        /* ============ Desk KPIs ============ */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .kpi {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 15px 16px;
+        }
+        .kpi .k-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+        .kpi .k-val {
+            font-family: var(--mono);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-top: 7px;
+            font-variant-numeric: tabular-nums;
+        }
+        .kpi .k-val.up { color: var(--green); }
+        .kpi .k-note { font-size: 0.66rem; color: var(--dim); margin-top: 4px; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        /* ============ Positions table ============ */
+        .pos-table { width: 100%; border-collapse: collapse; }
+        .pos-table th {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--dim);
+            text-align: right;
+            padding: 8px 16px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background: var(--panel-2);
+        }
+        .pos-table th:first-child { text-align: left; }
+        .pos-table td {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            padding: 10px 16px;
+            text-align: right;
+            border-bottom: 1px dashed rgba(140, 160, 180, 0.1);
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+        .pos-table td:first-child { text-align: left; font-weight: 600; }
+        .pos-table td small { display: block; color: var(--dim); font-size: 0.6rem; font-weight: 400; }
+        .pl-up { color: var(--green); }
+        .pl-down { color: var(--red); }
+        .pos-note {
+            padding: 10px 16px 14px;
+            font-size: 0.64rem;
+            color: var(--dim);
+        }
+
+        /* insight */
+        .insight {
+            margin-top: 12px;
+            background: rgba(255, 182, 72, 0.05);
+            border: 1px solid rgba(255, 182, 72, 0.3);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+        .insight .bulb {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: rgba(255, 182, 72, 0.1);
+            border: 1px solid rgba(255, 182, 72, 0.3);
+            display: grid;
+            place-items: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .insight p { font-size: 0.8rem; font-weight: 500; }
+        .insight p span { color: var(--amber); font-weight: 700; }
+        .insight small { display: block; font-weight: 400; font-size: 0.68rem; color: var(--dim); }
+
+        /* ============ Studio CTA / footer / to-top ============ */
+        .studio-cta {
+            margin-top: 34px;
+            border: 1px dashed rgba(0, 200, 150, 0.35);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            background: rgba(0, 200, 150, 0.03);
+        }
+        .studio-cta .mono-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+        .studio-cta h3 { font-size: 1.2rem; font-weight: 700; margin: 9px 0 5px; }
+        .studio-cta p { font-size: 0.84rem; color: var(--dim); max-width: 480px; margin: 0 auto 18px; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 11px 20px;
+            transition: filter 0.25s, transform 0.25s var(--ease);
+        }
+        .cta-link.green { background: linear-gradient(110deg, #1adfae, #00a37a); color: #04261c; }
+        .cta-link.ghost { border: 1px solid var(--line); color: var(--txt); }
+        .cta-link:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 26px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
+        }
+        footer.page-foot a { color: var(--green); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        .to-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 50;
+            width: 46px; height: 46px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 200, 150, 0.4);
+            background: rgba(16, 20, 27, 0.9);
+            color: var(--green);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.25s, color 0.25s;
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--green); color: #04261c; }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 900px) {
+            .kpis { grid-template-columns: 1fr 1fr; }
+            .grid { grid-template-columns: 1fr; }
+            .grid2 { grid-template-columns: 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .live-strip .dot { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>.reveal { opacity: 1; transform: none; }</style>
+    </noscript>
+</head>
+<body>
+<div class="page" id="page">
+
+    <div class="topbar reveal">
+        <div class="brand">
+            <div class="chip-logo" aria-hidden="true">📊</div>
+            <h1>Menara Capital
+                <small>TRADING DESK · DEMO</small>
+            </h1>
+        </div>
+        <div class="top-actions">
+            <a class="demo-chip" href="../">DEMO 4/4 · SWITCH ↗</a>
+            <a class="demo-chip" href="../../">LANGKAH PERTAMA ↗</a>
+        </div>
+    </div>
+
+    <div class="live-strip reveal" style="--d:0.04s">
+        <span class="dot"></span> <b>Live market data</b> · streaming via TradingView · firm &amp; positions fictional
+    </div>
+
+    <!-- Ticker tape (live) -->
+    <div class="card tape-card reveal" style="--d:0.08s">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+                    { "proName": "NASDAQ:AAPL", "title": "Apple" },
+                    { "proName": "NASDAQ:TSLA", "title": "Tesla" },
+                    { "proName": "NASDAQ:NVDA", "title": "NVIDIA" },
+                    { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
+                    { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" },
+                    { "proName": "FX_IDC:USDMYR", "title": "USD/MYR" },
+                    { "proName": "TVC:GOLD", "title": "Gold" }
+                ],
+                "showSymbolLogo": true,
+                "isTransparent": true,
+                "displayMode": "adaptive",
+                "colorTheme": "dark",
+                "locale": "en"
+            }
+            </script>
+        </div>
+    </div>
+
+    <!-- Desk KPIs (fictional) -->
+    <div class="kpis reveal" style="--d:0.12s">
+        <div class="kpi">
+            <div class="k-label">Fund NAV</div>
+            <div class="k-val">RM 48.2M</div>
+            <div class="k-note">Menara Global Fund (fictional)</div>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Day P/L</div>
+            <div class="k-val up">+RM 312K</div>
+            <div class="k-note">+0.65% today</div>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Open Positions</div>
+            <div class="k-val">23</div>
+            <div class="k-note">across 4 markets</div>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Win Rate · 90d</div>
+            <div class="k-val">64%</div>
+            <div class="k-note">avg R:R 1 : 1.8</div>
+        </div>
+    </div>
+
+    <!-- Main chart (live, interactive) -->
+    <div class="card reveal" style="--d:0.16s; margin-top:12px;">
+        <div class="head">
+            <h3>Market Chart</h3>
+            <span class="sub">LIVE · SEARCH ANY SYMBOL IN THE TOOLBAR</span>
+        </div>
+        <div class="tv-frame" style="height: 480px;">
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                {
+                    "autosize": true,
+                    "symbol": "NASDAQ:AAPL",
+                    "interval": "D",
+                    "timezone": "Asia/Kuala_Lumpur",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "allow_symbol_change": true,
+                    "calendar": false,
+                    "hide_volume": false,
+                    "support_host": "https://www.tradingview.com"
+                }
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini charts (live) -->
+    <div class="grid reveal">
+        <div class="card">
+            <div class="tv-frame" style="height: 200px; border-top: none;">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {
+                        "symbol": "BINANCE:BTCUSDT",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "1M",
+                        "colorTheme": "dark",
+                        "isTransparent": true,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="tv-frame" style="height: 200px; border-top: none;">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {
+                        "symbol": "NASDAQ:TSLA",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "1M",
+                        "colorTheme": "dark",
+                        "isTransparent": true,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="tv-frame" style="height: 200px; border-top: none;">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {
+                        "symbol": "FX_IDC:USDMYR",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "1M",
+                        "colorTheme": "dark",
+                        "isTransparent": true,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market overview (live) + positions (fictional) -->
+    <div class="grid2 reveal">
+        <div class="card">
+            <div class="head">
+                <h3>Desk Positions</h3>
+                <span class="sub">FICTIONAL BOOK · ILLUSTRATION ONLY</span>
+            </div>
+            <table class="pos-table">
+                <thead>
+                    <tr><th>Symbol</th><th>Qty</th><th>Entry</th><th>Last</th><th>P/L</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AAPL<small>NASDAQ</small></td><td>1,200</td><td>182.40</td><td>196.85</td><td class="pl-up">+7.9%</td>
+                    </tr>
+                    <tr>
+                        <td>NVDA<small>NASDAQ</small></td><td>650</td><td>118.20</td><td>134.55</td><td class="pl-up">+13.8%</td>
+                    </tr>
+                    <tr>
+                        <td>BTCUSDT<small>BINANCE</small></td><td>2.4</td><td>96,400</td><td>104,210</td><td class="pl-up">+8.1%</td>
+                    </tr>
+                    <tr>
+                        <td>TSLA<small>NASDAQ</small></td><td>450</td><td>262.10</td><td>241.30</td><td class="pl-down">−7.9%</td>
+                    </tr>
+                    <tr>
+                        <td>MAYBANK<small>BURSA MYX</small></td><td>50,000</td><td>9.05</td><td>9.42</td><td class="pl-up">+4.1%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="pos-note">Position book is fictional and static — for layout illustration. Live books connect to your broker / OMS API.</p>
+        </div>
+
+        <div class="card">
+            <div class="head">
+                <h3>Markets</h3>
+                <span class="sub">LIVE OVERVIEW</span>
+            </div>
+            <div class="tv-frame" style="height: 420px;">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                        "colorTheme": "dark",
+                        "dateRange": "1D",
+                        "showChart": false,
+                        "locale": "en",
+                        "width": "100%",
+                        "height": "100%",
+                        "isTransparent": true,
+                        "showSymbolLogo": true,
+                        "tabs": [
+                            {
+                                "title": "Indices",
+                                "symbols": [
+                                    { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+                                    { "s": "FOREXCOM:NSXUSD", "d": "Nasdaq 100" },
+                                    { "s": "FOREXCOM:DJI", "d": "Dow 30" },
+                                    { "s": "INDEX:NKY", "d": "Nikkei 225" },
+                                    { "s": "INDEX:HSI", "d": "Hang Seng" }
+                                ]
+                            },
+                            {
+                                "title": "Crypto",
+                                "symbols": [
+                                    { "s": "BINANCE:BTCUSDT", "d": "Bitcoin" },
+                                    { "s": "BINANCE:ETHUSDT", "d": "Ethereum" },
+                                    { "s": "BINANCE:SOLUSDT", "d": "Solana" },
+                                    { "s": "BINANCE:BNBUSDT", "d": "BNB" }
+                                ]
+                            },
+                            {
+                                "title": "Forex",
+                                "symbols": [
+                                    { "s": "FX_IDC:USDMYR", "d": "USD/MYR" },
+                                    { "s": "FX:EURUSD", "d": "EUR/USD" },
+                                    { "s": "FX:GBPUSD", "d": "GBP/USD" },
+                                    { "s": "FX:USDJPY", "d": "USD/JPY" }
+                                ]
+                            }
+                        ]
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insight -->
+    <div class="insight reveal">
+        <div class="bulb" aria-hidden="true">⚠️</div>
+        <p>Portfolio beta is <span>1.18</span> — tech-heavy book runs hotter than the index.
+            <small>Desk note (fictional): consider trimming NASDAQ exposure ahead of earnings week.</small>
+        </p>
+    </div>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="mono-tag">// Real data, real time</span>
+        <h3>Need a dashboard wired to live data sources?</h3>
+        <p>Market feeds, IoT sensors, your own APIs — if the data exists, it can live on one screen. This demo streams real market data through TradingView.</p>
+        <div class="row">
+            <a class="cta-link green" href="https://wa.me/60172888202?text=Hi%20Far!%20I%27m%20interested%20in%20a%20live-data%20dashboard." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link ghost" href="../restoran/">🍛 Restaurant Demo</a>
+            <a class="cta-link ghost" href="../smarthome/">🏠 Smart Home Demo</a>
+            <a class="cta-link ghost" href="../sales/">📈 Sales Analytics Demo</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        DEMO — FICTIONAL FIRM · MARKET DATA BY <a href="https://www.tradingview.com/" target="_blank" rel="noopener">TRADINGVIEW</a> · BUILT BY <a href="../../">LANGKAH PERTAMA</a> © 2026
+    </footer>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.05 });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+})();
+</script>
+</body>
+</html>

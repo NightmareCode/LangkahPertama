@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0c0f1d">
-    <title>Gemilang Niaga — Analitik Jualan | Demo Langkah Pertama</title>
+    <title>Gemilang Niaga — Sales Analytics | Demo by Langkah Pertama</title>
     <link rel="icon" href="../../assets/icon-512.png" type="image/png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/dashboard/sales/">
-    <meta property="og:title" content="Gemilang Niaga — Analitik Jualan">
-    <meta property="og:description" content="Demo papan pemuka analitik jualan — hasil, saluran jualan, prestasi negeri dan graf yang cantik. Dibina oleh Langkah Pertama.">
+    <meta property="og:title" content="Gemilang Niaga — Sales Analytics">
+    <meta property="og:description" content="A sales analytics dashboard demo — revenue, pipeline, state performance and beautiful charts. Built by Langkah Pertama.">
     <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gemilang Niaga — Analitik Jualan">
-    <meta name="twitter:description" content="Demo papan pemuka analitik jualan — hasil, saluran jualan, prestasi negeri.">
+    <meta name="twitter:title" content="Gemilang Niaga — Sales Analytics">
+    <meta name="twitter:description" content="A sales analytics dashboard demo — revenue, pipeline, state performance.">
     <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
-    <meta name="description" content="Demo papan pemuka analitik jualan untuk perniagaan — KPI dengan sparkline, corong jualan, prestasi mengikut negeri, sasaran. Syarikat rekaan oleh Langkah Pertama.">
+    <meta name="description" content="Sales analytics dashboard demo — sparkline KPIs, sales funnel, performance by state, targets. A fictional company by Langkah Pertama.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -523,30 +523,30 @@
         <div class="brand">
             <div class="chip-logo" aria-hidden="true">📈</div>
             <h1>Gemilang Niaga Sdn. Bhd.
-                <small>Analitik Jualan · Demo</small>
+                <small>Sales Analytics · Demo</small>
             </h1>
         </div>
         <div class="top-actions">
-            <a class="demo-chip" href="../">DEMO 3/3 · TUKAR ↗</a>
+            <a class="demo-chip" href="../">DEMO 3/4 · SWITCH ↗</a>
             <a class="demo-chip" href="../../">LANGKAH PERTAMA ↗</a>
         </div>
     </div>
 
     <div class="range-row reveal" style="--d:0.05s">
-        <h2 id="rangeTitle">Prestasi Bulan Ini
-            <span class="sub" id="rangeSub">1 – 11 Jun 2026 · dikemas kini 5 minit lalu</span>
+        <h2 id="rangeTitle">Performance — This Month
+            <span class="sub" id="rangeSub">1 – 11 Jun 2026 · updated 5 min ago</span>
         </h2>
-        <div class="range-tabs" role="tablist" aria-label="Julat masa">
-            <button class="rtab active" data-range="month" role="tab" aria-selected="true">Bulan</button>
-            <button class="rtab" data-range="quarter" role="tab" aria-selected="false">Suku</button>
-            <button class="rtab" data-range="year" role="tab" aria-selected="false">Tahun</button>
+        <div class="range-tabs" role="tablist" aria-label="Time range">
+            <button class="rtab active" data-range="month" role="tab" aria-selected="true">Month</button>
+            <button class="rtab" data-range="quarter" role="tab" aria-selected="false">Quarter</button>
+            <button class="rtab" data-range="year" role="tab" aria-selected="false">Year</button>
         </div>
     </div>
 
     <!-- KPIs -->
     <div class="kpis reveal" style="--d:0.08s">
         <div class="kpi">
-            <div class="k-label">Hasil Jualan</div>
+            <div class="k-label">Revenue</div>
             <div class="k-row">
                 <div class="k-val" id="kRev">RM 0</div>
                 <svg class="spark" id="sparkRev" width="64" height="26" viewBox="0 0 64 26"></svg>
@@ -554,7 +554,7 @@
             <span class="k-delta up" id="kRevD">▲ 0%</span>
         </div>
         <div class="kpi">
-            <div class="k-label">Untung Kasar</div>
+            <div class="k-label">Gross Profit</div>
             <div class="k-row">
                 <div class="k-val" id="kProfit">RM 0</div>
                 <svg class="spark" id="sparkProfit" width="64" height="26" viewBox="0 0 64 26"></svg>
@@ -562,7 +562,7 @@
             <span class="k-delta up" id="kProfitD">▲ 0%</span>
         </div>
         <div class="kpi">
-            <div class="k-label">Pesanan</div>
+            <div class="k-label">Orders</div>
             <div class="k-row">
                 <div class="k-val" id="kOrders">0</div>
                 <svg class="spark" id="sparkOrders" width="64" height="26" viewBox="0 0 64 26"></svg>
@@ -570,7 +570,7 @@
             <span class="k-delta up" id="kOrdersD">▲ 0%</span>
         </div>
         <div class="kpi">
-            <div class="k-label">Pelanggan Aktif</div>
+            <div class="k-label">Active Customers</div>
             <div class="k-row">
                 <div class="k-val" id="kCust">0</div>
                 <svg class="spark" id="sparkCust" width="64" height="26" viewBox="0 0 64 26"></svg>
@@ -582,15 +582,15 @@
     <!-- Revenue + target -->
     <div class="grid">
         <div class="card reveal" style="--d:0.12s">
-            <h3>Hasil Jualan <span class="sub" id="chartSub">RM RIBU · MENGIKUT HARI</span></h3>
+            <h3>Revenue <span class="sub" id="chartSub">RM '000 · BY DAY</span></h3>
             <div class="chart-wrap" id="chartWrap">
-                <svg id="revChart" viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Carta hasil jualan"></svg>
+                <svg id="revChart" viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Revenue chart"></svg>
                 <div class="tooltip" id="chartTip"></div>
             </div>
         </div>
 
         <div class="card target reveal" style="--d:0.16s">
-            <h3>Sasaran <span class="sub" id="targetSub">BULAN INI</span></h3>
+            <h3>Target <span class="sub" id="targetSub">THIS MONTH</span></h3>
             <div class="t-ring-wrap">
                 <svg viewBox="0 0 130 130">
                     <defs>
@@ -604,21 +604,21 @@
                 </svg>
                 <div class="t-center">
                     <b id="tPct">0%</b>
-                    <span>DICAPAI</span>
+                    <span>ACHIEVED</span>
                 </div>
             </div>
-            <div class="t-meta" id="tMeta"><b>RM 0</b> daripada <b>RM 0</b></div>
+            <div class="t-meta" id="tMeta"><b>RM 0</b> of <b>RM 0</b></div>
         </div>
     </div>
 
     <!-- Funnel + states -->
     <div class="grid" style="grid-template-columns: 1fr 1fr;">
         <div class="card reveal">
-            <h3>Saluran Jualan <span class="sub">PROSPEK → TUTUP</span></h3>
+            <h3>Sales Pipeline <span class="sub">LEADS → CLOSED</span></h3>
             <div class="funnel" id="funnel"></div>
         </div>
         <div class="card reveal" style="--d:0.06s">
-            <h3>Jualan Ikut Negeri <span class="sub">TOP 6</span></h3>
+            <h3>Sales by State <span class="sub">TOP 6</span></h3>
             <div id="stateList"></div>
         </div>
     </div>
@@ -626,11 +626,11 @@
     <!-- Products + leaderboard -->
     <div class="grid" style="grid-template-columns: 1fr 1fr;">
         <div class="card reveal">
-            <h3>Produk Terlaris <span class="sub">RM RIBU</span></h3>
+            <h3>Top Products <span class="sub">RM '000</span></h3>
             <div id="prodList"></div>
         </div>
         <div class="card reveal" style="--d:0.06s">
-            <h3>Jurujual Terbaik <span class="sub" id="leadSub">BULAN INI</span></h3>
+            <h3>Top Salespeople <span class="sub" id="leadSub">THIS MONTH</span></h3>
             <div id="leadList"></div>
         </div>
     </div>
@@ -638,27 +638,28 @@
     <!-- Insight -->
     <div class="insight reveal">
         <div class="bulb" aria-hidden="true">💡</div>
-        <p id="insightText">Memuatkan...</p>
+        <p id="insightText">Loading...</p>
     </div>
 
     <!-- Studio CTA -->
     <div class="studio-cta reveal">
-        <span class="mono-tag">// Nombor yang bercerita</span>
-        <h3>Nak analitik begini untuk perniagaan anda?</h3>
-        <p>Data jualan anda jadi graf yang cantik dan keputusan yang jelas — disambung terus dengan sistem POS atau e-dagang sedia ada.</p>
+        <span class="mono-tag">// Numbers that tell stories</span>
+        <h3>Want analytics like this for your business?</h3>
+        <p>Your sales data turned into beautiful charts and clear decisions — connected straight to your existing POS or e-commerce systems.</p>
         <div class="row">
-            <a class="cta-link grad" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20papan%20pemuka%20analitik%20untuk%20perniagaan%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
-            <a class="cta-link ghost" href="../restoran/">🍛 Demo Restoran</a>
-            <a class="cta-link ghost" href="../smarthome/">🏠 Demo Smart Home</a>
+            <a class="cta-link grad" href="https://wa.me/60172888202?text=Hi%20Far!%20I%27m%20interested%20in%20an%20analytics%20dashboard%20for%20my%20business." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link ghost" href="../restoran/">🍛 Restaurant Demo</a>
+            <a class="cta-link ghost" href="../smarthome/">🏠 Smart Home Demo</a>
+            <a class="cta-link ghost" href="../trading/">📊 Trading Desk Demo</a>
         </div>
     </div>
 
     <footer class="page-foot">
-        DEMO — SYARIKAT &amp; DATA REKAAN · DIBINA OLEH <a href="../../">LANGKAH PERTAMA</a> © 2026
+        DEMO — FICTIONAL COMPANY &amp; DATA · BUILT BY <a href="../../">LANGKAH PERTAMA</a> © 2026
     </footer>
 </div>
 
-<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+<button class="to-top" id="toTop" aria-label="Back to top">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
@@ -668,11 +669,11 @@
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ================= DATA (rekaan, konsisten) ================= */
+    /* ================= DATA (fictional, internally consistent) ================= */
     var DATA = {
         month: {
-            title: 'Prestasi Bulan Ini', sub: '1 – 11 Jun 2026 · dikemas kini 5 minit lalu',
-            chartSub: 'RM RIBU · MENGIKUT HARI', leadSub: 'BULAN INI', targetSub: 'BULAN INI',
+            title: 'Performance — This Month', sub: '1 – 11 Jun 2026 · updated 5 min ago',
+            chartSub: 'RM \'000 · BY DAY', leadSub: 'THIS MONTH', targetSub: 'THIS MONTH',
             rev: 1842000, profit: 442000, orders: 3184, cust: 1184,
             dRev: '▲ 11%', dProfit: '▲ 9%', dOrders: '▲ 7%', dCust: '▲ 4%',
             labels: ['1','2','3','4','5','6','7','8','9','10','11'],
@@ -681,21 +682,21 @@
                 rev: [3,5,4,6,7,6,8,9], profit: [4,4,5,6,5,7,7,8],
                 orders: [5,6,5,7,6,8,7,9], cust: [6,6,7,6,7,7,8,8]
             },
-            target: { pct: 82, now: 'RM 1.84J', goal: 'RM 2.25J' },
+            target: { pct: 82, now: 'RM 1.84M', goal: 'RM 2.25M' },
             funnel: [
-                ['Prospek', 1240, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
-                ['Sebut Harga', 680, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
-                ['Rundingan', 342, 28, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
-                ['Tutup Jualan', 187, 15, 'linear-gradient(90deg,#22d3ee,#34d399)']
+                ['Leads', 1240, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Quotations', 680, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Negotiation', 342, 28, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Closed Won', 187, 15, 'linear-gradient(90deg,#22d3ee,#34d399)']
             ],
             states: [ ['Selangor', 486], ['Kuala Lumpur', 412], ['Johor', 318], ['Pulau Pinang', 247], ['Perak', 204], ['Kelantan', 175] ],
             prods: [ ['Air Mineral Seri 500ml', 384], ['Kopi Gemilang 3-in-1', 322], ['Mee Segera Juara', 268], ['Biskut Bintang', 196], ['Sos Cili Mantap', 154] ],
-            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 286, '#8b5cf6'], ['Mei Ling Tan', 'Wilayah Selatan', 251, '#22d3ee'], ['Kumar Selvam', 'Wilayah Utara', 219, '#f472b6'] ],
-            insight: 'Selangor menyumbang <span>26%</span> hasil bulan ini — naik 3 mata.<small>Cadangan: tambah satu lori penghantaran untuk laluan Klang–Shah Alam.</small>'
+            leads: [ ['Hafiz Rahman', 'Central Region', 286, '#8b5cf6'], ['Mei Ling Tan', 'Southern Region', 251, '#22d3ee'], ['Kumar Selvam', 'Northern Region', 219, '#f472b6'] ],
+            insight: 'Selangor contributed <span>26%</span> of this month\'s revenue — up 3 points.<small>Suggestion: add one delivery truck to the Klang–Shah Alam route.</small>'
         },
         quarter: {
-            title: 'Prestasi Suku Ke-2', sub: 'Apr – Jun 2026 · dikemas kini 5 minit lalu',
-            chartSub: 'RM RIBU · MENGIKUT MINGGU', leadSub: 'SUKU INI', targetSub: 'SUKU INI',
+            title: 'Performance — Q2', sub: 'Apr – Jun 2026 · updated 5 min ago',
+            chartSub: 'RM \'000 · BY WEEK', leadSub: 'THIS QUARTER', targetSub: 'THIS QUARTER',
             rev: 5210000, profit: 1230000, orders: 9046, cust: 1322,
             dRev: '▲ 9%', dProfit: '▲ 12%', dOrders: '▲ 6%', dCust: '▲ 8%',
             labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11'],
@@ -704,40 +705,40 @@
                 rev: [4,5,5,6,6,7,8,8], profit: [3,5,4,6,7,7,8,9],
                 orders: [5,5,6,6,7,7,7,8], cust: [5,6,6,7,7,8,8,9]
             },
-            target: { pct: 87, now: 'RM 5.21J', goal: 'RM 6.00J' },
+            target: { pct: 87, now: 'RM 5.21M', goal: 'RM 6.00M' },
             funnel: [
-                ['Prospek', 3480, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
-                ['Sebut Harga', 1924, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
-                ['Rundingan', 1018, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
-                ['Tutup Jualan', 561, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
+                ['Leads', 3480, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Quotations', 1924, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Negotiation', 1018, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Closed Won', 561, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
             ],
             states: [ ['Selangor', 1356], ['Kuala Lumpur', 1182], ['Johor', 924], ['Pulau Pinang', 698], ['Perak', 571], ['Kelantan', 479] ],
             prods: [ ['Air Mineral Seri 500ml', 1088], ['Kopi Gemilang 3-in-1', 941], ['Mee Segera Juara', 762], ['Biskut Bintang', 545], ['Sos Cili Mantap', 432] ],
-            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 812, '#8b5cf6'], ['Kumar Selvam', 'Wilayah Utara', 744, '#f472b6'], ['Mei Ling Tan', 'Wilayah Selatan', 718, '#22d3ee'] ],
-            insight: 'Kadar penutupan jualan suku ini <span>16%</span> — terbaik dalam setahun.<small>Cadangan: kekalkan skrip jualan baharu, ia jelas berkesan.</small>'
+            leads: [ ['Hafiz Rahman', 'Central Region', 812, '#8b5cf6'], ['Kumar Selvam', 'Northern Region', 744, '#f472b6'], ['Mei Ling Tan', 'Southern Region', 718, '#22d3ee'] ],
+            insight: 'Close rate hit <span>16%</span> this quarter — the best in a year.<small>Suggestion: keep the new sales script, it is clearly working.</small>'
         },
         year: {
-            title: 'Prestasi Tahun 2026', sub: 'Jan – Jun 2026 · dikemas kini 5 minit lalu',
-            chartSub: 'RM RIBU · MENGIKUT BULAN', leadSub: 'TAHUN INI', targetSub: 'TAHUN INI',
+            title: 'Performance — 2026', sub: 'Jan – Jun 2026 · updated 5 min ago',
+            chartSub: 'RM \'000 · BY MONTH', leadSub: 'THIS YEAR', targetSub: 'THIS YEAR',
             rev: 9870000, profit: 2310000, orders: 17230, cust: 1322,
             dRev: '▲ 14%', dProfit: '▲ 16%', dOrders: '▲ 10%', dCust: '▲ 12%',
-            labels: ['Jan','Feb','Mac','Apr','Mei','Jun'],
+            labels: ['Jan','Feb','Mar','Apr','May','Jun'],
             series: [1480, 1520, 1660, 1720, 1648, 1842],
             sparks: {
                 rev: [3,4,5,5,6,7,8,9], profit: [3,4,4,6,6,7,8,9],
                 orders: [4,5,5,6,7,7,8,8], cust: [5,5,6,7,7,8,8,9]
             },
-            target: { pct: 41, now: 'RM 9.87J', goal: 'RM 24.0J' },
+            target: { pct: 41, now: 'RM 9.87M', goal: 'RM 24.0M' },
             funnel: [
-                ['Prospek', 11400, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
-                ['Sebut Harga', 6156, 54, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
-                ['Rundingan', 3306, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
-                ['Tutup Jualan', 1786, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
+                ['Leads', 11400, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Quotations', 6156, 54, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Negotiation', 3306, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Closed Won', 1786, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
             ],
             states: [ ['Selangor', 2566], ['Kuala Lumpur', 2238], ['Johor', 1742], ['Pulau Pinang', 1318], ['Perak', 1086], ['Kelantan', 920] ],
             prods: [ ['Air Mineral Seri 500ml', 2055], ['Kopi Gemilang 3-in-1', 1781], ['Mee Segera Juara', 1440], ['Biskut Bintang', 1032], ['Sos Cili Mantap', 818] ],
-            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 1540, '#8b5cf6'], ['Mei Ling Tan', 'Wilayah Selatan', 1402, '#22d3ee'], ['Kumar Selvam', 'Wilayah Utara', 1366, '#f472b6'] ],
-            insight: 'Hasil separuh tahun pertama naik <span>14%</span> berbanding 2025.<small>Cadangan: sasaran RM 24J masih jauh — pertimbang kempen Q3 untuk wilayah Pantai Timur.</small>'
+            leads: [ ['Hafiz Rahman', 'Central Region', 1540, '#8b5cf6'], ['Mei Ling Tan', 'Southern Region', 1402, '#22d3ee'], ['Kumar Selvam', 'Northern Region', 1366, '#f472b6'] ],
+            insight: 'First-half revenue is up <span>14%</span> versus 2025.<small>Suggestion: the RM 24M goal is still far — consider a Q3 push for the East Coast region.</small>'
         }
     };
 
@@ -747,7 +748,7 @@
     }
 
     function fmtShort(n) {
-        if (n >= 1000000) return 'RM ' + (n / 1000000).toFixed(2) + 'J';
+        if (n >= 1000000) return 'RM ' + (n / 1000000).toFixed(2) + 'M';
         if (n >= 1000) return 'RM ' + Math.round(n / 1000) + 'K';
         return 'RM ' + n;
     }
@@ -864,7 +865,7 @@
 
     function buildTarget(d) {
         document.getElementById('tPct').textContent = d.target.pct + '%';
-        document.getElementById('tMeta').innerHTML = '<b>' + d.target.now + '</b> daripada <b>' + d.target.goal + '</b>';
+        document.getElementById('tMeta').innerHTML = '<b>' + d.target.now + '</b> of <b>' + d.target.goal + '</b>';
         document.getElementById('targetSub').textContent = d.targetSub;
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
@@ -888,9 +889,9 @@
     function buildFunnel(d) {
         var prev = null;
         bars(document.getElementById('funnel'), d.funnel, function (f) {
-            var conv = prev ? Math.round(f[1] / prev * 100) + '% dari peringkat sebelum' : '';
+            var conv = prev ? Math.round(f[1] / prev * 100) + '% of previous stage' : '';
             prev = f[1];
-            return '<div class="f-row"><div class="f-name"><span>' + f[0] + '</span><span>' + f[1].toLocaleString('ms-MY') + '</span></div>' +
+            return '<div class="f-row"><div class="f-name"><span>' + f[0] + '</span><span>' + f[1].toLocaleString('en-MY') + '</span></div>' +
                 '<div class="f-bar"><i data-w="' + f[2] + '" style="background:' + f[3] + '"></i></div>' +
                 (conv ? '<div class="f-conv">' + conv + '</div>' : '') + '</div>';
         });
@@ -932,8 +933,8 @@
         document.getElementById('chartSub').textContent = d.chartSub;
         animateNum(document.getElementById('kRev'), d.rev, fmtShort);
         animateNum(document.getElementById('kProfit'), d.profit, fmtShort);
-        animateNum(document.getElementById('kOrders'), d.orders, function (v) { return Math.round(v).toLocaleString('ms-MY'); });
-        animateNum(document.getElementById('kCust'), d.cust, function (v) { return Math.round(v).toLocaleString('ms-MY'); });
+        animateNum(document.getElementById('kOrders'), d.orders, function (v) { return Math.round(v).toLocaleString('en-MY'); });
+        animateNum(document.getElementById('kCust'), d.cust, function (v) { return Math.round(v).toLocaleString('en-MY'); });
         setDelta('kRevD', d.dRev);
         setDelta('kProfitD', d.dProfit);
         setDelta('kOrdersD', d.dOrders);
