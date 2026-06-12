@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f2faf7">
-    <title>Farmasi Ceria — Sistem Inventori | Demo Langkah Pertama</title>
+    <title>Farmasi Ceria — Pharmacy Inventory | Demo by Langkah Pertama</title>
     <link rel="icon" href="../../assets/icon-512.png" type="image/png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/inventory/farmasi/">
-    <meta property="og:title" content="Farmasi Ceria — Sistem Inventori">
-    <meta property="og:description" content="Demo sistem inventori farmasi — nombor kelompok, kiraan hari luput dan rantaian sejuk. Dibina oleh Langkah Pertama.">
+    <meta property="og:title" content="Farmasi Ceria — Pharmacy Inventory">
+    <meta property="og:description" content="A pharmacy inventory demo — batch numbers, expiry countdowns and cold-chain tracking. Built by Langkah Pertama.">
     <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Farmasi Ceria — Sistem Inventori">
-    <meta name="twitter:description" content="Demo sistem inventori farmasi — kelompok, tarikh luput, rantaian sejuk.">
+    <meta name="twitter:title" content="Farmasi Ceria — Pharmacy Inventory">
+    <meta name="twitter:description" content="Pharmacy inventory demo — batches, expiry dates, cold chain.">
     <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
-    <meta name="description" content="Demo sistem inventori untuk farmasi — stok mengikut kelompok, amaran tarikh luput, penanda rantaian sejuk. Farmasi rekaan oleh Langkah Pertama.">
+    <meta name="description" content="Pharmacy inventory system demo — stock by batch, expiry warnings, cold-chain badges. A fictional pharmacy by Langkah Pertama.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -393,57 +393,57 @@
 
     <header>
         <div class="top-row reveal">
-            <a class="chip" href="../">⟵ DEMO 4/4 · TUKAR</a>
+            <a class="chip" href="../">⟵ DEMO 4/4 · SWITCH</a>
             <a class="chip" href="../../">LANGKAH PERTAMA ↗</a>
         </div>
         <div class="brand-row reveal" style="--d:0.05s">
             <div class="cross" aria-hidden="true">💊</div>
             <div>
                 <h1>Farmasi <span>Ceria</span></h1>
-                <p class="tagline">Stok ubat bukan sekadar dikira — ia ada tarikh luput.</p>
+                <p class="tagline">Pharmacy stock isn't just counted — it ages.</p>
             </div>
         </div>
-        <span class="demo-note reveal" style="--d:0.1s">DEMO · FARMASI REKAAN — BUKAN NASIHAT PERUBATAN</span>
+        <span class="demo-note reveal" style="--d:0.1s">DEMO · FICTIONAL PHARMACY — NOT MEDICAL ADVICE</span>
     </header>
 
     <!-- KPI -->
     <div class="kpis reveal" style="--d:0.14s">
-        <div class="kpi"><div class="k-label">Jumlah Item</div><div class="k-val" id="kItem">0</div></div>
-        <div class="kpi"><div class="k-label">Hampir Luput</div><div class="k-val" style="color:var(--amber)" id="kHampir">0</div></div>
-        <div class="kpi"><div class="k-label">Perlu Lupus</div><div class="k-val" style="color:var(--coral)" id="kLuput">0</div></div>
-        <div class="kpi"><div class="k-label">Nilai Stok</div><div class="k-val" style="color:var(--teal)" id="kNilai">RM 0</div></div>
+        <div class="kpi"><div class="k-label">Total Items</div><div class="k-val" id="kItem">0</div></div>
+        <div class="kpi"><div class="k-label">Expiring Soon</div><div class="k-val" style="color:var(--amber)" id="kHampir">0</div></div>
+        <div class="kpi"><div class="k-label">Urgent / Dispose</div><div class="k-val" style="color:var(--coral)" id="kLuput">0</div></div>
+        <div class="kpi"><div class="k-label">Stock Value</div><div class="k-val" style="color:var(--teal)" id="kNilai">RM 0</div></div>
     </div>
 
     <!-- Tabs -->
     <div class="tabs reveal" style="--d:0.18s" id="tabs">
-        <button class="tab active" data-t="semua">Semua</button>
-        <button class="tab" data-t="rx">Preskripsi</button>
+        <button class="tab active" data-t="semua">All</button>
+        <button class="tab" data-t="rx">Prescription</button>
         <button class="tab" data-t="otc">OTC</button>
-        <button class="tab" data-t="vit">Vitamin</button>
-        <button class="tab" data-t="sejuk">❄ Sejuk</button>
+        <button class="tab" data-t="vit">Vitamins</button>
+        <button class="tab" data-t="sejuk">❄ Cold Chain</button>
     </div>
 
     <div class="batch-list" id="batchList"></div>
 
     <!-- Studio CTA -->
     <div class="studio-cta reveal">
-        <span class="tag">// Suka sistem ini?</span>
-        <h3>Farmasi anda, sentiasa patuh &amp; teratur</h3>
-        <p>Kelompok, tarikh luput dan rantaian sejuk dijaga sistem — bukan ingatan staf. Boleh disambung dengan sistem POS farmasi sedia ada.</p>
+        <span class="tag">// Like this system?</span>
+        <h3>Your pharmacy, always compliant &amp; organised</h3>
+        <p>Batches, expiry dates and the cold chain watched by the system — not by staff memory. Connects to your existing pharmacy POS.</p>
         <div class="row">
-            <a class="cta-link teal" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20sistem%20inventori%20untuk%20farmasi%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
-            <a class="cta-link" href="../fnb/">Demo F&amp;B</a>
-            <a class="cta-link" href="../pcparts/">Demo Kedai PC</a>
-            <a class="cta-link" href="../warehouse/">Demo Gudang</a>
+            <a class="cta-link teal" href="https://wa.me/60172888202?text=Hi%20Far!%20I%27m%20interested%20in%20an%20inventory%20system%20for%20my%20pharmacy." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link" href="../fnb/">F&amp;B Demo</a>
+            <a class="cta-link" href="../pcparts/">PC Shop Demo</a>
+            <a class="cta-link" href="../warehouse/">Warehouse Demo</a>
         </div>
     </div>
 
     <footer class="page-foot">
-        Demo — farmasi rekaan · dibina oleh <a href="../../">Langkah Pertama</a> © 2026
+        DEMO — FICTIONAL PHARMACY · BUILT BY <a href="../../">LANGKAH PERTAMA</a> © 2026
     </footer>
 </div>
 
-<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+<button class="to-top" id="toTop" aria-label="Back to top">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
@@ -468,15 +468,15 @@
     /* ================= BATCH (rekaan) — luput dikira dari hari ini ================= */
     var BATCH = [
         { id: 'b1', nama: 'Paracetamol 500mg', batch: 'PCM-2483', cat: 'rx', sejuk: false, qty: 240, unit: 'strip', harga: 1.8, luputHari: 312 },
-        { id: 'b2', nama: 'Amoxicillin 250mg', batch: 'AMX-1077', cat: 'rx', sejuk: false, qty: 64, unit: 'botol', harga: 12.5, luputHari: 38 },
+        { id: 'b2', nama: 'Amoxicillin 250mg', batch: 'AMX-1077', cat: 'rx', sejuk: false, qty: 64, unit: 'bottle', harga: 12.5, luputHari: 38 },
         { id: 'b3', nama: 'Insulin Pen', batch: 'INS-0921', cat: 'rx', sejuk: true, qty: 18, unit: 'pen', harga: 86, luputHari: 74 },
-        { id: 'b4', nama: 'Ubat Batuk Herba', batch: 'UBH-3318', cat: 'otc', sejuk: false, qty: 41, unit: 'botol', harga: 14.9, luputHari: 21 },
-        { id: 'b5', nama: 'Minyak Angin Cap Ceria', batch: 'MAC-5512', cat: 'otc', sejuk: false, qty: 120, unit: 'botol', harga: 6.5, luputHari: 540 },
-        { id: 'b6', nama: 'Vitamin C 1000mg', batch: 'VTC-7740', cat: 'vit', sejuk: false, qty: 85, unit: 'botol', harga: 28, luputHari: 198 },
-        { id: 'b7', nama: 'Vaksin Influenza', batch: 'FLU-0245', cat: 'rx', sejuk: true, qty: 12, unit: 'vial', harga: 65, luputHari: 9 },
-        { id: 'b8', nama: 'Krim Antiseptik', batch: 'KAS-8810', cat: 'otc', sejuk: false, qty: 57, unit: 'tiub', harga: 9.9, luputHari: 420 },
-        { id: 'b9', nama: 'Probiotik Kanak-kanak', batch: 'PRO-1190', cat: 'vit', sejuk: true, qty: 26, unit: 'kotak', harga: 49, luputHari: 55 },
-        { id: 'b10', nama: 'Ubat Titis Mata', batch: 'UTM-6633', cat: 'otc', sejuk: false, qty: 33, unit: 'botol', harga: 18.5, luputHari: -3 }
+        { id: 'b4', nama: 'Herbal Cough Syrup', batch: 'HCS-3318', cat: 'otc', sejuk: false, qty: 41, unit: 'bottle', harga: 14.9, luputHari: 21 },
+        { id: 'b5', nama: 'Medicated Oil (Ceria)', batch: 'MOC-5512', cat: 'otc', sejuk: false, qty: 120, unit: 'bottle', harga: 6.5, luputHari: 540 },
+        { id: 'b6', nama: 'Vitamin C 1000mg', batch: 'VTC-7740', cat: 'vit', sejuk: false, qty: 85, unit: 'bottle', harga: 28, luputHari: 198 },
+        { id: 'b7', nama: 'Influenza Vaccine', batch: 'FLU-0245', cat: 'rx', sejuk: true, qty: 12, unit: 'vial', harga: 65, luputHari: 9 },
+        { id: 'b8', nama: 'Antiseptic Cream', batch: 'ASC-8810', cat: 'otc', sejuk: false, qty: 57, unit: 'tube', harga: 9.9, luputHari: 420 },
+        { id: 'b9', nama: 'Kids Probiotic', batch: 'PRO-1190', cat: 'vit', sejuk: true, qty: 26, unit: 'box', harga: 49, luputHari: 55 },
+        { id: 'b10', nama: 'Eye Drops 10ml', batch: 'EYD-6633', cat: 'otc', sejuk: false, qty: 33, unit: 'bottle', harga: 18.5, luputHari: -3 }
     ];
 
     function esc(s) {
@@ -491,14 +491,13 @@
         return 'ok';
     }
     function luputLabel(d) {
-        if (d <= 0) return 'LUPUT ' + Math.abs(d) + ' HARI LALU';
-        if (d <= 30) return 'LUPUT DLM ' + d + ' HARI';
-        if (d <= 90) return 'LUPUT DLM ' + d + ' HARI';
+        if (d <= 0) return 'EXPIRED ' + Math.abs(d) + ' DAYS AGO';
+        if (d <= 90) return 'EXPIRES IN ' + d + ' DAYS';
         var bulan = Math.round(d / 30);
-        return 'LUPUT DLM ~' + bulan + ' BULAN';
+        return 'EXPIRES IN ~' + bulan + ' MO';
     }
 
-    var CAT_LABEL = { rx: 'Preskripsi', otc: 'OTC', vit: 'Vitamin' };
+    var CAT_LABEL = { rx: 'Prescription', otc: 'OTC', vit: 'Vitamin' };
 
     var filter = 'semua';
     var list = document.getElementById('batchList');
@@ -517,14 +516,14 @@
                 '<span class="luput-chip ' + st + '">' + luputLabel(b.luputHari) + '</span></div>' +
                 '<div class="row2">' +
                 '<div class="qty-box">' +
-                '<button data-dec="' + idx + '" aria-label="Kurangkan ' + esc(b.nama) + '">−</button>' +
+                '<button data-dec="' + idx + '" aria-label="Decrease ' + esc(b.nama) + '">−</button>' +
                 '<span class="q">' + b.qty + '<small>' + esc(b.unit) + '</small></span>' +
-                '<button data-inc="' + idx + '" aria-label="Tambah ' + esc(b.nama) + '">+</button>' +
+                '<button data-inc="' + idx + '" aria-label="Increase ' + esc(b.nama) + '">+</button>' +
                 '</div>' +
-                '<span class="b-harga">RM ' + b.harga.toFixed(2) + '/' + esc(b.unit) + ' · nilai RM ' + Math.round(b.qty * b.harga).toLocaleString('ms-MY') + '</span>' +
+                '<span class="b-harga">RM ' + b.harga.toFixed(2) + '/' + esc(b.unit) + ' · value RM ' + Math.round(b.qty * b.harga).toLocaleString('en-MY') + '</span>' +
                 '</div></div>';
         });
-        list.innerHTML = h || '<p style="text-align:center;padding:30px;font-weight:800;color:var(--dim)">Tiada item dalam kategori ini.</p>';
+        list.innerHTML = h || '<p style="text-align:center;padding:30px;font-weight:800;color:var(--dim)">No items in this category.</p>';
         renderKpis();
     }
 
@@ -539,7 +538,7 @@
         document.getElementById('kItem').textContent = BATCH.length;
         document.getElementById('kHampir').textContent = hampir;
         document.getElementById('kLuput').textContent = luput;
-        document.getElementById('kNilai').textContent = 'RM ' + Math.round(nilai).toLocaleString('ms-MY');
+        document.getElementById('kNilai').textContent = 'RM ' + Math.round(nilai).toLocaleString('en-MY');
     }
 
     document.addEventListener('click', function (e) {
