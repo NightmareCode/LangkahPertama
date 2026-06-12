@@ -1118,59 +1118,268 @@
             .dock-chip { min-width: calc(50% - 8px); }
         }
 
-        /* Coming soon teasers */
-        .teasers {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-width: 520px;
-            margin: 24px auto 0;
-            gap: 20px;
-        }
-        .teaser {
-            border: 1px dashed rgba(255, 255, 255, 0.16);
-            border-radius: 16px;
-            padding: 32px 28px;
-            transition: border-color 0.4s, box-shadow 0.4s, transform 0.1s linear;
-            background: var(--panel);
+        /* Inventory manifest showcase (goods-received note) */
+        .feature-inv { display: block; margin-top: 26px; }
+        .inv-intro { max-width: 720px; margin-bottom: 38px; position: relative; z-index: 1; }
+        .manifest {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background:
+                repeating-linear-gradient(180deg, transparent 0 35px, rgba(255,255,255,0.022) 35px 36px),
+                var(--panel);
             overflow: hidden;
+            z-index: 1;
         }
-        .teaser:hover {
-            border-color: rgba(95, 212, 196, 0.45);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+        .m-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 16px 24px;
+            border-bottom: 1px dashed var(--line);
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dim);
         }
-        .teaser-live {
-            border-style: solid;
-            border-color: rgba(217, 176, 108, 0.35);
+        .m-head .m-right { display: inline-flex; align-items: center; gap: 14px; }
+        #mLog { color: var(--gold); transition: text-shadow 0.4s; }
+        #mLog.done { text-shadow: 0 0 14px rgba(217,176,108,0.8); }
+        #mRescan {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: none;
+            border: 0;
+            color: var(--dim);
+            cursor: pointer;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s;
+        }
+        #mRescan::before { content: ''; position: absolute; inset: -14px -10px; }
+        #mRescan:hover { color: var(--gold); }
+        .m-cols {
+            display: grid;
+            grid-template-columns: 92px 1fr 190px 48px;
+            gap: 18px;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(217,176,108,0.3);
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+        .m-row {
+            position: relative;
+            display: grid;
+            grid-template-columns: 92px 1fr 190px 48px;
+            gap: 18px;
+            align-items: center;
+            padding: 22px 24px;
+            border-bottom: 1px dashed var(--line);
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: background 0.35s;
         }
-        .teaser-live:hover {
-            border-color: rgba(217, 176, 108, 0.65);
+        .m-row:focus-visible { outline-offset: -4px; }
+        .sr-only {
+            position: absolute;
+            width: 1px; height: 1px;
+            margin: -1px; padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
         }
-        .teaser-go {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 14px;
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--gold);
+        .m-row::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 10px; bottom: 10px;
+            width: 3px;
+            border-radius: 0 2px 2px 0;
+            background: var(--acc);
         }
-        .teaser-go .arrow { transition: transform 0.35s var(--ease); }
-        .teaser-live:hover .teaser-go .arrow { transform: translateX(5px); }
-        .teaser h4 {
+        .m-row.r-rig::before {
+            background: linear-gradient(180deg, #ff4757, #ffa502, #2ed573, #1e90ff, #ff4757);
+            background-size: 100% 300%;
+            animation: rgbShift 6s linear infinite;
+        }
+        @keyframes rgbShift { to { background-position: 0 300%; } }
+        .m-row.r-ware::before {
+            background: repeating-linear-gradient(45deg, #ff8a3c 0 6px, #15171c 6px 12px);
+        }
+        .m-bin { font-family: var(--mono); }
+        .m-bin b { display: block; font-size: 1.05rem; font-weight: 700; color: var(--gold); transition: color 0.3s; }
+        .m-bin i { display: block; font-style: normal; font-size: 0.58rem; letter-spacing: 1.8px; color: var(--dim); margin-top: 4px; }
+        .m-sys { min-width: 0; position: relative; }
+        .m-row.r-fnb .m-sys { padding-right: 130px; }
+        .m-sys strong {
+            display: inline-block;
             font-family: var(--disp);
+            font-size: 1.18rem;
             font-weight: 600;
-            font-size: 1.1rem;
-            margin: 14px 0 8px;
+            letter-spacing: -0.01em;
         }
-        .teaser p {
+        .m-row.r-ware .m-sys strong { text-transform: uppercase; letter-spacing: 0.06em; }
+        .m-tick {
+            display: block;
+            font-family: var(--mono);
+            font-size: 0.63rem;
+            letter-spacing: 0.5px;
             color: var(--dim);
-            font-size: 0.87rem;
-            font-weight: 300;
+            margin-top: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .m-tick.swap { opacity: 0; transform: translateY(-6px); }
+        .m-status { display: flex; align-items: center; gap: 16px; justify-self: start; }
+        .m-code {
+            width: 54px; height: 24px;
+            color: var(--acc);
+            background:
+                repeating-linear-gradient(90deg, currentColor 0 2px, transparent 2px 5px),
+                repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 7px);
+            opacity: 0.85;
+            transition: color 0.4s;
+        }
+        .m-chip {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            padding: 7px 11px;
+            border: 1px solid var(--acc);
+            border-radius: 6px;
+            color: var(--acc);
+        }
+        .m-row.r-rig .m-chip {
+            background: linear-gradient(90deg, #ff4757, #ffa502, #2ed573, #1e90ff) bottom / 100% 2px no-repeat;
+        }
+        .m-row.r-ware .m-chip { background: #ff8a3c; border-color: #ff8a3c; color: #15171c; }
+        .m-row.r-farm .m-chip { border-radius: 999px; }
+        .m-stamp {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-7deg);
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            letter-spacing: 2.5px;
+            color: #c89b66;
+            border: 1px dashed #c89b66;
+            outline: 3px double rgba(200,155,102,0.35);
+            outline-offset: 2px;
+            padding: 5px 9px;
+            opacity: 0.55;
+            pointer-events: none;
+            transition: transform 0.35s var(--ease), opacity 0.3s;
+        }
+        .m-go {
+            font-family: var(--mono);
+            font-size: 1.05rem;
+            color: var(--gold);
+            justify-self: end;
+            transition: transform 0.35s var(--ease);
+        }
+        .m-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 22px 24px;
+            border-top: 1px solid rgba(217,176,108,0.3);
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+        .m-foot .btn { text-transform: none; }
+        .m-beam {
+            position: absolute;
+            left: 0; right: 0; top: -2px;
+            height: 2px;
+            background: var(--gold);
+            box-shadow: 0 0 22px 5px rgba(217,176,108,0.55);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .manifest.scanning .m-beam { animation: beamSweep 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes beamSweep {
+            0% { top: 0; opacity: 0; }
+            8% { opacity: 1; }
+            88% { opacity: 1; }
+            100% { top: calc(100% - 2px); opacity: 0; }
+        }
+        /* armed by JS: chips hidden + codes dimmed until the beam "logs" each row */
+        .manifest.scan-armed .m-chip { opacity: 0; transform: scale(1.45) rotate(-4deg); }
+        .manifest.scan-armed .m-code { color: rgba(255,255,255,0.18); }
+        .manifest.scan-armed .m-bin b { color: var(--text); }
+        .manifest.scan-armed .m-row.logged .m-chip {
+            opacity: 1;
+            transform: none;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.18s;
+        }
+        .manifest.scan-armed .m-row.logged .m-code { color: var(--acc); }
+        .manifest.scan-armed .m-row.logged .m-bin b { color: var(--gold); }
+        .manifest.scan-armed .m-row.logged { animation: rowFlash 0.7s ease-out; }
+        @keyframes rowFlash { from { background: rgba(217,176,108,0.12); } to { background: transparent; } }
+        @media (hover: hover) {
+            .m-row:hover { background: linear-gradient(90deg, rgba(217,176,108,0.07), transparent 70%); }
+            .m-row:hover .m-go { transform: translateX(6px); }
+            .m-row:hover .m-code { color: var(--acc); }
+            .m-row:hover .m-sys strong {
+                background: linear-gradient(100deg, var(--gold-lite), var(--gold));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .m-row.r-fnb:hover .m-stamp { transform: translateY(-50%) rotate(-5deg) scale(1.08); opacity: 0.8; }
+        }
+        @media (max-width: 980px) {
+            .m-stamp { display: none; }
+            .m-row.r-fnb .m-sys { padding-right: 0; }
+        }
+        @media (max-width: 700px) {
+            .m-cols { display: none; }
+            .m-row {
+                grid-template-columns: 1fr auto;
+                grid-template-areas: 'bin status' 'sys go';
+                row-gap: 12px;
+                padding: 18px 16px;
+            }
+            .m-bin { grid-area: bin; display: flex; align-items: baseline; gap: 10px; }
+            .m-bin b { font-size: 0.95rem; }
+            .m-bin i { margin-top: 0; }
+            .m-status { grid-area: status; justify-self: end; }
+            .m-sys { grid-area: sys; }
+            .m-tick { white-space: normal; }
+            .m-go { grid-area: go; align-self: end; }
+            .m-head, .m-foot { padding-left: 16px; padding-right: 16px; }
+            .m-foot { flex-direction: column; align-items: stretch; text-align: center; }
+            .m-foot .btn { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .m-code { display: none; }
+            .m-sys strong { font-size: 1.05rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .m-beam, .manifest.scanning .m-beam { animation: none; opacity: 0; }
+            .m-row.r-rig::before { animation: none; }
+            #mRescan { display: none; }
+            .manifest.scan-armed .m-chip { opacity: 1; transform: none; }
+            .manifest.scan-armed .m-code { color: var(--acc); }
+            .manifest.scan-armed .m-bin b { color: var(--gold); }
         }
 
         /* ============ About ============ */
@@ -1423,6 +1632,7 @@
         <style>
             .reveal { opacity: 1; transform: none; }
             #hero3d { display: none; }
+            #mRescan { display: none; }
         </style>
     </noscript>
 </head>
@@ -1729,14 +1939,52 @@
                 </div>
             </div>
 
-            <div class="teasers">
-                <a class="teaser teaser-live tilt corners reveal" style="--d:0.16s" href="inventory/">
-                    <div class="glow"></div>
-                    <span class="tag-live">4 Live Demos</span>
-                    <h4>Inventory Systems</h4>
-                    <p>Four industries, four designs — a mamak stockroom with supplier reorders, a PC shop with SKUs &amp; warranties, a warehouse rack map, and a pharmacy with expiry tracking.</p>
-                    <span class="teaser-go">Explore the demos <span class="arrow">→</span></span>
-                </a>
+            <div class="feature feature-inv reveal">
+                <div class="inv-intro">
+                    <span class="feature-badge"><span class="dot"></span> 4 Live Demos</span>
+                    <h3>Inventory Systems —<br><em>stock that counts itself</em></h3>
+                    <p>Four stockrooms with four faces — a mamak store, a PC parts shop, a logistics warehouse and a pharmacy — checked in below as line items on their own goods-received note. Open a row to walk the aisles.</p>
+                </div>
+                <div class="manifest corners" id="invManifest">
+                    <div class="m-head">
+                        <span>Goods Received Note · No. LP-INV/2026-004</span>
+                        <span class="m-right">
+                            <span id="mLog">[ 4/4 Logged ]</span>
+                            <button type="button" id="mRescan">[ Re-scan ]</button>
+                            <span id="mLogSR" class="sr-only" aria-live="polite"></span>
+                        </span>
+                    </div>
+                    <div class="m-cols" aria-hidden="true"><span>Bin</span><span>System</span><span>Status</span><span></span></div>
+                    <a class="m-row r-fnb" style="--acc:#c89b66" href="inventory/fnb/" aria-label="Open Stor Mamak Kilat — F&amp;B stockroom inventory demo">
+                        <span class="m-bin"><b>01</b><i>BIN-01</i></span>
+                        <span class="m-sys"><strong>Stor Mamak Kilat</strong><span class="m-tick" data-alt="AYAM SEJUK ×18 · HABIS: 2 HARI">TEPUNG 25KG ×3 · HABIS: 4 HARI ⚠</span><span class="m-stamp" aria-hidden="true">LULUS STOR</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">KIRA HARIAN</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-rig" style="--acc:#b14aed" href="inventory/pcparts/" aria-label="Open RigHub Computers — PC parts inventory demo">
+                        <span class="m-bin"><b>02</b><i>BIN-02</i></span>
+                        <span class="m-sys"><strong>RigHub Computers</strong><span class="m-tick" data-alt="RMA OPEN 02 · WARRANTY 36MO">SKU GPU-4070-OC · QTY 07 · MARGIN 18.4%</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">IN STOCK</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-ware" style="--acc:#ff8a3c" href="inventory/warehouse/" aria-label="Open WareSpeed Logistics — warehouse inventory demo">
+                        <span class="m-bin"><b>03</b><i>BIN-03</i></span>
+                        <span class="m-sys"><strong>WareSpeed Logistics</strong><span class="m-tick" data-alt="PALLETS 36 · LANE CLEAR">RACK B3 → DOCK 2 · ETA 14:20</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">PRIORITY</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-farm" style="--acc:var(--teal)" href="inventory/farmasi/" aria-label="Open Farmasi Ceria — pharmacy inventory demo">
+                        <span class="m-bin"><b>04</b><i>BIN-04</i></span>
+                        <span class="m-sys"><strong>Farmasi Ceria</strong><span class="m-tick" data-alt="COLD-CHAIN 4.2°C ✓">BATCH PXL-2189 · EXP 21D</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">COLD-CHAIN ✓</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <div class="m-foot">
+                        <span>Total: 4 systems · All businesses fictional — demo data</span>
+                        <a href="inventory/" class="btn btn-gold" data-magnet>Explore All Four <span class="arrow">→</span></a>
+                    </div>
+                    <div class="m-beam" aria-hidden="true"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -2085,6 +2333,96 @@
                     dashFrame.classList.remove('loading');
                     scaleDash();
                 });
+            }
+
+            /* ---- Inventory manifest showcase (check-in scan) ---- */
+            var manifest = document.getElementById('invManifest');
+            if (manifest) {
+                var mRows = manifest.querySelectorAll('.m-row');
+                var mLog = document.getElementById('mLog');
+                var mRescan = document.getElementById('mRescan');
+                var mTicks = manifest.querySelectorAll('.m-tick');
+
+                var setLogged = function (n) {
+                    mLog.textContent = '[ ' + n + '/4 LOGGED ]';
+                    if (n === 4) mLog.classList.add('done');
+                };
+
+                if (reduceMotion || !('IntersectionObserver' in window)) {
+                    setLogged(4); /* static final state — chips stay visible */
+                    if (mRescan) mRescan.style.display = 'none';
+                } else {
+                    manifest.classList.add('scan-armed');
+                    setLogged(0);
+                    var mTimers = [];
+                    var clearScan = function () {
+                        for (var i = 0; i < mTimers.length; i++) clearTimeout(mTimers[i]);
+                        mTimers = [];
+                    };
+                    var finishScan = function () {
+                        clearScan();
+                        for (var i = 0; i < mRows.length; i++) mRows[i].classList.add('logged');
+                        setLogged(4);
+                        var mLogSR = document.getElementById('mLogSR');
+                        if (mLogSR) mLogSR.textContent = 'Check-in scan complete — 4 of 4 systems logged.';
+                    };
+                    var playScan = function () {
+                        scanned = true; /* a manual Re-scan also satisfies the scroll trigger */
+                        if (document.hidden) { finishScan(); return; }
+                        clearScan();
+                        manifest.classList.remove('scanning');
+                        for (var i = 0; i < mRows.length; i++) mRows[i].classList.remove('logged');
+                        mLog.classList.remove('done');
+                        setLogged(0);
+                        void manifest.offsetWidth; /* restart beam keyframe */
+                        manifest.classList.add('scanning');
+                        var arm = function (idx) {
+                            mTimers.push(setTimeout(function () {
+                                mRows[idx].classList.add('logged');
+                                setLogged(idx + 1);
+                            }, 350 * (idx + 1)));
+                        };
+                        for (var r = 0; r < mRows.length; r++) arm(r);
+                        mTimers.push(setTimeout(finishScan, 2000)); /* completion guarantee */
+                    };
+                    var scanned = false;
+                    var mIo = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (e) {
+                            if (e.isIntersecting && !scanned) {
+                                scanned = true;
+                                mIo.disconnect();
+                                playScan();
+                            }
+                        });
+                    }, { threshold: 0.15 });
+                    mIo.observe(manifest);
+                    mRescan.addEventListener('click', playScan);
+                    window.__lpManifest = { play: playScan, finish: finishScan };
+
+                    var swapTick = function (el) {
+                        var alt = el.getAttribute('data-alt');
+                        if (!alt) return;
+                        el.classList.add('swap');
+                        setTimeout(function () {
+                            var cur = el.textContent;
+                            el.textContent = alt;
+                            el.setAttribute('data-alt', cur);
+                            el.classList.remove('swap');
+                        }, 200);
+                    };
+                    var tickTimer = null;
+                    var startTicks = function () {
+                        if (tickTimer) return;
+                        tickTimer = setInterval(function () {
+                            for (var i = 0; i < mTicks.length; i++) swapTick(mTicks[i]);
+                        }, 3600);
+                    };
+                    if (!document.hidden) startTicks();
+                    document.addEventListener('visibilitychange', function () {
+                        if (document.hidden) { clearInterval(tickTimer); tickTimer = null; }
+                        else startTicks();
+                    });
+                }
             }
 
             /* ---- Duplicate marquee content for seamless loop ---- */

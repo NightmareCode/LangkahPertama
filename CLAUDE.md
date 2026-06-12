@@ -34,6 +34,7 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `/inventory/farmasi/` | Farmasi Ceria | EN | Clinical mint, Nunito; batches, expiry chips (day-offsets — never stale), cold-chain |
 
 **Language rule:** BM only for the Mamak Kilat universe (mamak menu/dashboard/stor), tomyam menu, menu hub, and wedding pages. Everything else English.
+**Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`).
 All four product lines complete (wedding, menus, dashboards, inventory). Still missing from user: personal photo, social links.
 
 ## Hard rules from user feedback

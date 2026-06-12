@@ -1,0 +1,25 @@
+﻿<!doctype html>
+<meta charset="utf-8">
+<title>measure</title>
+<div id="out">PENDING</div>
+<iframe id="f" src="index.html" style="width:667px;height:3000px;border:0"></iframe>
+<script>
+  var f = document.getElementById('f');
+  var out = document.getElementById('out');
+  f.addEventListener('load', function () {
+    setTimeout(function () {
+      try {
+        var d = f.contentDocument;
+        var m = d.getElementById('invManifest');
+        var rows = d.querySelectorAll('.m-row');
+        var msg = 'MEASURE manifestH=' + (m ? m.offsetHeight : 'null') +
+          ' rows=' + rows.length +
+          ' armed=' + (m ? m.className.indexOf('scan-armed') !== -1 : '?') +
+          ' log=' + (d.getElementById('mLog') ? d.getElementById('mLog').textContent : '?') +
+          ' innerW=' + f.contentWindow.innerWidth;
+        out.textContent = msg;
+      } catch (e) { out.textContent = 'MEASURE ERR ' + e.message; }
+    }, 1500);
+  });
+</script>
+
