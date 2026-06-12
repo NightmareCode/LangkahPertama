@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0f1d">
+    <title>Gemilang Niaga — Analitik Jualan | Demo Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/dashboard/sales/">
+    <meta property="og:title" content="Gemilang Niaga — Analitik Jualan">
+    <meta property="og:description" content="Demo papan pemuka analitik jualan — hasil, saluran jualan, prestasi negeri dan graf yang cantik. Dibina oleh Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gemilang Niaga — Analitik Jualan">
+    <meta name="twitter:description" content="Demo papan pemuka analitik jualan — hasil, saluran jualan, prestasi negeri.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="description" content="Demo papan pemuka analitik jualan untuk perniagaan — KPI dengan sparkline, corong jualan, prestasi mengikut negeri, sasaran. Syarikat rekaan oleh Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0c0f1d;
+            --card: #12172e;
+            --card-2: #161c38;
+            --line: rgba(148, 163, 255, 0.13);
+            --violet: #8b5cf6;
+            --cyan: #22d3ee;
+            --pink: #f472b6;
+            --orange: #fb923c;
+            --green: #34d399;
+            --red: #fb7185;
+            --txt: #eef0fb;
+            --dim: #8e96b8;
+            --sans: 'Manrope', 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--violet); color: #fff; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 3px;
+            border-radius: 9px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(620px 420px at 90% -8%, rgba(139, 92, 246, 0.13), transparent 65%),
+                radial-gradient(560px 420px at -5% 100%, rgba(34, 211, 238, 0.08), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 18px 90px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Top bar ============ */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+        .brand { display: flex; align-items: center; gap: 11px; }
+        .brand .chip-logo {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--violet), var(--cyan));
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            box-shadow: 0 0 22px rgba(139, 92, 246, 0.35);
+        }
+        .brand h1 { font-size: 1.02rem; font-weight: 800; line-height: 1.2; }
+        .brand small {
+            display: block;
+            font-weight: 500;
+            font-size: 0.66rem;
+            color: var(--dim);
+        }
+        .top-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .demo-chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.07);
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            border-radius: 9px;
+            padding: 6px 11px;
+            text-decoration: none;
+        }
+        .demo-chip:hover { background: rgba(34, 211, 238, 0.14); }
+
+        /* range */
+        .range-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 8px 0 18px;
+            flex-wrap: wrap;
+        }
+        .range-row h2 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; }
+        .range-row .sub { display: block; font-weight: 500; font-size: 0.74rem; color: var(--dim); }
+        .range-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 4px;
+            gap: 2px;
+        }
+        .rtab {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 0.78rem;
+            color: var(--dim);
+            background: none;
+            border: none;
+            border-radius: 9px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .rtab.active {
+            background: linear-gradient(110deg, var(--violet), #6d3ef0);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+        }
+
+        /* ============ KPIs with sparklines ============ */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+        .kpi {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 16px;
+            min-width: 0;
+        }
+        .kpi .k-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--dim);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .kpi .k-val {
+            font-size: 1.42rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-top: 7px;
+            font-variant-numeric: tabular-nums;
+        }
+        .kpi .k-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .kpi .spark { flex-shrink: 0; }
+        .kpi .spark path { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .kpi .k-delta {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 600;
+            border-radius: 7px;
+            padding: 2px 8px;
+            margin-top: 8px;
+        }
+        .k-delta.up { color: var(--green); background: rgba(52, 211, 153, 0.1); }
+        .k-delta.down { color: var(--red); background: rgba(251, 113, 133, 0.1); }
+
+        /* ============ Cards ============ */
+        .grid {
+            display: grid;
+            grid-template-columns: 1.65fr 1fr;
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 20px;
+            min-width: 0;
+        }
+        .card h3 {
+            font-size: 0.92rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .card h3 .sub {
+            font-family: var(--mono);
+            font-weight: 400;
+            font-size: 0.6rem;
+            color: var(--dim);
+            letter-spacing: 0.5px;
+        }
+
+        /* revenue chart */
+        .chart-wrap { position: relative; margin-top: 12px; }
+        .chart-wrap svg { width: 100%; height: auto; display: block; }
+        .axis-label { font-family: var(--mono); font-size: 9px; fill: var(--dim); }
+        .rev-line {
+            fill: none;
+            stroke: url(#lineGrad);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 4px 10px rgba(139, 92, 246, 0.45));
+        }
+        .rev-area { fill: url(#revGrad); }
+        .rev-dot { fill: var(--cyan); stroke: var(--bg); stroke-width: 2; opacity: 0; transition: opacity 0.2s; }
+        .rev-dot.on { opacity: 1; }
+        .tooltip {
+            position: absolute;
+            background: #1d2342;
+            border: 1px solid var(--line);
+            color: #fff;
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            border-radius: 8px;
+            padding: 6px 10px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -130%);
+            transition: opacity 0.2s;
+            white-space: nowrap;
+            z-index: 5;
+        }
+        .tooltip.on { opacity: 1; }
+
+        /* target ring */
+        .target { text-align: center; }
+        .t-ring-wrap { position: relative; width: 150px; margin: 14px auto 4px; }
+        .t-ring-wrap svg { width: 100%; height: auto; display: block; }
+        .t-bg { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 13; }
+        .t-fg {
+            fill: none;
+            stroke: url(#tGrad);
+            stroke-width: 13;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1.2s var(--ease);
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+        }
+        .t-center {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-content: center;
+            text-align: center;
+        }
+        .t-center b { font-size: 1.7rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+        .t-center span { font-size: 0.64rem; color: var(--dim); font-weight: 600; }
+        .target .t-meta { font-size: 0.74rem; color: var(--dim); margin-top: 8px; }
+        .target .t-meta b { color: var(--txt); }
+
+        /* funnel */
+        .funnel { margin-top: 14px; }
+        .f-row { margin-top: 11px; }
+        .f-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+        .f-name span:last-child {
+            font-family: var(--mono);
+            font-weight: 600;
+            font-size: 0.68rem;
+            color: var(--dim);
+        }
+        .f-bar {
+            height: 26px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-top: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .f-bar i {
+            display: block;
+            height: 100%;
+            width: 0;
+            border-radius: 8px;
+            transition: width 1s var(--ease);
+        }
+        .f-conv {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: var(--dim);
+            margin-top: 3px;
+            text-align: right;
+        }
+
+        /* states + products bars */
+        .st-row { margin-top: 12px; }
+        .st-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+        .st-name span:last-child {
+            font-family: var(--mono);
+            font-weight: 600;
+            font-size: 0.66rem;
+            color: var(--dim);
+        }
+        .st-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            margin-top: 6px;
+            overflow: hidden;
+        }
+        .st-bar i {
+            display: block;
+            height: 100%;
+            width: 0;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--violet), var(--cyan));
+            transition: width 1s var(--ease);
+        }
+
+        /* leaderboard */
+        .lead-row {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+        .lead-row:last-child { border-bottom: none; }
+        .lead-row .medal { font-size: 1rem; width: 22px; text-align: center; }
+        .lead-row .avatar {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 0.68rem;
+            font-weight: 800;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .lead-row .l-mid { flex: 1; min-width: 0; }
+        .lead-row .l-name { font-size: 0.8rem; font-weight: 700; }
+        .lead-row .l-sub { font-size: 0.66rem; color: var(--dim); }
+        .lead-row .l-amt {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 0.76rem;
+            color: var(--cyan);
+        }
+
+        /* insight */
+        .insight {
+            margin-top: 14px;
+            background: linear-gradient(110deg, rgba(139, 92, 246, 0.1), rgba(34, 211, 238, 0.07));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .insight .bulb {
+            width: 38px; height: 38px;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.14);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            display: grid;
+            place-items: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .insight p { font-size: 0.82rem; font-weight: 600; }
+        .insight p span { color: var(--cyan); font-weight: 800; }
+        .insight small { display: block; font-weight: 500; font-size: 0.7rem; color: var(--dim); }
+
+        /* ============ Studio CTA / footer / to-top ============ */
+        .studio-cta {
+            margin-top: 36px;
+            border: 1px dashed rgba(139, 92, 246, 0.4);
+            border-radius: 18px;
+            padding: 28px 24px;
+            text-align: center;
+            background: rgba(139, 92, 246, 0.04);
+        }
+        .studio-cta .mono-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--violet);
+        }
+        .studio-cta h3 { font-size: 1.2rem; font-weight: 800; margin: 9px 0 5px; }
+        .studio-cta p { font-weight: 500; font-size: 0.84rem; color: var(--dim); max-width: 460px; margin: 0 auto 18px; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-decoration: none;
+            border-radius: 11px;
+            padding: 11px 20px;
+            transition: filter 0.25s, transform 0.25s var(--ease);
+        }
+        .cta-link.grad { background: linear-gradient(110deg, var(--violet), var(--cyan)); color: #fff; }
+        .cta-link.ghost { border: 1px solid var(--line); color: var(--txt); }
+        .cta-link:hover { filter: brightness(1.12); transform: translateY(-2px); }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 26px;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
+        }
+        footer.page-foot a { color: var(--cyan); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        .to-top {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 50;
+            width: 46px; height: 46px;
+            border-radius: 13px;
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            background: rgba(18, 23, 46, 0.88);
+            color: #c4b5fd;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.25s, color 0.25s;
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--violet); color: #fff; }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 900px) {
+            .kpis { grid-template-columns: 1fr 1fr; }
+            .grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .kpis { gap: 10px; }
+            .kpi { padding: 13px; }
+            .kpi .k-val { font-size: 1.2rem; }
+            .range-tabs { width: 100%; }
+            .rtab { flex: 1; padding: 8px 6px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>.reveal { opacity: 1; transform: none; }</style>
+    </noscript>
+</head>
+<body>
+<div class="page" id="page">
+
+    <div class="topbar reveal">
+        <div class="brand">
+            <div class="chip-logo" aria-hidden="true">📈</div>
+            <h1>Gemilang Niaga Sdn. Bhd.
+                <small>Analitik Jualan · Demo</small>
+            </h1>
+        </div>
+        <div class="top-actions">
+            <a class="demo-chip" href="../">DEMO 3/3 · TUKAR ↗</a>
+            <a class="demo-chip" href="../../">LANGKAH PERTAMA ↗</a>
+        </div>
+    </div>
+
+    <div class="range-row reveal" style="--d:0.05s">
+        <h2 id="rangeTitle">Prestasi Bulan Ini
+            <span class="sub" id="rangeSub">1 – 11 Jun 2026 · dikemas kini 5 minit lalu</span>
+        </h2>
+        <div class="range-tabs" role="tablist" aria-label="Julat masa">
+            <button class="rtab active" data-range="month" role="tab" aria-selected="true">Bulan</button>
+            <button class="rtab" data-range="quarter" role="tab" aria-selected="false">Suku</button>
+            <button class="rtab" data-range="year" role="tab" aria-selected="false">Tahun</button>
+        </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpis reveal" style="--d:0.08s">
+        <div class="kpi">
+            <div class="k-label">Hasil Jualan</div>
+            <div class="k-row">
+                <div class="k-val" id="kRev">RM 0</div>
+                <svg class="spark" id="sparkRev" width="64" height="26" viewBox="0 0 64 26"></svg>
+            </div>
+            <span class="k-delta up" id="kRevD">▲ 0%</span>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Untung Kasar</div>
+            <div class="k-row">
+                <div class="k-val" id="kProfit">RM 0</div>
+                <svg class="spark" id="sparkProfit" width="64" height="26" viewBox="0 0 64 26"></svg>
+            </div>
+            <span class="k-delta up" id="kProfitD">▲ 0%</span>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Pesanan</div>
+            <div class="k-row">
+                <div class="k-val" id="kOrders">0</div>
+                <svg class="spark" id="sparkOrders" width="64" height="26" viewBox="0 0 64 26"></svg>
+            </div>
+            <span class="k-delta up" id="kOrdersD">▲ 0%</span>
+        </div>
+        <div class="kpi">
+            <div class="k-label">Pelanggan Aktif</div>
+            <div class="k-row">
+                <div class="k-val" id="kCust">0</div>
+                <svg class="spark" id="sparkCust" width="64" height="26" viewBox="0 0 64 26"></svg>
+            </div>
+            <span class="k-delta up" id="kCustD">▲ 0%</span>
+        </div>
+    </div>
+
+    <!-- Revenue + target -->
+    <div class="grid">
+        <div class="card reveal" style="--d:0.12s">
+            <h3>Hasil Jualan <span class="sub" id="chartSub">RM RIBU · MENGIKUT HARI</span></h3>
+            <div class="chart-wrap" id="chartWrap">
+                <svg id="revChart" viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Carta hasil jualan"></svg>
+                <div class="tooltip" id="chartTip"></div>
+            </div>
+        </div>
+
+        <div class="card target reveal" style="--d:0.16s">
+            <h3>Sasaran <span class="sub" id="targetSub">BULAN INI</span></h3>
+            <div class="t-ring-wrap">
+                <svg viewBox="0 0 130 130">
+                    <defs>
+                        <linearGradient id="tGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#8b5cf6"/>
+                            <stop offset="100%" stop-color="#22d3ee"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="t-bg" cx="65" cy="65" r="52"/>
+                    <circle class="t-fg" id="tFg" cx="65" cy="65" r="52" transform="rotate(-90 65 65)"/>
+                </svg>
+                <div class="t-center">
+                    <b id="tPct">0%</b>
+                    <span>DICAPAI</span>
+                </div>
+            </div>
+            <div class="t-meta" id="tMeta"><b>RM 0</b> daripada <b>RM 0</b></div>
+        </div>
+    </div>
+
+    <!-- Funnel + states -->
+    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="card reveal">
+            <h3>Saluran Jualan <span class="sub">PROSPEK → TUTUP</span></h3>
+            <div class="funnel" id="funnel"></div>
+        </div>
+        <div class="card reveal" style="--d:0.06s">
+            <h3>Jualan Ikut Negeri <span class="sub">TOP 6</span></h3>
+            <div id="stateList"></div>
+        </div>
+    </div>
+
+    <!-- Products + leaderboard -->
+    <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="card reveal">
+            <h3>Produk Terlaris <span class="sub">RM RIBU</span></h3>
+            <div id="prodList"></div>
+        </div>
+        <div class="card reveal" style="--d:0.06s">
+            <h3>Jurujual Terbaik <span class="sub" id="leadSub">BULAN INI</span></h3>
+            <div id="leadList"></div>
+        </div>
+    </div>
+
+    <!-- Insight -->
+    <div class="insight reveal">
+        <div class="bulb" aria-hidden="true">💡</div>
+        <p id="insightText">Memuatkan...</p>
+    </div>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="mono-tag">// Nombor yang bercerita</span>
+        <h3>Nak analitik begini untuk perniagaan anda?</h3>
+        <p>Data jualan anda jadi graf yang cantik dan keputusan yang jelas — disambung terus dengan sistem POS atau e-dagang sedia ada.</p>
+        <div class="row">
+            <a class="cta-link grad" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20papan%20pemuka%20analitik%20untuk%20perniagaan%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link ghost" href="../restoran/">🍛 Demo Restoran</a>
+            <a class="cta-link ghost" href="../smarthome/">🏠 Demo Smart Home</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        DEMO — SYARIKAT &amp; DATA REKAAN · DIBINA OLEH <a href="../../">LANGKAH PERTAMA</a> © 2026
+    </footer>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ================= DATA (rekaan, konsisten) ================= */
+    var DATA = {
+        month: {
+            title: 'Prestasi Bulan Ini', sub: '1 – 11 Jun 2026 · dikemas kini 5 minit lalu',
+            chartSub: 'RM RIBU · MENGIKUT HARI', leadSub: 'BULAN INI', targetSub: 'BULAN INI',
+            rev: 1842000, profit: 442000, orders: 3184, cust: 1184,
+            dRev: '▲ 11%', dProfit: '▲ 9%', dOrders: '▲ 7%', dCust: '▲ 4%',
+            labels: ['1','2','3','4','5','6','7','8','9','10','11'],
+            series: [148, 162, 171, 138, 95, 188, 196, 174, 181, 192, 197],
+            sparks: {
+                rev: [3,5,4,6,7,6,8,9], profit: [4,4,5,6,5,7,7,8],
+                orders: [5,6,5,7,6,8,7,9], cust: [6,6,7,6,7,7,8,8]
+            },
+            target: { pct: 82, now: 'RM 1.84J', goal: 'RM 2.25J' },
+            funnel: [
+                ['Prospek', 1240, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Sebut Harga', 680, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Rundingan', 342, 28, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Tutup Jualan', 187, 15, 'linear-gradient(90deg,#22d3ee,#34d399)']
+            ],
+            states: [ ['Selangor', 486], ['Kuala Lumpur', 412], ['Johor', 318], ['Pulau Pinang', 247], ['Perak', 204], ['Kelantan', 175] ],
+            prods: [ ['Air Mineral Seri 500ml', 384], ['Kopi Gemilang 3-in-1', 322], ['Mee Segera Juara', 268], ['Biskut Bintang', 196], ['Sos Cili Mantap', 154] ],
+            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 286, '#8b5cf6'], ['Mei Ling Tan', 'Wilayah Selatan', 251, '#22d3ee'], ['Kumar Selvam', 'Wilayah Utara', 219, '#f472b6'] ],
+            insight: 'Selangor menyumbang <span>26%</span> hasil bulan ini — naik 3 mata.<small>Cadangan: tambah satu lori penghantaran untuk laluan Klang–Shah Alam.</small>'
+        },
+        quarter: {
+            title: 'Prestasi Suku Ke-2', sub: 'Apr – Jun 2026 · dikemas kini 5 minit lalu',
+            chartSub: 'RM RIBU · MENGIKUT MINGGU', leadSub: 'SUKU INI', targetSub: 'SUKU INI',
+            rev: 5210000, profit: 1230000, orders: 9046, cust: 1322,
+            dRev: '▲ 9%', dProfit: '▲ 12%', dOrders: '▲ 6%', dCust: '▲ 8%',
+            labels: ['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11'],
+            series: [392, 418, 405, 441, 396, 460, 472, 455, 489, 504, 478],
+            sparks: {
+                rev: [4,5,5,6,6,7,8,8], profit: [3,5,4,6,7,7,8,9],
+                orders: [5,5,6,6,7,7,7,8], cust: [5,6,6,7,7,8,8,9]
+            },
+            target: { pct: 87, now: 'RM 5.21J', goal: 'RM 6.00J' },
+            funnel: [
+                ['Prospek', 3480, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Sebut Harga', 1924, 55, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Rundingan', 1018, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Tutup Jualan', 561, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
+            ],
+            states: [ ['Selangor', 1356], ['Kuala Lumpur', 1182], ['Johor', 924], ['Pulau Pinang', 698], ['Perak', 571], ['Kelantan', 479] ],
+            prods: [ ['Air Mineral Seri 500ml', 1088], ['Kopi Gemilang 3-in-1', 941], ['Mee Segera Juara', 762], ['Biskut Bintang', 545], ['Sos Cili Mantap', 432] ],
+            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 812, '#8b5cf6'], ['Kumar Selvam', 'Wilayah Utara', 744, '#f472b6'], ['Mei Ling Tan', 'Wilayah Selatan', 718, '#22d3ee'] ],
+            insight: 'Kadar penutupan jualan suku ini <span>16%</span> — terbaik dalam setahun.<small>Cadangan: kekalkan skrip jualan baharu, ia jelas berkesan.</small>'
+        },
+        year: {
+            title: 'Prestasi Tahun 2026', sub: 'Jan – Jun 2026 · dikemas kini 5 minit lalu',
+            chartSub: 'RM RIBU · MENGIKUT BULAN', leadSub: 'TAHUN INI', targetSub: 'TAHUN INI',
+            rev: 9870000, profit: 2310000, orders: 17230, cust: 1322,
+            dRev: '▲ 14%', dProfit: '▲ 16%', dOrders: '▲ 10%', dCust: '▲ 12%',
+            labels: ['Jan','Feb','Mac','Apr','Mei','Jun'],
+            series: [1480, 1520, 1660, 1720, 1648, 1842],
+            sparks: {
+                rev: [3,4,5,5,6,7,8,9], profit: [3,4,4,6,6,7,8,9],
+                orders: [4,5,5,6,7,7,8,8], cust: [5,5,6,7,7,8,8,9]
+            },
+            target: { pct: 41, now: 'RM 9.87J', goal: 'RM 24.0J' },
+            funnel: [
+                ['Prospek', 11400, 100, 'linear-gradient(90deg,#8b5cf6,#a78bfa)'],
+                ['Sebut Harga', 6156, 54, 'linear-gradient(90deg,#7c6cf0,#60a5fa)'],
+                ['Rundingan', 3306, 29, 'linear-gradient(90deg,#38bdf8,#22d3ee)'],
+                ['Tutup Jualan', 1786, 16, 'linear-gradient(90deg,#22d3ee,#34d399)']
+            ],
+            states: [ ['Selangor', 2566], ['Kuala Lumpur', 2238], ['Johor', 1742], ['Pulau Pinang', 1318], ['Perak', 1086], ['Kelantan', 920] ],
+            prods: [ ['Air Mineral Seri 500ml', 2055], ['Kopi Gemilang 3-in-1', 1781], ['Mee Segera Juara', 1440], ['Biskut Bintang', 1032], ['Sos Cili Mantap', 818] ],
+            leads: [ ['Hafiz Rahman', 'Wilayah Tengah', 1540, '#8b5cf6'], ['Mei Ling Tan', 'Wilayah Selatan', 1402, '#22d3ee'], ['Kumar Selvam', 'Wilayah Utara', 1366, '#f472b6'] ],
+            insight: 'Hasil separuh tahun pertama naik <span>14%</span> berbanding 2025.<small>Cadangan: sasaran RM 24J masih jauh — pertimbang kempen Q3 untuk wilayah Pantai Timur.</small>'
+        }
+    };
+
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function fmtShort(n) {
+        if (n >= 1000000) return 'RM ' + (n / 1000000).toFixed(2) + 'J';
+        if (n >= 1000) return 'RM ' + Math.round(n / 1000) + 'K';
+        return 'RM ' + n;
+    }
+
+    function animateNum(el, target, formatter) {
+        if (reduceMotion) { el.textContent = formatter(target); return; }
+        var start = null, dur = 800, done = false;
+        function tick(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / dur, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = formatter(target * eased);
+            if (p < 1) { requestAnimationFrame(tick); } else { done = true; }
+        }
+        requestAnimationFrame(tick);
+        setTimeout(function () { if (!done) el.textContent = formatter(target); }, dur + 300);
+    }
+
+    function setDelta(id, txt) {
+        var el = document.getElementById(id);
+        el.textContent = txt;
+        el.className = 'k-delta ' + (txt.indexOf('▲') > -1 ? 'up' : 'down');
+    }
+
+    /* sparklines */
+    function spark(id, vals, color) {
+        var w = 64, h = 26, max = 10;
+        var pts = vals.map(function (v, i) {
+            return [(w - 4) * i / (vals.length - 1) + 2, h - 3 - (h - 7) * v / max];
+        });
+        var dline = pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+        document.getElementById(id).innerHTML = '<path d="' + dline + '" stroke="' + color + '"/>';
+    }
+
+    /* ================= Revenue chart ================= */
+    var svg = document.getElementById('revChart');
+    var tip = document.getElementById('chartTip');
+    var chartWrap = document.getElementById('chartWrap');
+    var W = 600, H = 240, PL = 14, PR = 14, PT = 16, PB = 30;
+    var curPts = [], curData = null;
+
+    function buildChart(d) {
+        curData = d;
+        var n = d.series.length;
+        var max = Math.max.apply(null, d.series) * 1.15;
+        var iw = W - PL - PR;
+        curPts = d.series.map(function (v, i) {
+            return [PL + iw * i / (n - 1), PT + (H - PT - PB) * (1 - v / max)];
+        });
+        var line = curPts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+        var area = line + ' L' + curPts[n - 1][0].toFixed(1) + ' ' + (H - PB) + ' L' + PL + ' ' + (H - PB) + ' Z';
+        var labels = '';
+        d.labels.forEach(function (lb, i) {
+            var step = Math.ceil(n / 12);
+            if (i % step !== 0 && i !== n - 1) return;
+            labels += '<text class="axis-label" x="' + curPts[i][0].toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle">' + lb + '</text>';
+        });
+        var len = 1400;
+        svg.innerHTML =
+            '<defs>' +
+            '<linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">' +
+            '<stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>' +
+            '<stop offset="100%" stop-color="#22d3ee" stop-opacity="0.02"/>' +
+            '</linearGradient>' +
+            '<linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">' +
+            '<stop offset="0%" stop-color="#8b5cf6"/>' +
+            '<stop offset="100%" stop-color="#22d3ee"/>' +
+            '</linearGradient>' +
+            '</defs>' +
+            '<path class="rev-area" d="' + area + '"></path>' +
+            '<path class="rev-line" d="' + line + '" style="' +
+            (reduceMotion ? '' : 'stroke-dasharray:' + len + ';stroke-dashoffset:' + len + ';transition:stroke-dashoffset 1.2s cubic-bezier(0.22,1,0.36,1);') +
+            '"></path>' +
+            '<circle class="rev-dot" id="dot" r="4.5" cx="0" cy="0"></circle>' + labels;
+        if (!reduceMotion) {
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    svg.querySelector('.rev-line').style.strokeDashoffset = '0';
+                });
+            });
+        }
+    }
+
+    chartWrap.addEventListener('pointermove', function (e) {
+        if (!curPts.length) return;
+        var rect = svg.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width * W;
+        var best = 0, bd = 1e9;
+        curPts.forEach(function (p, i) {
+            var d = Math.abs(p[0] - x);
+            if (d < bd) { bd = d; best = i; }
+        });
+        var p = curPts[best];
+        var dot = document.getElementById('dot');
+        dot.setAttribute('cx', p[0]);
+        dot.setAttribute('cy', p[1]);
+        dot.classList.add('on');
+        tip.textContent = curData.labels[best] + ' · RM ' + curData.series[best] + 'K';
+        tip.style.left = (p[0] / W * 100) + '%';
+        tip.style.top = (p[1] / H * 100) + '%';
+        tip.classList.add('on');
+    });
+    chartWrap.addEventListener('pointerleave', function () {
+        tip.classList.remove('on');
+        var dot = document.getElementById('dot');
+        if (dot) dot.classList.remove('on');
+    });
+
+    /* ================= Target ring ================= */
+    var tFg = document.getElementById('tFg');
+    var TC = 2 * Math.PI * 52;
+    tFg.style.strokeDasharray = TC + ' ' + TC;
+    tFg.style.strokeDashoffset = String(TC);
+
+    function buildTarget(d) {
+        document.getElementById('tPct').textContent = d.target.pct + '%';
+        document.getElementById('tMeta').innerHTML = '<b>' + d.target.now + '</b> daripada <b>' + d.target.goal + '</b>';
+        document.getElementById('targetSub').textContent = d.targetSub;
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                tFg.style.strokeDashoffset = String(TC * (1 - d.target.pct / 100));
+            });
+        });
+    }
+
+    /* ================= Funnel / states / products / leaderboard ================= */
+    function bars(el, rows, render) {
+        el.innerHTML = rows.map(render).join('');
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+                el.querySelectorAll('[data-w]').forEach(function (b) {
+                    b.style.width = b.getAttribute('data-w') + '%';
+                });
+            });
+        });
+    }
+
+    function buildFunnel(d) {
+        var prev = null;
+        bars(document.getElementById('funnel'), d.funnel, function (f) {
+            var conv = prev ? Math.round(f[1] / prev * 100) + '% dari peringkat sebelum' : '';
+            prev = f[1];
+            return '<div class="f-row"><div class="f-name"><span>' + f[0] + '</span><span>' + f[1].toLocaleString('ms-MY') + '</span></div>' +
+                '<div class="f-bar"><i data-w="' + f[2] + '" style="background:' + f[3] + '"></i></div>' +
+                (conv ? '<div class="f-conv">' + conv + '</div>' : '') + '</div>';
+        });
+    }
+
+    function buildStates(d) {
+        var max = d.states[0][1];
+        bars(document.getElementById('stateList'), d.states, function (s) {
+            return '<div class="st-row"><div class="st-name"><span>' + s[0] + '</span><span>RM ' + s[1] + 'K</span></div>' +
+                '<div class="st-bar"><i data-w="' + (s[1] / max * 100).toFixed(1) + '"></i></div></div>';
+        });
+    }
+
+    function buildProds(d) {
+        var max = d.prods[0][1];
+        bars(document.getElementById('prodList'), d.prods, function (s) {
+            return '<div class="st-row"><div class="st-name"><span>' + esc(s[0]) + '</span><span>RM ' + s[1] + 'K</span></div>' +
+                '<div class="st-bar"><i data-w="' + (s[1] / max * 100).toFixed(1) + '" style="background:linear-gradient(90deg,#f472b6,#fb923c)"></i></div></div>';
+        });
+    }
+
+    function buildLeads(d) {
+        var medals = ['🥇', '🥈', '🥉'];
+        document.getElementById('leadList').innerHTML = d.leads.map(function (l, i) {
+            var initials = l[0].split(' ').map(function (w) { return w[0]; }).slice(0, 2).join('');
+            return '<div class="lead-row"><span class="medal">' + medals[i] + '</span>' +
+                '<span class="avatar" style="background:' + l[3] + '">' + initials + '</span>' +
+                '<span class="l-mid"><span class="l-name">' + esc(l[0]) + '</span><br><span class="l-sub">' + esc(l[1]) + '</span></span>' +
+                '<span class="l-amt">RM ' + l[2] + 'K</span></div>';
+        }).join('');
+        document.getElementById('leadSub').textContent = d.leadSub;
+    }
+
+    /* ================= Render ================= */
+    function render(key) {
+        var d = DATA[key];
+        document.getElementById('rangeTitle').childNodes[0].textContent = d.title + ' ';
+        document.getElementById('rangeSub').textContent = d.sub;
+        document.getElementById('chartSub').textContent = d.chartSub;
+        animateNum(document.getElementById('kRev'), d.rev, fmtShort);
+        animateNum(document.getElementById('kProfit'), d.profit, fmtShort);
+        animateNum(document.getElementById('kOrders'), d.orders, function (v) { return Math.round(v).toLocaleString('ms-MY'); });
+        animateNum(document.getElementById('kCust'), d.cust, function (v) { return Math.round(v).toLocaleString('ms-MY'); });
+        setDelta('kRevD', d.dRev);
+        setDelta('kProfitD', d.dProfit);
+        setDelta('kOrdersD', d.dOrders);
+        setDelta('kCustD', d.dCust);
+        spark('sparkRev', d.sparks.rev, '#8b5cf6');
+        spark('sparkProfit', d.sparks.profit, '#22d3ee');
+        spark('sparkOrders', d.sparks.orders, '#f472b6');
+        spark('sparkCust', d.sparks.cust, '#34d399');
+        buildChart(d);
+        buildTarget(d);
+        buildFunnel(d);
+        buildStates(d);
+        buildProds(d);
+        buildLeads(d);
+        document.getElementById('insightText').innerHTML = d.insight;
+    }
+
+    document.querySelectorAll('.rtab').forEach(function (t) {
+        t.addEventListener('click', function () {
+            document.querySelectorAll('.rtab').forEach(function (x) {
+                x.classList.remove('active');
+                x.setAttribute('aria-selected', 'false');
+            });
+            t.classList.add('active');
+            t.setAttribute('aria-selected', 'true');
+            render(t.getAttribute('data-range'));
+        });
+    });
+
+    /* ================= Reveal + to-top ================= */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    render('month');
+})();
+</script>
+</body>
+</html>
