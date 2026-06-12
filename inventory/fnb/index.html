@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#cfa86f">
+    <title>Stor Mamak Kilat — Sistem Inventori | Demo Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/inventory/fnb/">
+    <meta property="og:title" content="Stor Mamak Kilat — Sistem Inventori">
+    <meta property="og:description" content="Demo sistem inventori untuk restoran — kadar guna harian, amaran stok kritikal, pesan semula terus ke WhatsApp pembekal. Dibina oleh Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stor Mamak Kilat — Sistem Inventori">
+    <meta name="twitter:description" content="Demo sistem inventori untuk restoran — kadar guna harian, amaran stok, pesanan WhatsApp.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="description" content="Demo sistem inventori stor untuk restoran mamak — stok bahan mentah, kadar guna harian, amaran kritikal dan pesanan semula WhatsApp. Restoran rekaan oleh Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --kraft: #cfa86f;
+            --kraft-deep: #b98e55;
+            --paper: #efdfba;
+            --paper-2: #e7d2a4;
+            --ink: #382613;
+            --ink-soft: #6e573a;
+            --red: #b3271e;
+            --amber: #a36400;
+            --green: #3c6e2f;
+            --marker: 'Permanent Marker', cursive;
+            --sans: 'Inter', 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--kraft);
+            color: var(--ink);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--ink); color: var(--paper); }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--ink);
+            outline-offset: 3px;
+        }
+
+        /* cardboard texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.07;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 18px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Header ============ */
+        header { padding: 28px 0 8px; }
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+        .chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+            padding: 5px 11px;
+            background: var(--paper);
+            text-decoration: none;
+        }
+        .chip:hover { background: var(--ink); color: var(--paper); }
+
+        h1 {
+            font-family: var(--marker);
+            font-size: clamp(2rem, 8.5vw, 3rem);
+            line-height: 1.1;
+            transform: rotate(-1.2deg);
+        }
+        h1 .merah { color: var(--red); }
+        .tagline {
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+        .stamp-demo {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--red);
+            border: 2px solid var(--red);
+            border-radius: 4px;
+            padding: 4px 12px;
+            transform: rotate(2.5deg);
+            margin-top: 12px;
+            opacity: 0.85;
+        }
+
+        /* ============ KPI strip ============ */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .kpi {
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            box-shadow: 4px 4px 0 rgba(56, 38, 19, 0.35);
+            padding: 13px 14px;
+            position: relative;
+        }
+        .kpi::before {
+            /* tape strip */
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-1deg);
+            width: 56px;
+            height: 14px;
+            background: rgba(255, 250, 230, 0.65);
+            border: 1px solid rgba(56, 38, 19, 0.15);
+        }
+        .kpi .k-label {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+        .kpi .k-val {
+            font-family: var(--marker);
+            font-size: 1.45rem;
+            margin-top: 5px;
+            line-height: 1.1;
+        }
+        .kpi .k-val.merah { color: var(--red); }
+
+        /* ============ Filter chips ============ */
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin: 22px 0 6px;
+            flex-wrap: wrap;
+        }
+        .f-chip {
+            font-family: var(--sans);
+            font-weight: 800;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .f-chip.active { background: var(--ink); color: var(--paper); }
+        .f-chip .n {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            margin-left: 5px;
+        }
+
+        /* ============ Stock cards ============ */
+        .stok-list { display: grid; gap: 14px; margin-top: 14px; }
+        .item {
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            box-shadow: 5px 5px 0 rgba(56, 38, 19, 0.35);
+            padding: 16px;
+            position: relative;
+        }
+        .item.bahaya { background: #f2d3c4; }
+        .item.amaran { background: #f0e0b4; }
+        .item .row1 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .item .nm {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .item .emo { font-size: 1.5rem; }
+        .item h3 {
+            font-family: var(--marker);
+            font-weight: 400;
+            font-size: 1.15rem;
+            line-height: 1.15;
+        }
+        .item .pembekal {
+            font-size: 0.68rem;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+        .status {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 4px 9px;
+            border: 2px solid;
+            transform: rotate(2deg);
+            flex-shrink: 0;
+        }
+        .status.ok { color: var(--green); border-color: var(--green); }
+        .status.amaran { color: var(--amber); border-color: var(--amber); }
+        .status.bahaya { color: var(--red); border-color: var(--red); animation: blink 1.6s ease-in-out infinite; }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .item .row2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 13px;
+            flex-wrap: wrap;
+        }
+        .qty-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .qty-box button {
+            width: 40px; height: 40px;
+            border: 2px solid var(--ink);
+            background: var(--paper);
+            color: var(--ink);
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .qty-box button:hover { background: var(--ink); color: var(--paper); }
+        .qty-box .q {
+            font-family: var(--marker);
+            font-size: 1.5rem;
+            min-width: 64px;
+            text-align: center;
+        }
+        .qty-box .q small {
+            font-family: var(--sans);
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+            display: block;
+            margin-top: -4px;
+        }
+        .habis {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+        .habis b { display: block; font-size: 0.86rem; color: var(--ink); }
+        .habis.merah b { color: var(--red); }
+
+        .pesan-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: 800;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+            background: #25d366;
+            border: 2px solid var(--ink);
+            box-shadow: 3px 3px 0 rgba(56, 38, 19, 0.35);
+            padding: 9px 13px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.15s;
+        }
+        .pesan-btn:hover { transform: translate(-1px, -2px); }
+        .pesan-btn:active { transform: scale(0.95); }
+
+        /* bulk order bar */
+        .bulk-bar {
+            position: fixed;
+            left: 50%;
+            bottom: 16px;
+            transform: translate(-50%, 150%);
+            width: min(688px, calc(100% - 28px));
+            background: var(--ink);
+            color: var(--paper);
+            border: 2px solid var(--ink);
+            box-shadow: 5px 5px 0 rgba(56, 38, 19, 0.4);
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            z-index: 90;
+            transition: transform 0.4s var(--ease);
+            text-decoration: none;
+        }
+        .bulk-bar.show { transform: translate(-50%, 0); }
+        .bulk-bar .b-count {
+            background: var(--red);
+            color: #fff;
+            border-radius: 50%;
+            min-width: 28px;
+            height: 28px;
+            display: inline-grid;
+            place-items: center;
+            font-family: var(--mono);
+            font-size: 0.74rem;
+            margin-right: 8px;
+        }
+        .bulk-bar .wa { color: #6fe3a0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 1px; }
+
+        /* ============ Studio CTA / footer ============ */
+        .studio-cta {
+            margin-top: 46px;
+            background: var(--paper);
+            border: 2px dashed var(--ink);
+            padding: 26px 22px;
+            text-align: center;
+        }
+        .studio-cta .tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+        .studio-cta h3 { font-family: var(--marker); font-weight: 400; font-size: 1.4rem; margin: 10px 0 6px; }
+        .studio-cta p { font-size: 0.84rem; color: var(--ink-soft); max-width: 430px; margin: 0 auto 16px; font-weight: 500; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            font-weight: 800;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            padding: 11px 18px;
+            border: 2px solid var(--ink);
+            color: var(--ink);
+            background: var(--paper);
+            transition: all 0.2s;
+        }
+        .cta-link.utama { background: var(--ink); color: var(--paper); }
+        .cta-link:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 28px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+        footer.page-foot a { color: var(--red); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        /* back to top */
+        .to-top {
+            position: fixed;
+            right: 14px;
+            bottom: 18px;
+            z-index: 85;
+            width: 46px; height: 46px;
+            border: 2px solid var(--ink);
+            background: var(--paper);
+            color: var(--ink);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 4px 4px 0 rgba(56, 38, 19, 0.35);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.35s, transform 0.35s var(--ease), visibility 0.35s, background 0.2s, color 0.2s, bottom 0.4s var(--ease);
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--ink); color: var(--paper); }
+        .bulk-bar.show ~ .to-top { bottom: 88px; }
+
+        @media (max-width: 700px) {
+            .kpis { grid-template-columns: 1fr 1fr; gap: 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .status.bahaya { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>.reveal { opacity: 1; transform: none; } .filters, .bulk-bar { display: none; }</style>
+    </noscript>
+</head>
+<body>
+<div class="page" id="page">
+
+    <header>
+        <div class="top-row reveal">
+            <a class="chip" href="../">⟵ DEMO 1/4 · TUKAR</a>
+            <span style="display:flex; gap:8px; flex-wrap:wrap;">
+                <a class="chip" href="../../dashboard/restoran/">DASBOR ↗</a>
+                <a class="chip" href="../../menu/mamak/">MENU ↗</a>
+            </span>
+        </div>
+        <h1 class="reveal" style="--d:0.05s">Stor <span class="merah">Mamak Kilat</span> 📦</h1>
+        <p class="tagline reveal" style="--d:0.1s">Kira stok macam kira duit — jangan sampai roti canai takde tepung.</p>
+        <span class="stamp-demo reveal" style="--d:0.15s">DEMO · RESTORAN REKAAN</span>
+    </header>
+
+    <!-- KPI -->
+    <div class="kpis reveal" style="--d:0.18s">
+        <div class="kpi"><div class="k-label">Jumlah Item</div><div class="k-val" id="kItem">0</div></div>
+        <div class="kpi"><div class="k-label">Item Kritikal</div><div class="k-val merah" id="kKritikal">0</div></div>
+        <div class="kpi"><div class="k-label">Nilai Stok</div><div class="k-val" id="kNilai">RM 0</div></div>
+        <div class="kpi"><div class="k-label">Guna Sehari</div><div class="k-val" id="kGuna">RM 0</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters reveal" id="filters">
+        <button class="f-chip active" data-f="semua">Semua <span class="n" id="nSemua"></span></button>
+        <button class="f-chip" data-f="bahaya">Bahaya <span class="n" id="nBahaya"></span></button>
+        <button class="f-chip" data-f="amaran">Amaran <span class="n" id="nAmaran"></span></button>
+        <button class="f-chip" data-f="ok">OK <span class="n" id="nOk"></span></button>
+    </div>
+
+    <div class="stok-list" id="stokList"></div>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="tag">// Suka sistem ini?</span>
+        <h3>Stor anda pun boleh sepandai ini</h3>
+        <p>Kadar guna harian dikira sendiri, amaran sebelum stok habis, pesanan terus ke WhatsApp pembekal. Sambung dengan menu QR &amp; dasbor jualan anda.</p>
+        <div class="row">
+            <a class="cta-link utama" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20sistem%20inventori%20untuk%20perniagaan%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link" href="../pcparts/">Demo Kedai PC</a>
+            <a class="cta-link" href="../warehouse/">Demo Gudang</a>
+            <a class="cta-link" href="../farmasi/">Demo Farmasi</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        Demo — dibina oleh <a href="../../">Langkah Pertama</a> © 2026 · Stok rekaan
+    </footer>
+</div>
+
+<!-- Bulk order -->
+<a class="bulk-bar" id="bulkBar" href="#" target="_blank" rel="noopener">
+    <span><span class="b-count" id="bulkCount">0</span> Item perlu dipesan semula</span>
+    <span class="wa">PESAN SEMUA → WHATSAPP</span>
+</a>
+
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    if (!Element.prototype.closest) {
+        Element.prototype.matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
+        Element.prototype.closest = function (s) {
+            var el = this;
+            while (el && el.nodeType === 1) {
+                if (el.matches(s)) return el;
+                el = el.parentElement;
+            }
+            return null;
+        };
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var WA = 'https://wa.me/60172888202?text=';
+
+    /* ================= STOK (rekaan) ================= */
+    var STOK = [
+        { id: 'tepung', emoji: '🌾', nama: 'Tepung Gandum 25kg', unit: 'kampit', qty: 6, min: 4, guna: 1.5, harga: 52, pembekal: 'Pembekal Tepung Maju' },
+        { id: 'telur', emoji: '🥚', nama: 'Telur Gred A', unit: 'papan', qty: 9, min: 6, guna: 4, harga: 13.5, pembekal: 'Ladang Telur Segar' },
+        { id: 'ayam', emoji: '🍗', nama: 'Ayam Proses', unit: 'kg', qty: 22, min: 15, guna: 12, harga: 9.8, pembekal: 'Ayamas Borong' },
+        { id: 'milo', emoji: '🍫', nama: 'Milo Tin 1.9kg', unit: 'tin', qty: 5, min: 4, guna: 1.5, harga: 38, pembekal: 'Borong Minuman KL' },
+        { id: 'minyak', emoji: '🛢️', nama: 'Minyak Masak 17kg', unit: 'tong', qty: 3, min: 2, guna: 0.8, harga: 118, pembekal: 'Pembekal Minyak Jaya' },
+        { id: 'gas', emoji: '🔥', nama: 'Gas Memasak 14kg', unit: 'tong', qty: 4, min: 2, guna: 0.5, harga: 26, pembekal: 'Gas Cepat Hantar' },
+        { id: 'susu', emoji: '🥛', nama: 'Susu Pekat Manis', unit: 'tin', qty: 26, min: 12, guna: 8, harga: 3.6, pembekal: 'Borong Minuman KL' },
+        { id: 'teh', emoji: '🍃', nama: 'Serbuk Teh O', unit: 'kotak', qty: 12, min: 5, guna: 1, harga: 11, pembekal: 'Borong Minuman KL' },
+        { id: 'sardin', emoji: '🐟', nama: 'Sardin Tin Besar', unit: 'tin', qty: 14, min: 8, guna: 2, harga: 7.2, pembekal: 'Pasar Borong Selangor' },
+        { id: 'kueytiow', emoji: '🍜', nama: 'Kuey Teow Basah', unit: 'kg', qty: 8, min: 6, guna: 5, harga: 4.5, pembekal: 'Kilang Mee Heng' }
+    ];
+
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function statusOf(it) {
+        var hari = it.qty / it.guna;
+        if (it.qty <= it.min || hari <= 2) return 'bahaya';
+        if (hari <= 4) return 'amaran';
+        return 'ok';
+    }
+    function hariLagi(it) {
+        return it.qty / it.guna;
+    }
+    function pesanMsg(it) {
+        var order = Math.max(it.min * 2 - it.qty, 1);
+        return encodeURIComponent('Salam ' + it.pembekal + ', nak pesan semula:') + '%0A' +
+            encodeURIComponent('- ' + it.nama + ' x ' + order + ' ' + it.unit) + '%0A%0A' +
+            encodeURIComponent('Daripada: Stor Mamak Kilat (DEMO sistem Langkah Pertama)');
+    }
+
+    var STATUS_LABEL = { bahaya: 'BAHAYA', amaran: 'AMARAN', ok: 'CUKUP' };
+
+    /* ---- render ---- */
+    var list = document.getElementById('stokList');
+    var filter = 'semua';
+
+    function render() {
+        var h = '';
+        STOK.forEach(function (it, idx) {
+            var st = statusOf(it);
+            if (filter !== 'semua' && st !== filter) return;
+            var hari = hariLagi(it);
+            var hariTxt = hari < 1 ? 'Hari ini juga!' : '~' + Math.floor(hari) + ' hari lagi';
+            h += '<div class="item ' + st + ' reveal in">' +
+                '<div class="row1"><div class="nm"><span class="emo">' + it.emoji + '</span>' +
+                '<div><h3>' + esc(it.nama) + '</h3><div class="pembekal">' + esc(it.pembekal) + ' · RM ' + it.harga.toFixed(2) + '/' + esc(it.unit) + '</div></div></div>' +
+                '<span class="status ' + st + '">' + STATUS_LABEL[st] + '</span></div>' +
+                '<div class="row2">' +
+                '<div class="qty-box">' +
+                '<button data-dec="' + idx + '" aria-label="Kurangkan ' + esc(it.nama) + '">−</button>' +
+                '<span class="q">' + it.qty + '<small>' + esc(it.unit) + '</small></span>' +
+                '<button data-inc="' + idx + '" aria-label="Tambah ' + esc(it.nama) + '">+</button>' +
+                '</div>' +
+                '<div class="habis ' + (st === 'bahaya' ? 'merah' : '') + '">Guna ' + it.guna + ' ' + esc(it.unit) + '/hari<b>Habis: ' + hariTxt + '</b></div>' +
+                (st !== 'ok' ? '<a class="pesan-btn" href="' + WA + pesanMsg(it) + '" target="_blank" rel="noopener">📲 Pesan Semula</a>' : '') +
+                '</div></div>';
+        });
+        list.innerHTML = h || '<p style="text-align:center;padding:30px;font-weight:700;color:var(--ink-soft)">Tiada item dalam kategori ini 👍</p>';
+        renderKpis();
+    }
+
+    function renderKpis() {
+        var bahaya = 0, amaran = 0, ok = 0, nilai = 0, guna = 0;
+        STOK.forEach(function (it) {
+            var st = statusOf(it);
+            if (st === 'bahaya') bahaya++;
+            else if (st === 'amaran') amaran++;
+            else ok++;
+            nilai += it.qty * it.harga;
+            guna += it.guna * it.harga;
+        });
+        document.getElementById('kItem').textContent = STOK.length;
+        document.getElementById('kKritikal').textContent = bahaya;
+        document.getElementById('kNilai').textContent = 'RM ' + Math.round(nilai).toLocaleString('ms-MY');
+        document.getElementById('kGuna').textContent = 'RM ' + Math.round(guna).toLocaleString('ms-MY');
+        document.getElementById('nSemua').textContent = '(' + STOK.length + ')';
+        document.getElementById('nBahaya').textContent = '(' + bahaya + ')';
+        document.getElementById('nAmaran').textContent = '(' + amaran + ')';
+        document.getElementById('nOk').textContent = '(' + ok + ')';
+
+        // bulk order bar
+        var kritikal = STOK.filter(function (it) { return statusOf(it) !== 'ok'; });
+        var bar = document.getElementById('bulkBar');
+        document.getElementById('bulkCount').textContent = kritikal.length;
+        if (kritikal.length > 0) {
+            var msg = encodeURIComponent('Salam, pesanan stok Mamak Kilat (DEMO):') + '%0A';
+            kritikal.forEach(function (it) {
+                var order = Math.max(it.min * 2 - it.qty, 1);
+                msg += encodeURIComponent('- ' + it.nama + ' x ' + order + ' ' + it.unit) + '%0A';
+            });
+            msg += '%0A' + encodeURIComponent('_Dihantar dari demo sistem inventori Langkah Pertama_');
+            bar.href = WA + msg;
+            bar.classList.add('show');
+        } else {
+            bar.classList.remove('show');
+        }
+    }
+
+    /* ---- interactions ---- */
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest('button');
+        if (!t) return;
+        var inc = t.getAttribute('data-inc');
+        var dec = t.getAttribute('data-dec');
+        var f = t.getAttribute('data-f');
+        if (inc !== null) {
+            STOK[parseInt(inc, 10)].qty++;
+            render();
+        } else if (dec !== null) {
+            var it = STOK[parseInt(dec, 10)];
+            if (it.qty > 0) it.qty--;
+            render();
+        } else if (f) {
+            filter = f;
+            document.querySelectorAll('.f-chip').forEach(function (c) {
+                c.classList.toggle('active', c.getAttribute('data-f') === f);
+            });
+            render();
+        }
+    });
+
+    /* ---- reveal + to-top ---- */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>

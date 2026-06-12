@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f2faf7">
+    <title>Farmasi Ceria — Sistem Inventori | Demo Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/inventory/farmasi/">
+    <meta property="og:title" content="Farmasi Ceria — Sistem Inventori">
+    <meta property="og:description" content="Demo sistem inventori farmasi — nombor kelompok, kiraan hari luput dan rantaian sejuk. Dibina oleh Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Farmasi Ceria — Sistem Inventori">
+    <meta name="twitter:description" content="Demo sistem inventori farmasi — kelompok, tarikh luput, rantaian sejuk.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="description" content="Demo sistem inventori untuk farmasi — stok mengikut kelompok, amaran tarikh luput, penanda rantaian sejuk. Farmasi rekaan oleh Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f2faf7;
+            --card: #ffffff;
+            --line: #dcebe4;
+            --ink: #173830;
+            --dim: #5f7d73;
+            --teal: #0d9488;
+            --teal-soft: #d9f2ee;
+            --mint: #8de0c8;
+            --coral: #ef6351;
+            --coral-soft: #fdeae6;
+            --amber: #d97706;
+            --amber-soft: #fdf2dd;
+            --blue: #2563eb;
+            --blue-soft: #e4edfd;
+            --sans: 'Nunito', 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --shadow: 0 2px 4px rgba(23, 56, 48, 0.05), 0 10px 26px rgba(23, 56, 48, 0.07);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--teal); color: #fff; }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--teal);
+            outline-offset: 3px;
+            border-radius: 10px;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 18px 90px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Header ============ */
+        header { padding: 26px 0 8px; }
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--teal);
+            border: 1.5px solid var(--mint);
+            border-radius: 20px;
+            padding: 6px 13px;
+            background: var(--card);
+            text-decoration: none;
+        }
+        .chip:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+        .brand-row { display: flex; align-items: center; gap: 13px; }
+        .cross {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--mint), var(--teal));
+            display: grid;
+            place-items: center;
+            font-size: 1.4rem;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+        }
+        h1 {
+            font-weight: 900;
+            font-size: clamp(1.7rem, 7vw, 2.4rem);
+            line-height: 1.1;
+        }
+        h1 span { color: var(--teal); }
+        .tagline { color: var(--dim); font-size: 0.88rem; font-weight: 600; margin-top: 2px; }
+        .demo-note {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            border: 1.5px dashed var(--line);
+            border-radius: 20px;
+            padding: 4px 12px;
+            margin-top: 12px;
+        }
+
+        /* ============ KPI ============ */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .kpi {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: 18px;
+            padding: 14px 15px;
+            box-shadow: var(--shadow);
+        }
+        .kpi .k-label {
+            font-size: 0.64rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--dim);
+        }
+        .kpi .k-val {
+            font-weight: 900;
+            font-size: 1.35rem;
+            margin-top: 4px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ============ Tabs ============ */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin: 20px 0 6px;
+            flex-wrap: wrap;
+        }
+        .tab {
+            font-family: var(--sans);
+            font-weight: 800;
+            font-size: 0.74rem;
+            color: var(--dim);
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: 20px;
+            padding: 9px 16px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .tab.active {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(13, 148, 136, 0.3);
+        }
+
+        /* ============ Batch rows ============ */
+        .batch-list { display: grid; gap: 12px; margin-top: 14px; }
+        .batch {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: 18px;
+            padding: 15px 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.25s var(--ease), border-color 0.3s;
+        }
+        .batch:hover { transform: translateY(-3px); }
+        .batch.luput { border-color: #f6b9ae; background: #fff9f8; }
+        .batch.hampir { border-color: #f1d4a4; }
+        .batch .row1 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .batch h3 {
+            font-weight: 800;
+            font-size: 0.96rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .b-batch {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: var(--dim);
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 1px 7px;
+        }
+        .b-cat {
+            font-size: 0.58rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 12px;
+            padding: 2px 9px;
+        }
+        .b-cat.rx { color: var(--blue); background: var(--blue-soft); }
+        .b-cat.otc { color: var(--teal); background: var(--teal-soft); }
+        .b-cat.vit { color: var(--amber); background: var(--amber-soft); }
+        .b-sejuk {
+            font-size: 0.62rem;
+            font-weight: 800;
+            color: var(--blue);
+            background: var(--blue-soft);
+            border-radius: 12px;
+            padding: 2px 9px;
+        }
+
+        .luput-chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 12px;
+            padding: 5px 11px;
+            flex-shrink: 0;
+        }
+        .luput-chip.ok { color: #15803d; background: #e3f6e9; }
+        .luput-chip.hampir { color: var(--amber); background: var(--amber-soft); }
+        .luput-chip.luput { color: var(--coral); background: var(--coral-soft); animation: pulse 1.8s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.45; }
+        }
+
+        .batch .row2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .qty-box { display: flex; align-items: center; gap: 10px; }
+        .qty-box button {
+            width: 40px; height: 40px;
+            border-radius: 13px;
+            border: 1.5px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            font-weight: 900;
+            font-size: 1.05rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .qty-box button:hover { border-color: var(--teal); color: var(--teal); }
+        .qty-box .q {
+            font-weight: 900;
+            font-size: 1.2rem;
+            min-width: 60px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+        .qty-box .q small {
+            display: block;
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--dim);
+            text-transform: uppercase;
+        }
+        .b-harga {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--dim);
+        }
+
+        /* ============ Studio CTA / footer / to-top ============ */
+        .studio-cta {
+            margin-top: 42px;
+            background: var(--card);
+            border: 1.5px dashed var(--mint);
+            border-radius: 22px;
+            padding: 26px 22px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .studio-cta .tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+        .studio-cta h3 { font-weight: 900; font-size: 1.25rem; margin: 9px 0 5px; }
+        .studio-cta p { font-size: 0.84rem; font-weight: 600; color: var(--dim); max-width: 440px; margin: 0 auto 16px; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            font-weight: 800;
+            font-size: 0.78rem;
+            text-decoration: none;
+            border-radius: 20px;
+            padding: 11px 20px;
+            border: 1.5px solid var(--line);
+            color: var(--ink);
+            transition: all 0.25s;
+        }
+        .cta-link.teal { background: var(--teal); border-color: var(--teal); color: #fff; }
+        .cta-link:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+        .cta-link.teal:hover { color: #fff; filter: brightness(1.08); }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 26px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
+        }
+        footer.page-foot a { color: var(--teal); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        .to-top {
+            position: fixed;
+            right: 16px;
+            bottom: 18px;
+            z-index: 50;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            border: 1.5px solid var(--mint);
+            background: var(--card);
+            color: var(--teal);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.35s, transform 0.35s var(--ease), visibility 0.35s, background 0.2s, color 0.2s;
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--teal); color: #fff; }
+
+        @media (max-width: 700px) {
+            .kpis { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .luput-chip.luput { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>.reveal { opacity: 1; transform: none; } .tabs { display: none; }</style>
+    </noscript>
+</head>
+<body>
+<div class="page" id="page">
+
+    <header>
+        <div class="top-row reveal">
+            <a class="chip" href="../">⟵ DEMO 4/4 · TUKAR</a>
+            <a class="chip" href="../../">LANGKAH PERTAMA ↗</a>
+        </div>
+        <div class="brand-row reveal" style="--d:0.05s">
+            <div class="cross" aria-hidden="true">💊</div>
+            <div>
+                <h1>Farmasi <span>Ceria</span></h1>
+                <p class="tagline">Stok ubat bukan sekadar dikira — ia ada tarikh luput.</p>
+            </div>
+        </div>
+        <span class="demo-note reveal" style="--d:0.1s">DEMO · FARMASI REKAAN — BUKAN NASIHAT PERUBATAN</span>
+    </header>
+
+    <!-- KPI -->
+    <div class="kpis reveal" style="--d:0.14s">
+        <div class="kpi"><div class="k-label">Jumlah Item</div><div class="k-val" id="kItem">0</div></div>
+        <div class="kpi"><div class="k-label">Hampir Luput</div><div class="k-val" style="color:var(--amber)" id="kHampir">0</div></div>
+        <div class="kpi"><div class="k-label">Perlu Lupus</div><div class="k-val" style="color:var(--coral)" id="kLuput">0</div></div>
+        <div class="kpi"><div class="k-label">Nilai Stok</div><div class="k-val" style="color:var(--teal)" id="kNilai">RM 0</div></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs reveal" style="--d:0.18s" id="tabs">
+        <button class="tab active" data-t="semua">Semua</button>
+        <button class="tab" data-t="rx">Preskripsi</button>
+        <button class="tab" data-t="otc">OTC</button>
+        <button class="tab" data-t="vit">Vitamin</button>
+        <button class="tab" data-t="sejuk">❄ Sejuk</button>
+    </div>
+
+    <div class="batch-list" id="batchList"></div>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="tag">// Suka sistem ini?</span>
+        <h3>Farmasi anda, sentiasa patuh &amp; teratur</h3>
+        <p>Kelompok, tarikh luput dan rantaian sejuk dijaga sistem — bukan ingatan staf. Boleh disambung dengan sistem POS farmasi sedia ada.</p>
+        <div class="row">
+            <a class="cta-link teal" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20sistem%20inventori%20untuk%20farmasi%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link" href="../fnb/">Demo F&amp;B</a>
+            <a class="cta-link" href="../pcparts/">Demo Kedai PC</a>
+            <a class="cta-link" href="../warehouse/">Demo Gudang</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        Demo — farmasi rekaan · dibina oleh <a href="../../">Langkah Pertama</a> © 2026
+    </footer>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Kembali ke atas">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    if (!Element.prototype.closest) {
+        Element.prototype.matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
+        Element.prototype.closest = function (s) {
+            var el = this;
+            while (el && el.nodeType === 1) {
+                if (el.matches(s)) return el;
+                el = el.parentElement;
+            }
+            return null;
+        };
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ================= BATCH (rekaan) — luput dikira dari hari ini ================= */
+    var BATCH = [
+        { id: 'b1', nama: 'Paracetamol 500mg', batch: 'PCM-2483', cat: 'rx', sejuk: false, qty: 240, unit: 'strip', harga: 1.8, luputHari: 312 },
+        { id: 'b2', nama: 'Amoxicillin 250mg', batch: 'AMX-1077', cat: 'rx', sejuk: false, qty: 64, unit: 'botol', harga: 12.5, luputHari: 38 },
+        { id: 'b3', nama: 'Insulin Pen', batch: 'INS-0921', cat: 'rx', sejuk: true, qty: 18, unit: 'pen', harga: 86, luputHari: 74 },
+        { id: 'b4', nama: 'Ubat Batuk Herba', batch: 'UBH-3318', cat: 'otc', sejuk: false, qty: 41, unit: 'botol', harga: 14.9, luputHari: 21 },
+        { id: 'b5', nama: 'Minyak Angin Cap Ceria', batch: 'MAC-5512', cat: 'otc', sejuk: false, qty: 120, unit: 'botol', harga: 6.5, luputHari: 540 },
+        { id: 'b6', nama: 'Vitamin C 1000mg', batch: 'VTC-7740', cat: 'vit', sejuk: false, qty: 85, unit: 'botol', harga: 28, luputHari: 198 },
+        { id: 'b7', nama: 'Vaksin Influenza', batch: 'FLU-0245', cat: 'rx', sejuk: true, qty: 12, unit: 'vial', harga: 65, luputHari: 9 },
+        { id: 'b8', nama: 'Krim Antiseptik', batch: 'KAS-8810', cat: 'otc', sejuk: false, qty: 57, unit: 'tiub', harga: 9.9, luputHari: 420 },
+        { id: 'b9', nama: 'Probiotik Kanak-kanak', batch: 'PRO-1190', cat: 'vit', sejuk: true, qty: 26, unit: 'kotak', harga: 49, luputHari: 55 },
+        { id: 'b10', nama: 'Ubat Titis Mata', batch: 'UTM-6633', cat: 'otc', sejuk: false, qty: 33, unit: 'botol', harga: 18.5, luputHari: -3 }
+    ];
+
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function luputStatus(d) {
+        if (d <= 0) return 'luput';
+        if (d <= 30) return 'luput';   // critical window — treat as urgent
+        if (d <= 90) return 'hampir';
+        return 'ok';
+    }
+    function luputLabel(d) {
+        if (d <= 0) return 'LUPUT ' + Math.abs(d) + ' HARI LALU';
+        if (d <= 30) return 'LUPUT DLM ' + d + ' HARI';
+        if (d <= 90) return 'LUPUT DLM ' + d + ' HARI';
+        var bulan = Math.round(d / 30);
+        return 'LUPUT DLM ~' + bulan + ' BULAN';
+    }
+
+    var CAT_LABEL = { rx: 'Preskripsi', otc: 'OTC', vit: 'Vitamin' };
+
+    var filter = 'semua';
+    var list = document.getElementById('batchList');
+
+    function render() {
+        var h = '';
+        BATCH.forEach(function (b, idx) {
+            if (filter === 'sejuk' && !b.sejuk) return;
+            if (filter !== 'semua' && filter !== 'sejuk' && b.cat !== filter) return;
+            var st = luputStatus(b.luputHari);
+            h += '<div class="batch ' + st + ' reveal in">' +
+                '<div class="row1"><h3>' + esc(b.nama) +
+                '<span class="b-batch">' + esc(b.batch) + '</span>' +
+                '<span class="b-cat ' + b.cat + '">' + CAT_LABEL[b.cat] + '</span>' +
+                (b.sejuk ? '<span class="b-sejuk">❄ 2–8°C</span>' : '') + '</h3>' +
+                '<span class="luput-chip ' + st + '">' + luputLabel(b.luputHari) + '</span></div>' +
+                '<div class="row2">' +
+                '<div class="qty-box">' +
+                '<button data-dec="' + idx + '" aria-label="Kurangkan ' + esc(b.nama) + '">−</button>' +
+                '<span class="q">' + b.qty + '<small>' + esc(b.unit) + '</small></span>' +
+                '<button data-inc="' + idx + '" aria-label="Tambah ' + esc(b.nama) + '">+</button>' +
+                '</div>' +
+                '<span class="b-harga">RM ' + b.harga.toFixed(2) + '/' + esc(b.unit) + ' · nilai RM ' + Math.round(b.qty * b.harga).toLocaleString('ms-MY') + '</span>' +
+                '</div></div>';
+        });
+        list.innerHTML = h || '<p style="text-align:center;padding:30px;font-weight:800;color:var(--dim)">Tiada item dalam kategori ini.</p>';
+        renderKpis();
+    }
+
+    function renderKpis() {
+        var hampir = 0, luput = 0, nilai = 0;
+        BATCH.forEach(function (b) {
+            var st = luputStatus(b.luputHari);
+            if (st === 'hampir') hampir++;
+            if (st === 'luput') luput++;
+            nilai += b.qty * b.harga;
+        });
+        document.getElementById('kItem').textContent = BATCH.length;
+        document.getElementById('kHampir').textContent = hampir;
+        document.getElementById('kLuput').textContent = luput;
+        document.getElementById('kNilai').textContent = 'RM ' + Math.round(nilai).toLocaleString('ms-MY');
+    }
+
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest('button');
+        if (!t) return;
+        var inc = t.getAttribute('data-inc');
+        var dec = t.getAttribute('data-dec');
+        var tab = t.getAttribute('data-t');
+        if (inc !== null) {
+            BATCH[parseInt(inc, 10)].qty++;
+            render();
+        } else if (dec !== null) {
+            var b = BATCH[parseInt(dec, 10)];
+            if (b.qty > 0) b.qty--;
+            render();
+        } else if (tab) {
+            filter = tab;
+            document.querySelectorAll('.tab').forEach(function (c) {
+                c.classList.toggle('active', c.getAttribute('data-t') === tab);
+            });
+            render();
+        }
+    });
+
+    /* ---- reveal + to-top ---- */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>

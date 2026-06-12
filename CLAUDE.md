@@ -37,10 +37,14 @@ a 21-year-old full-stack developer from Malaysia, operating as the studio **Lang
 | `/dashboard/smarthome/` | Villa Seri IoT | EN | Dark glassmorphism + ice cyan, Sora; working toggles/thermostat/scenes/lock |
 | `/dashboard/sales/` | Gemilang Niaga analytics | EN | Navy + violet→cyan gradients, Manrope; sparklines, funnel, target ring |
 | `/dashboard/trading/` | Menara Capital trading desk | EN | Terminal green/red, IBM Plex; REAL LIVE data via official TradingView embed widgets |
+| `/inventory/` | Inventory hub | EN | Blueprint: deep blue grid paper, Archivo Black, dashed callout "bins" |
+| `/inventory/fnb/` | Stor Mamak Kilat | BM | Kraft cardboard + tape/stamps, Permanent Marker; daily burn rates, WhatsApp supplier reorders (completes Mamak Kilat trilogy) |
+| `/inventory/pcparts/` | RigHub Computers | EN | Black + animated RGB gradient, Chakra Petch; SKUs, warranty, margins, low-stock RGB pulse |
+| `/inventory/warehouse/` | WareSpeed Logistics | EN | Industrial concrete + safety orange, Staatliches, hazard stripes; interactive rack map, manifests, dock schedule |
+| `/inventory/farmasi/` | Farmasi Ceria | BM | Clinical mint/white soft rounded, Nunito; batch numbers, expiry countdown chips (computed as days-from-today offsets so the demo never goes stale), cold-chain badges |
 
-Roadmap: **inventory system demo** is the last "In Development" teaser (suggested concept:
-Mamak Kilat's stock room, completing menu → dashboard → inventory). Still missing from user:
-personal photo, social links.
+All four product lines are now complete (wedding, menus, dashboards, inventory).
+Still missing from user: personal photo, social links.
 
 ## Hard rules learned from user feedback
 

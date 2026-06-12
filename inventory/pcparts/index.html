@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07080d">
+    <title>RigHub Computers — Inventory System | Demo by Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/inventory/pcparts/">
+    <meta property="og:title" content="RigHub Computers — Inventory System">
+    <meta property="og:description" content="An inventory demo for PC &amp; laptop shops — SKUs, serials, warranty windows and margins. Built by Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RigHub Computers — Inventory System">
+    <meta name="twitter:description" content="Inventory demo for PC &amp; laptop shops — SKUs, serials, warranty and margins.">
+    <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="description" content="Inventory system demo for a computer shop — SKU tracking, stock and reserved units, warranty windows, margins, low-stock alerts. A fictional shop by Langkah Pertama.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07080d;
+            --panel: #0e1018;
+            --panel-2: #131624;
+            --line: rgba(160, 170, 210, 0.14);
+            --txt: #e9ecf8;
+            --dim: #8a92b0;
+            --rgb1: #ff2e63;
+            --rgb2: #b537ff;
+            --rgb3: #2ec5ff;
+            --green: #4ade80;
+            --amber: #fbbf24;
+            --sans: 'Chakra Petch', 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', Consolas, monospace;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--txt);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--rgb2); color: #fff; }
+
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--rgb3);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        /* RGB strip across the very top */
+        .rgb-strip {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rgb1), var(--rgb2), var(--rgb3), var(--rgb1));
+            background-size: 300% 100%;
+            animation: rgbflow 6s linear infinite;
+            z-index: 100;
+        }
+        @keyframes rgbflow {
+            from { background-position: 0% 0; }
+            to { background-position: 300% 0; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(520px 360px at 92% -5%, rgba(181, 55, 255, 0.1), transparent 65%),
+                radial-gradient(480px 360px at 0% 105%, rgba(46, 197, 255, 0.07), transparent 65%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 18px 90px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+            transition-delay: var(--d, 0s);
+        }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ Header ============ */
+        header { padding: 26px 0 8px; }
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .chip {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--rgb3);
+            border: 1px solid rgba(46, 197, 255, 0.4);
+            border-radius: 8px;
+            padding: 6px 11px;
+            background: rgba(46, 197, 255, 0.06);
+            text-decoration: none;
+        }
+        .chip:hover { background: rgba(46, 197, 255, 0.14); }
+
+        h1 {
+            font-weight: 700;
+            font-size: clamp(1.9rem, 7.5vw, 2.7rem);
+            line-height: 1.08;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        h1 .rgb {
+            background: linear-gradient(90deg, var(--rgb1), var(--rgb2), var(--rgb3));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .tagline { color: var(--dim); font-size: 0.88rem; margin-top: 6px; }
+        .demo-note {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            border: 1px dashed var(--line);
+            border-radius: 6px;
+            padding: 4px 10px;
+            margin-top: 10px;
+        }
+
+        /* ============ KPI ============ */
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .kpi {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rgb1), var(--rgb2), var(--rgb3));
+            opacity: 0.7;
+        }
+        .kpi .k-label {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--dim);
+        }
+        .kpi .k-val {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ============ Search + category chips ============ */
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        .search input {
+            width: 100%;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 11px 14px 11px 40px;
+            color: var(--txt);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+        }
+        .search input::placeholder { color: #565e7d; }
+        .search input:focus { border-color: var(--rgb3); outline: none; }
+        .search .ico {
+            position: absolute;
+            left: 13px; top: 50%;
+            transform: translateY(-50%);
+            color: #565e7d;
+            pointer-events: none;
+        }
+        .cats { display: flex; gap: 7px; flex-wrap: wrap; }
+        .cat {
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--dim);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 9px 13px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .cat.active {
+            color: #fff;
+            border-color: var(--rgb2);
+            background: rgba(181, 55, 255, 0.14);
+            box-shadow: 0 0 14px rgba(181, 55, 255, 0.25);
+        }
+
+        /* ============ SKU rows ============ */
+        .sku-list { display: grid; gap: 10px; margin-top: 14px; }
+        .sku {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px 14px;
+            transition: border-color 0.3s, transform 0.25s var(--ease);
+        }
+        .sku:hover { transform: translateX(4px); border-color: rgba(46, 197, 255, 0.4); }
+        .sku.low {
+            border-color: transparent;
+            background:
+                linear-gradient(var(--panel), var(--panel)) padding-box,
+                linear-gradient(90deg, var(--rgb1), var(--rgb2), var(--rgb3), var(--rgb1)) border-box;
+            background-size: 100% 100%, 300% 100%;
+            animation: rgbflow 4s linear infinite;
+        }
+        .sku .head { min-width: 0; }
+        .sku h3 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .sku .sku-code {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--dim);
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            padding: 1px 7px;
+        }
+        .sku .meta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--dim);
+            margin-top: 6px;
+        }
+        .sku .meta b { color: var(--txt); font-weight: 600; }
+        .sku .meta .margin-up { color: var(--green); }
+        .warranty {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 0.5px;
+            color: var(--rgb3);
+            border: 1px solid rgba(46, 197, 255, 0.35);
+            border-radius: 5px;
+            padding: 1px 7px;
+        }
+        .low-tag {
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--rgb1);
+            border: 1px solid rgba(255, 46, 99, 0.45);
+            border-radius: 5px;
+            padding: 1px 7px;
+        }
+
+        .sku .stock-ctl {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            align-self: center;
+        }
+        .stock-ctl button {
+            width: 38px; height: 38px;
+            border-radius: 9px;
+            border: 1px solid var(--line);
+            background: var(--panel-2);
+            color: var(--txt);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .stock-ctl button:hover { border-color: var(--rgb3); color: var(--rgb3); }
+        .stock-ctl .q {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 1.05rem;
+            min-width: 56px;
+            text-align: center;
+        }
+        .stock-ctl .q small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.56rem;
+            color: var(--dim);
+            letter-spacing: 0.5px;
+        }
+
+        .stock-bar {
+            grid-column: 1 / -1;
+            height: 5px;
+            background: var(--panel-2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .stock-bar i {
+            display: block;
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--rgb3), var(--rgb2));
+            transition: width 0.5s var(--ease);
+        }
+        .sku.low .stock-bar i { background: linear-gradient(90deg, var(--rgb1), var(--rgb2)); }
+
+        /* ============ Studio CTA / footer / to-top ============ */
+        .studio-cta {
+            margin-top: 42px;
+            border: 1px dashed rgba(181, 55, 255, 0.4);
+            border-radius: 14px;
+            padding: 26px 22px;
+            text-align: center;
+            background: rgba(181, 55, 255, 0.04);
+        }
+        .studio-cta .tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rgb2);
+        }
+        .studio-cta h3 { font-weight: 700; font-size: 1.2rem; text-transform: uppercase; margin: 9px 0 5px; }
+        .studio-cta p { font-size: 0.84rem; color: var(--dim); max-width: 460px; margin: 0 auto 16px; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            font-weight: 600;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 9px;
+            padding: 11px 18px;
+            border: 1px solid var(--line);
+            color: var(--txt);
+            transition: all 0.25s;
+        }
+        .cta-link.rgb {
+            border: none;
+            background: linear-gradient(90deg, var(--rgb1), var(--rgb2), var(--rgb3));
+            color: #fff;
+        }
+        .cta-link:hover { filter: brightness(1.15); transform: translateY(-2px); }
+
+        footer.page-foot {
+            text-align: center;
+            margin-top: 26px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
+        }
+        footer.page-foot a { color: var(--rgb3); text-decoration: none; }
+        footer.page-foot a:hover { text-decoration: underline; }
+
+        .to-top {
+            position: fixed;
+            right: 16px;
+            bottom: 18px;
+            z-index: 50;
+            width: 46px; height: 46px;
+            border-radius: 12px;
+            border: 1px solid rgba(46, 197, 255, 0.4);
+            background: rgba(14, 16, 24, 0.9);
+            color: var(--rgb3);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: opacity 0.4s, transform 0.4s var(--ease), visibility 0.4s, background 0.25s, color 0.25s;
+        }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--rgb3); color: #07212e; }
+
+        @media (max-width: 700px) {
+            .kpis { grid-template-columns: 1fr 1fr; }
+            .sku { grid-template-columns: 1fr; }
+            .sku .stock-ctl { justify-self: start; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .rgb-strip, .sku.low { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+    <noscript>
+        <style>.reveal { opacity: 1; transform: none; } .toolbar { display: none; }</style>
+    </noscript>
+</head>
+<body>
+<div class="rgb-strip" aria-hidden="true"></div>
+<div class="page" id="page">
+
+    <header>
+        <div class="top-row reveal">
+            <a class="chip" href="../">⟵ DEMO 2/4 · SWITCH</a>
+            <a class="chip" href="../../">LANGKAH PERTAMA ↗</a>
+        </div>
+        <h1 class="reveal" style="--d:0.05s">RIGHUB <span class="rgb">COMPUTERS</span></h1>
+        <p class="tagline reveal" style="--d:0.1s">Every GPU, serial and warranty — tracked tighter than your cable management.</p>
+        <span class="demo-note reveal" style="--d:0.15s">DEMO · FICTIONAL SHOP &amp; STOCK</span>
+    </header>
+
+    <!-- KPI -->
+    <div class="kpis reveal" style="--d:0.18s">
+        <div class="kpi"><div class="k-label">Inventory Value</div><div class="k-val" id="kValue">RM 0</div></div>
+        <div class="kpi"><div class="k-label">Active SKUs</div><div class="k-val" id="kSkus">0</div></div>
+        <div class="kpi"><div class="k-label">Low Stock</div><div class="k-val" id="kLow" style="color:var(--rgb1)">0</div></div>
+        <div class="kpi"><div class="k-label">Avg Margin</div><div class="k-val" id="kMargin" style="color:var(--green)">0%</div></div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar reveal" style="--d:0.22s">
+        <div class="search">
+            <span class="ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+            </span>
+            <input type="search" id="searchBox" placeholder="SEARCH NAME / SKU..." aria-label="Search inventory">
+        </div>
+        <div class="cats" id="cats">
+            <button class="cat active" data-cat="all">ALL</button>
+            <button class="cat" data-cat="gpu">GPU</button>
+            <button class="cat" data-cat="cpu">CPU</button>
+            <button class="cat" data-cat="laptop">LAPTOP</button>
+            <button class="cat" data-cat="periph">PERIPHERALS</button>
+        </div>
+    </div>
+
+    <div class="sku-list" id="skuList"></div>
+
+    <!-- Studio CTA -->
+    <div class="studio-cta reveal">
+        <span class="tag">// Like this system?</span>
+        <h3>Your shop floor, fully indexed</h3>
+        <p>Serials, warranty windows, margins and restock alerts — connected to your POS and supplier price lists.</p>
+        <div class="row">
+            <a class="cta-link rgb" href="https://wa.me/60172888202?text=Hi%20Far!%20I%27m%20interested%20in%20an%20inventory%20system%20for%20my%20shop." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link" href="../fnb/">F&amp;B Demo</a>
+            <a class="cta-link" href="../warehouse/">Warehouse Demo</a>
+            <a class="cta-link" href="../farmasi/">Pharmacy Demo</a>
+        </div>
+    </div>
+
+    <footer class="page-foot">
+        DEMO — FICTIONAL SHOP · BUILT BY <a href="../../">LANGKAH PERTAMA</a> © 2026
+    </footer>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function () {
+    'use strict';
+
+    if (!Element.prototype.closest) {
+        Element.prototype.matches = Element.prototype.matches || Element.prototype.msMatchesSelector;
+        Element.prototype.closest = function (s) {
+            var el = this;
+            while (el && el.nodeType === 1) {
+                if (el.matches(s)) return el;
+                el = el.parentElement;
+            }
+            return null;
+        };
+    }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ================= STOCK (fictional) ================= */
+    var STOCK = [
+        { sku: 'GPU-4070-AS', cat: 'gpu', name: 'RTX 4070 Super 12GB', qty: 4, min: 3, max: 12, cost: 2450, price: 2899, wty: 36 },
+        { sku: 'GPU-7800-SP', cat: 'gpu', name: 'RX 7800 XT 16GB', qty: 7, min: 3, max: 12, cost: 2150, price: 2549, wty: 36 },
+        { sku: 'CPU-7800X3D', cat: 'cpu', name: 'Ryzen 7 7800X3D', qty: 2, min: 4, max: 15, cost: 1480, price: 1739, wty: 36 },
+        { sku: 'CPU-14600K', cat: 'cpu', name: 'Core i5-14600K', qty: 11, min: 4, max: 15, cost: 1180, price: 1379, wty: 36 },
+        { sku: 'LAP-TUF15-32', cat: 'laptop', name: 'TUF Gaming A15 / 32GB', qty: 5, min: 2, max: 8, cost: 4350, price: 4999, wty: 24 },
+        { sku: 'LAP-SLIM14', cat: 'laptop', name: 'UltraSlim 14 OLED', qty: 1, min: 2, max: 8, cost: 3680, price: 4299, wty: 24 },
+        { sku: 'PER-KB75-RGB', cat: 'periph', name: 'Mech Keyboard 75% RGB', qty: 18, min: 6, max: 30, cost: 235, price: 329, wty: 12 },
+        { sku: 'PER-MS-W8K', cat: 'periph', name: 'Wireless Mouse 8K', qty: 14, min: 6, max: 30, cost: 196, price: 269, wty: 24 },
+        { sku: 'PER-MON27-165', cat: 'periph', name: '27" 165Hz IPS Monitor', qty: 3, min: 3, max: 10, cost: 780, price: 949, wty: 36 },
+        { sku: 'PER-PSU850-G', cat: 'periph', name: '850W Gold PSU', qty: 9, min: 4, max: 16, cost: 420, price: 519, wty: 120 }
+    ];
+
+    function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    var filterCat = 'all';
+    var query = '';
+    var list = document.getElementById('skuList');
+
+    function marginOf(it) {
+        return (it.price - it.cost) / it.price * 100;
+    }
+
+    function render() {
+        var h = '';
+        STOCK.forEach(function (it, idx) {
+            if (filterCat !== 'all' && it.cat !== filterCat) return;
+            if (query && (it.name + ' ' + it.sku).toLowerCase().indexOf(query) === -1) return;
+            var low = it.qty <= it.min;
+            var fill = Math.min(it.qty / it.max * 100, 100);
+            h += '<div class="sku' + (low ? ' low' : '') + ' reveal in">' +
+                '<div class="head"><h3>' + esc(it.name) +
+                '<span class="sku-code">' + esc(it.sku) + '</span>' +
+                (low ? '<span class="low-tag">LOW STOCK</span>' : '') + '</h3>' +
+                '<div class="meta">' +
+                '<span>PRICE <b>RM ' + it.price.toLocaleString('en-MY') + '</b></span>' +
+                '<span>MARGIN <b class="margin-up">' + marginOf(it).toFixed(0) + '%</b></span>' +
+                '<span class="warranty">WTY ' + it.wty + ' MO</span>' +
+                '</div></div>' +
+                '<div class="stock-ctl">' +
+                '<button data-dec="' + idx + '" aria-label="Decrease ' + esc(it.name) + '">−</button>' +
+                '<span class="q">' + it.qty + '<small>IN STOCK</small></span>' +
+                '<button data-inc="' + idx + '" aria-label="Increase ' + esc(it.name) + '">+</button>' +
+                '</div>' +
+                '<div class="stock-bar"><i style="width:' + fill.toFixed(0) + '%"></i></div>' +
+                '</div>';
+        });
+        list.innerHTML = h || '<p style="text-align:center;padding:30px;color:var(--dim)">No SKUs match. Try another search.</p>';
+        renderKpis();
+    }
+
+    function renderKpis() {
+        var value = 0, low = 0, marginSum = 0;
+        STOCK.forEach(function (it) {
+            value += it.qty * it.cost;
+            if (it.qty <= it.min) low++;
+            marginSum += marginOf(it);
+        });
+        document.getElementById('kValue').textContent = 'RM ' + Math.round(value / 1000) + 'K';
+        document.getElementById('kSkus').textContent = STOCK.length;
+        document.getElementById('kLow').textContent = low;
+        document.getElementById('kMargin').textContent = (marginSum / STOCK.length).toFixed(0) + '%';
+    }
+
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest('button');
+        if (!t) return;
+        var inc = t.getAttribute('data-inc');
+        var dec = t.getAttribute('data-dec');
+        var cat = t.getAttribute('data-cat');
+        if (inc !== null) {
+            STOCK[parseInt(inc, 10)].qty++;
+            render();
+        } else if (dec !== null) {
+            var it = STOCK[parseInt(dec, 10)];
+            if (it.qty > 0) it.qty--;
+            render();
+        } else if (cat) {
+            filterCat = cat;
+            document.querySelectorAll('.cat').forEach(function (c) {
+                c.classList.toggle('active', c.getAttribute('data-cat') === cat);
+            });
+            render();
+        }
+    });
+
+    document.getElementById('searchBox').addEventListener('input', function () {
+        query = this.value.trim().toLowerCase();
+        render();
+    });
+
+    /* ---- reveal + to-top ---- */
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.08 });
+        revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var topBtn = document.getElementById('toTop');
+    function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }
+    window.addEventListener('scroll', toggleTop, { passive: true });
+    toggleTop();
+    topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>
