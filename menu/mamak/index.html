@@ -11,13 +11,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/menu/mamak/">
     <meta property="og:title" content="Mamak Kilat — Menu Digital 24 Jam">
-    <meta property="og:description" content="Demo menu digital QR gaya mamak — gambar sebenar, pesanan terus ke WhatsApp. Dibina oleh Langkah Pertama.">
+    <meta property="og:description" content="Demo menu digital QR gaya mamak — gambar sebenar, pesanan dalam talian. Dibina oleh Langkah Pertama.">
     <meta property="og:image" content="https://langkahpertama.website/assets/menu/img/hub-mamak.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mamak Kilat — Menu Digital 24 Jam">
-    <meta name="twitter:description" content="Demo menu digital QR gaya mamak — gambar sebenar, pesanan terus ke WhatsApp.">
+    <meta name="twitter:description" content="Demo menu digital QR gaya mamak — gambar sebenar, pesanan dalam talian.">
     <meta name="twitter:image" content="https://langkahpertama.website/assets/menu/img/hub-mamak.jpg">
-    <meta name="description" content="Demo menu digital untuk kedai mamak — menu bergambar sebenar, carian, pesanan WhatsApp. Restoran rekaan oleh Langkah Pertama.">
+    <meta name="description" content="Demo menu digital untuk kedai mamak — menu bergambar sebenar, carian, pesanan dalam talian. Restoran rekaan oleh Langkah Pertama.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -550,6 +550,30 @@
             transition: transform 0.2s;
         }
         .wa-btn:hover { transform: translate(-1px, -2px); }
+        button.wa-btn { appearance: none; -webkit-appearance: none; letter-spacing: inherit; line-height: inherit; }
+        .wa-btn:disabled { cursor: default; transform: none; }
+        .order-stamp {
+            margin-top: 14px;
+            padding: 12px 14px;
+            background: var(--white);
+            border: 3px solid var(--red);
+            box-shadow: 4px 4px 0 var(--ink);
+            color: var(--red);
+            font-size: 0.72rem;
+            font-weight: 700;
+            line-height: 1.5;
+            transform: rotate(-1.2deg);
+        }
+        .order-stamp:empty { display: none; }
+        .order-stamp strong {
+            display: block;
+            font-family: var(--disp);
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
         .sheet .demo-note {
             text-align: center;
             font-size: 0.68rem;
@@ -673,7 +697,7 @@
         <h3>Kedai anda pun boleh ada!</h3>
         <p>Menu QR bergambar sebenar, tukar harga bila-bila, pesanan terus masuk WhatsApp. Siap dalam beberapa hari.</p>
         <div class="row">
-            <a class="cta-link gold" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20menu%20digital%20untuk%20restoran%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link gold" href="../../#contact">Hubungi Langkah Pertama →</a>
             <a class="cta-link ghost" href="../luxe/">Tema Fine Dining</a>
             <a class="cta-link ghost" href="../tomyam/">Tema Tomyam</a>
         </div>
@@ -697,11 +721,12 @@
     <div class="field"><input type="text" id="custName" placeholder="Nama anda (untuk tapau / delivery)"></div>
     <div class="field"><input type="text" id="custTable" placeholder="No. meja (jika makan di sini)"></div>
     <div class="total-row"><span>Jumlah</span> <span id="sheetTotal">RM 0.00</span></div>
-    <a class="wa-btn" id="waSend" href="#" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        HANTAR KE WHATSAPP
-    </a>
-    <p class="demo-note">Demo sahaja — pesanan akan terbuka dalam WhatsApp sebagai contoh.</p>
+    <button type="button" class="wa-btn" id="sendOrder">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        HANTAR PESANAN — DEMO
+    </button>
+    <div class="order-stamp" id="orderStamp" role="status" aria-live="polite"></div>
+    <p class="demo-note">Demo sahaja — tiada pesanan sebenar dihantar.</p>
 </div>
 
 <button class="to-top" id="toTop" aria-label="Kembali ke atas">
@@ -892,7 +917,9 @@
     var backdrop = document.getElementById('sheetBackdrop');
     var lines = document.getElementById('cartLines');
     var sheetTotal = document.getElementById('sheetTotal');
-    var waSend = document.getElementById('waSend');
+    var sendOrder = document.getElementById('sendOrder');
+    var orderStamp = document.getElementById('orderStamp');
+    var sendOrderHtml = sendOrder.innerHTML;
 
     function byId(id) { return MENU.filter(function (m) { return m.id === id; })[0]; }
     function cartCount() { var n = 0; for (var k in cart) n += cart[k]; return n; }
@@ -918,25 +945,23 @@
         }
         lines.innerHTML = h || '<p style="font-size:0.85rem;text-align:center;padding:18px 0;color:#5d5443">Belum ada pesanan lagi.</p>';
         sheetTotal.textContent = fmt(cartSum());
-        updateWaLink();
+        orderStamp.innerHTML = '';
     }
 
-    function updateWaLink() {
-        var msg = encodeURIComponent('*Pesanan — Mamak Kilat (DEMO)*') + '%0A%0A';
-        for (var k in cart) {
-            var it = byId(k);
-            msg += encodeURIComponent(cart[k] + 'x ' + it.name + ' — ' + fmt(it.price * cart[k])) + '%0A';
-        }
-        msg += '%0A' + encodeURIComponent('*Jumlah: ' + fmt(cartSum()) + '*') + '%0A';
-        var nm = document.getElementById('custName').value.trim();
-        var tb = document.getElementById('custTable').value.trim();
-        if (nm) msg += encodeURIComponent('Nama: ' + nm) + '%0A';
-        if (tb) msg += encodeURIComponent('Meja: ' + tb) + '%0A';
-        msg += '%0A' + encodeURIComponent('_Dihantar dari menu digital demo Langkah Pertama_');
-        waSend.href = 'https://wa.me/60172888202?text=' + msg;
-    }
-    document.getElementById('custName').addEventListener('input', updateWaLink);
-    document.getElementById('custTable').addEventListener('input', updateWaLink);
+    var sendOrderTimer = null;
+    sendOrder.addEventListener('click', function () {
+        if (cartCount() === 0 || sendOrder.disabled) return;
+        orderStamp.innerHTML = '<strong>Pesanan diterima ✓ — demo sahaja</strong>' +
+            'Dalam sistem sebenar, pesanan ini terus masuk ke WhatsApp/POS restoran.';
+        sendOrder.disabled = true;
+        sendOrder.textContent = 'DITERIMA ✓';
+        if (sendOrderTimer) clearTimeout(sendOrderTimer);
+        sendOrderTimer = setTimeout(function () {
+            sendOrder.disabled = false;
+            sendOrder.innerHTML = sendOrderHtml;
+            sendOrderTimer = null;
+        }, 3500);
+    });
 
     var lastFocus = null;
     function openSheet() {

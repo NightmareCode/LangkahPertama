@@ -307,7 +307,9 @@
         .habis.merah b { color: var(--red); }
 
         .pesan-btn {
+            position: relative;
             display: inline-flex;
+            font-family: inherit;
             align-items: center;
             gap: 7px;
             font-weight: 800;
@@ -323,6 +325,7 @@
             text-decoration: none;
             transition: transform 0.15s;
         }
+        .pesan-btn::before { content: ''; position: absolute; inset: -4px; }
         .pesan-btn:hover { transform: translate(-1px, -2px); }
         .pesan-btn:active { transform: scale(0.95); }
 
@@ -433,6 +436,35 @@
         .to-top:hover { background: var(--ink); color: var(--paper); }
         .bulk-bar.show ~ .to-top { bottom: 88px; }
 
+        /* demo "rubber stamp" toast */
+        .stamp-toast {
+            position: fixed;
+            left: 50%;
+            bottom: 150px;
+            transform: translate(-50%, 10px) rotate(-2deg) scale(1.08);
+            width: min(420px, calc(100% - 28px));
+            background: var(--paper);
+            color: var(--red);
+            border: 3px solid var(--red);
+            box-shadow: 4px 4px 0 rgba(56, 38, 19, 0.35), inset 0 0 0 2px var(--paper), inset 0 0 0 4px var(--red);
+            padding: 13px 18px;
+            font-weight: 800;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            z-index: 95;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s, transform 0.25s var(--ease), visibility 0.25s;
+        }
+        .stamp-toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0) rotate(-2deg) scale(1);
+        }
+
         @media (max-width: 700px) {
             .kpis { grid-template-columns: 1fr 1fr; gap: 14px; }
         }
@@ -488,7 +520,7 @@
         <h3>Stor anda pun boleh sepandai ini</h3>
         <p>Kadar guna harian dikira sendiri, amaran sebelum stok habis, pesanan terus ke WhatsApp pembekal. Sambung dengan menu QR &amp; dasbor jualan anda.</p>
         <div class="row">
-            <a class="cta-link utama" href="https://wa.me/60172888202?text=Hi%20Far!%20Saya%20berminat%20dengan%20sistem%20inventori%20untuk%20perniagaan%20saya." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link utama" href="../../#contact">Hubungi Langkah Pertama →</a>
             <a class="cta-link" href="../pcparts/">Demo Kedai PC</a>
             <a class="cta-link" href="../warehouse/">Demo Gudang</a>
             <a class="cta-link" href="../farmasi/">Demo Farmasi</a>
@@ -501,14 +533,17 @@
 </div>
 
 <!-- Bulk order -->
-<a class="bulk-bar" id="bulkBar" href="#" target="_blank" rel="noopener">
+<a class="bulk-bar" id="bulkBar" href="#">
     <span><span class="b-count" id="bulkCount">0</span> Item perlu dipesan semula</span>
-    <span class="wa">PESAN SEMUA → WHATSAPP</span>
+    <span class="wa">PESAN SEMUA (DEMO)</span>
 </a>
 
 <button class="to-top" id="toTop" aria-label="Kembali ke atas">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
+
+<!-- Demo stamp toast -->
+<div class="stamp-toast" id="stampToast" role="status" aria-live="polite"></div>
 
 <script>
 (function () {
@@ -527,7 +562,6 @@
     }
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var WA = 'https://wa.me/60172888202?text=';
 
     /* ================= STOK (rekaan) ================= */
     var STOK = [
@@ -557,12 +591,6 @@
     function hariLagi(it) {
         return it.qty / it.guna;
     }
-    function pesanMsg(it) {
-        var order = Math.max(it.min * 2 - it.qty, 1);
-        return encodeURIComponent('Salam ' + it.pembekal + ', nak pesan semula:') + '%0A' +
-            encodeURIComponent('- ' + it.nama + ' x ' + order + ' ' + it.unit) + '%0A%0A' +
-            encodeURIComponent('Daripada: Stor Mamak Kilat (DEMO sistem Langkah Pertama)');
-    }
 
     var STATUS_LABEL = { bahaya: 'BAHAYA', amaran: 'AMARAN', ok: 'CUKUP' };
 
@@ -588,7 +616,7 @@
                 '<button data-inc="' + idx + '" aria-label="Tambah ' + esc(it.nama) + '">+</button>' +
                 '</div>' +
                 '<div class="habis ' + (st === 'bahaya' ? 'merah' : '') + '">Guna ' + it.guna + ' ' + esc(it.unit) + '/hari<b>Habis: ' + hariTxt + '</b></div>' +
-                (st !== 'ok' ? '<a class="pesan-btn" href="' + WA + pesanMsg(it) + '" target="_blank" rel="noopener">📲 Pesan Semula</a>' : '') +
+                (st !== 'ok' ? '<button type="button" class="pesan-btn" data-pesan="' + idx + '">📲 Pesan Semula</button>' : '') +
                 '</div></div>';
         });
         list.innerHTML = h || '<p style="text-align:center;padding:30px;font-weight:700;color:var(--ink-soft)">Tiada item dalam kategori ini 👍</p>';
@@ -619,17 +647,23 @@
         var bar = document.getElementById('bulkBar');
         document.getElementById('bulkCount').textContent = kritikal.length;
         if (kritikal.length > 0) {
-            var msg = encodeURIComponent('Salam, pesanan stok Mamak Kilat (DEMO):') + '%0A';
-            kritikal.forEach(function (it) {
-                var order = Math.max(it.min * 2 - it.qty, 1);
-                msg += encodeURIComponent('- ' + it.nama + ' x ' + order + ' ' + it.unit) + '%0A';
-            });
-            msg += '%0A' + encodeURIComponent('_Dihantar dari demo sistem inventori Langkah Pertama_');
-            bar.href = WA + msg;
             bar.classList.add('show');
         } else {
             bar.classList.remove('show');
         }
+    }
+
+    /* ---- demo stamp toast ---- */
+    var stampToast = document.getElementById('stampToast');
+    var stampTimer = null;
+    function showStamp(msg) {
+        stampToast.textContent = msg;
+        stampToast.classList.add('show');
+        if (stampTimer) clearTimeout(stampTimer);
+        stampTimer = setTimeout(function () {
+            stampToast.classList.remove('show');
+            stampTimer = null;
+        }, 3000);
     }
 
     /* ---- interactions ---- */
@@ -638,6 +672,7 @@
         if (!t) return;
         var inc = t.getAttribute('data-inc');
         var dec = t.getAttribute('data-dec');
+        var pesan = t.getAttribute('data-pesan');
         var f = t.getAttribute('data-f');
         if (inc !== null) {
             STOK[parseInt(inc, 10)].qty++;
@@ -646,6 +681,9 @@
             var it = STOK[parseInt(dec, 10)];
             if (it.qty > 0) it.qty--;
             render();
+        } else if (pesan !== null) {
+            var p = STOK[parseInt(pesan, 10)];
+            showStamp('✓ PESANAN DEMO DICATAT — ' + p.nama + '. Tiada mesej sebenar dihantar.');
         } else if (f) {
             filter = f;
             document.querySelectorAll('.f-chip').forEach(function (c) {
@@ -667,6 +705,12 @@
     } else {
         revealEls.forEach(function (el) { el.classList.add('in'); });
     }
+
+    document.getElementById('bulkBar').addEventListener('click', function (e) {
+        e.preventDefault();
+        var n = STOK.filter(function (it) { return statusOf(it) !== 'ok'; }).length;
+        showStamp('✓ PESANAN PUKAL DEMO DICATAT — ' + n + ' item kritikal. Tiada mesej sebenar dihantar.');
+    });
 
     var topBtn = document.getElementById('toTop');
     function toggleTop() { topBtn.classList.toggle('show', window.scrollY > 600); }

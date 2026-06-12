@@ -2,7 +2,7 @@
 
 Portfolio site for **Far** (full name Azfar — publicly ALWAYS "Far"), 21, Malaysian full-stack dev, studio **Langkah Pertama**.
 Live: https://langkahpertama.website/ (GitHub Pages, repo `NightmareCode/LangkahPertama`).
-Contact on ALL pages: WhatsApp `wa.me/60172888202` / `tel:+60172888202` — never email.
+Contact: WhatsApp `wa.me/60172888202` / `tel:+60172888202` — ONLY on the main page (`/#contact`); never email. Sub-pages link internally to `/#contact` ("Contact/Hubungi Langkah Pertama →") and their demo flows (carts, reservation, reorders) end in in-page demo confirmations — no `wa.me` anywhere outside `/`.
 All showcased businesses are FICTIONAL — keep disclaimers, invent creative names.
 
 ## Workflow (non-negotiable)
@@ -20,7 +20,7 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `theme1–8_*/` | Wedding demos | BM | Individual products — don't restyle casually |
 | `/menu/` | Menu hub | BM | Paper menu-cover: cream, Fraunces + Caveat, polaroids, wax stamp |
 | `/menu/mamak/` | Mamak Kilat | BM | Neo-brutalist signboard: yellow/black, Anton, hard shadows |
-| `/menu/luxe/` | LANGIT 56 fine dining | EN | Ivory editorial, Cormorant Garamond, WhatsApp reservations (no cart) |
+| `/menu/luxe/` | LANGIT 56 fine dining | EN | Ivory editorial, Cormorant Garamond, reservation sheet (demo confirm, no cart) |
 | `/menu/tomyam/` | Tomyam Halilintar | BM | Neon night market: pink/green, Kanit, bottom nav, spice picker (Sikit/Sedang/Halilintar) |
 | `/dashboard/` | Dashboard hub | EN | Graphite, Outfit, Three.js data-wave terrain bg, glass cards |
 | `/dashboard/restoran/` | Mamak Kilat dashboard | **BM** | Light SaaS white/indigo, Plus Jakarta Sans |
@@ -28,7 +28,7 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `/dashboard/sales/` | Gemilang Niaga analytics | EN | Navy + violet→cyan gradients, Manrope; sparklines, funnel, target ring |
 | `/dashboard/trading/` | Menara Capital desk | EN | Terminal green/red, IBM Plex; REAL LIVE TradingView embed widgets |
 | `/inventory/` | Inventory hub | EN | Blueprint grid paper, Archivo Black, dashed "bin" callouts |
-| `/inventory/fnb/` | Stor Mamak Kilat | BM | Kraft + tape/stamps, Permanent Marker; burn rates, WhatsApp reorders |
+| `/inventory/fnb/` | Stor Mamak Kilat | BM | Kraft + tape/stamps, Permanent Marker; burn rates, demo reorder stamps |
 | `/inventory/pcparts/` | RigHub Computers | EN | Black + animated RGB, Chakra Petch; SKUs, warranty, margins |
 | `/inventory/warehouse/` | WareSpeed Logistics | EN | Concrete + safety orange, Staatliches, hazard stripes; rack map, docks |
 | `/inventory/farmasi/` | Farmasi Ceria | EN | Clinical mint, Nunito; batches, expiry chips (day-offsets — never stale), cold-chain |
@@ -49,7 +49,7 @@ All four product lines complete (wedding, menus, dashboards, inventory). Still m
 
 - Reveal-on-scroll: IntersectionObserver + `.reveal/.in`, disabled by `prefers-reduced-motion`, `<noscript>` fallback.
 - Sheets/dialogs: focus trap, Escape close, focus restore (`lastFocus !== document.body` fallback), `sheet.focus()` delayed ~60ms.
-- `esc()` covers `& < " '`. WhatsApp text: `encodeURIComponent` EVERY segment, join with literal `%0A`.
+- `esc()` covers `& < " '`. If ever composing wa.me text (main page only): `encodeURIComponent` EVERY segment, join with literal `%0A`.
 - `Element.closest()` polyfill at top of scripts. rAF loops suspend on `document.hidden` + wake on `visibilitychange`; counters get a `setTimeout` completion guarantee.
 - Themed `#toTop` on every page (shows after ~600px).
 - 3D: Three.js 0.160 jsdelivr importmap in `<script type="module">`, top-level await + try/catch hides container on failure. Blender MCP → GLBs in `assets/` (apply modifiers, name nodes). `touch-action: pan-y`.

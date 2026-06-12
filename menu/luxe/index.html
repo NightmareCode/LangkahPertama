@@ -11,13 +11,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://langkahpertama.website/menu/luxe/">
     <meta property="og:title" content="LANGIT 56 — Halal Fine Dining">
-    <meta property="og:description" content="An editorial digital menu demo for luxury restaurants — real photography, tasting menu, WhatsApp table reservations. Built by Langkah Pertama.">
+    <meta property="og:description" content="An editorial digital menu demo for luxury restaurants — real photography, tasting menu, refined reservation requests. Built by Langkah Pertama.">
     <meta property="og:image" content="https://langkahpertama.website/assets/menu/img/lx-hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="LANGIT 56 — Halal Fine Dining">
-    <meta name="twitter:description" content="An editorial digital menu demo for luxury restaurants — real photography, tasting menu, WhatsApp reservations.">
+    <meta name="twitter:description" content="An editorial digital menu demo for luxury restaurants — real photography, tasting menu, refined reservation requests.">
     <meta name="twitter:image" content="https://langkahpertama.website/assets/menu/img/lx-hero.jpg">
-    <meta name="description" content="Digital menu demo for luxury fine-dining restaurants — editorial design with real photography, tasting menu and WhatsApp table reservations. A fictional restaurant by Langkah Pertama.">
+    <meta name="description" content="Digital menu demo for luxury fine-dining restaurants — editorial design with real photography, tasting menu and an elegant reservation request flow. A fictional restaurant by Langkah Pertama.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -446,8 +446,24 @@
             cursor: pointer;
             text-decoration: none;
             transition: background 0.35s;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 0;
         }
         .send-btn:hover { background: var(--champagne); }
+        .send-btn:disabled { background: var(--char-soft); cursor: default; }
+        .sheet .reserve-confirm {
+            text-align: center;
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: var(--char);
+            border-top: 1px solid var(--hairline);
+            margin: 20px 0 0;
+            padding-top: 16px;
+        }
+        .sheet .reserve-confirm:empty { margin: 0; padding: 0; border: 0; }
         .sheet .demo-note {
             text-align: center;
             font-family: var(--sans);
@@ -709,9 +725,9 @@
     <div class="studio-cta reveal">
         <span class="smallcaps">Built in days, not months</span>
         <h3>A menu this composed, for your restaurant?</h3>
-        <p>Editorial photography, tasting menus, reservations straight to your WhatsApp — updated anytime without reprinting a single page.</p>
+        <p>Editorial photography, tasting menus, an elegant reservation request flow — updated anytime without reprinting a single page.</p>
         <div class="cta-row">
-            <a class="cta-link dark" href="https://wa.me/60172888202?text=Hi%20Far!%20I%27m%20interested%20in%20a%20digital%20menu%20for%20my%20restaurant." target="_blank" rel="noopener">WhatsApp Far →</a>
+            <a class="cta-link dark" href="../../#contact">Contact Langkah Pertama →</a>
             <a class="cta-link ghost" href="../mamak/">Mamak Theme</a>
             <a class="cta-link ghost" href="../tomyam/">Tomyam Theme</a>
         </div>
@@ -767,8 +783,9 @@
         <label for="resNote">Occasion <span style="opacity:.5">(optional)</span></label>
         <input type="text" id="resNote" placeholder="Anniversary, proposal, business dinner...">
     </div>
-    <a class="send-btn" id="waReserve" href="#" target="_blank" rel="noopener">Request via WhatsApp</a>
-    <p class="demo-note">Demo only — the request opens in WhatsApp as an example.</p>
+    <button type="button" class="send-btn" id="reserveBtn">Request Reservation</button>
+    <p class="reserve-confirm" id="reserveConfirm" role="status" aria-live="polite"></p>
+    <p class="demo-note">Demo only — no message is sent.</p>
 </div>
 
 <script>
@@ -797,7 +814,8 @@
     var pax = 2;
     var paxNum = document.getElementById('paxNum');
     var dateInput = document.getElementById('resDate');
-    var waReserve = document.getElementById('waReserve');
+    var reserveBtn = document.getElementById('reserveBtn');
+    var reserveConfirm = document.getElementById('reserveConfirm');
     var lastFocus = null;
 
     function tomorrowIso() {
@@ -818,7 +836,7 @@
         backdrop.classList.add('open');
         document.body.style.overflow = 'hidden';
         setTimeout(function () { sheet.focus(); }, 60);
-        updateWa();
+        reserveConfirm.textContent = '';
     }
     function closeSheet() {
         var wasOpen = sheet.classList.contains('open');
@@ -853,37 +871,26 @@
     document.getElementById('paxDec').addEventListener('click', function () {
         pax = Math.max(1, pax - 1);
         paxNum.textContent = pax;
-        updateWa();
     });
     document.getElementById('paxInc').addEventListener('click', function () {
         pax = Math.min(12, pax + 1);
         paxNum.textContent = pax;
-        updateWa();
     });
 
-    function prettyDate(v) {
-        if (!v) return '-';
-        var p = v.split('-');
-        return p[2] + '/' + p[1] + '/' + p[0];
-    }
-
-    function updateWa() {
-        var msg = encodeURIComponent('*Reservation Request — LANGIT 56 (DEMO)*') + '%0A%0A' +
-            encodeURIComponent('Date: ' + prettyDate(dateInput.value)) + '%0A' +
-            encodeURIComponent('Time: ' + document.getElementById('resTime').value) + '%0A' +
-            encodeURIComponent('Guests: ' + pax);
-        var nm = document.getElementById('resName').value.trim();
-        var note = document.getElementById('resNote').value.trim();
-        if (nm) msg += '%0A' + encodeURIComponent('Name: ' + nm);
-        if (note) msg += '%0A' + encodeURIComponent('Occasion: ' + note);
-        msg += '%0A%0A' + encodeURIComponent('_Sent from the LANGIT 56 digital menu demo by Langkah Pertama_');
-        waReserve.href = 'https://wa.me/60172888202?text=' + msg;
-    }
-    ['resDate', 'resTime', 'resName', 'resNote'].forEach(function (id) {
-        document.getElementById(id).addEventListener('input', updateWa);
-        document.getElementById(id).addEventListener('change', updateWa);
+    /* ---- in-page demo confirmation ---- */
+    var confirmTimer = null;
+    reserveBtn.addEventListener('click', function () {
+        if (reserveBtn.disabled) return;
+        reserveBtn.disabled = true;
+        reserveBtn.textContent = 'Request Received';
+        reserveConfirm.textContent = 'Thank you — your request has been received. Our reservations team will be in touch within the hour. (Demo)';
+        if (confirmTimer) clearTimeout(confirmTimer);
+        confirmTimer = setTimeout(function () {
+            reserveBtn.disabled = false;
+            reserveBtn.textContent = 'Request Reservation';
+            confirmTimer = null;
+        }, 4000);
     });
-    updateWa();
 
     /* keep the focused field visible above the mobile soft keyboard */
     Array.prototype.forEach.call(sheet.querySelectorAll('input, select'), function (el) {
