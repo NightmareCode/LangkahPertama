@@ -398,7 +398,7 @@
 <body>
 
   <div class="demo-banner">
-    <b>DEMO</b> · Sentinel Safety is a fictional company — sample data, not a live Skybiz connection · by
+    <b>DEMO</b> · Sentinel Safety is a fictional company — sample data, not a live ERP connection · by
     <a href="../../">Langkah Pertama</a>
   </div>
 
@@ -480,10 +480,10 @@
         <div class="page-header">
           <h1 class="page-title" id="pageTitle">Dashboard</h1>
           <div class="header-tools">
-            <button class="sync-pill" id="syncPill" aria-label="Sync from Skybiz ERP">
+            <button class="sync-pill" id="syncPill" aria-label="Sync from Cloud ERP">
               <span class="sync-dot"></span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-              <span id="syncText">Skybiz: Connected</span>
+              <span id="syncText">ERP: Connected</span>
             </button>
             <label class="theme-row"><span class="toggle-switch"><input type="checkbox" id="themeToggle"><span class="toggle-slider"></span></span>Dark</label>
           </div>
@@ -562,7 +562,7 @@
               <div class="kv"><span>Locations</span><span>5 branches</span></div>
             </div>
             <div class="card">
-              <div class="card-header"><h3 class="card-title">Skybiz ERP Connection</h3></div>
+              <div class="card-header"><h3 class="card-title">Cloud ERP Connection</h3></div>
               <div class="kv"><span>Status</span><span><span class="badge badge-success">Connected</span></span></div>
               <div class="kv"><span>Database</span><span>cp•••_sentinel</span></div>
               <div class="kv"><span>Last sync</span><span id="setSync">—</span></div>
@@ -573,7 +573,7 @@
               <div class="card-header"><h3 class="card-title">Preferences</h3></div>
               <div class="setting-item"><div class="setting-info"><h4>Dark mode</h4><p>Switch the interface theme</p></div><label class="toggle-switch"><input type="checkbox" id="themeToggle2" aria-label="Dark mode"><span class="toggle-slider"></span></label></div>
               <div class="setting-item"><div class="setting-info"><h4>Low-stock alerts</h4><p>Notify when items fall to ≤ 10</p></div><label class="toggle-switch"><input type="checkbox" id="prefAlerts" aria-label="Low-stock alerts" checked><span class="toggle-slider"></span></label></div>
-              <div class="setting-item"><div class="setting-info"><h4>Auto-sync from Skybiz</h4><p>Pull item &amp; stock changes hourly</p></div><label class="toggle-switch"><input type="checkbox" id="prefSync" aria-label="Auto-sync from Skybiz" checked><span class="toggle-slider"></span></label></div>
+              <div class="setting-item"><div class="setting-info"><h4>Auto-sync from the ERP</h4><p>Pull item &amp; stock changes hourly</p></div><label class="toggle-switch"><input type="checkbox" id="prefSync" aria-label="Auto-sync from the ERP" checked><span class="toggle-slider"></span></label></div>
             </div>
           </div>
         </section>
@@ -663,7 +663,7 @@
       ['RP-4002','Half-Face Respirator, M','resp','PCS','3M','Apex Safety Distributors',68,19,'Reusable, size M'],
       ['RP-4003','Particulate Filter P2','resp','PAIR','3M','Apex Safety Distributors',22,6,''],
       ['RP-4004','Disposable Respirator FFP2','resp','BOX','Proguard','Summit Safety Trading',95,0,'Box of 20'],
-      ['HG-5001','Nitrile Glove, Blue','hand','BOX','GloveTech','GloveHub Distributors',28,240,'Box of 100 · powder-free'],
+      ['HG-5001','Nitrile Glove, Blue','hand','BOX','Top Glove','GloveHub Distributors',28,240,'Box of 100 · powder-free'],
       ['HG-5002','Cut-Resistant Glove, Lvl 5','hand','PAIR','Deltaplus','SafeMart Wholesale',16.5,75,'EN388 cut level 5'],
       ['HG-5003','Leather Welding Gauntlet','hand','PAIR','Kings','Workwear Direct Sdn Bhd',21,28,''],
       ['HG-5004','Cotton Knit Glove, PU Palm','hand','PAIR','Proguard','Summit Safety Trading',3.2,5,''],
@@ -833,7 +833,7 @@
       $('dashLocations').innerHTML = arr.map(function (l) {
         return '<div class="loc-bar-row"><span>' + esc(l.name) + '</span><span class="loc-bar-track"><span class="loc-bar-fill" style="width:' + Math.round(l.qty / max * 100) + '%"></span></span><span class="num">' + fmtNum(l.qty) + '</span></div>';
       }).join('');
-      $('dashSync').textContent = 'Synced from Skybiz ERP · ' + SYNC_TIME + ' · ' + PRODUCTS.length + ' items';
+      $('dashSync').textContent = 'Synced from Cloud ERP · ' + SYNC_TIME + ' · ' + PRODUCTS.length + ' items';
     }
 
     /* ---------- Products ---------- */
@@ -940,14 +940,14 @@
         var rows = s.map(function (x) { return '<tr><td>' + esc(x.date) + '</td><td>' + esc(x.doc) + '</td><td>' + esc(x.party) + '</td><td class="num">' + x.qty + '</td><td class="num">' + fmtRM(x.up) + '</td><td class="num">' + fmtRM(x.amt) + '</td></tr>'; }).join('');
         return '<div class="card"><div class="card-header"><h3 class="card-title">Sales History (Outgoing)</h3></div>' +
           tbl('<th>Date</th><th>Invoice</th><th>Customer</th><th class="num">Qty</th><th class="num">Unit Price</th><th class="num">Amount</th>', rows, '') +
-          '<div class="info-note">Showing ' + s.length + ' most recent sales · synced from Skybiz</div></div>';
+          '<div class="info-note">Showing ' + s.length + ' most recent sales · synced from the ERP</div></div>';
       }
       if (tab === 'purchases') {
         var q = purchasesFor(p);
         var rows = q.map(function (x) { return '<tr><td>' + esc(x.date) + '</td><td>' + esc(x.doc) + '</td><td>' + esc(x.party) + '</td><td class="num">' + x.qty + '</td><td class="num">' + fmtRM(x.up) + '</td><td class="num">' + fmtRM(x.amt) + '</td></tr>'; }).join('');
         return '<div class="card"><div class="card-header"><h3 class="card-title">Purchase History (Incoming)</h3></div>' +
           tbl('<th>Date</th><th>GRN</th><th>Supplier</th><th class="num">Qty</th><th class="num">Unit Price</th><th class="num">Amount</th>', rows, '') +
-          '<div class="info-note">Showing ' + q.length + ' goods-received entries · synced from Skybiz</div></div>';
+          '<div class="info-note">Showing ' + q.length + ' goods-received entries · synced from the ERP</div></div>';
       }
       /* stockcard */
       var sc = stockCardFor(p);
@@ -1078,7 +1078,7 @@
     function doSync() {
       var pill = $('syncPill'); if (pill.classList.contains('syncing')) return;
       pill.classList.add('syncing'); $('syncText').textContent = 'Syncing…';
-      setTimeout(function () { pill.classList.remove('syncing'); $('syncText').textContent = 'Skybiz: Connected'; toast('Synced ' + PRODUCTS.length + ' items from Skybiz (demo)', true); }, 1300);
+      setTimeout(function () { pill.classList.remove('syncing'); $('syncText').textContent = 'ERP: Connected'; toast('Synced ' + PRODUCTS.length + ' items from the ERP (demo)', true); }, 1300);
     }
 
     /* ---------- Init app ---------- */

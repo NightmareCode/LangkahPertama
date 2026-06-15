@@ -115,7 +115,9 @@
             padding: 6px 11px;
             background: var(--orange-soft);
             text-decoration: none;
+            position: relative;
         }
+        .chip::before { content: ''; position: absolute; inset: -10px 0; }
         .chip:hover { background: var(--orange); color: #1d1206; }
 
         h1 {

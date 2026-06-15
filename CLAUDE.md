@@ -3,7 +3,7 @@
 Portfolio site for **Far** (full name Azfar — publicly ALWAYS "Far"), 21, Malaysian full-stack dev, studio **Langkah Pertama**.
 Live: https://langkahpertama.website/ (GitHub Pages, repo `NightmareCode/LangkahPertama`).
 Contact: WhatsApp `wa.me/60172888202` / `tel:+60172888202` — ONLY on the main page (`/#contact`); never email. Sub-pages link internally to `/#contact` ("Contact/Hubungi Langkah Pertama →") and their demo flows (carts, reservation, reorders) end in in-page demo confirmations — no `wa.me` anywhere outside `/`.
-All showcased businesses are FICTIONAL — keep disclaimers, invent creative names.
+All showcased businesses are FICTIONAL — keep disclaimers, invent creative names. **Rule (user, 2026-06-15): real PRODUCT/brand names on goods being sold are FINE** (NVIDIA/ASUS/Intel SKUs, 3M/MSA/Honeywell PPE, Milo/Maggi/Valrhona on menus) — **but never name a real COMPANY as a business entity**: not as the subject firm, a client/customer, a supplier/trading partner, or a data/ERP vendor (those must be invented, e.g. fictional customers "Binaan Maju Sdn Bhd", fictional suppliers "Apex Safety Distributors", and the ERP referred to generically as "cloud ERP" — the vendor "Skybiz" must NOT appear). The live TradingView embed on the trading dashboard is an explicit user-approved exception (its attribution + real tickers stay there).
 
 ## Workflow (non-negotiable)
 
@@ -32,7 +32,7 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `/inventory/pcparts/` | RigHub Computers | EN | Black + animated RGB, Chakra Petch; SKUs, warranty, margins |
 | `/inventory/warehouse/` | WareSpeed Logistics | EN | Concrete + safety orange, Staatliches, hazard stripes; rack map, docks |
 | `/inventory/farmasi/` | Farmasi Ceria | EN | Clinical mint, Nunito; batches, expiry chips (day-offsets — never stale), cold-chain |
-| `/inventory/safety/` | Sentinel Safety | EN | Orange #FF6600 + navy-sidebar SaaS, Segoe UI, light/dark; single-file SPA (login→dashboard→products→reports→settings), product detail modal w/ 5 tabs, Chart.js. Recreates a real intern project (Airgas/Skybiz ERP) as a FICTIONAL company w/ generated data — never expose the real client name/logo/creds. Differentiator: "ERP-synced" (Skybiz). 50 sample PPE items |
+| `/inventory/safety/` | Sentinel Safety | EN | Orange #FF6600 + navy-sidebar SaaS, Segoe UI, light/dark; single-file SPA (login→dashboard→products→reports→settings), product detail modal w/ 5 tabs, Chart.js. Recreates the user's real intern project (a cloud-ERP-synced inventory app) as a FICTIONAL company w/ generated data. Real PPE product brands (3M/MSA/Honeywell…) are fine; customers & suppliers are FICTIONAL company entities; ERP referred to generically ("cloud ERP", never the vendor name); no real client name/logo/creds. Differentiator: "ERP-synced". 50 sample PPE items |
 
 **Language rule:** BM only for the Mamak Kilat universe (mamak menu/dashboard/stor), tomyam menu, menu hub, and wedding pages. Everything else English.
 **Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`; 5 rows — scan counter is dynamic off `.m-row` count).

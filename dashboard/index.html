@@ -143,6 +143,8 @@
             margin-bottom: 44px;
         }
         .back {
+            position: relative;
+            display: inline-block;
             font-family: var(--mono);
             font-size: 0.68rem;
             letter-spacing: 2px;
@@ -151,6 +153,7 @@
             text-decoration: none;
             transition: color 0.3s;
         }
+        .back::before { content: ''; position: absolute; inset: -12px -6px; }
         .back:hover { color: #fff; }
         .stamp {
             font-family: var(--mono);

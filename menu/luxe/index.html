@@ -92,7 +92,9 @@
             text-decoration: none;
             margin-bottom: 36px;
             transition: all 0.4s;
+            position: relative;
         }
+        .demo-chip::before { content: ''; position: absolute; inset: -11px 0; }
         .demo-chip:hover {
             background: var(--char);
             color: var(--ivory);

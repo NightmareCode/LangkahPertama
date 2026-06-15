@@ -125,7 +125,9 @@
             padding: 6px 11px;
             background: rgba(46, 197, 255, 0.06);
             text-decoration: none;
+            position: relative;
         }
+        .chip::before { content: ''; position: absolute; inset: -10px 0; }
         .chip:hover { background: rgba(46, 197, 255, 0.14); }
 
         h1 {
@@ -235,6 +237,9 @@
             border: 1px solid var(--line);
             border-radius: 8px;
             padding: 9px 13px;
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
             cursor: pointer;
             transition: all 0.25s;
         }
