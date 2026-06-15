@@ -1941,15 +1941,15 @@
 
             <div class="feature feature-inv reveal">
                 <div class="inv-intro">
-                    <span class="feature-badge"><span class="dot"></span> 4 Live Demos</span>
+                    <span class="feature-badge"><span class="dot"></span> 5 Live Demos</span>
                     <h3>Inventory Systems —<br><em>stock that counts itself</em></h3>
-                    <p>Four stockrooms with four faces — a mamak store, a PC parts shop, a logistics warehouse and a pharmacy — checked in below as line items on their own goods-received note. Open a row to walk the aisles.</p>
+                    <p>Five stockrooms with five faces — a mamak store, a PC parts shop, a logistics warehouse, a pharmacy and an ERP-synced safety supplier — checked in below as line items on their own goods-received note. Open a row to walk the aisles.</p>
                 </div>
                 <div class="manifest corners" id="invManifest">
                     <div class="m-head">
-                        <span>Goods Received Note · No. LP-INV/2026-004</span>
+                        <span>Goods Received Note · No. LP-INV/2026-005</span>
                         <span class="m-right">
-                            <span id="mLog">[ 4/4 Logged ]</span>
+                            <span id="mLog">[ 5/5 Logged ]</span>
                             <button type="button" id="mRescan">[ Re-scan ]</button>
                             <span id="mLogSR" class="sr-only" aria-live="polite"></span>
                         </span>
@@ -1979,9 +1979,15 @@
                         <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">COLD-CHAIN ✓</span></span>
                         <span class="m-go" aria-hidden="true">→</span>
                     </a>
+                    <a class="m-row r-safe" style="--acc:#ff6a1a" href="inventory/safety/" aria-label="Open Sentinel Safety — ERP-synced safety equipment inventory demo">
+                        <span class="m-bin"><b>05</b><i>BIN-05</i></span>
+                        <span class="m-sys"><strong>Sentinel Safety</strong><span class="m-tick" data-alt="MULTI-GAS DETECTOR ×04 · LOW ⚠">SKU GD-1011 · ON-HAND 04 · 5 LOC</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">SKYBIZ ✓</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
                     <div class="m-foot">
-                        <span>Total: 4 systems · All businesses fictional — demo data</span>
-                        <a href="inventory/" class="btn btn-gold" data-magnet>Explore All Four <span class="arrow">→</span></a>
+                        <span>Total: 5 systems · All businesses fictional — demo data</span>
+                        <a href="inventory/" class="btn btn-gold" data-magnet>Explore All Five <span class="arrow">→</span></a>
                     </div>
                     <div class="m-beam" aria-hidden="true"></div>
                 </div>
@@ -2343,13 +2349,14 @@
                 var mRescan = document.getElementById('mRescan');
                 var mTicks = manifest.querySelectorAll('.m-tick');
 
+                var mTotal = mRows.length;
                 var setLogged = function (n) {
-                    mLog.textContent = '[ ' + n + '/4 LOGGED ]';
-                    if (n === 4) mLog.classList.add('done');
+                    mLog.textContent = '[ ' + n + '/' + mTotal + ' LOGGED ]';
+                    if (n === mTotal) mLog.classList.add('done');
                 };
 
                 if (reduceMotion || !('IntersectionObserver' in window)) {
-                    setLogged(4); /* static final state — chips stay visible */
+                    setLogged(mTotal); /* static final state — chips stay visible */
                     if (mRescan) mRescan.style.display = 'none';
                 } else {
                     manifest.classList.add('scan-armed');
@@ -2362,9 +2369,9 @@
                     var finishScan = function () {
                         clearScan();
                         for (var i = 0; i < mRows.length; i++) mRows[i].classList.add('logged');
-                        setLogged(4);
+                        setLogged(mTotal);
                         var mLogSR = document.getElementById('mLogSR');
-                        if (mLogSR) mLogSR.textContent = 'Check-in scan complete — 4 of 4 systems logged.';
+                        if (mLogSR) mLogSR.textContent = 'Check-in scan complete — ' + mTotal + ' of ' + mTotal + ' systems logged.';
                     };
                     var playScan = function () {
                         scanned = true; /* a manual Re-scan also satisfies the scroll trigger */

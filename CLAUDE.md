@@ -27,15 +27,16 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `/dashboard/smarthome/` | Villa Seri IoT | EN | Dark glass + ice cyan, Sora; working toggles/thermostat/scenes |
 | `/dashboard/sales/` | Gemilang Niaga analytics | EN | Navy + violet→cyan gradients, Manrope; sparklines, funnel, target ring |
 | `/dashboard/trading/` | Menara Capital desk | EN | Terminal green/red, IBM Plex; REAL LIVE TradingView embed widgets |
-| `/inventory/` | Inventory hub | EN | Blueprint grid paper, Archivo Black, dashed "bin" callouts |
+| `/inventory/` | Inventory hub | EN | Blueprint grid paper, Archivo Black, dashed "bin" callouts (5 bins) |
 | `/inventory/fnb/` | Stor Mamak Kilat | BM | Kraft + tape/stamps, Permanent Marker; burn rates, demo reorder stamps |
 | `/inventory/pcparts/` | RigHub Computers | EN | Black + animated RGB, Chakra Petch; SKUs, warranty, margins |
 | `/inventory/warehouse/` | WareSpeed Logistics | EN | Concrete + safety orange, Staatliches, hazard stripes; rack map, docks |
 | `/inventory/farmasi/` | Farmasi Ceria | EN | Clinical mint, Nunito; batches, expiry chips (day-offsets — never stale), cold-chain |
+| `/inventory/safety/` | Sentinel Safety | EN | Orange #FF6600 + navy-sidebar SaaS, Segoe UI, light/dark; single-file SPA (login→dashboard→products→reports→settings), product detail modal w/ 5 tabs, Chart.js. Recreates a real intern project (Airgas/Skybiz ERP) as a FICTIONAL company w/ generated data — never expose the real client name/logo/creds. Differentiator: "ERP-synced" (Skybiz). 50 sample PPE items |
 
 **Language rule:** BM only for the Mamak Kilat universe (mamak menu/dashboard/stor), tomyam menu, menu hub, and wedding pages. Everything else English.
-**Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`).
-All four product lines complete (wedding, menus, dashboards, inventory). Still missing from user: personal photo, social links.
+**Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`; 5 rows — scan counter is dynamic off `.m-row` count).
+All four product lines complete (wedding, menus, dashboards, inventory — inventory now has 5 demos). Still missing from user: personal photo, social links.
 
 ## Hard rules from user feedback
 
