@@ -57,14 +57,15 @@
         .shell { display: flex; align-items: flex-start; }
 
         /* ---- left brand panel (sticky) ---- */
-        .panel { position: sticky; top: 0; height: 100vh; height: 100svh; flex: 0 0 45%; display: flex; flex-direction: column; padding: 34px 40px 38px; color: var(--cream); overflow: hidden; background: radial-gradient(120% 90% at 30% 18%, #b86232, #2a190f 72%); }
+        .panel { position: sticky; top: 0; height: 100vh; height: 100svh; flex: 0 0 45%; display: flex; flex-direction: column; padding: 34px 40px 38px; color: var(--cream); overflow-x: hidden; overflow-y: auto; background: radial-gradient(120% 90% at 30% 18%, #b86232, #2a190f 72%); }
         .panel::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(246,239,226,0.5) 0.5px, transparent 0.6px); background-size: 4px 4px; opacity: 0.05; }
+        .panel::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 52%; background: linear-gradient(transparent, rgba(42,25,15,0.6)); z-index: 1; pointer-events: none; }
         .p-top { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
         .p-brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.5rem; }
         .p-brand .seed { width: 24px; height: 24px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: var(--caramel-soft); transform: rotate(-20deg); position: relative; flex-shrink: 0; }
         .p-brand .seed::after { content: ''; position: absolute; inset: 4px 10px; background: #2a190f; border-radius: 50%; }
         .p-est { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel-soft); }
-        .p-3d { flex: 1; position: relative; z-index: 1; margin: 10px 0; }
+        .p-3d { flex: 1; min-height: 168px; position: relative; z-index: 1; margin: 10px 0; }
         #cup3d { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; }
         #cup3d:active { cursor: grabbing; }
         .cup-fallback { position: absolute; inset: 0; display: none; place-items: center; }
@@ -107,8 +108,8 @@
         .m-name { font-family: var(--serif); font-size: 1.4rem; line-height: 1.1; }
         .m-meta { display: block; font-size: 0.8rem; color: var(--ink-soft); margin-top: 2px; }
         .m-roast { font-size: 0.62rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); }
-        .m-lead { flex: 1; border-bottom: 1px dotted var(--line-2); margin-bottom: 8px; min-width: 16px; }
-        .m-r { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+        .m-lead { flex: 1; border-bottom: 1px dotted var(--line-2); margin-bottom: 0.45em; min-width: 16px; }
+        .m-r { display: flex; align-items: flex-end; gap: 14px; flex-shrink: 0; }
         .m-price { font-family: var(--serif); font-size: 1.35rem; }
         .m-add { background: var(--espresso); color: var(--cream); border: none; cursor: pointer; border-radius: 999px; padding: 8px 16px; font-family: var(--sans); font-weight: 600; font-size: 0.82rem; transition: background 0.3s, transform 0.2s; }
         .m-add:hover { background: var(--caramel); transform: translateY(-2px); }
@@ -170,6 +171,10 @@
         .bagbar .bsum span { color: rgba(246,239,226,0.6); }
         .bagbar .bgo { background: var(--caramel); color: var(--cream); border: none; cursor: pointer; border-radius: 999px; padding: 10px 20px; font-family: var(--sans); font-weight: 700; font-size: 0.86rem; transition: background 0.3s; }
         .bagbar .bgo:hover { background: var(--caramel-soft); color: var(--espresso); }
+        .to-top { position: fixed; right: 20px; bottom: 22px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--cream); border: 1px solid var(--line-2); color: var(--espresso); box-shadow: 0 10px 30px rgba(41,25,15,0.2); opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s, color 0.3s, bottom 0.4s var(--ease); z-index: 55; }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--espresso); color: var(--cream); }
+        .bagbar.show ~ .to-top.show { bottom: 86px; }
 
         .toast-wrap { position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%); z-index: 70; display: flex; flex-direction: column; gap: 8px; align-items: center; }
         .toast { background: var(--espresso); color: var(--cream); padding: 11px 18px; border-radius: 999px; font-weight: 600; font-size: 0.86rem; box-shadow: 0 12px 30px rgba(41,25,15,0.3); animation: tin 0.3s var(--ease); }
@@ -299,6 +304,9 @@
         <button class="bgo" id="bagGo">Checkout →</button>
     </div>
     <div class="toast-wrap" id="toastWrap"></div>
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
 
     <script>
     (function () {
@@ -348,6 +356,14 @@
         /* newsletter */
         var nf = document.getElementById('newsForm'), nok = document.getElementById('newsOk');
         if (nf) { nf.addEventListener('submit', function (e) { e.preventDefault(); nf.style.display = 'none'; nok.classList.add('show'); nok.setAttribute('role', 'status'); }); }
+
+        /* back to top */
+        var toTop = document.getElementById('toTop');
+        if (toTop) {
+            var onScroll = function () { if (window.pageYOffset > 600) toTop.classList.add('show'); else toTop.classList.remove('show'); };
+            window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+            toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+        }
     })();
     </script>
 

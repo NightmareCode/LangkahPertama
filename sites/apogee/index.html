@@ -103,7 +103,7 @@
         .hud-corner.tl { top: 26px; left: 30px; border-right: none; border-bottom: none; }
         .hud-corner.tr { top: 26px; right: 30px; border-left: none; border-bottom: none; }
         .hud-corner.br { bottom: 26px; right: 30px; border-left: none; border-top: none; }
-        .hud-coord { position: absolute; top: 30px; right: 64px; z-index: 2; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1px; color: var(--dim); text-align: right; }
+        .hud-coord { position: absolute; top: 30px; right: 74px; z-index: 2; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1px; color: rgba(233,237,255,0.72); text-align: right; text-shadow: 0 1px 10px rgba(5,6,15,0.9); }
         .hero-inner { position: relative; z-index: 3; width: 100%; padding: 0 clamp(30px, 6vw, 90px) clamp(48px, 8vh, 90px); }
         .hero h1 { font-family: var(--disp); font-weight: 800; font-size: clamp(2.8rem, 6.4vw, 6rem); line-height: 0.98; letter-spacing: -0.02em; max-width: 16ch; }
         .hero h1 .o { color: var(--cyan); }
@@ -130,14 +130,14 @@
         /* ---- PLATFORM (hover-expand systems list) ---- */
         .platform .seclabel { margin-bottom: 30px; }
         .sys { border-top: 1px solid var(--line); }
-        .sys-row { display: grid; grid-template-columns: 54px 1fr auto; gap: 24px; align-items: start; padding: 26px 8px; border-bottom: 1px solid var(--line); cursor: default; transition: background 0.4s; position: relative; }
+        .sys-row { display: grid; grid-template-columns: 54px 1fr auto 26px; gap: 24px; align-items: start; padding: 24px 8px; border-bottom: 1px solid var(--line); cursor: default; transition: background 0.4s; }
         .sys-row:hover { background: linear-gradient(90deg, rgba(102,145,255,0.05), transparent 60%); }
-        .sys-row .ix { font-family: var(--mono); font-size: 0.7rem; color: var(--cyan); padding-top: 6px; }
+        .sys-row .ix { font-family: var(--mono); font-size: 0.7rem; color: var(--cyan); padding-top: 7px; }
         .sys-row h3 { font-family: var(--disp); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 2rem); transition: color 0.3s; }
-        .sys-row .desc { max-height: 0; overflow: hidden; opacity: 0; color: var(--dim); font-size: 0.95rem; transition: max-height 0.5s var(--ease), opacity 0.4s, margin 0.4s; max-width: 60ch; }
-        .sys-row:hover .desc, .sys-row:focus-within .desc { max-height: 90px; opacity: 1; margin-top: 12px; }
-        .sys-row .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 1px; color: var(--dim); white-space: nowrap; padding-top: 8px; }
-        .sys-row .plus { position: absolute; right: 8px; top: 26px; color: var(--dim); transition: transform 0.4s var(--ease), color 0.3s; }
+        .sys-row:hover h3 { color: var(--cyan); }
+        .sys-row .desc { color: var(--dim); font-size: 0.94rem; margin-top: 10px; max-width: 62ch; }
+        .sys-row .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 1px; color: var(--dim); white-space: nowrap; padding-top: 9px; }
+        .sys-row .plus { color: var(--dim); padding-top: 5px; transition: transform 0.4s var(--ease), color 0.3s; }
         .sys-row:hover .plus { transform: rotate(45deg); color: var(--cyan); }
 
         /* ---- FLEET (horizontal scroll) ---- */
@@ -156,7 +156,7 @@
         .craft .spec { display: flex; justify-content: space-between; padding: 9px 0; border-top: 1px solid var(--line); font-size: 0.84rem; }
         .craft .spec .k { font-family: var(--mono); font-size: 0.7rem; color: var(--dim); }
         .craft .spec .v { font-weight: 600; }
-        .fleet-hint { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); }
+        .fleet-hint { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); padding-bottom: 8px; }
 
         /* ---- PROGRAM (timeline) ---- */
         .prog-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; }
@@ -175,6 +175,7 @@
         .metrics { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(180deg, rgba(102,145,255,0.04), transparent); }
         .met-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .met { border-left: 1px solid var(--line); padding-left: 22px; }
+        .met:first-child { border-left: none; padding-left: 0; }
         .met .num { font-family: var(--disp); font-weight: 800; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; font-variant-numeric: tabular-nums; }
         .met .num em { font-style: normal; color: var(--cyan); }
         .met .lbl { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-top: 8px; }
@@ -214,6 +215,7 @@
             .hero { min-height: 88vh; }
             .prog-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
             .met-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
+            .met:nth-child(odd) { border-left: none; padding-left: 0; }
             .over-stats { gap: 36px; }
         }
         @media (max-width: 540px) {
