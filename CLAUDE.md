@@ -33,10 +33,14 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 | `/inventory/warehouse/` | WareSpeed Logistics | EN | Concrete + safety orange, Staatliches, hazard stripes; rack map, docks |
 | `/inventory/farmasi/` | Farmasi Ceria | EN | Clinical mint, Nunito; batches, expiry chips (day-offsets — never stale), cold-chain |
 | `/inventory/safety/` | Sentinel Safety | EN | Orange #FF6600 + navy-sidebar SaaS, Segoe UI, light/dark; single-file SPA (login→dashboard→products→reports→settings), product detail modal w/ 5 tabs, Chart.js. Recreates the user's real intern project (a cloud-ERP-synced inventory app) as a FICTIONAL company w/ generated data. Real PPE product brands (3M/MSA/Honeywell…) are fine; customers & suppliers are FICTIONAL company entities; ERP referred to generically ("cloud ERP", never the vendor name); no real client name/logo/creds. Differentiator: "ERP-synced". 50 sample PPE items |
+| `/sites/` | Website-designs hub | EN | Dark neutral gallery, Schibsted Grotesk; 3 themed project bands (CSS brand visuals) linking to the 3 concept sites |
+| `/sites/apogee/` | Apogee | EN | Aerospace concept site. Dark cinematic, Syne/Hanken Grotesk/Space Mono; custom Blender 3D orbital sculpture (assets/apogee.glb) via Three.js + starfield/drag/parallax, telemetry UI, animated counters, demo contact |
+| `/sites/forma/` | Forma | EN | Architecture concept site. Light editorial bone+terracotta, Instrument Serif + Familjen Grotesk; Blender 3D concrete form (assets/forma.glb, RoomEnvironment), SVG architectural project plates, demo enquiry |
+| `/sites/ember/` | Ember Lane | EN | Coffee-roaster concept site. Warm cream/espresso/caramel, DM Serif Display + DM Sans; Blender 3D cup+saucer (assets/ember.glb) + CSS steam, illustrated packaging, demo add-to-bag + newsletter |
 
 **Language rule:** BM only for the Mamak Kilat universe (mamak menu/dashboard/stor), tomyam menu, menu hub, and wedding pages. Everything else English.
 **Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`; 5 rows — scan counter is dynamic off `.m-row` count).
-All four product lines complete (wedding, menus, dashboards, inventory — inventory now has 5 demos). Still missing from user: personal photo, social links.
+Product lines complete: wedding, menus, dashboards, inventory (5 demos), **website designs** (`/sites/` — 3 concept company sites, each with a custom Blender GLB hero; discoverable via a `.feature-sites` block on the main page). New external company sites must keep the security CSP meta (jsdelivr allowed for Three.js). Still missing from user: personal photo, social links.
 
 ## Hard rules from user feedback
 

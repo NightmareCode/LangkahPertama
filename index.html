@@ -1307,6 +1307,16 @@
             color: var(--dim);
         }
         .m-foot .btn { text-transform: none; }
+        .feature-sites { margin-top: 26px; }
+        .sites-mini { display: grid; gap: 12px; align-content: center; }
+        .sm { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--panel); text-decoration: none; color: inherit; transition: transform 0.35s var(--ease), border-color 0.35s, background 0.35s; }
+        .sm:hover { transform: translateX(6px); border-color: rgba(217,176,108,0.5); background: rgba(255,255,255,0.05); }
+        .sm .sw { width: 48px; height: 48px; border-radius: 11px; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+        .sm .sw.a { background: radial-gradient(circle at 38% 32%, #5eead4, #5b8cff 55%, #25306e); }
+        .sm .sw.f { background: linear-gradient(150deg, #ece6da, #b9572f); }
+        .sm .sw.e { background: radial-gradient(circle at 40% 35%, #c98a4f, #2f1a10); }
+        .sm b { font-family: var(--disp); font-weight: 600; font-size: 1rem; display: block; }
+        .sm small { font-size: 0.78rem; color: var(--dim); }
         .m-beam {
             position: absolute;
             left: 0; right: 0; top: -2px;
@@ -1992,6 +2002,26 @@
                         <a href="inventory/" class="btn btn-gold" data-magnet>Explore All Five <span class="arrow">→</span></a>
                     </div>
                     <div class="m-beam" aria-hidden="true"></div>
+                </div>
+            </div>
+
+            <div class="feature feature-sites reveal">
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> New — 3 Concept Sites</span>
+                    <h3>Full Website Designs —<br><em>three industries, three identities</em></h3>
+                    <p>Complete frontend builds for a fictional aerospace startup, an architecture studio and a coffee roaster — each with its own typography, motion language and a custom 3D hero modelled in Blender.</p>
+                    <ul class="feature-list">
+                        <li>A custom Blender 3D centrepiece on every hero</li>
+                        <li>A distinct design language for each brand</li>
+                        <li>Smooth scroll, parallax &amp; micro-interactions</li>
+                        <li>Built mobile-first, secure &amp; fast</li>
+                    </ul>
+                    <a href="sites/" class="btn btn-gold" data-magnet>Explore the designs <span class="arrow">→</span></a>
+                </div>
+                <div class="sites-mini">
+                    <a class="sm" href="sites/apogee/"><span class="sw a"></span><span><b>Apogee</b><small>Aerospace · dark &amp; cinematic</small></span></a>
+                    <a class="sm" href="sites/forma/"><span class="sw f"></span><span><b>Forma</b><small>Architecture · light &amp; editorial</small></span></a>
+                    <a class="sm" href="sites/ember/"><span class="sw e"></span><span><b>Ember Lane</b><small>Coffee · warm &amp; tactile</small></span></a>
                 </div>
             </div>
         </div>
