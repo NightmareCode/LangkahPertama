@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Keep GitHub Actions (the Pages deploy workflow) up to date via reviewable PRs.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

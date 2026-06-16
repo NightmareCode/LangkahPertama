@@ -1,0 +1,7 @@
+# Security policy for langkahpertama.website (RFC 9116)
+# This is a static marketing/portfolio site with no backend or user data.
+Contact: https://langkahpertama.website/#contact
+Contact: https://wa.me/60172888202
+Expires: 2027-06-16T00:00:00.000Z
+Preferred-Languages: en, ms
+Canonical: https://langkahpertama.website/.well-known/security.txt

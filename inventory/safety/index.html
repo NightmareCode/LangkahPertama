@@ -2,6 +2,8 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#FF6600">
   <title>Sentinel Safety — Inventory System (ERP-synced) | Demo by Langkah Pertama</title>
@@ -19,7 +21,7 @@
   <meta name="twitter:image" content="https://langkahpertama.website/assets/og-image.png">
   <meta name="description" content="Demo inventory system for a fictional safety-equipment distributor — syncs items, multi-location stock, pricing and stock-card history from a cloud ERP. Built by Langkah Pertama.">
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer integrity="sha384-vsrfeLOOY6KuIYKDlmVH5UiBmgIdB1oEf7p01YgWHuqmOHfZr374+odEv96n9tNC" crossorigin="anonymous"></script>
 
   <style>
     /* ============================================================
@@ -417,11 +419,11 @@
         <p class="login-note">No account needed — this is a demo. You can <b>leave the fields blank and just click below</b> to go straight in.</p>
         <div class="form-group">
           <label class="form-label" for="username">Username <span class="opt">(optional)</span></label>
-          <input class="form-input" type="text" id="username" placeholder="Not required — just click Enter Demo" autocomplete="username">
+          <input class="form-input" type="text" id="username" placeholder="Not required — just click Enter Demo" autocomplete="off">
         </div>
         <div class="form-group">
           <label class="form-label" for="password">Password <span class="opt">(optional)</span></label>
-          <input class="form-input" type="password" id="password" placeholder="Not required — just click Enter Demo" autocomplete="current-password">
+          <input class="form-input" type="password" id="password" placeholder="Not required — just click Enter Demo" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;margin-top:6px;">Enter Demo →</button>
       </form>

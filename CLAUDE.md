@@ -63,6 +63,16 @@ All four product lines complete (wedding, menus, dashboards, inventory — inven
 - Preview tab is often hidden: rAF/IO/lazy images/resize suspended, `elementFromPoint` in-viewport only, screenshots time out. Use DOM checks + test hooks (`window.__lpHero`, `window.__hubBg.tick()`).
 - Mobile audit: `scrollWidth <= innerWidth+1` at 375px, clean console, key flows clicked programmatically.
 
+## Security posture (hardened 2026-06-16)
+
+Static site = small surface (no backend/DB/auth/cookies; "logins" are fake client-side demos). GitHub Pages can't set HTTP headers, so protections are meta-based.
+- **CSP**: every page has a `<meta http-equiv="Content-Security-Policy">` (inserted right after `<meta charset>`). Base policy: `default-src 'self'`, `script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net`, `style-src ... https://fonts.googleapis.com`, `font-src https://fonts.gstatic.com`, `img-src 'self' data:`, `frame-src 'self'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `upgrade-insecure-requests`. **`'unsafe-inline'` is required** (pages are inline-script/style heavy; no nonces possible on Pages). The trading page has a WIDER variant adding `*.tradingview.com`/`*.tradingview-widget.com` to script/frame/connect/img. **Adding any new external origin (CDN/font/embed) means updating the CSP on that page or it silently breaks** — re-test the console for CSP violations after.
+- `<meta name="referrer" content="strict-origin-when-cross-origin">` on every page; `frame-ancestors`/HSTS/X-Frame/nosniff are header-only = NOT available on Pages (clickjacking is moot — no sensitive state).
+- Chart.js (only external classic script) has SRI `integrity` + `crossorigin` (safety page). Three.js importmaps can't take SRI (spec) — rely on pinned `@0.160.0` + CSP allowlist. Pin every CDN version; never `@latest`.
+- `CNAME` file pins the custom domain (prevents takeover if Pages settings reset). `.nojekyll` serves files verbatim. `/.well-known/security.txt` (RFC 9116, Expires 2027-06-16 — renew before then). Branded `404.html`. `.github/dependabot.yml` watches the Actions versions.
+- Deploy workflow strips `CLAUDE.md` from the published artifact (keep internal docs out of the live site). NEVER commit real secrets/keys/.env — anything shipped to Pages is world-readable.
+- No DOM-XSS sinks (all dynamic HTML from hardcoded data; user input is filter-only; `esc()` on the safety page covers `& < > " '`). Keep it that way: never feed `input.value`/`location.*`/`referrer` into `innerHTML`.
+
 ## Windows/PowerShell traps
 
 - PS 5.1 reads BOM-less `.ps1` as ANSI → mojibake. Write scripts with UTF-8 BOM.
