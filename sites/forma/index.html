@@ -100,7 +100,8 @@
         .work-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
         .work-top h2 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1; margin-top: 10px; }
         .work-top .hint2 { font-size: 0.74rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); }
-        .gallery { display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 26px; margin: 0 calc(clamp(22px, 5vw, 70px) * -1); padding-left: clamp(22px, 5vw, 70px); padding-right: clamp(22px, 5vw, 70px); scrollbar-width: none; cursor: grab; }
+        .gallery { display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 26px; margin: 0 calc(clamp(22px, 5vw, 70px) * -1); padding-left: clamp(22px, 5vw, 70px); padding-right: clamp(22px, 5vw, 70px); scrollbar-width: none; cursor: grab; user-select: none; }
+        .gallery a, .gallery svg { -webkit-user-drag: none; user-drag: none; }
         .gallery::-webkit-scrollbar { display: none; }
         .gallery:active { cursor: grabbing; }
         .proj { scroll-snap-align: start; flex: 0 0 clamp(300px, 42vw, 480px); }
@@ -363,9 +364,28 @@
         menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menu.classList.remove('open'); }); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menu.classList.remove('open'); });
 
-        /* gallery drag-scroll */
+        /* gallery drag-scroll (mouse). Touch/pen keep native scroll. */
         var gal = document.getElementById('gallery');
-        if (gal) { var down=false,sx=0,sl0=0; gal.addEventListener('pointerdown',function(e){down=true;sx=e.clientX;sl0=gal.scrollLeft;}); gal.addEventListener('pointermove',function(e){if(down)gal.scrollLeft=sl0-(e.clientX-sx);}); window.addEventListener('pointerup',function(){down=false;}); }
+        if (gal) {
+            var down = false, sx = 0, sl0 = 0, moved = 0, pid = null;
+            gal.addEventListener('dragstart', function (e) { e.preventDefault(); }); // kill native link/image drag that eats the gesture
+            gal.addEventListener('pointerdown', function (e) {
+                if (e.pointerType !== 'mouse' || e.button !== 0) return;
+                down = true; moved = 0; sx = e.clientX; sl0 = gal.scrollLeft; pid = e.pointerId;
+                gal.style.scrollSnapType = 'none'; // snap re-pulls every JS scroll write; suspend it during the drag
+                try { gal.setPointerCapture(e.pointerId); } catch (_) {}
+            });
+            gal.addEventListener('pointermove', function (e) {
+                if (!down) return;
+                var dx = e.clientX - sx; if (Math.abs(dx) > moved) moved = Math.abs(dx);
+                e.preventDefault(); gal.scrollLeft = sl0 - dx;
+            });
+            function endDrag() { if (!down) return; down = false; gal.style.scrollSnapType = ''; if (pid !== null) { try { gal.releasePointerCapture(pid); } catch (_) {} pid = null; } }
+            gal.addEventListener('pointerup', endDrag);
+            gal.addEventListener('pointercancel', endDrag);
+            window.addEventListener('pointerup', endDrag);
+            gal.addEventListener('click', function (e) { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true); // a real drag shouldn't navigate
+        }
 
         /* contact demo */
         var form = document.getElementById('contactForm'), ok = document.getElementById('formOk');
