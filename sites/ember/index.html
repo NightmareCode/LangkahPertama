@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6efe2">
+    <title>Ember Lane — Small-Batch Coffee Roastery | Demo by Langkah Pertama</title>
+    <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://langkahpertama.website/sites/ember/">
+    <meta property="og:title" content="Ember Lane — Small-Batch Coffee Roastery">
+    <meta property="og:description" content="A concept website design for a fictional specialty coffee roaster — warm, tactile, with an interactive 3D cup. Built by Langkah Pertama.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ember Lane — Coffee Roastery (concept site)">
+    <meta name="twitter:description" content="Warm specialty-coffee website design with an interactive 3D cup. By Langkah Pertama.">
+    <meta name="description" content="Concept website design for a fictional specialty coffee roaster by Langkah Pertama — interactive 3D cup, illustrated packaging, smooth animations.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #f6efe2;
+            --cream-2: #efe4d2;
+            --cream-3: #e7d9c2;
+            --espresso: #29190f;
+            --espresso-2: #3d2a1c;
+            --ink-soft: #6e5848;
+            --ink-faint: #a08c79;
+            --caramel: #bf6a30;
+            --caramel-deep: #9b4f22;
+            --sage: #6c764f;
+            --line: rgba(41, 25, 15, 0.14);
+            --line-2: rgba(41, 25, 15, 0.26);
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', 'Segoe UI', sans-serif;
+            --ease: cubic-bezier(0.34, 1.4, 0.5, 1);
+            --ease2: cubic-bezier(0.22, 1, 0.36, 1);
+            --shadow: 0 18px 50px rgba(41, 25, 15, 0.12);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: clip; }
+        body { font-family: var(--sans); background: var(--cream); color: var(--espresso); line-height: 1.62; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--caramel); color: var(--cream); }
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--caramel); outline-offset: 3px; border-radius: 4px; }
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease2), transform 0.9s var(--ease2); transition-delay: var(--d, 0s); }
+        .reveal.in { opacity: 1; transform: none; }
+        .eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--caramel); }
+        .serif { font-family: var(--serif); font-weight: 400; }
+        .italic { font-style: italic; }
+
+        /* ============ nav ============ */
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(246,239,226,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.5rem; }
+        .logo .seed { width: 26px; height: 26px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: var(--caramel); transform: rotate(-20deg); position: relative; flex-shrink: 0; }
+        .logo .seed::after { content: ''; position: absolute; inset: 4px 11px; background: var(--cream); border-radius: 50%; }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); transition: color 0.3s; }
+        .nav-links a:hover { color: var(--espresso); }
+        .bag-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--espresso); color: var(--cream) !important; border-radius: 999px; padding: 9px 17px; font-weight: 600; font-size: 0.86rem; transition: transform 0.3s var(--ease), background 0.3s; }
+        .bag-btn:hover { transform: translateY(-2px); background: var(--caramel-deep); }
+        .bag-btn .count { background: var(--caramel); color: var(--cream); border-radius: 999px; min-width: 18px; height: 18px; padding: 0 5px; font-size: 0.68rem; display: grid; place-items: center; }
+        .burger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+        .burger span { width: 22px; height: 2px; background: var(--espresso); border-radius: 2px; }
+
+        /* ============ hero ============ */
+        .hero { padding: 24px 0 30px; position: relative; }
+        .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: center; min-height: clamp(540px, 80vh, 760px); }
+        .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage); border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 13px; margin-bottom: 22px; }
+        .badge .pip { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); }
+        h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.9rem, 7vw, 5.4rem); line-height: 1.0; letter-spacing: -0.5px; }
+        h1 .caramel { color: var(--caramel); }
+        .hero-sub { color: var(--ink-soft); font-size: 1.1rem; max-width: 440px; margin: 24px 0 32px; }
+        .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-weight: 600; font-size: 0.96rem; padding: 14px 26px; border-radius: 999px; cursor: pointer; border: 1px solid transparent; transition: transform 0.35s var(--ease), background 0.3s, color 0.3s, border-color 0.3s; }
+        .btn-fill { background: var(--caramel); color: var(--cream); }
+        .btn-fill:hover { transform: translateY(-3px); background: var(--caramel-deep); }
+        .btn-text { color: var(--espresso); font-weight: 600; border-bottom: 1px solid var(--espresso); border-radius: 0; padding: 4px 2px; }
+        .btn-text:hover { color: var(--caramel); border-color: var(--caramel); }
+        .btn .arrow { transition: transform 0.35s var(--ease); }
+        .btn:hover .arrow { transform: translateX(4px); }
+
+        .hero-3d { position: relative; min-height: 440px; align-self: stretch; }
+        #cup3d { position: absolute; inset: 0; cursor: grab; touch-action: pan-y; }
+        #cup3d:active { cursor: grabbing; }
+        .cup-glow { position: absolute; inset: 18% 14% 10%; border-radius: 50%; background: radial-gradient(circle, rgba(191,106,48,0.16), transparent 60%); filter: blur(30px); z-index: -1; }
+        .cup-fallback { position: absolute; inset: 0; display: none; place-items: center; }
+        .cup-fallback .c { width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, var(--caramel), var(--espresso)); box-shadow: var(--shadow); }
+        /* steam */
+        .steam { position: absolute; top: 14%; left: 50%; transform: translateX(-50%); width: 80px; height: 120px; pointer-events: none; }
+        .steam i { position: absolute; bottom: 0; width: 9px; height: 9px; border-radius: 50%; background: rgba(110,88,72,0.5); filter: blur(5px); opacity: 0; animation: steam 4s ease-in-out infinite; }
+        .steam i:nth-child(1) { left: 18px; animation-delay: 0s; }
+        .steam i:nth-child(2) { left: 36px; animation-delay: 1.1s; }
+        .steam i:nth-child(3) { left: 52px; animation-delay: 2.1s; }
+        @keyframes steam { 0% { opacity: 0; transform: translateY(0) scale(0.6); } 20% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(-90px) translateX(12px) scale(2.4); } }
+        .hint { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-faint); }
+
+        /* ============ marquee ============ */
+        .marq { background: var(--espresso); color: var(--cream); overflow: hidden; padding: 14px 0; }
+        .marq-track { display: flex; gap: 48px; width: max-content; animation: marq 28s linear infinite; font-family: var(--serif); font-size: 1.2rem; }
+        .marq-track span { white-space: nowrap; opacity: 0.9; }
+        .marq-track span::before { content: '✦'; color: var(--caramel); margin-right: 48px; }
+        @keyframes marq { to { transform: translateX(-50%); } }
+
+        /* ============ sections ============ */
+        section { padding: 88px 0; }
+        .sec-head { text-align: center; max-width: 620px; margin: 0 auto 50px; }
+        .sec-head h2 { font-family: var(--serif); font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.05; margin-top: 12px; }
+        .sec-head p { color: var(--ink-soft); margin-top: 14px; }
+
+        /* ============ coffees ============ */
+        .coffee-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+        .coffee { background: var(--cream); border: 1px solid var(--line); border-radius: 20px; padding: 22px; transition: transform 0.4s var(--ease2), box-shadow 0.4s; }
+        .coffee:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+        .bag { position: relative; aspect-ratio: 3 / 3.6; border-radius: 6px 6px 9px 9px; margin-bottom: 18px; overflow: hidden; box-shadow: inset 0 -30px 40px rgba(0,0,0,0.12); transition: transform 0.5s var(--ease); }
+        .coffee:hover .bag { transform: rotate(-1.5deg) scale(1.02); }
+        .bag::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 16px; background: rgba(41,25,15,0.55); clip-path: polygon(0 0,100% 0,100% 55%,92% 100%,84% 55%,76% 100%,68% 55%,60% 100%,52% 55%,44% 100%,36% 55%,28% 100%,20% 55%,12% 100%,4% 55%,0 100%); }
+        .bag .label { position: absolute; left: 14px; right: 14px; bottom: 16px; background: var(--cream); border-radius: 6px; padding: 12px 13px; }
+        .bag .label .o { font-size: 0.6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--caramel); }
+        .bag .label .nm { font-family: var(--serif); font-size: 1.15rem; line-height: 1.05; margin-top: 2px; }
+        .bag .seal { position: absolute; top: 26px; left: 50%; transform: translateX(-50%); width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid var(--cream); display: grid; place-items: center; color: var(--cream); font-size: 1rem; opacity: 0.85; }
+        .coffee .notes { font-size: 0.86rem; color: var(--ink-soft); min-height: 42px; }
+        .coffee .roast { font-size: 0.66rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
+        .coffee .buy { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+        .coffee .price { font-family: var(--serif); font-size: 1.5rem; }
+        .add { background: var(--espresso); color: var(--cream); border: none; cursor: pointer; border-radius: 999px; padding: 9px 18px; font-family: var(--sans); font-weight: 600; font-size: 0.85rem; transition: background 0.3s, transform 0.2s; }
+        .add:hover { background: var(--caramel); transform: translateY(-2px); }
+        .add:active { transform: scale(0.95); }
+
+        /* ============ story ============ */
+        .story { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
+        .roaster { aspect-ratio: 1 / 1; border-radius: 24px; background: radial-gradient(120% 120% at 30% 20%, var(--caramel), var(--espresso-2) 70%); position: relative; overflow: hidden; box-shadow: var(--shadow); display: grid; place-items: center; }
+        .roaster .drum { width: 56%; height: 56%; border-radius: 50%; border: 8px solid rgba(246,239,226,0.22); position: relative; }
+        .roaster .drum::before { content: ''; position: absolute; inset: 16%; border-radius: 50%; border: 3px dashed rgba(246,239,226,0.3); animation: spin 14s linear infinite; }
+        .roaster .drum::after { content: ''; position: absolute; inset: 38%; border-radius: 50%; background: rgba(246,239,226,0.16); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .roaster .beans { position: absolute; inset: 0; }
+        .roaster .beans i { position: absolute; width: 14px; height: 9px; border-radius: 50%; background: rgba(41,25,15,0.5); }
+        .story h2 { font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.08; }
+        .story p { color: var(--ink-soft); margin-top: 18px; }
+        .story .ministats { display: flex; gap: 34px; margin-top: 26px; }
+        .story .ministats b { font-family: var(--serif); font-size: 2rem; display: block; line-height: 1; }
+        .story .ministats span { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft); }
+
+        /* ============ subscriptions ============ */
+        .sub { background: var(--cream-2); }
+        .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .plan { background: var(--cream); border: 1px solid var(--line); border-radius: 20px; padding: 30px 26px; position: relative; transition: transform 0.4s var(--ease2), box-shadow 0.4s, border-color 0.4s; }
+        .plan:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+        .plan.best { border-color: var(--caramel); }
+        .plan.best::before { content: 'Most popular'; position: absolute; top: -11px; left: 26px; background: var(--caramel); color: var(--cream); font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; }
+        .plan h3 { font-family: var(--serif); font-size: 1.6rem; }
+        .plan .pr { font-family: var(--serif); font-size: 2.6rem; margin: 10px 0 2px; }
+        .plan .pr small { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-soft); }
+        .plan ul { list-style: none; margin: 20px 0 24px; display: grid; gap: 11px; }
+        .plan li { font-size: 0.9rem; color: var(--espresso); display: flex; gap: 10px; }
+        .plan li::before { content: '✦'; color: var(--caramel); }
+
+        /* ============ cafes ============ */
+        .cafe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .cafe { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: transform 0.4s var(--ease2); }
+        .cafe:hover { transform: translateY(-5px); }
+        .cafe .top { height: 130px; background: linear-gradient(150deg, var(--cream-3), var(--caramel)); position: relative; }
+        .cafe .top span { position: absolute; bottom: 12px; left: 16px; font-family: var(--serif); font-size: 1.4rem; color: var(--cream); }
+        .cafe .b { padding: 18px 20px; }
+        .cafe .b .addr { color: var(--ink-soft); font-size: 0.88rem; }
+        .cafe .b .hrs { font-size: 0.74rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--ink-faint); margin-top: 10px; }
+
+        /* ============ quote ============ */
+        .quote { text-align: center; }
+        .quote blockquote { font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1.3; max-width: 860px; margin: 0 auto; }
+        .quote blockquote .caramel { color: var(--caramel); }
+        .quote cite { display: block; margin-top: 24px; font-style: normal; font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); }
+
+        /* ============ newsletter ============ */
+        .news { text-align: center; }
+        .news-inner { background: var(--espresso); color: var(--cream); border-radius: 28px; padding: 64px 30px; }
+        .news-inner h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); }
+        .news-inner p { color: rgba(246,239,226,0.7); max-width: 440px; margin: 14px auto 28px; }
+        .news-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+        .news-form input { flex: 1; background: rgba(246,239,226,0.1); border: 1px solid rgba(246,239,226,0.2); border-radius: 999px; padding: 13px 20px; color: var(--cream); font-family: var(--sans); font-size: 0.95rem; }
+        .news-form input::placeholder { color: rgba(246,239,226,0.5); }
+        .news-form button { background: var(--caramel); color: var(--cream); border: none; cursor: pointer; border-radius: 999px; padding: 13px 24px; font-weight: 700; font-family: var(--sans); transition: background 0.3s, transform 0.3s; }
+        .news-form button:hover { background: var(--cream); color: var(--espresso); transform: translateY(-2px); }
+        .news-ok { display: none; margin-top: 18px; color: var(--caramel); font-weight: 600; }
+        .news-ok.show { display: block; }
+
+        /* ============ footer ============ */
+        footer { border-top: 1px solid var(--line); padding: 56px 0 36px; }
+        .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 38px; }
+        .foot-grid .logo { font-size: 1.9rem; }
+        .foot-grid > div p { color: var(--ink-soft); font-size: 0.9rem; max-width: 260px; margin-top: 12px; }
+        .foot-col h5 { font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 14px; }
+        .foot-col a { display: block; padding: 5px 0; font-size: 0.92rem; transition: color 0.3s; }
+        .foot-col a:hover { color: var(--caramel); }
+        .foot-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 0.74rem; color: var(--ink-soft); }
+        .foot-bottom a { color: var(--caramel); }
+
+        /* toast */
+        .toast-wrap { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 300; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+        .toast { background: var(--espresso); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; box-shadow: var(--shadow); display: flex; align-items: center; gap: 10px; animation: tin 0.3s var(--ease); }
+        .toast .d { width: 8px; height: 8px; border-radius: 50%; background: var(--caramel); }
+        @keyframes tin { from { opacity: 0; transform: translateY(12px); } }
+
+        .to-top { position: fixed; right: 22px; bottom: 22px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--cream); border: 1px solid var(--line-2); color: var(--espresso); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s var(--ease2); z-index: 90; }
+        .to-top.show { opacity: 1; visibility: visible; transform: none; }
+        .to-top:hover { background: var(--espresso); color: var(--cream); }
+
+        @media (max-width: 940px) {
+            .nav-links { position: fixed; inset: 0 0 0 auto; width: min(80vw, 300px); flex-direction: column; align-items: flex-start; justify-content: center; gap: 24px; padding: 40px; background: var(--cream); border-left: 1px solid var(--line); transform: translateX(100%); transition: transform 0.45s var(--ease2); }
+            .nav-links.open { transform: none; }
+            .burger { display: flex; }
+            .hero-grid { grid-template-columns: 1fr; gap: 6px; min-height: 0; }
+            .hero-3d { min-height: 340px; order: -1; }
+            .coffee-grid { grid-template-columns: 1fr 1fr; }
+            .story { grid-template-columns: 1fr; gap: 36px; }
+            .plan-grid, .cafe-grid { grid-template-columns: 1fr; }
+            .foot-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 560px) {
+            section { padding: 60px 0; }
+            .coffee-grid { grid-template-columns: 1fr; }
+            .foot-grid { grid-template-columns: 1fr; }
+            .news-form { flex-direction: column; }
+            .news-inner { padding: 46px 22px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .steam { display: none; }
+        }
+    </style>
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+    <nav>
+        <div class="wrap nav-inner">
+            <a class="logo" href="#top"><span class="seed"></span> Ember Lane</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#coffees">Coffee</a>
+                <a href="#subs">Subscriptions</a>
+                <a href="#cafes">Cafés</a>
+                <a href="#story">Our story</a>
+                <a href="../">More demos</a>
+                <a class="bag-btn" href="#coffees">Bag <span class="count" id="bagCount">0</span></a>
+            </div>
+            <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <span id="top"></span>
+
+    <header class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <span class="badge reveal"><span class="pip"></span> Roasted fresh every Tuesday</span>
+                <h1 class="reveal" style="--d:0.08s">Coffee worth<br>slowing down<br>for<span class="caramel">.</span></h1>
+                <p class="hero-sub reveal" style="--d:0.16s">Ember Lane is a small-batch roastery in Bangsar, sourcing single-origin beans from growers we know by name — and roasting them the week you drink them.</p>
+                <div class="hero-cta reveal" style="--d:0.24s">
+                    <a class="btn btn-fill" href="#coffees">Shop coffee <span class="arrow">→</span></a>
+                    <a class="btn btn-text" href="#story">Our story</a>
+                </div>
+            </div>
+            <div class="hero-3d">
+                <div class="cup-glow"></div>
+                <div class="steam" aria-hidden="true"><i></i><i></i><i></i></div>
+                <canvas id="cup3d" aria-label="Interactive 3D coffee cup — drag to rotate"></canvas>
+                <div class="cup-fallback" id="cupFallback"><div class="c"></div></div>
+                <span class="hint">Drag to rotate</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="marq" aria-hidden="true">
+        <div class="marq-track" id="marqTrack">
+            <span>Ethiopia Yirgacheffe</span><span>Colombia Huila</span><span>Sumatra Mandheling</span><span>Kenya Nyeri</span><span>Guatemala Antigua</span><span>Brazil Cerrado</span>
+        </div>
+    </div>
+
+    <!-- coffees -->
+    <section id="coffees">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="eyebrow">This week's roast</span>
+                <h2>Fresh on the shelf.</h2>
+                <p>Six origins on rotation. Whole bean or ground to your brew method — your call at checkout.</p>
+            </div>
+            <div class="coffee-grid" id="coffeeGrid"></div>
+        </div>
+    </section>
+
+    <!-- story -->
+    <section id="story">
+        <div class="wrap story">
+            <div class="roaster reveal" aria-hidden="true">
+                <div class="drum"></div>
+                <div class="beans" id="beans"></div>
+            </div>
+            <div class="reveal" style="--d:0.1s">
+                <span class="eyebrow">Our craft</span>
+                <h2>Roasted in small drums,<br>tasted every single day.</h2>
+                <p>We roast in 12-kilo batches so we can chase the sweet spot of every origin — never a second past it. Each batch is cupped the morning after, and only the ones we'd happily drink ourselves make it to your door.</p>
+                <p>Beans land green from farms we visit, and leave our roastery within days. That's the whole point of Ember Lane: coffee at its brightest, while it's still alive.</p>
+                <div class="ministats">
+                    <div><b>12kg</b><span>Batch size</span></div>
+                    <div><b>9</b><span>Farm partners</span></div>
+                    <div><b>72hr</b><span>Rest, then ship</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- subscriptions -->
+    <section class="sub" id="subs">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="eyebrow">Never run out</span>
+                <h2>A subscription, your way.</h2>
+                <p>Pick a rhythm, pick a roast. Pause, skip or change it any time — no lock-in, free delivery over RM 60.</p>
+            </div>
+            <div class="plan-grid">
+                <div class="plan reveal">
+                    <h3>Weekly</h3>
+                    <div class="pr">RM 38<small> / bag</small></div>
+                    <ul><li>250g, roasted Tuesday</li><li>Free delivery</li><li>Rotating single origin</li><li>Skip any week</li></ul>
+                    <button class="btn btn-fill add" data-plan="Weekly" style="width:100%;justify-content:center;">Choose weekly</button>
+                </div>
+                <div class="plan best reveal" style="--d:0.08s">
+                    <h3>Fortnightly</h3>
+                    <div class="pr">RM 36<small> / bag</small></div>
+                    <ul><li>250g, every two weeks</li><li>Free delivery</li><li>Pick origin or surprise</li><li>Brew guide each drop</li></ul>
+                    <button class="btn btn-fill add" data-plan="Fortnightly" style="width:100%;justify-content:center;">Choose fortnightly</button>
+                </div>
+                <div class="plan reveal" style="--d:0.16s">
+                    <h3>Monthly</h3>
+                    <div class="pr">RM 34<small> / bag</small></div>
+                    <ul><li>250g, once a month</li><li>Free delivery over RM 60</li><li>House blend default</li><li>Easiest on the wallet</li></ul>
+                    <button class="btn btn-fill add" data-plan="Monthly" style="width:100%;justify-content:center;">Choose monthly</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- cafes -->
+    <section id="cafes">
+        <div class="wrap">
+            <div class="sec-head reveal">
+                <span class="eyebrow">Come say hi</span>
+                <h2>Three little rooms.</h2>
+            </div>
+            <div class="cafe-grid">
+                <div class="cafe reveal"><div class="top"><span>Bangsar Roastery</span></div><div class="b"><div class="addr">14 Jalan Telawi 3, Bangsar — the flagship, with the roaster humming out back.</div><div class="hrs">Mon–Sun · 7:30am – 7pm</div></div></div>
+                <div class="cafe reveal" style="--d:0.08s"><div class="top" style="background:linear-gradient(150deg,var(--cream-3),var(--sage))"><span>Bukit Damansara</span></div><div class="b"><div class="addr">Ground floor, Plaza Damansara — quiet corner, good light, better espresso.</div><div class="hrs">Mon–Sat · 8am – 6pm</div></div></div>
+                <div class="cafe reveal" style="--d:0.16s"><div class="top" style="background:linear-gradient(150deg,var(--cream-3),var(--espresso-2))"><span>TTDI</span></div><div class="b"><div class="addr">Lorong Datuk Sulaiman — our smallest, six seats and a window to the street.</div><div class="hrs">Tue–Sun · 8am – 5pm</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- quote -->
+    <section class="quote">
+        <div class="wrap">
+            <blockquote class="reveal">"The kind of cup that makes you put your phone down. <span class="caramel">Ember Lane ruined supermarket coffee for me</span> — happily."</blockquote>
+            <cite class="reveal" style="--d:0.1s">— Time Out KL, Best Roasters 2025</cite>
+        </div>
+    </section>
+
+    <!-- newsletter -->
+    <section class="news">
+        <div class="wrap">
+            <div class="news-inner reveal">
+                <h2>First dibs on every roast.</h2>
+                <p>Join the list for new origins, brew guides and the odd open-roastery weekend.</p>
+                <form class="news-form" id="newsForm" autocomplete="off">
+                    <input type="email" placeholder="you@email.com" aria-label="Email">
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="news-ok" id="newsOk">☕ You're on the list — demo only, nothing was sent.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a class="logo" href="#top"><span class="seed"></span> Ember Lane</a>
+                    <p>Small-batch coffee, roasted in Bangsar and shipped while it's still bright.</p>
+                </div>
+                <div class="foot-col"><h5>Shop</h5><a href="#coffees">Coffee</a><a href="#subs">Subscriptions</a><a href="#coffees">Gift cards</a><a href="#coffees">Brew gear</a></div>
+                <div class="foot-col"><h5>Ember Lane</h5><a href="#story">Our story</a><a href="#cafes">Cafés</a><a href="#subs">Wholesale</a></div>
+                <div class="foot-col"><h5>Studio by</h5><a href="../../">Langkah Pertama</a><a href="../../#contact">Hire the studio</a><a href="../">More demos</a></div>
+            </div>
+            <div class="foot-bottom">
+                <span>Ember Lane is a fictional roaster — a website design demo by <a href="../../">Langkah Pertama</a> © 2026</span>
+                <span>Roasted with care in Kuala Lumpur</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-wrap" id="toastWrap"></div>
+    <button class="to-top" id="toTop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+    <script>
+    (function () {
+        'use strict';
+        if (!Element.prototype.closest) { Element.prototype.closest = function (s) { var el = this; while (el) { if (el.matches && el.matches(s)) return el; el = el.parentElement; } return null; }; }
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[c]; }); }
+
+        /* coffees */
+        var COFFEE = [
+            { o: 'Ethiopia', n: 'Yirgacheffe', notes: 'Jasmine, bergamot, ripe peach', roast: 'Light roast', price: 42, c1: '#e7b35a', c2: '#bf6a30', seal: '✿' },
+            { o: 'Colombia', n: 'Huila', notes: 'Caramel, red apple, cocoa', roast: 'Medium roast', price: 38, c1: '#c8693e', c2: '#7c3b1e', seal: '◆' },
+            { o: 'Sumatra', n: 'Mandheling', notes: 'Dark chocolate, cedar, brown sugar', roast: 'Dark roast', price: 40, c1: '#7a4a2e', c2: '#2f1a10', seal: '▲' },
+            { o: 'House', n: 'Ember Blend', notes: 'Hazelnut, toffee, easy & smooth', roast: 'Medium-dark', price: 34, c1: '#a9682f', c2: '#5a3016', seal: '✦' }
+        ];
+        var grid = document.getElementById('coffeeGrid');
+        if (grid) {
+            grid.innerHTML = COFFEE.map(function (k, i) {
+                return '<div class="coffee reveal" style="--d:' + (i % 4 * 0.06) + 's">' +
+                    '<div class="bag" style="background:linear-gradient(165deg,' + k.c1 + ',' + k.c2 + ')">' +
+                        '<span class="seal">' + k.seal + '</span>' +
+                        '<div class="label"><div class="o">' + esc(k.o) + '</div><div class="nm">' + esc(k.n) + '</div></div>' +
+                    '</div>' +
+                    '<div class="notes">' + esc(k.notes) + '</div>' +
+                    '<div class="roast">' + esc(k.roast) + ' · Whole bean</div>' +
+                    '<div class="buy"><span class="price">RM ' + k.price + '</span><button class="add" data-add="' + esc(k.n) + '">Add to bag</button></div>' +
+                '</div>';
+            }).join('');
+        }
+
+        /* scattered beans in roaster drum */
+        var beans = document.getElementById('beans');
+        if (beans) { var bh = ''; var seed = 7; for (var i = 0; i < 16; i++) { seed = (seed * 9301 + 49297) % 233280; var rx = (seed / 233280); seed = (seed * 9301 + 49297) % 233280; var ry = (seed / 233280); bh += '<i style="left:' + (15 + rx * 70).toFixed(1) + '%;top:' + (15 + ry * 70).toFixed(1) + '%;transform:rotate(' + (rx * 180).toFixed(0) + 'deg)"></i>'; } beans.innerHTML = bh; }
+
+        /* marquee dup */
+        var mt = document.getElementById('marqTrack');
+        if (mt) { Array.prototype.slice.call(mt.children).forEach(function (c) { mt.appendChild(c.cloneNode(true)); }); }
+
+        /* reveal */
+        var revs = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !reduce) {
+            var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            revs.forEach(function (el) { io.observe(el); });
+        } else { revs.forEach(function (el) { el.classList.add('in'); }); }
+
+        /* burger */
+        var burger = document.getElementById('burger'), navLinks = document.getElementById('navLinks');
+        if (burger) { burger.addEventListener('click', function () { navLinks.classList.toggle('open'); }); navLinks.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { navLinks.classList.remove('open'); }); }); }
+
+        /* toast + bag */
+        var toastWrap = document.getElementById('toastWrap'), bagCount = document.getElementById('bagCount'), bag = 0;
+        function toast(msg) { var t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.innerHTML = '<span class="d"></span>' + esc(msg); toastWrap.appendChild(t); setTimeout(function () { t.style.transition = 'opacity .3s'; t.style.opacity = '0'; setTimeout(function () { t.remove(); }, 320); }, 2400); }
+        document.addEventListener('click', function (e) {
+            var a = e.target.closest('[data-add]');
+            if (a) { bag++; bagCount.textContent = bag; toast('Added ' + a.getAttribute('data-add') + ' to bag — demo only'); return; }
+            var p = e.target.closest('[data-plan]');
+            if (p) { toast(p.getAttribute('data-plan') + ' subscription — demo only, nothing charged'); }
+        });
+
+        /* newsletter */
+        var nf = document.getElementById('newsForm'), nok = document.getElementById('newsOk');
+        if (nf) { nf.addEventListener('submit', function (e) { e.preventDefault(); nf.style.display = 'none'; nok.classList.add('show'); nok.setAttribute('role', 'status'); }); }
+
+        /* to top */
+        var toTop = document.getElementById('toTop');
+        window.addEventListener('scroll', function () { if (window.pageYOffset > 600) toTop.classList.add('show'); else toTop.classList.remove('show'); }, { passive: true });
+        toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+    })();
+    </script>
+
+    <!-- 3D coffee cup -->
+    <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+        var canvas = document.getElementById('cup3d');
+        var fallback = document.getElementById('cupFallback');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try {
+            var THREE = await import('three');
+            var GLTF = await import('three/addons/loaders/GLTFLoader.js');
+            var ENV = await import('three/addons/environments/RoomEnvironment.js');
+
+            var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.1;
+
+            var scene = new THREE.Scene();
+            var pmrem = new THREE.PMREMGenerator(renderer);
+            scene.environment = pmrem.fromScene(new ENV.RoomEnvironment(), 0.04).texture;
+
+            var camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+            camera.position.set(3.6, 2.7, 4.6);
+            camera.lookAt(0, -0.1, 0);
+
+            function size() { var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+
+            var key = new THREE.DirectionalLight(0xfff1dd, 2.4); key.position.set(4, 7, 5); scene.add(key);
+            var rim = new THREE.DirectionalLight(0xbf6a30, 0.8); rim.position.set(-5, 1, -4); scene.add(rim);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+
+            var group = new THREE.Group(); scene.add(group);
+            var ceramic = new THREE.MeshStandardMaterial({ color: 0xf2e9d8, roughness: 0.35, metalness: 0.0 });
+            var coffee = new THREE.MeshStandardMaterial({ color: 0x2c1810, roughness: 0.25, metalness: 0.0 });
+            var bean = new THREE.MeshStandardMaterial({ color: 0x4a2c1a, roughness: 0.5, metalness: 0.0 });
+
+            new GLTF.GLTFLoader().load('../../assets/ember.glb', function (g) {
+                g.scene.traverse(function (o) {
+                    if (!o.isMesh) return;
+                    var n = o.name || '';
+                    if (n.indexOf('Coffee') === 0) o.material = coffee;
+                    else if (n.indexOf('Bean') === 0) o.material = bean;
+                    else o.material = ceramic;
+                });
+                group.add(g.scene); size();
+            }, undefined, function () { throw new Error('glb fail'); });
+
+            size(); window.addEventListener('resize', size);
+
+            var tgtY = 0.4, curY = 0.4, vel = 0, dragging = false, lastX = 0, pY = 0;
+            canvas.addEventListener('pointerdown', function (e) { dragging = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); });
+            canvas.addEventListener('pointermove', function (e) { var r = canvas.getBoundingClientRect(); pY = ((e.clientY - r.top) / r.height - 0.5); if (dragging) { vel = (e.clientX - lastX) * 0.007; tgtY += vel; lastX = e.clientX; } });
+            window.addEventListener('pointerup', function () { dragging = false; });
+
+            var running = true, clock = new THREE.Clock();
+            document.addEventListener('visibilitychange', function () { running = !document.hidden; if (running) loop(); });
+            function loop() {
+                if (!running) return;
+                requestAnimationFrame(loop);
+                var dt = clock.getDelta();
+                if (!dragging) { tgtY += (reduce ? 0 : 0.16) * dt; vel *= 0.95; }
+                curY += (tgtY - curY) * 0.08;
+                group.rotation.y = curY;
+                group.rotation.x = pY * 0.12;
+                renderer.render(scene, camera);
+            }
+            loop(); setTimeout(size, 400);
+            window.__emberHero = { ok: true };
+        } catch (err) {
+            if (canvas) canvas.style.display = 'none';
+            if (fallback) fallback.style.display = 'grid';
+            window.__emberHero = { ok: false, err: String(err) };
+        }
+    </script>
+</body>
+</html>
