@@ -37,7 +37,7 @@ jobs:
         # Keep internal docs/config in the repo but never serve them publicly.
         run: rm -f CLAUDE.md
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           # Upload entire repository (minus the dev-only files stripped above)
           path: '.'
