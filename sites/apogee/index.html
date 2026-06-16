@@ -490,13 +490,21 @@
             var v = new THREE.PointLight(0xb39bff, 30, 50); v.position.set(0, -6, -4); scene.add(v);
             var group = new THREE.Group(); scene.add(group);
 
-            var mCore = new THREE.MeshStandardMaterial({ color: 0x0c1024, metalness: 0.9, roughness: 0.25, emissive: 0x16306a, emissiveIntensity: 0.55, flatShading: true });
-            var mInner = new THREE.MeshStandardMaterial({ color: 0x5eead4, emissive: 0x5eead4, emissiveIntensity: 0.7, wireframe: true, transparent: true, opacity: 0.45 });
-            var mRing = new THREE.MeshStandardMaterial({ color: 0x6691ff, emissive: 0x6691ff, emissiveIntensity: 1.5, metalness: 0.6, roughness: 0.3 });
-            var mNode = new THREE.MeshStandardMaterial({ color: 0xb39bff, emissive: 0xb39bff, emissiveIntensity: 1.7, metalness: 0.5, roughness: 0.3 });
+            var mGem = new THREE.MeshStandardMaterial({ color: 0x9aa6bd, metalness: 1.0, roughness: 0.12, flatShading: true });
+            var mBand = new THREE.MeshStandardMaterial({ color: 0x6691ff, emissive: 0x6691ff, emissiveIntensity: 2.4 });
+            var mHalo = new THREE.MeshStandardMaterial({ color: 0x70a0ff, emissive: 0x4f86ff, emissiveIntensity: 1.4 });
+            var mRingMetal = new THREE.MeshStandardMaterial({ color: 0x6c7889, metalness: 1.0, roughness: 0.22 });
+            var mGlow = new THREE.MeshStandardMaterial({ color: 0x6691ff, emissive: 0x6691ff, emissiveIntensity: 2.4 });
+            var mNode = new THREE.MeshStandardMaterial({ color: 0xb39bff, emissive: 0xb39bff, emissiveIntensity: 1.8 });
 
             new GLTF.GLTFLoader().load('../../assets/apogee.glb', function (g) {
-                g.scene.traverse(function (o) { if (!o.isMesh) return; var n = o.name || ''; if (n.indexOf('Inner') === 0) o.material = mInner; else if (n.indexOf('Core') === 0) o.material = mCore; else if (n.indexOf('Ring') === 0) o.material = mRing; else o.material = mNode; });
+                g.scene.traverse(function (o) { if (!o.isMesh) return; var n = o.name || '';
+                    if (n.indexOf('Ring_Glow') === 0) o.material = mGlow;
+                    else if (n.indexOf('Core_Band') === 0) o.material = mBand;
+                    else if (n.indexOf('Inner') === 0) o.material = mHalo;
+                    else if (n.indexOf('Core') === 0) o.material = mGem;
+                    else if (n.indexOf('Ring') === 0) o.material = mRingMetal;
+                    else o.material = mNode; });
                 group.add(g.scene); place();
             }, undefined, function () { throw new Error('glb'); });
 
