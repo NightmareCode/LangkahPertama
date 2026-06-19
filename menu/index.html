@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#f3ecdd">
     <title>Menu Digital — Pilih Restoran | Demo Langkah Pertama</title>
     <link rel="icon" href="../assets/icon-512.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -323,8 +325,12 @@
         }
     </style>
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+    <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
+<a href="#lp-main" class="lp-skip">Skip to content</a>
+<span id="lp-main" tabindex="-1"></span>
+
 <div class="wrap">
 
     <div class="top-row reveal">
@@ -341,7 +347,7 @@
     <div class="cards">
         <a class="pol pol-1 reveal" style="--d:0.1s" href="mamak/" aria-label="Buka demo Mamak Kilat — menu mamak 24 jam gaya papan tanda kedai">
             <span class="lang-tag">BM</span>
-            <img class="photo" src="../assets/menu/img/hub-mamak.jpg" alt="Hidangan mamak — roti canai dan teh tarik" loading="lazy">
+            <img width="640" height="1137" decoding="async" class="photo" src="../assets/menu/img/hub-mamak.jpg" alt="Hidangan mamak — roti canai dan teh tarik" loading="lazy">
             <div class="pname">Mamak Kilat</div>
             <div class="pstyle">bising, ceria, buka 24 jam ⚡</div>
             <div class="ptags">Gaya papan tanda · Pesanan WhatsApp</div>
@@ -350,7 +356,7 @@
 
         <a class="pol pol-2 reveal" style="--d:0.2s" href="luxe/" aria-label="Open the LANGIT 56 demo — elegant editorial fine dining menu with WhatsApp reservations">
             <span class="lang-tag">EN</span>
-            <img class="photo" src="../assets/menu/img/hub-luxe.jpg" alt="Fine dining plated course" loading="lazy">
+            <img width="640" height="640" decoding="async" class="photo" src="../assets/menu/img/hub-luxe.jpg" alt="Fine dining plated course" loading="lazy">
             <div class="pname">LANGIT 56</div>
             <div class="pstyle">senyap, mewah, penuh adab ✨</div>
             <div class="ptags">Gaya majalah · Tempahan meja</div>
@@ -359,7 +365,7 @@
 
         <a class="pol pol-3 reveal" style="--d:0.3s" href="tomyam/" aria-label="Buka demo Tomyam Halilintar — menu tomyam Thai gaya neon pasar malam dengan pilihan tahap pedas">
             <span class="lang-tag">BM</span>
-            <img class="photo" src="../assets/menu/img/hub-tomyam.jpg" alt="Periuk tomyam panas" loading="lazy">
+            <img width="640" height="360" decoding="async" class="photo" src="../assets/menu/img/hub-tomyam.jpg" alt="Periuk tomyam panas" loading="lazy">
             <div class="pname">Tomyam Halilintar</div>
             <div class="pstyle">neon, berapi, malam-malam 🌶</div>
             <div class="ptags">Gaya pasar malam · Tahap pedas</div>

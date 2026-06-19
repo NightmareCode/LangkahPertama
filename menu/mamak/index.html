@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#ffd23f">
     <title>Mamak Kilat — Menu Digital | Demo Langkah Pertama</title>
     <link rel="icon" href="../../assets/icon-512.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -648,8 +650,11 @@
             .search-wrap, .cart-bar { display: none; }
         </style>
     </noscript>
+    <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
+<a href="#lp-main" class="lp-skip">Skip to content</a>
+
 <div class="page" id="page">
 
     <div class="topbar">
@@ -693,6 +698,7 @@
         <a href="#sec-western" class="tab">Western</a>
         <a href="#sec-minuman" class="tab">Minuman</a>
     </nav>
+<span id="lp-main" tabindex="-1"></span>
 
     <!-- Istimewa hari ini (auto ikut hari) -->
     <div class="istimewa reveal" id="istimewa"></div>
@@ -830,7 +836,7 @@
         items.forEach(function (it) {
             html += '<div class="item reveal" data-name="' + esc(it.name.toLowerCase()) + '">' +
                 (it.hot ? '<span class="laku">🔥 LAKU</span>' : '') +
-                '<img src="' + IMG + it.id + '.jpg" alt="' + esc(it.name) + '" loading="lazy">' +
+                '<img decoding="async" src="' + IMG + it.id + '.jpg" alt="' + esc(it.name) + '" loading="lazy">' +
                 '<div class="body"><h4>' + esc(it.name) + '</h4>' +
                 '<p class="desc">' + esc(it.desc) + '</p>' +
                 '<div class="foot"><span class="pr">' + fmt(it.price) + '</span>' +
@@ -849,7 +855,7 @@
         '<h3>' + esc(spItem.name) + '</h3><p>' + esc(sp.note) + '</p>' +
         '<div class="row"><span class="price-tag">' + fmt(spItem.price) + '</span>' +
         '<button class="add-btn" data-add="' + spItem.id + '">+ TAMBAH</button></div></div>' +
-        '<img src="' + IMG + spItem.id + '.jpg" alt="' + esc(spItem.name) + '">';
+        '<img loading="lazy" decoding="async" src="' + IMG + spItem.id + '.jpg" alt="' + esc(spItem.name) + '">';
 
     /* ---- reveal ---- */
     var revealEls = document.querySelectorAll('.reveal');

@@ -9,8 +9,15 @@
     <!-- Romantic Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
+<a href="#lp-main" class="lp-skip">Skip to content</a>
+<span id="lp-main" tabindex="-1"></span>
+
     <div class="mobile-container">
         
         <!-- Opening Cover Overlay -->
@@ -38,7 +45,7 @@
             <!-- Hero Section -->
             <section class="hero section bg-blush">
                 <div class="oval-frame blur-in">
-                    <img src="../TemplateAssets/galleri1.jpg" class="hero-img" style="object-fit: cover; display: block;" alt="Hero">
+                    <img loading="lazy" decoding="async" src="../TemplateAssets/galleri1.jpg" class="hero-img" style="object-fit: cover; display: block;" alt="Hero">
                 </div>
                 <div class="hero-text fade-in-soft delay-1">
                     <h2 class="title text-rose">Fatiha & Irfan</h2>
@@ -63,7 +70,7 @@
                     
                     <div class="couple-wrapper">
                         <div class="couple-card fade-in-soft">
-                            <img src="../TemplateAssets/PengantinPerempuan.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Perempuan">
+                            <img loading="lazy" decoding="async" src="../TemplateAssets/PengantinPerempuan.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Perempuan">
                             <h4 class="name text-rose">Fatiha Rahma</h4>
                             <p class="parents text-muted">Anak perempuan kepada En. & Pn.</p>
                         </div>
@@ -71,7 +78,7 @@
                         <div class="connector blur-in delay-1"><span class="text-rose">&</span></div>
                         
                         <div class="couple-card fade-in-soft delay-2">
-                            <img src="../TemplateAssets/PengantinLelaki.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Lelaki">
+                            <img loading="lazy" decoding="async" src="../TemplateAssets/PengantinLelaki.png" class="avatar-img round-border shadow-soft" style="object-fit: cover; display: block;" alt="Pengantin Lelaki">
                             <h4 class="name text-rose">Irfan Maulana</h4>
                             <p class="parents text-muted">Anak lelaki kepada En. & Pn.</p>
                         </div>
@@ -142,10 +149,10 @@
                 <div class="container">
                     <h3 class="section-title text-rose blur-in">Memori Terindah</h3>
                     <div class="soft-gallery">
-                        <img src="../TemplateAssets/galleri1.jpg" class="s-item blur-in" style="object-fit: cover;" alt="Gallery 1">
-                        <img src="../TemplateAssets/galleri2.jpg" class="s-item blur-in delay-1" style="object-fit: cover;" alt="Gallery 2">
-                        <img src="../TemplateAssets/gelleri3.jpeg" class="s-item blur-in delay-2" style="object-fit: cover;" alt="Gallery 3">
-                        <img src="../TemplateAssets/galleri4.jpg" class="s-item wide blur-in shadow-soft" style="object-fit: cover;" alt="Gallery 4">
+                        <img loading="lazy" decoding="async" src="../TemplateAssets/galleri1.jpg" class="s-item blur-in" style="object-fit: cover;" alt="Gallery 1">
+                        <img loading="lazy" decoding="async" src="../TemplateAssets/galleri2.jpg" class="s-item blur-in delay-1" style="object-fit: cover;" alt="Gallery 2">
+                        <img loading="lazy" decoding="async" src="../TemplateAssets/gelleri3.jpeg" class="s-item blur-in delay-2" style="object-fit: cover;" alt="Gallery 3">
+                        <img loading="lazy" decoding="async" src="../TemplateAssets/galleri4.jpg" class="s-item wide blur-in shadow-soft" style="object-fit: cover;" alt="Gallery 4">
                     </div>
                 </div>
             </section>
@@ -158,7 +165,7 @@
                         <h3 class="section-title text-rose">Sumbangan Hadiah</h3>
                         <p class="text-muted mb-3">Doa anda adalah hadiah yang paling bermakna bagi kami.</p>
                         <div class="bank-card bg-white shadow-soft" style="padding: 25px; text-align: center; border-radius: 12px;">
-                            <img src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code Sumbangan" style="max-width: 250px; width: 100%; border-radius: 10px; margin-bottom: 15px; border: 1px solid var(--rose-light);">
+                            <img loading="lazy" decoding="async" src="../TemplateAssets/QRSumbangan.jpg" alt="QR Code Sumbangan" style="max-width: 250px; width: 100%; border-radius: 10px; margin-bottom: 15px; border: 1px solid var(--rose-light);">
                             <p class="name text-dark" style="font-family: var(--font-serif); font-size: 22px; margin: 0;">A.N Fatiha</p>
                         </div>
                     </div>
@@ -196,7 +203,7 @@
                 <div class="floral-icon text-rose mb-3">❀</div>
                 <p class="text-muted">Terima kasih kerana berkongsi kegembiraan kami.</p>
                 <h3 class="title text-rose mt-2 mb-2">Fatiha & Irfan</h3>
-                <img src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 15px auto 10px; display: block; opacity: 0.9; mix-blend-mode: multiply;" alt="Langkah Pertama Logo">
+                <img loading="lazy" decoding="async" src="../TemplateAssets/logo.png?v=2" style="height: 50px; width: auto; max-width: 150px; object-fit: contain; margin: 15px auto 10px; display: block; opacity: 0.9; mix-blend-mode: multiply;" alt="Langkah Pertama Logo">
                 <p class="created-by text-muted">Created by Langkah Pertama</p>
             </footer>
         </main>

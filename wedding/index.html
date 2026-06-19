@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Langkah Pertama Catalog</title>
     <link rel="icon" href="../TemplateAssets/logo.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Open Graph / WhatsApp / Telegram Preview -->
     <meta property="og:type" content="website">
@@ -330,17 +332,21 @@
             .back-home { top: 16px; left: 16px; padding: 8px 14px; }
         }
     </style>
+    <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
+<a href="#lp-main" class="lp-skip">Skip to content</a>
+
 
     <header>
         <a href="../" class="back-home">← Laman Utama</a>
         <div class="logo-container">
-            <img src="../TemplateAssets/logo.png?v=2" alt="Langkah Pertama Logo">
+            <img loading="lazy" decoding="async" src="../TemplateAssets/logo.png?v=2" alt="Langkah Pertama Logo">
         </div>
         <h1>Langkah Pertama</h1>
         <p class="subtitle">Koleksi Tema Undangan Perkahwinan Digital Eksklusif.<br>Pilih estetika yang mewakili kisah cinta Anda.</p>
     </header>
+<span id="lp-main" tabindex="-1"></span>
 
     <div class="catalog-container">
         <!-- Theme 1 -->
@@ -459,7 +465,7 @@
     </div>
 
     <footer>
-        <img src="../TemplateAssets/logo.png?v=2" alt="Icon">
+        <img loading="lazy" decoding="async" src="../TemplateAssets/logo.png?v=2" alt="Icon">
         <p>&copy; 2026 Langkah Pertama. All rights reserved.</p>
         <a href="../" class="footer-home-link">← Kembali ke Laman Utama</a>
     </footer>

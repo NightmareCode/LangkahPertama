@@ -8,6 +8,8 @@
     <meta name="theme-color" content="#05060a">
     <title>404 — Page Not Found | Langkah Pertama</title>
     <link rel="icon" href="/assets/icon-512.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -62,8 +64,12 @@
         a.home:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(217,176,108,0.3); }
         @media (prefers-reduced-motion: reduce) { a.home { transition: none; } }
     </style>
+    <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
+<a href="#lp-main" class="lp-skip">Skip to content</a>
+<span id="lp-main" tabindex="-1"></span>
+
     <div class="wrap">
         <p class="code">// Error 404 — Langkah Pertama</p>
         <h1>404</h1>
