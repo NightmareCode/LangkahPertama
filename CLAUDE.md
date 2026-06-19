@@ -2,7 +2,7 @@
 
 Portfolio site for **Far** (full name Azfar — publicly ALWAYS "Far"), 21, Malaysian full-stack dev, studio **Langkah Pertama**.
 Live: https://langkahpertama.website/ (GitHub Pages, repo `NightmareCode/LangkahPertama`).
-Contact: WhatsApp `wa.me/60172888202` / `tel:+60172888202` — ONLY on the main page (`/#contact`); never email. Sub-pages link internally to `/#contact` ("Contact/Hubungi Langkah Pertama →") and their demo flows (carts, reservation, reorders) end in in-page demo confirmations — no `wa.me` anywhere outside `/`.
+Contact: WhatsApp `wa.me/60172888202` + TikTok `https://www.tiktok.com/@aku_bukan_farrr` — ONLY on the main page (`/#contact` buttons + footer); never email, never phone/`tel:` (user removed the call button 2026-06-19 — does NOT want calls). Sub-pages link internally to `/#contact` ("Contact/Hubungi Langkah Pertama →") and their demo flows (carts, reservation, reorders) end in in-page demo confirmations — no `wa.me` anywhere outside `/`.
 All showcased businesses are FICTIONAL — keep disclaimers, invent creative names. **Rule (user, 2026-06-15): real PRODUCT/brand names on goods being sold are FINE** (NVIDIA/ASUS/Intel SKUs, 3M/MSA/Honeywell PPE, Milo/Maggi/Valrhona on menus) — **but never name a real COMPANY as a business entity**: not as the subject firm, a client/customer, a supplier/trading partner, or a data/ERP vendor (those must be invented, e.g. fictional customers "Binaan Maju Sdn Bhd", fictional suppliers "Apex Safety Distributors", and the ERP referred to generically as "cloud ERP" — the vendor "Skybiz" must NOT appear). The live TradingView embed on the trading dashboard is an explicit user-approved exception (its attribution + real tickers stay there).
 
 ## Workflow (non-negotiable)
@@ -40,7 +40,7 @@ All showcased businesses are FICTIONAL — keep disclaimers, invent creative nam
 
 **Language rule:** BM only for the Mamak Kilat universe (mamak menu/dashboard/stor), tomyam menu, menu hub, and wedding pages. Everything else English.
 **Main-page featured-work showcases — each line gets a DIFFERENT device/metaphor:** wedding = phone mockups, menus = hover-expand triptych, dashboards = laptop + dock chips (live iframes), inventory = goods-received-note manifest with scanner-beam check-in (`#invManifest`, hook `window.__lpManifest`; 5 rows — scan counter is dynamic off `.m-row` count).
-Product lines complete: wedding, menus, dashboards, inventory (5 demos), **website designs** (`/sites/` — 3 concept company sites, each with a custom Blender GLB hero; discoverable via a `.feature-sites` block on the main page). New external company sites must keep the security CSP meta (jsdelivr allowed for Three.js). Still missing from user: personal photo, social links.
+Product lines complete: wedding, menus, dashboards, inventory (5 demos), **website designs** (`/sites/` — 3 concept company sites, each with a custom Blender GLB hero; discoverable via a `.feature-sites` block on the main page). New external company sites must keep the security CSP meta (jsdelivr allowed for Three.js). Still missing from user: personal photo. (Social: TikTok `@aku_bukan_farrr` is linked on the main page contact + footer as of 2026-06-19.)
 
 ## Hard rules from user feedback
 
