@@ -1650,11 +1650,110 @@
         </style>
     </noscript>
     <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
+
+    <!-- ===================== CINEMATIC DESCENT LAYER ===================== -->
+    <style id="lp-cinematic">
+        :root { --hf: 0; --descent: 0; }
+
+        /* value-key: a warm dawn wash that fades to reveal the dark body as you descend */
+        .skyveil { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: calc(1 - var(--hf));
+            background: linear-gradient(177deg, #d6e2ec 0%, #ecdfc9 44%, #f4e6c7 76%, #efd9b4 100%); will-change: opacity; }
+
+        /* ---- HERO becomes "First Light": dark ink on the dawn ---- */
+        .hero.firstlight { --hero-ink: #1b150d; --hero-dim: #5d5340; padding-top: 132px; }
+        .hero.firstlight .hero-copy { position: relative; z-index: 2; opacity: calc(1 - max(0, (var(--hf) - 0.55)) * 2.3); }
+        .hero.firstlight .hero-eyebrow { color: #a06b1c; }
+        .hero.firstlight .hero-eyebrow .pulse { background: #c98a2e; box-shadow: 0 0 12px #c98a2e; }
+        .hero-head { font-family: var(--disp); margin: 4px 0 24px; max-width: 18ch; }
+        .hero-head .hl { display: block; }
+        .hl1 { font-size: clamp(1.25rem, 3.3vw, 2.3rem); font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--hero-ink); }
+        .hl2 { font-size: clamp(3.3rem, 13vw, 9.5rem); line-height: 0.88; margin: 0.05em 0 0.04em -0.04em; }
+        .anton-gold { font-family: 'Anton', var(--disp); font-weight: 400; letter-spacing: 0.004em;
+            background: linear-gradient(96deg, #b07d33, #f4dcab 40%, #d9b06c 68%, #98763f);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+            text-shadow: 0 18px 60px rgba(176,125,51,0.2); }
+        .hl3 { font-size: clamp(1.15rem, 2.9vw, 1.95rem); font-weight: 500; color: var(--hero-ink); }
+        .hero.firstlight .hero-sub { color: var(--hero-dim); max-width: 540px; }
+        .hero.firstlight .hero-sub strong { color: var(--hero-ink); }
+        .hero.firstlight .btn-ghost { color: var(--hero-ink); border-color: rgba(27,21,13,0.3); }
+        .hero.firstlight .btn-ghost:hover { border-color: var(--hero-ink); background: rgba(27,21,13,0.05); }
+
+        /* dawn god-ray behind the 3D core */
+        .hero-godray { position: absolute; top: -12%; right: 1%; width: 64%; height: 124%; z-index: 1; pointer-events: none;
+            background: radial-gradient(45% 58% at 60% 40%, rgba(255,238,196,0.9), rgba(255,224,168,0.28) 46%, transparent 72%);
+            filter: blur(6px); opacity: calc(1 - var(--hf) * 0.7); mix-blend-mode: screen; }
+
+        /* scroll cue */
+        .hero-cue { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2;
+            display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: calc(1 - var(--hf)); }
+        .hero-cue .cue-line { width: 1px; height: 46px; background: linear-gradient(#1b150d, transparent); position: relative; overflow: hidden; }
+        .hero-cue .cue-line::after { content: ''; position: absolute; left: 0; top: -55%; width: 1px; height: 55%; background: #c98a2e; animation: cueDraw 2.3s var(--ease) infinite; }
+        @keyframes cueDraw { 0% { top: -55%; } 65%, 100% { top: 100%; } }
+        .hero-cue .cue-label { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 3px; text-transform: uppercase; color: var(--hero-dim); }
+
+        /* nav over the light hero: dark text, no dark bar */
+        nav.over-light { background: transparent !important; border-bottom-color: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important; }
+        nav.over-light .brand-name { color: #1b150d; }
+        nav.over-light .brand-name small { color: #6b5d44; }
+        nav.over-light .nav-links a { color: #4a4030; }
+        nav.over-light .nav-links a:hover { color: #1b150d; }
+        nav.over-light .nav-links a::after { background: #c98a2e; }
+        nav.over-light .menu-btn span { background: #1b150d; }
+        nav.over-light .nav-cta { color: #1b150d; border-color: rgba(27,21,13,0.32); }
+        nav.over-light .nav-cta:hover { background: rgba(27,21,13,0.06); }
+
+        /* clip-path reveal for big headings (the senior 'rise from a baseline') */
+        .reveal-clip { opacity: 0; transform: translateY(0.72em); filter: blur(7px);
+            transition: transform 1.05s var(--ease), opacity 0.8s var(--ease), filter 0.8s var(--ease); transition-delay: var(--d, 0s); }
+        .reveal-clip.in { opacity: 1; transform: none; filter: none; }
+
+        [data-speed] { will-change: transform; }
+
+        /* giant faint kinetic backdrop word */
+        .kinetic-word { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); z-index: 0; pointer-events: none;
+            font-family: 'Anton', var(--disp); font-size: clamp(7rem, 33vw, 28rem); line-height: 0.8; white-space: nowrap;
+            color: transparent; -webkit-text-stroke: 1px rgba(217,176,108,0.08); letter-spacing: -0.02em; user-select: none; }
+        #services { overflow: hidden; }
+
+        /* WORK opener — stacked 'OPEN / THE / WORK.' */
+        .work-open { margin: 0 0 34px; position: relative; }
+        .work-open .wo { display: block; font-family: var(--disp); font-weight: 700; line-height: 0.9; letter-spacing: -0.02em; }
+        .work-open .wo1 { font-size: clamp(1.3rem, 3.6vw, 2.2rem); color: var(--dim); }
+        .work-open .wo2 { font-size: clamp(1.3rem, 3.6vw, 2.2rem); color: var(--dim); margin-left: 1.4em; }
+        .work-open .wo3 { font-family: 'Anton', var(--disp); font-weight: 400; font-size: clamp(3.4rem, 13vw, 8rem); margin-top: 0.04em;
+            background: linear-gradient(96deg, #f4dcab, #d9b06c 60%, #98763f); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+        .work-open .wo-chev { color: rgba(217,176,108,0.35); letter-spacing: 0.1em; font-weight: 700; }
+
+        /* closing layered tagline (echoes like the reference outro) */
+        .descent-end { position: relative; text-align: center; padding: 30px 0 8px; }
+        .descent-end .echo { display: block; font-family: var(--disp); font-weight: 700; line-height: 1.0; letter-spacing: -0.01em; }
+        .descent-end .e1 { font-size: clamp(1.2rem, 4vw, 2rem); color: rgba(238,240,244,0.3); }
+        .descent-end .e2 { font-size: clamp(1.9rem, 6vw, 3.4rem); color: rgba(238,240,244,0.58); margin: 0.05em 0; }
+        .descent-end .e3 { font-family: 'Anton', var(--disp); font-weight: 400; font-size: clamp(3rem, 11vw, 6.6rem); line-height: 0.95;
+            background: linear-gradient(96deg, #f4dcab, #d9b06c 55%, #b07d33); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+            filter: drop-shadow(0 10px 46px rgba(217,176,108,0.32)); }
+        .descent-end .grace { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 2px; color: var(--dim); margin-top: 20px; }
+
+        @media (max-width: 700px) {
+            .hl2 { font-size: clamp(2.9rem, 17vw, 5.2rem); }
+            .kinetic-word { font-size: clamp(5rem, 52vw, 13rem); }
+            .work-open .wo2 { margin-left: 0.5em; }
+            .hero-godray { width: 100%; right: 0; opacity: calc((1 - var(--hf)) * 0.7); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-clip { transform: none !important; opacity: 1 !important; filter: none !important; }
+            .hero.firstlight .hero-copy { opacity: 1 !important; }
+            .hero-cue .cue-line::after { animation: none !important; }
+            [data-speed] { transform: none !important; }
+        }
+    </style>
 </head>
 <body>
 <a href="#lp-main" class="lp-skip">Skip to content</a>
 
 
+    <div class="skyveil" aria-hidden="true"></div>
     <div class="backdrop" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
@@ -1695,34 +1794,28 @@
         <a href="#contact" style="transition-delay:0.33s">Let's Talk</a>
     </div>
 
-    <!-- ============ HERO ============ -->
-    <header class="hero">
+    <!-- ============ HERO — First Light ============ -->
+    <header class="hero firstlight">
+        <div class="hero-godray" aria-hidden="true"></div>
         <div id="hero3d" aria-hidden="true"></div>
-        <div class="wrap">
-            <p class="hero-eyebrow reveal"><span class="pulse"></span> Langkah Pertama — Digital Studio · Malaysia</p>
-            <h1 class="reveal" style="--d:0.1s">
-                We engineer<br>
-                <span class="rotator" id="rotator"><span class="word">immersive websites</span></span><br>
-                built for what's next.
+        <div class="wrap hero-copy">
+            <p class="hero-eyebrow reveal-clip"><span class="pulse"></span> Langkah Pertama — Digital Studio · Malaysia</p>
+            <h1 class="hero-head">
+                <span class="hl hl1 reveal-clip">We build the</span>
+                <span class="hl hl2 reveal-clip" style="--d:0.09s"><span class="anton-gold">first step</span></span>
+                <span class="hl hl3 reveal-clip" style="--d:0.2s">into <span class="rotator" id="rotator"><span class="word">immersive websites</span></span></span>
             </h1>
-            <p class="hero-sub reveal" style="--d:0.22s">
-                From landing pages to complete business systems — every project is
-                <strong>custom-coded</strong>, mobile-first and engineered to feel
-                like the future. Your first step starts here.
+            <p class="hero-sub reveal" style="--d:0.34s">
+                From a single landing page to a complete business system — every project is
+                <strong>custom-coded</strong>, mobile-first and engineered to feel like the future.
             </p>
-            <div class="hero-actions reveal" style="--d:0.34s">
-                <a href="#work" class="btn btn-gold" data-magnet>View My Work <span class="arrow">→</span></a>
-                <a href="#contact" class="btn btn-ghost" data-magnet>Start a Project</a>
+            <div class="hero-actions reveal" style="--d:0.46s">
+                <a href="#work" class="btn btn-gold" data-magnet>View the work <span class="arrow">→</span></a>
+                <a href="#contact" class="btn btn-ghost" data-magnet>Start a project</a>
             </div>
         </div>
         <div class="drag-hint" id="dragHint" aria-hidden="true"><span class="ico">⟳</span> Drag to spin — tap to pulse</div>
-        <div class="hero-meta" aria-hidden="true">
-            <div class="wrap">
-                <span class="hide-sm">LANGKAH PERTAMA — EST. 2026</span>
-                <span class="line"></span>
-                <span class="scroll-cue">Scroll ▾</span>
-            </div>
-        </div>
+        <div class="hero-cue" aria-hidden="true"><span class="cue-line"></span><span class="cue-label">Begin the descent</span></div>
     </header>
 
     <!-- ============ MARQUEE ============ -->
@@ -1740,6 +1833,7 @@
 
     <!-- ============ SERVICES ============ -->
     <section id="services">
+        <span class="kinetic-word" data-speed="0.07" aria-hidden="true">CRAFT</span>
         <div class="wrap">
             <div class="sec-head reveal">
                 <span class="sec-eyebrow">// What We Do — 01</span>
@@ -1831,6 +1925,11 @@
     <!-- ============ FEATURED WORK ============ -->
     <section id="work">
         <div class="wrap">
+            <div class="work-open reveal">
+                <span class="wo wo1">Open</span>
+                <span class="wo wo2">the <span class="wo-chev">»»</span></span>
+                <span class="wo wo3 reveal-clip">Work.</span>
+            </div>
             <div class="sec-head reveal">
                 <span class="sec-eyebrow">// Featured Work — 02</span>
                 <h2>Real products. <em>Live</em> in production.</h2>
@@ -2110,6 +2209,16 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
+    <!-- ============ DESCENT END — layered tagline ============ -->
+    <section class="descent-end-wrap" aria-label="Take the first step" style="padding:48px 0 12px">
+        <div class="wrap descent-end">
+            <span class="echo e1 reveal" data-speed="-0.05" aria-hidden="true">Take the first step.</span>
+            <span class="echo e2 reveal" data-speed="0.035" style="--d:0.08s" aria-hidden="true">Take the first step.</span>
+            <span class="echo e3 reveal-clip" style="--d:0.16s">Take the first step.</span>
+            <p class="grace reveal" style="--d:0.28s">Langkah pertama bermula di sini — the first step begins here.</p>
+        </div>
+    </section>
+
     <section id="contact">
         <div class="wrap">
             <span class="sec-eyebrow reveal">// Get In Touch — 05</span>
@@ -2233,7 +2342,7 @@
             });
 
             /* ---- Reveal on scroll ---- */
-            var revealEls = document.querySelectorAll('.reveal');
+            var revealEls = document.querySelectorAll('.reveal, .reveal-clip');
             if ('IntersectionObserver' in window && !reduceMotion) {
                 var io = new IntersectionObserver(function (entries) {
                     entries.forEach(function (e) {
@@ -2777,6 +2886,52 @@
             // WebGL / module / CDN failure — page works fine without the 3D layer
             container.style.display = 'none';
         }
+    </script>
+
+    <!-- ============ CINEMA: value-key descent + damped parallax ============ -->
+    <script>
+        (function () {
+            'use strict';
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var root = document.documentElement;
+            var nav = document.getElementById('nav');
+            var speedEls = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
+            var sy = 0, dirty = true, ticking = false;
+
+            function request() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
+            function onScroll() { dirty = true; request(); }
+
+            function tick() {
+                ticking = false;
+                var target = window.scrollY || window.pageYOffset || 0;
+                var vh = window.innerHeight || 1;
+
+                if (reduce) { sy = target; }
+                else {
+                    sy += (target - sy) * 0.12;           // damped trailing scroll (no scroll-jack)
+                    if (Math.abs(target - sy) > 0.3) request();
+                }
+
+                // light -> dark handoff over the first ~0.82 viewport
+                var hf = Math.max(0, Math.min(1, target / (vh * 0.82)));
+                root.style.setProperty('--hf', hf.toFixed(3));
+                var max = (document.documentElement.scrollHeight - vh) || 1;
+                root.style.setProperty('--descent', Math.max(0, Math.min(1, target / max)).toFixed(3));
+
+                if (nav) nav.classList.toggle('over-light', target < vh * 0.72);
+
+                if (!reduce) {
+                    for (var i = 0; i < speedEls.length; i++) {
+                        var sp = parseFloat(speedEls[i].getAttribute('data-speed')) || 0;
+                        speedEls[i].style.transform = 'translate3d(0,' + (sy * sp).toFixed(1) + 'px,0)';
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll, { passive: true });
+            tick();
+        })();
     </script>
 
 </body>
