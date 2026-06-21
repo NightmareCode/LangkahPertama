@@ -1655,54 +1655,42 @@
     <style id="lp-cinematic">
         :root { --hf: 0; --descent: 0; }
 
-        /* value-key: a warm dawn wash that fades to reveal the dark body as you descend */
-        .skyveil { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: calc(1 - var(--hf));
-            background: linear-gradient(177deg, #d6e2ec 0%, #ecdfc9 44%, #f4e6c7 76%, #efd9b4 100%); will-change: opacity; }
+        /* dark cinematic gallery: a fixed vignette frames the lit centre, faint warm spill up top */
+        .skyveil { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+            background:
+              radial-gradient(58% 42% at 50% -6%, rgba(217,176,108,0.10), transparent 60%),
+              radial-gradient(145% 118% at 50% 36%, transparent 40%, rgba(2,3,6,0.5) 78%, rgba(2,3,6,0.86) 100%); }
 
-        /* ---- HERO becomes "First Light": dark ink on the dawn ---- */
-        .hero.firstlight { --hero-ink: #140f08; --hero-dim: #41371f; padding-top: 132px; }
-        .hero.firstlight .hero-copy { position: relative; z-index: 2; opacity: calc(1 - max(0, (var(--hf) - 0.4)) * 2.7); }
-        .hero.firstlight .hero-eyebrow { color: #855310; }
-        .hero.firstlight .hero-eyebrow .pulse { background: #b9791f; box-shadow: 0 0 12px #b9791f; }
+        /* ---- HERO: a gold piece spotlit in the dark ---- */
+        .hero.firstlight { --hero-ink: #f3eedd; --hero-dim: #9c917b; padding-top: 132px; }
+        .hero.firstlight .hero-copy { position: relative; z-index: 2; opacity: calc(1 - max(0, (var(--hf) - 0.45)) * 2.6); }
+        .hero.firstlight .hero-eyebrow { color: var(--gold); }
+        .hero.firstlight .hero-eyebrow .pulse { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
         .hero-head { font-family: var(--disp); margin: 4px 0 24px; max-width: 18ch; }
         .hero-head .hl { display: block; }
         .hl1 { font-size: clamp(1.25rem, 3.3vw, 2.3rem); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--hero-ink); }
         .hl2 { font-size: clamp(3.3rem, 13vw, 9.5rem); line-height: 0.88; margin: 0.05em 0 0.04em -0.04em; }
         .anton-gold { font-family: 'Anton', var(--disp); font-weight: 400; letter-spacing: 0.004em;
-            background: linear-gradient(94deg, #6e4910, #a9802e 44%, #875e16 72%, #5e3f0d);
+            background: linear-gradient(94deg, #f4dcab, #d9b06c 52%, #b8893f 78%, #9a7126);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-            text-shadow: 0 1px 1px rgba(50,32,6,0.25), 0 16px 52px rgba(120,82,20,0.22); }
+            text-shadow: 0 0 60px rgba(217,176,108,0.3); }
         .hl3 { font-size: clamp(1.15rem, 2.9vw, 1.95rem); font-weight: 600; color: var(--hero-ink); }
-        /* rotator word stays gold-family but deep enough to read on the dawn */
-        .hero.firstlight .hl3 .rotator .word { background: linear-gradient(94deg, #6e4d14, #9a7228); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero.firstlight .hl3 .rotator .word { background: linear-gradient(94deg, var(--gold-lite), var(--gold) 55%, var(--gold-dark)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .hero.firstlight .hero-sub { color: var(--hero-dim); max-width: 540px; font-weight: 400; }
-        .hero.firstlight .hero-sub strong { color: var(--hero-ink); font-weight: 600; }
-        .hero.firstlight .btn-ghost { color: var(--hero-ink); border-color: rgba(27,21,13,0.3); }
-        .hero.firstlight .btn-ghost:hover { border-color: var(--hero-ink); background: rgba(27,21,13,0.05); }
+        .hero.firstlight .hero-sub strong { color: var(--hero-ink); font-weight: 500; }
 
-        /* dawn god-ray behind the 3D core */
-        .hero-godray { position: absolute; top: -12%; right: 1%; width: 64%; height: 124%; z-index: 1; pointer-events: none;
-            background: radial-gradient(45% 58% at 60% 40%, rgba(255,238,196,0.9), rgba(255,224,168,0.28) 46%, transparent 72%);
-            filter: blur(6px); opacity: calc(1 - var(--hf) * 0.7); mix-blend-mode: screen; }
+        /* warm spotlight glow behind the 3D piece */
+        .hero-godray { position: absolute; top: -14%; right: 0%; width: 66%; height: 128%; z-index: 1; pointer-events: none;
+            background: radial-gradient(44% 56% at 60% 40%, rgba(255,222,160,0.4), rgba(220,168,96,0.12) 48%, transparent 72%);
+            filter: blur(8px); opacity: calc(1 - var(--hf) * 0.6); mix-blend-mode: screen; }
 
         /* scroll cue */
         .hero-cue { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 2;
             display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: calc(1 - var(--hf)); }
-        .hero-cue .cue-line { width: 1px; height: 46px; background: linear-gradient(#1b150d, transparent); position: relative; overflow: hidden; }
-        .hero-cue .cue-line::after { content: ''; position: absolute; left: 0; top: -55%; width: 1px; height: 55%; background: #c98a2e; animation: cueDraw 2.3s var(--ease) infinite; }
+        .hero-cue .cue-line { width: 1px; height: 46px; background: linear-gradient(rgba(243,238,221,0.7), transparent); position: relative; overflow: hidden; }
+        .hero-cue .cue-line::after { content: ''; position: absolute; left: 0; top: -55%; width: 1px; height: 55%; background: var(--gold); animation: cueDraw 2.3s var(--ease) infinite; }
         @keyframes cueDraw { 0% { top: -55%; } 65%, 100% { top: 100%; } }
         .hero-cue .cue-label { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 3px; text-transform: uppercase; color: var(--hero-dim); }
-
-        /* nav over the light hero: dark text, no dark bar */
-        nav.over-light { background: transparent !important; border-bottom-color: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important; }
-        nav.over-light .brand-name { color: #1b150d; }
-        nav.over-light .brand-name small { color: #6b5d44; }
-        nav.over-light .nav-links a { color: #2c2315; }
-        nav.over-light .nav-links a:hover { color: #140f08; }
-        nav.over-light .nav-links a::after { background: #c98a2e; }
-        nav.over-light .menu-btn span { background: #1b150d; }
-        nav.over-light .nav-cta { color: #1b150d; border-color: rgba(27,21,13,0.32); }
-        nav.over-light .nav-cta:hover { background: rgba(27,21,13,0.06); }
 
         /* clip-path reveal for big headings (the senior 'rise from a baseline') */
         .reveal-clip { opacity: 0; transform: translateY(0.72em); filter: blur(7px);
@@ -1757,16 +1745,18 @@
         #about.chapter-light .stat .label { color: #5d5340; }
         #about.chapter-light .stat .glow { display: none; }
 
-        /* ===== LANGKAH PERTAMA wordmark moment (light brand beat) ===== */
-        .wordmark-moment { position: relative; z-index: 3; overflow: hidden; text-align: center; padding: clamp(96px,15vh,180px) 0; color: #1b150c;
-            background: radial-gradient(125% 130% at 50% 0%, #f7f0e0 0%, #efe3cb 52%, #e4d2ae 100%); }
-        .wm-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; }
-        .wm-eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #8a5612; display: block; margin-bottom: 24px; }
+        /* ===== LANGKAH PERTAMA wordmark moment (dark spotlit brand beat) ===== */
+        .wordmark-moment { position: relative; z-index: 3; overflow: hidden; text-align: center; padding: clamp(110px,17vh,200px) 0; color: #f3eedd;
+            background: radial-gradient(62% 80% at 50% 32%, rgba(217,176,108,0.09), rgba(217,176,108,0.02) 42%, transparent 66%), #07080c; }
+        .wordmark-moment::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(130% 110% at 50% 36%, transparent 44%, rgba(2,3,6,0.55) 100%); }
+        .wm-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+        .wm-eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 24px; }
         .wm-line { display: block; font-family: 'Anton', var(--disp); font-weight: 400; line-height: 0.83; letter-spacing: 0.004em; font-size: clamp(3.3rem, 16.5vw, 13rem);
-            background: linear-gradient(92deg, #7a5316, #b48b3c 46%, #8a5e1f 74%, #6e4910); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 1px 1px rgba(50,32,6,0.16); }
-        .wm-gloss { max-width: 580px; margin: 32px auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: clamp(1.15rem, 2.5vw, 1.6rem); line-height: 1.5; color: #463b26; }
-        .wm-gloss b { display: block; font-family: var(--mono); font-style: normal; font-weight: 700; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: #8a5612; margin-bottom: 12px; }
-        .wm-gloss i { color: #1b150c; }
+            background: linear-gradient(92deg, #f4dcab, #d9b06c 50%, #9a7126); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 0 70px rgba(217,176,108,0.28); }
+        .wm-gloss { max-width: 580px; margin: 32px auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: clamp(1.15rem, 2.5vw, 1.6rem); line-height: 1.5; color: #9c917b; }
+        .wm-gloss b { display: block; font-family: var(--mono); font-style: normal; font-weight: 700; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; }
+        .wm-gloss i { color: #f3eedd; }
 
         @media (max-width: 700px) {
             .hl2 { font-size: clamp(2.9rem, 17vw, 5.2rem); }
@@ -2213,7 +2203,7 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section id="about" class="chapter-light lite-edge">
+    <section id="about" class="lite-edge">
         <div class="wrap">
             <div class="about-grid">
                 <div class="about-text">
@@ -2956,8 +2946,6 @@
                 root.style.setProperty('--hf', hf.toFixed(3));
                 var max = (document.documentElement.scrollHeight - vh) || 1;
                 root.style.setProperty('--descent', Math.max(0, Math.min(1, target / max)).toFixed(3));
-
-                if (nav) nav.classList.toggle('over-light', target < vh * 0.72);
 
                 if (!reduce) {
                     // parallax from each element's LIVE position, compensated for its own applied shift
