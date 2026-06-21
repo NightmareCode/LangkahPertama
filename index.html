@@ -1758,36 +1758,6 @@
         .wm-gloss b { display: block; font-family: var(--mono); font-style: normal; font-weight: 700; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; }
         .wm-gloss i { color: #f3eedd; }
 
-        /* ===== full-bleed live-demo ROOMS (dark cinematic gallery) ===== */
-        .rooms-gallery { position: relative; }
-        .room { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 90px 0; overflow: hidden; }
-        .room-spot { position: absolute; inset: 0; z-index: 0; pointer-events: none;
-            background: radial-gradient(46% 56% at 64% 46%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 62%),
-                        radial-gradient(150% 130% at 50% 48%, transparent 38%, rgba(2,3,6,0.62) 100%); }
-        @supports not (color: color-mix(in srgb,#000,#fff)) { .room-spot { background: radial-gradient(46% 56% at 64% 46%, rgba(217,176,108,0.16), transparent 62%), radial-gradient(150% 130% at 50% 48%, transparent 38%, rgba(2,3,6,0.62) 100%); } }
-        .room-grid { position: relative; z-index: 1; width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px,5vw,60px); display: grid; grid-template-columns: 0.4fr 0.6fr; gap: clamp(30px,5vw,64px); align-items: center; }
-        .room.flip .room-grid { grid-template-columns: 0.6fr 0.4fr; }
-        .room.flip .room-caption { order: 2; }
-        .room-no { color: var(--accent); font-family: var(--mono); font-size: 0.72rem; letter-spacing: 2px; }
-        .room-caption h3 { font-family: var(--disp); font-weight: 700; font-size: clamp(2.1rem,4.4vw,3.5rem); line-height: 1.0; letter-spacing: -0.02em; margin: 14px 0 18px; }
-        .room-caption p { color: var(--dim); max-width: 40ch; margin-bottom: 28px; font-size: 1.02rem; }
-        .room-enter { display: inline-flex; align-items: center; gap: 13px; font-weight: 600; font-size: 0.98rem; color: var(--text); }
-        .room-enter span { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #07080d; transition: transform 0.35s var(--ease); }
-        .room:hover .room-enter span, .room-enter:focus-visible span { transform: translate(4px,-4px); }
-        .screen { position: relative; border-radius: 13px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: #0b0c11; box-shadow: 0 50px 110px rgba(0,0,0,0.6); }
-        .screen-bar { display: flex; align-items: center; gap: 7px; padding: 11px 15px; background: rgba(255,255,255,0.035); border-bottom: 1px solid rgba(255,255,255,0.07); font-family: var(--mono); font-size: 0.66rem; }
-        .screen-bar .d { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.16); }
-        .screen-bar .screen-url { color: var(--dim); margin-left: 12px; letter-spacing: 0.3px; }
-        .screen-bar .live { margin-left: auto; color: var(--accent); letter-spacing: 1.5px; font-weight: 700; }
-        .screen-view { position: relative; aspect-ratio: 16 / 10; background: #0b0c11; }
-        .screen-view iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; }
-        .screen-view::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 -40px 70px rgba(2,3,6,0.32); }
-        @media (max-width: 900px) {
-            .room { min-height: 0; padding: 56px 0; }
-            .room-grid, .room.flip .room-grid { grid-template-columns: 1fr; gap: 24px; }
-            .room.flip .room-caption { order: 0; }
-        }
-
         @media (max-width: 700px) {
             .hl2 { font-size: clamp(2.9rem, 17vw, 5.2rem); }
             .kinetic-word { font-size: clamp(5rem, 52vw, 13rem); }
@@ -1977,7 +1947,7 @@
     </section>
 
     <!-- ============ FEATURED WORK ============ -->
-    <section id="work" class="rooms-gallery">
+    <section id="work">
         <div class="wrap">
             <div class="work-open reveal">
                 <span class="wo wo1">Open</span>
@@ -1986,96 +1956,206 @@
             </div>
             <div class="sec-head reveal">
                 <span class="sec-eyebrow">// Featured Work — 02</span>
-                <h2>Five rooms. <em>Everything is live.</em></h2>
-                <p class="sec-desc">No mockups — every screen below is a real, running site. Step into each one.</p>
+                <h2>Real products. <em>Live</em> in production.</h2>
+                <p class="sec-desc">Don't take our word for it — open the work itself. Everything below is custom-coded and running right now.</p>
+            </div>
+
+            <div class="feature reveal">
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> Live Project</span>
+                    <h3>Langkah Pertama —<br><em>Digital Wedding Invitations</em></h3>
+                    <p>A full collection of interactive wedding invitations, each one designed as a tiny experience: background music, photo galleries, countdown timers, maps and RSVP — all opened from a single shareable link.</p>
+                    <ul class="feature-list">
+                        <li>8 unique themes, from minimalist to royal dark</li>
+                        <li>Background music, gallery &amp; live countdown</li>
+                        <li>Mobile-first — made for WhatsApp sharing</li>
+                        <li>100% custom-coded, zero templates</li>
+                    </ul>
+                    <a href="wedding/" class="btn btn-gold" data-magnet>Explore the Collection <span class="arrow">→</span></a>
+                </div>
+                <div class="phones" aria-hidden="true">
+                    <div class="phone phone-back">
+                        <div class="screen">
+                            <iframe src="theme1_minimalist/index.html" tabindex="-1" loading="lazy" title="Minimalist wedding invitation theme preview"></iframe>
+                        </div>
+                        <div class="notch"></div>
+                    </div>
+                    <div class="phone phone-front">
+                        <div class="screen">
+                            <iframe src="theme2_royal_dark/index.html#preview" tabindex="-1" loading="lazy" title="Royal Dark wedding invitation theme preview"></iframe>
+                        </div>
+                        <div class="notch"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature feature-menus reveal">
+                <div class="menu-panels" aria-label="Three restaurant menu demos">
+                    <a class="panel panel-mamak" href="menu/mamak/" aria-label="Open the Mamak Kilat demo — loud signboard-style mamak menu">
+                        <img width="640" height="1137" decoding="async" src="assets/menu/img/hub-mamak.jpg" alt="" loading="lazy">
+                        <span class="shade"></span>
+                        <span class="cap">
+                            <span class="ptag">// Kedai 24 Jam</span>
+                            <span class="pname">Mamak Kilat ⚡</span>
+                            <span class="pgo">Buka demo →</span>
+                        </span>
+                    </a>
+                    <a class="panel panel-luxe" href="menu/luxe/" aria-label="Open the LANGIT 56 demo — editorial fine-dining menu">
+                        <img width="640" height="477" decoding="async" src="assets/menu/img/lx-hero.jpg" alt="" loading="lazy">
+                        <span class="shade"></span>
+                        <span class="cap">
+                            <span class="ptag">Fine Dining</span>
+                            <span class="pname">LANGIT 56</span>
+                            <span class="pgo">Open demo →</span>
+                        </span>
+                    </a>
+                    <a class="panel panel-tomyam" href="menu/tomyam/" aria-label="Open the Tomyam Halilintar demo — neon night-market tomyam menu">
+                        <img width="640" height="360" decoding="async" src="assets/menu/img/ty-t1.jpg" alt="" loading="lazy">
+                        <span class="shade"></span>
+                        <span class="cap">
+                            <span class="ptag">Pasar Malam Neon</span>
+                            <span class="pname">Tomyam Halilintar</span>
+                            <span class="pgo">Buka demo →</span>
+                        </span>
+                    </a>
+                </div>
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> 3 Live Demos</span>
+                    <h3>Digital Restaurant Menus —<br><em>one product, three personalities</em></h3>
+                    <p>The same ordering engine wearing three completely different faces: a loud 24-hour mamak signboard, a hushed editorial fine-dining menu, and a neon Thai night market. Real food photography, not stock placeholders.</p>
+                    <ul class="feature-list">
+                        <li>Real photos for every single dish</li>
+                        <li>WhatsApp ordering, reservations &amp; spice levels</li>
+                        <li>Live search, daily specials, QR-ready</li>
+                        <li>Prices &amp; dishes editable in one file</li>
+                    </ul>
+                    <a href="menu/" class="btn btn-gold" data-magnet>Explore All Three <span class="arrow">→</span></a>
+                </div>
+            </div>
+
+            <div class="feature feature-dash reveal">
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> 4 Live Demos</span>
+                    <h3>Web Dashboards —<br><em>pick an industry, watch it work</em></h3>
+                    <p>Four control rooms, four completely different designs: a restaurant cockpit, a smart-home panel, a sales analytics suite, and a trading desk streaming real live market data. Tap the dock to switch what's on screen.</p>
+                    <ul class="feature-list">
+                        <li>Interactive charts, toggles &amp; live feeds</li>
+                        <li>Real market data on the trading desk</li>
+                        <li>Each industry gets its own design language</li>
+                        <li>Connects to your data, POS or sensors</li>
+                    </ul>
+                    <a href="dashboard/" class="btn btn-gold" data-magnet>Explore All Four <span class="arrow">→</span></a>
+                </div>
+                <div class="laptop-zone">
+                    <div class="laptop" aria-hidden="false">
+                        <div class="screen-shell">
+                            <div class="browser-bar">
+                                <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+                                <span class="url-pill"><span class="lock">🔒</span><span id="dashUrl">langkahpertama.website/dashboard/restoran/</span></span>
+                            </div>
+                            <div class="screen-view" id="screenView">
+                                <iframe id="dashFrame" src="dashboard/restoran/" tabindex="-1" loading="lazy" title="Mamak Kilat dashboard demo preview"></iframe>
+                            </div>
+                        </div>
+                        <div class="base"></div>
+                    </div>
+                    <div class="dock" role="tablist" aria-label="Switch dashboard preview">
+                        <button class="dock-chip active" style="--accent:#3b5bdb" data-dash="restoran" data-name="Mamak Kilat dashboard demo preview" role="tab" aria-selected="true">
+                            <span class="d-ico" aria-hidden="true">🍛</span>
+                            <span><span class="d-name">Mamak Kilat</span><span class="d-tag">Restaurant</span></span>
+                        </button>
+                        <button class="dock-chip" style="--accent:#6be3ff" data-dash="smarthome" data-name="Villa Seri smart home demo preview" role="tab" aria-selected="false">
+                            <span class="d-ico" aria-hidden="true">🏠</span>
+                            <span><span class="d-name">Villa Seri</span><span class="d-tag">Smart Home</span></span>
+                        </button>
+                        <button class="dock-chip" style="--accent:#8b5cf6" data-dash="sales" data-name="Gemilang Niaga sales analytics demo preview" role="tab" aria-selected="false">
+                            <span class="d-ico" aria-hidden="true">📈</span>
+                            <span><span class="d-name">Gemilang Niaga</span><span class="d-tag">Sales</span></span>
+                        </button>
+                        <button class="dock-chip" style="--accent:#00c896" data-dash="trading" data-name="Menara Capital trading desk demo preview" role="tab" aria-selected="false">
+                            <span class="d-ico" aria-hidden="true">📊</span>
+                            <span><span class="d-name">Menara Capital</span><span class="d-tag">Trading · Live</span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature feature-inv reveal">
+                <div class="inv-intro">
+                    <span class="feature-badge"><span class="dot"></span> 5 Live Demos</span>
+                    <h3>Inventory Systems —<br><em>stock that counts itself</em></h3>
+                    <p>Five stockrooms with five faces — a mamak store, a PC parts shop, a logistics warehouse, a pharmacy and an ERP-synced safety supplier — checked in below as line items on their own goods-received note. Open a row to walk the aisles.</p>
+                </div>
+                <div class="manifest corners" id="invManifest">
+                    <div class="m-head">
+                        <span>Goods Received Note · No. LP-INV/2026-005</span>
+                        <span class="m-right">
+                            <span id="mLog">[ 5/5 Logged ]</span>
+                            <button type="button" id="mRescan">[ Re-scan ]</button>
+                            <span id="mLogSR" class="sr-only" aria-live="polite"></span>
+                        </span>
+                    </div>
+                    <div class="m-cols" aria-hidden="true"><span>Bin</span><span>System</span><span>Status</span><span></span></div>
+                    <a class="m-row r-fnb" style="--acc:#c89b66" href="inventory/fnb/" aria-label="Open Stor Mamak Kilat — F&amp;B stockroom inventory demo">
+                        <span class="m-bin"><b>01</b><i>BIN-01</i></span>
+                        <span class="m-sys"><strong>Stor Mamak Kilat</strong><span class="m-tick" data-alt="AYAM SEJUK ×18 · HABIS: 2 HARI">TEPUNG 25KG ×3 · HABIS: 4 HARI ⚠</span><span class="m-stamp" aria-hidden="true">LULUS STOR</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">KIRA HARIAN</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-rig" style="--acc:#b14aed" href="inventory/pcparts/" aria-label="Open RigHub Computers — PC parts inventory demo">
+                        <span class="m-bin"><b>02</b><i>BIN-02</i></span>
+                        <span class="m-sys"><strong>RigHub Computers</strong><span class="m-tick" data-alt="RMA OPEN 02 · WARRANTY 36MO">SKU GPU-4070-OC · QTY 07 · MARGIN 18.4%</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">IN STOCK</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-ware" style="--acc:#ff8a3c" href="inventory/warehouse/" aria-label="Open WareSpeed Logistics — warehouse inventory demo">
+                        <span class="m-bin"><b>03</b><i>BIN-03</i></span>
+                        <span class="m-sys"><strong>WareSpeed Logistics</strong><span class="m-tick" data-alt="PALLETS 36 · LANE CLEAR">RACK B3 → DOCK 2 · ETA 14:20</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">PRIORITY</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-farm" style="--acc:var(--teal)" href="inventory/farmasi/" aria-label="Open Farmasi Ceria — pharmacy inventory demo">
+                        <span class="m-bin"><b>04</b><i>BIN-04</i></span>
+                        <span class="m-sys"><strong>Farmasi Ceria</strong><span class="m-tick" data-alt="COLD-CHAIN 4.2°C ✓">BATCH PXL-2189 · EXP 21D</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">COLD-CHAIN ✓</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <a class="m-row r-safe" style="--acc:#ff6a1a" href="inventory/safety/" aria-label="Open Sentinel Safety — ERP-synced safety equipment inventory demo">
+                        <span class="m-bin"><b>05</b><i>BIN-05</i></span>
+                        <span class="m-sys"><strong>Sentinel Safety</strong><span class="m-tick" data-alt="MULTI-GAS DETECTOR ×04 · LOW ⚠">SKU GD-1011 · ON-HAND 04 · 5 LOC</span></span>
+                        <span class="m-status"><span class="m-code" aria-hidden="true"></span><span class="m-chip">ERP SYNC ✓</span></span>
+                        <span class="m-go" aria-hidden="true">→</span>
+                    </a>
+                    <div class="m-foot">
+                        <span>Total: 5 systems · All businesses fictional — demo data</span>
+                        <a href="inventory/" class="btn btn-gold" data-magnet>Explore All Five <span class="arrow">→</span></a>
+                    </div>
+                    <div class="m-beam" aria-hidden="true"></div>
+                </div>
+            </div>
+
+            <div class="feature feature-sites reveal">
+                <div>
+                    <span class="feature-badge"><span class="dot"></span> New — 3 Concept Sites</span>
+                    <h3>Full Website Designs —<br><em>three industries, three identities</em></h3>
+                    <p>Complete frontend builds for a fictional aerospace startup, an architecture studio and a coffee roaster — each with its own typography, motion language and a custom 3D hero modelled in Blender.</p>
+                    <ul class="feature-list">
+                        <li>A custom Blender 3D centrepiece on every hero</li>
+                        <li>A distinct design language for each brand</li>
+                        <li>Smooth scroll, parallax &amp; micro-interactions</li>
+                        <li>Built mobile-first, secure &amp; fast</li>
+                    </ul>
+                    <a href="sites/" class="btn btn-gold" data-magnet>Explore the designs <span class="arrow">→</span></a>
+                </div>
+                <div class="sites-mini">
+                    <a class="sm" href="sites/apogee/"><span class="sw a"></span><span><b>Apogee</b><small>Aerospace · dark &amp; cinematic</small></span></a>
+                    <a class="sm" href="sites/forma/"><span class="sw f"></span><span><b>Forma</b><small>Architecture · light &amp; editorial</small></span></a>
+                    <a class="sm" href="sites/ember/"><span class="sw e"></span><span><b>Ember Lane</b><small>Coffee · warm &amp; tactile</small></span></a>
+                </div>
             </div>
         </div>
-        <article class="room reveal" style="--accent:#d9b06c">
-            <div class="room-spot" aria-hidden="true"></div>
-            <div class="room-grid">
-                <div class="room-caption">
-                    <span class="room-no">01 / 05</span>
-                    <h3>Wedding<br>Invitations</h3>
-                    <p>Cream-and-gold invitation suites in Bahasa Malaysia — eight live themes, each its own little world.</p>
-                    <a class="room-enter" href="wedding/">Enter the room <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="room-stage">
-                    <div class="screen">
-                        <div class="screen-bar"><i class="d"></i><i class="d"></i><i class="d"></i><span class="screen-url">langkahpertama.website/wedding/</span><span class="live">● LIVE</span></div>
-                        <div class="screen-view"><iframe data-src="wedding/" title="Wedding Invitations — live demo" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="room flip reveal" style="--accent:#e58a2c">
-            <div class="room-spot" aria-hidden="true"></div>
-            <div class="room-grid">
-                <div class="room-caption">
-                    <span class="room-no">02 / 05</span>
-                    <h3>Digital<br>Menus</h3>
-                    <p>QR menus with real food photography — a 24-hour mamak, a fine-dining sheet, a neon night-market.</p>
-                    <a class="room-enter" href="menu/">Enter the room <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="room-stage">
-                    <div class="screen">
-                        <div class="screen-bar"><i class="d"></i><i class="d"></i><i class="d"></i><span class="screen-url">langkahpertama.website/menu/</span><span class="live">● LIVE</span></div>
-                        <div class="screen-view"><iframe data-src="menu/" title="Digital Menus — live demo" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="room reveal" style="--accent:#6691ff">
-            <div class="room-spot" aria-hidden="true"></div>
-            <div class="room-grid">
-                <div class="room-caption">
-                    <span class="room-no">03 / 05</span>
-                    <h3>Business<br>Dashboards</h3>
-                    <p>Live dashboards — sales analytics, a smart home, a restaurant, and a real trading desk.</p>
-                    <a class="room-enter" href="dashboard/">Enter the room <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="room-stage">
-                    <div class="screen">
-                        <div class="screen-bar"><i class="d"></i><i class="d"></i><i class="d"></i><span class="screen-url">langkahpertama.website/dashboard/</span><span class="live">● LIVE</span></div>
-                        <div class="screen-view"><iframe data-src="dashboard/" title="Business Dashboards — live demo" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="room flip reveal" style="--accent:#ff8a3a">
-            <div class="room-spot" aria-hidden="true"></div>
-            <div class="room-grid">
-                <div class="room-caption">
-                    <span class="room-no">04 / 05</span>
-                    <h3>Inventory<br>Systems</h3>
-                    <p>Stockrooms that warn you before you run out — across five very different industries.</p>
-                    <a class="room-enter" href="inventory/">Enter the room <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="room-stage">
-                    <div class="screen">
-                        <div class="screen-bar"><i class="d"></i><i class="d"></i><i class="d"></i><span class="screen-url">langkahpertama.website/inventory/</span><span class="live">● LIVE</span></div>
-                        <div class="screen-view"><iframe data-src="inventory/" title="Inventory Systems — live demo" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="room reveal" style="--accent:#c2603a">
-            <div class="room-spot" aria-hidden="true"></div>
-            <div class="room-grid">
-                <div class="room-caption">
-                    <span class="room-no">05 / 05</span>
-                    <h3>The<br>Showroom</h3>
-                    <p>Three concept brand sites, each with a custom Blender 3D centrepiece you can spin.</p>
-                    <a class="room-enter" href="sites/">Enter the room <span aria-hidden="true">→</span></a>
-                </div>
-                <div class="room-stage">
-                    <div class="screen">
-                        <div class="screen-bar"><i class="d"></i><i class="d"></i><i class="d"></i><span class="screen-url">langkahpertama.website/sites/</span><span class="live">● LIVE</span></div>
-                        <div class="screen-view"><iframe data-src="sites/" title="The Showroom — live demo" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
-                    </div>
-                </div>
-            </div>
-        </article>
     </section>
+
     <!-- ============ PROCESS ============ -->
     <!-- ============ WORDMARK MOMENT — Langkah Pertama ============ -->
     <section class="wordmark-moment lite-edge" aria-label="Langkah Pertama — the first step">
@@ -2885,22 +2965,6 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll, { passive: true });
             tick();
-        })();
-    </script>
-
-    <!-- lazy-load the live demo rooms -->
-    <script>
-        (function () {
-            var frames = document.querySelectorAll('.room iframe[data-src]');
-            if (!frames.length) return;
-            if ('IntersectionObserver' in window) {
-                var io = new IntersectionObserver(function (es) {
-                    es.forEach(function (e) {
-                        if (e.isIntersecting) { var f = e.target; if (!f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src')); io.unobserve(f); }
-                    });
-                }, { rootMargin: '400px 0px 400px 0px' });
-                frames.forEach(function (f) { io.observe(f); });
-            } else { frames.forEach(function (f) { f.setAttribute('src', f.getAttribute('data-src')); }); }
         })();
     </script>
 
