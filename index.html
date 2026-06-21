@@ -1758,6 +1758,25 @@
         .wm-gloss b { display: block; font-family: var(--mono); font-style: normal; font-weight: 700; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; }
         .wm-gloss i { color: #f3eedd; }
 
+        /* ===== Work opener: copy left + "on view" exhibition index right ===== */
+        .work-intro { display: grid; grid-template-columns: 1.04fr 0.82fr; gap: clamp(34px,5.5vw,82px); align-items: center; margin-bottom: clamp(48px,7vw,84px); }
+        .work-index { align-self: center; }
+        .work-index .wi-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 16px; }
+        .wi-row { display: grid; grid-template-columns: auto 1fr auto auto; align-items: baseline; gap: 16px; padding: 18px 8px 18px 6px; border-top: 1px solid var(--line); color: var(--text); transition: padding-left 0.4s var(--ease); }
+        .wi-row:last-of-type { border-bottom: 1px solid var(--line); }
+        .wi-row .wi-no { font-family: var(--mono); font-size: 0.72rem; color: var(--gold); }
+        .wi-row .wi-name { font-family: var(--disp); font-weight: 600; font-size: clamp(1.05rem,1.55vw,1.32rem); letter-spacing: -0.01em; transition: color 0.3s; }
+        .wi-row .wi-meta { font-family: var(--mono); font-size: 0.62rem; color: var(--dim); letter-spacing: 1px; }
+        .wi-row .wi-arr { color: var(--dim); transition: transform 0.4s var(--ease), color 0.3s; }
+        .wi-row:hover { padding-left: 14px; }
+        .wi-row:hover .wi-name { color: var(--gold-lite); }
+        .wi-row:hover .wi-arr { transform: translateX(6px); color: var(--gold); }
+        @media (max-width: 860px) {
+            .work-intro { grid-template-columns: 1fr; gap: 28px; }
+            .wi-row .wi-meta { display: none; }
+            .wi-row { grid-template-columns: auto 1fr auto; }
+        }
+
         @media (max-width: 700px) {
             .hl2 { font-size: clamp(2.9rem, 17vw, 5.2rem); }
             .kinetic-word { font-size: clamp(5rem, 52vw, 13rem); }
@@ -1949,15 +1968,27 @@
     <!-- ============ FEATURED WORK ============ -->
     <section id="work">
         <div class="wrap">
-            <div class="work-open reveal">
-                <span class="wo wo1">Open</span>
-                <span class="wo wo2">the <span class="wo-chev">»»</span></span>
-                <span class="wo wo3 reveal-clip">Work.</span>
-            </div>
-            <div class="sec-head reveal">
-                <span class="sec-eyebrow">// Featured Work — 02</span>
-                <h2>Real products. <em>Live</em> in production.</h2>
-                <p class="sec-desc">Don't take our word for it — open the work itself. Everything below is custom-coded and running right now.</p>
+            <div class="work-intro">
+                <div class="work-intro-copy">
+                    <div class="work-open reveal">
+                        <span class="wo wo1">Open</span>
+                        <span class="wo wo2">the <span class="wo-chev">»»</span></span>
+                        <span class="wo wo3 reveal-clip">Work.</span>
+                    </div>
+                    <div class="sec-head reveal">
+                        <span class="sec-eyebrow">// Featured Work — 02</span>
+                        <h2>Real products. <em>Live</em> in production.</h2>
+                        <p class="sec-desc">Don't take our word for it — open the work itself. Everything below is custom-coded and running right now.</p>
+                    </div>
+                </div>
+                <aside class="work-index reveal" style="--d:0.15s" aria-label="The work, on view">
+                    <span class="wi-label">// On view — five live products</span>
+                    <a class="wi-row" href="wedding/"><span class="wi-no">01</span><span class="wi-name">Wedding Invitations</span><span class="wi-meta">8 themes</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="menu/"><span class="wi-no">02</span><span class="wi-name">Digital Menus</span><span class="wi-meta">3 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="dashboard/"><span class="wi-no">03</span><span class="wi-name">Business Dashboards</span><span class="wi-meta">4 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="inventory/"><span class="wi-no">04</span><span class="wi-name">Inventory Systems</span><span class="wi-meta">5 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="sites/"><span class="wi-no">05</span><span class="wi-name">The Showroom</span><span class="wi-meta">3 sites</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                </aside>
             </div>
 
             <div class="feature reveal">
