@@ -1760,6 +1760,7 @@
 
         /* ===== Work opener: copy left + "on view" exhibition index right ===== */
         .work-intro { display: grid; grid-template-columns: 1.04fr 0.82fr; gap: clamp(34px,5.5vw,82px); align-items: center; margin-bottom: clamp(48px,7vw,84px); }
+        .feature[id] { scroll-margin-top: clamp(80px, 11vh, 110px); }
         .work-index { align-self: center; }
         .work-index .wi-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 16px; }
         .wi-row { display: grid; grid-template-columns: auto 1fr auto auto; align-items: baseline; gap: 16px; padding: 18px 8px 18px 6px; border-top: 1px solid var(--line); color: var(--text); transition: padding-left 0.4s var(--ease); }
@@ -1983,15 +1984,15 @@
                 </div>
                 <aside class="work-index reveal" style="--d:0.15s" aria-label="The work, on view">
                     <span class="wi-label">// On view — five live products</span>
-                    <a class="wi-row" href="wedding/"><span class="wi-no">01</span><span class="wi-name">Wedding Invitations</span><span class="wi-meta">8 themes</span><span class="wi-arr" aria-hidden="true">→</span></a>
-                    <a class="wi-row" href="menu/"><span class="wi-no">02</span><span class="wi-name">Digital Menus</span><span class="wi-meta">3 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
-                    <a class="wi-row" href="dashboard/"><span class="wi-no">03</span><span class="wi-name">Business Dashboards</span><span class="wi-meta">4 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
-                    <a class="wi-row" href="inventory/"><span class="wi-no">04</span><span class="wi-name">Inventory Systems</span><span class="wi-meta">5 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
-                    <a class="wi-row" href="sites/"><span class="wi-no">05</span><span class="wi-name">The Showroom</span><span class="wi-meta">3 sites</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="#work-wedding"><span class="wi-no">01</span><span class="wi-name">Wedding Invitations</span><span class="wi-meta">8 themes</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="#work-menus"><span class="wi-no">02</span><span class="wi-name">Digital Menus</span><span class="wi-meta">3 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="#work-dashboards"><span class="wi-no">03</span><span class="wi-name">Business Dashboards</span><span class="wi-meta">4 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="#work-inventory"><span class="wi-no">04</span><span class="wi-name">Inventory Systems</span><span class="wi-meta">5 demos</span><span class="wi-arr" aria-hidden="true">→</span></a>
+                    <a class="wi-row" href="#work-showroom"><span class="wi-no">05</span><span class="wi-name">The Showroom</span><span class="wi-meta">3 sites</span><span class="wi-arr" aria-hidden="true">→</span></a>
                 </aside>
             </div>
 
-            <div class="feature reveal">
+            <div class="feature reveal" id="work-wedding">
                 <div>
                     <span class="feature-badge"><span class="dot"></span> Live Project</span>
                     <h3>Langkah Pertama —<br><em>Digital Wedding Invitations</em></h3>
@@ -2020,7 +2021,7 @@
                 </div>
             </div>
 
-            <div class="feature feature-menus reveal">
+            <div class="feature feature-menus reveal" id="work-menus">
                 <div class="menu-panels" aria-label="Three restaurant menu demos">
                     <a class="panel panel-mamak" href="menu/mamak/" aria-label="Open the Mamak Kilat demo — loud signboard-style mamak menu">
                         <img width="640" height="1137" decoding="async" src="assets/menu/img/hub-mamak.jpg" alt="" loading="lazy">
@@ -2064,7 +2065,7 @@
                 </div>
             </div>
 
-            <div class="feature feature-dash reveal">
+            <div class="feature feature-dash reveal" id="work-dashboards">
                 <div>
                     <span class="feature-badge"><span class="dot"></span> 4 Live Demos</span>
                     <h3>Web Dashboards —<br><em>pick an industry, watch it work</em></h3>
@@ -2111,7 +2112,7 @@
                 </div>
             </div>
 
-            <div class="feature feature-inv reveal">
+            <div class="feature feature-inv reveal" id="work-inventory">
                 <div class="inv-intro">
                     <span class="feature-badge"><span class="dot"></span> 5 Live Demos</span>
                     <h3>Inventory Systems —<br><em>stock that counts itself</em></h3>
@@ -2165,7 +2166,7 @@
                 </div>
             </div>
 
-            <div class="feature feature-sites reveal">
+            <div class="feature feature-sites reveal" id="work-showroom">
                 <div>
                     <span class="feature-badge"><span class="dot"></span> New — 3 Concept Sites</span>
                     <h3>Full Website Designs —<br><em>three industries, three identities</em></h3>
