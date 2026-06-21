@@ -1736,6 +1736,38 @@
             filter: drop-shadow(0 10px 46px rgba(217,176,108,0.32)); }
         .descent-end .grace { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 2px; color: var(--dim); margin-top: 20px; }
 
+        /* ===== alternating LIGHT chapters ===== */
+        .lite-edge { position: relative; }
+        .lite-edge::before, .lite-edge::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,176,108,0.45), transparent); z-index: 4; }
+        .lite-edge::before { top: 0; } .lite-edge::after { bottom: 0; }
+
+        /* About inverted to a warm "paper" chapter */
+        #about.chapter-light { position: relative; z-index: 3; padding: clamp(82px,12vh,140px) 0;
+            background: linear-gradient(180deg, #f4ecda 0%, #efe3cb 55%, #ead7b6 100%); color: #1b150c; }
+        #about.chapter-light .sec-eyebrow { color: #8a5612; }
+        #about.chapter-light h2 { color: #1b150c; }
+        #about.chapter-light h2 em { background: linear-gradient(100deg, #8a5e1f, #a9802e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        #about.chapter-light .about-text p { color: #463b26; font-weight: 400; }
+        #about.chapter-light .about-text p strong { color: #1b150c; font-weight: 600; }
+        #about.chapter-light .quote { color: #7c5618; border-left-color: #c89a47; }
+        #about.chapter-light .stat { background: rgba(27,21,12,0.04); border-color: rgba(27,21,12,0.14); }
+        #about.chapter-light .stat:hover { border-color: rgba(138,94,31,0.5); box-shadow: 0 18px 40px rgba(120,85,30,0.14); }
+        #about.chapter-light .stat .num { color: #8a5e1f; text-shadow: none; }
+        #about.chapter-light .stat .num sup { color: #a9802e; }
+        #about.chapter-light .stat .label { color: #5d5340; }
+        #about.chapter-light .stat .glow { display: none; }
+
+        /* ===== LANGKAH PERTAMA wordmark moment (light brand beat) ===== */
+        .wordmark-moment { position: relative; z-index: 3; overflow: hidden; text-align: center; padding: clamp(96px,15vh,180px) 0; color: #1b150c;
+            background: radial-gradient(125% 130% at 50% 0%, #f7f0e0 0%, #efe3cb 52%, #e4d2ae 100%); }
+        .wm-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; }
+        .wm-eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #8a5612; display: block; margin-bottom: 24px; }
+        .wm-line { display: block; font-family: 'Anton', var(--disp); font-weight: 400; line-height: 0.83; letter-spacing: 0.004em; font-size: clamp(3.3rem, 16.5vw, 13rem);
+            background: linear-gradient(92deg, #7a5316, #b48b3c 46%, #8a5e1f 74%, #6e4910); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 1px 1px rgba(50,32,6,0.16); }
+        .wm-gloss { max-width: 580px; margin: 32px auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: clamp(1.15rem, 2.5vw, 1.6rem); line-height: 1.5; color: #463b26; }
+        .wm-gloss b { display: block; font-family: var(--mono); font-style: normal; font-weight: 700; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: #8a5612; margin-bottom: 12px; }
+        .wm-gloss i { color: #1b150c; }
+
         @media (max-width: 700px) {
             .hl2 { font-size: clamp(2.9rem, 17vw, 5.2rem); }
             .kinetic-word { font-size: clamp(5rem, 52vw, 13rem); }
@@ -2135,6 +2167,16 @@
     </section>
 
     <!-- ============ PROCESS ============ -->
+    <!-- ============ WORDMARK MOMENT — Langkah Pertama ============ -->
+    <section class="wordmark-moment lite-edge" aria-label="Langkah Pertama — the first step">
+        <div class="wm-inner">
+            <span class="wm-eyebrow reveal">⟡ The studio</span>
+            <span class="wm-line reveal-clip">Langkah</span>
+            <span class="wm-line reveal-clip" style="--d:0.1s">Pertama</span>
+            <p class="wm-gloss reveal" style="--d:0.22s"><b>Bahasa Malaysia · noun</b> “The first step.” <i>The hardest one to take — and the one we take with you.</i></p>
+        </div>
+    </section>
+
     <section id="process">
         <div class="wrap">
             <div class="sec-head reveal">
@@ -2171,7 +2213,7 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section id="about">
+    <section id="about" class="chapter-light lite-edge">
         <div class="wrap">
             <div class="about-grid">
                 <div class="about-text">
@@ -2214,8 +2256,8 @@
     <!-- ============ DESCENT END — layered tagline ============ -->
     <section class="descent-end-wrap" aria-label="Take the first step" style="padding:48px 0 12px">
         <div class="wrap descent-end">
-            <span class="echo e1 reveal" data-speed="-0.05" aria-hidden="true">Take the first step.</span>
-            <span class="echo e2 reveal" data-speed="0.035" style="--d:0.08s" aria-hidden="true">Take the first step.</span>
+            <span class="echo e1 reveal" aria-hidden="true">Take the first step.</span>
+            <span class="echo e2 reveal" style="--d:0.08s" aria-hidden="true">Take the first step.</span>
             <span class="echo e3 reveal-clip" style="--d:0.16s">Take the first step.</span>
             <p class="grace reveal" style="--d:0.28s">Langkah pertama bermula di sini — the first step begins here.</p>
         </div>
@@ -2897,22 +2939,17 @@
             var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var root = document.documentElement;
             var nav = document.getElementById('nav');
-            var speedEls = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
-            var sy = 0, dirty = true, ticking = false;
-
+            var speedEls = Array.prototype.slice.call(document.querySelectorAll('[data-speed]')).map(function (el) {
+                return { el: el, sp: parseFloat(el.getAttribute('data-speed')) || 0, applied: 0 };
+            });
+            var ticking = false, alive = 0;
             function request() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
-            function onScroll() { dirty = true; request(); }
+            function onScroll() { alive = 6; request(); }
 
             function tick() {
                 ticking = false;
                 var target = window.scrollY || window.pageYOffset || 0;
                 var vh = window.innerHeight || 1;
-
-                if (reduce) { sy = target; }
-                else {
-                    sy += (target - sy) * 0.12;           // damped trailing scroll (no scroll-jack)
-                    if (Math.abs(target - sy) > 0.3) request();
-                }
 
                 // light -> dark handoff over the first ~0.82 viewport
                 var hf = Math.max(0, Math.min(1, target / (vh * 0.82)));
@@ -2923,11 +2960,18 @@
                 if (nav) nav.classList.toggle('over-light', target < vh * 0.72);
 
                 if (!reduce) {
+                    // parallax from each element's LIVE position, compensated for its own applied shift
+                    // (immune to layout shifts from late-loading iframes/fonts)
                     for (var i = 0; i < speedEls.length; i++) {
-                        var sp = parseFloat(speedEls[i].getAttribute('data-speed')) || 0;
-                        speedEls[i].style.transform = 'translate3d(0,' + (sy * sp).toFixed(1) + 'px,0)';
+                        var o = speedEls[i];
+                        var r = o.el.getBoundingClientRect();
+                        var rel = (r.top + r.height / 2 - o.applied) - vh / 2;
+                        var ty = rel * o.sp;
+                        o.el.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0)';
+                        o.applied = ty;
                     }
                 }
+                if (alive > 0) { alive--; request(); }   // keep ticking briefly so parallax settles after scroll stops
             }
 
             window.addEventListener('scroll', onScroll, { passive: true });
