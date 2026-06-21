@@ -1660,21 +1660,23 @@
             background: linear-gradient(177deg, #d6e2ec 0%, #ecdfc9 44%, #f4e6c7 76%, #efd9b4 100%); will-change: opacity; }
 
         /* ---- HERO becomes "First Light": dark ink on the dawn ---- */
-        .hero.firstlight { --hero-ink: #1b150d; --hero-dim: #5d5340; padding-top: 132px; }
-        .hero.firstlight .hero-copy { position: relative; z-index: 2; opacity: calc(1 - max(0, (var(--hf) - 0.55)) * 2.3); }
-        .hero.firstlight .hero-eyebrow { color: #a06b1c; }
-        .hero.firstlight .hero-eyebrow .pulse { background: #c98a2e; box-shadow: 0 0 12px #c98a2e; }
+        .hero.firstlight { --hero-ink: #140f08; --hero-dim: #41371f; padding-top: 132px; }
+        .hero.firstlight .hero-copy { position: relative; z-index: 2; opacity: calc(1 - max(0, (var(--hf) - 0.4)) * 2.7); }
+        .hero.firstlight .hero-eyebrow { color: #855310; }
+        .hero.firstlight .hero-eyebrow .pulse { background: #b9791f; box-shadow: 0 0 12px #b9791f; }
         .hero-head { font-family: var(--disp); margin: 4px 0 24px; max-width: 18ch; }
         .hero-head .hl { display: block; }
-        .hl1 { font-size: clamp(1.25rem, 3.3vw, 2.3rem); font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--hero-ink); }
+        .hl1 { font-size: clamp(1.25rem, 3.3vw, 2.3rem); font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--hero-ink); }
         .hl2 { font-size: clamp(3.3rem, 13vw, 9.5rem); line-height: 0.88; margin: 0.05em 0 0.04em -0.04em; }
         .anton-gold { font-family: 'Anton', var(--disp); font-weight: 400; letter-spacing: 0.004em;
-            background: linear-gradient(96deg, #b07d33, #f4dcab 40%, #d9b06c 68%, #98763f);
+            background: linear-gradient(94deg, #6e4910, #a9802e 44%, #875e16 72%, #5e3f0d);
             -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
-            text-shadow: 0 18px 60px rgba(176,125,51,0.2); }
-        .hl3 { font-size: clamp(1.15rem, 2.9vw, 1.95rem); font-weight: 500; color: var(--hero-ink); }
-        .hero.firstlight .hero-sub { color: var(--hero-dim); max-width: 540px; }
-        .hero.firstlight .hero-sub strong { color: var(--hero-ink); }
+            text-shadow: 0 1px 1px rgba(50,32,6,0.25), 0 16px 52px rgba(120,82,20,0.22); }
+        .hl3 { font-size: clamp(1.15rem, 2.9vw, 1.95rem); font-weight: 600; color: var(--hero-ink); }
+        /* rotator word stays gold-family but deep enough to read on the dawn */
+        .hero.firstlight .hl3 .rotator .word { background: linear-gradient(94deg, #6e4d14, #9a7228); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero.firstlight .hero-sub { color: var(--hero-dim); max-width: 540px; font-weight: 400; }
+        .hero.firstlight .hero-sub strong { color: var(--hero-ink); font-weight: 600; }
         .hero.firstlight .btn-ghost { color: var(--hero-ink); border-color: rgba(27,21,13,0.3); }
         .hero.firstlight .btn-ghost:hover { border-color: var(--hero-ink); background: rgba(27,21,13,0.05); }
 
@@ -1695,8 +1697,8 @@
         nav.over-light { background: transparent !important; border-bottom-color: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important; }
         nav.over-light .brand-name { color: #1b150d; }
         nav.over-light .brand-name small { color: #6b5d44; }
-        nav.over-light .nav-links a { color: #4a4030; }
-        nav.over-light .nav-links a:hover { color: #1b150d; }
+        nav.over-light .nav-links a { color: #2c2315; }
+        nav.over-light .nav-links a:hover { color: #140f08; }
         nav.over-light .nav-links a::after { background: #c98a2e; }
         nav.over-light .menu-btn span { background: #1b150d; }
         nav.over-light .nav-cta { color: #1b150d; border-color: rgba(27,21,13,0.32); }

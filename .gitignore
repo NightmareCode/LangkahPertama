@@ -1,1 +1,4 @@
 .claude/
+
+# local playwright screenshot harness (not deployed)
+.pw/
