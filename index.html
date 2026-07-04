@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self' https://airgas.my; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#05060a">
@@ -1725,6 +1725,36 @@
         .descent-end .grace { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 2px; color: var(--dim); margin-top: 20px; }
 
         /* ===== alternating LIGHT chapters ===== */
+        /* ===== REAL CLIENT WORK — live site embed ===== */
+        .live-work { padding: clamp(64px, 9vw, 118px) 0; }
+        .live-eyebrow { color: #7ee0a8; }
+        .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #34d17a; animation: livePulse 2.1s infinite; vertical-align: middle; margin-right: 5px; }
+        @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(52,209,122,0.55); } 70% { box-shadow: 0 0 0 7px rgba(52,209,122,0); } 100% { box-shadow: 0 0 0 0 rgba(52,209,122,0); } }
+        .live-card { display: grid; grid-template-columns: 1.32fr 0.68fr; gap: clamp(28px, 4vw, 54px); align-items: center; max-width: 1180px; margin: 0 auto; }
+        .live-frame { background: #161a22; border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 10px 10px 0; box-shadow: 0 40px 90px rgba(0,0,0,0.6); overflow: hidden; }
+        .lf-bar { display: flex; align-items: center; gap: 9px; padding: 4px 4px 10px; }
+        .lf-dots { display: flex; gap: 5px; }
+        .lf-dots span { width: 9px; height: 9px; border-radius: 50%; }
+        .lf-dots span:nth-child(1) { background: #ff5f57; }
+        .lf-dots span:nth-child(2) { background: #febc2e; }
+        .lf-dots span:nth-child(3) { background: #28c840; }
+        .lf-url { flex: 1; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.3px; color: var(--dim); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 7px; padding: 4px 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+        .lf-lock { color: #6fcf97; margin-right: 6px; }
+        .lf-live { font-family: var(--mono); font-size: 0.56rem; font-weight: 700; letter-spacing: 1.5px; color: #7ee0a8; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+        .lf-view { position: relative; overflow: hidden; border-radius: 6px 6px 0 0; background: #0b0c10; min-height: 180px; }
+        .lf-view iframe { width: 1280px; height: 800px; border: none; transform-origin: top left; pointer-events: none; display: block; }
+        .lf-guard { position: absolute; inset: 0; z-index: 2; display: block; }
+        .lf-guard:focus-visible { outline: 2px solid var(--accent, #d9b06c); outline-offset: -3px; }
+        .lf-view::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), inset 0 -46px 70px rgba(2,3,6,0.30); }
+        .live-meta h3 { font-family: var(--mono); font-size: 1.05rem; letter-spacing: 0.5px; color: #f3eedd; margin-bottom: 6px; }
+        .live-role { color: #7ee0a8; font-size: 0.82rem; letter-spacing: 0.3px; margin-bottom: 18px; }
+        .live-facts { list-style: none; margin: 0 0 26px; padding: 0; }
+        .live-facts li { position: relative; padding-left: 24px; margin-bottom: 11px; color: var(--dim); font-size: 0.96rem; }
+        .live-facts li::before { content: '\2713'; position: absolute; left: 0; color: #34d17a; font-weight: 700; }
+        .live-note { margin-top: 12px; font-size: 0.72rem; color: var(--dim); font-family: var(--mono); letter-spacing: 0.3px; }
+        @media (max-width: 900px) { .live-card { grid-template-columns: 1fr; gap: 30px; } }
+        @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
         .lite-edge { position: relative; }
         .lite-edge::before, .lite-edge::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,176,108,0.45), transparent); z-index: 4; }
         .lite-edge::before { top: 0; } .lite-edge::after { bottom: 0; }
@@ -2188,6 +2218,42 @@
         </div>
     </section>
 
+    <!-- ============ REAL CLIENT WORK — live, in production ============ -->
+    <section id="live-work" class="live-work lite-edge" aria-labelledby="live-work-h">
+        <div class="wrap">
+            <div class="sec-head reveal" style="text-align:center">
+                <span class="sec-eyebrow live-eyebrow"><span class="live-dot" aria-hidden="true"></span> Live · Real client · In production</span>
+                <h2 id="live-work-h">Not a demo — a real site, <em>live right now.</em></h2>
+                <p class="sec-desc">Everything above is a concept build. This one is real: I designed and built the live website for <strong>Airgas Technology Sdn&nbsp;Bhd</strong> — a Malaysian industrial-gas, safety &amp; welding supplier — running in production on their own domain today, with a full 364-product catalogue.</p>
+            </div>
+
+            <div class="live-card reveal-clip">
+                <div class="live-frame">
+                    <div class="lf-bar">
+                        <span class="lf-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+                        <span class="lf-url"><span class="lf-lock" aria-hidden="true">🔒</span>airgas.my</span>
+                        <span class="lf-live"><span class="live-dot" aria-hidden="true"></span> LIVE</span>
+                    </div>
+                    <div class="lf-view" id="airgasView">
+                        <iframe id="airgasFrame" src="https://airgas.my/" title="airgas.my — the live e-commerce site I built for Airgas Technology" loading="lazy" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                        <a class="lf-guard" href="https://airgas.my/" target="_blank" rel="noopener noreferrer" aria-label="Open the live airgas.my website in a new tab"></a>
+                    </div>
+                </div>
+                <div class="live-meta">
+                    <h3>airgas.my</h3>
+                    <p class="live-role">Design &amp; full build · 364-product catalogue · live in production</p>
+                    <ul class="live-facts">
+                        <li>A full 364-product catalogue with quote &amp; enquiry flow</li>
+                        <li>Built &amp; deployed on the client's own domain</li>
+                        <li>A real business with real customers — not a mockup</li>
+                    </ul>
+                    <a href="https://airgas.my/" target="_blank" rel="noopener noreferrer" class="btn btn-gold" data-magnet>Visit the live site <span class="arrow">→</span></a>
+                    <p class="live-note">Opens the client's live website in a new tab.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ PROCESS ============ -->
     <!-- ============ WORDMARK MOMENT — Langkah Pertama ============ -->
     <section class="wordmark-moment lite-edge" aria-label="Langkah Pertama — the first step">
@@ -2556,6 +2622,24 @@
                     dashFrame.classList.remove('loading');
                     scaleDash();
                 });
+            }
+
+            /* ---- Live client site (airgas.my) embed ---- */
+            var airFrame = document.getElementById('airgasFrame');
+            if (airFrame) {
+                var airView = document.getElementById('airgasView');
+                var scaleAir = function () {
+                    var w = airView.clientWidth;
+                    if (!w) return;
+                    var s = w / 1280;
+                    airFrame.style.transform = 'scale(' + s + ')';
+                    airView.style.height = (800 * s) + 'px';
+                };
+                window.addEventListener('resize', scaleAir);
+                scaleAir();
+                setTimeout(scaleAir, 400);
+                if ('ResizeObserver' in window) { new ResizeObserver(scaleAir).observe(airView); }
+                airFrame.addEventListener('load', scaleAir);
             }
 
             /* ---- Inventory manifest showcase (check-in scan) ---- */
