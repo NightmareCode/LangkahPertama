@@ -558,7 +558,7 @@
 
             composer = new EffectComposer(renderer);
             composer.addPass(new RenderPass(scene, camera));
-            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.72, 0.6, 0.62);
+            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.34, 0.4, 0.8);
             composer.addPass(bloom);
             composer.addPass(new OutputPass());
             place(); window.addEventListener('resize', place);
