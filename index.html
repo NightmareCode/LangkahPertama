@@ -2758,6 +2758,10 @@
             var THREE = await import('three');
             var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
             var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+            var { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
+            var { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
+            var { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
+            var { OutputPass } = await import('three/addons/postprocessing/OutputPass.js');
 
             var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -2772,6 +2776,12 @@
 
             var camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 60);
             camera.position.set(0, 0.4, 8.2);
+
+            var composer = new EffectComposer(renderer);
+            composer.addPass(new RenderPass(scene, camera));
+            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.46, 0.5, 0.7);
+            composer.addPass(bloom);
+            composer.addPass(new OutputPass());
 
             // lights to complement the environment map
             var key = new THREE.DirectionalLight(0xffe2b0, 1.6);
@@ -2950,6 +2960,7 @@
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
                 renderer.setSize(w, h);
+                composer.setSize(w, h);
             }
             window.addEventListener('resize', resize);
 
@@ -2987,7 +2998,7 @@
                 camera.position.y = 0.4 - smY * 0.35;
                 camera.lookAt(0, 0, 0);
 
-                renderer.render(scene, camera);
+                composer.render();
             }
 
             function loop() {
@@ -3012,7 +3023,7 @@
                 if (reduceMotion) {
                     // static render — no animation, no interaction
                     if (rig) { rig.rotation.y = 0.7; rig.rotation.x = 0.18; }
-                    renderer.render(scene, camera);
+                    composer.render();
                 } else {
                     // invisible proxy sphere for forgiving grab/tap hit-testing
                     hitSphere = new THREE.Mesh(

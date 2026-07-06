@@ -510,13 +510,21 @@
         try {
             var THREE = await import('three');
             var GLTF = await import('three/addons/loaders/GLTFLoader.js');
+            var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+            var { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
+            var { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
+            var { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
+            var { OutputPass } = await import('three/addons/postprocessing/OutputPass.js');
             var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.15;
             var scene = new THREE.Scene();
+            var pmrem = new THREE.PMREMGenerator(renderer);
+            scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+            var composer;
             var camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
 
-            function place() { var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); var wide = w / h > 1.05; camera.position.set(wide ? 1.8 : 0, wide ? 0.3 : 0.6, wide ? 6.8 : 7.6); group.position.x = wide ? 1.6 : 0; camera.lookAt(group.position.x, 0, 0); }
+            function place() { var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); if (composer) composer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); var wide = w / h > 1.05; camera.position.set(wide ? 1.8 : 0, wide ? 0.3 : 0.6, wide ? 6.8 : 7.6); group.position.x = wide ? 1.6 : 0; camera.lookAt(group.position.x, 0, 0); }
 
             scene.add(new THREE.AmbientLight(0x8090c0, 0.6));
             var k = new THREE.PointLight(0x6691ff, 70, 50); k.position.set(6, 5, 7); scene.add(k);
@@ -524,10 +532,10 @@
             var v = new THREE.PointLight(0xb39bff, 30, 50); v.position.set(0, -6, -4); scene.add(v);
             var group = new THREE.Group(); scene.add(group);
 
-            var mGem = new THREE.MeshStandardMaterial({ color: 0x9aa6bd, metalness: 1.0, roughness: 0.12, flatShading: true });
+            var mGem = new THREE.MeshPhysicalMaterial({ color: 0x9aa6bd, metalness: 1.0, roughness: 0.12, clearcoat: 1.0, clearcoatRoughness: 0.12, envMapIntensity: 1.25, flatShading: true });
             var mBand = new THREE.MeshStandardMaterial({ color: 0x6691ff, emissive: 0x6691ff, emissiveIntensity: 2.4 });
             var mHalo = new THREE.MeshStandardMaterial({ color: 0x70a0ff, emissive: 0x4f86ff, emissiveIntensity: 1.4 });
-            var mRingMetal = new THREE.MeshStandardMaterial({ color: 0x6c7889, metalness: 1.0, roughness: 0.22 });
+            var mRingMetal = new THREE.MeshPhysicalMaterial({ color: 0x7a8699, metalness: 1.0, roughness: 0.2, clearcoat: 0.7, clearcoatRoughness: 0.2, envMapIntensity: 1.35 });
             var mGlow = new THREE.MeshStandardMaterial({ color: 0x6691ff, emissive: 0x6691ff, emissiveIntensity: 2.4 });
             var mNode = new THREE.MeshStandardMaterial({ color: 0xb39bff, emissive: 0xb39bff, emissiveIntensity: 1.8 });
 
@@ -548,6 +556,11 @@
             var stars = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xacc0ff, size: 0.055, transparent: true, opacity: 0.85 }));
             scene.add(stars);
 
+            composer = new EffectComposer(renderer);
+            composer.addPass(new RenderPass(scene, camera));
+            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.72, 0.6, 0.62);
+            composer.addPass(bloom);
+            composer.addPass(new OutputPass());
             place(); window.addEventListener('resize', place);
             var tY = 0.4, cY = 0.4, vel = 0, drag = false, lx = 0, pX = 0, pY = 0;
             canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); });
@@ -555,7 +568,7 @@
             window.addEventListener('pointerup', function () { drag = false; });
             var run = true, clock = new THREE.Clock();
             document.addEventListener('visibilitychange', function () { run = !document.hidden; if (run) loop(); });
-            function loop() { if (!run) return; requestAnimationFrame(loop); var dt = clock.getDelta(); if (!drag) { tY += (reduce ? 0 : 0.16) * dt; vel *= 0.94; } cY += (tY - cY) * 0.07; group.rotation.y = cY; group.rotation.x = 0.32 + pY * 0.3; stars.rotation.y += 0.006 * dt; renderer.render(scene, camera); }
+            function loop() { if (!run) return; requestAnimationFrame(loop); var dt = clock.getDelta(); if (!drag) { tY += (reduce ? 0 : 0.16) * dt; vel *= 0.94; } cY += (tY - cY) * 0.07; group.rotation.y = cY; group.rotation.x = 0.32 + pY * 0.3; stars.rotation.y += 0.006 * dt; composer.render(); }
             loop(); setTimeout(place, 400);
             window.__apogeeHero = { ok: true };
         } catch (err) { if (canvas) canvas.style.opacity = '0.001'; window.__apogeeHero = { ok: false, err: String(err) }; }
