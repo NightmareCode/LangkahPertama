@@ -1752,6 +1752,12 @@
         .lh-meta .woo { color: var(--accent, #d9b06c); font-weight: 700; }
         .live-highlight .btn { display: flex; width: 100%; justify-content: center; }
         .sites-mini-label { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--dim); margin: 4px 0 -4px; }
+        .build-stack { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .bs-eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 1.8px; text-transform: uppercase; color: var(--dim); display: block; margin-bottom: 15px; }
+        .stack-chips { display: flex; flex-wrap: wrap; gap: 9px; }
+        .stack-chips .chip { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.4px; color: #e9e2cf; background: rgba(255,255,255,0.04); border: 1px solid rgba(217,176,108,0.22); border-radius: 999px; padding: 7px 13px; white-space: nowrap; }
+        .stack-chips .chip.live { color: #9ff0bf; border-color: rgba(52,209,122,0.38); background: rgba(52,209,122,0.06); }
+        .build-note { margin-top: 17px; color: var(--dim); font-size: 0.84rem; line-height: 1.55; max-width: 42ch; }
         @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
 
         .lite-edge { position: relative; }
@@ -2207,6 +2213,18 @@
                         <li>Built mobile-first, secure &amp; fast</li>
                     </ul>
                     <a href="sites/" class="btn btn-gold" data-magnet>Explore the designs <span class="arrow">→</span></a>
+                    <div class="build-stack">
+                        <span class="bs-eyebrow">// Built with</span>
+                        <div class="stack-chips">
+                            <span class="chip">Hand-coded HTML/CSS/JS</span>
+                            <span class="chip">Three.js 3D</span>
+                            <span class="chip">Blender</span>
+                            <span class="chip live">WordPress + WooCommerce</span>
+                            <span class="chip">Mobile-first</span>
+                            <span class="chip">SEO &amp; accessibility</span>
+                        </div>
+                        <p class="build-note">Every build is coded by hand — no page-builders, no templates. From a one-page concept to a full WooCommerce store.</p>
+                    </div>
                 </div>
                 <div class="sites-col">
                     <div class="live-highlight">
