@@ -65,11 +65,10 @@
         .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(18px, 3.5vw, 44px); margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
         .hstat b { display: block; font-family: var(--disp); font-style: italic; font-weight: 600; font-size: 1.75rem; color: var(--magma); font-variant-numeric: tabular-nums; }
         .hstat span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
-        .hero-3d { position: relative; height: min(86vh, 780px); z-index: 2; padding: clamp(10px, 2vw, 26px); }
-        .hero-3d::before { content: ''; position: absolute; inset: clamp(10px, 2vw, 26px); border-radius: 26px;
-            background: radial-gradient(80% 70% at 50% 42%, #263830 0%, #17241e 70%, #101a15 100%);
-            box-shadow: 0 30px 70px rgba(43, 33, 24, 0.35), inset 0 0 0 1px rgba(111, 163, 191, 0.14); }
-        #book3d { position: relative; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; border-radius: 26px; }
+        .hero-3d { position: relative; height: min(86vh, 780px); z-index: 2; }
+        .hero-3d::after { content: ''; position: absolute; left: 53%; bottom: 9.5%; width: 40%; height: 26px; transform: translateX(-50%);
+            background: radial-gradient(50% 50% at 50% 50%, rgba(43, 33, 24, 0.16), transparent 72%); pointer-events: none; }
+        #book3d { position: relative; z-index: 1; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
         #book3d:active { cursor: grabbing; }
         .drag-hint { position: absolute; right: clamp(20px, 4vw, 54px); bottom: 24px; z-index: 4; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); transition: opacity 0.6s; }
         .scroll-cue { position: absolute; left: clamp(20px, 5vw, 56px); bottom: 24px; z-index: 4; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
@@ -418,39 +417,54 @@
             var THREE = await import('three');
             var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
             var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
-            var { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
-            var { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
-            var { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
-            var { OutputPass } = await import('three/addons/postprocessing/OutputPass.js');
 
+            // transparent render straight onto the paper page — no post chain
+            // (EffectComposer forces an opaque backbuffer; bloom isn't worth a grey box)
             var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
-            renderer.toneMappingExposure = 1.0;
+            renderer.toneMappingExposure = 1.05;
+            renderer.setClearColor(0x000000, 0);
 
             var scene = new THREE.Scene();
             var pmrem = new THREE.PMREMGenerator(renderer);
             scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
             var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 60);
-            camera.position.set(0, 1.9, 9.4);
+            camera.position.set(0, 1.9, 8.4);
 
-            var composer = new EffectComposer(renderer);
-            composer.addPass(new RenderPass(scene, camera));
-            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.3, 0.35, 0.88);
-            composer.addPass(bloom);
-            composer.addPass(new OutputPass());
+            scene.add(new THREE.AmbientLight(0xfff4e0, 0.55));
+            var key = new THREE.PointLight(0xfff0d8, 105, 60); key.position.set(5, 8, 6); scene.add(key);
+            var cool = new THREE.PointLight(0x9fc8e0, 40, 40); cool.position.set(-6, 3, -3); scene.add(cool);
 
-            scene.add(new THREE.AmbientLight(0xfff4e0, 0.45));
-            var key = new THREE.PointLight(0xfff0d8, 85, 60); key.position.set(5, 8, 6); scene.add(key);
-            var cool = new THREE.PointLight(0x9fc8e0, 50, 40); cool.position.set(-6, 3, -3); scene.add(cool);
+            // soft halo texture for the firefly motes (hand-made glow, no bloom needed)
+            var haloTex = (function () {
+                var c = document.createElement('canvas'); c.width = c.height = 64;
+                var g = c.getContext('2d');
+                var r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+                r.addColorStop(0, 'rgba(224, 168, 82, 0.9)');
+                r.addColorStop(0.35, 'rgba(224, 168, 82, 0.3)');
+                r.addColorStop(1, 'rgba(224, 168, 82, 0)');
+                g.fillStyle = r; g.fillRect(0, 0, 64, 64);
+                return new THREE.CanvasTexture(c);
+            })();
 
             var group = new THREE.Group(); scene.add(group);
             var rig = null;
 
             new GLTFLoader().load('/assets/sunda.glb', function (gltf) {
                 rig = gltf.scene.getObjectByName('BookRig') || gltf.scene;
-                rig.position.y = -1.6;
+                rig.position.y = -1.45;
+                rig.traverse(function (o) {
+                    if (o.isMesh && o.name.indexOf('Firefly') === 0) {
+                        // warm amber mote + soft sprite halo instead of bloom
+                        o.material = new THREE.MeshBasicMaterial({ color: 0xd99a3e });
+                        o.scale.multiplyScalar(0.65);
+                        var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, opacity: 0.5, depthWrite: false }));
+                        s.scale.set(0.7, 0.7, 1);
+                        o.add(s);
+                    }
+                });
                 group.add(rig);
                 place();
             }, undefined, function () { canvas.style.opacity = '0.001'; });
@@ -459,12 +473,11 @@
                 var w = canvas.clientWidth, h = canvas.clientHeight;
                 if (!w || !h) return;
                 renderer.setSize(w, h, false);
-                composer.setSize(w, h);
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
                 var wide = w / h > 0.9;
-                camera.position.z = wide ? 9.4 : 11.6;
-                camera.lookAt(0, 0.6, 0);
+                camera.position.z = wide ? 7.9 : 10.0;
+                camera.lookAt(0, 0.55, 0);
             }
             place();
             window.addEventListener('resize', place);
@@ -490,10 +503,10 @@
                 cY += (tY - cY) * 0.08;
                 group.rotation.y = cY;
                 group.rotation.x = 0.04 + pY * 0.18;
-                if (rig && !reduce) rig.position.y = -1.6 + Math.sin(clock.elapsedTime * 0.7) * 0.12;
-                composer.render();
+                if (rig && !reduce) rig.position.y = -1.45 + Math.sin(clock.elapsedTime * 0.7) * 0.12;
+                renderer.render(scene, camera);
             }
-            if (reduce) { group.rotation.y = -0.4; composer.render(); } else { loop(); }
+            if (reduce) { group.rotation.y = -0.4; renderer.render(scene, camera); } else { loop(); }
             window.__ssDemo = { ok: true };
         } catch (err) {
             if (canvas) canvas.style.opacity = '0.001';
