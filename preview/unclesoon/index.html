@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Uncle Soon Fried Rice — Wok Hei Since 1990 · Design Preview</title>
+    <meta name="description" content="Design preview of a website concept for Uncle Soon Fried Rice, SS15 Subang Jaya — crafted by Langkah Pertama.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Karla:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0907; --bg-2: #14100c; --panel: #1a140f;
+            --ink: #f5efe6; --dim: #b3a89a; --line: rgba(244, 185, 66, 0.16);
+            --flame: #f5871f; --ember: #e63b2e; --gold: #f4b942; --navy: #7fa8d4;
+            --gg: linear-gradient(120deg, #f4b942, #f5871f 55%, #e63b2e);
+            --disp: 'Playfair Display SC', serif; --serif: 'Playfair Display', serif;
+            --sans: 'Karla', sans-serif; --mono: 'Space Mono', monospace;
+            --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: clip; }
+        body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(90% 60% at 50% -10%, #221610 0%, rgba(12,9,7,0) 60%); }
+        ::selection { background: rgba(245, 135, 31, 0.35); }
+        a { color: inherit; text-decoration: none; cursor: pointer; }
+        button { cursor: pointer; }
+        :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+        .mono { font-family: var(--mono); }
+        .goldtext { background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+        .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--flame); }
+
+        .lp-skip { position: fixed; top: -60px; left: 16px; z-index: 300; background: var(--gold); color: #14100c; font-weight: 700; padding: 10px 18px; border-radius: 8px; transition: top 0.2s; }
+        .lp-skip:focus-visible { top: 12px; }
+
+        /* nav */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0;
+            background: linear-gradient(180deg, rgba(12,9,7,0.92), rgba(12,9,7,0.75) 70%, transparent);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+        .brand { display: flex; flex-direction: column; line-height: 1; }
+        .brand b { font-family: var(--disp); font-size: 1.25rem; letter-spacing: 0.04em; color: #ff5a45; }
+        .brand span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.34em; color: var(--navy); margin-top: 4px; }
+        .nav-links { display: flex; gap: clamp(14px, 3vw, 30px); align-items: center; }
+        .nav-links a { font-size: 0.86rem; font-weight: 600; color: var(--dim); padding: 8px 2px; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.btn-fire, .nav-links a.btn-fire:hover { color: #1c0d05; }
+        .btn { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 0.9rem; padding: 12px 22px; border-radius: 999px; border: 1px solid transparent; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s; }
+        .btn-fire { background: var(--gg); color: #1c0d05; box-shadow: 0 8px 28px rgba(230, 59, 46, 0.25); }
+        .btn-fire:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(245, 135, 31, 0.35); }
+        .btn-ghost { border-color: rgba(244, 185, 66, 0.35); color: var(--gold); }
+        .btn-ghost:hover { background: rgba(244, 185, 66, 0.08); }
+        @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
+
+        /* hero */
+        .hero { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 20px; position: relative; overflow: hidden; padding-top: 76px; }
+        .hero-copy { position: relative; z-index: 3; padding-left: clamp(20px, 5vw, 56px); padding-bottom: 84px; max-width: 640px; }
+        .hero-copy .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+        .hero-copy .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--flame); }
+        .hero h1 { font-family: var(--disp); font-weight: 700; font-size: clamp(2.6rem, 6.2vw, 5rem); line-height: 1.02; margin: 20px 0 22px; text-wrap: balance; }
+        .hero h1 .fire { display: block; }
+        .hero-sub { color: var(--dim); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 46ch; }
+        .hero-sub b { color: var(--ink); font-weight: 600; }
+        .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+        .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(18px, 3.5vw, 44px); margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
+        .hstat b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: var(--gold); font-variant-numeric: tabular-nums; }
+        .hstat span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+        .hero-3d { position: relative; height: min(88vh, 820px); z-index: 2; }
+        #wok3d { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+        #wok3d:active { cursor: grabbing; }
+        .hero-glow { position: absolute; inset: auto 0 -12% 0; height: 55%; z-index: 1; pointer-events: none;
+            background: radial-gradient(50% 60% at 72% 70%, rgba(230, 59, 46, 0.22), transparent 65%); }
+        .drag-hint { position: absolute; right: clamp(20px, 4vw, 54px); bottom: 26px; z-index: 4; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); opacity: 0.85; transition: opacity 0.6s; }
+        .scroll-cue { position: absolute; left: clamp(20px, 5vw, 56px); bottom: 26px; z-index: 4; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+        .scroll-cue i { width: 1px; height: 34px; background: linear-gradient(180deg, var(--gold), transparent); animation: cueDrop 2s infinite; }
+        @keyframes cueDrop { 0% { transform: scaleY(0); transform-origin: top; } 55% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; padding-top: 90px; min-height: 0; }
+            .hero-3d { height: 52vh; min-height: 340px; order: -1; }
+            .hero-copy { padding: 0 clamp(20px, 5vw, 56px) 60px; }
+            .scroll-cue { display: none; }
+        }
+
+        /* marquee word */
+        .fireband { position: relative; padding: clamp(70px, 11vw, 130px) 0; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); }
+        .kinetic { position: absolute; top: 50%; left: 0; transform: translateY(-50%); font-family: var(--disp); font-weight: 700; font-size: clamp(6rem, 17vw, 15rem); white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(244, 185, 66, 0.14); user-select: none; pointer-events: none; }
+        .fireband .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 80px); align-items: start; }
+        .fireband h2 { font-family: var(--disp); font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.1; }
+        .fireband .story p { color: var(--dim); margin-bottom: 16px; font-size: 1.02rem; }
+        .fireband .story p b { color: var(--ink); }
+        .pull { margin-top: 26px; padding: 22px 26px; border-left: 3px solid var(--flame); background: rgba(245, 135, 31, 0.05); border-radius: 0 12px 12px 0; }
+        .pull p { font-family: var(--serif); font-style: italic; font-size: 1.18rem; color: var(--ink); line-height: 1.5; }
+        .pull span { display: block; margin-top: 10px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
+        @media (max-width: 900px) { .fireband .wrap { grid-template-columns: 1fr; } }
+
+        /* section head */
+        section { padding: clamp(80px, 12vw, 150px) 0; position: relative; }
+        .sec-head { max-width: 700px; margin-bottom: clamp(38px, 6vw, 64px); }
+        .sec-head h2 { font-family: var(--disp); font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.05; margin: 14px 0 16px; }
+        .sec-head p { color: var(--dim); font-size: 1.05rem; }
+
+        /* menu */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .dish { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px 22px; overflow: hidden; transition: transform 0.35s var(--ease), border-color 0.3s, box-shadow 0.35s var(--ease); }
+        .dish:hover { transform: translateY(-6px); border-color: rgba(245, 135, 31, 0.45); box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 59, 46, 0.08); }
+        .dish .set { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.2em; color: var(--flame); text-transform: uppercase; }
+        .dish h3 { font-family: var(--serif); font-weight: 700; font-size: 1.35rem; margin: 10px 0 2px; }
+        .dish .cn { font-size: 0.88rem; color: var(--dim); }
+        .dish p { font-size: 0.9rem; color: var(--dim); margin: 12px 0 18px; min-height: 3.4em; }
+        .dish .prices { display: flex; gap: 8px; flex-wrap: wrap; }
+        .price-chip { font-family: var(--mono); font-size: 0.74rem; padding: 6px 11px; border-radius: 8px; background: rgba(244, 185, 66, 0.09); border: 1px solid rgba(244, 185, 66, 0.22); color: var(--gold); font-variant-numeric: tabular-nums; }
+        .price-chip b { color: var(--ink); font-weight: 700; }
+        .dish .flame-tag { position: absolute; top: 20px; right: 20px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; color: #ff7a5c; }
+        .dish.best { background: linear-gradient(160deg, #241409, #1a140f 65%); border-color: rgba(245, 135, 31, 0.5); }
+        .dish.best::after { content: 'BESTSELLER'; position: absolute; top: 0; right: 0; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; background: var(--gg); color: #1c0d05; font-weight: 700; padding: 6px 14px; border-radius: 0 16px 0 12px; }
+        .menu-note { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 26px; font-size: 0.85rem; color: var(--dim); }
+        .menu-note .chip { font-family: var(--mono); font-size: 0.68rem; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--gold); }
+        .addons { margin-top: 44px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; }
+        .addon-list { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+        .addon-list h3 { font-family: var(--disp); font-size: 1.15rem; margin-bottom: 14px; color: var(--gold); }
+        .addon-list ul { list-style: none; }
+        .addon-list li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px dashed rgba(244, 185, 66, 0.14); font-size: 0.95rem; }
+        .addon-list li:last-child { border-bottom: none; }
+        .addon-list li b { font-family: var(--mono); font-weight: 400; color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .sambal { background: linear-gradient(150deg, #2a1108, #1a0d08); border: 1px solid rgba(230, 59, 46, 0.4); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
+        .sambal h3 { font-family: var(--serif); font-style: italic; font-size: 1.5rem; margin: 8px 0 10px; }
+        .sambal p { color: var(--dim); font-size: 0.92rem; }
+        .sambal .jar { margin-top: auto; padding-top: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+        .sambal .jar b { font-family: var(--mono); font-size: 1.3rem; color: var(--gold); }
+        .sambal .jar span { font-size: 0.8rem; color: var(--dim); }
+        @media (max-width: 860px) { .addons { grid-template-columns: 1fr; } }
+
+        /* press marquee */
+        .press { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); padding: 30px 0; overflow: hidden; }
+        .press-track { display: flex; gap: 60px; width: max-content; animation: pressScroll 42s linear infinite; }
+        .press-track:hover { animation-play-state: paused; }
+        @keyframes pressScroll { to { transform: translateX(-50%); } }
+        .pq { display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+        .pq q { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--ink); quotes: '\201C' '\201D'; }
+        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
+        .pq::after { content: '·'; color: var(--gold); font-size: 1.6rem; margin-left: 44px; }
+
+        /* outlets */
+        .outlet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+        .outlet { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; transition: transform 0.3s var(--ease), border-color 0.3s; }
+        .outlet:hover { transform: translateY(-4px); border-color: rgba(127, 168, 212, 0.45); }
+        .outlet .no { font-family: var(--mono); font-size: 0.62rem; color: var(--navy); letter-spacing: 0.16em; }
+        .outlet h3 { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; margin: 8px 0 4px; }
+        .outlet p { font-size: 0.85rem; color: var(--dim); }
+        .outlet.hq { border-color: rgba(244, 185, 66, 0.5); background: linear-gradient(160deg, #221709, var(--panel) 70%); }
+        .outlet.hq .no { color: var(--gold); }
+        .vending { margin-top: 22px; font-size: 0.9rem; color: var(--dim); border-left: 3px solid var(--navy); padding: 4px 0 4px 16px; }
+        .vending b { color: var(--navy); }
+
+        /* visit */
+        .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: center; }
+        .visit-card { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: clamp(26px, 4vw, 40px); }
+        .visit-card dl { display: grid; gap: 18px; }
+        .visit-card dt { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--flame); margin-bottom: 4px; }
+        .visit-card dd { font-size: 1rem; color: var(--ink); }
+        .visit-card dd small { display: block; color: var(--dim); font-size: 0.82rem; margin-top: 3px; }
+        .visit-cta h2 { font-family: var(--disp); font-size: clamp(2.2rem, 4.5vw, 3.6rem); line-height: 1.04; margin: 12px 0 18px; }
+        .visit-cta p { color: var(--dim); max-width: 42ch; }
+        .visit-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+        @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; } }
+
+        footer { border-top: 1px solid var(--line); padding: 34px 0 46px; background: var(--bg-2); }
+        .foot-in { display: flex; flex-wrap: wrap; gap: 16px 30px; justify-content: space-between; align-items: center; }
+        .foot-in p { font-size: 0.8rem; color: var(--dim); max-width: 62ch; }
+        .foot-in p b { color: var(--gold); }
+        .demo-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1c0d05; background: var(--gg); font-weight: 700; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+
+        #toTop { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(244, 185, 66, 0.4); background: rgba(20, 16, 12, 0.85); color: var(--gold); font-size: 1.1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.25s var(--ease); }
+        #toTop.show { opacity: 1; pointer-events: auto; }
+        #toTop:hover { transform: translateY(-3px); }
+
+        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .press-track { animation: none; }
+            .scroll-cue i { animation: none; }
+            * { transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <a class="lp-skip" href="#lp-main">Skip to content</a>
+    <nav aria-label="Main">
+        <div class="wrap nav-in">
+            <a class="brand" href="#top" aria-label="Uncle Soon Fried Rice — home">
+                <b>UNCLE SOON</b><span>FRIED RICE · EST. 1990</span>
+            </a>
+            <div class="nav-links">
+                <a href="#story">Story</a>
+                <a href="#menu">Menu</a>
+                <a href="#outlets">Outlets</a>
+                <a href="#visit">Find Us</a>
+                <a class="btn btn-fire" href="#visit">Order Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="lp-main">
+        <header class="hero" id="top">
+            <div class="hero-copy">
+                <span class="eyebrow">SS15 Subang Jaya · Since 1990</span>
+                <h1>Fried by hand.<br><span class="fire goldtext">Kissed by flame.</span></h1>
+                <p class="hero-sub">One plate at a time, every plate to order — day-old rice, a screaming-hot wok, a soy-drizzled fried egg on top and our <b>signature free sambal belacan</b> on the side. That's the way it's been since 1990.</p>
+                <div class="hero-ctas">
+                    <a class="btn btn-fire" href="#menu">See the menu</a>
+                    <a class="btn btn-ghost" href="tel:+60102040069">Call 010-204 0069</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hstat"><b><span data-count="4.3" data-dec="1">0</span>★</b><span>Google rating</span></div>
+                    <div class="hstat"><b><span data-count="1321">0</span></b><span>Google reviews</span></div>
+                    <div class="hstat"><b><span data-count="35">0</span>+</b><span>Years at the wok</span></div>
+                    <div class="hstat"><b>RM<span data-count="7.5" data-dec="2">0</span></b><span>Plates from</span></div>
+                </div>
+            </div>
+            <div class="hero-3d">
+                <canvas id="wok3d" aria-label="Interactive 3D wok tossing fried rice — drag to spin"></canvas>
+            </div>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <span class="drag-hint" id="dragHint">⟳ drag the wok to spin</span>
+            <div class="scroll-cue" aria-hidden="true"><i></i> Scroll for the story</div>
+        </header>
+
+        <div class="fireband" id="story">
+            <div class="kinetic" data-speed="0.12" aria-hidden="true">WOK&nbsp;HEI&nbsp;·&nbsp;WOK&nbsp;HEI&nbsp;·&nbsp;WOK&nbsp;HEI</div>
+            <div class="wrap">
+                <div class="reveal">
+                    <span class="eyebrow">// The Story</span>
+                    <h2>From a hawker stall in Alor Setar to a Subang legend.</h2>
+                </div>
+                <div class="story reveal">
+                    <p>It started in <b>1990</b> — a young hawker couple frying rice with a recipe passed down from an aunt. After 16 years in Alor Setar they moved to the Klang Valley in 2007, and their corner stall in SS15 became the plate every student in Subang swears by.</p>
+                    <p>Their daughter <b>Soon Te Shian</b> learned the wok at 13, took over right after SPM, and in 2021 moved the family stall into its own shop at <b>Subang Square</b> — right beside the coffee-shop corner where it all began. Today the flame burns across the Klang Valley, from SS15 to Pavilion Bukit Jalil.</p>
+                    <div class="pull">
+                        <p>"My parents always hoped that I would learn to cook and carry on the family business."</p>
+                        <span>— Soon Te Shian · Free Malaysia Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="menu">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">// The Menu</span>
+                    <h2>Four sets. One flame.</h2>
+                    <p>Every set comes Original <span class="mono">原味</span> or Spicy <span class="mono">辣味</span> (+RM0.50), fried to order and topped with a soy-drizzled egg.</p>
+                </div>
+                <div class="menu-grid">
+                    <article class="dish reveal">
+                        <span class="set">Set K</span>
+                        <h3>Egg Fried Rice &amp; Egg</h3>
+                        <span class="cn mono">蛋炒饭 &amp; 蛋</span>
+                        <p>The famous minimalist plate — egg coating every grain, smoke in every bite.</p>
+                        <div class="prices"><span class="price-chip">S <b>RM7.50</b></span><span class="price-chip">B <b>RM8.00</b></span><span class="price-chip">XB <b>RM8.50</b></span></div>
+                    </article>
+                    <article class="dish reveal">
+                        <span class="set">Set A</span>
+                        <h3>Prawn Fried Rice &amp; Egg</h3>
+                        <span class="cn mono">虾炒饭 &amp; 蛋</span>
+                        <p>Fresh prawns folded through wok-kissed rice.</p>
+                        <div class="prices"><span class="price-chip">S <b>RM9.50</b></span><span class="price-chip">B <b>RM10.50</b></span><span class="price-chip">XB <b>RM12.00</b></span></div>
+                    </article>
+                    <article class="dish reveal">
+                        <span class="set">Set B</span>
+                        <h3>Char Siou Fried Rice &amp; Egg</h3>
+                        <span class="cn mono">叉烧炒饭 &amp; 蛋</span>
+                        <p>Sweet-edged char siu in every spoonful.</p>
+                        <div class="prices"><span class="price-chip">S <b>RM10.00</b></span><span class="price-chip">XB <b>RM12.00</b></span></div>
+                    </article>
+                    <article class="dish best reveal">
+                        <span class="set">Set C</span>
+                        <h3>Char Siou + Prawn &amp; Egg</h3>
+                        <span class="cn mono">叉烧+虾炒饭 &amp; 蛋</span>
+                        <p>The one everyone orders — char siu <em>and</em> prawns on one plate.</p>
+                        <div class="prices"><span class="price-chip">S <b>RM12.50</b></span><span class="price-chip">B <b>RM13.00</b></span><span class="price-chip">XB <b>RM14.50</b></span></div>
+                        <span class="flame-tag">🌶 spicy +RM0.50</span>
+                    </article>
+                </div>
+                <div class="menu-note reveal">
+                    <span class="chip">NON-HALAL</span>
+                    <span class="chip">FRIED TO ORDER</span>
+                    <span>Menu &amp; prices from the SS15 HQ menu board (2024) — to be confirmed by the owner.</span>
+                </div>
+                <div class="addons">
+                    <div class="addon-list reveal">
+                        <h3>Add-ons &amp; extras</h3>
+                        <ul>
+                            <li>Fried egg <span class="mono cn">蛋</span> <b>RM1.50</b></li>
+                            <li>Char siou <span class="mono cn">叉烧</span> <b>RM5.00</b></li>
+                            <li>Prawns <span class="mono cn">虾</span> <b>RM5.00</b></li>
+                            <li>Vegetables <span class="mono cn">菜</span> <b>RM0.50</b></li>
+                            <li>Fried kuey teow / bee hoon (delivery) <b>fr. RM14</b></li>
+                            <li>Kopi-C · Teh-C · canned drinks <b>RM2.50–3</b></li>
+                        </ul>
+                    </div>
+                    <aside class="sambal reveal">
+                        <span class="eyebrow">Take the flame home</span>
+                        <h3>Uncle Soon's Sambal Chilli</h3>
+                        <p>The legendary sambal belacan — free with every plate at the shop, or yours to keep in a 280ml jar.</p>
+                        <div class="jar"><b>RM25</b><span>280ml jar</span></div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <div class="press" aria-label="Press mentions">
+            <div class="press-track">
+                <span class="pq"><q>Rice is consistently fluffy, perfectly seasoned, and never dry.</q><cite>Tatler Asia</cite></span>
+                <span class="pq"><q>Humble yet utterly delicious.</q><cite>Sethlui.com</cite></span>
+                <span class="pq"><q>Each grain has a punch of umami and kissed-by-flames flavour.</q><cite>TheSmartLocal</cite></span>
+                <span class="pq"><q>Simply done well, generous portions, affordable.</q><cite>Time Out KL</cite></span>
+                <span class="pq"><q>Uncle Roger would be proud.</q><cite>OnlyFoodKL</cite></span>
+                <span class="pq"><q>Rice is consistently fluffy, perfectly seasoned, and never dry.</q><cite>Tatler Asia</cite></span>
+                <span class="pq"><q>Humble yet utterly delicious.</q><cite>Sethlui.com</cite></span>
+                <span class="pq"><q>Each grain has a punch of umami and kissed-by-flames flavour.</q><cite>TheSmartLocal</cite></span>
+                <span class="pq"><q>Simply done well, generous portions, affordable.</q><cite>Time Out KL</cite></span>
+                <span class="pq"><q>Uncle Roger would be proud.</q><cite>OnlyFoodKL</cite></span>
+            </div>
+        </div>
+
+        <section id="outlets">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">// Where the woks burn</span>
+                    <h2>Nine flames across the Klang Valley.</h2>
+                    <p>From the SS15 mothership to malls across KL — same recipe, same fire.</p>
+                </div>
+                <div class="outlet-grid">
+                    <article class="outlet hq reveal"><span class="no">01 · HQ</span><h3>SS15 Subang Square</h3><p>95-97 Jalan SS15/4B, Subang Jaya — our own shop since 2021, beside where the old stall stood.</p></article>
+                    <article class="outlet reveal"><span class="no">02</span><h3>DK Senza, Subang</h3><p>Opposite Taylor's University Lakeside.</p></article>
+                    <article class="outlet reveal"><span class="no">03</span><h3>Sunway 128</h3><p>Near Sunway College &amp; University.</p></article>
+                    <article class="outlet reveal"><span class="no">04</span><h3>Kota Damansara</h3><p>Yuan Feng Kopitiam, Dataran Sunway.</p></article>
+                    <article class="outlet reveal"><span class="no">05</span><h3>Sri Petaling</h3><p>Delivery via foodpanda &amp; GrabFood.</p></article>
+                    <article class="outlet reveal"><span class="no">06</span><h3>Setapak</h3><p>Bringing the flame to north KL.</p></article>
+                    <article class="outlet reveal"><span class="no">07</span><h3>Wisma Cosway, KL</h3><p>Lot 1.26, Jalan Raja Chulan — the late-night wok.</p></article>
+                    <article class="outlet reveal"><span class="no">08</span><h3>The Starling, Uptown</h3><p>Foodies' Nest, Level 3, Damansara Utama.</p></article>
+                    <article class="outlet reveal"><span class="no">09</span><h3>Pavilion Bukit Jalil</h3><p>"The real fried rice legend" — opened Oct 2025.</p></article>
+                </div>
+                <p class="vending reveal"><b>First in Malaysia:</b> Uncle Soon fried-rice vending machines — fresh plates, served warm. First machine at Restoran Mye Mye, Bandar Sungai Long.</p>
+            </div>
+        </section>
+
+        <section id="visit" style="padding-top: 0;">
+            <div class="wrap visit-grid">
+                <div class="visit-cta reveal">
+                    <span class="eyebrow">// Find us</span>
+                    <h2>Follow the smoke<br>to <span class="goldtext">SS15.</span></h2>
+                    <p>Queue moves fast, plates land in minutes. Come hungry — leave a legend's customer.</p>
+                    <div class="visit-ctas">
+                        <a class="btn btn-fire" href="https://www.google.com/maps/search/?api=1&amp;query=Uncle+Soon+Fried+Rice+Subang+Square+SS15" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                        <a class="btn btn-ghost" href="https://www.facebook.com/unclesoonfriedrice/" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    </div>
+                </div>
+                <div class="visit-card reveal">
+                    <dl>
+                        <div><dt>Address — HQ</dt><dd>Subang Square Shopping Mall, 95-97 Jalan SS15/4B, 47500 Subang Jaya, Selangor</dd></div>
+                        <div><dt>Hours</dt><dd>11:00 AM – 8:00 PM · Closed Wednesdays<small>Hours from public listings — confirm before visiting. Other outlets vary.</small></dd></div>
+                        <div><dt>Call</dt><dd><a href="tel:+60102040069" style="color: var(--gold);">010-204 0069</a></dd></div>
+                        <div><dt>Order online</dt><dd>Beep · FeedMe · GrabFood · foodpanda</dd></div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap foot-in">
+            <span class="demo-tag">Design preview · Langkah Pertama</span>
+            <p>This is a <b>website design concept</b> prepared for Uncle Soon Fried Rice by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, menu items and prices are drawn from public sources and press coverage; all details to be confirmed by the owner. Non-halal.</p>
+        </div>
+    </footer>
+
+    <button id="toTop" aria-label="Back to top">↑</button>
+
+    <script>
+        (function () {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // reveals
+            var els = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window && !reduce) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                els.forEach(function (el) { io.observe(el); });
+            } else { els.forEach(function (el) { el.classList.add('in'); }); }
+
+            // counters
+            function runCount(el) {
+                var target = parseFloat(el.getAttribute('data-count')), dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+                if (reduce) { el.textContent = target.toFixed(dec).replace(/\.0$/, ''); return; }
+                var dur = 1400, start = null;
+                function ease(p) { return 1 - Math.pow(1 - p, 3); }
+                function step(ts) {
+                    if (!start) start = ts;
+                    var p = Math.min((ts - start) / dur, 1);
+                    var v = target * ease(p);
+                    el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
+                    if (p < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+                setTimeout(function () { el.textContent = dec ? target.toFixed(dec) : Math.round(target).toLocaleString('en-US'); }, dur + 300);
+            }
+            var counters = document.querySelectorAll('[data-count]');
+            if ('IntersectionObserver' in window) {
+                var cio = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
+                }, { threshold: 0.5 });
+                counters.forEach(function (c) { cio.observe(c); });
+            } else { counters.forEach(runCount); }
+
+            // parallax on the kinetic word (abs-positioned only, live rect-based)
+            var kin = document.querySelector('.kinetic');
+            var ticking = false;
+            function onScroll() {
+                if (!ticking) { requestAnimationFrame(update); ticking = true; }
+                var toTop = document.getElementById('toTop');
+                if (toTop) toTop.classList.toggle('show', window.scrollY > 600);
+            }
+            function update() {
+                ticking = false;
+                if (reduce || !kin) return;
+                var r = kin.parentElement.getBoundingClientRect();
+                var mid = r.top + r.height / 2 - window.innerHeight / 2;
+                kin.style.transform = 'translateY(-50%) translateX(' + (mid * parseFloat(kin.getAttribute('data-speed') || 0.1) * -1) + 'px)';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            document.getElementById('toTop').addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+            });
+        })();
+    </script>
+
+    <script type="importmap">
+    { "imports": { "three": "/assets/vendor/three@0.160.0/build/three.module.min.js", "three/addons/": "/assets/vendor/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module">
+        var canvas = document.getElementById('wok3d');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        try {
+            var THREE = await import('three');
+            var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+            var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+            var { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
+            var { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
+            var { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
+            var { OutputPass } = await import('three/addons/postprocessing/OutputPass.js');
+
+            var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.12;
+
+            var scene = new THREE.Scene();
+            var pmrem = new THREE.PMREMGenerator(renderer);
+            scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+            var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 60);
+            camera.position.set(0, 0.7, 8.6);
+
+            var composer = new EffectComposer(renderer);
+            composer.addPass(new RenderPass(scene, camera));
+            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.34, 0.4, 0.78);
+            composer.addPass(bloom);
+            composer.addPass(new OutputPass());
+
+            scene.add(new THREE.AmbientLight(0xffe0b0, 0.5));
+            var key = new THREE.PointLight(0xffd9a0, 160, 60); key.position.set(5, 7, 6); scene.add(key);
+            var fire = new THREE.PointLight(0xff5a1f, 120, 30); fire.position.set(0, -2.6, 1.5); scene.add(fire);
+            var rimL = new THREE.PointLight(0x88aaff, 40, 40); rimL.position.set(-6, 3, -4); scene.add(rimL);
+
+            var group = new THREE.Group(); scene.add(group);
+            var rig = null;
+
+            new GLTFLoader().load('/assets/unclesoon.glb', function (gltf) {
+                rig = gltf.scene.getObjectByName('WokRig') || gltf.scene;
+                rig.traverse(function (o) {
+                    if (o.isMesh && o.material && o.material.emissive) {
+                        if (o.name.indexOf('Flame') === 0) o.material.emissiveIntensity = 1.6;
+                    }
+                });
+                group.add(rig);
+                place();
+            }, undefined, function () { canvas.style.opacity = '0.001'; });
+
+            function place() {
+                var w = canvas.clientWidth, h = canvas.clientHeight;
+                if (!w || !h) return;
+                renderer.setSize(w, h, false);
+                composer.setSize(w, h);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                var wide = w / h > 0.9;
+                camera.position.z = wide ? 8.6 : 10.4;
+                camera.lookAt(0, 0.7, 0);
+            }
+            place();
+            window.addEventListener('resize', place);
+            setTimeout(place, 400);
+
+            // drag to spin + pointer parallax + scroll coupling
+            var tY = 0.5, cY = 0.5, vel = 0, drag = false, lx = 0, pY = 0;
+            var hint = document.getElementById('dragHint');
+            canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); if (hint) hint.style.opacity = '0'; });
+            canvas.addEventListener('pointermove', function (e) {
+                var r = canvas.getBoundingClientRect();
+                pY = (e.clientY - r.top) / r.height - 0.5;
+                if (drag) { vel = (e.clientX - lx) * 0.007; tY += vel; lx = e.clientX; }
+            });
+            window.addEventListener('pointerup', function () { drag = false; });
+
+            var run = true, clock = new THREE.Clock();
+            document.addEventListener('visibilitychange', function () { run = !document.hidden; if (run) loop(); });
+            function loop() {
+                if (!run) return;
+                requestAnimationFrame(loop);
+                var dt = Math.min(clock.getDelta(), 0.05);
+                if (!drag) { tY += (reduce ? 0 : 0.14) * dt; vel *= 0.94; }
+                cY += (tY - cY) * 0.08;
+                group.rotation.y = cY;
+                group.rotation.x = 0.12 + pY * 0.22;
+                if (rig && !reduce) rig.position.y = Math.sin(clock.elapsedTime * 0.9) * 0.1;
+                composer.render();
+            }
+            if (reduce) { group.rotation.y = 0.5; composer.render(); } else { loop(); }
+            window.__usDemo = { ok: true };
+        } catch (err) {
+            if (canvas) canvas.style.opacity = '0.001';
+            window.__usDemo = { ok: false, err: String(err) };
+        }
+    </script>
+</body>
+</html>
