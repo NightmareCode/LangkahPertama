@@ -70,9 +70,9 @@
         .hstat b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: var(--gold); font-variant-numeric: tabular-nums; }
         .hstat span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
         .hero-3d { position: relative; height: min(88vh, 820px); z-index: 2; }
-        #wok3d { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab;
-            -webkit-mask-image: radial-gradient(85% 85% at 50% 50%, #000 52%, transparent 94%);
-            mask-image: radial-gradient(85% 85% at 50% 50%, #000 52%, transparent 94%); }
+        .hero-3d::before { content: ''; position: absolute; inset: -6% -10%; z-index: 0; pointer-events: none;
+            background: radial-gradient(42% 36% at 52% 66%, rgba(245, 135, 31, 0.13), rgba(230, 59, 46, 0.05) 55%, transparent 78%); }
+        #wok3d { position: relative; z-index: 1; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
         #wok3d:active { cursor: grabbing; }
         .hero-glow { position: absolute; inset: auto 0 -12% 0; height: 55%; z-index: 1; pointer-events: none;
             background: radial-gradient(50% 60% at 72% 70%, rgba(230, 59, 46, 0.22), transparent 65%); }
@@ -455,54 +455,119 @@
             var THREE = await import('three');
             var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
             var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
-            var { EffectComposer } = await import('three/addons/postprocessing/EffectComposer.js');
-            var { RenderPass } = await import('three/addons/postprocessing/RenderPass.js');
-            var { UnrealBloomPass } = await import('three/addons/postprocessing/UnrealBloomPass.js');
-            var { OutputPass } = await import('three/addons/postprocessing/OutputPass.js');
 
+            // fully transparent render — the page IS the background (no post chain:
+            // EffectComposer forces an opaque backbuffer that can never match the page)
             var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.12;
+            renderer.setClearColor(0x000000, 0);
 
             var scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x0e0a08);
             var pmrem = new THREE.PMREMGenerator(renderer);
             scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
             var camera = new THREE.PerspectiveCamera(38, 1, 0.1, 60);
             camera.position.set(0, 0.7, 8.6);
 
-            var composer = new EffectComposer(renderer);
-            composer.addPass(new RenderPass(scene, camera));
-            var bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.34, 0.4, 0.78);
-            composer.addPass(bloom);
-            composer.addPass(new OutputPass());
-
             scene.add(new THREE.AmbientLight(0xffe0b0, 0.5));
             var key = new THREE.PointLight(0xffd9a0, 160, 60); key.position.set(5, 7, 6); scene.add(key);
             var fire = new THREE.PointLight(0xff5a1f, 120, 30); fire.position.set(0, -2.6, 1.5); scene.add(fire);
             var rimL = new THREE.PointLight(0x88aaff, 40, 40); rimL.position.set(-6, 3, -4); scene.add(rimL);
 
+            // soft round glow texture — hand-made halo, replaces bloom on the alpha canvas
+            function halo(rgb) {
+                var c = document.createElement('canvas'); c.width = c.height = 128;
+                var g = c.getContext('2d');
+                var r = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+                r.addColorStop(0, 'rgba(' + rgb + ',0.85)');
+                r.addColorStop(0.35, 'rgba(' + rgb + ',0.3)');
+                r.addColorStop(1, 'rgba(' + rgb + ',0)');
+                g.fillStyle = r; g.fillRect(0, 0, 128, 128);
+                return new THREE.CanvasTexture(c);
+            }
+
             var group = new THREE.Group(); scene.add(group);
-            var rig = null;
+            var rig = null, flames = [], fire0 = 120;
+            var pile = null, fly = null, flyN = 230, seeds = [];
+            var dummy = new THREE.Object3D();
 
             new GLTFLoader().load('/assets/unclesoon.glb', function (gltf) {
                 rig = gltf.scene.getObjectByName('WokRig') || gltf.scene;
+                var wokBox = null;
                 rig.traverse(function (o) {
-                    if (o.isMesh && o.material && o.material.emissive) {
-                        if (o.name.indexOf('Flame') === 0) o.material.emissiveIntensity = 1.6;
-                    }
+                    if (!o.isMesh) return;
+                    if (o.name.indexOf('RiceCloud') === 0 || o.name.indexOf('Prawn') === 0) { o.visible = false; return; } // live JS rice takes over
+                    if (o.name === 'Wok') wokBox = new THREE.Box3().setFromObject(o);
+                    if (o.material && o.material.emissive && o.name.indexOf('Flame') === 0) { o.material.emissiveIntensity = 2.1; flames.push(o.material); }
                 });
                 group.add(rig);
+
+                var rimY = wokBox ? wokBox.max.y : 0.6;
+                var rimR = wokBox ? (wokBox.max.x - wokBox.min.x) * 0.5 : 1.6;
+                var botY = wokBox ? wokBox.min.y : -0.6;
+                var mY = rimY - rimR * 0.16;
+
+                // ember glows under the wok (additive sprites)
+                var s1 = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('245,135,31'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.5, depthWrite: false }));
+                s1.position.set(0, botY - rimR * 0.18, 0); s1.scale.set(rimR * 3.1, rimR * 1.7, 1); group.add(s1);
+                var s2 = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('230,59,46'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.3, depthWrite: false }));
+                s2.position.copy(s1.position); s2.scale.set(rimR * 5.4, rimR * 3, 1); group.add(s2);
+
+                // rice — a stirred mound riding the wok + a tossed fountain above it
+                var geo = new THREE.BoxGeometry(rimR * 0.055, rimR * 0.032, rimR * 0.032);
+                var mat = new THREE.MeshStandardMaterial({ color: 0xf5e6c0, roughness: 0.5, emissive: 0xffc878, emissiveIntensity: 0.42 });
+                var mN = 180;
+                pile = new THREE.InstancedMesh(geo, mat, mN);
+                pile.frustumCulled = false;
+                for (var i = 0; i < mN; i++) {
+                    var a = Math.random() * Math.PI * 2, rr = Math.sqrt(Math.random()) * rimR * 0.62;
+                    dummy.position.set(Math.cos(a) * rr, mY + Math.cos(Math.min(1, rr / (rimR * 0.62)) * 1.35) * rimR * 0.16 + (Math.random() - 0.5) * 0.06, Math.sin(a) * rr);
+                    dummy.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+                    dummy.updateMatrix(); pile.setMatrixAt(i, dummy.matrix);
+                }
+                pile.instanceMatrix.needsUpdate = true;
+                rig.add(pile);
+
+                fly = new THREE.InstancedMesh(geo, mat, flyN);
+                fly.frustumCulled = false;
+                fly.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+                for (var j = 0; j < flyN; j++) {
+                    seeds.push({
+                        off: Math.random(), dur: 1.5 + Math.random() * 0.9,
+                        a: Math.random() * Math.PI * 2, r0: Math.sqrt(Math.random()) * rimR * 0.5,
+                        dr: rimR * (0.15 + Math.random() * 0.5), h: rimR * (1.0 + Math.random() * 1.05),
+                        spin: (Math.random() - 0.5) * 14, sway: 0.5 + Math.random() * 0.7
+                    });
+                }
+                fly.userData.mY = mY;
+                group.add(fly);
+                stepRice(0.35); // pre-scatter so reduced-motion / first frame isn't empty
                 place();
+                if (reduce) renderer.render(scene, camera);
             }, undefined, function () { canvas.style.opacity = '0.001'; });
+
+            function stepRice(time) {
+                if (!fly) return;
+                var mY = fly.userData.mY;
+                for (var i = 0; i < flyN; i++) {
+                    var s = seeds[i];
+                    var t = ((time / s.dur) + s.off) % 1;
+                    var arc = 4 * t * (1 - t);
+                    var r = s.r0 + t * s.dr;
+                    var wob = Math.sin(time * 2.4) * 0.22 * arc * s.sway; // sways with the wok's toss rhythm
+                    dummy.position.set(Math.cos(s.a) * r + wob, mY + arc * s.h, Math.sin(s.a) * r);
+                    dummy.rotation.set(t * s.spin, s.a * 3 + t * s.spin * 0.6, t * s.spin * 0.8);
+                    dummy.updateMatrix(); fly.setMatrixAt(i, dummy.matrix);
+                }
+                fly.instanceMatrix.needsUpdate = true;
+            }
 
             function place() {
                 var w = canvas.clientWidth, h = canvas.clientHeight;
                 if (!w || !h) return;
                 renderer.setSize(w, h, false);
-                composer.setSize(w, h);
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
                 var wide = w / h > 0.9;
@@ -513,7 +578,7 @@
             window.addEventListener('resize', place);
             setTimeout(place, 400);
 
-            // drag to spin + pointer parallax + scroll coupling
+            // drag to spin + pointer parallax
             var tY = 0.5, cY = 0.5, vel = 0, drag = false, lx = 0, pY = 0;
             var hint = document.getElementById('dragHint');
             canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); if (hint) hint.style.opacity = '0'; });
@@ -530,14 +595,23 @@
                 if (!run) return;
                 requestAnimationFrame(loop);
                 var dt = Math.min(clock.getDelta(), 0.05);
+                var tm = clock.elapsedTime;
                 if (!drag) { tY += (reduce ? 0 : 0.14) * dt; vel *= 0.94; }
                 cY += (tY - cY) * 0.08;
                 group.rotation.y = cY;
                 group.rotation.x = 0.12 + pY * 0.22;
-                if (rig && !reduce) rig.position.y = Math.sin(clock.elapsedTime * 0.9) * 0.1;
-                composer.render();
+                if (rig && !reduce) {
+                    // the toss: wok rocks + flicks up, rice fountain rides the same beat
+                    var p = Math.max(0, Math.sin(tm * 2.4));
+                    rig.rotation.z = Math.sin(tm * 2.4) * 0.05;
+                    rig.position.y = Math.sin(tm * 0.9) * 0.07 + p * p * 0.09;
+                    stepRice(tm);
+                    for (var f = 0; f < flames.length; f++) flames[f].emissiveIntensity = 2.0 + Math.sin(tm * 7.3) * 0.35 + Math.sin(tm * 13.1) * 0.2;
+                    fire.intensity = fire0 + Math.sin(tm * 8.2) * 26;
+                }
+                renderer.render(scene, camera);
             }
-            if (reduce) { group.rotation.y = 0.5; composer.render(); } else { loop(); }
+            if (reduce) { group.rotation.y = 0.5; renderer.render(scene, camera); } else { loop(); }
             window.__usDemo = { ok: true };
         } catch (err) {
             if (canvas) canvas.style.opacity = '0.001';
