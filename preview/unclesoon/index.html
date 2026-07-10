@@ -12,250 +12,429 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Karla:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ============================================================
+           UNCLE SOON · PNEUMA design system, flame theme
+           Scene journey: charcoal → deep → ember-black (ignition),
+           then a sand-paper "menu card" daylight moment.
+           One signal accent — flame — that ignites in the dark.
+           ============================================================ */
         :root {
-            --bg: #0c0907; --bg-2: #14100c; --panel: #1a140f;
-            --ink: #f5efe6; --dim: #b3a89a; --line: rgba(244, 185, 66, 0.16);
-            --flame: #f5871f; --ember: #e63b2e; --gold: #f4b942; --navy: #7fa8d4;
+            /* scene backgrounds (the scroll journey) */
+            --s1: #191210; --s2: #110c0a; --s3: #0b0807; --s4: #040303;
+            --sand: #f4ecdd; --sand-2: #ece2cd; --sand-card: #faf5ea;
+            --carbon: #0c0907; --carbon-2: #070505; --carbon-card: #171110;
+
+            /* ink — dark context default */
+            --ink: #f5efe6; --dim: #b3a89a; --faint: #837a6d;
+            --ink-sand: #241a10; --dim-sand: #675d4e;
+
+            /* signal — the flame */
+            --flame: #f5871f; --ember: #e63b2e; --gold: #f4b942;
+            --flame-deep: #a8540e; /* legible flame on sand */
+            --glow: rgba(245, 135, 31, 0.55);
+            --glow-sm: 0 0 12px var(--glow);
+            --glow-md: 0 0 26px var(--glow);
+            --glow-text: 0 0 18px rgba(245, 135, 31, 0.65);
             --gg: linear-gradient(120deg, #f4b942, #f5871f 55%, #e63b2e);
+
+            /* lines */
+            --hairline: rgba(245, 239, 230, 0.12);
+            --hairline-sand: rgba(36, 26, 16, 0.14);
+
+            /* type */
             --disp: 'Playfair Display SC', serif; --serif: 'Playfair Display', serif;
             --sans: 'Karla', sans-serif; --mono: 'Space Mono', monospace;
-            --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+            --text-hero: clamp(2.7rem, 8vw, 7rem);
+            --text-h1: clamp(2rem, 4.6vw, 3.4rem);
+            --text-display: clamp(2.6rem, 6vw, 5rem);
+            --ls-label: 0.2em; --ls-wide: 0.3em;
+
+            /* motion — one signature easing */
+            --ease-signature: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --dur-fast: 0.2s; --dur-slow: 0.8s;
+            --transition-ui: all var(--dur-slow) var(--ease-signature);
+
+            /* shadows (sand context) */
+            --shadow-sm: 0 2px 8px rgba(36, 26, 16, 0.08);
+            --shadow-md: 0 8px 24px rgba(36, 26, 16, 0.10);
+
+            --radius-sm: 4px; --radius-md: 8px;
+            --nav-h: 66px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-x: clip; }
-        body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased;
-            background-image: radial-gradient(90% 60% at 50% -10%, #221610 0%, rgba(12,9,7,0) 60%); }
+        body { font-family: var(--sans); background: var(--s1); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         ::selection { background: rgba(245, 135, 31, 0.35); }
         a { color: inherit; text-decoration: none; cursor: pointer; }
         button { cursor: pointer; }
         :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
-        .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+        .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
         .mono { font-family: var(--mono); }
         .goldtext { background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-        .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--flame); }
+
+        /* film grain — premium photographic texture over everything */
+        body::after { content: ''; position: fixed; inset: 0; z-index: 240; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 
         .lp-skip { position: fixed; top: -60px; left: 16px; z-index: 300; background: var(--gold); color: #14100c; font-weight: 700; padding: 10px 18px; border-radius: 8px; transition: top 0.2s; }
         .lp-skip:focus-visible { top: 12px; }
 
-        /* nav */
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0;
-            background: linear-gradient(180deg, rgba(12,9,7,0.92), rgba(12,9,7,0.75) 70%, transparent);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+        /* type primitives — PNEUMA */
+        .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--flame); }
+        .fh { font-family: var(--disp); line-height: 1.02; letter-spacing: -0.01em; font-size: var(--text-h1); font-weight: 700; }
+        .fh .tail { display: block; font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--dim); }
+        .stat b { display: block; font-family: var(--serif); font-weight: 700; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+        .stat > span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+        .stat b span, .s4-stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
+
+        /* badges */
+        .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--hairline); color: var(--dim); }
+        .badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .badge.alarm { color: #ff6b5e; border-color: rgba(255, 107, 94, 0.4); }
+        .badge.signal { color: var(--flame); border-color: rgba(245, 135, 31, 0.45); }
+        .on-sand .badge { border-color: var(--hairline-sand); color: var(--dim-sand); }
+        .on-sand .badge.alarm { color: #b3261e; border-color: rgba(179, 38, 30, 0.4); }
+        .on-sand .badge.signal { color: var(--flame-deep); border-color: rgba(168, 84, 14, 0.45); }
+
+        /* buttons — sharp, engineered, mono labels */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--mono); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; min-height: 48px; padding: 0 24px; border-radius: 6px; border: 1px solid transparent; transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease, background var(--dur-fast) ease; }
+        .btn:hover { transform: translateY(-1px); }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: var(--flame); color: #1c0d05; }
+        .btn-primary:hover { background: var(--gold); }
+        .btn-primary.armed { box-shadow: var(--glow-md); }
+        .btn-ghost { border-color: var(--hairline); color: var(--ink); }
+        .btn-ghost:hover { border-color: var(--flame); color: var(--gold); }
+        .on-sand .btn-ghost { border-color: var(--hairline-sand); color: var(--ink-sand); }
+        .on-sand .btn-ghost:hover { border-color: var(--flame-deep); color: var(--flame-deep); }
+
+        /* nav — fixed, hairline, dark glass (reads over every scene) */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h);
+            background: rgba(10, 7, 5, 0.62); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
+        .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 100%; }
         .brand { display: flex; flex-direction: column; line-height: 1; }
-        .brand b { font-family: var(--disp); font-size: 1.25rem; letter-spacing: 0.04em; color: #ff5a45; }
-        .brand span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.34em; color: var(--navy); margin-top: 4px; }
-        .nav-links { display: flex; gap: clamp(14px, 3vw, 30px); align-items: center; }
-        .nav-links a { font-size: 0.86rem; font-weight: 600; color: var(--dim); padding: 8px 2px; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-links a.btn-fire, .nav-links a.btn-fire:hover { color: #1c0d05; }
-        .btn { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 0.9rem; padding: 12px 22px; border-radius: 999px; border: 1px solid transparent; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s; }
-        .btn-fire { background: var(--gg); color: #1c0d05; box-shadow: 0 8px 28px rgba(230, 59, 46, 0.25); }
-        .btn-fire:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(245, 135, 31, 0.35); }
-        .btn-ghost { border-color: rgba(244, 185, 66, 0.35); color: var(--gold); }
-        .btn-ghost:hover { background: rgba(244, 185, 66, 0.08); }
+        .brand b { font-family: var(--disp); font-size: 1.15rem; letter-spacing: 0.04em; color: #ff5a45; }
+        .brand span { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.3em; color: var(--dim); margin-top: 4px; }
+        .nav-links { display: flex; gap: clamp(12px, 2.6vw, 28px); align-items: center; }
+        .nav-links a:not(.btn) { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); padding: 8px 2px; transition: color var(--dur-fast); }
+        .nav-links a:not(.btn):hover { color: var(--gold); }
+        .nav-links .btn { min-height: 40px; padding: 0 18px; font-size: 0.68rem; }
         @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
 
-        /* hero */
-        .hero { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 20px; position: relative; overflow: hidden; padding-top: 76px; }
-        .hero-copy { position: relative; z-index: 3; padding-left: clamp(20px, 5vw, 56px); padding-bottom: 84px; max-width: 640px; }
-        .hero-copy .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
-        .hero-copy .eyebrow::before { content: ''; width: 26px; height: 1px; background: var(--flame); }
-        .hero h1 { font-family: var(--disp); font-weight: 700; font-size: clamp(2.6rem, 6.2vw, 5rem); line-height: 1.02; margin: 20px 0 22px; text-wrap: balance; }
-        .hero h1 .fire { display: block; }
-        .hero-sub { color: var(--dim); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 46ch; }
-        .hero-sub b { color: var(--ink); font-weight: 600; }
-        .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
-        .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(18px, 3.5vw, 44px); margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
-        .hstat b { display: block; font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: var(--gold); font-variant-numeric: tabular-nums; }
-        .hstat span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
-        .hero-3d { position: relative; height: min(88vh, 820px); z-index: 2; }
-        .hero-3d::before { content: ''; position: absolute; inset: -6% -10%; z-index: 0; pointer-events: none;
-            background: radial-gradient(42% 36% at 52% 66%, rgba(245, 135, 31, 0.13), rgba(230, 59, 46, 0.05) 55%, transparent 78%); }
-        #wok3d { position: relative; z-index: 1; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+        /* ============================================================
+           THE STAGE — 460vh scroll journey, pinned 100svh scenes
+           over the fixed transparent 3D wok
+           ============================================================ */
+        .stage { position: relative; height: 460vh; z-index: 1; }
+        .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: clip; }
+        .scene-bg { position: absolute; inset: 0; z-index: 0; background: var(--s1); transition: background 1.2s var(--ease-signature); }
+        body[data-scene="2"] .scene-bg { background: var(--s2); }
+        body[data-scene="3"] .scene-bg { background: var(--s3); }
+        body[data-scene="4"] .scene-bg { background: var(--s4); }
+        .ember { position: absolute; inset: 55% -10% -10% -10%; z-index: 1; pointer-events: none; opacity: 0.7; transition: opacity 1.2s var(--ease-signature);
+            background: radial-gradient(46% 52% at 52% 66%, rgba(245, 135, 31, 0.13), rgba(230, 59, 46, 0.05) 55%, transparent 78%); }
+        body[data-scene="4"] .ember { opacity: 1; }
+        #wok3d { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
         #wok3d:active { cursor: grabbing; }
-        .hero-glow { position: absolute; inset: auto 0 -12% 0; height: 55%; z-index: 1; pointer-events: none;
-            background: radial-gradient(50% 60% at 72% 70%, rgba(230, 59, 46, 0.22), transparent 65%); }
-        .drag-hint { position: absolute; right: clamp(20px, 4vw, 54px); bottom: 26px; z-index: 4; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); opacity: 0.85; transition: opacity 0.6s; }
-        .scroll-cue { position: absolute; left: clamp(20px, 5vw, 56px); bottom: 26px; z-index: 4; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
-        .scroll-cue i { width: 1px; height: 34px; background: linear-gradient(180deg, var(--gold), transparent); animation: cueDrop 2s infinite; }
-        @keyframes cueDrop { 0% { transform: scaleY(0); transform-origin: top; } 55% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+        /* scene UI shells */
+        .sc { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: none; padding: calc(var(--nav-h) + 2vh) 0 5vh; }
+        .sc.is-active, .sc.was-active { display: block; }
+        .sc a, .sc button { pointer-events: auto; }
+        .sc .wrap { height: 100%; position: relative; }
+        .sc .reveal { opacity: 0; transform: translateY(24px); transition: var(--transition-ui); }
+        .sc.is-active .reveal { opacity: 1; transform: translateY(0); }
+        .sc .reveal:nth-child(2), .sc .reveal.d2 { transition-delay: 0.08s; }
+        .sc .reveal.d3 { transition-delay: 0.16s; }
+
+        /* S1 — hero */
+        .s1-copy { position: absolute; left: 0; top: 50%; transform: translateY(-50%); max-width: 620px; }
+        .s1-copy h1 { font-family: var(--disp); font-weight: 700; font-size: var(--text-hero); line-height: 0.98; letter-spacing: -0.01em; margin: 20px 0 22px; }
+        .s1-copy h1 .tail { display: block; font-family: var(--serif); font-style: italic; font-weight: 500; }
+        .s1-sub { color: var(--dim); font-size: clamp(0.98rem, 1.3vw, 1.12rem); max-width: 44ch; }
+        .s1-sub b { color: var(--ink); font-weight: 600; }
+        .s1-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+        .scroll-cue { position: absolute; left: 50%; bottom: 3.5vh; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+        .scroll-cue s { text-decoration: none; display: block; animation: cueBounce 1.8s var(--ease-bounce) infinite; color: var(--flame); font-size: 1rem; }
+        @keyframes cueBounce { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(8px); opacity: 1; } }
+        .drag-hint { position: absolute; right: 0; bottom: 3.5vh; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); transition: opacity 0.6s; }
+
+        /* S2 — story: wok owns the left flank, copy on the right */
+        .s2-copy { position: absolute; right: 0; top: 50%; transform: translateY(-50%); max-width: 560px; }
+        .s2-copy h2 { margin: 14px 0 18px; }
+        .s2-copy p { color: var(--dim); max-width: 54ch; margin-bottom: 14px; }
+        .s2-copy p b { color: var(--ink); }
+        .pull { border-left: 2px solid var(--flame); padding: 4px 0 4px 20px; margin-top: 22px; }
+        .pull p { font-family: var(--serif); font-style: italic; font-size: 1.06rem; color: var(--ink); margin-bottom: 8px; }
+        .pull span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
+        .s2-stat { position: absolute; left: 0; bottom: 5vh; }
+        .s2-stat b { display: block; font-family: var(--serif); font-weight: 700; font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+        .s2-stat .u { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--flame); display: block; margin-top: 10px; }
+        .s2-stat .cap { display: block; margin-top: 10px; color: var(--faint); font-size: 0.8rem; max-width: 26ch; }
+
+        /* S3 — wok hei teardown: leader-line specs flank the wok */
+        .spec { position: absolute; max-width: 250px; }
+        .spec { text-shadow: 0 1px 14px rgba(0, 0, 0, 0.85); }
+        .spec .lbl { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--flame); display: block; margin-bottom: 6px; }
+        .spec .val { font-family: var(--sans); font-weight: 600; font-size: 0.95rem; color: var(--ink); line-height: 1.4; }
+        .spec .rule { position: absolute; top: 8px; height: 1px; background: linear-gradient(90deg, var(--flame), rgba(245, 135, 31, 0.1)); width: clamp(40px, 6vw, 120px); }
+        .spec .rule::after { content: ''; position: absolute; right: -3px; top: -2.5px; width: 6px; height: 6px; border-radius: 50%; background: var(--flame); box-shadow: var(--glow-sm); }
+        .spec.left { text-align: right; }
+        .spec.left .rule { left: calc(100% + 14px); }
+        .spec.right .rule { right: calc(100% + 14px); transform: scaleX(-1); }
+        .spec.p1 { left: 0; top: 24%; }
+        .spec.p2 { left: 0; top: 56%; }
+        .spec.p3 { right: 0; top: 30%; }
+        .spec.p4 { right: 0; top: 62%; }
+        .s3-head { position: absolute; top: 2vh; left: 0; }
+        .s3-stats { position: absolute; left: 0; right: 0; bottom: 2vh; display: flex; justify-content: center; gap: clamp(24px, 6vw, 90px); flex-wrap: wrap; border-top: 1px solid var(--hairline); padding-top: 22px; }
+
+        /* S4 — ignition */
+        .s4-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; padding: 2vh 0 4vh; }
+        .s4-head { text-shadow: 0 2px 28px rgba(0, 0, 0, 0.65); }
+        .s4-head h2 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); }
+        .s4-head h2 .tail { color: var(--ink); }
+        .s4-head h2 .tail em { font-style: italic; background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        /* the one glass moment — PNEUMA frosted panel over the ignited wok */
+        .s4-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px;
+            background: rgba(13, 10, 8, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: 20px 30px; }
+        .s4-stat b { display: block; font-family: var(--serif); font-weight: 700; font-size: var(--text-display); line-height: 1; color: var(--flame); text-shadow: var(--glow-text); font-variant-numeric: tabular-nums; }
+        .s4-stat > span { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim); display: block; margin-top: 10px; }
+        .s4-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; padding-top: 90px; min-height: 0; }
-            .hero-3d { height: 52vh; min-height: 340px; order: -1; }
-            .hero-copy { padding: 0 clamp(20px, 5vw, 56px) 60px; }
+            .s1-copy { top: auto; bottom: 6vh; transform: none; max-width: none; right: 0; text-shadow: 0 1px 16px rgba(0, 0, 0, 0.7); }
+            .s1-copy, .sc .s2-copy { background: linear-gradient(180deg, rgba(13, 9, 7, 0), rgba(13, 9, 7, 0.72) 20%, rgba(13, 9, 7, 0.88)); padding: 30px 20px 4px; }
+            .s1-copy h1 { font-size: clamp(2.4rem, 11vw, 3.4rem); }
+            .s1-sub { max-width: 60ch; font-size: 0.94rem; }
             .scroll-cue { display: none; }
+            .drag-hint { display: none; }
+            .s2-copy { position: absolute; right: 0; left: 0; top: auto; bottom: 4vh; transform: none; max-width: none; padding: 0 clamp(20px, 5vw, 56px); }
+            .s2-copy p { font-size: 0.9rem; }
+            .s2-stat { display: none; }
+            .spec { position: static; max-width: none; text-align: left !important; }
+            .spec .rule { display: none; }
+            .s3-specs { position: absolute; left: 0; right: 0; top: 12vh; display: grid; grid-template-columns: 1fr 1fr; gap: 18px clamp(16px, 4vw, 40px); }
+            .s3-stats { gap: 18px 26px; justify-content: flex-start; }
+            .s4-head h2 { font-size: clamp(1.9rem, 8.4vw, 2.6rem); }
         }
+        @media (min-width: 901px) { .s3-specs { position: static; } }
 
-        /* marquee word */
-        .fireband { position: relative; padding: clamp(70px, 11vw, 130px) 0; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); }
-        .kinetic { position: absolute; top: 50%; left: 0; transform: translateY(-50%); font-family: var(--disp); font-weight: 700; font-size: clamp(6rem, 17vw, 15rem); white-space: nowrap; color: transparent; -webkit-text-stroke: 1px rgba(244, 185, 66, 0.14); user-select: none; pointer-events: none; }
-        .fireband .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 80px); align-items: start; }
-        .fireband h2 { font-family: var(--disp); font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.1; }
-        .fireband .story p { color: var(--dim); margin-bottom: 16px; font-size: 1.02rem; }
-        .fireband .story p b { color: var(--ink); }
-        .pull { margin-top: 26px; padding: 22px 26px; border-left: 3px solid var(--flame); background: rgba(245, 135, 31, 0.05); border-radius: 0 12px 12px 0; }
-        .pull p { font-family: var(--serif); font-style: italic; font-size: 1.18rem; color: var(--ink); line-height: 1.5; }
-        .pull span { display: block; margin-top: 10px; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
-        @media (max-width: 900px) { .fireband .wrap { grid-template-columns: 1fr; } }
+        /* ============================================================
+           CONTENT SECTIONS (normal flow, after the journey)
+           ============================================================ */
+        section { position: relative; z-index: 2; padding: clamp(76px, 10vw, 130px) 0; }
+        .sec-head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 56px); }
+        .sec-head h2 { margin: 14px 0 16px; }
+        .sec-head p { color: var(--dim); }
+        .reveal { opacity: 0; transform: translateY(24px); transition: var(--transition-ui); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
 
-        /* section head */
-        section { padding: clamp(80px, 12vw, 150px) 0; position: relative; }
-        .sec-head { max-width: 700px; margin-bottom: clamp(38px, 6vw, 64px); }
-        .sec-head h2 { font-family: var(--disp); font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.05; margin: 14px 0 16px; }
-        .sec-head p { color: var(--dim); font-size: 1.05rem; }
-
-        /* menu */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-        .dish { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px 22px; overflow: hidden; transition: transform 0.35s var(--ease), border-color 0.3s, box-shadow 0.35s var(--ease); }
-        .dish:hover { transform: translateY(-6px); border-color: rgba(245, 135, 31, 0.45); box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(230, 59, 46, 0.08); }
-        .dish .set { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.2em; color: var(--flame); text-transform: uppercase; }
-        .dish h3 { font-family: var(--serif); font-weight: 700; font-size: 1.35rem; margin: 10px 0 2px; }
-        .dish .cn { font-size: 0.88rem; color: var(--dim); }
-        .dish p { font-size: 0.9rem; color: var(--dim); margin: 12px 0 18px; min-height: 3.4em; }
-        .dish .prices { display: flex; gap: 8px; flex-wrap: wrap; }
-        .price-chip { font-family: var(--mono); font-size: 0.74rem; padding: 6px 11px; border-radius: 8px; background: rgba(244, 185, 66, 0.09); border: 1px solid rgba(244, 185, 66, 0.22); color: var(--gold); font-variant-numeric: tabular-nums; }
-        .price-chip b { color: var(--ink); font-weight: 700; }
-        .dish .flame-tag { position: absolute; top: 20px; right: 20px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; color: #ff7a5c; }
-        .dish.best { background: linear-gradient(160deg, #241409, #1a140f 65%); border-color: rgba(245, 135, 31, 0.5); }
-        .dish.best::after { content: 'BESTSELLER'; position: absolute; top: 0; right: 0; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; background: var(--gg); color: #1c0d05; font-weight: 700; padding: 6px 14px; border-radius: 0 16px 0 12px; }
-        .menu-note { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-top: 26px; font-size: 0.85rem; color: var(--dim); }
-        .menu-note .chip { font-family: var(--mono); font-size: 0.68rem; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--gold); }
-        .addons { margin-top: 44px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; }
-        .addon-list { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
-        .addon-list h3 { font-family: var(--disp); font-size: 1.15rem; margin-bottom: 14px; color: var(--gold); }
+        /* menu — the sand daylight moment */
+        .on-sand { background: var(--sand); color: var(--ink-sand); }
+        .on-sand .sec-head p { color: var(--dim-sand); }
+        .on-sand .eyebrow { color: var(--flame-deep); }
+        .on-sand .fh .tail { color: var(--dim-sand); }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+        .dish { position: relative; background: var(--sand-card); border: 1px solid var(--hairline-sand); border-radius: var(--radius-md); padding: 26px 24px 22px; box-shadow: var(--shadow-sm); transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease; }
+        .dish:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .dish .set { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--flame-deep); }
+        .dish h3 { font-family: var(--disp); font-size: 1.28rem; font-weight: 700; margin: 10px 0 2px; line-height: 1.15; }
+        .dish .cn { font-family: var(--mono); font-size: 0.78rem; color: var(--dim-sand); }
+        .dish p { font-size: 0.9rem; color: var(--dim-sand); margin: 12px 0 16px; }
+        .prices { display: flex; flex-wrap: wrap; gap: 8px; }
+        .price-chip { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--hairline-sand); border-radius: var(--radius-sm); padding: 5px 10px; color: var(--dim-sand); }
+        .price-chip b { color: var(--ink-sand); font-weight: 700; }
+        .dish.best { border: 2px solid var(--flame); }
+        .dish.best .best-tag { position: absolute; top: -11px; right: 14px; }
+        .menu-note { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 26px; font-size: 0.82rem; color: var(--dim-sand); }
+        .addons { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; margin-top: clamp(40px, 6vw, 64px); }
+        .addon-list { background: var(--sand-card); border: 1px solid var(--hairline-sand); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); }
+        .addon-list h3 { font-family: var(--disp); font-size: 1.3rem; margin-bottom: 16px; }
         .addon-list ul { list-style: none; }
-        .addon-list li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px dashed rgba(244, 185, 66, 0.14); font-size: 0.95rem; }
-        .addon-list li:last-child { border-bottom: none; }
-        .addon-list li b { font-family: var(--mono); font-weight: 400; color: var(--gold); font-variant-numeric: tabular-nums; white-space: nowrap; }
-        .sambal { background: linear-gradient(150deg, #2a1108, #1a0d08); border: 1px solid rgba(230, 59, 46, 0.4); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
-        .sambal h3 { font-family: var(--serif); font-style: italic; font-size: 1.5rem; margin: 8px 0 10px; }
+        .addon-list li { display: flex; align-items: baseline; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--hairline-sand); font-size: 0.94rem; }
+        .addon-list li:last-child { border-bottom: 0; }
+        .addon-list li b { margin-left: auto; font-family: var(--mono); font-size: 0.86rem; color: var(--flame-deep); white-space: nowrap; }
+        .addon-list .cn { color: var(--dim-sand); font-size: 0.8rem; }
+        .sambal { position: relative; background: var(--carbon); color: var(--ink); border-radius: var(--radius-md); padding: 30px; overflow: hidden; }
+        .sambal::before { content: ''; position: absolute; inset: auto -30% -55% -30%; height: 90%; background: radial-gradient(50% 60% at 50% 100%, rgba(230, 59, 46, 0.35), transparent 70%); pointer-events: none; }
+        .sambal .eyebrow { color: var(--flame); }
+        .sambal h3 { font-family: var(--serif); font-style: italic; font-size: 1.5rem; margin: 12px 0 10px; }
         .sambal p { color: var(--dim); font-size: 0.92rem; }
-        .sambal .jar { margin-top: auto; padding-top: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-        .sambal .jar b { font-family: var(--mono); font-size: 1.3rem; color: var(--gold); }
-        .sambal .jar span { font-size: 0.8rem; color: var(--dim); }
-        @media (max-width: 860px) { .addons { grid-template-columns: 1fr; } }
+        .jar { position: relative; display: flex; align-items: baseline; gap: 12px; margin-top: 22px; }
+        .jar b { font-family: var(--serif); font-weight: 700; font-size: 2.4rem; color: var(--flame); text-shadow: var(--glow-text); }
+        .jar span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+        @media (max-width: 900px) { .addons { grid-template-columns: 1fr; } }
 
-        /* press marquee */
-        .press { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--bg-2); padding: 30px 0; overflow: hidden; }
-        .press-track { display: flex; gap: 60px; width: max-content; animation: pressScroll 42s linear infinite; }
-        .press-track:hover { animation-play-state: paused; }
-        @keyframes pressScroll { to { transform: translateX(-50%); } }
-        .pq { display: flex; align-items: center; gap: 16px; white-space: nowrap; }
-        .pq q { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--ink); quotes: '\201C' '\201D'; }
-        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
-        .pq::after { content: '·'; color: var(--gold); font-size: 1.6rem; margin-left: 44px; }
+        /* press marquee — carbon band */
+        .press { background: var(--carbon-2); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 26px 0; overflow: hidden; position: relative; z-index: 2; }
+        .press-track { display: flex; gap: 56px; width: max-content; animation: marq 42s linear infinite; }
+        .pq { display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
+        .pq q { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--ink); quotes: '“' '”'; }
+        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--flame); }
+        @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* outlets */
-        .outlet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-        .outlet { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; transition: transform 0.3s var(--ease), border-color 0.3s; }
-        .outlet:hover { transform: translateY(-4px); border-color: rgba(127, 168, 212, 0.45); }
-        .outlet .no { font-family: var(--mono); font-size: 0.62rem; color: var(--navy); letter-spacing: 0.16em; }
-        .outlet h3 { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; margin: 8px 0 4px; }
+        /* outlets — carbon */
+        #outlets { background: var(--carbon); }
+        .outlet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+        .outlet { background: var(--carbon-card); border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: 22px; transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease; }
+        .outlet:hover { border-color: rgba(245, 135, 31, 0.4); transform: translateY(-1px); }
+        .outlet .no { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--flame); }
+        .outlet h3 { font-family: var(--sans); font-weight: 700; font-size: 1.02rem; margin: 10px 0 6px; }
         .outlet p { font-size: 0.85rem; color: var(--dim); }
-        .outlet.hq { border-color: rgba(244, 185, 66, 0.5); background: linear-gradient(160deg, #221709, var(--panel) 70%); }
-        .outlet.hq .no { color: var(--gold); }
-        .vending { margin-top: 22px; font-size: 0.9rem; color: var(--dim); border-left: 3px solid var(--navy); padding: 4px 0 4px 16px; }
-        .vending b { color: var(--navy); }
+        .outlet.hq { border-color: rgba(245, 135, 31, 0.5); box-shadow: var(--glow-sm); }
+        .vending { margin-top: 26px; font-size: 0.9rem; color: var(--dim); border-left: 2px solid var(--flame); padding-left: 16px; }
+        .vending b { color: var(--ink); }
 
-        /* visit */
-        .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: center; }
-        .visit-card { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: clamp(26px, 4vw, 40px); }
-        .visit-card dl { display: grid; gap: 18px; }
-        .visit-card dt { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--flame); margin-bottom: 4px; }
-        .visit-card dd { font-size: 1rem; color: var(--ink); }
-        .visit-card dd small { display: block; color: var(--dim); font-size: 0.82rem; margin-top: 3px; }
-        .visit-cta h2 { font-family: var(--disp); font-size: clamp(2.2rem, 4.5vw, 3.6rem); line-height: 1.04; margin: 12px 0 18px; }
-        .visit-cta p { color: var(--dim); max-width: 42ch; }
+        /* visit — the armed finale */
+        #visit { background: var(--carbon-2); }
+        .visit-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+        .visit-cta h2 { margin: 14px 0 16px; }
+        .visit-cta p { color: var(--dim); max-width: 44ch; }
         .visit-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
-        @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; } }
+        .visit-card { background: var(--carbon-card); border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: 30px; }
+        .visit-card dl div { padding: 14px 0; border-bottom: 1px solid var(--hairline); }
+        .visit-card dl div:last-child { border-bottom: 0; }
+        .visit-card dt { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--flame); margin-bottom: 6px; }
+        .visit-card dd { font-size: 0.95rem; color: var(--ink); }
+        .visit-card dd small { display: block; color: var(--faint); font-size: 0.78rem; margin-top: 4px; }
+        .visit-card dd a { color: var(--gold); }
+        @media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; } }
 
-        footer { border-top: 1px solid var(--line); padding: 34px 0 46px; background: var(--bg-2); }
-        .foot-in { display: flex; flex-wrap: wrap; gap: 16px 30px; justify-content: space-between; align-items: center; }
-        .foot-in p { font-size: 0.8rem; color: var(--dim); max-width: 62ch; }
-        .foot-in p b { color: var(--gold); }
-        .demo-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1c0d05; background: var(--gg); font-weight: 700; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+        footer { background: var(--s4); border-top: 1px solid var(--hairline); padding: 40px 0 56px; position: relative; z-index: 2; }
+        .foot-in { display: flex; flex-direction: column; gap: 14px; }
+        .demo-tag { align-self: flex-start; }
+        footer p { color: var(--faint); font-size: 0.82rem; max-width: 74ch; }
+        footer p b { color: var(--dim); }
 
-        #toTop { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(244, 185, 66, 0.4); background: rgba(20, 16, 12, 0.85); color: var(--gold); font-size: 1.1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.25s var(--ease); }
+        #toTop { position: fixed; right: 18px; bottom: 18px; z-index: 210; width: 46px; height: 46px; border-radius: 6px; border: 1px solid var(--hairline); background: rgba(10, 7, 5, 0.7); color: var(--gold); font-size: 1.1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
         #toTop.show { opacity: 1; pointer-events: auto; }
-        #toTop:hover { transform: translateY(-3px); }
 
-        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal.in { opacity: 1; transform: none; }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .reveal { opacity: 1; transform: none; transition: none; }
+            .reveal, .sc .reveal { opacity: 1; transform: none; transition: none; }
             .press-track { animation: none; }
-            .scroll-cue i { animation: none; }
+            .scroll-cue s { animation: none; }
+            .scene-bg, .ember { transition: none; }
             * { transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
-<body>
-    <a class="lp-skip" href="#lp-main">Skip to content</a>
+<body data-scene="1">
+    <a class="lp-skip" href="#menu">Skip to content</a>
     <nav aria-label="Main">
         <div class="wrap nav-in">
             <a class="brand" href="#top" aria-label="Uncle Soon Fried Rice — home">
                 <b>UNCLE SOON</b><span>FRIED RICE · EST. 1990</span>
             </a>
             <div class="nav-links">
-                <a href="#story">Story</a>
+                <a href="#" data-scene-link="0.3">Story</a>
                 <a href="#menu">Menu</a>
                 <a href="#outlets">Outlets</a>
                 <a href="#visit">Find Us</a>
-                <a class="btn btn-fire" href="#visit">Order Now</a>
+                <a class="btn btn-primary" href="#visit">Order Now</a>
             </div>
         </div>
     </nav>
 
-    <main id="lp-main">
-        <header class="hero" id="top">
-            <div class="hero-copy">
-                <span class="eyebrow">SS15 Subang Jaya · Since 1990</span>
-                <h1>Fried by hand.<br><span class="fire goldtext">Kissed by flame.</span></h1>
-                <p class="hero-sub">One plate at a time, every plate to order — day-old rice, a screaming-hot wok, a soy-drizzled fried egg on top and our <b>signature free sambal belacan</b> on the side. That's the way it's been since 1990.</p>
-                <div class="hero-ctas">
-                    <a class="btn btn-fire" href="#menu">See the menu</a>
-                    <a class="btn btn-ghost" href="tel:+60102040069">Call 010-204 0069</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hstat"><b><span data-count="4.3" data-dec="1">0</span>★</b><span>Google rating</span></div>
-                    <div class="hstat"><b><span data-count="1321">0</span></b><span>Google reviews</span></div>
-                    <div class="hstat"><b><span data-count="35">0</span>+</b><span>Years at the wok</span></div>
-                    <div class="hstat"><b>RM<span data-count="7.5" data-dec="2">0</span></b><span>Plates from</span></div>
-                </div>
-            </div>
-            <div class="hero-3d">
-                <canvas id="wok3d" aria-label="Interactive 3D wok tossing fried rice — drag to spin"></canvas>
-            </div>
-            <div class="hero-glow" aria-hidden="true"></div>
-            <span class="drag-hint" id="dragHint">⟳ drag the wok to spin</span>
-            <div class="scroll-cue" aria-hidden="true"><i></i> Scroll for the story</div>
-        </header>
+    <!-- ============ THE JOURNEY — 4 pinned scenes over the live wok ============ -->
+    <div class="stage" id="top">
+        <div class="pin">
+            <div class="scene-bg" aria-hidden="true"></div>
+            <div class="ember" aria-hidden="true"></div>
+            <canvas id="wok3d" aria-label="Interactive 3D wok tossing fried rice — drag to spin"></canvas>
 
-        <div class="fireband" id="story">
-            <div class="kinetic" data-speed="0.12" aria-hidden="true">WOK&nbsp;HEI&nbsp;·&nbsp;WOK&nbsp;HEI&nbsp;·&nbsp;WOK&nbsp;HEI</div>
-            <div class="wrap">
-                <div class="reveal">
-                    <span class="eyebrow">// The Story</span>
-                    <h2>From a hawker stall in Alor Setar to a Subang legend.</h2>
+            <!-- S1 · hero -->
+            <div class="sc is-active" data-sc="1">
+                <div class="wrap">
+                    <div class="s1-copy">
+                        <span class="eyebrow reveal">// SS15 Subang Jaya · Est. 1990</span>
+                        <h1 class="reveal d2">Fried by hand.<span class="tail goldtext">Kissed by flame.</span></h1>
+                        <p class="s1-sub reveal d3">One plate at a time, every plate to order — day-old rice, a screaming-hot wok, a soy-drizzled fried egg on top and our <b>signature free sambal belacan</b> on the side.</p>
+                        <div class="s1-ctas reveal d3">
+                            <a class="btn btn-primary" href="#menu">See the menu</a>
+                            <a class="btn btn-ghost" href="tel:+60102040069">Call 010-204 0069</a>
+                        </div>
+                    </div>
+                    <div class="scroll-cue" aria-hidden="true">Scroll<s>↓</s></div>
+                    <span class="drag-hint" id="dragHint">⟳ drag the wok to spin</span>
                 </div>
-                <div class="story reveal">
-                    <p>It started in <b>1990</b> — a young hawker couple frying rice with a recipe passed down from an aunt. After 16 years in Alor Setar they moved to the Klang Valley in 2007, and their corner stall in SS15 became the plate every student in Subang swears by.</p>
-                    <p>Their daughter <b>Soon Te Shian</b> learned the wok at 13, took over right after SPM, and in 2021 moved the family stall into its own shop at <b>Subang Square</b> — right beside the coffee-shop corner where it all began. Today the flame burns across the Klang Valley, from SS15 to Pavilion Bukit Jalil.</p>
-                    <div class="pull">
-                        <p>"My parents always hoped that I would learn to cook and carry on the family business."</p>
-                        <span>— Soon Te Shian · Free Malaysia Today</span>
+            </div>
+
+            <!-- S2 · story -->
+            <div class="sc" data-sc="2">
+                <div class="wrap">
+                    <div class="s2-copy">
+                        <span class="eyebrow reveal">// The Story</span>
+                        <h2 class="fh reveal d2">From a hawker stall<span class="tail">to a Subang legend.</span></h2>
+                        <p class="reveal d3">It started in <b>1990</b> — a young hawker couple in Alor Setar, frying rice with a recipe passed down from an aunt. In 2007 they moved to the Klang Valley, and their corner stall in SS15 became the plate every student in Subang swears by. Daughter <b>Soon Te Shian</b> learned the wok at 13 and moved the stall into its own shop at <b>Subang Square</b> in 2021.</p>
+                        <div class="pull reveal d3">
+                            <p>"My parents always hoped that I would learn to cook and carry on the family business."</p>
+                            <span>— Soon Te Shian · Free Malaysia Today</span>
+                        </div>
+                    </div>
+                    <div class="s2-stat reveal d2">
+                        <b>1990</b>
+                        <span class="u">The first flame</span>
+                        <span class="cap">One wok, one recipe, three decades of smoke.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S3 · wok hei teardown -->
+            <div class="sc" data-sc="3">
+                <div class="wrap">
+                    <div class="s3-head reveal">
+                        <span class="eyebrow">// Wok Hei Dynamics</span>
+                    </div>
+                    <div class="s3-specs">
+                        <div class="spec left p1 reveal"><span class="lbl">Carbon-steel wok</span><span class="val">Seasoned daily since 1990</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec left p2 reveal d2"><span class="lbl">Day-old rice</span><span class="val">The only rice that tosses right</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec right p3 reveal d2"><span class="lbl">Soy-drizzled egg</span><span class="val">On top. Always.</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec right p4 reveal d3"><span class="lbl">Sambal belacan</span><span class="val">Free with every plate</span><i class="rule" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="s3-stats reveal d3">
+                        <div class="stat"><b><span data-count="4.3" data-dec="1">0</span>★</b><span>Google rating</span></div>
+                        <div class="stat"><b><span data-count="1321">0</span></b><span>Google reviews</span></div>
+                        <div class="stat"><b><span data-count="35">0</span>+</b><span>Years at the wok</span></div>
+                        <div class="stat"><b>RM<span data-count="7.5" data-dec="2">0</span></b><span>Plates from</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S4 · ignition -->
+            <div class="sc" data-sc="4">
+                <div class="wrap">
+                    <div class="s4-center">
+                        <div class="s4-head reveal">
+                            <span class="eyebrow">// Where the woks burn</span>
+                            <h2 class="fh">The flame<span class="tail">never <em>sleeps.</em></span></h2>
+                        </div>
+                        <div class="s4-bottom">
+                            <div class="s4-stat reveal d2">
+                                <b><span data-count="9">0</span></b>
+                                <span>Outlets across the Klang Valley</span>
+                            </div>
+                            <div class="s4-ctas reveal d3">
+                                <a class="btn btn-primary armed" href="#menu">See the menu</a>
+                                <a class="btn btn-ghost" href="#outlets">All nine flames</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <section id="menu">
+    <main id="lp-main">
+        <!-- ============ MENU — the sand daylight moment ============ -->
+        <section id="menu" class="on-sand">
             <div class="wrap">
                 <div class="sec-head reveal">
                     <span class="eyebrow">// The Menu</span>
-                    <h2>Four sets. One flame.</h2>
+                    <h2 class="fh">Four sets.<span class="tail">One flame.</span></h2>
                     <p>Every set comes Original <span class="mono">原味</span> or Spicy <span class="mono">辣味</span> (+RM0.50), fried to order and topped with a soy-drizzled egg.</p>
                 </div>
                 <div class="menu-grid">
@@ -281,17 +460,17 @@
                         <div class="prices"><span class="price-chip">S <b>RM10.00</b></span><span class="price-chip">XB <b>RM12.00</b></span></div>
                     </article>
                     <article class="dish best reveal">
+                        <span class="badge signal best-tag" style="background: var(--sand);"><i></i>Bestseller</span>
                         <span class="set">Set C</span>
                         <h3>Char Siou + Prawn &amp; Egg</h3>
                         <span class="cn mono">叉烧+虾炒饭 &amp; 蛋</span>
                         <p>The one everyone orders — char siu <em>and</em> prawns on one plate.</p>
                         <div class="prices"><span class="price-chip">S <b>RM12.50</b></span><span class="price-chip">B <b>RM13.00</b></span><span class="price-chip">XB <b>RM14.50</b></span></div>
-                        <span class="flame-tag">🌶 spicy +RM0.50</span>
                     </article>
                 </div>
                 <div class="menu-note reveal">
-                    <span class="chip">NON-HALAL</span>
-                    <span class="chip">FRIED TO ORDER</span>
+                    <span class="badge alarm"><i></i>Non-halal</span>
+                    <span class="badge"><i></i>Fried to order</span>
                     <span>Menu &amp; prices from the SS15 HQ menu board (2024) — to be confirmed by the owner.</span>
                 </div>
                 <div class="addons">
@@ -306,8 +485,8 @@
                             <li>Kopi-C · Teh-C · canned drinks <b>RM2.50–3</b></li>
                         </ul>
                     </div>
-                    <aside class="sambal reveal">
-                        <span class="eyebrow">Take the flame home</span>
+                    <aside class="sambal reveal d2">
+                        <span class="eyebrow">// Take the flame home</span>
                         <h3>Uncle Soon's Sambal Chilli</h3>
                         <p>The legendary sambal belacan — free with every plate at the shop, or yours to keep in a 280ml jar.</p>
                         <div class="jar"><b>RM25</b><span>280ml jar</span></div>
@@ -335,7 +514,7 @@
             <div class="wrap">
                 <div class="sec-head reveal">
                     <span class="eyebrow">// Where the woks burn</span>
-                    <h2>Nine flames across the Klang Valley.</h2>
+                    <h2 class="fh">Nine flames<span class="tail">across the Klang Valley.</span></h2>
                     <p>From the SS15 mothership to malls across KL — same recipe, same fire.</p>
                 </div>
                 <div class="outlet-grid">
@@ -353,22 +532,22 @@
             </div>
         </section>
 
-        <section id="visit" style="padding-top: 0;">
+        <section id="visit">
             <div class="wrap visit-grid">
                 <div class="visit-cta reveal">
                     <span class="eyebrow">// Find us</span>
-                    <h2>Follow the smoke<br>to <span class="goldtext">SS15.</span></h2>
+                    <h2 class="fh">Follow the smoke<span class="tail">to <em class="goldtext">SS15.</em></span></h2>
                     <p>Queue moves fast, plates land in minutes. Come hungry — leave a legend's customer.</p>
                     <div class="visit-ctas">
-                        <a class="btn btn-fire" href="https://www.google.com/maps/search/?api=1&amp;query=Uncle+Soon+Fried+Rice+Subang+Square+SS15" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                        <a class="btn btn-primary armed" href="https://www.google.com/maps/search/?api=1&amp;query=Uncle+Soon+Fried+Rice+Subang+Square+SS15" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
                         <a class="btn btn-ghost" href="https://www.facebook.com/unclesoonfriedrice/" target="_blank" rel="noopener noreferrer">Facebook</a>
                     </div>
                 </div>
-                <div class="visit-card reveal">
+                <div class="visit-card reveal d2">
                     <dl>
                         <div><dt>Address — HQ</dt><dd>Subang Square Shopping Mall, 95-97 Jalan SS15/4B, 47500 Subang Jaya, Selangor</dd></div>
                         <div><dt>Hours</dt><dd>11:00 AM – 8:00 PM · Closed Wednesdays<small>Hours from public listings — confirm before visiting. Other outlets vary.</small></dd></div>
-                        <div><dt>Call</dt><dd><a href="tel:+60102040069" style="color: var(--gold);">010-204 0069</a></dd></div>
+                        <div><dt>Call</dt><dd><a href="tel:+60102040069">010-204 0069</a></dd></div>
                         <div><dt>Order online</dt><dd>Beep · FeedMe · GrabFood · foodpanda</dd></div>
                     </dl>
                 </div>
@@ -378,7 +557,7 @@
 
     <footer>
         <div class="wrap foot-in">
-            <span class="demo-tag">Design preview · Langkah Pertama</span>
+            <span class="badge signal demo-tag"><i></i>Design preview · Langkah Pertama</span>
             <p>This is a <b>website design concept</b> prepared for Uncle Soon Fried Rice by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, menu items and prices are drawn from public sources and press coverage; all details to be confirmed by the owner. Non-halal.</p>
         </div>
     </footer>
@@ -388,19 +567,72 @@
     <script>
         (function () {
             var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            // reveals
-            var els = document.querySelectorAll('.reveal');
+
+            /* ---- scroll engine: stage progress -> scenes ---- */
+            var stage = document.querySelector('.stage');
+            var scenes = Array.prototype.slice.call(document.querySelectorAll('.sc'));
+            var body = document.body;
+            var cur = 1, countersRun = false;
+            window.__scrollP = 0;
+
+            function runCounters() {
+                if (countersRun) return; countersRun = true;
+                Array.prototype.forEach.call(document.querySelectorAll('.sc [data-count]'), runCount);
+            }
+            function upd() {
+                var vh = window.innerHeight;
+                var total = stage.offsetHeight - vh;
+                var top = stage.getBoundingClientRect().top;
+                var p = Math.max(0, Math.min(1, -top / total));
+                window.__scrollP = p;
+                var idx = p >= 0.78 ? 4 : p >= 0.52 ? 3 : p >= 0.26 ? 2 : 1;
+                if (idx !== cur) {
+                    cur = idx;
+                    body.setAttribute('data-scene', String(idx));
+                    scenes.forEach(function (s) {
+                        var active = s.getAttribute('data-sc') === String(idx);
+                        s.classList.toggle('is-active', active);
+                        // keep the outgoing scene rendered while it fades
+                        if (active) { s.classList.remove('was-active'); }
+                        else if (s.classList.contains('was-active') || s.classList.contains('is-active')) {
+                            s.classList.add('was-active');
+                            (function (el) { setTimeout(function () { if (!el.classList.contains('is-active')) el.classList.remove('was-active'); }, 850); })(s);
+                        }
+                    });
+                    if (idx >= 3) runCounters();
+                }
+                var toTop = document.getElementById('toTop');
+                if (toTop) toTop.classList.toggle('show', window.scrollY > vh * 1.5);
+            }
+            var ticking = false;
+            function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; upd(); }); } }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            upd();
+
+            /* nav "Story" link -> scroll to scene 2 */
+            Array.prototype.forEach.call(document.querySelectorAll('[data-scene-link]'), function (a) {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var vh = window.innerHeight;
+                    var y = stage.offsetTop + (stage.offsetHeight - vh) * parseFloat(a.getAttribute('data-scene-link'));
+                    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+                });
+            });
+
+            /* ---- reveals for normal-flow content ---- */
+            var els = document.querySelectorAll('main .reveal, footer .reveal');
             if ('IntersectionObserver' in window && !reduce) {
                 var io = new IntersectionObserver(function (entries) {
                     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
                 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-                els.forEach(function (el) { io.observe(el); });
-            } else { els.forEach(function (el) { el.classList.add('in'); }); }
+                Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+            } else { Array.prototype.forEach.call(els, function (el) { el.classList.add('in'); }); }
 
-            // counters
+            /* ---- counters ---- */
             function runCount(el) {
                 var target = parseFloat(el.getAttribute('data-count')), dec = parseInt(el.getAttribute('data-dec') || '0', 10);
-                if (reduce) { el.textContent = target.toFixed(dec).replace(/\.0$/, ''); return; }
+                if (reduce) { el.textContent = dec ? target.toFixed(dec) : Math.round(target).toLocaleString('en-US'); return; }
                 var dur = 1400, start = null;
                 function ease(p) { return 1 - Math.pow(1 - p, 3); }
                 function step(ts) {
@@ -413,31 +645,7 @@
                 requestAnimationFrame(step);
                 setTimeout(function () { el.textContent = dec ? target.toFixed(dec) : Math.round(target).toLocaleString('en-US'); }, dur + 300);
             }
-            var counters = document.querySelectorAll('[data-count]');
-            if ('IntersectionObserver' in window) {
-                var cio = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
-                }, { threshold: 0.5 });
-                counters.forEach(function (c) { cio.observe(c); });
-            } else { counters.forEach(runCount); }
-
-            // parallax on the kinetic word (abs-positioned only, live rect-based)
-            var kin = document.querySelector('.kinetic');
-            var ticking = false;
-            function onScroll() {
-                if (!ticking) { requestAnimationFrame(update); ticking = true; }
-                var toTop = document.getElementById('toTop');
-                if (toTop) toTop.classList.toggle('show', window.scrollY > 600);
-            }
-            function update() {
-                ticking = false;
-                if (reduce || !kin) return;
-                var r = kin.parentElement.getBoundingClientRect();
-                var mid = r.top + r.height / 2 - window.innerHeight / 2;
-                kin.style.transform = 'translateY(-50%) translateX(' + (mid * parseFloat(kin.getAttribute('data-speed') || 0.1) * -1) + 'px)';
-            }
-            window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
+            window.__runCount = runCount;
 
             document.getElementById('toTop').addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
@@ -456,8 +664,7 @@
             var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
             var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
 
-            // fully transparent render — the page IS the background (no post chain:
-            // EffectComposer forces an opaque backbuffer that can never match the page)
+            // fully transparent render — the scene-bg div IS the background
             var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -476,7 +683,6 @@
             var fire = new THREE.PointLight(0xff5a1f, 120, 30); fire.position.set(0, -2.6, 1.5); scene.add(fire);
             var rimL = new THREE.PointLight(0x88aaff, 40, 40); rimL.position.set(-6, 3, -4); scene.add(rimL);
 
-            // soft round glow texture — hand-made halo, replaces bloom on the alpha canvas
             function halo(rgb) {
                 var c = document.createElement('canvas'); c.width = c.height = 128;
                 var g = c.getContext('2d');
@@ -489,7 +695,7 @@
             }
 
             var group = new THREE.Group(); scene.add(group);
-            var rig = null, flames = [], fire0 = 120;
+            var rig = null, flames = [], glowA = null, glowB = null;
             var pile = null, fly = null, flyN = 230, seeds = [];
             var dummy = new THREE.Object3D();
 
@@ -498,7 +704,7 @@
                 var wokBox = null;
                 rig.traverse(function (o) {
                     if (!o.isMesh) return;
-                    if (o.name.indexOf('RiceCloud') === 0 || o.name.indexOf('Prawn') === 0) { o.visible = false; return; } // live JS rice takes over
+                    if (o.name.indexOf('RiceCloud') === 0 || o.name.indexOf('Prawn') === 0) { o.visible = false; return; }
                     if (o.name === 'Wok') wokBox = new THREE.Box3().setFromObject(o);
                     if (o.material && o.material.emissive && o.name.indexOf('Flame') === 0) { o.material.emissiveIntensity = 2.1; flames.push(o.material); }
                 });
@@ -509,13 +715,11 @@
                 var botY = wokBox ? wokBox.min.y : -0.6;
                 var mY = rimY - rimR * 0.16;
 
-                // ember glows under the wok (additive sprites)
-                var s1 = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('245,135,31'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.5, depthWrite: false }));
-                s1.position.set(0, botY - rimR * 0.18, 0); s1.scale.set(rimR * 3.1, rimR * 1.7, 1); group.add(s1);
-                var s2 = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('230,59,46'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.3, depthWrite: false }));
-                s2.position.copy(s1.position); s2.scale.set(rimR * 5.4, rimR * 3, 1); group.add(s2);
+                glowA = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('245,135,31'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.5, depthWrite: false }));
+                glowA.position.set(0, botY - rimR * 0.18, 0); glowA.scale.set(rimR * 3.1, rimR * 1.7, 1); group.add(glowA);
+                glowB = new THREE.Sprite(new THREE.SpriteMaterial({ map: halo('230,59,46'), blending: THREE.AdditiveBlending, transparent: true, opacity: 0.3, depthWrite: false }));
+                glowB.position.copy(glowA.position); glowB.scale.set(rimR * 5.4, rimR * 3, 1); group.add(glowB);
 
-                // rice — a stirred mound riding the wok + a tossed fountain above it
                 var geo = new THREE.BoxGeometry(rimR * 0.055, rimR * 0.032, rimR * 0.032);
                 var mat = new THREE.MeshStandardMaterial({ color: 0xf5e6c0, roughness: 0.5, emissive: 0xffc878, emissiveIntensity: 0.42 });
                 var mN = 180;
@@ -543,12 +747,12 @@
                 }
                 fly.userData.mY = mY;
                 group.add(fly);
-                stepRice(0.35); // pre-scatter so reduced-motion / first frame isn't empty
+                stepRice(0.35, 1);
                 place();
-                if (reduce) renderer.render(scene, camera);
+                if (reduce) { pose(0); renderer.render(scene, camera); }
             }, undefined, function () { canvas.style.opacity = '0.001'; });
 
-            function stepRice(time) {
+            function stepRice(time, hf) {
                 if (!fly) return;
                 var mY = fly.userData.mY;
                 for (var i = 0; i < flyN; i++) {
@@ -556,34 +760,62 @@
                     var t = ((time / s.dur) + s.off) % 1;
                     var arc = 4 * t * (1 - t);
                     var r = s.r0 + t * s.dr;
-                    var wob = Math.sin(time * 2.4) * 0.22 * arc * s.sway; // sways with the wok's toss rhythm
-                    dummy.position.set(Math.cos(s.a) * r + wob, mY + arc * s.h, Math.sin(s.a) * r);
+                    var wob = Math.sin(time * 2.4) * 0.22 * arc * s.sway;
+                    dummy.position.set(Math.cos(s.a) * r + wob, mY + arc * s.h * hf, Math.sin(s.a) * r);
                     dummy.rotation.set(t * s.spin, s.a * 3 + t * s.spin * 0.6, t * s.spin * 0.8);
                     dummy.updateMatrix(); fly.setMatrixAt(i, dummy.matrix);
                 }
                 fly.instanceMatrix.needsUpdate = true;
             }
 
+            var wide = true;
             function place() {
                 var w = canvas.clientWidth, h = canvas.clientHeight;
                 if (!w || !h) return;
                 renderer.setSize(w, h, false);
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
-                var wide = w / h > 0.9;
-                camera.position.z = wide ? 8.6 : 10.4;
-                camera.lookAt(0, 0.7, 0);
+                wide = w / h > 0.9;
             }
             place();
             window.addEventListener('resize', place);
             setTimeout(place, 400);
 
-            // drag to spin + pointer parallax
+            /* ---- scroll choreography: keyframes across the 4 scenes ----
+               [p, groupX, camZ, camY, lookY, ignite, mobileLookDelta] */
+            var K = [
+                [0.00, 1.7, 8.6, 0.7, 0.7, 0.00, -1.95],
+                [0.30, -1.75, 7.9, 0.85, 0.8, 0.00, -1.95],
+                [0.56, 0.0, 9.6, 0.8, 0.75, 0.12, -0.45],
+                [0.85, 0.0, 8.4, 1.5, 2.05, 1.00, 0.0],
+                [1.00, 0.0, 8.4, 1.5, 2.05, 1.00, 0.0]
+            ];
+            function smooth(t) { return t * t * (3 - 2 * t); }
+            var ignite = 0;
+            function pose(p) {
+                var i = 0;
+                while (i < K.length - 2 && p > K[i + 1][0]) i++;
+                var a = K[i], b = K[i + 1];
+                var t = smooth(Math.max(0, Math.min(1, (p - a[0]) / (b[0] - a[0]))));
+                function ch(n) { return a[n] + (b[n] - a[n]) * t; }
+                group.position.x = ch(1) * (wide ? 1 : 0.22);
+                camera.position.z = ch(2) + (wide ? 0 : 2.2);
+                camera.position.y = ch(3);
+                camera.lookAt(0, ch(4) + (wide ? 0 : ch(6)), 0);
+                ignite = ch(5);
+            }
+
+            /* drag to spin (anywhere on the stage, except links/buttons) */
+            var pin = document.querySelector('.pin');
             var tY = 0.5, cY = 0.5, vel = 0, drag = false, lx = 0, pY = 0;
             var hint = document.getElementById('dragHint');
-            canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); if (hint) hint.style.opacity = '0'; });
-            canvas.addEventListener('pointermove', function (e) {
-                var r = canvas.getBoundingClientRect();
+            pin.addEventListener('pointerdown', function (e) {
+                if (e.target.closest('a, button')) return;
+                drag = true; lx = e.clientX;
+                if (hint) hint.style.opacity = '0';
+            });
+            pin.addEventListener('pointermove', function (e) {
+                var r = pin.getBoundingClientRect();
                 pY = (e.clientY - r.top) / r.height - 0.5;
                 if (drag) { vel = (e.clientX - lx) * 0.007; tY += vel; lx = e.clientX; }
             });
@@ -600,18 +832,22 @@
                 cY += (tY - cY) * 0.08;
                 group.rotation.y = cY;
                 group.rotation.x = 0.12 + pY * 0.22;
+                pose(window.__scrollP || 0);
                 if (rig && !reduce) {
-                    // the toss: wok rocks + flicks up, rice fountain rides the same beat
-                    var p = Math.max(0, Math.sin(tm * 2.4));
-                    rig.rotation.z = Math.sin(tm * 2.4) * 0.05;
-                    rig.position.y = Math.sin(tm * 0.9) * 0.07 + p * p * 0.09;
-                    stepRice(tm);
-                    for (var f = 0; f < flames.length; f++) flames[f].emissiveIntensity = 2.0 + Math.sin(tm * 7.3) * 0.35 + Math.sin(tm * 13.1) * 0.2;
-                    fire.intensity = fire0 + Math.sin(tm * 8.2) * 26;
+                    var beat = 2.4 + ignite * 0.8;
+                    var pI = Math.max(0, Math.sin(tm * beat));
+                    rig.rotation.z = Math.sin(tm * beat) * (0.05 + ignite * 0.02);
+                    rig.position.y = Math.sin(tm * 0.9) * 0.07 + pI * pI * (0.09 + ignite * 0.04);
+                    stepRice(tm, 1 + ignite * 0.35);
+                    var fl = 2.0 + ignite * 1.5 + Math.sin(tm * 7.3) * 0.35 + Math.sin(tm * 13.1) * 0.2;
+                    for (var f = 0; f < flames.length; f++) flames[f].emissiveIntensity = fl;
+                    fire.intensity = 120 + ignite * 150 + Math.sin(tm * 8.2) * 26;
+                    if (glowA) glowA.material.opacity = 0.5 + ignite * 0.3;
+                    if (glowB) glowB.material.opacity = 0.3 + ignite * 0.25;
                 }
                 renderer.render(scene, camera);
             }
-            if (reduce) { group.rotation.y = 0.5; renderer.render(scene, camera); } else { loop(); }
+            if (reduce) { group.rotation.y = 0.5; pose(0); renderer.render(scene, camera); window.addEventListener('scroll', function () { pose(window.__scrollP || 0); renderer.render(scene, camera); }, { passive: true }); } else { loop(); }
             window.__usDemo = { ok: true };
         } catch (err) {
             if (canvas) canvas.style.opacity = '0.001';

@@ -12,256 +12,439 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ============================================================
+           SUNDA SHELVES · PNEUMA design system, firefly theme
+           Scene journey: paper → deeper paper → dusk ignition —
+           the inverse arc of a flame page: daylight reading that
+           sinks into a forest dusk where the fireflies come out.
+           One signal accent — firefly amber — that ignites at dusk.
+           ============================================================ */
         :root {
-            --paper: #f7f1e5; --paper-2: #efe6d4; --card: #fffdf7;
-            --ink: #2b2118; --dim: #6d5f4e; --line: rgba(74, 58, 50, 0.16);
-            --sea: #34677f; --sea-deep: #274f62; --magma: #c05f14; --leaf: #2e5c3e;
+            /* scene backgrounds (the scroll journey) */
+            --s1: #f7f1e5; --s2: #efe7d6; --s3: #e7dcc4; --s4: #16241c;
+            --paper: #f7f1e5; --paper-2: #efe7d6; --card: #fffdf7;
+            --dusk: #16241c; --dusk-2: #101b15; --dusk-card: #1d2f24;
+
+            /* ink — light (paper) context default */
+            --ink: #241c12; --dim: #645a48; --faint: #8d8370;
+            --ink-d: #f2ead8; --dim-d: #c2b9a4; --faint-d: #93987f;
+
+            /* signal — the firefly */
+            --amber: #e0a852; --amber-hot: #ffcf7a;
+            --magma: #c05f14; --magma-deep: #a8500e; /* legible accent on paper */
+            --sea: #34677f; --sea-deep: #274f62; --leaf: #2e5c3e;
+            --glow: rgba(224, 168, 82, 0.55);
+            --glow-sm: 0 0 12px var(--glow);
+            --glow-md: 0 0 26px var(--glow);
+            --glow-text: 0 0 18px rgba(224, 168, 82, 0.65);
+            --gg: linear-gradient(120deg, #ffcf7a, #e0a852 55%, #c05f14);
             --strata: linear-gradient(180deg, #6fa3bf 0%, #6fa3bf 22%, #4a3a32 22%, #4a3a32 40%, #8b6a55 40%, #8b6a55 62%, #f5993d 62%, #f5993d 72%, #dda87c 72%, #dda87c 100%);
+
+            /* lines */
+            --hairline: rgba(36, 28, 18, 0.14);
+            --hairline-d: rgba(242, 234, 216, 0.14);
+
+            /* type */
             --disp: 'Cormorant Garamond', serif; --serif: 'Libre Baskerville', serif; --mono: 'Space Mono', monospace;
-            --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+            --text-hero: clamp(2.8rem, 7.5vw, 6.2rem);
+            --text-h1: clamp(2.1rem, 4.6vw, 3.5rem);
+            --text-display: clamp(2.6rem, 6vw, 5rem);
+            --ls-label: 0.2em; --ls-wide: 0.3em;
+
+            /* motion — one signature easing */
+            --ease-signature: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --dur-fast: 0.2s; --dur-slow: 0.8s;
+            --transition-ui: all var(--dur-slow) var(--ease-signature);
+
+            /* shadows (paper context) */
+            --shadow-sm: 0 2px 8px rgba(36, 28, 18, 0.08);
+            --shadow-md: 0 8px 24px rgba(36, 28, 18, 0.10);
+
+            --radius-sm: 4px; --radius-md: 8px;
+            --nav-h: 66px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-x: clip; }
-        body { font-family: var(--serif); background: var(--paper); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased;
-            background-image: radial-gradient(120% 70% at 50% -8%, #fdf8ec 0%, rgba(247, 241, 229, 0) 55%); }
-        ::selection { background: rgba(111, 163, 191, 0.35); }
+        body { font-family: var(--serif); background: var(--s1); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        ::selection { background: rgba(224, 168, 82, 0.4); }
         a { color: inherit; text-decoration: none; cursor: pointer; }
         button { cursor: pointer; }
         :focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; border-radius: 4px; }
-        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+        .sc-dusk :focus-visible, .on-dusk :focus-visible, footer :focus-visible { outline-color: var(--amber); }
+        .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px); }
         .mono { font-family: var(--mono); }
-        .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--magma); }
-        .lp-skip { position: fixed; top: -60px; left: 16px; z-index: 300; background: var(--sea); color: #fff; font-weight: 700; padding: 10px 18px; border-radius: 8px; transition: top 0.2s; font-family: var(--mono); font-size: 0.8rem; }
+        .ambertext { background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+
+        /* film grain — the paper's tooth, over everything */
+        body::after { content: ''; position: fixed; inset: 0; z-index: 240; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+        .lp-skip { position: fixed; top: -60px; left: 16px; z-index: 300; background: var(--sea); color: #fdfaf2; font-weight: 700; padding: 10px 18px; border-radius: 8px; transition: top 0.2s; font-family: var(--mono); font-size: 0.8rem; }
         .lp-skip:focus-visible { top: 12px; }
 
         /* strata ribbon — the brand's geological cross-section */
-        .strata { height: 10px; background: var(--strata); }
+        .strata { height: 10px; background: var(--strata); position: relative; z-index: 2; }
 
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 0;
-            background: rgba(247, 241, 229, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-        .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+        /* type primitives — PNEUMA */
+        .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--magma-deep); }
+        .fh { font-family: var(--disp); line-height: 1.02; letter-spacing: -0.005em; font-size: var(--text-h1); font-weight: 600; }
+        .fh .tail { display: block; font-family: var(--disp); font-style: italic; font-weight: 400; color: var(--dim); }
+        .stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: clamp(1.8rem, 3.1vw, 2.5rem); line-height: 1; color: var(--magma-deep); font-variant-numeric: tabular-nums; }
+        .stat > span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+        .stat b span, .s2-stat b span, .s4-stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
+
+        /* badges */
+        .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--hairline); color: var(--dim); }
+        .badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .badge.signal { color: var(--magma-deep); border-color: rgba(168, 80, 14, 0.45); }
+        .badge.sea { color: var(--sea-deep); border-color: rgba(52, 103, 127, 0.45); }
+        .on-dusk .badge, footer .badge { border-color: var(--hairline-d); color: var(--dim-d); }
+        .on-dusk .badge.signal, footer .badge.signal { color: var(--amber); border-color: rgba(224, 168, 82, 0.45); }
+
+        /* buttons — sharp, engineered, mono labels */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--mono); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; min-height: 48px; padding: 0 24px; border-radius: 6px; border: 1px solid transparent; transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease, background var(--dur-fast) ease; }
+        .btn:hover { transform: translateY(-1px); }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary { background: var(--sea); color: #fdfaf2; }
+        .btn-primary:hover { background: var(--sea-deep); }
+        .sc-dusk .btn-primary, .on-dusk .btn-primary { background: var(--amber); color: #1c150a; }
+        .sc-dusk .btn-primary:hover, .on-dusk .btn-primary:hover { background: var(--amber-hot); }
+        .btn-primary.armed { box-shadow: var(--glow-md); }
+        .btn-ghost { border-color: var(--hairline); color: var(--ink); }
+        .btn-ghost:hover { border-color: var(--sea); color: var(--sea-deep); }
+        .sc-dusk .btn-ghost, .on-dusk .btn-ghost { border-color: var(--hairline-d); color: var(--ink-d); }
+        .sc-dusk .btn-ghost:hover, .on-dusk .btn-ghost:hover { border-color: var(--amber); color: var(--amber-hot); }
+
+        /* nav — fixed, hairline, paper glass (reads over every scene) */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h);
+            background: rgba(247, 241, 229, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
+        .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; height: 100%; }
         .brand { display: flex; flex-direction: column; line-height: 1; }
-        .brand b { font-family: var(--disp); font-weight: 600; font-size: 1.5rem; letter-spacing: 0.01em; color: var(--ink); }
-        .brand span { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sea); margin-top: 4px; }
-        .nav-links { display: flex; gap: clamp(14px, 3vw, 30px); align-items: center; }
-        .nav-links a { font-family: var(--mono); font-size: 0.78rem; color: var(--dim); padding: 8px 2px; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--magma); }
-        .nav-links a.btn-sea, .nav-links a.btn-sea:hover { color: #fdfaf2; }
-        .btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--mono); font-weight: 700; font-size: 0.8rem; padding: 12px 22px; border-radius: 999px; border: 1px solid transparent; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s; }
-        .btn-sea { background: var(--sea); color: #fdfaf2; box-shadow: 0 8px 24px rgba(52, 103, 127, 0.25); }
-        .btn-sea:hover { transform: translateY(-2px); background: var(--sea-deep); box-shadow: 0 14px 32px rgba(52, 103, 127, 0.3); }
-        .btn-line { border-color: rgba(52, 103, 127, 0.4); color: var(--sea-deep); }
-        .btn-line:hover { background: rgba(111, 163, 191, 0.12); }
+        .brand b { font-family: var(--disp); font-weight: 600; font-size: 1.4rem; letter-spacing: 0.01em; color: var(--ink); }
+        .brand span { font-family: var(--mono); font-size: 0.56rem; letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--sea-deep); margin-top: 4px; }
+        .nav-links { display: flex; gap: clamp(12px, 2.6vw, 28px); align-items: center; }
+        .nav-links a:not(.btn) { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); padding: 8px 2px; transition: color var(--dur-fast); }
+        .nav-links a:not(.btn):hover { color: var(--magma-deep); }
+        .nav-links .btn { min-height: 40px; padding: 0 18px; font-size: 0.68rem; }
         @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
 
-        /* hero */
-        .hero { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1fr 0.95fr; align-items: center; gap: 10px; position: relative; overflow: hidden; padding-top: 84px; }
-        .hero-copy { position: relative; z-index: 3; padding-left: clamp(20px, 5vw, 56px); padding-bottom: 84px; max-width: 620px; }
-        .hero h1 { font-family: var(--disp); font-weight: 500; font-size: clamp(2.9rem, 6.6vw, 5.4rem); line-height: 1.02; margin: 20px 0 22px; text-wrap: balance; }
-        .hero h1 em { font-style: italic; color: var(--sea-deep); }
-        .hero-sub { color: var(--dim); font-size: clamp(0.98rem, 1.3vw, 1.08rem); max-width: 47ch; }
-        .hero-sub b { color: var(--ink); font-weight: 700; }
-        .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
-        .hero-stats { display: flex; flex-wrap: wrap; gap: clamp(18px, 3.5vw, 44px); margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
-        .hstat b { display: block; font-family: var(--disp); font-style: italic; font-weight: 600; font-size: 1.75rem; color: var(--magma); font-variant-numeric: tabular-nums; }
-        .hstat span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
-        .hero-3d { position: relative; height: min(86vh, 780px); z-index: 2; }
-        .hero-3d::after { content: ''; position: absolute; left: 53%; bottom: 9.5%; width: 40%; height: 26px; transform: translateX(-50%);
-            background: radial-gradient(50% 50% at 50% 50%, rgba(43, 33, 24, 0.16), transparent 72%); pointer-events: none; }
-        #book3d { position: relative; z-index: 1; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
+        /* ============================================================
+           THE STAGE — 460vh scroll journey, pinned 100svh scenes
+           over the fixed transparent 3D book stack
+           ============================================================ */
+        .stage { position: relative; height: 460vh; z-index: 1; }
+        .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: clip; }
+        .scene-bg { position: absolute; inset: 0; z-index: 0; background: var(--s1); transition: background 1.2s var(--ease-signature); }
+        body[data-scene="2"] .scene-bg { background: var(--s2); }
+        body[data-scene="3"] .scene-bg { background: var(--s3); }
+        body[data-scene="4"] .scene-bg { background: var(--s4); }
+        .duskglow { position: absolute; inset: 48% -10% -10% -10%; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 1.2s var(--ease-signature);
+            background: radial-gradient(46% 55% at 50% 72%, rgba(224, 168, 82, 0.14), rgba(46, 92, 62, 0.07) 55%, transparent 78%); }
+        body[data-scene="4"] .duskglow { opacity: 1; }
+        #book3d { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; }
         #book3d:active { cursor: grabbing; }
-        .drag-hint { position: absolute; right: clamp(20px, 4vw, 54px); bottom: 24px; z-index: 4; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); transition: opacity 0.6s; }
-        .scroll-cue { position: absolute; left: clamp(20px, 5vw, 56px); bottom: 24px; z-index: 4; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
-        .scroll-cue i { width: 1px; height: 32px; background: linear-gradient(180deg, var(--sea), transparent); animation: cueDrop 2s infinite; }
-        @keyframes cueDrop { 0% { transform: scaleY(0); transform-origin: top; } 55% { transform: scaleY(1); } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+        /* scene UI shells */
+        .sc { position: absolute; inset: 0; z-index: 10; pointer-events: none; display: none; padding: calc(var(--nav-h) + 2vh) 0 5vh; }
+        .sc.is-active, .sc.was-active { display: block; }
+        .sc a, .sc button { pointer-events: auto; }
+        .sc .wrap { height: 100%; position: relative; }
+        .sc .reveal { opacity: 0; transform: translateY(24px); transition: var(--transition-ui); }
+        .sc.is-active .reveal { opacity: 1; transform: translateY(0); }
+        .sc .reveal:nth-child(2), .sc .reveal.d2 { transition-delay: 0.08s; }
+        .sc .reveal.d3 { transition-delay: 0.16s; }
+
+        /* S1 — hero: copy left, books right */
+        .s1-copy { position: absolute; left: 0; top: 50%; transform: translateY(-50%); max-width: 620px; text-shadow: 0 1px 14px rgba(247, 241, 229, 0.8); }
+        .s1-copy h1 { font-family: var(--disp); font-weight: 600; font-size: var(--text-hero); line-height: 0.98; letter-spacing: -0.005em; margin: 20px 0 22px; }
+        .s1-copy h1 .tail { display: block; font-family: var(--disp); font-style: italic; font-weight: 400; color: var(--sea-deep); }
+        .s1-sub { color: var(--dim); font-size: clamp(0.95rem, 1.25vw, 1.06rem); max-width: 46ch; }
+        .s1-sub b { color: var(--ink); font-weight: 700; }
+        .s1-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+        .scroll-cue { position: absolute; left: 50%; bottom: 3.5vh; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--dim); }
+        .scroll-cue s { text-decoration: none; display: block; animation: cueBounce 1.8s var(--ease-bounce) infinite; color: var(--magma-deep); font-size: 1rem; }
+        @keyframes cueBounce { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(8px); opacity: 1; } }
+        .drag-hint { position: absolute; right: 0; bottom: 3.5vh; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); transition: opacity 0.6s; }
+
+        /* S2 — story: books own the left flank, copy on the right */
+        .s2-copy { position: absolute; right: 0; top: 50%; transform: translateY(-50%); max-width: 560px; text-shadow: 0 1px 14px rgba(239, 231, 214, 0.8); }
+        .s2-copy h2 { margin: 14px 0 18px; }
+        .s2-copy p { color: var(--dim); max-width: 56ch; margin-bottom: 14px; font-size: 0.94rem; }
+        .s2-copy p b { color: var(--ink); }
+        .pull { border-left: 2px solid var(--magma-deep); padding: 4px 0 4px 20px; margin-top: 22px; }
+        .pull p { font-family: var(--disp); font-style: italic; font-size: 1.25rem; color: var(--ink); margin-bottom: 8px; line-height: 1.4; }
+        .pull span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--magma-deep); }
+        .s2-stat { position: absolute; left: 0; bottom: 5vh; text-shadow: 0 1px 14px rgba(239, 231, 214, 0.8); }
+        .s2-stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: clamp(2.4rem, 4.8vw, 4rem); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+        .s2-stat .u { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--magma-deep); display: block; margin-top: 10px; }
+        .s2-stat .cap { display: block; margin-top: 10px; color: var(--dim); font-size: 0.8rem; max-width: 28ch; }
+
+        /* S3 — inside the shop: leader-line specs flank the books */
+        .spec { position: absolute; max-width: 250px; text-shadow: 0 1px 14px rgba(231, 220, 196, 0.85); }
+        .spec .lbl { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--magma-deep); display: block; margin-bottom: 6px; }
+        .spec .val { font-family: var(--serif); font-size: 0.92rem; color: var(--ink); line-height: 1.45; }
+        .spec .rule { position: absolute; top: 8px; height: 1px; background: linear-gradient(90deg, var(--magma-deep), rgba(168, 80, 14, 0.1)); width: clamp(40px, 6vw, 120px); }
+        .spec .rule::after { content: ''; position: absolute; right: -3px; top: -2.5px; width: 6px; height: 6px; border-radius: 50%; background: var(--magma-deep); }
+        .spec.left { text-align: right; }
+        .spec.left .rule { left: calc(100% + 14px); }
+        .spec.right .rule { right: calc(100% + 14px); transform: scaleX(-1); }
+        .spec.p1 { left: 0; top: 24%; }
+        .spec.p2 { left: 0; top: 56%; }
+        .spec.p3 { right: 0; top: 30%; }
+        .spec.p4 { right: 0; top: 62%; }
+        .s3-head { position: absolute; top: 2vh; left: 0; }
+        .s3-stats { position: absolute; left: 0; right: 0; bottom: 2vh; display: flex; justify-content: center; gap: clamp(24px, 6vw, 90px); flex-wrap: wrap; border-top: 1px solid var(--hairline); padding-top: 22px; }
+
+        /* S4 — dusk ignition: fireflies out, ink flips light */
+        .sc-dusk { color: var(--ink-d); }
+        .sc-dusk .eyebrow { color: var(--amber); }
+        .s4-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; padding: 2vh 0 4vh; }
+        .s4-head { text-shadow: 0 2px 28px rgba(6, 12, 9, 0.65); }
+        .s4-head h2 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); }
+        .s4-head h2 .tail { color: var(--ink-d); }
+        .s4-head h2 .tail em { font-style: italic; background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        /* the one glass moment — PNEUMA frosted panel over the fireflies */
+        .s4-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px;
+            background: rgba(13, 22, 17, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--hairline-d); border-radius: var(--radius-md); padding: 20px 30px; }
+        .s4-stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: var(--text-display); line-height: 1; color: var(--amber); text-shadow: var(--glow-text); font-variant-numeric: tabular-nums; }
+        .s4-stat > span { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim-d); display: block; margin-top: 10px; }
+        .s4-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; padding-top: 92px; min-height: 0; }
-            .hero-3d { height: 48vh; min-height: 320px; order: -1; }
-            .hero-copy { padding: 0 clamp(20px, 5vw, 56px) 60px; }
+            /* paper mist — scene-matched veil so bottom-anchored copy stays legible
+               over the tall book stack on small screens */
+            .sc[data-sc="1"]::before, .sc[data-sc="2"]::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 74%; pointer-events: none;
+                background: linear-gradient(180deg, rgba(247, 241, 229, 0) 0%, rgba(247, 241, 229, 0.85) 30%, rgba(247, 241, 229, 0.94) 100%); }
+            .sc[data-sc="2"]::before { background: linear-gradient(180deg, rgba(239, 231, 214, 0) 0%, rgba(239, 231, 214, 0.85) 30%, rgba(239, 231, 214, 0.94) 100%); }
+            .s1-copy { top: auto; bottom: 6vh; transform: none; max-width: none; right: 0; }
+            .s1-copy h1 { font-size: clamp(2.1rem, 9.5vw, 2.9rem); margin: 14px 0 16px; }
+            .s1-sub { max-width: 60ch; font-size: 0.88rem; }
+            .s1-ctas { margin-top: 20px; }
             .scroll-cue { display: none; }
+            .drag-hint { display: none; }
+            .s2-copy { position: absolute; right: 0; left: 0; top: auto; bottom: 4vh; transform: none; max-width: none; padding: 0 clamp(20px, 5vw, 56px); }
+            .s2-copy p { font-size: 0.84rem; }
+            .s2-copy .pull { display: none; } /* the quote lives on in the press marquee */
+            .s2-stat { display: none; }
+            .spec { position: static; max-width: none; text-align: left !important; }
+            .spec .rule { display: none; }
+            .s3-specs { position: absolute; left: 0; right: 0; top: 12vh; display: grid; grid-template-columns: 1fr 1fr; gap: 18px clamp(16px, 4vw, 40px); }
+            .s3-stats { gap: 18px 26px; justify-content: flex-start; }
+            .s4-head h2 { font-size: clamp(1.9rem, 8.4vw, 2.6rem); }
         }
+        @media (min-width: 901px) { .s3-specs { position: static; } }
 
-        section { padding: clamp(76px, 11vw, 140px) 0; position: relative; }
-        .sec-head { max-width: 720px; margin-bottom: clamp(36px, 6vw, 60px); }
-        .sec-head h2 { font-family: var(--disp); font-weight: 500; font-size: clamp(2.1rem, 4.6vw, 3.5rem); line-height: 1.05; margin: 14px 0 16px; text-wrap: balance; }
-        .sec-head h2 em { font-style: italic; color: var(--sea-deep); }
-        .sec-head p { color: var(--dim); font-size: 1rem; }
+        /* ============================================================
+           CONTENT SECTIONS (normal flow, after the journey)
+           ============================================================ */
+        section { position: relative; z-index: 2; padding: clamp(76px, 10vw, 130px) 0; }
+        .sec-head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 56px); }
+        .sec-head h2 { margin: 14px 0 16px; }
+        .sec-head p { color: var(--dim); }
+        .reveal { opacity: 0; transform: translateY(24px); transition: var(--transition-ui); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
 
-        /* story */
-        .story-band { position: relative; background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
-        .story-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(30px, 6vw, 80px); align-items: start; position: relative; z-index: 2; }
-        .story-grid .lede { font-family: var(--disp); font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 500; line-height: 1.3; }
-        .story-grid .lede em { font-style: italic; color: var(--magma); }
-        .story-text p { color: var(--dim); margin-bottom: 16px; font-size: 0.98rem; }
-        .story-text p b { color: var(--ink); }
-        .kinetic { position: absolute; top: 8%; left: 0; font-family: var(--disp); font-style: italic; font-weight: 600; font-size: clamp(5rem, 15vw, 12rem); white-space: nowrap; color: rgba(52, 103, 127, 0.07); user-select: none; pointer-events: none; z-index: 1; }
-        .founder-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 30px; }
-        .founder { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
-        .founder b { font-family: var(--serif); font-size: 0.95rem; }
-        .founder span { display: block; font-size: 0.82rem; color: var(--dim); margin-top: 4px; }
-        @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; } .founder-cards { grid-template-columns: 1fr; } }
-
-        /* quote strip */
-        .quotes { padding: 26px 0; border-bottom: 1px solid var(--line); background: var(--card); overflow: hidden; }
-        .q-track { display: flex; gap: 56px; width: max-content; animation: qScroll 46s linear infinite; }
-        .q-track:hover { animation-play-state: paused; }
-        @keyframes qScroll { to { transform: translateX(-50%); } }
-        .pq { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
-        .pq q { font-family: var(--disp); font-style: italic; font-size: 1.12rem; color: var(--ink); quotes: '\201C' '\201D'; }
-        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sea); }
-        .pq::after { content: '❧'; color: var(--magma); margin-left: 40px; }
-
-        /* shelves */
-        .shelf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
-        .shelf { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.3s; }
-        .shelf::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--strata); opacity: 0; transition: opacity 0.3s; }
-        .shelf:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(74, 58, 50, 0.12); border-color: rgba(52, 103, 127, 0.35); }
-        .shelf:hover::before { opacity: 1; }
-        .shelf .no { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; color: var(--sea); }
-        .shelf h3 { font-family: var(--disp); font-weight: 600; font-size: 1.4rem; margin: 10px 0 8px; }
+        /* shelves — the paper reading room */
+        #shelves { background: var(--paper); }
+        .shelf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .shelf { background: var(--card); border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: 24px 22px; box-shadow: var(--shadow-sm); transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease, border-color var(--dur-fast) ease; }
+        .shelf:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); border-color: rgba(52, 103, 127, 0.4); }
+        .shelf .no { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sea-deep); }
+        .shelf h3 { font-family: var(--disp); font-weight: 600; font-size: 1.45rem; margin: 10px 0 6px; line-height: 1.12; }
         .shelf p { font-size: 0.88rem; color: var(--dim); }
-        .book-list { margin-top: 44px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: clamp(24px, 4vw, 38px); }
-        .book-list h3 { font-family: var(--disp); font-weight: 600; font-size: 1.6rem; margin-bottom: 6px; }
-        .book-list .sub { font-size: 0.88rem; color: var(--dim); margin-bottom: 20px; }
-        .book-row { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 13px 0; border-bottom: 1px dashed var(--line); }
+        .book-list { margin-top: clamp(36px, 5vw, 56px); background: var(--card); border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: clamp(24px, 4vw, 38px); box-shadow: var(--shadow-sm); }
+        .book-list h3 { font-family: var(--disp); font-weight: 600; font-size: 1.7rem; margin-bottom: 4px; }
+        .book-list .sub { font-size: 0.86rem; color: var(--dim); margin-bottom: 18px; }
+        .book-row { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--hairline); }
         .book-row:last-child { border-bottom: none; }
-        .book-row .t { font-size: 0.96rem; }
-        .book-row .t small { display: block; color: var(--dim); font-size: 0.8rem; margin-top: 2px; }
-        .book-row b { font-family: var(--mono); font-weight: 400; color: var(--magma); white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .book-row .t { font-size: 0.94rem; }
+        .book-row .t small { display: block; color: var(--dim); font-size: 0.78rem; margin-top: 2px; }
+        .book-row b { font-family: var(--mono); font-weight: 700; font-size: 0.86rem; color: var(--magma-deep); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-        /* cafe */
-        .cafe { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-        .cafe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-        .puff { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
-        .puff:hover { transform: translateY(-5px) rotate(-0.5deg); box-shadow: 0 18px 36px rgba(74, 58, 50, 0.12); }
-        .puff .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--magma); }
-        .puff h3 { font-family: var(--disp); font-weight: 600; font-size: 1.45rem; margin: 10px 0 8px; }
+        /* press marquee — card band */
+        .press { background: var(--card); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 26px 0; overflow: hidden; position: relative; z-index: 2; }
+        .press-track { display: flex; gap: 56px; width: max-content; animation: marq 46s linear infinite; }
+        .press-track:hover { animation-play-state: paused; }
+        .pq { display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
+        .pq q { font-family: var(--disp); font-style: italic; font-size: 1.14rem; color: var(--ink); quotes: '\201C' '\201D'; }
+        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sea-deep); }
+        .pq::after { content: '❧'; color: var(--magma-deep); margin-left: 40px; }
+        @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* café — deeper paper */
+        #cafe { background: var(--paper-2); }
+        .cafe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .puff { background: var(--card); border: 1px solid var(--hairline); border-radius: var(--radius-md); padding: 26px 24px; box-shadow: var(--shadow-sm); transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease; }
+        .puff:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .puff .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--magma-deep); }
+        .puff h3 { font-family: var(--disp); font-weight: 600; font-size: 1.5rem; margin: 10px 0 6px; }
         .puff p { font-size: 0.9rem; color: var(--dim); }
-        .cafe-extra { margin-top: 24px; color: var(--dim); font-size: 0.92rem; max-width: 68ch; }
+        .cafe-extra { margin-top: 26px; color: var(--dim); font-size: 0.92rem; max-width: 68ch; border-left: 2px solid var(--magma-deep); padding-left: 16px; }
         .cafe-extra b { color: var(--ink); }
 
-        /* community */
-        .comm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-        .comm { border: 1px solid var(--line); border-left: 4px solid var(--sea); background: var(--card); border-radius: 12px; padding: 24px; }
-        .comm h3 { font-family: var(--disp); font-weight: 600; font-size: 1.3rem; margin-bottom: 8px; }
+        /* community — paper */
+        #community { background: var(--paper); }
+        .comm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .comm { border: 1px solid var(--hairline); border-left: 3px solid var(--sea); background: var(--card); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); }
+        .comm h3 { font-family: var(--disp); font-weight: 600; font-size: 1.4rem; margin-bottom: 8px; }
         .comm p { font-size: 0.9rem; color: var(--dim); }
         .comm.ev { border-left-color: var(--magma); }
         .comm.gr { border-left-color: var(--leaf); }
 
-        /* visit */
-        .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 60px); align-items: center; }
-        .visit-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: clamp(26px, 4vw, 40px); box-shadow: 0 24px 50px rgba(74, 58, 50, 0.08); }
-        .visit-card dl { display: grid; gap: 18px; }
-        .visit-card dt { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sea); margin-bottom: 4px; }
-        .visit-card dd { font-size: 0.98rem; }
-        .visit-card dd small { display: block; color: var(--dim); font-size: 0.8rem; margin-top: 3px; }
-        .visit-cta h2 { font-family: var(--disp); font-weight: 500; font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.04; margin: 12px 0 18px; }
-        .visit-cta h2 em { font-style: italic; color: var(--sea-deep); }
-        .visit-cta p { color: var(--dim); max-width: 44ch; }
+        /* visit — the dusk finale */
+        #visit { background: var(--dusk); color: var(--ink-d); }
+        .on-dusk .eyebrow { color: var(--amber); }
+        .on-dusk .sec-head p { color: var(--dim-d); }
+        .visit-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+        .visit-cta h2 { margin: 14px 0 16px; }
+        .visit-cta h2 .tail { color: var(--dim-d); }
+        .visit-cta h2 .tail em { font-style: italic; background: var(--gg); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .visit-cta p { color: var(--dim-d); max-width: 46ch; }
         .visit-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
-        @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; } }
+        .visit-card { background: var(--dusk-card); border: 1px solid var(--hairline-d); border-radius: var(--radius-md); padding: 30px; }
+        .visit-card dl div { padding: 14px 0; border-bottom: 1px solid var(--hairline-d); }
+        .visit-card dl div:last-child { border-bottom: 0; }
+        .visit-card dt { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; }
+        .visit-card dd { font-size: 0.95rem; color: var(--ink-d); }
+        .visit-card dd small { display: block; color: var(--faint-d); font-size: 0.78rem; margin-top: 4px; }
+        .visit-card dd a { color: var(--amber-hot); }
+        @media (max-width: 900px) { .visit-grid { grid-template-columns: 1fr; } }
 
-        footer { border-top: 1px solid var(--line); padding: 32px 0 46px; background: var(--paper-2); }
-        .foot-in { display: flex; flex-wrap: wrap; gap: 16px 30px; justify-content: space-between; align-items: center; }
-        .foot-in p { font-size: 0.78rem; color: var(--dim); max-width: 62ch; }
-        .foot-in p b { color: var(--ink); }
-        .demo-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: #fdfaf2; background: var(--sea); font-weight: 700; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+        footer { background: var(--dusk-2); border-top: 1px solid var(--hairline-d); padding: 40px 0 56px; position: relative; z-index: 2; color: var(--ink-d); }
+        .foot-in { display: flex; flex-direction: column; gap: 14px; }
+        .demo-tag { align-self: flex-start; }
+        footer p { color: var(--faint-d); font-size: 0.82rem; max-width: 74ch; }
+        footer p b { color: var(--dim-d); }
 
-        #toTop { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(52, 103, 127, 0.4); background: rgba(255, 253, 247, 0.92); color: var(--sea-deep); font-size: 1.1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.25s var(--ease); }
+        #toTop { position: fixed; right: 18px; bottom: 18px; z-index: 210; width: 46px; height: 46px; border-radius: 6px; border: 1px solid var(--hairline); background: rgba(247, 241, 229, 0.82); color: var(--sea-deep); font-size: 1.1rem; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
         #toTop.show { opacity: 1; pointer-events: auto; }
-        #toTop:hover { transform: translateY(-3px); }
 
-        .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-        .reveal.in { opacity: 1; transform: none; }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            .reveal { opacity: 1; transform: none; transition: none; }
-            .q-track { animation: none; }
-            .scroll-cue i { animation: none; }
+            .reveal, .sc .reveal { opacity: 1; transform: none; transition: none; }
+            .press-track { animation: none; }
+            .scroll-cue s { animation: none; }
+            .scene-bg, .duskglow { transition: none; }
             * { transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
-<body>
+<body data-scene="1">
     <a class="lp-skip" href="#lp-main">Skip to content</a>
-    <div class="strata" aria-hidden="true"></div>
     <nav aria-label="Main">
         <div class="wrap nav-in">
             <a class="brand" href="#top" aria-label="Sunda Shelves — home">
                 <b>sunda shelves</b><span>nature · culture · travel</span>
             </a>
             <div class="nav-links">
-                <a href="#story">Our Story</a>
+                <a href="#" data-scene-link="0.3">Story</a>
                 <a href="#shelves">The Shelves</a>
                 <a href="#cafe">Café</a>
                 <a href="#visit">Visit</a>
-                <a class="btn btn-sea" href="#visit">Find the shop</a>
+                <a class="btn btn-primary" href="#visit">Find the shop</a>
             </div>
         </div>
     </nav>
 
-    <main id="lp-main">
-        <header class="hero" id="top">
-            <div class="hero-copy">
-                <span class="eyebrow">Damansara Kim, Petaling Jaya · Est. 2023</span>
-                <h1>A bookshop for the <em>wild at heart.</em></h1>
-                <p class="hero-sub">Peninsular Malaysia's only nature-themed bookstore — shelves of <b>nature, culture &amp; travel in Southeast Asia</b>, a café with legendary curry puffs, and a community of people who love the living world.</p>
-                <div class="hero-ctas">
-                    <a class="btn btn-sea" href="#shelves">Browse the shelves</a>
-                    <a class="btn btn-line" href="#cafe">Visit the café</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hstat"><b><span data-count="4.9" data-dec="1">0</span>★</b><span>Google rating</span></div>
-                    <div class="hstat"><b>№ 1</b><span>Nature bookshop in P. Malaysia</span></div>
-                    <div class="hstat"><b><span data-count="2023">0</span></b><span>Opened 24 June</span></div>
-                </div>
-            </div>
-            <div class="hero-3d">
-                <canvas id="book3d" aria-label="Interactive 3D floating book stack with a growing sprout — drag to spin"></canvas>
-            </div>
-            <span class="drag-hint" id="dragHint">⟳ drag the books to spin</span>
-            <div class="scroll-cue" aria-hidden="true"><i></i> Turn the page</div>
-        </header>
+    <!-- ============ THE JOURNEY — 4 pinned scenes over the live book stack ============ -->
+    <div class="stage" id="top">
+        <div class="pin">
+            <div class="scene-bg" aria-hidden="true"></div>
+            <div class="duskglow" aria-hidden="true"></div>
+            <canvas id="book3d" aria-label="Interactive 3D floating book stack with a growing sprout and fireflies — drag to spin"></canvas>
 
-        <div class="story-band" id="story">
-            <div class="kinetic" data-speed="0.1" aria-hidden="true">the Sunda Shelf · the Sunda Shelf</div>
-            <section style="padding-top: clamp(70px, 10vw, 120px);">
-                <div class="wrap story-grid">
-                    <div class="reveal">
-                        <span class="eyebrow">// Our Story</span>
-                        <p class="lede" style="margin-top: 14px;">Named after the <em>Sunda Shelf</em> — the drowned continental shelf beneath our seas, one of the richest cradles of life on Earth.</p>
-                        <div class="founder-cards">
-                            <div class="founder reveal"><b>Surin Suksuwan</b><span>Co-founder · conservationist, 25+ years in biodiversity, formerly WWF-Malaysia</span></div>
-                            <div class="founder reveal"><b>Dylan Jefri Ong</b><span>Co-founder · biodiversity consultant; met Surin on the Perlis State Park project, 2000</span></div>
+            <!-- S1 · hero -->
+            <div class="sc is-active" data-sc="1">
+                <div class="wrap">
+                    <div class="s1-copy">
+                        <span class="eyebrow reveal">// Damansara Kim, Petaling Jaya · Est. 2023</span>
+                        <h1 class="reveal d2">A bookshop<span class="tail">for the wild at heart.</span></h1>
+                        <p class="s1-sub reveal d3">Peninsular Malaysia's only nature-themed bookstore — shelves of <b>nature, culture &amp; travel in Southeast Asia</b>, a café with legendary curry puffs, and a community of people who love the living world.</p>
+                        <div class="s1-ctas reveal d3">
+                            <a class="btn btn-primary" href="#shelves">Browse the shelves</a>
+                            <a class="btn btn-ghost" href="#cafe">Visit the café</a>
                         </div>
                     </div>
-                    <div class="story-text reveal">
-                        <p>Two friends met in a state park in <b>2000</b>. Each quietly dreamed of a bookshop full of nature books — and in 2022, with their own savings, they decided to build it together.</p>
-                        <p>The doors opened on <b>24 June 2023</b>, a bijou first-floor walk-up above the iconic On Line Pub. Inside: blond-pine shelves against gallery-white walls, rare Malaysiana in an armoire by the counter, a children's corner, and a café run by the family.</p>
-                        <p>Day to day, the shop is kept by <b>Jennifer Neoh Tan</b>, while chef <b>Sumalee Suksuwan</b> fills it with the smell of hand-rolled curry puffs. More than a shop — it's a gathering place for conservationists, NGOs and the nature-curious.</p>
+                    <div class="scroll-cue" aria-hidden="true">Turn the page<s>↓</s></div>
+                    <span class="drag-hint" id="dragHint">⟳ drag the books to spin</span>
+                </div>
+            </div>
+
+            <!-- S2 · story -->
+            <div class="sc" data-sc="2">
+                <div class="wrap">
+                    <div class="s2-copy">
+                        <span class="eyebrow reveal">// Our Story</span>
+                        <h2 class="fh reveal d2">From a state park<span class="tail">to a shelf of their own.</span></h2>
+                        <p class="reveal d3">Conservationist <b>Surin Suksuwan</b> and biodiversity consultant <b>Dylan Jefri Ong</b> met on the Perlis State Park project in <b>2000</b> — each quietly dreaming of a bookshop full of nature books. In 2022, with their own savings, they decided to build it together.</p>
+                        <p class="reveal d3">They named it after the <b>Sunda Shelf</b> — the drowned continental shelf beneath our seas, one of the richest cradles of life on Earth. Day to day the shop is kept by <b>Jennifer Neoh Tan</b>, while chef Sumalee Suksuwan fills it with the smell of hand-rolled curry puffs.</p>
+                        <div class="pull reveal d3">
+                            <p>"We hope these books can nurture a sense of wonder."</p>
+                            <span>— Surin Suksuwan · BERNAMA</span>
+                        </div>
+                    </div>
+                    <div class="s2-stat reveal d2">
+                        <b>2023</b>
+                        <span class="u">The doors opened</span>
+                        <span class="cap">24 June — one floor up, above the On Line Pub.</span>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
 
-        <div class="quotes" aria-label="Press mentions">
-            <div class="q-track">
-                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
-                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
-                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
-                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
-                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
-                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
-                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
-                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
+            <!-- S3 · inside the shop -->
+            <div class="sc" data-sc="3">
+                <div class="wrap">
+                    <div class="s3-head reveal">
+                        <span class="eyebrow">// Inside the shop</span>
+                    </div>
+                    <div class="s3-specs">
+                        <div class="spec left p1 reveal"><span class="lbl">Nature · Culture · Travel</span><span class="val">The shelves of Southeast Asia</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec left p2 reveal d2"><span class="lbl">≈90% in English</span><span class="val">New, preloved and rare</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec right p3 reveal d2"><span class="lbl">Rare Malaysiana</span><span class="val">In an armoire by the counter</span><i class="rule" aria-hidden="true"></i></div>
+                        <div class="spec right p4 reveal d3"><span class="lbl">Children's corner</span><span class="val">Picture books that grow little naturalists</span><i class="rule" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="s3-stats reveal d3">
+                        <div class="stat"><b><span data-count="4.9" data-dec="1">0</span>★</b><span>Google rating</span></div>
+                        <div class="stat"><b>№1</b><span>Nature bookshop in P. Malaysia</span></div>
+                        <div class="stat"><b><span data-count="6">0</span></b><span>Shelf worlds</span></div>
+                        <div class="stat"><b>2023</b><span>Est. 24 June</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S4 · dusk ignition -->
+            <div class="sc sc-dusk" data-sc="4">
+                <div class="wrap">
+                    <div class="s4-center">
+                        <div class="s4-head reveal">
+                            <span class="eyebrow">// After dark, the fireflies</span>
+                            <h2 class="fh">Where the wild<span class="tail">things <em>read.</em></span></h2>
+                        </div>
+                        <div class="s4-bottom">
+                            <div class="s4-stat reveal d2">
+                                <b><span data-count="4.9" data-dec="1">0</span>★</b>
+                                <span>Google rating · Damansara Kim</span>
+                            </div>
+                            <div class="s4-ctas reveal d3">
+                                <a class="btn btn-primary armed" href="#shelves">Browse the shelves</a>
+                                <a class="btn btn-ghost" href="#cafe">Visit the café</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
+    <main id="lp-main">
+        <!-- ============ SHELVES — the paper reading room ============ -->
         <section id="shelves">
-            <div class="wrap">
+            <div class="wrap" id="menu">
                 <div class="sec-head reveal">
                     <span class="eyebrow">// The Shelves</span>
-                    <h2>Six worlds, <em>one shelf.</em></h2>
+                    <h2 class="fh">Six worlds,<span class="tail">one shelf.</span></h2>
                     <p>New, preloved and rare books — about 90% in English — plus children's picture books and gentle fiction for the wild at heart.</p>
                 </div>
                 <div class="shelf-grid">
@@ -285,29 +468,42 @@
             </div>
         </section>
 
-        <div class="cafe" id="cafe">
-            <section>
-                <div class="wrap">
-                    <div class="sec-head reveal">
-                        <span class="eyebrow">// The Café · by Maleepap</span>
-                        <h2>Books pair well with <em>curry puffs.</em></h2>
-                        <p>Chef Sumalee Suksuwan hand-rolls her famous karipap pusing in-house — reviewers call them "killer curry puffs."</p>
-                    </div>
-                    <div class="cafe-grid">
-                        <article class="puff reveal"><span class="tag">Karipap Pusing · 01</span><h3>The Original</h3><p>Butter-crust spiral, chicken, potato &amp; egg — the one that made the name.</p></article>
-                        <article class="puff reveal"><span class="tag">Karipap Pusing · 02</span><h3>Siamese Rendang</h3><p>Slow, rich Siamese-style chicken rendang in a crisp spiral shell.</p></article>
-                        <article class="puff reveal"><span class="tag">Karipap Pusing · 03</span><h3>Sardine</h3><p>The old-school classic, done properly.</p></article>
-                    </div>
-                    <p class="cafe-extra reveal">Alongside: <b>nasi lemak &amp; bihun bungkus</b>, Thai red curry, <b>Vietnamese coffee</b>, Thai milk tea, pandan tea — and old-school desserts like soya longan jelly and snow fungus soup. Come for a book, stay for lunch.</p>
-                </div>
-            </section>
+        <div class="press" aria-label="Press mentions">
+            <div class="press-track">
+                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
+                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
+                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
+                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
+                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
+                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
+                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
+                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
+            </div>
         </div>
 
+        <!-- ============ CAFÉ — deeper paper ============ -->
+        <section id="cafe">
+            <div class="wrap">
+                <div class="sec-head reveal">
+                    <span class="eyebrow">// The Café · by Maleepap</span>
+                    <h2 class="fh">Books pair well with<span class="tail">curry puffs.</span></h2>
+                    <p>Chef Sumalee Suksuwan hand-rolls her famous karipap pusing in-house — reviewers call them "killer curry puffs."</p>
+                </div>
+                <div class="cafe-grid">
+                    <article class="puff reveal"><span class="tag">Karipap Pusing · 01</span><h3>The Original</h3><p>Butter-crust spiral, chicken, potato &amp; egg — the one that made the name.</p></article>
+                    <article class="puff reveal"><span class="tag">Karipap Pusing · 02</span><h3>Siamese Rendang</h3><p>Slow, rich Siamese-style chicken rendang in a crisp spiral shell.</p></article>
+                    <article class="puff reveal"><span class="tag">Karipap Pusing · 03</span><h3>Sardine</h3><p>The old-school classic, done properly.</p></article>
+                </div>
+                <p class="cafe-extra reveal">Alongside: <b>nasi lemak &amp; bihun bungkus</b>, Thai red curry, <b>Vietnamese coffee</b>, Thai milk tea, pandan tea — and old-school desserts like soya longan jelly and snow fungus soup. Come for a book, stay for lunch.</p>
+            </div>
+        </section>
+
+        <!-- ============ COMMUNITY ============ -->
         <section id="community">
             <div class="wrap">
                 <div class="sec-head reveal">
                     <span class="eyebrow">// More than a bookshop</span>
-                    <h2>Where nature people <em>gather.</em></h2>
+                    <h2 class="fh">Where nature people<span class="tail">gather.</span></h2>
                 </div>
                 <div class="comm-grid">
                     <article class="comm ev reveal"><h3>Sunda Talks</h3><p>Weekend book launches, workshops and talks — from Mah Meri animal folklore to orchids, butterflies and Batu Arang history.</p></article>
@@ -317,22 +513,23 @@
             </div>
         </section>
 
-        <section id="visit" style="padding-top: 0;">
+        <!-- ============ VISIT — the dusk finale ============ -->
+        <section id="visit" class="on-dusk">
             <div class="wrap visit-grid">
                 <div class="visit-cta reveal">
                     <span class="eyebrow">// Visit</span>
-                    <h2>One floor up, <em>a world away.</em></h2>
+                    <h2 class="fh">One floor up,<span class="tail">a <em>world</em> away.</span></h2>
                     <p>Above the On Line Pub in Damansara Kim, a short walk from TTDI MRT. Come browse — there's a reading copy waiting.</p>
                     <div class="visit-ctas">
-                        <a class="btn btn-sea" href="https://www.google.com/maps/search/?api=1&amp;query=Sunda+Shelves+Damansara+Kim+Petaling+Jaya" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
-                        <a class="btn btn-line" href="https://www.instagram.com/sunda.shelves/" target="_blank" rel="noopener noreferrer">@sunda.shelves</a>
+                        <a class="btn btn-primary armed" href="https://www.google.com/maps/search/?api=1&amp;query=Sunda+Shelves+Damansara+Kim+Petaling+Jaya" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+                        <a class="btn btn-ghost" href="https://www.instagram.com/sunda.shelves/" target="_blank" rel="noopener noreferrer">@sunda.shelves</a>
                     </div>
                 </div>
-                <div class="visit-card reveal">
+                <div class="visit-card reveal d2">
                     <dl>
                         <div><dt>Address</dt><dd>32 (1st Floor), Jalan SS20/10, Damansara Kim, 47400 Petaling Jaya<small>Above On Line Pub · near TTDI MRT</small></dd></div>
                         <div><dt>Hours</dt><dd>Tue–Fri 11 AM – 6 PM · Sat–Sun 10 AM – 7 PM<small>Closed Mondays · hours from public listings, to be confirmed</small></dd></div>
-                        <div><dt>Call</dt><dd><a href="tel:+60377326773" style="color: var(--sea-deep); font-weight: 700;">03-7732 6773</a></dd></div>
+                        <div><dt>Call</dt><dd><a href="tel:+60377326773">03-7732 6773</a></dd></div>
                         <div><dt>Online store</dt><dd>teamrakyat.com/store/sundashelves</dd></div>
                     </dl>
                 </div>
@@ -343,7 +540,7 @@
     <div class="strata" aria-hidden="true"></div>
     <footer>
         <div class="wrap foot-in">
-            <span class="demo-tag">Design preview · Langkah Pertama</span>
+            <span class="badge signal demo-tag"><i></i>Design preview · Langkah Pertama</span>
             <p>This is a <b>website design concept</b> prepared for Sunda Shelves by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, titles and prices are drawn from public sources and press coverage; all details to be confirmed by the owners.</p>
         </div>
     </footer>
@@ -353,53 +550,85 @@
     <script>
         (function () {
             var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            var els = document.querySelectorAll('.reveal');
+
+            /* ---- scroll engine: stage progress -> scenes ---- */
+            var stage = document.querySelector('.stage');
+            var scenes = Array.prototype.slice.call(document.querySelectorAll('.sc'));
+            var body = document.body;
+            var cur = 1, countersRun = false;
+            window.__scrollP = 0;
+
+            function runCounters() {
+                if (countersRun) return; countersRun = true;
+                Array.prototype.forEach.call(document.querySelectorAll('.sc [data-count]'), runCount);
+            }
+            function upd() {
+                var vh = window.innerHeight;
+                var total = stage.offsetHeight - vh;
+                var top = stage.getBoundingClientRect().top;
+                var p = Math.max(0, Math.min(1, -top / total));
+                window.__scrollP = p;
+                var idx = p >= 0.78 ? 4 : p >= 0.52 ? 3 : p >= 0.26 ? 2 : 1;
+                if (idx !== cur) {
+                    cur = idx;
+                    body.setAttribute('data-scene', String(idx));
+                    scenes.forEach(function (s) {
+                        var active = s.getAttribute('data-sc') === String(idx);
+                        s.classList.toggle('is-active', active);
+                        // keep the outgoing scene rendered while it fades
+                        if (active) { s.classList.remove('was-active'); }
+                        else if (s.classList.contains('was-active') || s.classList.contains('is-active')) {
+                            s.classList.add('was-active');
+                            (function (el) { setTimeout(function () { if (!el.classList.contains('is-active')) el.classList.remove('was-active'); }, 850); })(s);
+                        }
+                    });
+                    if (idx >= 3) runCounters();
+                }
+                var toTop = document.getElementById('toTop');
+                if (toTop) toTop.classList.toggle('show', window.scrollY > vh * 1.5);
+            }
+            var ticking = false;
+            function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; upd(); }); } }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            upd();
+
+            /* nav "Story" link -> scroll to scene 2 */
+            Array.prototype.forEach.call(document.querySelectorAll('[data-scene-link]'), function (a) {
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var vh = window.innerHeight;
+                    var y = stage.offsetTop + (stage.offsetHeight - vh) * parseFloat(a.getAttribute('data-scene-link'));
+                    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+                });
+            });
+
+            /* ---- reveals for normal-flow content ---- */
+            var els = document.querySelectorAll('main .reveal, footer .reveal');
             if ('IntersectionObserver' in window && !reduce) {
                 var io = new IntersectionObserver(function (entries) {
                     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
                 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-                els.forEach(function (el) { io.observe(el); });
-            } else { els.forEach(function (el) { el.classList.add('in'); }); }
+                Array.prototype.forEach.call(els, function (el) { io.observe(el); });
+            } else { Array.prototype.forEach.call(els, function (el) { el.classList.add('in'); }); }
 
+            /* ---- counters ---- */
             function runCount(el) {
                 var target = parseFloat(el.getAttribute('data-count')), dec = parseInt(el.getAttribute('data-dec') || '0', 10);
-                if (reduce) { el.textContent = dec ? target.toFixed(dec) : String(target); return; }
+                if (reduce) { el.textContent = dec ? target.toFixed(dec) : Math.round(target).toLocaleString('en-US'); return; }
                 var dur = 1400, start = null;
                 function ease(p) { return 1 - Math.pow(1 - p, 3); }
                 function step(ts) {
                     if (!start) start = ts;
                     var p = Math.min((ts - start) / dur, 1);
                     var v = target * ease(p);
-                    el.textContent = dec ? v.toFixed(dec) : String(Math.round(v));
+                    el.textContent = dec ? v.toFixed(dec) : Math.round(v).toLocaleString('en-US');
                     if (p < 1) requestAnimationFrame(step);
                 }
                 requestAnimationFrame(step);
-                setTimeout(function () { el.textContent = dec ? target.toFixed(dec) : String(target); }, dur + 300);
+                setTimeout(function () { el.textContent = dec ? target.toFixed(dec) : Math.round(target).toLocaleString('en-US'); }, dur + 300);
             }
-            var counters = document.querySelectorAll('[data-count]');
-            if ('IntersectionObserver' in window) {
-                var cio = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (e) { if (e.isIntersecting) { runCount(e.target); cio.unobserve(e.target); } });
-                }, { threshold: 0.5 });
-                counters.forEach(function (c) { cio.observe(c); });
-            } else { counters.forEach(runCount); }
-
-            var kin = document.querySelector('.kinetic');
-            var ticking = false;
-            function onScroll() {
-                if (!ticking) { requestAnimationFrame(update); ticking = true; }
-                var toTop = document.getElementById('toTop');
-                if (toTop) toTop.classList.toggle('show', window.scrollY > 600);
-            }
-            function update() {
-                ticking = false;
-                if (reduce || !kin) return;
-                var r = kin.parentElement.getBoundingClientRect();
-                var mid = r.top + r.height / 2 - window.innerHeight / 2;
-                kin.style.transform = 'translateX(' + (mid * parseFloat(kin.getAttribute('data-speed') || 0.1)) + 'px)';
-            }
-            window.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
+            window.__runCount = runCount;
 
             document.getElementById('toTop').addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
@@ -418,8 +647,7 @@
             var { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
             var { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
 
-            // transparent render straight onto the paper page — no post chain
-            // (EffectComposer forces an opaque backbuffer; bloom isn't worth a grey box)
+            // fully transparent render — the scene-bg div IS the background
             var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -431,11 +659,14 @@
             scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
             var camera = new THREE.PerspectiveCamera(36, 1, 0.1, 60);
-            camera.position.set(0, 1.9, 8.4);
+            camera.position.set(0, 1.9, 7.9);
 
+            // ambient stays constant — the paper scenes need it
             scene.add(new THREE.AmbientLight(0xfff4e0, 0.55));
             var key = new THREE.PointLight(0xfff0d8, 105, 60); key.position.set(5, 8, 6); scene.add(key);
             var cool = new THREE.PointLight(0x9fc8e0, 40, 40); cool.position.set(-6, 3, -3); scene.add(cool);
+            // the dusk lamp — amber light that ramps up as the fireflies ignite
+            var emberL = new THREE.PointLight(0xe0a852, 0, 26); emberL.position.set(0, 2.4, 2.4); scene.add(emberL);
 
             // soft halo texture for the firefly motes (hand-made glow, no bloom needed)
             var haloTex = (function () {
@@ -450,7 +681,8 @@
             })();
 
             var group = new THREE.Group(); scene.add(group);
-            var rig = null;
+            var rig = null, cores = [], halos = [];
+            var coreBase = new THREE.Color(0xd99a3e), coreHot = new THREE.Color(0xffcf7a);
 
             new GLTFLoader().load('/assets/sunda.glb', function (gltf) {
                 rig = gltf.scene.getObjectByName('BookRig') || gltf.scene;
@@ -463,31 +695,68 @@
                         var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, transparent: true, opacity: 0.5, depthWrite: false }));
                         s.scale.set(0.7, 0.7, 1);
                         o.add(s);
+                        cores.push(o.material); halos.push(s.material);
                     }
                 });
                 group.add(rig);
                 place();
+                if (reduce) { pose(window.__scrollP || 0); applyIgnite(0); renderer.render(scene, camera); }
             }, undefined, function () { canvas.style.opacity = '0.001'; });
 
+            var wide = true;
             function place() {
                 var w = canvas.clientWidth, h = canvas.clientHeight;
                 if (!w || !h) return;
                 renderer.setSize(w, h, false);
                 camera.aspect = w / h;
                 camera.updateProjectionMatrix();
-                var wide = w / h > 0.9;
-                camera.position.z = wide ? 7.9 : 10.0;
-                camera.lookAt(0, 0.55, 0);
+                wide = w / h > 0.9;
             }
             place();
             window.addEventListener('resize', place);
             setTimeout(place, 400);
 
+            /* ---- scroll choreography: keyframes across the 4 scenes ----
+               [p, groupX, camZ, camY, lookY, ignite, mobileLookDelta] */
+            var K = [
+                [0.00, 1.6, 7.9, 1.9, 0.55, 0.00, -1.80],
+                [0.30, -1.6, 7.4, 1.9, 0.60, 0.00, -1.80],
+                [0.56, 0.0, 9.3, 1.7, 0.45, 0.12, -0.90],
+                [0.85, 0.0, 8.2, 1.3, 1.72, 1.00, -0.40],
+                [1.00, 0.0, 8.2, 1.3, 1.72, 1.00, -0.40]
+            ];
+            function smooth(t) { return t * t * (3 - 2 * t); }
+            var ignite = 0;
+            function pose(p) {
+                var i = 0;
+                while (i < K.length - 2 && p > K[i + 1][0]) i++;
+                var a = K[i], b = K[i + 1];
+                var t = smooth(Math.max(0, Math.min(1, (p - a[0]) / (b[0] - a[0]))));
+                function ch(n) { return a[n] + (b[n] - a[n]) * t; }
+                group.position.x = ch(1) * (wide ? 1 : 0.22);
+                camera.position.z = ch(2) + (wide ? 0 : 3.0);
+                camera.position.y = ch(3);
+                camera.lookAt(0, ch(4) + (wide ? 0 : ch(6)), 0);
+                ignite = ch(5);
+            }
+            /* ignite ramp: dusk lamp on, firefly cores heat toward #ffcf7a, halos brighten */
+            function applyIgnite(flick) {
+                emberL.intensity = ignite * 60 + (flick || 0);
+                for (var i = 0; i < cores.length; i++) cores[i].color.copy(coreBase).lerp(coreHot, ignite);
+                for (var j = 0; j < halos.length; j++) halos[j].opacity = 0.5 + ignite * 0.45;
+            }
+
+            /* drag to spin (anywhere on the stage, except links/buttons) */
+            var pin = document.querySelector('.pin');
             var tY = -0.4, cY = -0.4, vel = 0, drag = false, lx = 0, pY = 0;
             var hint = document.getElementById('dragHint');
-            canvas.addEventListener('pointerdown', function (e) { drag = true; lx = e.clientX; canvas.setPointerCapture(e.pointerId); if (hint) hint.style.opacity = '0'; });
-            canvas.addEventListener('pointermove', function (e) {
-                var r = canvas.getBoundingClientRect();
+            pin.addEventListener('pointerdown', function (e) {
+                if (e.target.closest('a, button')) return;
+                drag = true; lx = e.clientX;
+                if (hint) hint.style.opacity = '0';
+            });
+            pin.addEventListener('pointermove', function (e) {
+                var r = pin.getBoundingClientRect();
                 pY = (e.clientY - r.top) / r.height - 0.5;
                 if (drag) { vel = (e.clientX - lx) * 0.007; tY += vel; lx = e.clientX; }
             });
@@ -499,14 +768,25 @@
                 if (!run) return;
                 requestAnimationFrame(loop);
                 var dt = Math.min(clock.getDelta(), 0.05);
+                var tm = clock.elapsedTime;
                 if (!drag) { tY += (reduce ? 0 : 0.11) * dt; vel *= 0.94; }
                 cY += (tY - cY) * 0.08;
                 group.rotation.y = cY;
                 group.rotation.x = 0.04 + pY * 0.18;
-                if (rig && !reduce) rig.position.y = -1.45 + Math.sin(clock.elapsedTime * 0.7) * 0.12;
+                pose(window.__scrollP || 0);
+                if (rig && !reduce) {
+                    // calm literary bob — a touch quicker leaf-sway as dusk settles
+                    rig.position.y = -1.45 + Math.sin(tm * (0.7 + ignite * 0.25)) * (0.12 + ignite * 0.03);
+                    rig.rotation.z = Math.sin(tm * (0.5 + ignite * 0.3)) * 0.02 * (1 + ignite * 0.5);
+                    // fireflies breathe gently once lit
+                    applyIgnite(ignite * (Math.sin(tm * 2.1) * 4 + Math.sin(tm * 5.3) * 2));
+                }
                 renderer.render(scene, camera);
             }
-            if (reduce) { group.rotation.y = -0.4; renderer.render(scene, camera); } else { loop(); }
+            if (reduce) {
+                group.rotation.y = -0.4; pose(window.__scrollP || 0); applyIgnite(0); renderer.render(scene, camera);
+                window.addEventListener('scroll', function () { pose(window.__scrollP || 0); applyIgnite(0); renderer.render(scene, camera); }, { passive: true });
+            } else { loop(); }
             window.__ssDemo = { ok: true };
         } catch (err) {
             if (canvas) canvas.style.opacity = '0.001';
