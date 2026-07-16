@@ -23,6 +23,10 @@
             --sw-font-display: 'Sora', system-ui, sans-serif;
             --sw-font-body: 'Manrope', system-ui, sans-serif;
         }
+        /* soften the engine's copy-side wash — the default 58vw gradient washed
+           the whole light scene out and read as a rendering glitch */
+        .sw-copylayer::before { width: min(40vw, 560px); opacity: 0.85; }
+        @media (max-width: 860px) { .sw-copylayer::before { width: 100%; opacity: 1; } }
         /* honesty / facts footer, after the flight */
         /* must sit above every fixed engine layer (stage 10 / copy 20 / route 40 / topbar 50 / bar 60) */
         .fakta { position: relative; z-index: 70; background: #241c12; color: #efe7d9; padding: 72px 0 84px; font-family: 'Manrope', system-ui, sans-serif; box-shadow: 0 -30px 60px rgba(36, 28, 18, 0.35); }
@@ -130,6 +134,15 @@
             a.target = '_blank';
             a.rel = 'noopener nofollow sponsored';
         });
+        // warm the HTTP cache for the first legs so early scrolling never catches
+        // an empty still (the engine's own blob fetch then hits the cache)
+        (function () {
+            var mobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches || window.matchMedia('(max-width: 860px)').matches;
+            var suffix = mobile ? '-m.mp4' : '.mp4';
+            ['leg1', 'leg2', 'leg3'].forEach(function (l) {
+                fetch(A + l + suffix).catch(function () { });
+            });
+        })();
         window.__frDemo = { ok: true };
     </script>
 </body>
