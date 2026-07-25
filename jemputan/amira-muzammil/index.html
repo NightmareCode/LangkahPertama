@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="robots" content="noindex, nofollow">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Majlis Pertunangan · Amira &amp; Muzammil · 29 Ogos 2026</title>
-    <meta name="description" content="Jemputan digital Majlis Pertunangan Nurul Amira & Megat Muhammad Muzammil — Sabtu, 29 Ogos 2026, Teratak Tokli, Kuala Kangsar.">
+    <title>Majlis Pertunangan · Amira &amp; Muzammil · 30 Ogos 2026</title>
+    <meta name="description" content="Jemputan digital Majlis Pertunangan Nurul Amira & Megat Muhammad Muzammil — Ahad, 30 Ogos 2026, Teratak Tokli, Kuala Kangsar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Great+Vibes&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
             --sw-bg: #f6efe6;
             --sw-ink: #4a3a30;
             --sw-ink-soft: #907d6e;
-            --sw-accent: #c96a76;
+            --sw-accent: #7d1f2e;
             --sw-font-display: 'Marcellus', serif;
             --sw-font-body: 'Mulish', system-ui, sans-serif;
         }
@@ -30,20 +30,20 @@
 
         /* ---------- cover (BUKA) ---------- */
         #cover { position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: radial-gradient(120% 100% at 50% 0%, #f9f3ea 0%, #f3e6da 55%, #eed9d3 100%); transition: opacity 0.9s ease, visibility 0.9s; }
+            background: radial-gradient(120% 100% at 50% 0%, #f9f3ea 0%, #f1e2d8 50%, #e6cfc9 100%); transition: opacity 0.9s ease, visibility 0.9s; }
         #cover.away { opacity: 0; visibility: hidden; pointer-events: none; }
         .cov-in { padding: 30px; max-width: 560px; }
         .cov-bis { font-family: 'Marcellus', serif; font-size: 1.02rem; color: #a68a72; margin-bottom: 26px; }
-        .cov-eyebrow { font-family: 'Mulish', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: #c96a76; }
+        .cov-eyebrow { font-family: 'Mulish', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.34em; text-transform: uppercase; color: #7d1f2e; }
         .cov-names { font-family: 'Great Vibes', cursive; font-size: clamp(3.4rem, 13vw, 5.4rem); color: #4a3a30; line-height: 1.15; margin: 18px 0 8px; }
         .cov-date { font-family: 'Marcellus', serif; font-size: 1.05rem; color: #907d6e; letter-spacing: 0.08em; margin-bottom: 34px; }
-        .cov-buka { display: inline-flex; align-items: center; gap: 12px; font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 0.86rem; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; background: linear-gradient(120deg, #d47f8a, #c96a76); border: 0; border-radius: 999px; padding: 17px 42px; cursor: pointer; box-shadow: 0 12px 34px rgba(201, 106, 118, 0.4); transition: transform 0.2s; }
+        .cov-buka { display: inline-flex; align-items: center; gap: 12px; font-family: 'Mulish', sans-serif; font-weight: 700; font-size: 0.86rem; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; background: linear-gradient(120deg, #96303f, #7d1f2e); border: 0; border-radius: 999px; padding: 17px 42px; cursor: pointer; box-shadow: 0 12px 34px rgba(125, 31, 46, 0.4); transition: transform 0.2s; }
         .cov-buka:hover { transform: translateY(-2px); }
         .cov-note { margin-top: 18px; font-family: 'Mulish', sans-serif; font-size: 0.72rem; color: #b3a08f; }
 
         /* ---------- floating music toggle ---------- */
         #muzik { position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 380; width: 48px; height: 48px; border-radius: 50%;
-            border: 1px solid rgba(201, 106, 118, 0.4); background: rgba(249, 243, 234, 0.9); color: #c96a76; font-size: 1.15rem; cursor: pointer;
+            border: 1px solid rgba(125, 31, 46, 0.4); background: rgba(249, 243, 234, 0.9); color: #7d1f2e; font-size: 1.15rem; cursor: pointer;
             box-shadow: 0 6px 20px rgba(74, 58, 48, 0.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: none; }
         #muzik.on { display: block; }
         #muzik.playing { animation: spinMz 5s linear infinite; }
@@ -53,35 +53,38 @@
         /* ---------- butiran (details) ---------- */
         .butiran { position: relative; z-index: 70; background: #f9f3ea; color: #4a3a30; font-family: 'Mulish', sans-serif; padding: 70px 0 60px; box-shadow: 0 -28px 56px rgba(74, 58, 48, 0.14); }
         .btr-in { max-width: 680px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-        .btr-eyebrow { display: block; text-align: center; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #c96a76; margin-bottom: 10px; }
+        .btr-eyebrow { display: block; text-align: center; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #7d1f2e; margin-bottom: 10px; }
         .butiran h2 { font-family: 'Marcellus', serif; font-size: clamp(1.7rem, 4.6vw, 2.3rem); text-align: center; margin-bottom: 8px; }
         .btr-sub { text-align: center; color: #907d6e; font-size: 0.94rem; margin-bottom: 34px; }
         .count { display: flex; justify-content: center; gap: clamp(10px, 3vw, 22px); margin: 26px 0 40px; }
-        .count div { background: #fff; border: 1px solid rgba(201, 106, 118, 0.22); border-radius: 14px; min-width: 74px; padding: 14px 8px; text-align: center; box-shadow: 0 8px 22px rgba(74, 58, 48, 0.07); }
-        .count b { display: block; font-family: 'Marcellus', serif; font-size: 1.7rem; color: #c96a76; font-variant-numeric: tabular-nums; }
+        .count div { background: #fff; border: 1px solid rgba(125, 31, 46, 0.22); border-radius: 14px; min-width: 74px; padding: 14px 8px; text-align: center; box-shadow: 0 8px 22px rgba(74, 58, 48, 0.07); }
+        .count b { display: block; font-family: 'Marcellus', serif; font-size: 1.7rem; color: #7d1f2e; font-variant-numeric: tabular-nums; }
         .count span { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: #907d6e; }
-        .kad { background: #fff; border: 1px solid rgba(201, 106, 118, 0.2); border-radius: 18px; padding: 26px 26px 24px; margin-bottom: 20px; box-shadow: 0 10px 28px rgba(74, 58, 48, 0.07); }
+        .kad { background: #fff; border: 1px solid rgba(125, 31, 46, 0.2); border-radius: 18px; padding: 26px 26px 24px; margin-bottom: 20px; box-shadow: 0 10px 28px rgba(74, 58, 48, 0.07); }
         .kad h3 { font-family: 'Marcellus', serif; font-size: 1.2rem; margin-bottom: 14px; color: #4a3a30; display: flex; align-items: center; gap: 10px; }
-        .kad h3 i { width: 7px; height: 7px; border-radius: 50%; background: #c96a76; }
+        .kad h3 i { width: 7px; height: 7px; border-radius: 50%; background: #7d1f2e; }
         .acara { list-style: none; padding: 0; margin: 0; }
-        .acara li { display: flex; gap: 16px; padding: 9px 0; border-bottom: 1px dashed rgba(201, 106, 118, 0.2); font-size: 0.94rem; }
+        .acara li { display: flex; gap: 16px; padding: 9px 0; border-bottom: 1px dashed rgba(125, 31, 46, 0.2); font-size: 0.94rem; }
         .acara li:last-child { border-bottom: 0; }
-        .acara b { font-family: 'Marcellus', serif; color: #c96a76; min-width: 118px; font-weight: 400; }
+        .acara b { font-family: 'Marcellus', serif; color: #7d1f2e; min-width: 118px; font-weight: 400; }
         .kad p { font-size: 0.94rem; color: #6d5c4e; line-height: 1.7; }
         .kad .alamat b { color: #4a3a30; }
         .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
         .btn { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 22px; border-radius: 999px; text-decoration: none; transition: transform 0.2s; }
         .btn:hover { transform: translateY(-2px); }
-        .btn-rose { background: linear-gradient(120deg, #d47f8a, #c96a76); color: #fff; box-shadow: 0 10px 26px rgba(201, 106, 118, 0.35); }
-        .btn-line { border: 1.5px solid rgba(201, 106, 118, 0.5); color: #c96a76; }
+        .btn-rose { background: linear-gradient(120deg, #96303f, #7d1f2e); color: #fff; box-shadow: 0 10px 26px rgba(125, 31, 46, 0.35); }
+        .btn-line { border: 1.5px solid rgba(125, 31, 46, 0.5); color: #7d1f2e; }
+        .pantun-b { font-family: 'Marcellus', serif; font-size: 1.02rem; line-height: 1.9; color: #5a4238; text-align: center; margin-bottom: 18px; }
+        .pantun-b em { color: #7d1f2e; font-style: italic; }
+        .pantun-note { text-align: center; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #b3a08f; }
         .kad .qr { display: block; margin: 18px auto 4px; width: min(240px, 70%); height: auto; border-radius: 14px; box-shadow: 0 8px 24px rgba(74, 58, 48, 0.12); }
         .doa { text-align: center; padding: 26px 10px 6px; }
         .doa .ayat { font-family: 'Marcellus', serif; font-size: 1.06rem; color: #6d5c4e; font-style: italic; max-width: 46ch; margin: 0 auto 12px; line-height: 1.8; }
         .doa .sumber { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: #b3a08f; }
         .doa .tutup { margin-top: 20px; color: #6d5c4e; font-size: 0.95rem; }
-        .kredit { text-align: center; margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(201, 106, 118, 0.18); font-size: 0.72rem; color: #b3a08f; }
-        .kredit a { color: #c96a76; text-decoration: none; font-weight: 700; }
-        :focus-visible { outline: 2px solid #c96a76; outline-offset: 3px; border-radius: 4px; }
+        .kredit { text-align: center; margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(125, 31, 46, 0.18); font-size: 0.72rem; color: #b3a08f; }
+        .kredit a { color: #7d1f2e; text-decoration: none; font-weight: 700; }
+        :focus-visible { outline: 2px solid #7d1f2e; outline-offset: 3px; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -91,7 +94,7 @@
     <section class="butiran" id="butiran" lang="ms">
         <div class="btr-in">
             <span class="btr-eyebrow">Menghitung hari</span>
-            <h2>Sabtu · 29 Ogos 2026</h2>
+            <h2>Ahad · 30 Ogos 2026</h2>
             <p class="btr-sub">12:00 tengah hari · Teratak Tokli, Kuala Kangsar, Perak</p>
             <div class="count" id="count" aria-label="Kiraan detik ke majlis">
                 <div><b id="cd-h">—</b><span>Hari</span></div>
@@ -103,11 +106,12 @@
             <div class="kad">
                 <h3><i></i>Atur Cara Majlis</h3>
                 <ul class="acara">
-                    <li><b>12:00 tgh hari</b><span>Ketibaan rombongan &amp; ucapan aluan</span></li>
-                    <li><b>12:30 tgh hari</b><span>Pertukaran hantaran &amp; bacaan doa</span></li>
-                    <li><b>1:00 petang</b><span>Upacara sarung cincin</span></li>
-                    <li><b>1:30 petang</b><span>Jamuan makan</span></li>
-                    <li><b>3:30 petang</b><span>Majlis bersurai</span></li>
+                    <li><b>12:00 tgh hari</b><span>Ketibaan tetamu &amp; rombongan</span></li>
+                    <li><b>12:30 tgh hari</b><span>Bacaan doa &amp; selawat</span></li>
+                    <li><b>Menyusul</b><span>Perbincangan wakil keluarga (pantun berbalas)</span></li>
+                    <li><b>Menyusul</b><span>Acara sarung cincin di pelamin</span></li>
+                    <li><b>Menyusul</b><span>Bacaan doa penutup &amp; jamuan makan</span></li>
+                    <li><b>4:00 petang</b><span>Majlis bersurai</span></li>
                 </ul>
             </div>
 
@@ -119,6 +123,19 @@
                     <a class="btn btn-line" href="https://waze.com/ul?q=TERATAK%20TOKLI%20Kuala%20Kangsar" target="_blank" rel="noopener noreferrer">Waze</a>
                     <a class="btn btn-line" href="/assets/jemputan/amira-muzammil/majlis-tunang.ics" download="Majlis-Tunang-Amira-Muzammil.ics">Simpan Tarikh</a>
                 </div>
+            </div>
+
+            <div class="kad" id="pantun">
+                <h3><i></i>Pantun Majlis</h3>
+                <p class="pantun-b">Perahu kolek ke hilir tanjung,<br>
+                Sarat bermuat tali temali;<br>
+                <em>Salam tersusun sirih junjung,<br>
+                Apa hajat sampai ke mari?</em></p>
+                <p class="pantun-b">Malam-malam pasang pelita,<br>
+                Pelita dipasang atas peti;<br>
+                <em>Kalau sudah bagai dikata,<br>
+                Sila terangkan hajat dihati.</em></p>
+                <p class="pantun-note">— berbalas pantun kedua-dua keluarga, petikan aturcara majlis</p>
             </div>
 
             <div class="kad" id="salamkaut">
@@ -143,7 +160,7 @@
             <p class="cov-bis">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
             <span class="cov-eyebrow">Majlis Pertunangan</span>
             <h1 class="cov-names">Amira &amp; Muzammil</h1>
-            <p class="cov-date">Sabtu · 29 Ogos 2026 · Teratak Tokli, Kuala Kangsar</p>
+            <p class="cov-date">Ahad · 30 Ogos 2026 · Teratak Tokli, Kuala Kangsar</p>
             <button class="cov-buka" id="buka">Buka Jemputan ❧</button>
             <p class="cov-note">Muzik akan dimainkan — skrol untuk menyusuri jemputan</p>
         </div>
@@ -167,16 +184,16 @@
             connectors: [],
             sections: [
                 {
-                    id: 'salam', label: 'Salam', accent: '#c96a76',
+                    id: 'salam', label: 'Salam', accent: '#7d1f2e',
                     still: A + 'still1.jpg', stillMobile: A + 'still1-m.jpg', clip: A + 'leg1.mp4', clipMobile: A + 'leg1-m.mp4',
                     scroll: 1.6, linger: 0.35,
                     eyebrow: 'Majlis Pertunangan',
                     title: 'Amira & Muzammil',
                     body: 'Assalamualaikum W.B.T. & Salam Sejahtera. Dengan penuh kesyukuran ke hadrat Ilahi, kami menjemput keluarga dan sahabat terdekat ke majlis pertunangan kami.',
-                    tags: ['Sabtu · 29 Ogos 2026', '12:00 tengah hari', 'Teratak Tokli, Kuala Kangsar']
+                    tags: ['Ahad · 30 Ogos 2026', '12:00 tengah hari', 'Teratak Tokli, Kuala Kangsar']
                 },
                 {
-                    id: 'cincin', label: 'Cincin', accent: '#c9a24a',
+                    id: 'cincin', label: 'Cincin', accent: '#b8873b',
                     still: A + 'still2.jpg', stillMobile: A + 'still2-m.jpg', clip: A + 'leg2.mp4', clipMobile: A + 'leg2-m.mp4',
                     scroll: 1.3, linger: 0.25,
                     eyebrow: 'Cincin tanda',
@@ -185,39 +202,39 @@
                     tags: ['Sarung cincin', 'Restu keluarga']
                 },
                 {
-                    id: 'hantaran', label: 'Hantaran', accent: '#7d9271',
+                    id: 'hantaran', label: 'Hantaran', accent: '#6d8563',
                     still: A + 'still3.jpg', stillMobile: A + 'still3-m.jpg', clip: A + 'leg3.mp4', clipMobile: A + 'leg3-m.mp4',
                     scroll: 1.3, linger: 0.25,
                     eyebrow: 'Adat & hantaran',
-                    title: 'Adat dijunjung, kasih disambung.',
-                    body: 'Sirih junjung mengetuai dulang hantaran — lambang keikhlasan, penghormatan dan restu kedua-dua buah keluarga.',
-                    tags: ['Sirih junjung', 'Dulang hantaran']
+                    title: 'Sirih junjung, adat dijunjung.',
+                    body: '“Salam tersusun sirih junjung, apa hajat sampai ke mari?” — sirih junjung mengetuai dulang hantaran, lambang keikhlasan dan restu dua keluarga.',
+                    tags: ['Sirih junjung', 'Dulang hantaran', 'Daun sirih']
                 },
                 {
-                    id: 'pasangan', label: 'Pasangan', accent: '#c96a76',
+                    id: 'pasangan', label: 'Pasangan', accent: '#7d1f2e',
                     still: A + 'still4.jpg', stillMobile: A + 'still4-m.jpg', clip: A + 'leg4.mp4', clipMobile: A + 'leg4-m.mp4',
                     scroll: 1.45, linger: 0.3,
                     eyebrow: 'Bakal pengantin',
                     title: 'Dua hati, satu ikatan.',
-                    body: 'Nurul Amira binti Anasli bersama pasangannya Megat Muhammad Muzammil bin Megat Zahri.',
+                    body: 'Nurul Amira binti Anasli bersama pasangannya Megat Muhammad Muzammil bin Megat Zahri — dari mata turun ke hati.',
                     tags: ['Amira', '&', 'Muzammil']
                 },
                 {
-                    id: 'tarikh', label: 'Tarikh', accent: '#c9a24a',
+                    id: 'tarikh', label: 'Tarikh', accent: '#b8873b',
                     still: A + 'still5.jpg', stillMobile: A + 'still5-m.jpg', clip: A + 'leg5.mp4', clipMobile: A + 'leg5-m.mp4',
                     scroll: 1.3, linger: 0.25,
                     eyebrow: 'Tarikh & masa',
-                    title: 'Sabtu, 29 Ogos 2026.',
+                    title: 'Ahad, 30 Ogos 2026.',
                     body: '12:00 tengah hari di Teratak Tokli, Kuala Kangsar, Perak. Ketibaan rombongan diikuti jamuan tengah hari.',
-                    tags: ['29 · 08 · 2026', '12:00 tgh hari']
+                    tags: ['30 · 08 · 2026', '12:00 tgh hari']
                 },
                 {
-                    id: 'jemputan', label: 'Jemputan', accent: '#c96a76',
+                    id: 'jemputan', label: 'Jemputan', accent: '#7d1f2e',
                     still: A + 'still6.jpg', stillMobile: A + 'still6-m.jpg', clip: A + 'leg6.mp4', clipMobile: A + 'leg6-m.mp4',
                     scroll: 1.7, linger: 0.4,
                     eyebrow: 'Kami menanti kehadiran anda',
                     title: 'Datanglah meraikan kami.',
-                    body: 'Kehadiran dan doa restu Tuan/Puan amat kami hargai. Semoga majlis ini diberkati dan dipermudahkan.',
+                    body: '“Walau jauh di negeri satu, hilang di mata di hati jangan.” Kehadiran dan doa restu Tuan/Puan amat kami hargai.',
                     cta: {
                         primary: { label: 'Buka Lokasi', href: MAPS },
                         secondary: { label: 'Butiran Majlis', href: '#butiran' }
@@ -247,7 +264,7 @@
 
         /* ---- countdown ---- */
         (function () {
-            var T = new Date('2026-08-29T12:00:00+08:00').getTime();
+            var T = new Date('2026-08-30T12:00:00+08:00').getTime();
             function pad(n) { return String(n).padStart(2, '0'); }
             function tick() {
                 var d = T - Date.now();
