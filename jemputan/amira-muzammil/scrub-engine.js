@@ -1,5 +1,6 @@
 /* ============================================================================
    scroll-world — portable scroll-scrubbed camera-flight engine
+   v2.1 (--swd copy-centering fix, 2026-08-17)
    ----------------------------------------------------------------------------
    Framework-agnostic. Vanilla JS, zero dependencies. It builds its own DOM and
    injects its own (namespaced) CSS into a container you give it, so it drops into
@@ -15,7 +16,7 @@
        nav: true,         // show the top section nav
        atmosphere: true,  // subtle gradient + drifting particles behind the clips
        sections: [
-         { id, label, still, clip, clipMobile, accent,
+         { id, label, still, clip, clipMobile, stillMobile, accent,
            scroll: 1.6,   // optional per-section override of diveScroll — more scroll
                           // distance = a slower, longer dwell in this scene
            linger: 0.5,   // optional 0..1 — remaps time so the camera settles mid-scene
@@ -31,7 +32,7 @@
    MOBILE (the clipMobile/connectorsMobile variants are the opt-in "mobile beta";
    the rest of the phone handling below is always on)
      The engine is phone-aware out of the box: on a coarse-pointer / ≤860px viewport it
-       - loads `clipMobile` / `connectorsMobile` when provided (encode these smaller +
+       - loads `clipMobile` / `connectorsMobile` / `stillMobile` (portrait poster) when provided (encode these smaller +
          tighter-GOP — seek cost on a phone decoder is dominated by frames-from-keyframe,
          so a 720p, -g 4 file scrubs far smoother than the 1080p desktop master; see
          pipeline.md). Falls back to the desktop `clip` if no mobile variant is given.
