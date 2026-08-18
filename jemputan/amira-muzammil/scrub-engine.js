@@ -1,6 +1,6 @@
 /* ============================================================================
    scroll-world — portable scroll-scrubbed camera-flight engine
-   v2.1 (--swd copy-centering fix, 2026-08-17)
+   v2.1 (--swd copy-centering fix, 2026-08-17; route-dot 44px hit halo on coarse pointers, 2026-08-17)
    ----------------------------------------------------------------------------
    Framework-agnostic. Vanilla JS, zero dependencies. It builds its own DOM and
    injects its own (namespaced) CSS into a container you give it, so it drops into
@@ -428,6 +428,7 @@ function injectCSS() {
   @media (hover:none) and (pointer:coarse){
     .sw-route{padding:14px 6px;}
     .sw-route__dot{width:28px;height:28px;}
+    .sw-route__dot::before{content:"";position:absolute;inset:-8px;border-radius:50%;}
     .sw-btn{padding:15px 26px;}
   }
   @media (prefers-reduced-motion:reduce){ .sw-hint i::after{animation:none;} .sw-pt{display:none;} }
