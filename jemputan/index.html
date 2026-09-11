@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Arkib Majlis · Langkah Pertama</title>
+    <meta name="description" content="Arkib majlis Langkah Pertama. Jemputan digital untuk majlis yang telah selesai, tersimpan sebagai kenangan.">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/assets/icon-512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        html { overflow-x: clip; scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        * { box-sizing: border-box; }
+        :root {
+            --bg: #1d1216;          /* velvet ink */
+            --bg-card: #251820;
+            --line: rgba(205, 160, 95, 0.22);
+            --gold: #cda05f;
+            --gold-soft: #a98650;
+            --cream: #f0e6dc;
+            --cream-dim: #bfa9a3;
+            --maroon-chip: #3a1f28;
+        }
+        body { margin: 0; background: var(--bg); color: var(--cream); font-family: 'Figtree', system-ui, sans-serif; line-height: 1.65; }
+
+        /* a11y */
+        #lp-a11y :focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+        .lp-skip { position: fixed; left: 12px; top: -60px; z-index: 200; background: var(--gold); color: #241511; font-weight: 600; padding: 10px 16px; border-radius: 8px; text-decoration: none; transition: top 0.2s; }
+        .lp-skip:focus { top: 12px; }
+
+        .wrap { max-width: 880px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+
+        /* header */
+        header.bar { display: flex; align-items: center; gap: 14px; padding: 26px 0 0; }
+        header.bar img { width: 40px; height: 40px; }
+        header.bar .studio { font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream-dim); }
+        header.bar .studio b { display: block; color: var(--gold); font-weight: 600; letter-spacing: 0.26em; }
+
+        /* hero */
+        .hero { padding: clamp(56px, 11vh, 110px) 0 clamp(30px, 6vh, 56px); border-bottom: 1px solid var(--line); }
+        .hero h1 { font-family: 'Prata', serif; font-weight: 400; font-size: clamp(2.6rem, 7.5vw, 4.4rem); line-height: 1.08; margin: 0 0 18px; color: var(--cream); }
+        .hero h1 em { font-style: normal; color: var(--gold); }
+        .hero p { max-width: 52ch; margin: 0; color: var(--cream-dim); font-size: 1.02rem; }
+
+        /* year marker */
+        .tahun { display: flex; align-items: center; gap: 16px; margin: clamp(36px, 7vh, 60px) 0 22px; }
+        .tahun span { font-family: 'Prata', serif; font-size: 1.15rem; color: var(--gold); letter-spacing: 0.08em; }
+        .tahun::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+        /* majlis card */
+        .majlis { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+        .majlis .foto { position: relative; min-height: 240px; }
+        .majlis .foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+        .majlis .butir { padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; background: var(--maroon-chip); color: #d8aab5; border: 1px solid rgba(216, 170, 181, 0.25); }
+        .chip.selesai { background: rgba(205, 160, 95, 0.12); color: var(--gold); border-color: rgba(205, 160, 95, 0.4); }
+        .majlis h2 { font-family: 'Prata', serif; font-weight: 400; font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.15; margin: 0; color: var(--cream); }
+        .majlis .nama-penuh { font-size: 0.9rem; color: var(--cream-dim); margin: 0; }
+        .meta { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 7px; font-size: 0.95rem; color: var(--cream-dim); }
+        .meta b { color: var(--cream); font-weight: 500; }
+        .majlis .aksi { margin-top: 12px; }
+        .btn-buka { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.08em; color: #241511; background: linear-gradient(120deg, #d9b077, var(--gold)); transition: transform 0.2s; }
+        .btn-buka:hover { transform: translateY(-2px); }
+        @media (prefers-reduced-motion: reduce) { .btn-buka, .btn-buka:hover { transition: none; transform: none; } }
+
+        /* note + contact */
+        .nota { margin: clamp(40px, 8vh, 72px) 0 0; padding-top: 28px; border-top: 1px solid var(--line); text-align: center; color: var(--cream-dim); font-size: 0.96rem; }
+        .nota a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 6px; color: var(--gold); text-decoration: none; font-weight: 600; }
+        .nota a:hover { text-decoration: underline; }
+
+        footer { margin-top: clamp(36px, 7vh, 60px); padding: 22px 0 34px; border-top: 1px solid var(--line); text-align: center; font-size: 0.74rem; color: rgba(191, 169, 163, 0.7); }
+        footer a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+
+        /* reveal */
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+        /* to top */
+        #toTop { position: fixed; right: 16px; bottom: 16px; z-index: 90; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg-card); color: var(--gold); font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        #toTop.show { opacity: 1; pointer-events: auto; }
+
+        @media (max-width: 760px) {
+            .majlis { grid-template-columns: 1fr; }
+            .majlis .foto { min-height: 0; aspect-ratio: 16 / 10; position: relative; }
+        }
+    </style>
+</head>
+<body id="lp-a11y">
+    <a class="lp-skip" href="#lp-main">Langkau ke kandungan</a>
+
+    <div class="wrap">
+        <header class="bar">
+            <img src="/assets/lp-mark-gold.png" alt="" width="40" height="40">
+            <p class="studio"><b>Langkah Pertama</b>Jemputan Digital</p>
+        </header>
+
+        <main id="lp-main">
+            <section class="hero">
+                <h1>Arkib <em>Majlis</em></h1>
+                <p>Setiap jemputan yang kami reka akhirnya menjadi kenangan. Majlis yang telah selesai tersimpan di sini, kad digitalnya kekal boleh dibuka semula.</p>
+            </section>
+
+            <div class="tahun reveal"><span>2026</span></div>
+
+            <article class="majlis reveal" aria-label="Majlis Pertunangan Amira dan Muzammil">
+                <div class="foto">
+                    <img src="/assets/jemputan/amira-muzammil/still1.jpg" alt="Pelamin maroon dan emas dengan lengkungan bunga, dari jemputan digital majlis pertunangan Amira dan Muzammil" width="1920" height="1080">
+                </div>
+                <div class="butir">
+                    <div class="chips">
+                        <span class="chip">Majlis Pertunangan</span>
+                        <span class="chip selesai">Selesai</span>
+                    </div>
+                    <h2>Amira &amp; Muzammil</h2>
+                    <p class="nama-penuh">Nurul Amira binti Anasli &amp; Megat Muhammad Muzammil bin Megat Zahri</p>
+                    <ul class="meta">
+                        <li><b>Ahad, 30 Ogos 2026</b> · 12:00 tengah hari</li>
+                        <li>Teratak Tokli, Kuala Kangsar, Perak</li>
+                        <li>Jemputan 3D skrol, muzik latar, salam kaut digital</li>
+                    </ul>
+                    <div class="aksi">
+                        <a class="btn-buka" href="/jemputan/amira-muzammil/">Buka Jemputan &#10087;</a>
+                    </div>
+                </div>
+            </article>
+
+            <p class="nota reveal">Lebih banyak majlis akan menyusul, insya-Allah.<br>
+                <a href="/#contact">Hubungi Langkah Pertama &rarr;</a></p>
+        </main>
+
+        <footer>
+            Arkib peribadi <a href="/">Langkah Pertama</a>. Setiap kad jemputan kekal aktif untuk pasangan dan tetamu.
+        </footer>
+    </div>
+
+    <button id="toTop" aria-label="Kembali ke atas">&uarr;</button>
+
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+    <script>
+        (function () {
+            if (!Element.prototype.closest) { Element.prototype.closest = function (s) { var el = this; while (el && el.nodeType === 1) { if (el.matches(s)) return el; el = el.parentNode; } return null; }; }
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var els = document.querySelectorAll('.reveal');
+            if (reduce || !('IntersectionObserver' in window)) {
+                els.forEach(function (e) { e.classList.add('in'); });
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+                }, { threshold: 0.15 });
+                els.forEach(function (e) { io.observe(e); });
+                setTimeout(function () { els.forEach(function (e) { e.classList.add('in'); }); }, 1200);
+            }
+            var tt = document.getElementById('toTop');
+            addEventListener('scroll', function () { tt.classList.toggle('show', scrollY > 600); }, { passive: true });
+            tt.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+            window.__arkib = { ok: true, majlis: document.querySelectorAll('.majlis').length };
+        })();
+    </script>
+</body>
+</html>
