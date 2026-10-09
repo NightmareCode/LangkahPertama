@@ -179,7 +179,8 @@
         .field input { width: 100%; margin-top: 8px; background: var(--night); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; color: var(--text); font: 1rem var(--sans); min-height: 44px; }
         .field input::placeholder { color: var(--muted); }
         .total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-weight: 800; color: #fff; }
-        .total-row span:last-child { color: var(--moon); }
+        .total-row { gap: 12px; align-items: baseline; }
+        .total-row span:last-child { color: var(--moon); white-space: nowrap; }
         .fine { font-size: .7rem; color: var(--muted); margin-top: 6px; }
         .send-btn { margin-top: 12px; min-height: 48px; width: 100%; cursor: pointer; background: var(--moon); color: var(--night); border: 0; border-radius: 12px; font: 800 .95rem var(--sans); }
         .demo-stamp { font-size: .84rem; font-weight: 800; color: var(--ember); margin-top: 10px; text-align: center; }
@@ -538,9 +539,12 @@ window.CR = {"hero.jpg": "iAfroMan · CC BY-SA 2.0", "ikan-3rasa.jpg": "Yun Huan
     function render() {
         var n = count(), h = '', skipped = 0, t = total();
         document.getElementById('cartQty').textContent = n;
-        var tt = CFG.noTotals ? (n + ' item') : fmt(t);
+        // only weighed / unpriced lines so far: show their note (e.g. 'ikut timbang') instead of a misleading RM 0.00
+        var priced = 0, firstNote = '';
+        order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) priced++; else if (!firstNote) firstNote = x.it.lineNote || 'akan disahkan'; });
+        var tt = CFG.noTotals ? (n + ' item') : (n > 0 && !priced ? firstNote : fmt(t));
         document.getElementById('cartTotal').textContent = tt;
-        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : fmt(t);
+        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : (n > 0 && !priced ? firstNote : fmt(t));
         bar.classList.toggle('show', n > 0);
         bar.tabIndex = n > 0 ? 0 : -1;
         order.forEach(function (k) {
