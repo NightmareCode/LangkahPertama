@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05060a">
+    <title>Ruang Pratonton Peribadi | Langkah Pertama</title>
+    <link rel="icon" href="/assets/icon-512.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!--
+        /demo/ — PRIVATE CUSTOMER DEMOS (langkahpertama.website/demo/<customer-slug>/)
+        This index exists only so /demo/ has no directory listing. Do not link to it.
+
+        Rules for EVERY page under /demo/:
+          1. <meta name="robots" content="noindex, nofollow"> in the <head>.
+          2. A visible footer that reads "Design preview · Langkah Pertama".
+          3. NO phone numbers and NO WhatsApp links (no tel:, no wa.me, no api.whatsapp.com).
+          4. Never add /demo/ URLs to sitemap.xml and never link to them from public pages
+             (robots.txt also has "Disallow: /demo/").
+          5. Same per-page CSP convention as the rest of the site (meta CSP right after <meta charset>).
+    -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(217,176,108,0.12), transparent 60%),
+                #05060a;
+            color: #eef0f4;
+        }
+        .wrap { max-width: 460px; }
+        .code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #d9b06c;
+        }
+        h1 {
+            font-size: clamp(2rem, 8vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin: 14px 0 12px;
+        }
+        p { color: #9aa3b2; font-weight: 300; margin-bottom: 28px; }
+        a.home {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 44px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: linear-gradient(100deg, #f0d6a4, #d9b06c);
+            color: #05060a;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        a.home:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(217,176,108,0.3); }
+        a.home:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { a.home { transition: none; } }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <p class="code">// Pratonton peribadi — Langkah Pertama</p>
+        <h1>Ruang pratonton peribadi</h1>
+        <p>Halaman di sini hanya boleh dibuka melalui pautan yang dikongsi terus kepada anda.</p>
+        <a class="home" href="/">← Kembali ke Langkah Pertama</a>
+    </main>
+</body>
+</html>
