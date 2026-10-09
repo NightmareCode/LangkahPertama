@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!--
+============================================================================
+  FUWA SOUFFLÉ CAFÉ — PREVIEW MENU DIGITAL
+  Design preview oleh Langkah Pertama (langkahpertama.website)
+  Disediakan: 9 Okt 2026. BELUM diterbitkan / dihantar kepada sesiapa.
+  Ini BUKAN laman rasmi kafe. Semua item & harga perlu disahkan oleh pemilik.
+
+  CARA EDIT (untuk Far):
+  - Gaya LANGIT 56 (BRIEF §11.3): harga terus dalam HTML, tiada troli. Satu skrip kecil sahaja (carian langsung).
+    Kafe ini pesan di kaunter, jadi tiada butang pesanan / WhatsApp.
+  - Hidangan bergambar: blok <article class="card">. Nama di <h4>, penerangan di <p>, harga di <span class="rm">.
+  - Senarai minuman/snek: setiap baris <li class="row">. Harga panas/sejuk dalam <span class="p">.
+  - MENU MUSIM: cari "MULA MENU MUSIM" hingga "TAMAT MENU MUSIM". Tukar tajuk, tarikh & item
+    setiap kali menu musim bertukar (atau padam seluruh blok jika tiada menu musim).
+  - Gambar: folder images/ (640px JPEG). Kredit: CREDITS.txt + bahagian "Kredit Gambar".
+  - Halal (BRIEF §9.6): tajuk "coff-tail" kafe dipaparkan sebagai "Kopi Ais Istimewa" supaya tiada nama
+    yang membayangkan alkohol. Kombucha ialah item sebenar kafe — pemilik boleh sahkan sama ada mahu dipaparkan.
+
+  SUMBER FAKTA: senarai sumber penuh disimpan dalam salinan kerja Far (tidak diterbitkan dalam repo awam).
+  Semua item & harga datang daripada menu / hantaran awam perniagaan ini dan perlu disahkan oleh pemilik.
+============================================================================
+-->
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#fbf4ea">
+    <link rel="icon" href="data:,">
+    <title>Fuwa Soufflé Café — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital untuk Fuwa Soufflé Café, Seremban 2. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Warna & fon (gaya kafe lembut) ===== */
+        :root {
+            --cream: #fbf4ea;
+            --paper: #fffdf9;
+            --butter: #f7dd94;
+            --blush: #f6d3cc;
+            --matcha: #a8bf86;
+            --matcha-deep: #6f8a4c;
+            --cocoa: #4a3428;
+            --cocoa-soft: #8a7262;
+            --line: rgba(74, 52, 40, 0.14);
+            --serif: 'Fraunces', Georgia, serif;
+            --sans: 'Nunito', -apple-system, 'Segoe UI', sans-serif;
+            --r: 22px;
+            --soft: 0 10px 28px -14px rgba(74, 52, 40, 0.35);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans); color: var(--cocoa); line-height: 1.55;
+            background: var(--cream);
+            background-image: radial-gradient(circle at 12% 0%, #fde9c7 0, transparent 40%), radial-gradient(circle at 100% 30%, #f9e0da 0, transparent 35%);
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; }
+        a:focus-visible { outline: 3px solid var(--matcha-deep); outline-offset: 3px; border-radius: 8px; }
+        .page { max-width: 640px; margin: 0 auto; padding: 0 18px 60px; }
+
+        /* Tanda "akan disahkan oleh pemilik" */
+        .sah {
+            display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.3px;
+            color: #b0533f; background: #fff1ec; border: 1.5px dashed #e3a291;
+            border-radius: 999px; padding: 1px 9px; margin-top: 5px;
+        }
+
+        /* ===== Bar atas ===== */
+        .topbar {
+            display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+            margin: 0 -18px; padding: 9px 18px; background: var(--cocoa); color: var(--cream);
+            font-size: 0.64rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+        }
+
+        /* ===== Kepala ===== */
+        header { text-align: center; padding: 26px 0 8px; }
+        .hero {
+            position: relative; border-radius: 160px 160px var(--r) var(--r); overflow: hidden;
+            box-shadow: var(--soft); margin: 0 auto 20px; max-width: 420px; background: var(--butter);
+        }
+        .hero img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; }
+        .kicker { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--matcha-deep); }
+        h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.5rem, 12vw, 3.8rem); line-height: 1; margin-top: 6px; letter-spacing: -0.5px; }
+        h1 em { font-style: italic; font-weight: 400; color: #c0786a; }
+        .tagline { font-size: 0.9rem; color: var(--cocoa-soft); margin-top: 8px; }
+        .pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+        .pills span { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 0.7rem; font-weight: 700; }
+
+        /* ===== Chip kategori ===== */
+        .tabs {
+            position: sticky; top: 0; z-index: 20; margin: 18px -18px 0; padding: 10px 18px;
+            display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+            background: rgba(251, 244, 234, 0.94); border-bottom: 1px solid var(--line);
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab {
+            flex-shrink: 0; text-decoration: none; font-size: 0.78rem; font-weight: 800;
+            padding: 8px 15px; min-height: 40px; display: inline-flex; align-items: center;
+            border-radius: 999px; background: var(--paper); border: 1px solid var(--line); white-space: nowrap;
+        }
+        .tab.season { background: var(--matcha); border-color: var(--matcha-deep); color: #20301a; }
+
+        /* ===== Nota ===== */
+        .note {
+            margin-top: 18px; background: var(--paper); border: 1.5px dashed #e3a291; border-radius: 16px;
+            padding: 12px 14px; font-size: 0.74rem;
+        }
+        .note b { color: #b0533f; }
+
+        /* ===== Seksyen ===== */
+        section { scroll-margin-top: 64px; padding-top: 30px; }
+        .sec-head { text-align: center; margin-bottom: 16px; }
+        .sec-head h2 { font-family: var(--serif); font-weight: 600; font-size: 1.75rem; line-height: 1.1; }
+        .sec-head p { font-size: 0.74rem; color: var(--cocoa-soft); margin-top: 4px; }
+        .sec-head::after { content: '∿'; display: block; color: #c0786a; font-size: 1.1rem; margin-top: 2px; }
+
+        /* Kad bergambar */
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .card {
+            background: var(--paper); border-radius: var(--r); overflow: hidden; box-shadow: var(--soft);
+            display: flex; flex-direction: column; min-width: 0; position: relative;
+        }
+        .card.wide { grid-column: 1 / -1; }
+        .card .ph { position: relative; }
+        .card .ph img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+        .card.wide .ph img { aspect-ratio: 16 / 9; }
+        .card .body { padding: 12px 13px 14px; flex: 1; display: flex; flex-direction: column; }
+        .card h4 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; line-height: 1.15; }
+        .card p { font-size: 0.72rem; color: var(--cocoa-soft); margin-top: 4px; flex: 1; }
+        .rm {
+            align-self: flex-start; margin-top: 10px; font-weight: 800; font-size: 0.85rem;
+            background: var(--butter); border-radius: 999px; padding: 3px 12px;
+        }
+        .rm.tba { background: #fff1ec; color: #b0533f; font-size: 0.64rem; border: 1.5px dashed #e3a291; }
+        .badge {
+            position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--paper); color: var(--cocoa);
+            font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;
+            border-radius: 999px; padding: 3px 10px; box-shadow: var(--soft);
+        }
+        .cr {
+            position: absolute; right: 8px; bottom: 8px; background: rgba(74, 52, 40, 0.72); color: #fff;
+            font-size: 0.5rem; line-height: 1.3; padding: 2px 7px; border-radius: 999px; max-width: calc(100% - 16px);
+        }
+        .addon { font-size: 0.68rem; color: var(--cocoa-soft); margin-top: 12px; text-align: center; }
+
+        /* Senarai harga (minuman / snek) */
+        .menu-list { background: var(--paper); border-radius: var(--r); box-shadow: var(--soft); padding: 6px 16px 10px; margin-bottom: 14px; }
+        .menu-list h3 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; padding: 10px 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+        .menu-list h3 small { font-family: var(--sans); font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; color: var(--cocoa-soft); text-transform: uppercase; white-space: nowrap; }
+        .row { list-style: none; display: flex; align-items: baseline; gap: 8px; padding: 8px 0; border-top: 1px dashed var(--line); }
+        .row .nm { flex: 1; min-width: 0; font-weight: 700; font-size: 0.86rem; }
+        .row .nm small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--cocoa-soft); }
+        .row .p { font-weight: 800; font-size: 0.82rem; white-space: nowrap; text-align: right; }
+        .row .p i { font-style: normal; white-space: normal; display: inline-block; max-width: 9.5em; font-weight: 600; font-size: 0.62rem; color: var(--cocoa-soft); }
+
+        /* ===== Menu musim ===== */
+        .season-box {
+            background: linear-gradient(160deg, #e6efd8 0%, #fdf0e6 100%);
+            border: 2px solid var(--matcha); border-radius: 28px; padding: 18px 14px 16px; box-shadow: var(--soft);
+        }
+        .season-box .sec-head h2 { color: #3f5a2a; }
+        .season-tag { display: inline-block; background: var(--matcha-deep); color: #fff; font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; border-radius: 999px; padding: 4px 12px; margin-bottom: 8px; }
+
+        /* Promo */
+        .promo {
+            margin-top: 18px; background: var(--blush); border-radius: var(--r); padding: 16px; text-align: center; box-shadow: var(--soft);
+        }
+        .promo strong { font-family: var(--serif); font-size: 1.4rem; display: block; }
+        .promo p { font-size: 0.74rem; }
+
+        /* Info */
+        .info { background: var(--paper); border-radius: var(--r); box-shadow: var(--soft); padding: 16px; font-size: 0.8rem; }
+        .info dt { font-weight: 800; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; color: var(--matcha-deep); margin-top: 12px; }
+        .info dt:first-child { margin-top: 0; }
+        .hours { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 0.8rem; }
+        .hours td { padding: 3px 0; border-bottom: 1px dashed var(--line); }
+        .hours td + td { text-align: right; }
+
+        /* CTA studio + kaki */
+        .studio {
+            margin-top: 40px; background: var(--cocoa); color: var(--cream); border-radius: 28px; padding: 24px 20px; text-align: center;
+        }
+        .studio .lbl { font-size: 0.62rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--butter); }
+        .studio h3 { font-family: var(--serif); font-weight: 600; font-size: 1.45rem; margin: 8px 0 6px; line-height: 1.2; }
+        .studio p { font-size: 0.8rem; opacity: 0.85; margin-bottom: 14px; }
+        html { overflow-x: clip; }
+        .studio .demo-note { display: inline-block; font-size: 0.78rem; font-weight: 700; background: var(--butter); color: var(--cocoa); border-radius: 14px; padding: 10px 16px; margin: 0; opacity: 1; }
+        .studio .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .btn { text-decoration: none; font-weight: 800; font-size: 0.78rem; border-radius: 999px; padding: 10px 18px; min-height: 42px; display: inline-flex; align-items: center; }
+        .btn.solid { background: var(--butter); color: var(--cocoa); }
+        .btn.ghost { border: 1.5px solid var(--cream); color: var(--cream); }
+
+        .credits { margin-top: 28px; font-size: 0.66rem; color: var(--cocoa-soft); }
+        .credits h2 { font-family: var(--serif); font-size: 1rem; color: var(--cocoa); }
+        .credits ol { padding-left: 18px; margin-top: 6px; }
+        .credits li { margin-top: 3px; word-break: break-word; }
+
+        footer { text-align: center; margin-top: 26px; font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px; color: var(--cocoa-soft); }
+        footer a { color: #c0786a; text-decoration: none; }
+
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        /* Pautan langkau, carian, nota konsep */
+        .skip { position: fixed; top: 10px; left: 10px; z-index: 200; background: var(--cocoa); color: var(--cream); padding: 10px 16px; border-radius: 999px; font-weight: 800; font-size: 0.8rem; text-decoration: none; transform: translateY(-160%); transition: transform 0.18s; }
+        .skip:focus { transform: none; }
+        main:focus { outline: none; }
+        .search { position: relative; margin-top: 16px; }
+        .search input {
+            width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--cocoa);
+            background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+            padding: 11px 16px 11px 42px; box-shadow: var(--soft);
+        }
+        .search input::placeholder { color: var(--cocoa-soft); }
+        .search input:focus-visible { outline: 3px solid var(--matcha-deep); outline-offset: 2px; }
+        .search svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--cocoa-soft); }
+        .empty { display: none; text-align: center; font-size: 0.85rem; padding: 30px 10px; }
+        .empty.show { display: block; }
+        .concept { display: block; margin: 6px 0; font-weight: 600; letter-spacing: 0.3px; font-size: 0.7rem; }
+        @media (prefers-reduced-motion: reduce) { .skip { transition: none; } }
+    </style>
+</head>
+<body>
+<a class="skip" href="#main">Langkau ke menu</a>
+<div class="page">
+
+    <div class="topbar">
+        <span>Design preview · Langkah Pertama</span>
+        <span>Bukan laman rasmi</span>
+    </div>
+
+    <!-- ===================== KEPALA ===================== -->
+    <header>
+        <div class="hero">
+            <img src="images/hero-souffle.jpg" alt="Soufflé pancake bertingkat dengan sirap (gambar hiasan)" width="640" height="427">
+            <span class="cr">Gambar hiasan · t-mizo · CC BY 2.0</span>
+        </div>
+        <div class="kicker">Soufflé pancake · brunch · kopi</div>
+        <h1>Fuwa <em>Soufflé</em> Café</h1>
+        <p class="tagline">Soufflé pancake Jepun pertama di bandar Seremban — lembut, gebu, cair di mulut.</p>
+        <div class="pills">
+            <span>Uptown Avenue, Seremban 2</span>
+            <span>Ayam · itik · daging · makanan laut · vegetarian</span>
+            <span>Tiada alkohol</span>
+        </div>
+    </header>
+
+    <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="q" placeholder="Cari: matcha, bagel, karaage..." aria-label="Cari dalam menu" autocomplete="off">
+    </div>
+
+    <nav class="tabs" aria-label="Kategori menu">
+        <a class="tab season" href="#musim">Menu Musim</a>
+        <a class="tab" href="#souffle">Soufflé Pancake</a>
+        <a class="tab" href="#brunch">Brunch</a>
+        <a class="tab" href="#pasta">Pasta &amp; Bagel</a>
+        <a class="tab" href="#snek">Snek</a>
+        <a class="tab" href="#manis">Kek &amp; Gelato</a>
+        <a class="tab" href="#minuman">Minuman</a>
+        <a class="tab" href="#info">Info</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+
+    <div class="note">
+        <b>Preview sahaja.</b> Item &amp; harga diambil daripada menu PDF kafe (Sep 2025) dan hantaran Facebook kafe.
+        <b>Harga terkini akan disahkan oleh pemilik.</b> Semua harga dalam RM. Semua gambar ialah gambar hiasan, bukan gambar sebenar kafe.
+    </div>
+
+    <!-- ===================== MULA MENU MUSIM =====================
+         Tukar blok ini setiap musim: tajuk, tarikh, item & harga.
+         Musim semasa (dari Facebook kafe, 18 Jun 2026): ZEN & BLOOM.
+         Padam keseluruhan <section id="musim"> jika tiada menu musim. -->
+    <section id="musim">
+        <div class="season-box">
+            <div class="sec-head">
+                <span class="season-tag">Menu Musim · Edisi Terhad</span>
+                <h2>Zen &amp; Bloom</h2>
+                <p>Koleksi musim gaya Jepun — matcha, mochi &amp; rasa Jepun yang menenangkan. Dilancarkan 18 Jun 2026.</p>
+                <span class="sah">Masih ada atau sudah bertukar? Akan disahkan oleh pemilik</span>
+            </div>
+            <div class="cards">
+                <article class="card wide">
+                    <span class="badge">Edisi terhad</span>
+                    <div class="ph"><img src="images/souffle-seasonal.jpg" alt="Soufflé pancake dengan krim (gambar hiasan)" width="640" height="480" loading="lazy"><span class="cr">Peachyeung316 · CC BY-SA 4.0</span></div>
+                    <div class="body">
+                        <h4>Milky Hokkaido Soufflé</h4>
+                        <p>Apabila Dalgona bertemu brulee.</p>
+                        <span class="rm tba">Harga akan disahkan oleh pemilik</span>
+                    </div>
+                </article>
+            </div>
+            <div class="menu-list" style="margin-top:14px">
+                <h3>Juga dalam Zen &amp; Bloom <small>harga</small></h3>
+            <ul>
+                <li class="row"><span class="nm">Kyoto Berry</span><span class="p"><i>harga akan disahkan oleh pemilik</i></span></li>
+                <li class="row"><span class="nm">Kuro Curry Karaage</span><span class="p"><i>harga akan disahkan oleh pemilik</i></span></li>
+                <li class="row"><span class="nm">Matcha Zen</span><span class="p"><i>harga akan disahkan oleh pemilik</i></span></li>
+                <li class="row"><span class="nm">Sunset Matcha</span><span class="p"><i>harga akan disahkan oleh pemilik</i></span></li>
+                <li class="row"><span class="nm">Taro Matcha</span><span class="p"><i>harga akan disahkan oleh pemilik</i></span></li>
+            </ul>
+        </div>
+        </div>
+    </section>
+    <!-- ===================== TAMAT MENU MUSIM ===================== -->
+
+    <!-- ===================== SOUFFLÉ PANCAKE (F1) ===================== -->
+    <section id="souffle">
+        <div class="sec-head"><h2>Soufflé Pancake</h2><p>Kegemaran anda</p></div>
+        <div class="cards">
+            <article class="card">
+                <span class="badge">Asli</span>
+                <div class="ph"><img src="images/souffle-seasonal.jpg" alt="Soufflé pancake asli (gambar hiasan)" width="640" height="480" loading="lazy"><span class="cr">Peachyeung316 · CC BY-SA 4.0</span></div>
+                <div class="body"><h4>Ori Fuwa</h4><p>Krim segar, sirap.</p><span class="rm">RM18</span></div>
+            </article>
+            <article class="card">
+                <div class="ph"><img src="images/souffle-matcha.jpg" alt="Soufflé pancake matcha (gambar hiasan)" width="640" height="482" loading="lazy"><span class="cr">Andy Li · CC0</span></div>
+                <div class="body"><h4>Matcha Black Sesame</h4><p>Krim matcha, bebola mochi, gelato bijan hitam, sirap.</p><span class="rm">RM22</span></div>
+            </article>
+            <article class="card">
+                <div class="ph"><img src="images/souffle-ori.jpg" alt="Soufflé pancake dengan buah beri (gambar hiasan)" width="640" height="564" loading="lazy"><span class="cr">Rhododendrites · CC BY-SA 4.0</span></div>
+                <div class="body"><h4>Very Berry</h4><p>Kompot beri, buah beri, krim segar, sirap.</p><span class="rm">RM20</span></div>
+            </article>
+            <article class="card">
+                <div class="ph"><img src="images/hero-souffle.jpg" alt="Soufflé pancake (gambar hiasan)" width="640" height="427" loading="lazy"><span class="cr">t-mizo · CC BY 2.0</span></div>
+                <div class="body"><h4>Caramel Popcorn</h4><p>Sos karamel, bertih jagung, krim segar, gelato vanila.</p><span class="rm">RM18</span></div>
+            </article>
+        </div>
+        <div class="menu-list" style="margin-top:14px">
+            <ul>
+            <li class="row"><span class="nm">Choco Choco<small>Sos coklat, krim coklat, serbuk badam</small></span><span class="p">RM18</span></li>
+            <li class="row"><span class="nm">Taro Sweet Potato<small>Bebola keledek, krim segar, pes keladi, gelato keledek ungu</small></span><span class="p">RM20</span></li>
+        </ul>
+        </div>
+        <p class="addon">Tambah sos +RM2 · topping +RM5 · krim segar +RM5 · krim berperisa +RM6</p>
+    </section>
+
+    <!-- Promo hari bekerja (F1) -->
+    <div class="promo">
+        <strong>+RM2 sahaja</strong>
+        <p>untuk minuman istimewa hari ini, bersama mana-mana hidangan brunch atau pasta. Isnin–Jumaat, 12 tengah hari – 5 petang (kecuali cuti umum &amp; hujung minggu).</p>
+        <span class="sah">Promo masih berjalan? Akan disahkan oleh pemilik</span>
+    </div>
+
+    <!-- ===================== BRUNCH (F1) ===================== -->
+    <section id="brunch">
+        <div class="sec-head"><h2>Brunch Sepanjang Hari</h2></div>
+        <div class="cards">
+            <article class="card wide">
+                <div class="ph"><img src="images/french-toast.jpg" alt="Roti bakar Perancis (gambar hiasan)" width="640" height="425" loading="lazy"><span class="cr">Ocdp · CC0</span></div>
+                <div class="body"><h4>French Toast</h4><p>Roti Hokkaido, bacon itik, bawang goreng, sirap, krim segar, kulit oren.</p><span class="rm">RM23</span></div>
+            </article>
+        </div>
+        <div class="menu-list" style="margin-top:14px">
+            <ul>
+            <li class="row"><span class="nm">Bacon &amp; Egg<small>Soufflé pancake, bacon itik, 2 telur mata, curry hollandaise</small></span><span class="p">RM20</span></li>
+            <li class="row"><span class="nm">Karaage Fuwa<small>Soufflé pancake, ayam salut cornflake, sirap, aioli telur century, telur mata</small></span><span class="p">RM20</span></li>
+            <li class="row"><span class="nm">Big Breaky<small>Bagel, sosej jumbo, telur mata, tomato bakar, bacon itik, cendawan tumis</small></span><span class="p">RM28</span></li>
+            <li class="row"><span class="nm">Fuwa Breaky<small>Soufflé pancake, hashbrown, 2 telur hancur, tomato bakar, bacon itik, cendawan tumis</small></span><span class="p">RM28</span></li>
+            <li class="row"><span class="nm">House Salad<small>Biskut soufflé pancake, bacon itik, romaine, tomato, capsicum, kelapa panggang, sos truffle. Tambah ayam char siew +RM8</small></span><span class="p">RM23</span></li>
+        </ul>
+        </div>
+        <p class="addon">Tukar bacon itik kepada streaky beef bacon +RM5</p>
+    </section>
+
+    <!-- ===================== PASTA & BAGEL (F1) ===================== -->
+    <section id="pasta">
+        <div class="sec-head"><h2>Pasta &amp; Bagel</h2></div>
+        <div class="cards">
+            <article class="card">
+                <div class="ph"><img src="images/karaage.jpg" alt="Ayam karaage (gambar hiasan)" width="640" height="425" loading="lazy"><span class="cr">Ocdp · CC0</span></div>
+                <div class="body"><h4>Buttermilk Karaage</h4><p>Pasta: buttermilk, cili, daun kari, ayam salut cornflake, cendawan.</p><span class="rm">RM23</span></div>
+            </article>
+            <article class="card">
+                <div class="ph"><img src="images/bagel.jpg" alt="Bagel sandwic (gambar hiasan)" width="640" height="640" loading="lazy"><span class="cr">에그란 · CC BY 4.0</span></div>
+                <div class="body"><h4>Nam Yu Fried Chicken</h4><p>Bagel buatan sendiri: ayam goreng tauhu fermentasi, mayo sriracha, keju.</p><span class="rm">RM21</span></div>
+            </article>
+        </div>
+        <div class="menu-list" style="margin-top:14px">
+            <h3>Pasta</h3>
+            <ul>
+            <li class="row"><span class="nm">Carbonara<small>Bacon itik, sosej, kulit ayam rangup, cendawan, kailan</small></span><span class="p">RM20</span></li>
+            <li class="row"><span class="nm">Mun Yi Mee<small>Cendawan, kulit ayam rangup, enoki, fish cake, ayam cincang, kailan. Tambah makanan laut +RM8</small></span><span class="p">RM20</span></li>
+        </ul>
+        </div>
+        <div class="menu-list">
+            <h3>Bagel Buatan Sendiri</h3>
+            <ul>
+            <li class="row"><span class="nm">Garlic Cream Cheese<small>Bawang putih, ketumbar, krim keju, telur mata. Tambah salmon salai +RM8</small></span><span class="p">RM11</span></li>
+            <li class="row"><span class="nm">Pesto Duck Bacon<small>Pesto Asia, bacon itik, cendawan</small></span><span class="p">RM18</span></li>
+            <li class="row"><span class="nm">Char Siew Chicken<small>Ayam char siew, kailan goreng</small></span><span class="p">RM19</span></li>
+        </ul>
+        </div>
+        <p class="addon">Tambah telur hancur +RM2 · keju +RM2 · streaky beef bacon +RM5</p>
+    </section>
+
+    <!-- ===================== SNEK (F1) ===================== -->
+    <section id="snek">
+        <div class="sec-head"><h2>Sementara Menunggu</h2><p>Snek &amp; finger food</p></div>
+        <div class="cards">
+            <article class="card wide">
+                <div class="ph"><img src="images/truffle-fries.jpg" alt="Kentang goreng truffle (gambar hiasan)" width="640" height="427" loading="lazy"><span class="cr">Stephanie McCabe · CC0</span></div>
+                <div class="body"><h4>Truffle Fries</h4><p>Shoestring, mayo bawang putih truffle, keju.</p><span class="rm">RM13</span></div>
+            </article>
+        </div>
+        <div class="menu-list" style="margin-top:14px">
+            <ul>
+            <li class="row"><span class="nm">French Fries<small>Shoestring, mayo telur century</small></span><span class="p">RM10</span></li>
+            <li class="row"><span class="nm">Nori Fries<small>Shoestring, rumpai laut, bijan putih</small></span><span class="p">RM10</span></li>
+            <li class="row"><span class="nm">Crispy Enoki Mushroom<small>Serbuk kari masin</small></span><span class="p">RM10</span></li>
+            <li class="row"><span class="nm">Mentai Fries<small>Shoestring, mayo mentaiko, kepingan bonito, rumpai laut</small></span><span class="p">RM15</span></li>
+            <li class="row"><span class="nm">Truffle Hashbrown<small>Mayo bawang putih truffle, keju</small></span><span class="p">RM15</span></li>
+            <li class="row"><span class="nm">Chicken Karaage<small>Mayo telur century, daun kari</small></span><span class="p">RM16</span></li>
+            <li class="row"><span class="nm">Char Siew Beefball<small>Bebola daging, sos char siew, bijan putih</small></span><span class="p">RM20</span></li>
+        </ul>
+        </div>
+        <p class="addon">Tambah sos / mayo +RM2</p>
+    </section>
+
+    <!-- ===================== KEK & GELATO (F1, F2) ===================== -->
+    <section id="manis">
+        <div class="sec-head"><h2>Kek &amp; Gelato</h2></div>
+        <div class="cards">
+            <article class="card">
+                <span class="badge">Signature</span>
+                <div class="ph"><img src="images/cheesecake.jpg" alt="Burnt cheesecake (gambar hiasan)" width="640" height="853" loading="lazy"><span class="cr">Aqilla Rahmi · CC BY 4.0</span></div>
+                <div class="body"><h4>Burnt Cheese Cake</h4><p>Original RM15 · Brulee RM17. Tambah krim segar +RM5.</p><span class="rm">dari RM15</span></div>
+            </article>
+            <article class="card">
+                <div class="body">
+                    <h4>Gelato Buatan Sendiri</h4>
+                    <p>Vanila · Coklat · Keledek Ungu · Bijan Hitam</p>
+                    <span class="rm">RM7</span>
+                </div>
+                <div class="body" style="border-top:1px dashed var(--line)">
+                    <h4>Kek Sebiji (Whole Cake)</h4>
+                    <p>Burnt cheese cake sebiji — tempah terus dengan kafe (DM).</p>
+                    <span class="rm tba">Harga akan disahkan oleh pemilik</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===================== MINUMAN (F1) — harga: panas / sejuk ===================== -->
+    <section id="minuman">
+        <div class="sec-head"><h2>Minuman</h2><p>Harga panas / sejuk (RM)</p></div>
+        <div class="cards" style="margin-bottom:14px">
+            <article class="card">
+                <div class="ph"><img src="images/matcha-latte.jpg" alt="Matcha latte (gambar hiasan)" width="640" height="640" loading="lazy"><span class="cr">Jeff Nelson · CC BY-SA 2.0</span></div>
+                <div class="body"><h4>Matcha Latte</h4><p>Matcha, susu segar.</p><span class="rm">15 / 16</span></div>
+            </article>
+            <article class="card">
+                <div class="ph"><img src="images/iced-latte.jpg" alt="Latte ais (gambar hiasan)" width="640" height="850" loading="lazy"><span class="cr">Andy Li · CC0</span></div>
+                <div class="body"><h4>Citrus Snow Americano</h4><p>Americano, sirap oren, krim (sejuk).</p><span class="rm">16</span></div>
+            </article>
+        </div>
+
+        <div class="menu-list">
+            <h3>Klasik <small>panas · sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Americano / Long Black</span><span class="p">8 · 9</span></li>
+            <li class="row"><span class="nm">Latte / Cappuccino</span><span class="p">11 · 12</span></li>
+            <li class="row"><span class="nm">Mocha</span><span class="p">15 · 16</span></li>
+            <li class="row"><span class="nm">Caramel Macchiato</span><span class="p">14 · 15</span></li>
+            <li class="row"><span class="nm">Vanilla Latte</span><span class="p">14 · 15</span></li>
+            <li class="row"><span class="nm">Rose Latte</span><span class="p">14 · 15</span></li>
+            <li class="row"><span class="nm">Chocolate</span><span class="p">16 · 17</span></li>
+            <li class="row"><span class="nm"><small>Tukar ke susu oat +2 · tambah shot espresso +5</small></span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <!-- Tajuk asal kafe: "coff-tail". Ditukar supaya tiada nama yang membayangkan alkohol (BRIEF §9.6). -->
+            <h3>Kopi Ais Istimewa <small>sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Kopi Beng<small>Espresso, susu pekat, susu segar</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Golden Fizz<small>Espresso, sirap osmanthus, sirap lemon, soda</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Island Espresso<small>Espresso, air kelapa, sirap pandan</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Smoky Limau Soda<small>Espresso, sirap limau, limau bakar, soda</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Af-fuwa-to<small>Gelato vanila, espresso</small></span><span class="p">16</span></li>
+            <li class="row"><span class="nm">Dirty Latte<small>Susu sejuk, espresso</small></span><span class="p">16</span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <h3>Siri Matcha <small>panas · sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Matcha Latte<small>Matcha, susu segar</small></span><span class="p">15 · 16</span></li>
+            <li class="row"><span class="nm">Jasmine Matcha<small>Teh matcha, sirap melati</small></span><span class="p"><i>sejuk</i> 16</span></li>
+            <li class="row"><span class="nm">Coconut Matcha<small>Krim matcha, air kelapa</small></span><span class="p"><i>sejuk</i> 17</span></li>
+            <li class="row"><span class="nm">Berry Matcha<small>Matcha, susu segar, kompot beri</small></span><span class="p"><i>sejuk</i> 18</span></li>
+            <li class="row"><span class="nm"><small>Tukar ke susu oat +2</small></span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <h3>Siri Krim <small>sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Lychee Earl Grey<small>Sirap laici, teh earl grey</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Citrus Kiss<small>Sirap oren, teh beri, ros</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Salted Snow Black<small>Americano, garam laut</small></span><span class="p">15</span></li>
+            <li class="row"><span class="nm">Citrus Snow Americano<small>Americano, sirap oren</small></span><span class="p">16</span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <h3>Penyegar <small>panas · sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Honey Lemon<small>Madu asli, jus lemon perah segar, hirisan lemon</small></span><span class="p">14 · 15</span></li>
+            <li class="row"><span class="nm">Asam Boi Limau<small>Jus limau, asam boi, limau</small></span><span class="p"><i>sejuk</i> 13</span></li>
+            <li class="row"><span class="nm">Lemonade Soda<small>Sirap lemon, soda, hirisan lemon</small></span><span class="p"><i>sejuk</i> 14</span></li>
+            <li class="row"><span class="nm">Jasmine Lemonade<small>Sirap lemon melati, soda</small></span><span class="p"><i>sejuk</i> 15</span></li>
+            <li class="row"><span class="nm">Orange Fizz<small>Sirap oren, soda</small></span><span class="p"><i>sejuk</i> 15</span></li>
+            <li class="row"><span class="nm">Fizzy Lychee Rose<small>Sirap laici ros, soda</small></span><span class="p"><i>sejuk</i> 15</span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <h3>Teh Uncang <small>panas · sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Earl Grey</span><span class="p">8 · 9</span></li>
+            <li class="row"><span class="nm">Chamomile</span><span class="p">8 · 9</span></li>
+            <li class="row"><span class="nm">Green Tea</span><span class="p">8 · 9</span></li>
+            <li class="row"><span class="nm">Strawberry Raspberry</span><span class="p">9 · 10</span></li>
+        </ul>
+        </div>
+
+        <div class="menu-list">
+            <h3>Kombucha <small>sejuk</small></h3>
+            <ul>
+            <li class="row"><span class="nm">Honey Yuzu</span><span class="p">16</span></li>
+            <li class="row"><span class="nm">Pink Guava</span><span class="p">16</span></li>
+            <li class="row"><span class="nm">Passionfruit</span><span class="p">16</span></li>
+            <li class="row"><span class="nm">Lychee Watermelon</span><span class="p">16</span></li>
+            <li class="row"><span class="nm">Peach Yuzu</span><span class="p">16</span></li>
+        </ul>
+        </div>
+    </section>
+
+    <!-- ===================== INFO KAFE (F1, F2, F3) ===================== -->
+    <section id="info">
+        <div class="sec-head"><h2>Info Kafe</h2></div>
+        <dl class="info">
+            <dt>Alamat</dt>
+            <dd>292 (Tingkat 1), Uptown Avenue S2, Jalan S2 B13S, 70300 Seremban 2, Negeri Sembilan.</dd>
+
+            <dt>Waktu operasi</dt>
+            <dd>
+                <table class="hours">
+                    <tr><td>Isnin</td><td>12 tgh – 10 mlm</td></tr>
+                    <tr><td>Selasa</td><td>12 tgh – 10 mlm</td></tr>
+                    <tr><td>Rabu</td><td>Tutup</td></tr>
+                    <tr><td>Khamis – Ahad</td><td>12 tgh – 10 mlm</td></tr>
+                </table>
+                Pesanan terakhir 9.30 malam. <span class="sah">Waktu terkini akan disahkan oleh pemilik</span>
+            </dd>
+
+            <dt>Hubungi kafe</dt>
+            <dd>Untuk kek sebiji, kafe meminta pelanggan menghubungi kafe terus (DM).<br>
+                <span class="sah">Butiran hubungan akan disahkan oleh pemilik</span></dd>
+
+            <dt>Cara pesan</dt>
+            <dd>Pesan di kaunter.</dd>
+
+            <dt>Bahan</dt>
+            <dd>Ayam, itik, daging, makanan laut &amp; vegetarian sahaja. Tiada alkohol.</dd>
+        </dl>
+    </section>
+
+    <p class="empty" id="empty" role="status">Tiada padanan. Cuba "souffle", "latte" atau "fries".</p>
+    </main>
+
+    <!-- ===================== CTA STUDIO ===================== -->
+    <div class="studio">
+        <span class="lbl">Preview percuma untuk Fuwa</span>
+        <h3>Menu bergambar terus di telefon pelanggan</h3>
+        <p>Pelanggan buka menu terus di telefon — tak perlu muat turun PDF, dan menu musim baharu tak perlu cetak semula. Semua item &amp; harga di atas akan disahkan oleh pemilik sebelum digunakan.</p>
+        <!-- Tiada pautan hubungi dalam demo (peraturan studio). Nota demo sahaja. -->
+        <p class="demo-note" role="note">Pratonton sahaja: butang hubungi boleh diaktifkan selepas pemilik bersetuju. Disediakan oleh Far, Langkah Pertama Digital Studio.</p>
+    </div>
+
+    <!-- ===================== KREDIT GAMBAR ===================== -->
+    <section class="credits" aria-labelledby="kredit">
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar Fuwa Soufflé Café.</p>
+        <ol>
+            <li>Soufflé pancake (atas, Caramel Popcorn) — t-mizo, CC BY 2.0 — commons.wikimedia.org/wiki/File:Souffle_Pan_Cake_in_Japan.jpg</li>
+            <li>Milky Hokkaido / Ori Fuwa — Peachyeung316, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Japanese_pancake_in_k11.jpg</li>
+            <li>Matcha Black Sesame — Andy Li, CC0 — commons.wikimedia.org/wiki/File:Matcha_&amp;_Red_Bean_soufflé_pancakes_-_Rawlab_2025-08-31.jpg</li>
+            <li>Very Berry — Rhododendrites, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Souffe_pancakes_(76646).jpg</li>
+            <li>French Toast — Ocdp, CC0 — commons.wikimedia.org/wiki/File:French_toast_001.jpg</li>
+            <li>Buttermilk Karaage — Ocdp, CC0 — commons.wikimedia.org/wiki/File:Chicken_karaage_004.jpg</li>
+            <li>Bagel — 에그란, CC BY 4.0 — commons.wikimedia.org/wiki/File:Homemade_salmon_bagel_sandwich_1.jpg</li>
+            <li>Truffle Fries — Stephanie McCabe (Unsplash), CC0 — commons.wikimedia.org/wiki/File:Truffle_Fries_(Unsplash).jpg</li>
+            <li>Burnt Cheese Cake — Aqilla Rahmi, CC BY 4.0 — commons.wikimedia.org/wiki/File:Burnt_Bake_Cheesecake_Khas_Basque_Spanyol.jpg</li>
+            <li>Matcha Latte — Jeff Nelson, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Matcha_green_tea_latte_art.jpg</li>
+            <li>Citrus Snow Americano — Andy Li, CC0 — commons.wikimedia.org/wiki/File:Iced_latte_-_Hove_Park_Cafe_2025-04-06.jpg</li>
+        </ol>
+        <p>Lesen: creativecommons.org/licenses (by/2.0 · by-sa/2.0 · by/4.0 · by-sa/4.0 · CC0). Saiz dikecilkan ke 640px; tiada perubahan lain. Senarai penuh: CREDITS.txt.</p>
+    </section>
+
+    <footer>
+        Design preview · Langkah Pertama
+        <span class="concept">Konsep reka bentuk laman web yang disediakan untuk Fuwa Soufflé Café oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+
+<script>
+/* Carian langsung (satu-satunya skrip). Tapis kad & baris menu ikut teks. */
+(function () {
+    'use strict';
+    var q = document.getElementById('q'), empty = document.getElementById('empty');
+    var els = document.querySelectorAll('main .card, main .row');
+    q.addEventListener('input', function () {
+        var v = q.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(els, function (el) {
+            var show = !v || el.textContent.toLowerCase().indexOf(v) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('main section, main .menu-list, main .promo, main .note, main .addon'), function (box) {
+            if (!v) { box.style.display = ''; return; }
+            if (box.matches('.promo, .note, .addon')) { box.style.display = 'none'; return; }
+            var vis = Array.prototype.some.call(box.querySelectorAll('.card, .row'), function (el) { return el.style.display !== 'none'; });
+            box.style.display = vis ? '' : 'none';
+        });
+        empty.classList.toggle('show', v.length > 0 && !any);
+    });
+})();
+</script>
+</body>
+</html>

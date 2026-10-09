@@ -1,0 +1,58 @@
+KREDIT GAMBAR — Fuwa Soufflé Café (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain. Setiap gambar disemak dengan mata.
+
+bagel.jpg
+  Pengarang: 에그란
+  Lesen: CC BY 4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Homemade_salmon_bagel_sandwich_1.jpg
+
+cheesecake.jpg
+  Pengarang: Aqilla Rahmi
+  Lesen: CC BY 4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Burnt_Bake_Cheesecake_Khas_Basque_Spanyol.jpg
+
+french-toast.jpg
+  Pengarang: Ocdp
+  Lesen: CC0
+  Sumber: https://commons.wikimedia.org/wiki/File:French_toast_001.jpg
+
+hero-souffle.jpg
+  Pengarang: t-mizo
+  Lesen: CC BY 2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Souffle_Pan_Cake_in_Japan.jpg
+
+iced-latte.jpg
+  Pengarang: Andy Li
+  Lesen: CC0
+  Sumber: https://commons.wikimedia.org/wiki/File:Iced_latte_-_Hove_Park_Cafe_2025-04-06.jpg
+
+karaage.jpg
+  Pengarang: Ocdp
+  Lesen: CC0
+  Sumber: https://commons.wikimedia.org/wiki/File:Chicken_karaage_004.jpg
+
+matcha-latte.jpg
+  Pengarang: Jeff Nelson
+  Lesen: CC BY-SA 2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Matcha_green_tea_latte_art.jpg
+
+souffle-matcha.jpg
+  Pengarang: Andy Li
+  Lesen: CC0
+  Sumber: https://commons.wikimedia.org/wiki/File:Matcha_%26_Red_Bean_souffl%C3%A9_pancakes_-_Rawlab_2025-08-31.jpg
+
+souffle-ori.jpg
+  Pengarang: Rhododendrites
+  Lesen: CC BY-SA 4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Souffe_pancakes_(76646).jpg
+
+souffle-seasonal.jpg
+  Pengarang: Peachyeung316
+  Lesen: CC BY-SA 4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Japanese_pancake_in_k11.jpg
+
+truffle-fries.jpg
+  Pengarang: Stephanie McCabe stephaniemccabe
+  Lesen: CC0
+  Sumber: https://commons.wikimedia.org/wiki/File:Truffle_Fries_(Unsplash).jpg

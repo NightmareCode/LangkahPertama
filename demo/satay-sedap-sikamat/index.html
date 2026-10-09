@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!--
+============================================================================
+  SATAY SEDAP SIKAMAT — PREVIEW MENU DIGITAL
+  Design preview oleh Langkah Pertama (langkahpertama.website)
+  Disediakan: 9 Okt 2026. BELUM diterbitkan / dihantar kepada sesiapa.
+  Ini BUKAN laman rasmi kedai. Semua item & harga perlu disahkan oleh pemilik.
+
+  CARA EDIT (untuk Far) — ikut enjin menu Mamak (BRIEF §11.3):
+  - SEMUA hidangan & harga ada dalam SATU senarai: cari "var MENU" dalam <script> di bawah.
+    Satu baris = satu hidangan: name, desc, price (nombor, atau null jika belum tahu),
+    kira:false = tidak dikira dalam jumlah (cth. harga foodpanda), sah = nota "akan disahkan oleh pemilik".
+  - Kategori & susunan seksyen: "var CATS". Minuman & Info Kedai ialah HTML biasa di bawah menu.
+  - Butang "Hantar pesanan" ialah DEMO: tiada pautan WhatsApp dan tiada mesej dihantar ke kedai. Ia hanya papar nota
+    pratonton. (Jika Far & pemilik setuju mengaktifkan pesanan WhatsApp kelak: encodeURIComponent setiap baris,
+    sambung dengan %0A — BRIEF §11.3.)
+  - Gambar: folder images/ (640px JPEG). Kredit: CREDITS.txt + bahagian "Kredit Gambar".
+
+  SUMBER FAKTA: senarai sumber penuh disimpan dalam salinan kerja Far (tidak diterbitkan dalam repo awam).
+  Semua item & harga datang daripada menu / hantaran awam perniagaan ini dan perlu disahkan oleh pemilik.
+============================================================================
+-->
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ffd23f">
+    <link rel="icon" href="data:,">
+    <title>Satay Sedap Sikamat — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital untuk Satay Sedap Sikamat, Temiang, Seremban. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Warna & fon (ikut gaya demo Mamak Kilat) ===== */
+        :root {
+            --yellow: #ffd23f;
+            --yellow-deep: #f5b800;
+            --ink: #181410;
+            --red: #d7263d;
+            --white: #fffdf5;
+            --wa: #25d366;
+            --disp: 'Anton', Impact, sans-serif;
+            --sans: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+            --shadow: 5px 5px 0 var(--ink);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            background: var(--yellow);
+            color: var(--ink);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+        html { overflow-x: clip; }
+        img { max-width: 100%; height: auto; display: block; }
+        a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+        .page { max-width: 680px; margin: 0 auto; padding: 0 16px 150px; }
+
+        /* Tanda "akan disahkan oleh pemilik" */
+        .sah {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: var(--white);
+            color: var(--red);
+            border: 2px dashed var(--red);
+            padding: 1px 6px;
+            margin-top: 4px;
+        }
+
+        /* ===== Bar hitam atas ===== */
+        .topbar {
+            background: var(--ink); color: var(--yellow);
+            margin: 0 -16px; padding: 10px 18px;
+            display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+            font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        /* ===== Papan tanda ===== */
+        header { padding: 26px 0 6px; text-align: center; }
+        .hero-img {
+            position: relative;
+            border: 3px solid var(--ink);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            background: var(--ink);
+        }
+        .hero-img img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+        .bolt {
+            display: inline-block; background: var(--ink); color: var(--yellow);
+            font-size: 0.66rem; font-weight: 900; letter-spacing: 3px;
+            padding: 6px 14px; transform: rotate(-2deg); margin-bottom: 14px;
+        }
+        h1 {
+            font-family: var(--disp); font-weight: 400;
+            font-size: clamp(2.9rem, 14vw, 5.2rem);
+            line-height: 0.95; text-transform: uppercase; letter-spacing: 1px;
+        }
+        h1 .strike { color: var(--red); }
+        .tagline { font-weight: 700; font-size: 0.92rem; margin-top: 12px; }
+        .tagline small { display: block; font-weight: 500; font-size: 0.66rem; opacity: 0.75; margin-top: 2px; }
+        .info-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .info-strip span {
+            border: 2px solid var(--ink); background: var(--white);
+            font-size: 0.7rem; font-weight: 700; padding: 5px 12px;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+
+        /* ===== Ticker (CSS sahaja; kandungan diulang 2x dalam HTML) ===== */
+        .ticker {
+            background: var(--ink); color: var(--yellow);
+            margin: 22px -16px 0; padding: 10px 0; overflow: hidden;
+        }
+        .ticker-track {
+            display: flex; width: max-content;
+            animation: tick 26s linear infinite;
+            font-family: var(--disp); font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .ticker-track span { padding-right: 26px; white-space: nowrap; }
+        .ticker-track i { font-style: normal; color: var(--red); padding-left: 26px; }
+        @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ===== Chip kategori (melekat di atas) ===== */
+        .tabs {
+            position: sticky; top: 0; z-index: 50;
+            background: var(--yellow);
+            margin: 0 -16px; padding: 12px 16px;
+            display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+            border-bottom: 3px solid var(--ink);
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab {
+            flex-shrink: 0; font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px;
+            color: var(--ink); background: var(--white); border: 2px solid var(--ink);
+            padding: 8px 14px; min-height: 40px; display: inline-flex; align-items: center;
+            text-decoration: none; white-space: nowrap;
+        }
+        .tab:hover, .tab:focus-visible { background: var(--ink); color: var(--yellow); }
+
+        /* ===== Nota harga ===== */
+        .note-box {
+            margin: 20px 0 6px; background: var(--white);
+            border: 3px dashed var(--red); padding: 12px 14px;
+            font-size: 0.74rem; font-weight: 700; color: var(--ink);
+        }
+        .note-box b { color: var(--red); }
+
+        /* ===== Banner istimewa ===== */
+        .istimewa {
+            margin: 18px 0 8px; background: var(--red); color: var(--white);
+            border: 3px solid var(--ink); box-shadow: var(--shadow);
+            display: flex; align-items: stretch; overflow: hidden;
+        }
+        .istimewa .txt { padding: 18px 16px; flex: 1; min-width: 0; }
+        .istimewa .lbl { font-size: 0.62rem; font-weight: 900; letter-spacing: 3px; }
+        .istimewa h3 {
+            font-family: var(--disp); font-weight: 400; font-size: 1.6rem;
+            text-transform: uppercase; line-height: 1.05; margin: 6px 0 4px;
+        }
+        .istimewa p { font-size: 0.78rem; opacity: 0.95; }
+        .istimewa .row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+        .istimewa .pic { width: 38%; flex-shrink: 0; border-left: 3px solid var(--ink); position: relative; }
+        .istimewa .pic img { width: 100%; height: 100%; object-fit: cover; }
+        .price-tag {
+            font-family: var(--disp); font-size: 1.05rem;
+            background: var(--yellow); color: var(--ink); border: 2px solid var(--ink);
+            padding: 4px 12px; transform: rotate(-3deg); display: inline-block;
+        }
+
+        /* ===== Seksyen menu + grid gambar ===== */
+        section.menu-sec { padding-top: 10px; scroll-margin-top: 70px; }
+        .sec-bar {
+            background: var(--ink); color: var(--yellow);
+            font-family: var(--disp); font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase;
+            padding: 10px 16px; margin: 26px -16px 16px;
+            display: flex; justify-content: space-between; align-items: center; gap: 8px;
+        }
+        .sec-bar small { font-family: var(--sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .item {
+            background: var(--white); border: 3px solid var(--ink); box-shadow: var(--shadow);
+            display: flex; flex-direction: column; position: relative; min-width: 0;
+        }
+        .item.wide { grid-column: 1 / -1; }
+        .item .ph { position: relative; border-bottom: 3px solid var(--ink); background: var(--yellow-deep); }
+        .item .ph img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+        .item .nophoto {
+            aspect-ratio: 4 / 3; display: grid; place-items: center; text-align: center;
+            padding: 10px; font-size: 0.66rem; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--ink); border-bottom: 3px solid var(--ink);
+            background: repeating-linear-gradient(45deg, var(--yellow-deep) 0 10px, var(--yellow) 10px 20px);
+        }
+        /* kredit kecil di atas setiap gambar */
+        .cr {
+            position: absolute; right: 0; bottom: 0;
+            background: rgba(24, 20, 16, 0.78); color: var(--white);
+            font-size: 0.5rem; line-height: 1.3; padding: 2px 5px; max-width: 100%;
+        }
+        .item .laku {
+            position: absolute; top: 8px; left: 8px; z-index: 2;
+            background: var(--red); color: var(--white);
+            font-size: 0.56rem; font-weight: 900; letter-spacing: 1.5px;
+            padding: 4px 9px; border: 2px solid var(--ink); transform: rotate(-4deg);
+        }
+        .item .body { padding: 11px 11px 13px; flex: 1; display: flex; flex-direction: column; }
+        .item h4 {
+            font-family: var(--disp); font-weight: 400; font-size: 1.02rem;
+            letter-spacing: 0.5px; text-transform: uppercase; line-height: 1.1;
+        }
+        .item .desc { font-size: 0.72rem; color: #5d5443; margin-top: 5px; flex: 1; }
+        .item .src { font-size: 0.56rem; color: #8a7d62; margin-top: 4px; }
+        .item .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .item .pr {
+            font-weight: 900; font-size: 0.86rem; background: var(--yellow);
+            border: 2px solid var(--ink); padding: 2px 8px; transform: rotate(-2deg);
+        }
+        .item .pr.tba { font-size: 0.6rem; background: var(--white); color: var(--red); border-style: dashed; border-color: var(--red); transform: none; }
+        .add-btn {
+            font-family: var(--sans); font-weight: 900; font-size: 0.72rem; letter-spacing: 1px;
+            color: var(--white); background: var(--red); border: 2px solid var(--ink);
+            padding: 8px 12px; min-height: 40px; cursor: pointer;
+        }
+        .add-btn:hover { background: var(--ink); }
+        .add-btn:active { transform: scale(0.93); }
+        .list { font-size: 0.78rem; padding-left: 18px; margin-top: 6px; }
+
+        /* ===== Maklumat kedai ===== */
+        .info-card {
+            background: var(--white); border: 3px solid var(--ink); box-shadow: var(--shadow);
+            padding: 16px; font-size: 0.8rem;
+        }
+        .info-card dt { font-weight: 900; font-size: 0.66rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 12px; }
+        .info-card dt:first-child { margin-top: 0; }
+        .info-card dd { margin-top: 2px; }
+
+        /* ===== CTA studio / kaki ===== */
+        .studio-cta {
+            margin-top: 44px; background: var(--ink); color: var(--yellow);
+            border: 3px solid var(--ink); box-shadow: var(--shadow); padding: 24px 20px; text-align: center;
+        }
+        .studio-cta .lbl { font-size: 0.62rem; font-weight: 900; letter-spacing: 3px; color: var(--white); }
+        .studio-cta h3 { font-family: var(--disp); font-weight: 400; font-size: 1.45rem; letter-spacing: 1px; text-transform: uppercase; margin: 10px 0 6px; }
+        .studio-cta p { font-size: 0.8rem; color: #d8cdb2; max-width: 430px; margin: 0 auto 16px; }
+        .studio-cta .demo-note { display: inline-block; font-size: 0.78rem; font-weight: 700; color: var(--ink); background: var(--yellow); border-radius: 6px; padding: 10px 14px; max-width: 430px; margin: 0; }
+        .studio-cta .row { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .cta-link {
+            font-weight: 900; font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+            padding: 11px 16px; border: 2px solid var(--yellow);
+        }
+        .cta-link.gold { background: var(--yellow); color: var(--ink); }
+        .cta-link.ghost { color: var(--yellow); }
+        .cta-link:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+
+        .credits { margin-top: 30px; font-size: 0.66rem; }
+        .credits h2 { font-family: var(--disp); font-weight: 400; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+        .credits ol { padding-left: 18px; margin-top: 6px; }
+        .credits li { margin-top: 3px; word-break: break-word; }
+        .credits a { color: var(--ink); }
+
+        footer.page-foot {
+            text-align: center; margin-top: 26px; font-size: 0.62rem; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+        footer.page-foot a { color: var(--red); text-decoration: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .ticker-track { animation: none; }
+        }
+
+        /* ===== Pautan langkau (skip link) ===== */
+        .skip { position: fixed; top: 10px; left: 10px; z-index: 200; background: var(--ink); color: var(--yellow); padding: 10px 16px; font-weight: 900; font-size: 0.8rem; text-decoration: none; transform: translateY(-160%); transition: transform 0.18s; }
+        .skip:focus { transform: none; }
+        main:focus { outline: none; }
+
+        /* ===== Ikon kecil (ganti emoji) ===== */
+        .ic { display: inline-block; width: 8px; height: 8px; background: var(--red); margin-right: 8px; transform: rotate(45deg); vertical-align: 1px; }
+
+        /* ===== Carian langsung ===== */
+        .search-wrap { position: relative; margin: 20px 0 4px; }
+        .search-wrap input {
+            width: 100%; background: var(--white); border: 3px solid var(--ink); border-radius: 0;
+            padding: 12px 14px 12px 44px; color: var(--ink); font-family: var(--sans); font-weight: 500; font-size: 1rem; box-shadow: var(--shadow);
+        }
+        .search-wrap input::placeholder { color: #9a8d72; }
+        .search-wrap input:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+        .search-wrap svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+        .empty-note { display: none; text-align: center; font-weight: 700; padding: 40px 16px; }
+        .empty-note.show { display: block; }
+
+        /* ===== Bar pesanan + helaian pesanan (dialog) ===== */
+        .cart-bar {
+            position: fixed; left: 50%; bottom: 12px; transform: translate(-50%, 160%);
+            width: min(648px, calc(100% - 24px)); z-index: 90; cursor: pointer;
+            background: var(--ink); color: var(--yellow); border: 3px solid var(--ink);
+            box-shadow: 5px 5px 0 rgba(24, 20, 16, 0.35); padding: 12px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 10px;
+            font-family: var(--disp); font-size: 1rem; letter-spacing: 1.5px; text-transform: uppercase;
+            transition: transform 0.35s;
+        }
+        .cart-bar { visibility: hidden; }
+        .cart-bar.show { transform: translate(-50%, 0); visibility: visible; }
+        .qty-pill {
+            background: var(--red); color: var(--white); border-radius: 50%; min-width: 28px; height: 28px;
+            display: inline-grid; place-items: center; font-family: var(--sans); font-weight: 900; font-size: 0.78rem; margin-right: 8px;
+        }
+        .backdrop { position: fixed; inset: 0; background: rgba(24, 20, 16, 0.6); z-index: 95; opacity: 0; visibility: hidden; transition: opacity 0.25s, visibility 0.25s; }
+        .backdrop.open { opacity: 1; visibility: visible; }
+        .sheet {
+            position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); visibility: hidden;
+            width: min(680px, 100%); max-height: 86svh; z-index: 100; background: var(--white);
+            border: 3px solid var(--ink); border-bottom: none; padding: 18px 18px 22px;
+            display: flex; flex-direction: column; transition: transform 0.35s, visibility 0.35s;
+        }
+        .sheet.open { transform: translate(-50%, 0); visibility: visible; }
+        .sheet:focus { outline: none; }
+        .sheet h2 { font-family: var(--disp); font-weight: 400; font-size: 1.35rem; letter-spacing: 1px; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .sheet .lines { overflow-y: auto; margin: 10px 0; flex: 1; min-height: 50px; }
+        .line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 2px dashed rgba(24, 20, 16, 0.2); }
+        .line .nm { flex: 1; font-size: 0.85rem; font-weight: 700; min-width: 0; }
+        .line .lp { font-size: 0.74rem; font-weight: 900; white-space: nowrap; }
+        .stepper { display: flex; align-items: center; gap: 6px; }
+        .stepper button { width: 40px; height: 40px; border: 2px solid var(--ink); background: var(--white); color: var(--ink); font-weight: 900; font-size: 1.05rem; cursor: pointer; }
+        .stepper .q { font-weight: 900; min-width: 16px; text-align: center; }
+        .sheet-tools { display: flex; gap: 8px; }
+        .close-btn, .clear-btn {
+            font-family: var(--sans); font-size: 0.66rem; font-weight: 900; letter-spacing: 1px; cursor: pointer;
+            background: none; border: 2px solid var(--ink); color: var(--ink); padding: 8px 12px; min-height: 40px;
+        }
+        .clear-btn { border-color: var(--red); color: var(--red); }
+        .sheet .field input {
+            width: 100%; margin-top: 8px; background: var(--white); border: 2px solid var(--ink); border-radius: 0;
+            padding: 10px 12px; color: var(--ink); font-family: var(--sans); font-size: 1rem;
+        }
+        .total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-family: var(--disp); font-size: 1.15rem; letter-spacing: 1px; text-transform: uppercase; }
+        .fine { font-size: 0.66rem; color: #5d5443; margin-top: 6px; }
+        .send-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; min-height: 46px;
+            width: 100%; cursor: pointer; font-family: var(--sans);
+            background: var(--red); color: var(--white); border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink);
+            font-weight: 900; font-size: 0.9rem; text-decoration: none; padding: 10px;
+        }
+        .send-btn:active { transform: translate(1px, 1px); }
+        .demo-stamp { font-size: 0.78rem; font-weight: 700; color: var(--red); margin-top: 10px; }
+        .demo-stamp:empty { display: none; }
+        .concept { display: block; margin: 6px 0; font-weight: 500; letter-spacing: 0.3px; text-transform: none; font-size: 0.72rem; }
+        @media (prefers-reduced-motion: reduce) { .cart-bar, .sheet, .backdrop, .skip { transition: none; } }
+    </style>
+    <noscript><style>.search-wrap, .cart-bar { display: none; }</style></noscript>
+</head>
+<body>
+<a href="#main" class="skip">Langkau ke menu</a>
+
+<div class="page" id="page">
+
+    <div class="topbar">
+        <span>Design preview · Langkah Pertama</span>
+        <span>Bukan laman rasmi</span>
+    </div>
+
+    <!-- ===================== PAPAN TANDA ===================== -->
+    <header>
+        <div class="hero-img">
+            <img src="images/hero-satay.jpg" alt="Sate dibakar atas bara arang (gambar hiasan)" width="640" height="425">
+            <span class="cr">Gambar hiasan · Dcubillas · CC BY-SA 3.0</span>
+        </div>
+        <div class="bolt">SATE BAKAR ATAS ARANG</div>
+        <h1>SATAY SEDAP<br><span class="strike">SIKAMAT</span></h1>
+        <p class="tagline">
+            “Pakar dalam menyediakan sate dengan perapan cukup rasa dan kuah kacang yang enak.”
+            <small>— petikan laman kedai sendiri</small>
+        </p>
+        <div class="info-strip">
+            <span>Temiang Point, Seremban</span>
+            <span>Pandu lalu (drive-thru)</span>
+            <span>Delivery sekitar Seremban</span>
+        </div>
+    </header>
+
+    <!-- Ticker: kalau tukar, ulang senarai yang SAMA dua kali supaya gerakan bersambung -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+            <span>Sate Ayam<i>✦</i></span><span>Sate Daging<i>✦</i></span><span>Sate Kambing<i>✦</i></span><span>Sate Perut<i>✦</i></span><span>Nasi Lemak<i>✦</i></span>
+            <span>Sate Ayam<i>✦</i></span><span>Sate Daging<i>✦</i></span><span>Sate Kambing<i>✦</i></span><span>Sate Perut<i>✦</i></span><span>Nasi Lemak<i>✦</i></span>
+        </div>
+    </div>
+
+    <div class="search-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="searchBox" placeholder="NAK SATE APA HARI NI?" aria-label="Cari dalam menu" autocomplete="off">
+    </div>
+
+    <nav class="tabs" aria-label="Kategori menu">
+        <a href="#sec-sate" class="tab">Sate</a>
+        <a href="#sec-set" class="tab">Set Combo</a>
+        <a href="#sec-nasi" class="tab">Nasi Lemak</a>
+        <a href="#sec-western" class="tab">Western</a>
+        <a href="#sec-minuman" class="tab">Minuman</a>
+        <a href="#sec-info" class="tab">Info Kedai</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+
+    <div class="note-box">
+        PREVIEW SAHAJA. Harga sate dari temu bual pemilik (Utusan, Sep 2025) &amp; laman Canva kedai.
+        Harga set &amp; nasi lemak ialah harga foodpanda. <b>Semua harga terkini akan disahkan oleh pemilik.</b>
+        Semua gambar ialah gambar hiasan (bukan gambar sebenar kedai).
+    </div>
+
+    <!-- ===================== PILIHAN UTAMA (banner merah, statik) =====================
+         Demo Mamak menukar "istimewa" ikut hari; tiada fakta awam tentang istimewa harian kedai ini,
+         jadi banner ini statik. Tukar di sini jika pemilik beri istimewa harian. -->
+    <div class="istimewa">
+        <div class="txt">
+            <span class="lbl">★ PALING POPULAR (FOODPANDA)</span>
+            <h3>Set Double Mix</h3>
+            <p>12 cucuk sate ayam, 8 cucuk sate daging, 3 ketupat mini, kuah kacang extra &amp; bawang timun. Sesuai kongsi 2–3 orang.</p>
+            <div class="row">
+                <span class="price-tag">RM52.90</span>
+                <span class="sah">Harga foodpanda · harga kedai akan disahkan oleh pemilik</span>
+            </div>
+        </div>
+        <div class="pic">
+            <img src="images/set-combo.jpg" alt="Sepinggan sate dengan kuah kacang (gambar hiasan)" width="640" height="480" loading="lazy">
+            <span class="cr">Sharon Hahn Darlin · CC BY 2.0</span>
+        </div>
+    </div>
+
+    <!-- Seksyen menu dijana daripada senarai MENU dalam <script> di bawah -->
+    <div id="menuRoot"></div>
+    <noscript><p class="note-box">Sila hidupkan JavaScript untuk melihat menu.</p></noscript>
+    <p class="empty-note" id="emptyNote" role="status">Tak jumpa la pulak. Cuba "ayam", "kambing" atau "set".</p>
+
+    <!-- ===================== MINUMAN (S6) — senarai penuh belum ada ===================== -->
+    <section class="menu-sec" id="sec-minuman">
+        <div class="sec-bar">Minuman <small>AKAN DISAHKAN</small></div>
+        <div class="item">
+            <div class="body">
+                <h4>Senarai minuman</h4>
+                <p class="desc">Senarai penuh &amp; harga akan disahkan oleh pemilik. Antara yang disebut dalam ulasan pelanggan:</p>
+                <ul class="list">
+                    <li>Jus Carrot Susu</li>
+                    <li>Sunquick Laici</li>
+                    <li>Limau Ais</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== INFO KEDAI ===================== -->
+    <section class="menu-sec" id="sec-info">
+        <div class="sec-bar">Info Kedai</div>
+        <dl class="info-card">
+            <dt><span class="ic"></span>Alamat</dt>
+            <dd>Temiang Point, 5416, Jalan Seng Meng Lee, 70200 Seremban, Negeri Sembilan.</dd>
+
+            <dt><span class="ic"></span>Waktu operasi</dt>
+            <dd>4.30 petang – 11.00 malam (hantaran Facebook kedai). Senarai Google: Selasa–Ahad 4.30 petang – 11.30 malam, Isnin tutup.<br>
+                <span class="sah">Waktu &amp; hari tutup akan disahkan oleh pemilik</span></dd>
+
+            <dt><span class="ic"></span>Tempahan</dt>
+            <dd>Kedai menerima tempahan terus daripada pelanggan (menurut hantaran Facebook kedai).<br>
+                <span class="sah">Saluran tempahan akan disahkan oleh pemilik</span></dd>
+
+            <dt><span class="ic"></span>Delivery</dt>
+            <dd>Sekitar Seremban (laman kedai menyenaraikan Seremban, Seremban 2, Seremban 3, Mambau, Sendayan, Senawang). Caj ikut jarak dari kedai.<br>
+                <span class="sah">Kawasan &amp; caj akan disahkan oleh pemilik</span></dd>
+
+            <dt><span class="ic"></span>Pandu lalu</dt>
+            <dd>Ada konsep pandu lalu (drive-thru) untuk set combo.</dd>
+
+            <dt><span class="ic"></span>Tempahan majlis</dt>
+            <dd>Terima tempahan untuk semua acara &amp; majlis.</dd>
+
+            <dt><span class="ic"></span>Suasana</dt>
+            <dd>Persembahan muzik secara langsung pada hujung minggu &amp; tempat duduk buaian (menurut ulasan pelanggan).<br>
+                <span class="sah">Jadual akan disahkan oleh pemilik</span></dd>
+        </dl>
+    </section>
+
+    </main>
+
+    <!-- ===================== CTA STUDIO ===================== -->
+    <div class="studio-cta">
+        <span class="lbl">// PREVIEW PERCUMA UNTUK SATAY SEDAP SIKAMAT</span>
+        <h3>Menu bergambar terus di telefon pelanggan</h3>
+        <p>Pelanggan buka menu di telefon, tengok gambar &amp; tanda pilihan sendiri — dan bila harga berubah, tak perlu cetak semula. Semua item &amp; harga di atas akan disahkan oleh pemilik sebelum digunakan.</p>
+        <!-- Tiada pautan hubungi dalam demo (peraturan studio). Nota demo sahaja. -->
+        <p class="demo-note" role="note">Pratonton sahaja: butang hubungi &amp; pesanan boleh diaktifkan selepas pemilik bersetuju. Disediakan oleh Far, Langkah Pertama Digital Studio.</p>
+    </div>
+
+    <!-- ===================== KREDIT GAMBAR (salinan penuh: CREDITS.txt) ===================== -->
+    <section class="credits" aria-labelledby="kredit">
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar Satay Sedap Sikamat. Saiz dikecilkan ke 640px; tiada perubahan lain.</p>
+        <ol>
+            <li>Sate atas bara (atas) — Dcubillas, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Satay_on_Grill.jpg</li>
+            <li>Sate Ayam — Llling, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Satay_chicken_and_beef.jpg</li>
+            <li>Sate Daging — Encik Tekateki, CC BY 4.0 — commons.wikimedia.org/wiki/File:Satay_sold_inside_Haji_Samuri_Kajang.jpg</li>
+            <li>Sate Kambing, Set Satay Ayam — Midori, CC BY 3.0 — commons.wikimedia.org/wiki/File:Sate_kambing_sate_ayam.JPG</li>
+            <li>Sate Perut — Dcubillas, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Malay_Satay_2.jpg</li>
+            <li>Nasi Ketupat Mini, Set Single — LoneCK88, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Satay_and_Nasi_Impit.jpg</li>
+            <li>Kuah Kacang — Sumit Surai, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Chicken_Satay_With_Peanut_Sauce.jpg</li>
+            <li>Set Double Mix, Set Family Mix, Set Satay Daging — Sharon Hahn Darlin, CC BY 2.0 — commons.wikimedia.org/wiki/File:Satay_in_Melaka_March_2023.jpg</li>
+            <li>Nasi Lemak Ayam — Jpatokal, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Nasi_lemak_on_banana_leaf.jpg</li>
+            <li>Nasi Lemak Sotong — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Nasi_Lemak_Sambal_Sotong_Rendang_Kerang.jpg</li>
+            <li>Chicken Chop, Nasi Lemak Chicken Chop — Shadowsnuggles, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Chicken_chop,a_unique_dish_of_Malaysia.jpg</li>
+            <li>Chicken Grill — amrufm, CC BY 2.0 — commons.wikimedia.org/wiki/File:Ayam_Panggang.jpg</li>
+            <li>Spaghetti Carbonara — Mattes Boch, domain awam — commons.wikimedia.org/wiki/File:Spaghetti_alla_Carbonara.jpg</li>
+            <li>Burger — thienzieyung, CC BY 2.0 — commons.wikimedia.org/wiki/File:Beef_Burger_In_Kota_Kinabalu,_Malaysia.jpg</li>
+        </ol>
+        <p>Lesen: creativecommons.org/licenses (by-sa/4.0 · by/4.0 · by-sa/3.0 · by/3.0 · by/2.0).</p>
+    </section>
+
+    <footer class="page-foot">
+        Design preview · Langkah Pertama
+        <span class="concept">Konsep reka bentuk laman web yang disediakan untuk Satay Sedap Sikamat oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+
+<!-- ===================== BAR PESANAN + HELAIAN PESANAN ===================== -->
+<button class="cart-bar" id="cartBar" type="button" aria-haspopup="dialog" aria-controls="sheet" tabindex="-1">
+    <span><span class="qty-pill" id="cartQty">0</span>Lihat Pesanan</span>
+    <span id="cartTotal">RM 0.00</span>
+</button>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+    <h2><span id="sheetTitle">Pesanan Anda</span>
+        <span class="sheet-tools">
+            <button class="clear-btn" type="button" id="clearCart">KOSONGKAN</button>
+            <button class="close-btn" type="button" id="closeSheet" aria-label="Tutup pesanan">TUTUP</button>
+        </span>
+    </h2>
+    <div class="lines" id="cartLines"></div>
+    <p class="fine" id="cartNote" role="status"></p>
+    <div class="field"><input type="text" id="custName" placeholder="Nama anda" aria-label="Nama anda" autocomplete="name"></div>
+    <div class="field"><input type="text" id="custWhere" placeholder="No. meja / tapau / delivery" aria-label="No. meja, tapau atau delivery"></div>
+    <div class="total-row"><span>Anggaran</span><span id="sheetTotal">RM 0.00</span></div>
+    <button type="button" class="send-btn" id="sendOrder">Hantar pesanan (demo)</button>
+    <p class="demo-stamp" id="demoStamp" role="status" aria-live="polite"></p>
+    <p class="fine">Pratonton — jumlah ialah anggaran sahaja. Tiada pesanan dihantar ke mana-mana.</p>
+</div>
+
+<script>
+(function () {
+    'use strict';
+
+    var IMG = 'images/';
+
+    /* ================= MENU (SATU senarai — edit di sini sahaja) =================
+       price: nombor (RM) atau null jika belum diketahui
+       kira:  false = harga dipapar tetapi TIDAK dikira dalam jumlah (cth. harga foodpanda)
+       label: teks kecil selepas harga (cth. 'foodpanda')
+       sah:   nota "akan disahkan oleh pemilik" untuk item ini
+       hot:   lencana (cth. 'PALING LARIS')
+       img/cr: fail gambar dalam images/ dan kredit ringkas                                    */
+    var MENU = [
+        // Sate — harga secucuk (S1 Utusan Sep 2025, S2 laman Canva kedai)
+        { id: 's1', cat: 'sate', name: 'Sate Ayam', desc: 'Diperap rempah ratus asli resipi orang dulu-dulu — manis-manis pedas, lembut walaupun tanpa kuah.', price: 1.20, sah: 'Harga akan disahkan oleh pemilik (RM1.20 / RM1.35)', img: 'sate-ayam.jpg', cr: 'Llling · CC BY-SA 4.0' },
+        { id: 's2', cat: 'sate', name: 'Sate Daging', desc: 'Perapan padu, cicah kuah kacang, selang-seli dengan timun & bawang.', price: 1.60, hot: 'PALING LARIS', img: 'sate-daging.jpg', cr: 'Encik Tekateki · CC BY 4.0' },
+        { id: 's3', cat: 'sate', name: 'Sate Kambing', desc: 'Pilihan wajib — cicah kuah kacang pekat, dengan nasi impit, timun & bawang.', price: 1.80, hot: 'PALING LARIS', img: 'sate-kambing.jpg', cr: 'Midori · CC BY 3.0' },
+        { id: 's4', cat: 'sate', name: 'Sate Perut', desc: 'Jarang jumpa, tapi sedapnya lain macam — tak sedar dah makan bercucuk-cucuk.', price: 1.20, img: 'sate-perut.jpg', cr: 'Dcubillas · CC BY-SA 3.0' },
+        { id: 's5', cat: 'sate', name: 'Nasi Ketupat Mini', desc: 'Teman wajib sate.', price: 0.80, sah: 'Harga akan disahkan oleh pemilik', img: 'ketupat.jpg', cr: 'LoneCK88 · CC BY-SA 4.0' },
+        { id: 's6', cat: 'sate', name: 'Kuah Kacang Mak2', desc: 'Sesuai dengan nasi impit, sate atau cucur udang; boleh buat pecal & tauhu sumbat.', price: 15.00, sah: 'Saiz & harga akan disahkan oleh pemilik', img: 'kuah-kacang.jpg', cr: 'Sumit Surai · CC BY-SA 4.0' },
+        // Set combo — harga foodpanda (S4); harga kedai belum diketahui
+        { id: 'c1', cat: 'set', name: 'Set Single', desc: '6 cucuk ayam, 4 cucuk daging, 1 ketupat mini, kuah kacang & bawang timun. Untuk 1 orang.', price: 25.99, kira: false, label: 'foodpanda', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'ketupat.jpg', cr: 'LoneCK88 · CC BY-SA 4.0' },
+        { id: 'c2', cat: 'set', name: 'Set Satay Ayam', desc: '10 cucuk ayam, 1 ketupat mini, kuah kacang & bawang timun.', price: 23.90, kira: false, label: 'foodpanda', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'sate-kambing.jpg', cr: 'Midori · CC BY 3.0' },
+        { id: 'c3', cat: 'set', name: 'Set Satay Daging', desc: '10 cucuk daging, 1 ketupat mini, kuah kacang & bawang timun.', price: 29.90, kira: false, label: 'foodpanda', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'set-combo.jpg', cr: 'Sharon Hahn Darlin · CC BY 2.0' },
+        { id: 'c4', cat: 'set', name: 'Set Double Mix', desc: '12 cucuk ayam, 8 cucuk daging, 3 ketupat mini, kuah kacang extra & bawang timun. 2–3 orang.', price: 52.90, kira: false, label: 'foodpanda', hot: 'POPULAR', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'set-combo.jpg', cr: 'Sharon Hahn Darlin · CC BY 2.0' },
+        { id: 'c5', cat: 'set', name: 'Set Family Mix', desc: '30 cucuk ayam, 20 cucuk daging, 6 ketupat mini, kuah kacang besar & bawang timun. 5–6 orang.', price: 129.00, kira: false, label: 'foodpanda', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'set-combo.jpg', cr: 'Sharon Hahn Darlin · CC BY 2.0' },
+        // Nasi lemak (S1, S4, S5, S6)
+        { id: 'n1', cat: 'nasi', name: 'Nasi Lemak Ayam', desc: 'Ayam goreng, telur rebus, sambal, kacang, ikan bilis & timun.', price: 10.39, kira: false, label: 'foodpanda', sah: 'Harga kedai akan disahkan oleh pemilik', img: 'nasi-lemak.jpg', cr: 'Jpatokal · CC BY-SA 4.0' },
+        { id: 'n2', cat: 'nasi', name: 'Nasi Lemak Sotong', desc: 'Disebut dalam ulasan pelanggan.', price: null, img: 'nasi-lemak-sotong.jpg', cr: 'Mdsheth1986 · CC BY-SA 4.0' },
+        { id: 'n3', cat: 'nasi', name: 'Nasi Lemak Chicken Chop', desc: 'Disebut dalam ulasan pelanggan.', price: null, img: 'chicken-chop.jpg', cr: 'Shadowsnuggles · CC BY-SA 4.0' },
+        // Western (S1, S5, S6, S7) — harga belum diketahui
+        { id: 'w1', cat: 'western', name: 'Chicken Chop', desc: 'Hidangan barat kegemaran.', price: null, img: 'chicken-chop.jpg', cr: 'Shadowsnuggles · CC BY-SA 4.0' },
+        { id: 'w2', cat: 'western', name: 'Spaghetti Carbonara', desc: 'Pasta berkrim.', price: null, img: 'carbonara.jpg', cr: 'Mattes Boch · domain awam' },
+        { id: 'w3', cat: 'western', name: 'Burger Daging Istimewa', desc: 'Nama penuh & pilihan (cth. double patty) akan disahkan oleh pemilik.', price: null, img: 'burger.jpg', cr: 'thienzieyung · CC BY 2.0' },
+        { id: 'w4', cat: 'western', name: 'Chicken Grill', desc: 'Disebut dalam ulasan pelanggan.', price: null, img: 'chicken-grill.jpg', cr: 'amrufm · CC BY 2.0' }
+    ];
+
+    var CATS = [
+        { key: 'sate', id: 'sec-sate', title: 'Sate', small: 'HARGA SECUCUK' },
+        { key: 'set', id: 'sec-set', title: 'Set Combo', small: 'HARGA FOODPANDA' },
+        { key: 'nasi', id: 'sec-nasi', title: 'Nasi Lemak' },
+        { key: 'western', id: 'sec-western', title: 'Western' }
+    ];
+
+    var TBA = 'Harga akan disahkan oleh pemilik';
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function byId(id) { for (var i = 0; i < MENU.length; i++) { if (MENU[i].id === id) return MENU[i]; } return null; }
+    function counts(it) { return it.price !== null && it.kira !== false; }
+
+    /* ---- papar menu ---- */
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec" id="' + c.id + '"><div class="sec-bar">' + esc(c.title) +
+            ' <small>' + esc(c.small || (items.length + ' ITEM')) + '</small></div><div class="grid">';
+        items.forEach(function (it) {
+            var pr = it.price === null
+                ? '<span class="pr tba">' + TBA + '</span>'
+                : '<span class="pr">RM' + it.price.toFixed(2) + (it.label ? ' <small>(' + esc(it.label) + ')</small>' : '') + '</span>';
+            html += '<article class="item" data-q="' + esc((it.name + ' ' + it.desc).toLowerCase()) + '">' +
+                (it.hot ? '<span class="laku">' + esc(it.hot) + '</span>' : '') +
+                '<div class="ph"><img src="' + IMG + it.img + '" alt="' + esc(it.name) + ' (gambar hiasan)" width="640" height="480" loading="lazy" decoding="async"><span class="cr">' + esc(it.cr) + '</span></div>' +
+                '<div class="body"><h4>' + esc(it.name) + '</h4><p class="desc">' + esc(it.desc) + '</p>' +
+                (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') +
+                '<div class="foot">' + pr + '<button class="add-btn" type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">+ TAMBAH</button></div></div></article>';
+        });
+        html += '</div></section>';
+    });
+    document.getElementById('menuRoot').innerHTML = html;
+
+    /* ---- carian langsung ---- */
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .item'), function (el) {
+            var show = !q || el.getAttribute('data-q').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .menu-sec'), function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        /* semasa mencari, sembunyikan bahagian yang bukan hidangan */
+        Array.prototype.forEach.call(document.querySelectorAll('.istimewa, .note-box, #sec-minuman, #sec-info'), function (el) {
+            el.style.display = q ? 'none' : '';
+        });
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    /* ---- pesanan ---- */
+    var cart = {};
+    var bar = document.getElementById('cartBar');
+    var sheet = document.getElementById('sheet');
+    var backdrop = document.getElementById('backdrop');
+    var sendBtn = document.getElementById('sendOrder');
+    var stamp = document.getElementById('demoStamp');
+    var nameIn = document.getElementById('custName');
+    var whereIn = document.getElementById('custWhere');
+
+    function total() { var s = 0; for (var k in cart) { var it = byId(k); if (counts(it)) s += it.price * cart[k]; } return s; }
+    function count() { var n = 0; for (var k in cart) n += cart[k]; return n; }
+
+    function render() {
+        var n = count(), h = '', skipped = 0;
+        document.getElementById('cartQty').textContent = n;
+        document.getElementById('cartTotal').textContent = fmt(total());
+        document.getElementById('sheetTotal').textContent = fmt(total());
+        bar.classList.toggle('show', n > 0);
+        bar.tabIndex = n > 0 ? 0 : -1;
+        for (var k in cart) {
+            var it = byId(k);
+            if (!counts(it)) skipped++;
+            h += '<div class="line"><span class="nm">' + esc(it.name) + '</span>' +
+                '<span class="lp">' + (counts(it) ? fmt(it.price * cart[k]) : 'akan disahkan') + '</span>' +
+                '<span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button type="button" data-inc="' + k + '" aria-label="Tambah lagi ' + esc(it.name) + '">+</button></span></div>';
+        }
+        document.getElementById('cartLines').innerHTML = h || '<p class="fine">Belum ada pesanan lagi.</p>';
+        document.getElementById('cartNote').textContent = skipped ? skipped + ' item tidak dikira dalam anggaran (harga akan disahkan oleh pemilik).' : '';
+        stamp.textContent = '';
+        if (n === 0) closeSheet();
+    }
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open'); backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        if (!sheet.classList.contains('open')) return;
+        sheet.classList.remove('open'); backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        var t = (lastFocus && document.contains(lastFocus) && lastFocus !== document.body) ? lastFocus : (count() ? bar : box);
+        t.focus();
+    }
+
+    bar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.getElementById('closeSheet').addEventListener('click', closeSheet);
+    document.getElementById('clearCart').addEventListener('click', function () { cart = {}; render(); });
+    /* DEMO sahaja: tiada pautan, tiada mesej — hanya papar nota pratonton dalam helaian */
+    sendBtn.addEventListener('click', function () {
+        stamp.textContent = 'Pratonton sahaja — tiada pesanan dihantar';
+    });
+
+    /* perangkap fokus dalam helaian + Esc untuk tutup */
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.filter.call(sheet.querySelectorAll('button, input, a[href]'), function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    });
+
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('button') : null;
+        if (!t) return;
+        var add = t.getAttribute('data-add'), inc = t.getAttribute('data-inc'), dec = t.getAttribute('data-dec');
+        if (add) { cart[add] = (cart[add] || 0) + 1; render(); }
+        else if (inc) { cart[inc]++; render(); }
+        else if (dec) { cart[dec]--; if (cart[dec] <= 0) delete cart[dec]; render(); }
+    });
+
+    render();
+})();
+</script>
+</body>
+</html>
