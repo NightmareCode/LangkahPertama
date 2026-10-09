@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+============================================================================
+  SRI PANTAI RIA SEAFOOD (PD WATERFRONT) — PREVIEW MENU DIGITAL
+  Design preview oleh Langkah Pertama (langkahpertama.website)
+  Disediakan: 9 Okt 2026. BELUM diterbitkan / dihantar kepada sesiapa.
+  Ini BUKAN laman rasmi restoran. Semua item & harga perlu disahkan oleh pemilik.
+
+  CARA EDIT (untuk Far) — enjin menu gaya Tomyam (BRIEF §11.3):
+  - SEMUA hidangan ada dalam SATU senarai: cari "window.MENU" di bawah.
+    price: nombor (RM) atau null jika belum tahu. opts: kumpulan pilihan (cara masak / saiz / tahap pedas).
+    Jika satu pilihan ada harga sendiri, tulis { v: 'Besar', price: 88 } dan ia akan dikira dalam jumlah.
+  - Kategori: "window.CATS". Minuman & Info Restoran ialah HTML biasa di bawah menu.
+  - Butang "Hantar pesanan" ialah DEMO: tiada pautan, tiada mesej dihantar. Ia hanya papar nota pratonton.
+  - Gambar: folder images/ (640px JPEG). Kredit: CREDITS.txt + bahagian "Kredit Gambar".
+  - Tiada nombor telefon & tiada pautan pesanan/hubungan luar dalam fail ini (peraturan studio).
+
+  SUMBER FAKTA: senarai sumber penuh disimpan dalam salinan kerja Far (tidak diterbitkan dalam repo awam).
+  Semua item & harga datang daripada menu / hantaran awam perniagaan ini dan perlu disahkan oleh pemilik.
+============================================================================
+-->
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b4f6c">
+    <link rel="icon" href="data:,">
+    <title>Sri Pantai Ria Seafood — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital untuk Sri Pantai Ria Seafood, PD Waterfront, Port Dickson. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Warna: laut siang, pasir & ketam ===== */
+        :root {
+            --sea: #0b4f6c; --sea-2: #127a9c; --foam: #e6f4f6; --sand: #fbf6ec; --sand-2: #f1e6cf;
+            --coral: #d9532b; --coral-2: #b8401c; --ink: #10272f; --muted: #4a6169;
+            --serif: 'DM Serif Display', Georgia, serif; --sans: 'Manrope', system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 64px; }
+        body { background: var(--sand); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-text-size-adjust: 100%; }
+        img { display: block; max-width: 100%; }
+        .skip { position: absolute; left: 8px; top: -60px; background: var(--ink); color: #fff; padding: 10px 14px; z-index: 200; border-radius: 8px; }
+        .skip:focus { top: 8px; }
+        :focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+        .page { max-width: 720px; margin: 0 auto; background: var(--sand); min-height: 100vh; padding-bottom: 90px; }
+        .topbar { display: flex; justify-content: space-between; gap: 8px; font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: var(--ink); color: var(--foam); padding: 7px 14px; }
+        .topbar span:last-child { white-space: nowrap; }
+
+        /* ===== Hero ===== */
+        header { position: relative; background: linear-gradient(180deg, var(--sea) 0%, var(--sea-2) 100%); color: #fff; padding-bottom: 46px; }
+        .hero-img { position: relative; }
+        .hero-img img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+        .hero-img .cr { top: 6px; bottom: auto; }
+        .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,79,108,0) 40%, rgba(11,79,108,.95) 100%); }
+        .cr { position: absolute; right: 6px; bottom: 6px; z-index: 2; font-size: .58rem; background: rgba(0,0,0,.55); color: #fff; padding: 2px 6px; border-radius: 4px; max-width: 90%; }
+        .hero-txt { position: relative; padding: 0 20px; margin-top: -70px; z-index: 3; }
+        .kicker { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; background: var(--coral); padding: 5px 10px; border-radius: 99px; }
+        h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 9vw, 3.3rem); line-height: 1.02; margin: 10px 0 8px; }
+        h1 span { display: block; font-size: .5em; letter-spacing: .02em; color: #ffd9c9; }
+        .lede { font-size: .95rem; max-width: 34em; color: #e3f2f5; }
+        .chips-info { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+        .chips-info span { font-size: .72rem; font-weight: 700; border: 1px solid rgba(255,255,255,.45); padding: 4px 10px; border-radius: 99px; }
+        .wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 40px; }
+
+        /* ===== Carian & tab ===== */
+        .search-wrap { position: sticky; top: 0; z-index: 40; background: var(--sand); padding: 10px 16px 8px; display: flex; align-items: center; gap: 8px; }
+        .search-wrap .box { flex: 1; display: flex; align-items: center; gap: 8px; background: #fff; border: 2px solid var(--sea); border-radius: 99px; padding: 0 14px; color: var(--sea); }
+        .search-wrap input { flex: 1; border: 0; background: none; font: 600 1rem var(--sans); color: var(--ink); min-height: 44px; outline: none; min-width: 0; }
+        .tabs { display: flex; gap: 6px; overflow-x: auto; padding: 4px 16px 12px; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab { flex: none; text-decoration: none; color: var(--sea); background: var(--foam); border: 1px solid #b9dde4; font-weight: 800; font-size: .8rem; padding: 10px 14px; border-radius: 99px; min-height: 40px; display: inline-flex; align-items: center; }
+
+        main { padding: 0 16px; }
+        .note-box { background: #fff; border-left: 5px solid var(--coral); padding: 12px 14px; font-size: .82rem; border-radius: 0 10px 10px 0; margin: 4px 0 18px; }
+        .timbang { display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: center; background: var(--sea); color: #fff; border-radius: 16px; padding: 16px; margin-bottom: 22px; }
+        .timbang svg { width: 54px; height: 54px; }
+        .timbang h2 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; line-height: 1.15; }
+        .timbang p { font-size: .8rem; color: #d6eef3; margin-top: 4px; }
+
+        /* ===== Seksyen menu ===== */
+        .menu-sec { margin: 8px 0 26px; }
+        .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-bottom: 2px solid var(--sea); padding-bottom: 6px; margin-bottom: 12px; }
+        .sec-head h2 { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; color: var(--sea); }
+        .sec-small { font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--coral-2); text-align: right; }
+        .sec-note { font-size: .78rem; color: var(--muted); margin: -4px 0 12px; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 620px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .item { position: relative; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 18px rgba(11,79,108,.10); display: flex; flex-direction: column; }
+        .ph { position: relative; }
+        .ph img { width: 100%; aspect-ratio: 16/10; object-fit: cover; height: auto; }
+        .laku { position: absolute; z-index: 3; left: 10px; top: 10px; background: var(--coral); color: #fff; font-size: .66rem; font-weight: 800; letter-spacing: .08em; padding: 5px 9px; border-radius: 99px; }
+        .body { padding: 14px 14px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nm { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; line-height: 1.15; }
+        .desc { font-size: .84rem; color: var(--muted); }
+        .src { font-size: .68rem; color: #6b7f86; font-style: italic; }
+        .sah { display: inline-block; align-self: flex-start; font-size: .68rem; font-weight: 700; color: var(--coral-2); background: #fdeee8; padding: 3px 8px; border-radius: 6px; }
+        .opt { margin-top: 4px; }
+        .opt-l { display: block; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--sea); margin-bottom: 4px; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { min-height: 40px; padding: 8px 12px; border-radius: 99px; border: 1.5px solid #9cc7d1; background: var(--foam); color: var(--sea); font: 700 .8rem var(--sans); cursor: pointer; }
+        .chip[aria-pressed="true"] { background: var(--sea); border-color: var(--sea); color: #fff; }
+        .foot { margin-top: auto; padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .pr { font-weight: 800; font-size: 1rem; color: var(--ink); }
+        .pr.tba, .pr.txt { font-size: .74rem; font-weight: 700; color: var(--muted); max-width: 60%; }
+        .add-btn { flex: none; min-height: 44px; padding: 10px 16px; border-radius: 99px; border: 0; background: var(--coral); color: #fff; font: 800 .85rem var(--sans); cursor: pointer; }
+        .add-btn:active { transform: scale(.97); }
+        .empty-note { display: none; text-align: center; font-weight: 700; padding: 40px 16px; }
+        .empty-note.show { display: block; }
+
+        /* ===== Minuman, info ===== */
+        .plain { background: #fff; border-radius: 16px; padding: 16px; }
+        .plain ul { margin: 8px 0 0 18px; font-size: .9rem; }
+        .info { background: #fff; border-radius: 16px; padding: 6px 16px; }
+        .info dt { font-weight: 800; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--sea); padding-top: 12px; }
+        .info dd { font-size: .88rem; padding: 2px 0 12px; border-bottom: 1px dashed #c9dfe4; }
+        .info dd:last-child { border-bottom: 0; }
+        .studio { margin: 26px 16px 0; background: var(--ink); color: var(--foam); border-radius: 18px; padding: 20px; }
+        .studio h2 { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: #fff; margin: 4px 0 8px; }
+        .studio .lbl { font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #ffb59b; }
+        .studio p { font-size: .85rem; }
+        .demo-note { margin-top: 12px; background: rgba(255,255,255,.08); border: 1px dashed rgba(255,255,255,.4); padding: 10px 12px; border-radius: 10px; font-size: .8rem; }
+        .credits { margin: 26px 16px 0; font-size: .7rem; color: var(--muted); }
+        .credits h2 { font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+        .credits ol { margin: 6px 0 6px 18px; }
+        .credits li { margin-bottom: 3px; overflow-wrap: anywhere; }
+        .page-foot { text-align: center; margin: 26px 16px 0; padding-top: 16px; border-top: 2px solid var(--sea); font-size: .78rem; font-weight: 800; color: var(--sea); }
+        .page-foot span { display: block; font-weight: 500; color: var(--muted); font-size: .72rem; margin-top: 6px; }
+
+        /* ===== Bar & helaian pesanan ===== */
+        .cart-bar { position: fixed; left: 50%; bottom: 12px; transform: translate(-50%, 160%); visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 90; cursor: pointer; background: var(--sea); color: #fff; border: 0; border-radius: 99px; box-shadow: 0 10px 26px rgba(11,79,108,.4); padding: 12px 18px; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 800 .95rem var(--sans); transition: transform .35s; }
+        .cart-bar.show { transform: translate(-50%, 0); visibility: visible; }
+        .qty-pill { background: var(--coral); color: #fff; border-radius: 50%; min-width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: .78rem; margin-right: 8px; }
+        .backdrop { position: fixed; inset: 0; background: rgba(16,39,47,.6); z-index: 95; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+        .backdrop.open { opacity: 1; visibility: visible; }
+        .sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); visibility: hidden; width: min(720px, 100%); max-height: 88svh; z-index: 100; background: var(--sand); border-radius: 22px 22px 0 0; padding: 18px 18px 22px; display: flex; flex-direction: column; transition: transform .35s, visibility .35s; }
+        .sheet.open { transform: translate(-50%, 0); visibility: visible; }
+        .sheet:focus { outline: none; }
+        .sheet h2 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; color: var(--sea); display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .sheet .lines { overflow-y: auto; margin: 10px 0; flex: 1; min-height: 50px; }
+        .line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px dashed #c9dfe4; }
+        .line .nm { flex: 1; font-family: var(--sans); font-size: .84rem; font-weight: 700; min-width: 0; }
+        .line .lp { font-size: .72rem; font-weight: 800; white-space: nowrap; color: var(--muted); }
+        .stepper { display: flex; align-items: center; gap: 6px; }
+        .stepper button { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--sea); background: #fff; color: var(--sea); font-weight: 800; font-size: 1.05rem; cursor: pointer; }
+        .stepper .q { font-weight: 800; min-width: 16px; text-align: center; }
+        .sheet-tools { display: flex; gap: 8px; }
+        .close-btn, .clear-btn { font: 800 .72rem var(--sans); cursor: pointer; background: #fff; border: 1.5px solid var(--sea); color: var(--sea); padding: 8px 12px; min-height: 40px; border-radius: 99px; }
+        .clear-btn { border-color: var(--coral); color: var(--coral-2); }
+        .field input { width: 100%; margin-top: 8px; background: #fff; border: 1.5px solid #9cc7d1; border-radius: 12px; padding: 10px 12px; color: var(--ink); font: 1rem var(--sans); min-height: 44px; }
+        .total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-weight: 800; }
+        .fine { font-size: .7rem; color: var(--muted); margin-top: 6px; }
+        .send-btn { margin-top: 12px; min-height: 48px; width: 100%; cursor: pointer; background: var(--coral); color: #fff; border: 0; border-radius: 99px; font: 800 .95rem var(--sans); }
+        .demo-stamp { font-size: .82rem; font-weight: 800; color: var(--coral-2); margin-top: 10px; text-align: center; }
+        .demo-stamp:empty { display: none; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cart-bar, .sheet, .backdrop { transition: none; } }
+    </style>
+    <noscript><style>.search-wrap, .cart-bar { display: none; }</style></noscript>
+</head>
+<body>
+<a href="#main" class="skip">Langkau ke menu</a>
+<div class="page">
+    <div class="topbar"><span>Design preview · Langkah Pertama</span><span>Bukan laman rasmi</span></div>
+
+    <header>
+        <div class="hero-img">
+            <img src="images/hero.jpg" alt="Persiaran tepi laut di PD Waterfront, Port Dickson (gambar hiasan)" width="640" height="360">
+            <span class="cr">Gambar hiasan · AyyanD · CC BY-SA 4.0</span>
+        </div>
+        <div class="hero-txt">
+            <span class="kicker">PD Waterfront · Port Dickson</span>
+            <h1>Sri Pantai Ria <span>Seafood Restaurant</span></h1>
+            <p class="lede">Ketam telur masin, udang lipan telur masin dan siakap 3 rasa — seafood segar sambil tengok laut Selat Melaka.</p>
+            <div class="chips-info"><span>Menghadap laut</span><span>Harga ikut berat</span><span>Dua cawangan</span></div>
+        </div>
+        <svg class="wave" viewBox="0 0 720 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C 90 2, 180 2, 270 20 S 450 40, 540 20 S 660 4, 720 16 L720 40 L0 40 Z" fill="#fbf6ec"/></svg>
+    </header>
+
+    <div class="search-wrap" data-sticky>
+        <label class="box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="searchBox" placeholder="Cari ketam, udang, siakap…" aria-label="Cari dalam menu" autocomplete="off"></label>
+    </div>
+    <nav class="tabs" aria-label="Kategori menu">
+        <a href="#sec-ketam" class="tab">Ketam</a>
+        <a href="#sec-udang" class="tab">Udang</a>
+        <a href="#sec-ikan" class="tab">Ikan</a>
+        <a href="#sec-sotong" class="tab">Sotong &amp; Lala</a>
+        <a href="#sec-sayur" class="tab">Sayur &amp; Tauhu</a>
+        <a href="#sec-nasi" class="tab">Nasi</a>
+        <a href="#sec-minuman" class="tab">Minuman</a>
+        <a href="#sec-info" class="tab">Info</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+        <div class="note-box" data-hide-on-search>
+            PREVIEW SAHAJA. Nama hidangan diambil daripada ulasan pelanggan awam; item bertanda <b>TK</b> disebut dalam ulasan cawangan Teluk Kemang.
+            <b>Semua harga, saiz &amp; ketersediaan akan disahkan oleh pemilik.</b> Semua gambar ialah gambar hiasan (bukan gambar sebenar restoran).
+        </div>
+
+        <!-- Kotak "harga ikut berat" — fakta: ulasan 15 Dis 2025 memuji staf jujur beritahu berat ikan -->
+        <div class="timbang" data-hide-on-search>
+            <svg viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="26" fill="#127a9c"/><path d="M14 30 q13-16 26 0 q-13 12-26 0z" fill="#fbf6ec"/><path d="M40 30 l8-6 v12z" fill="#fbf6ec"/><circle cx="20" cy="28" r="1.8" fill="#0b4f6c"/></svg>
+            <div>
+                <h2>Ikan, ketam &amp; udang: harga ikut berat</h2>
+                <p>Pelanggan memuji staf yang jujur memberitahu berat ikan sebelum dimasak. Dalam menu ini, pilih saiz dahulu; harga sebenar ditimbang di restoran dan akan disahkan oleh pemilik.</p>
+            </div>
+        </div>
+
+        <!-- Seksyen menu dijana daripada window.MENU di bawah -->
+        <div id="menuRoot"></div>
+        <noscript><p class="note-box">Sila hidupkan JavaScript untuk melihat menu.</p></noscript>
+        <p class="empty-note" id="emptyNote" role="status">Tak jumpa. Cuba "ketam", "udang" atau "siakap".</p>
+
+        <section class="menu-sec" id="sec-minuman" data-hide-on-search>
+            <div class="sec-head"><h2>Minuman</h2><p class="sec-small">Akan disahkan</p></div>
+            <div class="plain">
+                <p class="desc">Senarai penuh &amp; harga akan disahkan oleh pemilik. Antara yang disebut dalam ulasan pelanggan (15 Dis 2025):</p>
+                <ul><li>Jus Honeydew</li><li>Jus Epal Hijau</li></ul>
+            </div>
+        </section>
+
+        <section class="menu-sec" id="sec-info" data-hide-on-search>
+            <div class="sec-head"><h2>Info Restoran</h2></div>
+            <dl class="info">
+                <dt>Alamat</dt>
+                <dd>26, Persiaran Waterfront, PD Waterfront, 71000 Port Dickson, Negeri Sembilan.</dd>
+                <dt>Waktu buka</dt>
+                <dd>Senarai Google: 11.00 pagi – 10.45 malam, setiap hari. Satu ulasan (Dis 2025) menyebut restoran dibuka jam 6 petang pada hari Jumaat.<br><span class="sah">Waktu akan disahkan oleh pemilik</span></dd>
+                <dt>Suasana &amp; kemudahan</dt>
+                <dd>Menghadap laut (meja menghadap matahari terbenam), ruang makan luas berhawa dingin, bilik persendirian, surau dan tempat letak kereta — menurut ulasan pelanggan.</dd>
+                <dt>Tempahan meja</dt>
+                <dd>Ulasan pelanggan bercanggah (satu menyebut tiada tempahan, satu menyebut bilik khas boleh ditempah).<br><span class="sah">Akan disahkan oleh pemilik</span></dd>
+                <dt>Cawangan lain</dt>
+                <dd>Teluk Kemang — Lot 263, Jalan Pantai Teluk Kemang, Port Dickson (cawangan utama, menurut ulasan).</dd>
+            </dl>
+        </section>
+    </main>
+
+    <div class="studio" data-hide-on-search>
+        <span class="lbl">Preview percuma untuk Sri Pantai Ria</span>
+        <h2>Menu bergambar terus di telefon pelanggan</h2>
+        <p>Pelanggan boleh tengok hidangan, pilih cara masak &amp; saiz, dan semak senarai pesanan sendiri sebelum staf datang ke meja. Bila harga laut berubah, menu dikemas kini tanpa cetak semula.</p>
+        <p class="demo-note" role="note">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada pesanan atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+    </div>
+
+    <section class="credits" aria-labelledby="kredit" data-hide-on-search>
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar Sri Pantai Ria. Saiz dikecilkan ke lebar 640px; tiada perubahan lain. Senarai penuh: CREDITS.txt.</p>
+        <ol>
+            <li>ayam-lemon.jpg — Willis Lam, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Tenglong_Chinese_Restaurant_Lemon_Chicken_(37577556406).jpg</li>
+            <li>hero.jpg — AyyanD, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Persiaran_Waterfront,_PD_Waterfront,_downtown_Port_Dickson.jpg</li>
+            <li>kailan.jpg — lazy fri13th, CC BY 2.0 — commons.wikimedia.org/wiki/File:Garlic_gai-lan_stir-fry.jpg</li>
+            <li>kangkung.jpg — Yasmina Haryono, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Kangkung_Belacan.jpg</li>
+            <li>ketam-telur-masin.jpg — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Ketam_Telur_Masin.jpg</li>
+            <li>lala.jpg — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Kam_Heong_Lala.jpg</li>
+            <li>siakap-3rasa.jpg — Takeaway, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Pla_tub_tim_tod_samrod.jpg</li>
+            <li>siakap-stim.jpg — LEIMIZHI HaoMings, CC0 — commons.wikimedia.org/wiki/File:HK_%E4%B8%8A%E7%92%B0_Sheung_Wan_%E6%80%A5%E5%BA%87%E5%88%A9%E8%A1%97_Clevely_Street_%E9%8B%BF%E6%99%B6%E9%A4%A8_SC_Cuisine_Chinese_Seafood_Restaurant_food_steamed_fish_October_2025_N13P_02.jpg</li>
+            <li>sotong-telur-masin.jpg — Boonlert, CC0 — commons.wikimedia.org/wiki/File:Stir-fried_Squid_with_Salted_Egg.jpg</li>
+            <li>tauhu.jpg — YatnimetAH Ngasual Ruby, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:HK_SW_Sheung_Wan_%E5%8C%97%E5%9C%92%E6%B5%B7%E9%AE%AE%E9%85%92%E5%AE%B6_North_Garden_Seafood_Restaurant_%E6%99%9A%E5%AE%B4_diner_%E9%9B%9E%E7%B2%92%E8%B1%86%E8%85%90%E7%85%B2_chicken_pot_December_2021_Px3_02.jpg</li>
+            <li>udang-cereal.jpg — Choo Yut Shing from Singapore, Singapore, CC BY 2.0 — commons.wikimedia.org/wiki/File:Deshelled_Prawns_fried_with_Cereal_(52660105673).jpg</li>
+            <li>udang-lipan.jpg — Kent Wong, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Fried_Mantis_Shrimp_in_Typhoon_Shelter_Style.jpg</li>
+        </ol>
+    </section>
+
+    <footer class="page-foot">
+        Design preview · Langkah Pertama
+        <span>Konsep reka bentuk laman web yang disediakan untuk Sri Pantai Ria Seafood Restaurant oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+
+<button class="cart-bar" id="cartBar" type="button" aria-haspopup="dialog" aria-controls="sheet" tabindex="-1">
+    <span><span class="qty-pill" id="cartQty">0</span>Lihat Pesanan</span>
+    <span id="cartTotal">0 item</span>
+</button>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+    <h2><span id="sheetTitle">Pesanan Meja</span>
+        <span class="sheet-tools">
+            <button class="clear-btn" type="button" id="clearCart">Kosongkan</button>
+            <button class="close-btn" type="button" id="closeSheet" aria-label="Tutup pesanan">Tutup</button>
+        </span>
+    </h2>
+    <div class="lines" id="cartLines"></div>
+    <p class="fine" id="cartNote" role="status"></p>
+    <div class="field"><input type="text" id="custName" placeholder="Nama anda" aria-label="Nama anda" autocomplete="name"></div>
+    <div class="field"><input type="text" id="custWhere" placeholder="No. meja" aria-label="Nombor meja"></div>
+    <div class="total-row"><span>Jumlah</span><span id="sheetTotal">akan disahkan</span></div>
+    <button type="button" class="send-btn" id="sendOrder">Hantar pesanan (demo)</button>
+    <p class="demo-stamp" id="demoStamp" role="status" aria-live="polite"></p>
+    <p class="fine">Pratonton — seafood ditimbang di restoran; jumlah sebenar akan disahkan oleh pemilik. Tiada pesanan dihantar ke mana-mana.</p>
+</div>
+
+<script>
+/* ================= MENU (SATU senarai — edit di sini sahaja) =================
+   Belum ada harga awam yang boleh dipercayai untuk cawangan ini, jadi price: null (dipapar "akan disahkan oleh pemilik").
+   Pilihan "Saiz" & "Tahap pedas" ialah contoh ciri menu (gaya demo Tomyam) — pilihan sebenar akan disahkan oleh pemilik. */
+var BERAT = { label: 'Saiz (ditimbang)', choices: [{ v: 'Kecil' }, { v: 'Sederhana' }, { v: 'Besar' }] };
+var PEDAS = { label: 'Tahap pedas', choices: [{ v: 'Kurang pedas' }, { v: 'Sedang' }, { v: 'Pedas berapi' }] };
+window.MENU = [
+    // Ketam (S1 ulasan 5 Dis 2025)
+    { id: 'k1', cat: 'ketam', name: 'Ketam Telur Masin', hot: 'PILIHAN PELANGGAN', desc: 'Ketam segar digoreng bersama kuning telur masin dan butter — pelanggan memuji ketamnya "super fresh".', src: 'Ulasan Google, 5 Dis 2025', price: null, priceText: 'Ikut berat · akan disahkan oleh pemilik', lineNote: 'ditimbang', opts: [BERAT], img: 'ketam-telur-masin.jpg' },
+    // Udang (S2 Fooday; S1; S3 TK)
+    { id: 'u1', cat: 'udang', name: 'Udang Lipan Telur Masin', hot: 'ISTIMEWA', desc: 'Udang lipan bersalut telur masin yang rangup — antara hidangan yang paling disebut pengunjung.', src: 'Ulasan Fooday', price: null, priceText: 'Ikut berat · akan disahkan oleh pemilik', lineNote: 'ditimbang', opts: [BERAT], img: 'udang-lipan.jpg' },
+    { id: 'u2', cat: 'udang', name: 'Udang — pilih cara masak', desc: 'Udang segar dimasak ikut pilihan anda.', src: 'Telur masin: ulasan Google 15 Dis 2025 · Cereal & cili: ulasan TK', price: null, priceText: 'Ikut berat · akan disahkan oleh pemilik', lineNote: 'ditimbang', opts: [{ label: 'Cara masak', choices: [{ v: 'Telur Masin' }, { v: 'Cereal (TK)' }, { v: 'Cili (TK)' }] }, PEDAS], img: 'udang-cereal.jpg' },
+    // Ikan (S1, S3, S4)
+    { id: 'i1', cat: 'ikan', name: 'Siakap 3 Rasa', hot: 'PILIHAN PELANGGAN', desc: 'Siakap goreng bersama kuah tiga rasa — masam, manis, pedas. Seorang pelanggan mendapat siakap 850g, saiz paling kecil hari itu.', src: 'Ulasan Google, 15 Dis 2025', price: null, priceText: 'Ikut berat · akan disahkan oleh pemilik', lineNote: 'ditimbang', opts: [BERAT, PEDAS], img: 'siakap-3rasa.jpg' },
+    { id: 'i2', cat: 'ikan', name: 'Siakap Stim', desc: 'Siakap segar dikukus — pilihan ringan untuk seisi keluarga.', src: 'Ulasan Google, 29 Dis 2025', price: null, priceText: 'Ikut berat · akan disahkan oleh pemilik', lineNote: 'ditimbang', opts: [BERAT], img: 'siakap-stim.jpg' },
+    // Sotong & lala (S3, S4)
+    { id: 's1', cat: 'sotong', name: 'Sotong Telur Masin', tags: 'TK', desc: 'Sotong goreng bersalut telur masin.', src: 'Ulasan TK & foodpanda TK', price: null, priceText: 'Akan disahkan oleh pemilik', opts: [{ label: 'Saiz', choices: [{ v: 'Kecil' }, { v: 'Sederhana' }, { v: 'Besar' }] }], img: 'sotong-telur-masin.jpg' },
+    { id: 's2', cat: 'sotong', name: 'Lala', tags: 'TK kam heong cili', desc: 'Lala segar ditumis — pilih kam heong atau cili.', src: 'Ulasan TK', price: null, priceText: 'Akan disahkan oleh pemilik', opts: [{ label: 'Cara masak', choices: [{ v: 'Kam Heong' }, { v: 'Cili' }] }, PEDAS], img: 'lala.jpg' },
+    // Sayur & tauhu (S1, S3)
+    { id: 'v1', cat: 'sayur', name: 'Kailan Bawang Putih', desc: 'Kailan muda ditumis bawang putih.', src: 'Ulasan Google, 15 Dis 2025', price: null, img: 'kailan.jpg' },
+    { id: 'v2', cat: 'sayur', name: 'Kangkung', tags: 'TK belacan', desc: 'Kangkung goreng — pilih belacan atau bawang putih.', src: 'Ulasan TK', price: null, opts: [{ label: 'Cara masak', choices: [{ v: 'Belacan' }, { v: 'Bawang Putih' }] }], img: 'kangkung.jpg' },
+    { id: 'v3', cat: 'sayur', name: 'Tauhu Claypot', desc: 'Tauhu dimasak dalam periuk tanah — disebut pelanggan bersama siakap stim.', src: 'Ulasan Google, 29 Dis 2025', price: null, img: 'tauhu.jpg' },
+    // Nasi (S3)
+    { id: 'n1', cat: 'nasi', name: 'Nasi Ayam Lemon', tags: 'TK', desc: 'Ayam goreng bersos lemon dengan nasi.', src: 'Ulasan TK', price: null, img: 'ayam-lemon.jpg' }
+];
+window.CATS = [
+    { key: 'ketam', id: 'sec-ketam', title: 'Ketam', small: 'Ikut berat' },
+    { key: 'udang', id: 'sec-udang', title: 'Udang', small: 'Ikut berat' },
+    { key: 'ikan', id: 'sec-ikan', title: 'Ikan', small: 'Ikut berat' },
+    { key: 'sotong', id: 'sec-sotong', title: 'Sotong & Lala', note: 'Kerang: ikut stok harian (seorang pelanggan mendapati kerang tiada pada hari lawatannya) — akan disahkan oleh pemilik.' },
+    { key: 'sayur', id: 'sec-sayur', title: 'Sayur & Tauhu' },
+    { key: 'nasi', id: 'sec-nasi', title: 'Nasi' }
+];
+window.CFG = { noTotals: true, noTotalsNote: 'Harga seafood ikut berat & akan disahkan oleh pemilik — senarai ini untuk semakan sahaja.', addLabel: '+ Tambah' };
+</script>
+<script>
+window.CR = {"ayam-lemon.jpg": "Willis Lam · CC BY-SA 2.0", "hero.jpg": "AyyanD · CC BY-SA 4.0", "kailan.jpg": "lazy fri13th · CC BY 2.0", "kangkung.jpg": "Yasmina Haryono · CC BY-SA 2.0", "ketam-telur-masin.jpg": "Mdsheth1986 · CC BY-SA 4.0", "lala.jpg": "Mdsheth1986 · CC BY-SA 4.0", "siakap-3rasa.jpg": "Takeaway · CC BY-SA 3.0", "siakap-stim.jpg": "LEIMIZHI HaoMings · CC0", "sotong-telur-masin.jpg": "Boonlert · CC0", "tauhu.jpg": "YatnimetAH Ngasual Ruby · CC BY-SA 4.0", "udang-cereal.jpg": "Choo Yut Shing from Singapore, Singapore · CC BY 2.0", "udang-lipan.jpg": "Kent Wong · CC BY-SA 2.0"};
+/* ================= ENJIN MENU (sama untuk semua menu Langkah Pertama — jangan edit kecuali perlu) =================
+   Membaca MENU, CATS dan CFG di atas. Tiada pautan keluar, tiada mesej dihantar: butang hantar = nota demo sahaja. */
+(function () {
+    'use strict';
+    var MENU = window.MENU, CATS = window.CATS, CFG = window.CFG || {};
+    var IMG = 'images/', CR = window.CR || {};
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function byId(id) { for (var i = 0; i < MENU.length; i++) { if (MENU[i].id === id) return MENU[i]; } return null; }
+    var TBA = CFG.tba || 'Harga akan disahkan oleh pemilik';
+    var sel = {}; /* pilihan semasa setiap hidangan: sel[id][kumpulan] = indeks */
+
+    function choicePrice(it, picks) {
+        var p = it.price;
+        (it.opts || []).forEach(function (g, gi) { var c = g.choices[picks[gi]]; if (c && typeof c.price === 'number') p = c.price; });
+        return p;
+    }
+    function counts(it, picks) { return it.kira !== false && typeof choicePrice(it, picks) === 'number'; }
+
+    function priceHtml(it) {
+        if (it.priceText) return '<span class="pr txt">' + esc(it.priceText) + '</span>';
+        if (typeof it.price !== 'number') {
+            var ps = [];
+            (it.opts || []).forEach(function (g) { g.choices.forEach(function (c) { if (typeof c.price === 'number') ps.push(c.price); }); });
+            if (ps.length) {
+                var lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps);
+                return '<span class="pr">RM' + lo.toFixed(2) + (hi > lo ? ' – RM' + hi.toFixed(2) : '') + '</span>';
+            }
+            return '<span class="pr tba">' + esc(TBA) + '</span>';
+        }
+        return '<span class="pr">RM' + it.price.toFixed(2) + (it.label ? ' <small>(' + esc(it.label) + ')</small>' : '') + '</span>';
+    }
+    function optsHtml(it) {
+        if (!it.opts) return '';
+        sel[it.id] = it.opts.map(function () { return 0; });
+        return it.opts.map(function (g, gi) {
+            return '<div class="opt" role="group" aria-label="' + esc(g.label + ' untuk ' + it.name) + '"><span class="opt-l">' + esc(g.label) + '</span><div class="chips">' +
+                g.choices.map(function (c, ci) {
+                    return '<button type="button" class="chip" data-pick="' + it.id + '|' + gi + '|' + ci + '" aria-pressed="' + (ci === 0) + '">' + esc(c.v) +
+                        (typeof c.price === 'number' ? ' <b>' + c.price.toFixed(2) + '</b>' : '') + '</button>';
+                }).join('') + '</div></div>';
+        }).join('');
+    }
+
+    /* ---- papar menu ---- */
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec' + (c.layoutClass ? ' ' + c.layoutClass : '') + '" id="' + c.id + '"><div class="sec-head"><h2>' + esc(c.title) + '</h2>' +
+            (c.small ? '<p class="sec-small">' + esc(c.small) + '</p>' : '') + '</div>' +
+            (c.img ? '<div class="sec-ph"><img src="' + IMG + c.img + '" alt="' + esc(c.alt || c.title) + ' (gambar hiasan)" width="640" height="400" loading="lazy" decoding="async"><span class="cr">' + esc(CR[c.img] || '') + '</span></div>' : '') +
+            (c.note ? '<p class="sec-note">' + c.note + '</p>' : '') +
+            '<div class="' + (c.layout === 'row' ? 'rows' : 'grid') + '">';
+        items.forEach(function (it) {
+            var q = esc((it.name + ' ' + (it.desc || '') + ' ' + (it.tags || '')).toLowerCase());
+            if (c.layout === 'row') {
+                html += '<div class="row item" data-q="' + q + '"><div class="rb"><h3 class="nm">' + esc(it.name) + '</h3>' +
+                    (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + priceHtml(it) + '</div>' +
+                    '<div class="stepper inline"><button type="button" data-rdec="' + it.id + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                    '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span>' +
+                    '<button type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">+</button></div></div>';
+            } else {
+                html += '<article class="item" data-q="' + q + '">' +
+                    (it.hot ? '<span class="laku">' + esc(it.hot) + '</span>' : '') +
+                    (it.img ? '<div class="ph"><img src="' + IMG + it.img + '" alt="' + esc(it.name) + ' (gambar hiasan)" width="640" height="' + (it.h || 427) + '" loading="lazy" decoding="async"><span class="cr">' + esc(it.cr || CR[it.img] || '') + '</span></div>' : '') +
+                    '<div class="body"><h3 class="nm">' + esc(it.name) + '</h3>' + (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.src ? '<p class="src">' + esc(it.src) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + optsHtml(it) +
+                    '<div class="foot">' + priceHtml(it) + '<button class="add-btn" type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">' + esc(CFG.addLabel || '+ Tambah') + '</button></div></div></article>';
+            }
+        });
+        html += '</div></section>';
+    });
+    document.getElementById('menuRoot').innerHTML = html;
+
+    /* ---- carian langsung ---- */
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .item'), function (el) {
+            var show = !q || el.getAttribute('data-q').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .menu-sec'), function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-hide-on-search]'), function (el) { el.style.display = q ? 'none' : ''; });
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    /* ---- pesanan: kunci baris = id + pilihan ---- */
+    var cart = {}, order = [];
+    var bar = document.getElementById('cartBar'), sheet = document.getElementById('sheet'), backdrop = document.getElementById('backdrop');
+    var stamp = document.getElementById('demoStamp');
+    function parse(key) { var p = key.split('~'); return { it: byId(p[0]), picks: p[1] ? p[1].split('.').map(Number) : [] }; }
+    function label(x) {
+        var extra = (x.it.opts || []).map(function (g, gi) { return x.it.opts[gi].choices[x.picks[gi]].v; }).join(' · ');
+        return x.it.name + (extra ? ' — ' + extra : '');
+    }
+    function total() { var s = 0; order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) s += choicePrice(x.it, x.picks) * cart[k]; }); return s; }
+    function count() { var n = 0; order.forEach(function (k) { n += cart[k]; }); return n; }
+    function qtyOf(id) { var n = 0; order.forEach(function (k) { if (k.split('~')[0] === id) n += cart[k]; }); return n; }
+
+    function render() {
+        var n = count(), h = '', skipped = 0, t = total();
+        document.getElementById('cartQty').textContent = n;
+        var tt = CFG.noTotals ? (n + ' item') : fmt(t);
+        document.getElementById('cartTotal').textContent = tt;
+        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : fmt(t);
+        bar.classList.toggle('show', n > 0);
+        bar.tabIndex = n > 0 ? 0 : -1;
+        order.forEach(function (k) {
+            var x = parse(k), ok = counts(x.it, x.picks);
+            if (!ok) skipped++;
+            h += '<div class="line"><span class="nm">' + esc(label(x)) + '</span>' +
+                (CFG.noTotals ? '' : '<span class="lp">' + (ok ? fmt(choicePrice(x.it, x.picks) * cart[k]) : esc(x.it.lineNote || 'akan disahkan')) + '</span>') +
+                '<span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Kurangkan ' + esc(label(x)) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button type="button" data-inc="' + k + '" aria-label="Tambah lagi ' + esc(label(x)) + '">+</button></span></div>';
+        });
+        document.getElementById('cartLines').innerHTML = h || '<p class="fine">' + esc(CFG.emptyCart || 'Belum ada pesanan lagi.') + '</p>';
+        document.getElementById('cartNote').textContent = CFG.noTotals ? (CFG.noTotalsNote || '') :
+            (skipped ? skipped + ' baris tidak dikira dalam anggaran (' + (CFG.skipNote || 'harga akan disahkan oleh pemilik') + ').' : '');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-rq]'), function (el) {
+            var q = qtyOf(el.getAttribute('data-rq')); el.textContent = q; el.parentNode.parentNode.classList.toggle('on', q > 0);
+        });
+        stamp.textContent = '';
+        if (n === 0) closeSheet();
+    }
+    function add(key) { if (!cart[key]) { cart[key] = 0; order.push(key); } cart[key]++; render(); }
+    function dec(key) { cart[key]--; if (cart[key] <= 0) { delete cart[key]; order.splice(order.indexOf(key), 1); } render(); }
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open'); backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        if (!sheet.classList.contains('open')) return;
+        sheet.classList.remove('open'); backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        var t = (lastFocus && document.contains(lastFocus) && lastFocus !== document.body) ? lastFocus : (count() ? bar : box);
+        t.focus();
+    }
+    bar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.getElementById('closeSheet').addEventListener('click', closeSheet);
+    document.getElementById('clearCart').addEventListener('click', function () { cart = {}; order = []; render(); });
+    /* DEMO sahaja: tiada pautan, tiada mesej — hanya papar nota pratonton dalam helaian */
+    document.getElementById('sendOrder').addEventListener('click', function () {
+        stamp.textContent = 'Pratonton sahaja — tiada pesanan dihantar';
+    });
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.filter.call(sheet.querySelectorAll('button, input, select, a[href]'), function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    });
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('button') : null;
+        if (!t) return;
+        var a;
+        if ((a = t.getAttribute('data-pick'))) {
+            var p = a.split('|'); sel[p[0]][+p[1]] = +p[2];
+            Array.prototype.forEach.call(t.parentNode.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', String(c === t)); });
+        } else if ((a = t.getAttribute('data-add'))) {
+            add(a + (sel[a] ? '~' + sel[a].join('.') : ''));
+        } else if ((a = t.getAttribute('data-rdec'))) {
+            for (var i = order.length - 1; i >= 0; i--) { if (order[i].split('~')[0] === a) { dec(order[i]); break; } }
+        } else if ((a = t.getAttribute('data-inc'))) { add(a); }
+        else if ((a = t.getAttribute('data-dec'))) { dec(a); }
+    });
+    render();
+})();
+
+</script>
+</body>
+</html>

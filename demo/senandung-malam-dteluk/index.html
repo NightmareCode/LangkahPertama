@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<!--
+============================================================================
+  SENANDUNG MALAM D'TELUK (KG TANAH MERAH, PORT DICKSON) — PREVIEW MENU DIGITAL
+  Design preview oleh Langkah Pertama (langkahpertama.website)
+  Disediakan: 9 Okt 2026. BELUM diterbitkan / dihantar kepada sesiapa.
+  Ini BUKAN laman rasmi restoran. Semua item & harga perlu disahkan oleh pemilik.
+
+  CARA EDIT (untuk Far):
+  - SEMUA hidangan dalam SATU senarai: cari "window.MENU" di bawah. price: nombor (RM) atau null.
+    priceText: teks harga (cth. 'Harga pasaran / 100g') — TIDAK dikira dalam jumlah.
+    opts: pilihan; jika pilihan ada price sendiri (cth. Panas/Sejuk/Jug), harga itu yang dikira.
+  - Papan harga ikan ialah HTML biasa (cari "PAPAN HARGA IKAN"). Harga ikan ikut pasaran semasa — JANGAN
+    tetapkan harga; tukar hanya baris "rujukan" jika pemilik beri senarai baharu.
+  - Butang "Hantar pesanan" ialah DEMO: tiada pautan, tiada mesej. Hanya nota pratonton.
+  - Gambar: images/ (640px JPEG). Kredit: CREDITS.txt + bahagian "Kredit Gambar".
+  - Tiada nombor telefon & tiada pautan pesanan/hubungan luar dalam fail ini (peraturan studio).
+
+  SUMBER FAKTA: senarai sumber penuh disimpan dalam salinan kerja Far (tidak diterbitkan dalam repo awam).
+  Semua item & harga datang daripada menu / hantaran awam perniagaan ini dan perlu disahkan oleh pemilik.
+============================================================================
+-->
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0b1630">
+    <link rel="icon" href="data:,">
+    <title>Senandung Malam D'Teluk — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital untuk Senandung Malam D'Teluk, Kg Tanah Merah, Port Dickson. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== Warna: malam tepi laut, bulan & pelita ===== */
+        :root {
+            --night: #0b1630; --night-2: #13224a; --night-3: #1c2f5e; --moon: #f2c46d; --moon-2: #ffe3a3;
+            --mist: #c9d3ea; --text: #eef2fb; --muted: #9fb0d4; --line: rgba(201,211,234,.18); --ember: #ff8a5b;
+            --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Outfit', system-ui, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 70px; }
+        body { background: #070f22; color: var(--text); font-family: var(--sans); line-height: 1.5; -webkit-text-size-adjust: 100%; }
+        img { display: block; max-width: 100%; }
+        .skip { position: absolute; left: 8px; top: -60px; background: var(--moon); color: var(--night); padding: 10px 14px; z-index: 200; }
+        .skip:focus { top: 8px; }
+        :focus-visible { outline: 3px solid var(--moon); outline-offset: 2px; }
+        .page { max-width: 720px; margin: 0 auto; background: var(--night); min-height: 100vh; padding-bottom: 90px;
+            background-image: radial-gradient(1px 1px at 12% 8%, #fff8, transparent), radial-gradient(1px 1px at 78% 14%, #fff6, transparent), radial-gradient(1.5px 1.5px at 40% 22%, #fff5, transparent), radial-gradient(1px 1px at 90% 40%, #fff4, transparent); }
+        .topbar { display: flex; justify-content: space-between; gap: 8px; font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; background: #050b1a; color: var(--muted); padding: 7px 14px; }
+        .topbar span:last-child { white-space: nowrap; }
+
+        header { position: relative; }
+        .hero-img { position: relative; }
+        .hero-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,22,48,.1) 0%, rgba(11,22,48,.35) 45%, var(--night) 100%); }
+        .cr { position: absolute; right: 6px; top: 6px; z-index: 2; font-size: .58rem; background: rgba(0,0,0,.55); color: #fff; padding: 2px 6px; border-radius: 3px; max-width: 92%; }
+        .moon { position: absolute; left: 20px; top: 22px; width: 54px; height: 54px; z-index: 2; }
+        .hero-txt { position: relative; z-index: 3; margin-top: -120px; padding: 0 20px; }
+        .kicker { font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--moon); }
+        h1 { font: 700 clamp(2.5rem, 11vw, 3.6rem)/.95 var(--serif); margin: 6px 0 10px; color: #fff; }
+        h1 i { color: var(--moon); font-weight: 600; }
+        .lede { color: var(--mist); font-size: .95rem; max-width: 32em; }
+        .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .meta span { font-size: .74rem; border: 1px solid var(--line); background: rgba(255,255,255,.04); border-radius: 99px; padding: 5px 11px; color: var(--mist); }
+        .meta b { color: var(--moon); font-weight: 600; }
+
+        .search-wrap { position: sticky; top: 0; z-index: 40; background: rgba(11,22,48,.96); padding: 12px 16px 8px; margin-top: 18px; }
+        .search-wrap .box { display: flex; align-items: center; gap: 8px; background: var(--night-2); border: 1px solid var(--line); border-radius: 12px; padding: 0 12px; color: var(--moon); }
+        .search-wrap input { flex: 1; border: 0; background: none; font: 600 1rem var(--sans); color: var(--text); min-height: 44px; outline: none; min-width: 0; }
+        .search-wrap input::placeholder { color: var(--muted); }
+        .tabs { display: flex; gap: 6px; overflow-x: auto; padding: 6px 16px 12px; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab { flex: none; text-decoration: none; color: var(--mist); border: 1px solid var(--line); font-weight: 600; font-size: .8rem; padding: 10px 14px; border-radius: 12px; min-height: 40px; display: inline-flex; align-items: center; }
+        main { padding: 0 16px; }
+        .note-box { border: 1px solid var(--line); background: var(--night-2); padding: 12px 14px; font-size: .8rem; border-radius: 12px; margin: 6px 0 20px; color: var(--mist); }
+        .note-box b { color: #fff; }
+
+        /* ===== PAPAN HARGA IKAN ===== */
+        .board { border: 1px solid rgba(242,196,109,.45); border-radius: 18px; background: linear-gradient(180deg, var(--night-3), var(--night-2)); padding: 18px 16px; margin-bottom: 26px; }
+        .board h2 { font: 700 1.9rem/1 var(--serif); color: var(--moon); }
+        .board .big { display: inline-block; margin: 10px 0 6px; font-weight: 800; font-size: 1.05rem; letter-spacing: .02em; background: var(--moon); color: var(--night); padding: 6px 12px; border-radius: 8px; }
+        .board > p { font-size: .8rem; color: var(--mist); }
+        .board table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .88rem; }
+        .board th { text-align: left; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 0 0 6px; }
+        .board td { padding: 8px 0; border-top: 1px dashed var(--line); vertical-align: top; }
+        .board td:first-child { font-weight: 600; color: #fff; }
+        .board td.mp { color: var(--moon); font-weight: 800; white-space: nowrap; text-align: right; }
+        .board td small { display: block; color: var(--muted); font-size: .68rem; font-weight: 400; }
+        .board .styles { margin-top: 14px; font-size: .8rem; color: var(--mist); }
+        .board .styles b { color: #fff; }
+
+        .menu-sec { margin: 8px 0 26px; }
+        .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 12px; }
+        .sec-head h2 { font: 700 1.75rem/1.05 var(--serif); color: #fff; }
+        .sec-small { font-size: .66rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--moon); text-align: right; }
+        .sec-note { font-size: .78rem; color: var(--muted); margin: -4px 0 12px; }
+        .sec-ph { position: relative; border-radius: 14px; overflow: hidden; margin-bottom: 10px; }
+        .sec-ph img { width: 100%; aspect-ratio: 21/9; object-fit: cover; filter: saturate(.9) brightness(.9); }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+        .item { position: relative; background: var(--night-2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+        .ph { position: relative; }
+        .ph img { width: 100%; aspect-ratio: 16/10; object-fit: cover; height: auto; }
+        .ph .cr { top: auto; bottom: 6px; }
+        .laku { position: absolute; z-index: 3; left: 10px; top: 10px; background: var(--moon); color: var(--night); font-size: .64rem; font-weight: 800; letter-spacing: .08em; padding: 5px 9px; border-radius: 99px; }
+        .body { padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nm { font: 700 1.35rem/1.1 var(--serif); color: #fff; }
+        .desc { font-size: .84rem; color: var(--mist); }
+        .src { font-size: .68rem; color: var(--muted); font-style: italic; }
+        .sah { display: inline-block; align-self: flex-start; font-size: .68rem; font-weight: 600; color: var(--ember); border: 1px solid rgba(255,138,91,.4); padding: 2px 8px; border-radius: 6px; }
+        .opt-l { display: block; font-size: .66rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--moon); margin: 4px 0; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { min-height: 40px; padding: 8px 11px; border-radius: 10px; border: 1px solid var(--line); background: var(--night); color: var(--mist); font: 600 .8rem var(--sans); cursor: pointer; }
+        .chip b { color: var(--moon); font-weight: 600; margin-left: 2px; }
+        .chip[aria-pressed="true"] { background: var(--moon); border-color: var(--moon); color: var(--night); }
+        .chip[aria-pressed="true"] b { color: var(--night); }
+        .foot { margin-top: auto; padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .pr { font-weight: 800; font-size: 1.02rem; color: var(--moon); }
+        .pr.txt { font-size: .82rem; }
+        .pr.tba { font-size: .74rem; color: var(--muted); }
+        .add-btn { flex: none; min-height: 44px; padding: 10px 16px; border-radius: 12px; border: 0; background: var(--moon); color: var(--night); font: 800 .85rem var(--sans); cursor: pointer; }
+        .rows { border: 1px solid var(--line); border-radius: 14px; padding: 2px 14px; background: var(--night-2); }
+        .row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+        .row:last-child { border-bottom: 0; }
+        .rows .item { flex-direction: row; align-items: center; background: none; border: 0; border-bottom: 1px dashed var(--line); border-radius: 0; box-shadow: none; overflow: visible; }
+        .rows .item:last-child { border-bottom: 0; }
+        .row .rb { flex: 1; min-width: 0; }
+        .row .nm { font: 600 .98rem/1.25 var(--sans); }
+        .row .pr { font-size: .9rem; }
+        .row.on .nm { color: var(--moon); }
+        .trio { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; }
+        .tri { min-height: 40px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--night); color: var(--mist); font: 600 .78rem var(--sans); cursor: pointer; }
+        .tri b { color: var(--moon); }
+        .trio .q { font-weight: 800; color: var(--moon); min-width: 20px; text-align: center; }
+        .trio .q:not(:empty) { margin-left: auto; }
+        .stepper { display: flex; align-items: center; gap: 6px; }
+        .stepper button { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--moon); background: transparent; color: var(--moon); font-weight: 800; font-size: 1.05rem; cursor: pointer; }
+        .stepper.inline button:last-child { background: var(--moon); color: var(--night); }
+        .stepper .q { font-weight: 800; min-width: 16px; text-align: center; }
+        .empty-note { display: none; text-align: center; font-weight: 600; padding: 40px 16px; }
+        .empty-note.show { display: block; }
+        .plain { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: var(--night-2); font-size: .88rem; color: var(--mist); }
+        .info { border: 1px solid var(--line); border-radius: 14px; padding: 4px 14px; background: var(--night-2); }
+        .info dt { font-weight: 600; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--moon); padding-top: 12px; }
+        .info dd { font-size: .88rem; padding: 2px 0 12px; border-bottom: 1px dashed var(--line); color: var(--mist); }
+        .info dd:last-child { border-bottom: 0; }
+        .studio { margin: 26px 16px 0; border: 1px solid rgba(242,196,109,.45); border-radius: 18px; padding: 20px; background: var(--night-3); }
+        .studio h2 { font: 700 1.6rem/1.1 var(--serif); color: var(--moon); margin: 4px 0 8px; }
+        .studio .lbl { font-size: .64rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+        .studio p { font-size: .86rem; color: var(--mist); }
+        .demo-note { margin-top: 12px; border: 1px dashed var(--line); padding: 10px 12px; border-radius: 10px; font-size: .8rem; }
+        .credits { margin: 26px 16px 0; font-size: .7rem; color: var(--muted); }
+        .credits h2 { font-size: .76rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; color: var(--mist); }
+        .credits ol { margin: 6px 0 6px 18px; }
+        .credits li { margin-bottom: 3px; overflow-wrap: anywhere; }
+        .page-foot { text-align: center; margin: 26px 16px 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: .8rem; font-weight: 600; color: var(--moon); }
+        .page-foot span { display: block; font-weight: 400; color: var(--muted); font-size: .72rem; margin-top: 6px; }
+
+        .cart-bar { position: fixed; left: 50%; bottom: 12px; transform: translate(-50%, 160%); visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 90; cursor: pointer; background: var(--moon); color: var(--night); border: 0; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.5); padding: 12px 16px; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 800 .95rem var(--sans); transition: transform .35s; }
+        .cart-bar.show { transform: translate(-50%, 0); visibility: visible; }
+        .qty-pill { background: var(--night); color: var(--moon); border-radius: 50%; min-width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: .78rem; margin-right: 8px; }
+        .backdrop { position: fixed; inset: 0; background: rgba(3,7,18,.7); z-index: 95; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+        .backdrop.open { opacity: 1; visibility: visible; }
+        .sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); visibility: hidden; width: min(720px, 100%); max-height: 88svh; z-index: 100; background: var(--night-2); border: 1px solid rgba(242,196,109,.4); border-bottom: 0; border-radius: 22px 22px 0 0; padding: 18px 18px 22px; display: flex; flex-direction: column; transition: transform .35s, visibility .35s; }
+        .sheet.open { transform: translate(-50%, 0); visibility: visible; }
+        .sheet:focus { outline: none; }
+        .sheet h2 { font: 700 1.7rem var(--serif); color: var(--moon); display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .sheet .lines { overflow-y: auto; margin: 10px 0; flex: 1; min-height: 50px; }
+        .line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+        .line .nm { flex: 1; font: 600 .84rem var(--sans); min-width: 0; color: var(--text); }
+        .line .lp { font-size: .74rem; font-weight: 800; white-space: nowrap; color: var(--moon); }
+        .sheet-tools { display: flex; gap: 8px; }
+        .close-btn, .clear-btn { font: 600 .74rem var(--sans); cursor: pointer; background: transparent; border: 1px solid var(--mist); color: var(--mist); padding: 8px 12px; min-height: 40px; border-radius: 10px; }
+        .clear-btn { border-color: var(--ember); color: var(--ember); }
+        .field input { width: 100%; margin-top: 8px; background: var(--night); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; color: var(--text); font: 1rem var(--sans); min-height: 44px; }
+        .field input::placeholder { color: var(--muted); }
+        .total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-weight: 800; color: #fff; }
+        .total-row span:last-child { color: var(--moon); }
+        .fine { font-size: .7rem; color: var(--muted); margin-top: 6px; }
+        .send-btn { margin-top: 12px; min-height: 48px; width: 100%; cursor: pointer; background: var(--moon); color: var(--night); border: 0; border-radius: 12px; font: 800 .95rem var(--sans); }
+        .demo-stamp { font-size: .84rem; font-weight: 800; color: var(--ember); margin-top: 10px; text-align: center; }
+        .demo-stamp:empty { display: none; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cart-bar, .sheet, .backdrop { transition: none; } }
+    </style>
+    <noscript><style>.search-wrap, .cart-bar { display: none; }</style></noscript>
+</head>
+<body>
+<a href="#main" class="skip">Langkau ke menu</a>
+<div class="page">
+    <div class="topbar"><span>Design preview · Langkah Pertama</span><span>Bukan laman rasmi</span></div>
+
+    <header>
+        <div class="hero-img">
+            <img src="images/hero.jpg" alt="Senja di pantai Port Dickson (gambar hiasan)" width="640" height="427">
+            <span class="cr">Gambar hiasan · iAfroMan · CC BY-SA 2.0</span>
+            <svg class="moon" viewBox="0 0 54 54" aria-hidden="true"><path d="M30 5 A22 22 0 1 0 49 37 A18 18 0 0 1 30 5 Z" fill="#ffe3a3"/></svg>
+        </div>
+        <div class="hero-txt">
+            <p class="kicker">Kg Tanah Merah · Port Dickson</p>
+            <h1>Senandung Malam <i>D'Teluk</i></h1>
+            <p class="lede">Ikan bakar daun pisang, udang buttermilk dan siakap 3 rasa — seafood ikut timbang, makan malam tepi laut.</p>
+            <div class="meta"><span><b>5.30 ptg – 12 mlm</b> setiap hari</span><span>Berhadapan Thistle PD</span></div>
+        </div>
+    </header>
+
+    <div class="search-wrap">
+        <label class="box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="searchBox" placeholder="Cari siakap, udang, nasi goreng…" aria-label="Cari dalam menu" autocomplete="off"></label>
+    </div>
+    <nav class="tabs" aria-label="Kategori menu">
+        <a href="#harga-ikan" class="tab">Harga Ikan</a>
+        <a href="#sec-laut" class="tab">Hidangan Laut</a>
+        <a href="#sec-set" class="tab">Set</a>
+        <a href="#sec-nasi" class="tab">Nasi</a>
+        <a href="#sec-lauk" class="tab">Ayam, Tomyam &amp; Mee</a>
+        <a href="#sec-sayur" class="tab">Sayur &amp; Lain</a>
+        <a href="#sec-minum" class="tab">Minuman</a>
+        <a href="#sec-info" class="tab">Info</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+        <div class="note-box" data-hide-on-search>
+            PREVIEW SAHAJA. Semua item &amp; harga disalin daripada menu PDF restoran di Linktree (Okt 2025).
+            <b>Harga ikan &amp; makanan laut ikut harga pasaran semasa; semua harga terkini akan disahkan oleh pemilik.</b>
+            Semua gambar ialah gambar hiasan (bukan gambar sebenar restoran).
+        </div>
+
+        <!-- ===================== PAPAN HARGA IKAN (S1) =====================
+             Harga ikut pasaran: papar 'Harga pasaran / 100g'. "Rujukan" = harga dalam PDF Okt 2025, bukan harga hari ini. -->
+        <section class="board" id="harga-ikan" data-hide-on-search aria-labelledby="hargaIkanTajuk">
+            <h2 id="hargaIkanTajuk">Ikan &amp; makanan laut</h2>
+            <span class="big">Harga pasaran / 100g</span>
+            <p>Pilih ikan, ditimbang, kemudian pilih cara masak. Harga berubah ikut pasaran semasa — staf akan sahkan harga semasa menimbang.</p>
+            <table>
+                <thead><tr><th scope="col">Jenis</th><th scope="col" style="text-align:right">Harga</th></tr></thead>
+                <tbody>
+                    <tr><td>Siakap<small>rujukan menu Okt 2025: RM6.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Gerut<small>rujukan menu Okt 2025: RM6.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Jenahak<small>rujukan menu Okt 2025: RM7.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Kerapu<small>rujukan menu Okt 2025: RM7.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Terubuk<small>rujukan menu Okt 2025: RM8.00</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Merah<small>rujukan menu Okt 2025: RM8.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Bawal<small>rujukan menu Okt 2025: RM6.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Sotong<small>rujukan menu Okt 2025: RM9.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Udang (K)<small>rujukan menu Okt 2025: RM8.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Udang (A)<small>rujukan menu Okt 2025: RM13.00</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Ketam<small>rujukan menu Okt 2025: RM8.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Pepahat<small>rujukan menu Okt 2025: RM3.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Lala<small>rujukan menu Okt 2025: RM3.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Kepah<small>rujukan menu Okt 2025: RM3.50</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Kerang<small>rujukan menu Okt 2025: RM3.30</small></td><td class="mp">Harga pasaran / 100g</td></tr>
+                    <tr><td>Cencaru<small>seekor · menu Okt 2025: RM8.00 / RM10.00</small></td><td class="mp">Seekor</td></tr>
+                    <tr><td>Kembung<small>seekor · menu Okt 2025: RM8.00 / RM10.00</small></td><td class="mp">Seekor</td></tr>
+                    <tr><td>Pari<small>sepotong · menu Okt 2025: RM8.00 / RM10.00</small></td><td class="mp">Sepotong</td></tr>
+                </tbody>
+            </table>
+            <p class="styles"><b>Jenis masakan:</b> Bakar · 3 Rasa · Masam Manis · Masam Manis Telur · Kicap · Steam · Steam Limau · Sambal · Sambal Petai · Cili Api · Goreng Tepung · Goreng Kunyit · Buttermilk · Asam Pedas · Halia</p>
+        </section>
+
+        <div id="menuRoot"></div>
+        <noscript><p class="note-box">Sila hidupkan JavaScript untuk melihat menu.</p></noscript>
+        <p class="empty-note" id="emptyNote" role="status">Tak jumpa. Cuba "siakap", "udang" atau "nasi goreng".</p>
+
+        <section class="menu-sec" id="sec-sos" data-hide-on-search>
+            <div class="sec-head"><h2>Sos &amp; Sambal</h2></div>
+            <p class="plain">Sos Cili · Sos Thai · Sambal Belacan · Sambal Kicap</p>
+        </section>
+
+        <section class="menu-sec" id="sec-info" data-hide-on-search>
+            <div class="sec-head"><h2>Info Restoran</h2></div>
+            <dl class="info">
+                <dt>Alamat</dt>
+                <dd>Lot 2062, Kampung Tanah Merah, 71050 Port Dickson, Negeri Sembilan (berhadapan Thistle Port Dickson, menurut ulasan pelanggan).</dd>
+                <dt>Waktu</dt>
+                <dd>5.30 petang – 12.00 tengah malam, setiap hari (menu restoran &amp; senarai Google).</dd>
+                <dt>Ruang</dt>
+                <dd>Ruang makan luas dengan tempat letak kereta yang besar (menurut ulasan pelanggan).</dd>
+                <dt>Media sosial</dt>
+                <dd>TikTok: @senandungmalamdteluk</dd>
+            </dl>
+        </section>
+    </main>
+
+    <div class="studio" data-hide-on-search>
+        <span class="lbl">Preview percuma untuk Senandung Malam D'Teluk</span>
+        <h2>Menu yang laju dibuka di telefon</h2>
+        <p>Menu PDF hari ini agak besar untuk dibuka di telefon. Menu digital ini ringan, ada gambar, dan harga ikan boleh dikemas kini tanpa buat fail PDF baharu.</p>
+        <p class="demo-note" role="note">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada pesanan atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+    </div>
+
+    <section class="credits" aria-labelledby="kredit" data-hide-on-search>
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar Senandung Malam D'Teluk. Saiz dikecilkan ke lebar 640px; tiada perubahan lain. Senarai penuh: CREDITS.txt.</p>
+        <ol>
+            <li>hero.jpg — iAfroMan, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Port_Dickson_District_sunset.jpg</li>
+            <li>ikan-3rasa.jpg — Yun Huang Yong from Harbord, Australia, CC BY 2.0 — commons.wikimedia.org/wiki/File:Deep_fried_fish_in_a_sweet_%26_sour_sauce.jpg</li>
+            <li>ikan-bakar.jpg — S Kartika, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Ikan_Bakar_3.jpg</li>
+            <li>ikan-cencaru.jpg — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Ikan_Cencaru_Bakar_Sumbat_Sambal.jpg</li>
+            <li>ikan-kerapu.jpg — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Ikan_kerapu_bakar_air_asam.jpg</li>
+            <li>ikan-pari.jpg — Mynn97, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Ikan_pari_bakar_sambal_cili.jpg</li>
+            <li>kangkung.jpg — NeoBatfreak, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Stir-fried_Water_Convolvulus_(%E7%82%92%E7%A9%BA%E5%BF%83%E8%8F%9C).jpg</li>
+            <li>lala.jpg — Takeaway, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Kraphao_hoi_lai.jpg</li>
+            <li>nasi-goreng-kampung.jpg — Supardisahabu, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung.jpg</li>
+            <li>sotong-tepung.jpg — Maksym Kozlenko, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Fried_Calamari_Rings.jpg</li>
+            <li>teh-tarik.jpg — Jonathan Lin, CC BY-SA 2.0 — commons.wikimedia.org/wiki/File:Teh_Tarik.jpg</li>
+            <li>tembikai.jpg — Gaurav Dhwaj Khadka, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Watermelon_Juice_1.jpg</li>
+            <li>tomyam.jpg — David, Public domain — commons.wikimedia.org/wiki/File:Tom_Yum_Soup.JPG</li>
+            <li>udang-butter.jpg — Nur Aishah Binti Abdullah, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Udang_Goreng_Butter.jpg</li>
+            <li>udang-petai.jpg — Mdsheth1986, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Udang_Sambal_Petai.jpg</li>
+        </ol>
+    </section>
+
+    <footer class="page-foot">
+        Design preview · Langkah Pertama
+        <span>Konsep reka bentuk laman web yang disediakan untuk Senandung Malam D'Teluk oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+
+<button class="cart-bar" id="cartBar" type="button" aria-haspopup="dialog" aria-controls="sheet" tabindex="-1">
+    <span><span class="qty-pill" id="cartQty">0</span>Lihat Pesanan</span>
+    <span id="cartTotal">RM 0.00</span>
+</button>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+    <h2><span id="sheetTitle">Pesanan Malam Ini</span>
+        <span class="sheet-tools">
+            <button class="clear-btn" type="button" id="clearCart">Kosongkan</button>
+            <button class="close-btn" type="button" id="closeSheet" aria-label="Tutup pesanan">Tutup</button>
+        </span>
+    </h2>
+    <div class="lines" id="cartLines"></div>
+    <p class="fine" id="cartNote" role="status"></p>
+    <div class="field"><input type="text" id="custName" placeholder="Nama anda" aria-label="Nama anda" autocomplete="name"></div>
+    <div class="field"><input type="text" id="custWhere" placeholder="No. meja" aria-label="Nombor meja"></div>
+    <div class="total-row"><span>Anggaran (tanpa makanan laut)</span><span id="sheetTotal">RM 0.00</span></div>
+    <button type="button" class="send-btn" id="sendOrder">Hantar pesanan (demo)</button>
+    <p class="demo-stamp" id="demoStamp" role="status" aria-live="polite"></p>
+    <p class="fine">Pratonton — anggaran guna harga menu Okt 2025; makanan laut ditimbang ikut harga pasaran. Tiada pesanan dihantar ke mana-mana.</p>
+</div>
+
+<script>
+/* ================= MENU (SATU senarai — edit di sini sahaja) — harga daripada PDF Linktree (Okt 2025) ================= */
+var MASAK = { label: 'Cara masak', choices: ['Bakar', '3 Rasa', 'Masam Manis', 'Masam Manis Telur', 'Kicap', 'Steam', 'Steam Limau', 'Sambal', 'Sambal Petai', 'Cili Api', 'Goreng Tepung', 'Goreng Kunyit', 'Buttermilk', 'Asam Pedas', 'Halia'].map(function (v) { return { v: v }; }) };
+var PASARAN = 'Harga pasaran / 100g';
+function suhu(p, s, j) { return { label: 'Pilih', choices: [{ v: 'Panas', price: p }, { v: 'Sejuk', price: s }, { v: 'Jug', price: j }] }; }
+window.MENU = [
+    // Hidangan laut — ikut timbang (tidak dikira dalam jumlah)
+    { id: 'l0', cat: 'laut', name: 'Pilih sendiri: ikan & cara masak', desc: 'Pilih jenis, kemudian cara masak. Ditimbang di restoran.', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Jenis', choices: ['Siakap', 'Gerut', 'Jenahak', 'Kerapu', 'Terubuk', 'Merah', 'Bawal', 'Sotong', 'Udang (K)', 'Udang (A)', 'Ketam', 'Pepahat', 'Lala', 'Kepah', 'Kerang'].map(function (v) { return { v: v }; }) }, MASAK], img: 'ikan-kerapu.jpg' },
+    { id: 'l1', cat: 'laut', name: 'Udang Buttermilk', hot: 'DISYORKAN PELANGGAN', desc: 'Udang besar bersalut sos buttermilk — paling kerap dipuji dalam ulasan.', src: 'Ulasan Google, Jan & Feb 2026', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Udang', choices: [{ v: 'Udang (K)' }, { v: 'Udang (A)' }] }], img: 'udang-butter.jpg' },
+    { id: 'l2', cat: 'laut', name: 'Ikan Bakar Daun Pisang', hot: 'DISYORKAN PELANGGAN', desc: 'Ikan dibakar berlapik daun pisang — "fragrant nice", kata pelanggan.', src: 'Ulasan Google, 18 Feb 2026', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Ikan', choices: ['Siakap', 'Gerut', 'Jenahak', 'Kerapu', 'Merah', 'Bawal'].map(function (v) { return { v: v }; }) }], sah: 'Jenis ikan untuk bakar akan disahkan oleh pemilik', img: 'ikan-bakar.jpg' },
+    { id: 'l3', cat: 'laut', name: 'Siakap 3 Rasa', desc: 'Ada dalam setiap set restoran — boleh juga pilih masam manis.', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Rasa', choices: [{ v: '3 Rasa' }, { v: 'Masam Manis' }] }], img: 'ikan-3rasa.jpg' },
+    { id: 'l4', cat: 'laut', name: 'Udang Sambal Petai', desc: 'Udang ditumis sambal bersama petai.', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, img: 'udang-petai.jpg' },
+    { id: 'l5', cat: 'laut', name: 'Sotong Goreng Tepung', desc: 'Sotong goreng rangup — atau pilih buttermilk.', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Cara masak', choices: [{ v: 'Goreng Tepung' }, { v: 'Buttermilk' }] }], img: 'sotong-tepung.jpg' },
+    { id: 'l6', cat: 'laut', name: 'Lala / Pepahat', desc: 'Masam manis telur atau pedas, seperti dalam set restoran.', priceText: PASARAN, lineNote: 'ikut timbang', kira: false, opts: [{ label: 'Jenis', choices: [{ v: 'Lala' }, { v: 'Pepahat' }] }, { label: 'Cara masak', choices: [{ v: 'Masam Manis Telur' }, { v: 'Pedas' }] }], img: 'lala.jpg' },
+    { id: 'l7', cat: 'laut', name: 'Cencaru / Kembung Bakar', desc: 'Dijual seekor.', priceText: 'RM8.00 / RM10.00 seekor', lineNote: 'akan disahkan', kira: false, sah: 'Beza harga RM8 / RM10 akan disahkan oleh pemilik', opts: [{ label: 'Ikan', choices: [{ v: 'Cencaru' }, { v: 'Kembung' }] }], img: 'ikan-cencaru.jpg' },
+    { id: 'l8', cat: 'laut', name: 'Pari Bakar', desc: 'Dijual sepotong.', priceText: 'RM8.00 / RM10.00 sepotong', lineNote: 'akan disahkan', kira: false, sah: 'Beza harga RM8 / RM10 akan disahkan oleh pemilik', img: 'ikan-pari.jpg' },
+    // Set (harga tetap)
+    { id: 's1', cat: 'set', name: 'Set A (2 pax)', desc: 'Siakap (3 Rasa / Sweet Sour), Sotong (Goreng Tepung / Butter), Pepahat / Lala (Sweet Sour Telur / Pedas), Pari (1, Bakar), Nasi Putih (2 pinggan), Kailan / Kangkung (1 orang makan), Minuman Buah (2 cawan).', price: 100 },
+    { id: 's2', cat: 'set', name: 'Set B', desc: 'Siakap (3 Rasa / Sweet Sour), Sotong (Bakar), Lala (Sweet Sour Telur / Pedas), Cencaru (1, Bakar), Kembung (1, Bakar), Pari (1, Bakar), Nasi Putih (1 mangkuk), Kailan Ikan Masin & Tomyam Campur (2 orang makan), Teh O / Sirap (1 jug).', price: 180 },
+    { id: 's3', cat: 'set', name: 'Set C', desc: 'Siakap (3 Rasa / Sweet Sour), Gerut (Bakar), Sotong (Goreng Tepung / Butter), Udang (K) (Butter / Sambal Petai), Pepahat / Lala (Sweet Sour Telur / Pedas), Kembung (1, Bakar), Nasi Putih (1 mangkuk), Kailan Ikan Masin & Tomyam Campur (2 orang makan), Tembikai / Fresh Oren (1 jug).', price: 220 },
+    { id: 's4', cat: 'set', name: 'Set D', desc: 'Jenahak (3 Rasa / Sweet Sour), Gerut (Bakar), Sotong & Udang (K) (Goreng Tepung / Butter), Ketam (Sambal), Nasi Putih (1 mangkuk), Kailan Ikan Masin & Tomyam Campur (2 orang makan), Minuman Buah (1 jug).', price: 290 },
+    { id: 's5', cat: 'set', name: 'Set E', desc: 'Merah (Bakar), Kerapu (3 Rasa / Sweet Sour), Sotong (Goreng Tepung / Butter), Udang (A) (Butter / Sambal Petai), Pepahat / Lala (Sweet Sour Telur / Pedas), Ketam (Sambal), Nasi Putih (1 mangkuk), Kailan Ikan Masin & Tomyam Ayam (2 orang makan), Minuman Buah (1 jug).', price: 310 },
+    // Nasi & nasi goreng
+    { id: 'n1', cat: 'nasi', name: 'Nasi Putih', price: 2.50 }, { id: 'n2', cat: 'nasi', name: 'Nasi Bujang', price: 5.00 },
+    { id: 'n3', cat: 'nasi', name: 'Nasi Lemak Telur', price: 4.50 }, { id: 'n4', cat: 'nasi', name: 'Nasi Lemak Ayam', price: 9.00 },
+    { id: 'n5', cat: 'nasi', name: 'Nasi Padprik', price: 10.00 }, { id: 'n6', cat: 'nasi', name: 'Nasi Padprik Seafood', price: 11.00 },
+    { id: 'n7', cat: 'nasi', name: 'Nasi Goreng Biasa', price: 8.00 }, { id: 'n8', cat: 'nasi', name: 'Nasi Goreng Kampung', price: 9.00 },
+    { id: 'n9', cat: 'nasi', name: 'Nasi Goreng Cili Padi', price: 9.00 }, { id: 'n10', cat: 'nasi', name: 'Nasi Goreng Cina', price: 9.00 },
+    { id: 'n11', cat: 'nasi', name: 'Nasi Goreng Ikan Masin', price: 9.00 }, { id: 'n12', cat: 'nasi', name: 'Nasi Goreng Belacan', price: 9.00 },
+    { id: 'n13', cat: 'nasi', name: 'Nasi Goreng Pattaya', price: 10.00 }, { id: 'n14', cat: 'nasi', name: 'Nasi Goreng Padprik', price: 11.00 },
+    { id: 'n15', cat: 'nasi', name: 'Nasi Goreng USA', price: 13.00 }, { id: 'n16', cat: 'nasi', name: 'Nasi Goreng Tomyam', price: 10.00 },
+    { id: 'n17', cat: 'nasi', name: 'Nasi Goreng Ayam', price: 10.00 }, { id: 'n18', cat: 'nasi', name: 'Nasi Goreng Sotong', price: 11.00 },
+    { id: 'n19', cat: 'nasi', name: 'Nasi Goreng Udang', price: 11.00 }, { id: 'n20', cat: 'nasi', name: 'Nasi Goreng Seafood', price: 11.00 },
+    // Ayam, tomyam, mee, sup
+    { id: 'a1', cat: 'lauk', name: 'Ayam', desc: 'Pilih cara masak.', price: null, opts: [{ label: 'Cara masak', choices: [{ v: 'Goreng Tepung', price: 8 }, { v: 'Goreng Kunyit', price: 8 }, { v: 'Buttermilk', price: 9 }, { v: 'Sambal', price: 9 }, { v: 'Pedas', price: 9 }, { v: 'Kicap', price: 9 }] }] },
+    { id: 'a2', cat: 'lauk', name: 'Tomyam / Padprik', desc: 'Pilih kuah dan isi.', price: null, opts: [{ label: 'Kuah', choices: [{ v: 'Tomyam' }, { v: 'Padprik' }] }, { label: 'Isi', choices: [{ v: 'Sayur', price: 7 }, { v: 'Ayam', price: 8 }, { v: 'Campur', price: 9 }, { v: 'Sotong', price: 10 }, { v: 'Udang', price: 10 }, { v: 'Seafood', price: 11 }] }], img: 'tomyam.jpg' },
+    { id: 'a3', cat: 'lauk', name: 'Mee / Bihun / Kueyteow', desc: 'Pilih mi dan cara masak.', price: null, opts: [{ label: 'Mi', choices: [{ v: 'Mee' }, { v: 'Bihun' }, { v: 'Kueyteow' }] }, { label: 'Masakan', choices: [{ v: 'Goreng', price: 8 }, { v: 'Sup', price: 8 }, { v: 'Tomyam', price: 9.5 }, { v: 'Seafood', price: 11 }] }] },
+    { id: 'a4', cat: 'lauk', name: 'Sup', price: null, opts: [{ label: 'Jenis', choices: [{ v: 'Kosong', price: 0.5 }, { v: 'Sayur', price: 6 }, { v: 'Ayam', price: 8 }, { v: 'Cendawan', price: 7 }] }] },
+    // Sayur, telur, lain-lain
+    { id: 'v1', cat: 'sayur', name: 'Sayur Campur', price: 6.00 }, { id: 'v2', cat: 'sayur', name: 'Sawi Goreng', price: 5.50 },
+    { id: 'v3', cat: 'sayur', name: 'Kailan', price: 5.50 }, { id: 'v4', cat: 'sayur', name: 'Kailan Ikan Masin', price: 6.00 },
+    { id: 'v5', cat: 'sayur', name: 'Kailan Belacan', price: 6.00 }, { id: 'v6', cat: 'sayur', name: 'Kangkung', price: 5.50 },
+    { id: 'v7', cat: 'sayur', name: 'Kangkung Ikan Masin', price: 6.00 }, { id: 'v8', cat: 'sayur', name: 'Kangkung Belacan', price: 6.00 },
+    { id: 'e1', cat: 'lain', name: 'Telur Mata', price: 2.00 }, { id: 'e2', cat: 'lain', name: 'Telur Dadar', price: 2.00 },
+    { id: 'e3', cat: 'lain', name: 'Enoki Goreng', price: 6.00 }, { id: 'e4', cat: 'lain', name: 'French Fries', price: 6.00 },
+    { id: 'e5', cat: 'lain', name: 'Otak-otak', price: 1.20, sah: 'Kuantiti seunit akan disahkan oleh pemilik' }, { id: 'e6', cat: 'lain', name: 'Maggi Goreng', price: 6.00 },
+    { id: 'e7', cat: 'lain', name: 'Maggi Sup', price: 6.00 },
+    // Minuman (panas / sejuk / jug)
+    { id: 'd1', cat: 'minum', name: 'Teh', opts: [suhu(3.00, 3.50, 15)] }, { id: 'd2', cat: 'minum', name: 'Teh Halia', opts: [suhu(3.50, 4.00, 15)] },
+    { id: 'd3', cat: 'minum', name: 'Teh O', opts: [suhu(2.50, 3.00, 15)] }, { id: 'd4', cat: 'minum', name: 'Teh O Halia', opts: [suhu(3.00, 3.50, 15)] },
+    { id: 'd5', cat: 'minum', name: 'Halia', opts: [suhu(2.00, 2.50, 15)] }, { id: 'd6', cat: 'minum', name: 'Kopi', opts: [suhu(3.00, 3.50, 15)] },
+    { id: 'd7', cat: 'minum', name: 'Kopi O', opts: [suhu(2.50, 3.00, 15)] }, { id: 'd8', cat: 'minum', name: 'Nescafe', opts: [suhu(4.00, 4.50, 15)] },
+    { id: 'd9', cat: 'minum', name: 'Nescafe O', opts: [suhu(3.50, 4.00, 15)] }, { id: 'd10', cat: 'minum', name: 'Milo', opts: [suhu(4.00, 4.50, 15)] },
+    { id: 'd11', cat: 'minum', name: 'Milo O', opts: [suhu(3.50, 4.00, 15)] }, { id: 'd12', cat: 'minum', name: 'Neslo', opts: [suhu(4.00, 4.50, 15)] },
+    { id: 'd13', cat: 'minum', name: 'Horlick', opts: [suhu(4.00, 4.50, 15)] }, { id: 'd14', cat: 'minum', name: 'Sirap / Sirap Limau', opts: [suhu(2.50, 3.00, 15)] },
+    { id: 'd15', cat: 'minum', name: 'Sirap Bandung', opts: [suhu(3.00, 3.50, 15)] }, { id: 'd16', cat: 'minum', name: 'Sirap Laici', opts: [suhu(4.50, 5.00, 17)] },
+    { id: 'd17', cat: 'minum', name: 'Oren Sunquick', opts: [suhu(2.50, 3.00, 15)] }, { id: 'd18', cat: 'minum', name: 'Xtra Joss', opts: [suhu(3.50, 4.00, 15)] },
+    { id: 'd19', cat: 'minum', name: 'Xtra Joss Susu', opts: [suhu(4.00, 4.50, 15)] },
+    { id: 'f1', cat: 'buah', name: 'Epal', opts: [suhu(5.50, 6.00, 19)] }, { id: 'f2', cat: 'buah', name: 'Epal Asam Boi', opts: [suhu(6.00, 6.50, 21)] },
+    { id: 'f3', cat: 'buah', name: 'Epal Susu', opts: [suhu(7.00, 7.50, 21)] }, { id: 'f4', cat: 'buah', name: 'Asam Boi', opts: [suhu(4.50, 5.00, 16)] },
+    { id: 'f5', cat: 'buah', name: 'Carrot', opts: [suhu(5.50, 6.00, 19)] }, { id: 'f6', cat: 'buah', name: 'Carrot Susu', opts: [suhu(7.00, 7.50, 21)] },
+    { id: 'f7', cat: 'buah', name: 'Fresh Oren', opts: [suhu(5.50, 6.00, 19)] }, { id: 'f8', cat: 'buah', name: 'Laici', opts: [suhu(5.50, 6.00, 19)] },
+    { id: 'f9', cat: 'buah', name: 'Longan', opts: [suhu(5.50, 6.00, 19)] }, { id: 'f10', cat: 'buah', name: 'Limau', opts: [suhu(3.50, 4.00, 16)] },
+    { id: 'f11', cat: 'buah', name: 'Lemon', opts: [suhu(4.00, 4.50, 17)] }, { id: 'f12', cat: 'buah', name: 'Tembikai', opts: [suhu(5.50, 6.00, 19)] },
+    { id: 'f13', cat: 'buah', name: 'Tembikai Laici', opts: [suhu(6.00, 6.50, 21)] }, { id: 'f14', cat: 'buah', name: 'Barli', opts: [suhu(3.50, 4.00, 16)] },
+    { id: 'f15', cat: 'buah', name: 'Barli Lemon', opts: [suhu(4.00, 4.50, 17)] }, { id: 'f16', cat: 'buah', name: 'Kelapa', opts: [suhu(5.00, 5.00, 19)], sah: 'Pilihan panas tertera dalam menu PDF — akan disahkan oleh pemilik' }
+];
+window.CATS = [
+    { key: 'laut', id: 'sec-laut', title: 'Hidangan Laut', small: 'Harga pasaran / 100g', note: 'Ditimbang di restoran — tidak dikira dalam anggaran jumlah.' },
+    { key: 'set', id: 'sec-set', title: 'Set Makan Ramai', small: 'Harga tetap', img: 'ikan-3rasa.jpg', alt: 'Ikan goreng bersos' },
+    { key: 'nasi', id: 'sec-nasi', title: 'Nasi & Nasi Goreng', layout: 'row', img: 'nasi-goreng-kampung.jpg', alt: 'Nasi goreng kampung' },
+    { key: 'lauk', id: 'sec-lauk', title: 'Ayam, Tomyam, Mee & Sup' },
+    { key: 'sayur', id: 'sec-sayur', title: 'Sayur', layout: 'row', img: 'kangkung.jpg', alt: 'Kangkung goreng' },
+    { key: 'lain', id: 'sec-lain', title: 'Telur & Lain-lain', layout: 'row' },
+    { key: 'minum', id: 'sec-minum', title: 'Minuman', small: 'Panas · Sejuk · Jug', layout: 'row', img: 'teh-tarik.jpg', alt: 'Minuman teh' },
+    { key: 'buah', id: 'sec-buah', title: 'Minuman Buah', small: 'Panas · Sejuk · Jug', layout: 'row', img: 'tembikai.jpg', alt: 'Jus tembikai' }
+];
+window.CFG = { skipNote: 'makanan laut ikut timbang / harga akan disahkan', addLabel: '+ Tambah' };
+</script>
+<script>
+window.CR = {"hero.jpg": "iAfroMan · CC BY-SA 2.0", "ikan-3rasa.jpg": "Yun Huang Yong from Harbord, Australia · CC BY 2.0", "ikan-bakar.jpg": "S Kartika · CC BY-SA 4.0", "ikan-cencaru.jpg": "Mdsheth1986 · CC BY-SA 4.0", "ikan-kerapu.jpg": "Mdsheth1986 · CC BY-SA 4.0", "ikan-pari.jpg": "Mynn97 · CC BY-SA 4.0", "kangkung.jpg": "NeoBatfreak · CC BY-SA 4.0", "lala.jpg": "Takeaway · CC BY-SA 3.0", "nasi-goreng-kampung.jpg": "Supardisahabu · CC BY-SA 4.0", "sotong-tepung.jpg": "Maksym Kozlenko · CC BY-SA 4.0", "teh-tarik.jpg": "Jonathan Lin · CC BY-SA 2.0", "tembikai.jpg": "Gaurav Dhwaj Khadka · CC BY-SA 4.0", "tomyam.jpg": "David · domain awam", "udang-butter.jpg": "Nur Aishah Binti Abdullah · CC BY-SA 4.0", "udang-petai.jpg": "Mdsheth1986 · CC BY-SA 4.0"};
+/* ================= ENJIN MENU (sama untuk semua menu Langkah Pertama — jangan edit kecuali perlu) =================
+   Membaca MENU, CATS dan CFG di atas. Tiada pautan keluar, tiada mesej dihantar: butang hantar = nota demo sahaja. */
+(function () {
+    'use strict';
+    var MENU = window.MENU, CATS = window.CATS, CFG = window.CFG || {};
+    var IMG = 'images/', CR = window.CR || {};
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function byId(id) { for (var i = 0; i < MENU.length; i++) { if (MENU[i].id === id) return MENU[i]; } return null; }
+    var TBA = CFG.tba || 'Harga akan disahkan oleh pemilik';
+    var sel = {}; /* pilihan semasa setiap hidangan: sel[id][kumpulan] = indeks */
+
+    function choicePrice(it, picks) {
+        var p = it.price;
+        (it.opts || []).forEach(function (g, gi) { var c = g.choices[picks[gi]]; if (c && typeof c.price === 'number') p = c.price; });
+        return p;
+    }
+    function counts(it, picks) { return it.kira !== false && typeof choicePrice(it, picks) === 'number'; }
+
+    function priceHtml(it) {
+        if (it.priceText) return '<span class="pr txt">' + esc(it.priceText) + '</span>';
+        if (typeof it.price !== 'number') {
+            var ps = [];
+            (it.opts || []).forEach(function (g) { g.choices.forEach(function (c) { if (typeof c.price === 'number') ps.push(c.price); }); });
+            if (ps.length) {
+                var lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps);
+                return '<span class="pr">RM' + lo.toFixed(2) + (hi > lo ? ' – RM' + hi.toFixed(2) : '') + '</span>';
+            }
+            return '<span class="pr tba">' + esc(TBA) + '</span>';
+        }
+        return '<span class="pr">RM' + it.price.toFixed(2) + (it.label ? ' <small>(' + esc(it.label) + ')</small>' : '') + '</span>';
+    }
+    function optsHtml(it) {
+        if (!it.opts) return '';
+        sel[it.id] = it.opts.map(function () { return 0; });
+        return it.opts.map(function (g, gi) {
+            return '<div class="opt" role="group" aria-label="' + esc(g.label + ' untuk ' + it.name) + '"><span class="opt-l">' + esc(g.label) + '</span><div class="chips">' +
+                g.choices.map(function (c, ci) {
+                    return '<button type="button" class="chip" data-pick="' + it.id + '|' + gi + '|' + ci + '" aria-pressed="' + (ci === 0) + '">' + esc(c.v) +
+                        (typeof c.price === 'number' ? ' <b>' + c.price.toFixed(2) + '</b>' : '') + '</button>';
+                }).join('') + '</div></div>';
+        }).join('');
+    }
+
+    /* ---- papar menu ---- */
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec' + (c.layoutClass ? ' ' + c.layoutClass : '') + '" id="' + c.id + '"><div class="sec-head"><h2>' + esc(c.title) + '</h2>' +
+            (c.small ? '<p class="sec-small">' + esc(c.small) + '</p>' : '') + '</div>' +
+            (c.img ? '<div class="sec-ph"><img src="' + IMG + c.img + '" alt="' + esc(c.alt || c.title) + ' (gambar hiasan)" width="640" height="400" loading="lazy" decoding="async"><span class="cr">' + esc(CR[c.img] || '') + '</span></div>' : '') +
+            (c.note ? '<p class="sec-note">' + c.note + '</p>' : '') +
+            '<div class="' + (c.layout === 'row' ? 'rows' : 'grid') + '">';
+        items.forEach(function (it) {
+            var q = esc((it.name + ' ' + (it.desc || '') + ' ' + (it.tags || '')).toLowerCase());
+            if (c.layout === 'row') {
+                html += '<div class="row item" data-q="' + q + '"><div class="rb"><h3 class="nm">' + esc(it.name) + '</h3>' +
+                    (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + (it.opts ? '' : priceHtml(it)) + (it.opts ? '' : '</div>') +
+                    (it.opts ? '<div class="trio">' + it.opts[0].choices.map(function (ch, ci) {
+                        return '<button type="button" class="tri" data-addc="' + it.id + '~' + ci + '" aria-label="Tambah ' + esc(it.name + ' ' + ch.v) + '">' + esc(ch.v) +
+                            (typeof ch.price === 'number' ? ' <b>' + ch.price.toFixed(2) + '</b>' : '') + '</button>';
+                    }).join('') + '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span></div></div>' :
+                    '<div class="stepper inline"><button type="button" data-rdec="' + it.id + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                    '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span>' +
+                    '<button type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">+</button></div>') + '</div>';
+            } else {
+                html += '<article class="item" data-q="' + q + '">' +
+                    (it.hot ? '<span class="laku">' + esc(it.hot) + '</span>' : '') +
+                    (it.img ? '<div class="ph"><img src="' + IMG + it.img + '" alt="' + esc(it.name) + ' (gambar hiasan)" width="640" height="' + (it.h || 427) + '" loading="lazy" decoding="async"><span class="cr">' + esc(it.cr || CR[it.img] || '') + '</span></div>' : '') +
+                    '<div class="body"><h3 class="nm">' + esc(it.name) + '</h3>' + (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.src ? '<p class="src">' + esc(it.src) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + optsHtml(it) +
+                    '<div class="foot">' + priceHtml(it) + '<button class="add-btn" type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">' + esc(CFG.addLabel || '+ Tambah') + '</button></div></div></article>';
+            }
+        });
+        html += '</div></section>';
+    });
+    document.getElementById('menuRoot').innerHTML = html;
+
+    /* ---- carian langsung ---- */
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .item'), function (el) {
+            var show = !q || el.getAttribute('data-q').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .menu-sec'), function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-hide-on-search]'), function (el) { el.style.display = q ? 'none' : ''; });
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    /* ---- pesanan: kunci baris = id + pilihan ---- */
+    var cart = {}, order = [];
+    var bar = document.getElementById('cartBar'), sheet = document.getElementById('sheet'), backdrop = document.getElementById('backdrop');
+    var stamp = document.getElementById('demoStamp');
+    function parse(key) { var p = key.split('~'); return { it: byId(p[0]), picks: p[1] ? p[1].split('.').map(Number) : [] }; }
+    function label(x) {
+        var extra = (x.it.opts || []).map(function (g, gi) { return x.it.opts[gi].choices[x.picks[gi]].v; }).join(' · ');
+        return x.it.name + (extra ? ' — ' + extra : '');
+    }
+    function total() { var s = 0; order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) s += choicePrice(x.it, x.picks) * cart[k]; }); return s; }
+    function count() { var n = 0; order.forEach(function (k) { n += cart[k]; }); return n; }
+    function qtyOf(id) { var n = 0; order.forEach(function (k) { if (k.split('~')[0] === id) n += cart[k]; }); return n; }
+
+    function render() {
+        var n = count(), h = '', skipped = 0, t = total();
+        document.getElementById('cartQty').textContent = n;
+        var tt = CFG.noTotals ? (n + ' item') : fmt(t);
+        document.getElementById('cartTotal').textContent = tt;
+        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : fmt(t);
+        bar.classList.toggle('show', n > 0);
+        bar.tabIndex = n > 0 ? 0 : -1;
+        order.forEach(function (k) {
+            var x = parse(k), ok = counts(x.it, x.picks);
+            if (!ok) skipped++;
+            h += '<div class="line"><span class="nm">' + esc(label(x)) + '</span>' +
+                (CFG.noTotals ? '' : '<span class="lp">' + (ok ? fmt(choicePrice(x.it, x.picks) * cart[k]) : esc(x.it.lineNote || 'akan disahkan')) + '</span>') +
+                '<span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Kurangkan ' + esc(label(x)) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button type="button" data-inc="' + k + '" aria-label="Tambah lagi ' + esc(label(x)) + '">+</button></span></div>';
+        });
+        document.getElementById('cartLines').innerHTML = h || '<p class="fine">' + esc(CFG.emptyCart || 'Belum ada pesanan lagi.') + '</p>';
+        document.getElementById('cartNote').textContent = CFG.noTotals ? (CFG.noTotalsNote || '') :
+            (skipped ? skipped + ' baris tidak dikira dalam anggaran (' + (CFG.skipNote || 'harga akan disahkan oleh pemilik') + ').' : '');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-rq]'), function (el) {
+            var q = qtyOf(el.getAttribute('data-rq')); el.textContent = q; var rw = el.closest('.row'); if (rw) rw.classList.toggle('on', q > 0);
+        });
+        stamp.textContent = '';
+        if (n === 0) closeSheet();
+    }
+    function add(key) { if (!cart[key]) { cart[key] = 0; order.push(key); } cart[key]++; render(); }
+    function dec(key) { cart[key]--; if (cart[key] <= 0) { delete cart[key]; order.splice(order.indexOf(key), 1); } render(); }
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open'); backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        if (!sheet.classList.contains('open')) return;
+        sheet.classList.remove('open'); backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        var t = (lastFocus && document.contains(lastFocus) && lastFocus !== document.body) ? lastFocus : (count() ? bar : box);
+        t.focus();
+    }
+    bar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.getElementById('closeSheet').addEventListener('click', closeSheet);
+    document.getElementById('clearCart').addEventListener('click', function () { cart = {}; order = []; render(); });
+    /* DEMO sahaja: tiada pautan, tiada mesej — hanya papar nota pratonton dalam helaian */
+    document.getElementById('sendOrder').addEventListener('click', function () {
+        stamp.textContent = 'Pratonton sahaja — tiada pesanan dihantar';
+    });
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.filter.call(sheet.querySelectorAll('button, input, select, a[href]'), function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    });
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('button') : null;
+        if (!t) return;
+        var a;
+        if ((a = t.getAttribute('data-pick'))) {
+            var p = a.split('|'); sel[p[0]][+p[1]] = +p[2];
+            Array.prototype.forEach.call(t.parentNode.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', String(c === t)); });
+        } else if ((a = t.getAttribute('data-add'))) {
+            add(a + (sel[a] ? '~' + sel[a].join('.') : ''));
+        } else if ((a = t.getAttribute('data-addc'))) {
+            add(a);
+        } else if ((a = t.getAttribute('data-rdec'))) {
+            for (var i = order.length - 1; i >= 0; i--) { if (order[i].split('~')[0] === a) { dec(order[i]); break; } }
+        } else if ((a = t.getAttribute('data-inc'))) { add(a); }
+        else if ((a = t.getAttribute('data-dec'))) { dec(a); }
+    });
+    render();
+})();
+
+</script>
+</body>
+</html>

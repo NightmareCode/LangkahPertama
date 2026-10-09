@@ -1,0 +1,78 @@
+KREDIT GAMBAR — Senandung Malam D'Teluk (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain. Setiap gambar disemak dengan mata.
+
+hero.jpg
+  Pengarang: iAfroMan
+  Lesen: CC BY-SA 2.0 creativecommons.org/licenses/by-sa/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Port_Dickson_District_sunset.jpg
+
+ikan-3rasa.jpg
+  Pengarang: Yun Huang Yong from Harbord, Australia
+  Lesen: CC BY 2.0 creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Deep_fried_fish_in_a_sweet_%26_sour_sauce.jpg
+
+ikan-bakar.jpg
+  Pengarang: S Kartika
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Ikan_Bakar_3.jpg
+
+ikan-cencaru.jpg
+  Pengarang: Mdsheth1986
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Ikan_Cencaru_Bakar_Sumbat_Sambal.jpg
+
+ikan-kerapu.jpg
+  Pengarang: Mdsheth1986
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Ikan_kerapu_bakar_air_asam.jpg
+
+ikan-pari.jpg
+  Pengarang: Mynn97
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Ikan_pari_bakar_sambal_cili.jpg
+
+kangkung.jpg
+  Pengarang: NeoBatfreak
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Stir-fried_Water_Convolvulus_(%E7%82%92%E7%A9%BA%E5%BF%83%E8%8F%9C).jpg
+
+lala.jpg
+  Pengarang: Takeaway
+  Lesen: CC BY-SA 3.0 creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Kraphao_hoi_lai.jpg
+
+nasi-goreng-kampung.jpg
+  Pengarang: Supardisahabu
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung.jpg
+
+sotong-tepung.jpg
+  Pengarang: Maksym Kozlenko
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Fried_Calamari_Rings.jpg
+
+teh-tarik.jpg
+  Pengarang: Jonathan Lin
+  Lesen: CC BY-SA 2.0 creativecommons.org/licenses/by-sa/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Teh_Tarik.jpg
+
+tembikai.jpg
+  Pengarang: Gaurav Dhwaj Khadka
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Watermelon_Juice_1.jpg
+
+tomyam.jpg
+  Pengarang: David
+  Lesen: Public domain (domain awam)
+  Sumber: https://commons.wikimedia.org/wiki/File:Tom_Yum_Soup.JPG
+
+udang-butter.jpg
+  Pengarang: Nur Aishah Binti Abdullah
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Udang_Goreng_Butter.jpg
+
+udang-petai.jpg
+  Pengarang: Mdsheth1986
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Udang_Sambal_Petai.jpg
