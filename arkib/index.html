@@ -80,11 +80,12 @@
         @media (prefers-reduced-motion: reduce) { .majlis .foto, .majlis .foto:hover { transition: none; transform: none; } }
         .majlis .butir { padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 14px; justify-content: center; }
         .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .chip { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; background: var(--maroon-chip); color: #d8aab5; border: 1px solid rgba(216, 170, 181, 0.25); }
+        .chip { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; background: var(--maroon-chip); color: #d8aab5; border: 1px solid rgba(216, 170, 181, 0.25); }
         .chip.selesai { background: rgba(205, 160, 95, 0.12); color: var(--gold); border-color: rgba(205, 160, 95, 0.4); }
         .majlis h2 { font-family: 'Prata', serif; font-weight: 400; font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.15; margin: 0; color: var(--cream); }
         .meta { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 7px; font-size: 0.95rem; color: var(--cream-dim); }
         .meta b { color: var(--cream); font-weight: 500; }
+        .meta .privasi { font-size: 0.86rem; font-style: italic; color: rgba(191, 169, 163, 0.85); }
         .majlis .aksi { margin-top: 12px; }
         .btn-buka { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.08em; color: #241511; background: linear-gradient(120deg, #d9b077, var(--gold)); transition: transform 0.2s; }
         .btn-buka:hover { transform: translateY(-2px); }
@@ -95,8 +96,8 @@
         .nota a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 6px; color: var(--gold); text-decoration: none; font-weight: 600; }
         .nota a:hover { text-decoration: underline; }
 
-        footer { margin-top: clamp(36px, 7vh, 60px); padding: 22px 0 34px; border-top: 1px solid var(--line); text-align: center; font-size: 0.74rem; color: rgba(191, 169, 163, 0.7); }
-        footer a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+        footer { margin-top: clamp(36px, 7vh, 60px); padding: 22px 0 34px; border-top: 1px solid var(--line); text-align: center; font-size: 0.8rem; line-height: 1.8; color: rgba(191, 169, 163, 0.75); }
+        footer a { color: var(--gold-soft); text-decoration: none; font-weight: 600; display: inline-block; padding: 12px 4px; margin: -12px -4px; }
 
         /* reveal */
         .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -130,11 +131,11 @@
 
             <div class="tahun reveal"><span>2026</span></div>
 
-            <article class="majlis reveal" aria-label="Majlis Pertunangan Amira dan Muzammil">
-                <a class="foto" href="/jemputan/amira-muzammil/" aria-label="Lihat kad jemputan pertunangan Amira dan Muzammil">
+            <article class="majlis reveal" aria-label="Majlis Pertunangan, Ogos 2026">
+                <a class="foto" href="/arkib/pertunangan-2026-08/" aria-label="Lihat kad jemputan Majlis Pertunangan, Ogos 2026">
                     <picture>
-                        <source srcset="/assets/arkib/amira-muzammil-cover.webp" type="image/webp">
-                        <img src="/assets/arkib/amira-muzammil-cover.jpg" alt="Muka depan kad jemputan digital Majlis Pertunangan Amira &amp; Muzammil, tema maroon dan emas" width="600" height="1299" loading="lazy" decoding="async">
+                        <source srcset="/assets/arkib/pertunangan-2026-08-cover.webp" type="image/webp">
+                        <img src="/assets/arkib/pertunangan-2026-08-cover.jpg" alt="Muka depan kad jemputan digital Majlis Pertunangan, tema maroon dan emas (nama pasangan dirahsiakan)" width="600" height="1299" loading="lazy" decoding="async">
                     </picture>
                 </a>
                 <div class="butir">
@@ -142,14 +143,15 @@
                         <span class="chip">Pertunangan</span>
                         <span class="chip selesai">Selesai</span>
                     </div>
-                    <h2>Amira &amp; Muzammil</h2>
+                    <h2>Majlis Pertunangan · Ogos 2026</h2>
                     <ul class="meta">
-                        <li><b>Ogos 2026</b></li>
+                        <li><b>Ogos 2026</b> · Kuala Kangsar, Perak</li>
                         <li>Tema: Maroon, Gading &amp; Emas (jemputan 3D skrol)</li>
-                        <li>Muzik latar, kiraan detik, atur cara majlis, lokasi &amp; simpan tarikh</li>
+                        <li>Muzik latar, kiraan detik &amp; atur cara majlis</li>
+                        <li class="privasi">Nama, alamat &amp; gambar pasangan dirahsiakan untuk privasi.</li>
                     </ul>
                     <div class="aksi">
-                        <a class="btn-buka" href="/jemputan/amira-muzammil/">Lihat kad &#10087;</a>
+                        <a class="btn-buka" href="/arkib/pertunangan-2026-08/">Lihat kad &#10087;</a>
                     </div>
                 </div>
             </article>
