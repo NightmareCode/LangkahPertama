@@ -342,6 +342,8 @@
             padding: 10px 12px; color: var(--ink); font-family: var(--sans); font-size: 1rem;
         }
         .total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-family: var(--disp); font-size: 1.15rem; letter-spacing: 1px; text-transform: uppercase; }
+        .total-row { gap: 12px; align-items: baseline; }
+        .total-row span:last-child, #cartTotal { white-space: nowrap; }
         .fine { font-size: 0.66rem; color: #5d5443; margin-top: 6px; }
         .send-btn {
             display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; min-height: 46px;
@@ -662,8 +664,11 @@
     function render() {
         var n = count(), h = '', skipped = 0;
         document.getElementById('cartQty').textContent = n;
-        document.getElementById('cartTotal').textContent = fmt(total());
-        document.getElementById('sheetTotal').textContent = fmt(total());
+        // only uncounted lines so far (foodpanda / unpriced): say 'akan disahkan' instead of a misleading RM 0.00
+        var priced = 0; for (var c in cart) { if (cart[c] > 0 && counts(byId(c))) priced++; }
+        var tt = n > 0 && !priced ? 'akan disahkan' : fmt(total());
+        document.getElementById('cartTotal').textContent = tt;
+        document.getElementById('sheetTotal').textContent = tt;
         bar.classList.toggle('show', n > 0);
         bar.tabIndex = n > 0 ? 0 : -1;
         for (var k in cart) {
