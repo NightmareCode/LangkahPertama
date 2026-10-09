@@ -313,3 +313,10 @@ body {
     .arch-frame { max-width: 500px; }
     .boho-border { max-width: 800px; border-width: 3px; }
 }
+
+/* Map buttons are real links (demo location) */
+a.map-link { display: inline-block; text-decoration: none; text-align: center; box-sizing: border-box; cursor: pointer; }
+a.map-link.w-full { display: block; }
+
+/* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
+.arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }

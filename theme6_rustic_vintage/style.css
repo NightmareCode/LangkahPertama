@@ -255,3 +255,10 @@ h1, h2, h3, h4, .title { font-family: var(--font-serif); font-weight: 700; lette
     .paper-container { max-width: 1000px; }
     .polaroid { width: calc(25% - 15px); }
 }
+
+/* Map buttons are real links (demo location) */
+a.map-link { display: inline-block; text-decoration: none; text-align: center; box-sizing: border-box; cursor: pointer; }
+a.map-link.w-full { display: block; }
+
+/* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
+.arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dynamic Guest Name ---
     const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('to') || 'Valued Guest';
+    const guestName = urlParams.get('to') || 'Tetamu Dihormati';
     document.getElementById('guest-name').textContent = guestName;
 
     // Check if we are in preview mode (hash #preview instead of query string for local file:// support)

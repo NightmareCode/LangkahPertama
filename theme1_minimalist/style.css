@@ -401,3 +401,10 @@ body {
     }
     .gallery-img.full { grid-column: span 2; } /* Make full only take half on large screens */
 }
+
+/* Map buttons are real links (demo location) */
+a.map-link { display: inline-block; text-decoration: none; text-align: center; box-sizing: border-box; cursor: pointer; }
+a.map-link.w-full { display: block; }
+
+/* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
+.arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
