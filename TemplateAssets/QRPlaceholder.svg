@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="261" height="300" viewBox="0 0 261 300" role="img" aria-label="QR anda di sini">
+  <rect width="261" height="300" fill="#ffffff"/>
+  <rect x="14" y="14" width="233" height="272" rx="12" fill="none" stroke="#9a9a9a" stroke-width="3" stroke-dasharray="12 8"/>
+  <g fill="none" stroke="#b5b5b5" stroke-width="4">
+    <rect x="48" y="62" width="34" height="34" rx="4"/>
+    <rect x="179" y="62" width="34" height="34" rx="4"/>
+    <rect x="48" y="193" width="34" height="34" rx="4"/>
+  </g>
+  <text x="130.5" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#6b6b6b">QR anda</text>
+  <text x="130.5" y="166" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#6b6b6b">di sini</text>
+</svg>
