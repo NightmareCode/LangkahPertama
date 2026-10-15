@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" href="data:,">
+    <title>Burger Abah Den — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital untuk Burger Abah Den. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+:root { --outer:#111; --bg:#f3e3c3; --surface:#fff8ea; --ink:#141414; --muted:#5c4a33; --accent:#e02a1f; --accent-ink:#fff; --accent-dark:#b81d14; --line:#e2cda4; --line-strong:#141414; --warn:#b81d14; --bar:#141414; --bar-ink:#ffcc00; --radius:0px; --body:'Archivo',system-ui,sans-serif; --h2:400 2rem/1 'Bebas Neue',Impact,sans-serif; --h3:400 1.55rem/1 'Bebas Neue',Impact,sans-serif; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-padding-top: 70px; }
+body { background: var(--outer); color: var(--ink); font-family: var(--body); line-height: 1.5; -webkit-text-size-adjust: 100%; }
+img { display: block; max-width: 100%; }
+.skip { position: absolute; left: 8px; top: -60px; background: var(--ink); color: var(--bg); padding: 10px 14px; z-index: 200; }
+.skip:focus { top: 8px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.page { max-width: 720px; margin: 0 auto; background: var(--bg); min-height: 100vh; padding-bottom: 90px; }
+.topbar { display: flex; justify-content: space-between; gap: 8px; font-size: .64rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--bar); color: var(--bar-ink); padding: 7px 14px; }
+.topbar span:last-child { white-space: nowrap; }
+.cr { position: absolute; right: 6px; bottom: 6px; z-index: 2; font-size: .56rem; background: rgba(0,0,0,.55); color: #fff; padding: 2px 6px; border-radius: 3px; max-width: 92%; }
+.search-wrap { position: sticky; top: 0; z-index: 40; background: var(--bg); padding: 12px 16px 8px; }
+.search-wrap .box { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: var(--radius); padding: 0 12px; color: var(--accent-dark); }
+.search-wrap input { flex: 1; border: 0; background: none; font: 600 1rem var(--body); color: var(--ink); min-height: 44px; outline: none; min-width: 0; }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding: 4px 16px 12px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; text-decoration: none; color: var(--ink); border: 1.5px solid var(--line-strong); font-weight: 700; font-size: .8rem; padding: 10px 14px; border-radius: var(--radius); min-height: 40px; display: inline-flex; align-items: center; background: var(--surface); }
+main { padding: 0 16px; }
+.note-box { background: var(--surface); border: 1px solid var(--line); padding: 12px 14px; font-size: .8rem; border-radius: var(--radius); margin: 6px 0 20px; color: var(--muted); }
+.note-box b { color: var(--ink); }
+.menu-sec { margin: 8px 0 26px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-bottom: 1.5px solid var(--line-strong); padding-bottom: 6px; margin-bottom: 12px; }
+.sec-head h2 { font: var(--h2); color: var(--ink); }
+.sec-small { font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); text-align: right; }
+.sec-note { font-size: .78rem; color: var(--muted); margin: -4px 0 12px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+.item { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.ph { position: relative; }
+.ph img { width: 100%; aspect-ratio: 16/10; object-fit: cover; height: auto; }
+.laku { position: absolute; z-index: 3; left: 10px; top: 10px; background: var(--accent); color: var(--accent-ink); font-size: .62rem; font-weight: 800; letter-spacing: .08em; padding: 5px 9px; border-radius: var(--radius); }
+.body { padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.nm { font: var(--h3); color: var(--ink); }
+.desc { font-size: .84rem; color: var(--muted); }
+.src { font-size: .68rem; color: var(--muted); font-style: italic; opacity: .85; }
+.sah { display: inline-block; align-self: flex-start; font-size: .66rem; font-weight: 700; color: var(--warn); border: 1px solid var(--warn); padding: 2px 8px; border-radius: 6px; }
+.opt-l { display: block; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); margin: 4px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { min-height: 40px; padding: 8px 12px; border-radius: var(--radius); border: 1.5px solid var(--line-strong); background: var(--bg); color: var(--ink); font: 700 .8rem var(--body); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.foot { margin-top: auto; padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pr { font-weight: 800; }
+.pr.tba, .pr.txt { font-size: .74rem; font-weight: 700; color: var(--muted); max-width: 60%; }
+.add-btn { flex: none; min-height: 44px; padding: 10px 16px; border-radius: var(--radius); border: 0; background: var(--accent); color: var(--accent-ink); font: 800 .85rem var(--body); cursor: pointer; }
+.empty-note { display: none; text-align: center; font-weight: 700; padding: 40px 16px; }
+.empty-note.show { display: block; }
+.info { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 4px 14px; }
+.info dt { font-weight: 700; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); padding-top: 12px; }
+.info dd { font-size: .88rem; padding: 2px 0 12px; border-bottom: 1px dashed var(--line); }
+.info dd:last-child { border-bottom: 0; }
+.studio { margin: 26px 16px 0; background: var(--bar); color: var(--bar-ink); border-radius: var(--radius); padding: 20px; }
+.studio h2 { font: var(--h3); color: inherit; font-size: 1.4rem; margin: 4px 0 8px; }
+.studio .lbl { font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+.studio p { font-size: .85rem; }
+.demo-note { margin-top: 12px; border: 1px dashed currentColor; padding: 10px 12px; border-radius: 10px; font-size: .8rem; opacity: .95; }
+.credits { margin: 26px 16px 0; font-size: .7rem; color: var(--muted); }
+.credits h2 { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+.credits ol { margin: 6px 0 6px 18px; }
+.credits li { margin-bottom: 3px; overflow-wrap: anywhere; }
+.page-foot { text-align: center; margin: 26px 16px 0; padding-top: 16px; border-top: 1.5px solid var(--line-strong); font-size: .8rem; font-weight: 700; }
+.page-foot span { display: block; font-weight: 400; color: var(--muted); font-size: .72rem; margin-top: 6px; }
+.cart-bar { position: fixed; left: 50%; bottom: 12px; transform: translate(-50%, 160%); visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 90; cursor: pointer; background: var(--ink); color: var(--bg); border: 0; border-radius: var(--radius); box-shadow: 0 10px 26px rgba(0,0,0,.35); padding: 12px 16px; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 800 .95rem var(--body); transition: transform .35s; }
+.cart-bar.show { transform: translate(-50%, 0); visibility: visible; }
+.qty-pill { background: var(--accent); color: var(--accent-ink); border-radius: 50%; min-width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: .78rem; margin-right: 8px; }
+.backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 95; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+.backdrop.open { opacity: 1; visibility: visible; }
+.sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); visibility: hidden; width: min(720px, 100%); max-height: 88svh; z-index: 100; background: var(--bg); border-radius: 20px 20px 0 0; padding: 18px 18px 22px; display: flex; flex-direction: column; transition: transform .35s, visibility .35s; }
+.sheet.open { transform: translate(-50%, 0); visibility: visible; }
+.sheet:focus { outline: none; }
+.sheet h2 { font: var(--h3); font-size: 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sheet .lines { overflow-y: auto; margin: 10px 0; flex: 1; min-height: 50px; }
+.line { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+.line .nm { flex: 1; font: 700 .86rem var(--body); min-width: 0; }
+.stepper { display: flex; align-items: center; gap: 6px; }
+.stepper button { width: 40px; height: 40px; border-radius: var(--radius); border: 1.5px solid var(--ink); background: var(--surface); color: var(--ink); font-weight: 800; font-size: 1.05rem; cursor: pointer; }
+.stepper .q { font-weight: 800; min-width: 16px; text-align: center; }
+.sheet-tools { display: flex; gap: 8px; }
+.close-btn, .clear-btn { font: 700 .72rem var(--body); cursor: pointer; background: var(--surface); border: 1.5px solid var(--ink); color: var(--ink); padding: 8px 12px; min-height: 40px; border-radius: var(--radius); }
+.clear-btn { border-color: var(--warn); color: var(--warn); }
+.field input { width: 100%; margin-top: 8px; background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: var(--radius); padding: 10px 12px; color: var(--ink); font: 1rem var(--body); min-height: 44px; }
+.total-row { display: flex; justify-content: space-between; margin: 12px 0 2px; font-weight: 800; }
+.fine { font-size: .7rem; color: var(--muted); margin-top: 6px; }
+.send-btn { margin-top: 12px; min-height: 48px; width: 100%; cursor: pointer; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: var(--radius); font: 800 .95rem var(--body); }
+.demo-stamp { font-size: .84rem; font-weight: 800; color: var(--warn); margin-top: 10px; text-align: center; }
+.demo-stamp:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .cart-bar, .sheet, .backdrop { transition: none; } }
+
+
+header { background: #141414; color: #fff; padding: 20px 18px 22px; position: relative; overflow: hidden; }
+header::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: repeating-linear-gradient(90deg, #ffcc00 0 22px, #141414 22px 44px); }
+header .night { display: inline-block; background: #ffcc00; color: #141414; font-weight: 900; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: 5px 10px; transform: rotate(-2deg); }
+header h1 { font: 400 clamp(3.2rem, 17vw, 4.6rem)/.88 'Bebas Neue', Impact, sans-serif; margin: 12px 0 10px; letter-spacing: .01em; }
+header h1 span { color: #e02a1f; }
+header .lede { color: #e9dcc0; font-size: .95rem; margin-bottom: 14px; }
+.hero-ph { position: relative; border: 4px solid #ffcc00; box-shadow: 8px 8px 0 #e02a1f; margin-right: 8px; }
+.hero-ph img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.hrs { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 6px; }
+.hrs span { border: 2px solid #ffcc00; color: #ffcc00; font-weight: 700; font-size: .78rem; padding: 4px 10px; }
+.item { border: 2px solid #141414; box-shadow: 5px 5px 0 #141414; }
+.add-btn { box-shadow: 3px 3px 0 #141414; border: 2px solid #141414; text-transform: uppercase; }
+.chip[aria-pressed="true"] { background: #ffcc00; color: #141414; border-color: #141414; }
+.cart-bar { background: #e02a1f; color: #fff; border: 3px solid #141414; }
+.studio { background: #141414; color: #ffcc00; }
+    </style>
+    <noscript><style>.search-wrap, .cart-bar { display: none; }</style></noscript>
+</head>
+<body>
+<a href="#main" class="skip">Langkau ke menu</a>
+<div class="page">
+    <div class="topbar"><span>Design preview · Langkah Pertama</span><span>Bukan laman rasmi</span></div>
+    <header>
+        <span class="night">Buka malam · Senawang</span>
+        <h1>Burger <span>Abah</span> Den</h1>
+        <p class="lede">Smash burger daging buatan sendiri, dan ayam tarik rangup berisi keju mozarela. Rangup di luar, juicy di dalam.</p>
+        <div class="hero-ph"><img src="images/hero.jpg" alt="Smash burger dua lapis dengan kentang goreng (gambar hiasan)" width="640" height="421"><span class="cr">Gambar hiasan · Wiki.cullin · CC BY-SA 4.0</span></div>
+        <div class="hrs"><span>Isnin – Sabtu</span><span>5.00 ptg – 11.30 mlm</span><span>Ahad tutup</span></div>
+    </header>
+    <div class="search-wrap">
+        <label class="box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="searchBox" placeholder="Cari smash, ayam, mozarela…" aria-label="Cari dalam menu" autocomplete="off"></label>
+    </div>
+    <nav class="tabs" aria-label="Kategori menu">
+        <a href="#sec-daging" class="tab">Smash Daging</a>
+        <a href="#sec-ayam" class="tab">Ayam</a>
+        <a href="#sec-info" class="tab">Info</a>
+    </nav>
+    <main id="main" tabindex="-1">
+        <div class="note-box" data-hide-on-search>
+            PREVIEW SAHAJA. Nama burger diambil daripada hantaran Facebook kedai &amp; ulasan pelanggan. <b>Semua harga akan disahkan oleh pemilik.</b> Semua gambar ialah gambar hiasan (bukan gambar sebenar perniagaan ini).
+        </div>
+        <div id="menuRoot"></div>
+        <noscript><p class="note-box">Sila hidupkan JavaScript untuk melihat menu.</p></noscript>
+        <p class="empty-note" id="emptyNote" role="status">Tak jumpa. Cuba "smash" atau "ayam".</p>
+        <section class="menu-sec" id="sec-info" data-hide-on-search>
+            <div class="sec-head"><h2>Info</h2></div>
+            <dl class="info">
+                <dt>Lokasi</dt>
+                <dd>Gerai 18, Arked Senawang (MBS), Jalan Taman Komersial Senawang 1, 70450 Senawang. Halaman Facebook pula menyenaraikan Jalan Semarak 8, Taman Panchor Jaya.<br><span class="sah">Lokasi akan disahkan oleh pemilik</span></dd>
+                <dt>Waktu</dt>
+                <dd>Isnin – Sabtu, 5.00 petang – 11.30 malam. Ahad tutup.</dd>
+                <dt>Penghantaran</dt>
+                <dd>Ada di foodpanda (Arked Senawang).<br><span class="sah">Akan disahkan oleh pemilik</span></dd>
+            </dl>
+        </section>
+    </main>
+    <div class="studio" data-hide-on-search>
+        <span class="lbl">Preview percuma untuk Burger Abah Den</span>
+        <h2>Menu malam yang laju dibuka</h2>
+        <p>Pelanggan yang beratur boleh pilih burger dan tambahan dari telefon, dan menu baharu dimasukkan sendiri tanpa cetak poster baharu.</p>
+        <p class="demo-note" role="note">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada pesanan atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+    </div>
+    <section class="credits" aria-labelledby="kredit" data-hide-on-search>
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar Burger Abah Den. Saiz dikecilkan ke lebar 640px; tiada perubahan lain. Senarai penuh: images/CREDITS.txt.</p>
+        <ol>
+            <li>ayam-mozza.jpg — Horacio Cambeiro, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Argentine_chicken_burger_sandwich_with_lettuce,_tomato,_fried_egg,_and_mozzarella_cheese_on_Don_Yeyo_bun_-_Front_view.jpg</li>
+            <li>ayam-tarik.jpg — Horacio Cambeiro, CC BY-SA 3.0 — commons.wikimedia.org/wiki/File:Argentine_chicken_burger_sandwich_with_lettuce,_tomato,_fried_egg,_and_mozzarella_cheese_on_Don_Yeyo_bun_-_Close-up.jpg</li>
+            <li>double-smash.jpg — Renee Comet (photographer), Public domain — commons.wikimedia.org/wiki/File:Cheeseburger.jpg</li>
+            <li>hero.jpg — Wiki.cullin, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Double_Smash_Burger_with_Fries.jpg</li>
+            <li>mozza-beef.jpg — The Bushranger, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Smashburger_and_poutine_from_Two_Dads_One_Truck.jpg</li>
+            <li>triple-smash.jpg — JIP, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Sriracha_Double_Smash_Burger_full_meal.jpg</li>
+        </ol>
+    </section>
+    <footer class="page-foot">
+        Design preview · Langkah Pertama
+        <span>Konsep reka bentuk laman web yang disediakan untuk Burger Abah Den oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+<button class="cart-bar" id="cartBar" type="button" aria-haspopup="dialog" aria-controls="sheet" tabindex="-1">
+    <span><span class="qty-pill" id="cartQty">0</span>Pesanan Saya</span>
+    <span id="cartTotal">0 item</span>
+</button>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+    <h2><span id="sheetTitle">Pesanan</span>
+        <span class="sheet-tools">
+            <button class="clear-btn" type="button" id="clearCart">Kosongkan</button>
+            <button class="close-btn" type="button" id="closeSheet" aria-label="Tutup pesanan">Tutup</button>
+        </span>
+    </h2>
+    <div class="lines" id="cartLines"></div>
+    <p class="fine" id="cartNote" role="status"></p>
+    <div class="field"><input type="text" id="custName" placeholder="Nama anda" aria-label="Nama anda" autocomplete="name"></div>
+    <div class="field"><input type="text" id="custWhere" placeholder="Nama untuk dipanggil" aria-label="Nama untuk dipanggil"></div>
+    <div class="total-row"><span>Jumlah</span><span id="sheetTotal">akan disahkan</span></div>
+    <button type="button" class="send-btn" id="sendOrder">Hantar pesanan (demo)</button>
+    <p class="demo-stamp" id="demoStamp" role="status" aria-live="polite"></p>
+    <p class="fine">Pratonton — harga &amp; jumlah akan disahkan oleh pemilik. Tiada pesanan dihantar ke mana-mana.</p>
+</div>
+<script>
+
+window.MENU = [
+     {
+      "id": "b1",
+      "cat": "daging",
+      "name": "Double Smash Beef",
+      "desc": "Dua kepingan smash patty daging buatan sendiri.",
+      "price": null,
+      "img": "double-smash.jpg",
+      "src": "Hantaran FB kedai, Jun 2026",
+      "hot": "POPULAR"
+     },
+     {
+      "id": "b2",
+      "cat": "daging",
+      "name": "Triple Smash Beef",
+      "desc": "Tiga lapis smash patty untuk yang betul-betul lapar.",
+      "price": null,
+      "img": "triple-smash.jpg",
+      "src": "Hantaran FB kedai, Jun 2026"
+     },
+     {
+      "id": "b3",
+      "cat": "daging",
+      "name": "Double Smash Beef Mozarela",
+      "desc": "Double smash beef dengan keju mozarela.",
+      "price": null,
+      "img": "mozza-beef.jpg",
+      "src": "Hantaran FB kedai, Ogos 2026"
+     },
+     {
+      "id": "b4",
+      "cat": "daging",
+      "name": "Double Smash + Hirisan Daging",
+      "desc": "Smash patty juicy berlapis hirisan daging lembut.",
+      "price": null,
+      "img": "hero.jpg",
+      "src": "Hantaran FB kedai, Ogos 2026",
+      "sah": "Nama sebenar di menu akan disahkan oleh pemilik"
+     },
+     {
+      "id": "a1",
+      "cat": "ayam",
+      "name": "Ayam Tarik Crispy Mozarela",
+      "desc": "Menu baharu: ayam rangup berisi keju mozarela — rangup di luar, juicy di dalam.",
+      "price": null,
+      "img": "ayam-tarik.jpg",
+      "src": "Hantaran FB kedai, Jul–Ogos 2026",
+      "hot": "BAHARU"
+     },
+     {
+      "id": "a2",
+      "cat": "ayam",
+      "name": "Burger Ayam Crispy",
+      "desc": "Burger ayam rangup.",
+      "price": null,
+      "img": "ayam-mozza.jpg",
+      "src": "Ulasan foodpanda, Jul 2025"
+     }
+    ];
+window.CATS = [
+     {
+      "key": "daging",
+      "id": "sec-daging",
+      "title": "Smash Daging",
+      "small": "Patty buatan sendiri"
+     },
+     {
+      "key": "ayam",
+      "id": "sec-ayam",
+      "title": "Ayam Crispy"
+     }
+    ];
+window.CFG = { noTotals: true, noTotalsNote: 'Harga akan disahkan oleh pemilik — senarai ini untuk semakan sahaja.', addLabel: '+ Tambah' };
+</script>
+<script>
+window.CR = {"ayam-mozza.jpg": "Horacio Cambeiro · CC BY-SA 3.0", "ayam-tarik.jpg": "Horacio Cambeiro · CC BY-SA 3.0", "double-smash.jpg": "Renee Comet (photographer) · domain awam", "hero.jpg": "Wiki.cullin · CC BY-SA 4.0", "mozza-beef.jpg": "The Bushranger · CC BY-SA 4.0", "triple-smash.jpg": "JIP · CC BY-SA 4.0"};
+
+(function () {
+    'use strict';
+    var MENU = window.MENU, CATS = window.CATS, CFG = window.CFG || {};
+    var IMG = 'images/', CR = window.CR || {};
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function byId(id) { for (var i = 0; i < MENU.length; i++) { if (MENU[i].id === id) return MENU[i]; } return null; }
+    var TBA = CFG.tba || 'Harga akan disahkan oleh pemilik';
+    var sel = {}; 
+
+    function choicePrice(it, picks) {
+        var p = it.price;
+        (it.opts || []).forEach(function (g, gi) { var c = g.choices[picks[gi]]; if (c && typeof c.price === 'number') p = c.price; });
+        return p;
+    }
+    function counts(it, picks) { return it.kira !== false && typeof choicePrice(it, picks) === 'number'; }
+
+    function priceHtml(it) {
+        if (it.priceText) return '<span class="pr txt">' + esc(it.priceText) + '</span>';
+        if (typeof it.price !== 'number') {
+            var ps = [];
+            (it.opts || []).forEach(function (g) { g.choices.forEach(function (c) { if (typeof c.price === 'number') ps.push(c.price); }); });
+            if (ps.length) {
+                var lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps);
+                return '<span class="pr">RM' + lo.toFixed(2) + (hi > lo ? ' – RM' + hi.toFixed(2) : '') + '</span>';
+            }
+            return '<span class="pr tba">' + esc(TBA) + '</span>';
+        }
+        return '<span class="pr">RM' + it.price.toFixed(2) + (it.label ? ' <small>(' + esc(it.label) + ')</small>' : '') + '</span>';
+    }
+    function optsHtml(it) {
+        if (!it.opts) return '';
+        sel[it.id] = it.opts.map(function () { return 0; });
+        return it.opts.map(function (g, gi) {
+            return '<div class="opt" role="group" aria-label="' + esc(g.label + ' untuk ' + it.name) + '"><span class="opt-l">' + esc(g.label) + '</span><div class="chips">' +
+                g.choices.map(function (c, ci) {
+                    return '<button type="button" class="chip" data-pick="' + it.id + '|' + gi + '|' + ci + '" aria-pressed="' + (ci === 0) + '">' + esc(c.v) +
+                        (typeof c.price === 'number' ? ' <b>' + c.price.toFixed(2) + '</b>' : '') + '</button>';
+                }).join('') + '</div></div>';
+        }).join('');
+    }
+
+    
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec' + (c.layoutClass ? ' ' + c.layoutClass : '') + '" id="' + c.id + '"><div class="sec-head"><h2>' + esc(c.title) + '</h2>' +
+            (c.small ? '<p class="sec-small">' + esc(c.small) + '</p>' : '') + '</div>' +
+            (c.img ? '<div class="sec-ph"><img src="' + IMG + c.img + '" alt="' + esc(c.alt || c.title) + ' (gambar hiasan)" width="640" height="400" loading="lazy" decoding="async"><span class="cr">' + esc(CR[c.img] || '') + '</span></div>' : '') +
+            (c.note ? '<p class="sec-note">' + c.note + '</p>' : '') +
+            '<div class="' + (c.layout === 'row' ? 'rows' : 'grid') + '">';
+        items.forEach(function (it) {
+            var q = esc((it.name + ' ' + (it.desc || '') + ' ' + (it.tags || '')).toLowerCase());
+            if (c.layout === 'row') {
+                html += '<div class="row item" data-q="' + q + '"><div class="rb"><h3 class="nm">' + esc(it.name) + '</h3>' +
+                    (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + (it.opts ? '' : priceHtml(it)) + (it.opts ? '' : '</div>') +
+                    (it.opts ? '<div class="trio">' + it.opts[0].choices.map(function (ch, ci) {
+                        return '<button type="button" class="tri" data-addc="' + it.id + '~' + ci + '" aria-label="Tambah ' + esc(it.name + ' ' + ch.v) + '">' + esc(ch.v) +
+                            (typeof ch.price === 'number' ? ' <b>' + ch.price.toFixed(2) + '</b>' : '') + '</button>';
+                    }).join('') + '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span></div></div>' :
+                    '<div class="stepper inline"><button type="button" data-rdec="' + it.id + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                    '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span>' +
+                    '<button type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">+</button></div>') + '</div>';
+            } else {
+                html += '<article class="item" data-q="' + q + '">' +
+                    (it.hot ? '<span class="laku">' + esc(it.hot) + '</span>' : '') +
+                    (it.img ? '<div class="ph"><img src="' + IMG + it.img + '" alt="' + esc(it.name) + ' (gambar hiasan)" width="640" height="' + (it.h || 427) + '" loading="lazy" decoding="async"><span class="cr">' + esc(it.cr || CR[it.img] || '') + '</span></div>' : '') +
+                    '<div class="body"><h3 class="nm">' + esc(it.name) + '</h3>' + (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.src ? '<p class="src">' + esc(it.src) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + optsHtml(it) +
+                    '<div class="foot">' + priceHtml(it) + '<button class="add-btn" type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">' + esc(CFG.addLabel || '+ Tambah') + '</button></div></div></article>';
+            }
+        });
+        html += '</div></section>';
+    });
+    document.getElementById('menuRoot').innerHTML = html;
+
+    
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .item'), function (el) {
+            var show = !q || el.getAttribute('data-q').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .menu-sec'), function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-hide-on-search]'), function (el) { el.style.display = q ? 'none' : ''; });
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    
+    var cart = {}, order = [];
+    var bar = document.getElementById('cartBar'), sheet = document.getElementById('sheet'), backdrop = document.getElementById('backdrop');
+    var stamp = document.getElementById('demoStamp');
+    function parse(key) { var p = key.split('~'); return { it: byId(p[0]), picks: p[1] ? p[1].split('.').map(Number) : [] }; }
+    function label(x) {
+        var extra = (x.it.opts || []).map(function (g, gi) { return x.it.opts[gi].choices[x.picks[gi]].v; }).join(' · ');
+        return x.it.name + (extra ? ' — ' + extra : '');
+    }
+    function total() { var s = 0; order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) s += choicePrice(x.it, x.picks) * cart[k]; }); return s; }
+    function count() { var n = 0; order.forEach(function (k) { n += cart[k]; }); return n; }
+    function qtyOf(id) { var n = 0; order.forEach(function (k) { if (k.split('~')[0] === id) n += cart[k]; }); return n; }
+
+    function render() {
+        var n = count(), h = '', skipped = 0, t = total();
+        document.getElementById('cartQty').textContent = n;
+        
+        var priced = 0, firstNote = '';
+        order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) priced++; else if (!firstNote) firstNote = x.it.lineNote || 'akan disahkan'; });
+        var tt = CFG.noTotals ? (n + ' item') : (n > 0 && !priced ? firstNote : fmt(t));
+        document.getElementById('cartTotal').textContent = tt;
+        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : (n > 0 && !priced ? firstNote : fmt(t));
+        bar.classList.toggle('show', n > 0);
+        bar.tabIndex = n > 0 ? 0 : -1;
+        order.forEach(function (k) {
+            var x = parse(k), ok = counts(x.it, x.picks);
+            if (!ok) skipped++;
+            h += '<div class="line"><span class="nm">' + esc(label(x)) + '</span>' +
+                (CFG.noTotals ? '' : '<span class="lp">' + (ok ? fmt(choicePrice(x.it, x.picks) * cart[k]) : esc(x.it.lineNote || 'akan disahkan')) + '</span>') +
+                '<span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Kurangkan ' + esc(label(x)) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button type="button" data-inc="' + k + '" aria-label="Tambah lagi ' + esc(label(x)) + '">+</button></span></div>';
+        });
+        document.getElementById('cartLines').innerHTML = h || '<p class="fine">' + esc(CFG.emptyCart || 'Belum ada pesanan lagi.') + '</p>';
+        document.getElementById('cartNote').textContent = CFG.noTotals ? (CFG.noTotalsNote || '') :
+            (skipped ? skipped + ' baris tidak dikira dalam anggaran (' + (CFG.skipNote || 'harga akan disahkan oleh pemilik') + ').' : '');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-rq]'), function (el) {
+            var q = qtyOf(el.getAttribute('data-rq')); el.textContent = q; var rw = el.closest('.row'); if (rw) rw.classList.toggle('on', q > 0);
+        });
+        stamp.textContent = '';
+        if (n === 0) closeSheet();
+    }
+    function add(key) { if (!cart[key]) { cart[key] = 0; order.push(key); } cart[key]++; render(); }
+    function dec(key) { cart[key]--; if (cart[key] <= 0) { delete cart[key]; order.splice(order.indexOf(key), 1); } render(); }
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open'); backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        if (!sheet.classList.contains('open')) return;
+        sheet.classList.remove('open'); backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        var t = (lastFocus && document.contains(lastFocus) && lastFocus !== document.body) ? lastFocus : (count() ? bar : box);
+        t.focus();
+    }
+    bar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.getElementById('closeSheet').addEventListener('click', closeSheet);
+    document.getElementById('clearCart').addEventListener('click', function () { cart = {}; order = []; render(); });
+    
+    document.getElementById('sendOrder').addEventListener('click', function () {
+        stamp.textContent = 'Pratonton sahaja — tiada pesanan dihantar';
+    });
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.filter.call(sheet.querySelectorAll('button, input, select, a[href]'), function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    });
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('button') : null;
+        if (!t) return;
+        var a;
+        if ((a = t.getAttribute('data-pick'))) {
+            var p = a.split('|'); sel[p[0]][+p[1]] = +p[2];
+            Array.prototype.forEach.call(t.parentNode.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', String(c === t)); });
+        } else if ((a = t.getAttribute('data-add'))) {
+            add(a + (sel[a] ? '~' + sel[a].join('.') : ''));
+        } else if ((a = t.getAttribute('data-addc'))) {
+            add(a);
+        } else if ((a = t.getAttribute('data-rdec'))) {
+            for (var i = order.length - 1; i >= 0; i--) { if (order[i].split('~')[0] === a) { dec(order[i]); break; } }
+        } else if ((a = t.getAttribute('data-inc'))) { add(a); }
+        else if ((a = t.getAttribute('data-dec'))) { dec(a); }
+    });
+    render();
+})();
+
+</script>
+</body>
+</html>

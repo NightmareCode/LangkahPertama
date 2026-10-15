@@ -1,0 +1,58 @@
+KREDIT GAMBAR — Mendung Kafe (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain. Setiap gambar disemak dengan mata.
+
+aglio.jpg
+  Pengarang: Bairuilong
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Spaghetti_aglio_e_olio_KB.jpg
+
+berempah.jpg
+  Pengarang: Nur Aishah Binti Abdullah
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Ayam_Goreng_Berempah.jpg
+
+fries.jpg
+  Pengarang: Pinkpantherhhh
+  Lesen: CC BY 4.0 creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Loaded_fries.jpg
+
+hero.jpg
+  Pengarang: Jpatokal
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_lemak_on_banana_leaf.jpg
+
+latte.jpg
+  Pengarang: Mortefot from Flickr
+  Lesen: CC BY-SA 2.0 creativecommons.org/licenses/by-sa/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Latte_art.jpg
+
+lontong.jpg
+  Pengarang: No machine-readable author provided. Diádoco assumed (based on copyright claims).
+  Lesen: CC BY 3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Lontong.jpg
+
+makdee.jpg
+  Pengarang: Meandkancil2020
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_Lemak_dengan_Ayam_Goreng_Krispy_dengan_Sos_chili.jpg
+
+matcha.jpg
+  Pengarang: Jeff Nelson
+  Lesen: CC BY-SA 2.0 creativecommons.org/licenses/by-sa/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Matcha_green_tea_latte_art.jpg
+
+paru.jpg
+  Pengarang: Wiki Farazi
+  Lesen: CC0 creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_lemak_dan_paru_20260428_120901.jpg
+
+salted-egg.jpg
+  Pengarang: Wide Awake!
+  Lesen: CC BY 4.0 creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Salted_Egg_Chicken_from_BOK_Korean_Fried_Chicken_in_Talamban_(2026-07-19).jpg
+
+ubi.jpg
+  Pengarang: Taman Renyah
+  Lesen: CC BY 3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Steamed_cassava.jpg

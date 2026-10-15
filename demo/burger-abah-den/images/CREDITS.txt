@@ -1,0 +1,33 @@
+KREDIT GAMBAR — Burger Abah Den (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain. Setiap gambar disemak dengan mata.
+
+ayam-mozza.jpg
+  Pengarang: Horacio Cambeiro
+  Lesen: CC BY-SA 3.0 creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Argentine_chicken_burger_sandwich_with_lettuce,_tomato,_fried_egg,_and_mozzarella_cheese_on_Don_Yeyo_bun_-_Front_view.jpg
+
+ayam-tarik.jpg
+  Pengarang: Horacio Cambeiro
+  Lesen: CC BY-SA 3.0 creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Argentine_chicken_burger_sandwich_with_lettuce,_tomato,_fried_egg,_and_mozzarella_cheese_on_Don_Yeyo_bun_-_Close-up.jpg
+
+double-smash.jpg
+  Pengarang: Renee Comet (photographer)
+  Lesen: Public domain (domain awam)
+  Sumber: https://commons.wikimedia.org/wiki/File:Cheeseburger.jpg
+
+hero.jpg
+  Pengarang: Wiki.cullin
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Double_Smash_Burger_with_Fries.jpg
+
+mozza-beef.jpg
+  Pengarang: The Bushranger
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Smashburger_and_poutine_from_Two_Dads_One_Truck.jpg
+
+triple-smash.jpg
+  Pengarang: JIP
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Sriracha_Double_Smash_Burger_full_meal.jpg

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0f1d33">
+    <link rel="icon" href="data:,">
+    <title>LAPD · La Oceano PD — Menu Digital | Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Preview menu digital &amp; senarai pesanan demo untuk La Oceano (LAPD), Batu 4, Port Dickson. Design preview oleh Langkah Pertama — belum disahkan oleh pemilik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg:#08111f; --paper:#0f1d33; --card:#16294a; --ink:#f3ead8; --ink2:#f6d38a; --muted:#b9c2d3; --line:#2a4068; --accent:#ffb85c; --accent-ink:#1a1206; --accent2:#7fd6d0; --btn:#ffb85c; --btn-ink:#1a1206; --warn:#ff9b8a; --warn-bg:#3a2230; --bar:#08111f; --bar-ink:#e9d7b5; --tab:#1d3560; --tab-ink:#f3ead8; --studio:#e9d7b5; --studio-ink:#0f1d33; --studio-h:#0f1d33; --cart:#ffb85c; --cart-ink:#1a1206; --sheet:#132544; --r:18px; --sans:'Outfit',system-ui,sans-serif; --h2font:400 1.5rem/1.1 'Righteous',system-ui,sans-serif; --nmfont:800 1.02rem/1.2 'Outfit',system-ui,sans-serif; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 72px; }
+        body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-text-size-adjust: 100%; }
+        img { display: block; max-width: 100%; }
+        .skip { position: absolute; left: 8px; top: -60px; background: var(--ink); color: #fff; padding: 10px 14px; z-index: 200; }
+        .skip:focus { top: 8px; }
+        :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+        .page { max-width: 720px; margin: 0 auto; background: var(--paper); min-height: 100vh; padding-bottom: 96px; }
+        .topbar { display: flex; justify-content: space-between; gap: 8px; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: var(--bar); color: var(--bar-ink); padding: 7px 14px; }
+        .topbar span:last-child { white-space: nowrap; }
+        .cr { position: absolute; right: 6px; bottom: 6px; z-index: 2; font-size: .58rem; background: rgba(0,0,0,.55); color: #fff; padding: 2px 6px; border-radius: 3px; max-width: 92%; }
+        .facts { display: flex; flex-wrap: wrap; gap: 8px; }
+        .facts span { font-size: .78rem; font-weight: 700; padding: 6px 10px; border-radius: 99px; }
+        .note-box { background: var(--card); border: 1px solid var(--line); padding: 12px 14px; font-size: .8rem; border-radius: var(--r); margin: 18px 0; }
+        .search-wrap { position: sticky; top: 0; z-index: 40; background: var(--paper); padding: 12px 16px 8px; border-bottom: 1px solid var(--line); }
+        .search-wrap .box { display: flex; align-items: center; gap: 8px; background: var(--card); border: 2px solid var(--ink2); border-radius: var(--r); padding: 0 12px; color: var(--ink2); }
+        .search-wrap input { flex: 1; border: 0; background: none; font: 700 1rem var(--sans); color: var(--ink); min-height: 44px; outline: none; min-width: 0; }
+        .search-wrap input::placeholder { color: var(--muted); }
+        .tabs { display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px 12px; scrollbar-width: none; }
+        .tabs::-webkit-scrollbar { display: none; }
+        .tab { flex: none; text-decoration: none; color: var(--tab-ink); background: var(--tab); font-weight: 800; font-size: .8rem; padding: 10px 14px; border-radius: var(--r); min-height: 40px; display: inline-flex; align-items: center; }
+        main { padding: 0 16px; }
+        .menu-sec { margin: 22px 0; }
+        .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+        .sec-head h2 { font: var(--h2font); color: var(--ink2); }
+        .sec-small { font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent2); text-align: right; }
+        .sec-note { font-size: .78rem; color: var(--muted); margin: -2px 0 10px; }
+        .sec-ph { position: relative; border-radius: var(--r); overflow: hidden; margin-bottom: 8px; }
+        .sec-ph img { width: 100%; aspect-ratio: 21/9; object-fit: cover; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 380px) { .grid { gap: 10px; } }
+        .item { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; }
+        .ph { position: relative; }
+        .ph img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; }
+        .ph .cr { font-size: .5rem; right: 4px; bottom: 4px; }
+        .laku { position: absolute; z-index: 3; left: 8px; top: 8px; background: var(--accent); color: var(--accent-ink); font-size: .62rem; font-weight: 800; padding: 4px 8px; border-radius: 99px; }
+        .laku:not(:has(+ .ph)) { position: static; display: inline-block; margin: 10px 12px 0; align-self: flex-start; width: max-content; }
+        .body { padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+        .nm { font: var(--nmfont); }
+        .desc { font-size: .78rem; color: var(--muted); }
+        .src { font-size: .66rem; color: var(--muted); font-style: italic; }
+        .sah { display: inline-block; align-self: flex-start; font-size: .66rem; font-weight: 700; color: var(--warn); background: var(--warn-bg); padding: 2px 7px; border-radius: 5px; }
+        .opt-l { display: block; font-size: .64rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent2); margin: 4px 0; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+        .chip { min-height: 40px; padding: 7px 10px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); font: 700 .76rem var(--sans); cursor: pointer; }
+        .chip[aria-pressed="true"] { background: var(--btn); border-color: var(--btn); color: var(--btn-ink); }
+        .foot { margin-top: auto; padding-top: 6px; display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+        .pr { font-weight: 800; font-size: .95rem; color: var(--ink2); }
+        .pr.tba, .pr.txt { font-size: .7rem; font-weight: 700; color: var(--muted); }
+        .add-btn { min-height: 44px; padding: 8px 12px; border-radius: var(--r); border: 0; background: var(--btn); color: var(--btn-ink); font: 800 .85rem var(--sans); cursor: pointer; }
+        .wide .grid { grid-template-columns: 1fr; }
+        .wide .ph img { aspect-ratio: 16/9; }
+        @media (min-width: 600px) { .wide .grid { grid-template-columns: 1fr 1fr; } }
+        .grid > .item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .grid > .item:last-child:nth-child(odd) .ph img { aspect-ratio: 16/9; }
+        .empty-note { display: none; text-align: center; font-weight: 700; padding: 40px 16px; }
+        .empty-note.show { display: block; }
+        .info { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 4px 14px; }
+        .info dt { font-weight: 800; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent2); padding-top: 12px; }
+        .info dd { font-size: .88rem; padding: 2px 0 12px; border-bottom: 1px dashed var(--line); }
+        .info dd:last-child { border-bottom: 0; }
+        .studio { margin: 26px 16px 0; background: var(--studio); color: var(--studio-ink); border-radius: calc(var(--r) + 4px); padding: 20px; }
+        .studio h2 { font: var(--h2font); color: var(--studio-h); margin: 2px 0 6px; line-height: 1.15; }
+        .studio .lbl { font-size: .64rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+        .studio p { font-size: .85rem; }
+        .demo-note { margin-top: 12px; border: 1px dashed currentColor; padding: 10px 12px; border-radius: 10px; font-size: .8rem; }
+        .credits { margin: 26px 16px 0; font-size: .7rem; color: var(--muted); }
+        .credits h2 { font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+        .credits ol { margin: 6px 0 6px 18px; }
+        .credits li { margin-bottom: 3px; overflow-wrap: anywhere; }
+        .page-foot { text-align: center; margin: 26px 16px 0; padding-top: 16px; border-top: 2px solid var(--ink2); font-size: .8rem; font-weight: 800; color: var(--ink2); }
+        .page-foot span { display: block; font-weight: 400; color: var(--muted); font-size: .74rem; margin-top: 6px; }
+        .cart-bar { position: fixed; left: 50%; bottom: 12px; transform: translate(-50%, 160%); visibility: hidden; width: min(680px, calc(100% - 24px)); z-index: 90; cursor: pointer; background: var(--cart); color: var(--cart-ink); border: 0; border-radius: var(--r); box-shadow: 0 10px 24px rgba(0,0,0,.35); padding: 12px 16px; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 10px; font: 800 .95rem var(--sans); transition: transform .35s; }
+        .cart-bar.show { transform: translate(-50%, 0); visibility: visible; }
+        #cartTotal { white-space: nowrap; }
+        .qty-pill { background: var(--accent); color: var(--accent-ink); border-radius: 50%; min-width: 28px; height: 28px; display: inline-grid; place-items: center; font-size: .78rem; margin-right: 8px; }
+        .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 95; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; }
+        .backdrop.open { opacity: 1; visibility: visible; }
+        .sheet { position: fixed; left: 50%; bottom: 0; transform: translate(-50%, 105%); visibility: hidden; width: min(720px, 100%); max-height: 88svh; z-index: 100; background: var(--sheet); color: var(--ink); border-top: 6px solid var(--btn); border-radius: 16px 16px 0 0; padding: 16px 18px 22px; display: flex; flex-direction: column; transition: transform .35s, visibility .35s; }
+        .sheet.open { transform: translate(-50%, 0); visibility: visible; }
+        .sheet:focus { outline: none; }
+        .sheet h2 { font: var(--h2font); color: var(--ink2); display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; line-height: 1.1; }
+        .sheet .lines { overflow-y: auto; margin: 10px 0; flex: 1; min-height: 50px; }
+        .line { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+        .line .nm { flex: 1; font: 700 .95rem/1.25 var(--sans); min-width: 0; }
+        .line .lp { font-size: .8rem; font-weight: 800; white-space: nowrap; }
+        .stepper { display: flex; align-items: center; gap: 6px; }
+        .stepper button { width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid var(--btn); background: var(--card); color: var(--ink2); font-weight: 800; font-size: 1.1rem; cursor: pointer; }
+        .stepper .q { font-weight: 800; min-width: 18px; text-align: center; }
+        .sheet-tools { display: flex; gap: 8px; }
+        .close-btn, .clear-btn { font: 800 .76rem var(--sans); cursor: pointer; background: var(--card); border: 1.5px solid var(--btn); color: var(--ink2); padding: 8px 12px; min-height: 40px; border-radius: 8px; }
+        .clear-btn { border-color: var(--warn); color: var(--warn); }
+        .field input { width: 100%; margin-top: 8px; background: var(--card); border: 1.5px solid var(--line); border-radius: 8px; padding: 10px 12px; color: var(--ink); font: 1rem var(--sans); min-height: 44px; }
+        .total-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 12px 0 2px; font-weight: 800; }
+        .total-row span:last-child { white-space: nowrap; color: var(--ink2); }
+        .fine { font-size: .72rem; color: var(--muted); margin-top: 6px; }
+        .send-btn { margin-top: 12px; min-height: 48px; width: 100%; cursor: pointer; background: var(--btn); color: var(--btn-ink); border: 0; border-radius: var(--r); font: 800 .95rem var(--sans); }
+        .demo-stamp { font-size: .86rem; font-weight: 800; color: var(--warn); margin-top: 10px; text-align: center; }
+        .demo-stamp:empty { display: none; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cart-bar, .sheet, .backdrop { transition: none; } }
+
+        
+
+        .night { position: relative; padding: 0 0 18px; background: linear-gradient(180deg, #08111f 0%, #0f1d33 70%); overflow: hidden; }
+        .lights { display: flex; justify-content: space-between; padding: 10px 6px 0; position: relative; }
+        .lights::before { content: ''; position: absolute; left: 0; right: 0; top: 6px; height: 14px; border-bottom: 1px solid rgba(233,215,181,.35); border-radius: 0 0 50% 50%; }
+        .lights i { width: 9px; height: 9px; border-radius: 50%; background: #ffd27a; box-shadow: 0 0 10px 3px rgba(255,190,90,.65); margin-top: 12px; }
+        .lights i:nth-child(even) { margin-top: 17px; background: #ffe6b0; }
+        .night .hero-img { position: relative; margin: 14px 16px 0; border-radius: 22px; overflow: hidden; }
+        .night .hero-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: saturate(.8) brightness(.72) hue-rotate(-8deg); }
+        .night .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,17,31,0) 30%, rgba(8,17,31,.85) 100%); }
+        .night .title { position: absolute; left: 16px; right: 16px; bottom: 34px; z-index: 2; }
+        .night small { display: block; font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: #7fd6d0; }
+        .night h1 { font: 400 clamp(2.6rem, 14vw, 4rem)/.95 'Righteous', system-ui, sans-serif; color: #f6d38a; text-shadow: 0 0 18px rgba(255,184,92,.55); }
+        .night h1 span { display: block; font: 600 1rem 'Outfit', sans-serif; color: #f3ead8; text-shadow: none; letter-spacing: .04em; margin-top: 6px; }
+        .night .tag { padding: 14px 16px 10px; font-size: .95rem; color: #e9d7b5; }
+        .night .facts { padding: 0 16px; }
+        .night .facts span { background: #1d3560; color: #f3ead8; border: 1px solid #2a4068; }
+        .sand { height: 12px; background: #e9d7b5; }
+        .item { background: linear-gradient(180deg, #16294a, #12223f); }
+        .ph img { filter: saturate(.9); }
+        .search-wrap .box { background: #0f1d33; }
+
+    </style>
+    <noscript><style>.search-wrap, .cart-bar { display: none; }</style></noscript>
+</head>
+<body>
+<a href="#main" class="skip">Langkau ke menu</a>
+<div class="page">
+    <div class="topbar"><span>Design preview · Langkah Pertama</span><span>Bukan laman web rasmi</span></div>
+
+    <header class="night">
+        <div class="lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero-img">
+            <img src="images/hero.jpg" alt="Pantai Port Dickson (gambar hiasan, bukan premis kedai)" width="640" height="427">
+            <div class="title"><small>Batu 4 · Port Dickson</small><h1>LAPD<span>La Oceano · kopi tepi pantai</span></h1></div>
+            <span class="cr">Gambar hiasan · Malaysiaguy2010 · CC BY-SA 4.0</span>
+        </div>
+        <p class="tag">Lepak malam tepi laut — kopi, angin dan bunyi ombak.</p>
+        <div class="facts"><span>Buka 6 petang</span><span>Jum–Ahd hingga 4 pagi*</span><span>Rabu tutup*</span></div>
+    </header>
+    <div class="sand" aria-hidden="true"></div>
+
+    <div class="search-wrap">
+        <label class="box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg>
+        <input type="search" id="searchBox" placeholder="Cari kopi, matcha, coklat…" aria-label="Cari dalam menu" autocomplete="off"></label>
+    </div>
+    <nav class="tabs" aria-label="Kategori menu">
+        <a href="#sec-kopi" class="tab">Kopi</a>
+        <a href="#sec-susu" class="tab">Siri Susu</a>
+        <a href="#sec-coklat" class="tab">Coklat</a>
+        <a href="#sec-gas" class="tab">Berkarbonat</a>
+        <a href="#sec-matcha" class="tab">Matcha</a>
+        <a href="#sec-info" class="tab">Info</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+        <div class="note-box" data-hide-on-search>PREVIEW SAHAJA. Kategori diambil daripada sorotan Instagram kedai; senarai minuman sebenar, makanan dan harga belum tersedia secara awam, jadi <b>semua item &amp; harga akan disahkan oleh pemilik</b>. Semua gambar ialah gambar hiasan (bukan gambar sebenar kedai).</div>
+        <div id="menuRoot"></div>
+        <noscript><p class="note-box">Sila hidupkan JavaScript untuk melihat menu.</p></noscript>
+        <p class="empty-note" id="emptyNote" role="status">Tak jumpa. Cuba &quot;kopi&quot;, &quot;matcha&quot; atau &quot;coklat&quot;.</p>
+
+        <section class="menu-sec" id="sec-info" data-hide-on-search>
+            <div class="sec-head"><h2>Info Kedai</h2></div>
+            <dl class="info">
+                <dt>Alamat</dt>
+                <dd>La Oceano, Jalan Pantai, Batu 4, 71050 Port Dickson, Negeri Sembilan.</dd>
+                <dt>Waktu</dt>
+                <dd>Isnin, Selasa &amp; Khamis 6 petang – 2 pagi · Jumaat – Ahad 6 petang – 4 pagi · Rabu tutup.<br><span class="sah">Waktu tepat akan disahkan oleh pemilik</span></dd>
+                <dt>Suasana</dt>
+                <dd>Kafe tepi pantai — pelanggan memuji kopi, pemandangan laut, angin dan bunyi ombak (ulasan Google).</dd>
+                <dt>Makanan</dt>
+                <dd>Pilihan makanan akan disahkan oleh pemilik.</dd>
+            </dl>
+        </section>
+    </main>
+
+    <div class="studio" data-hide-on-search>
+        <span class="lbl">Preview percuma untuk La Oceano PD</span>
+        <h2>Menu malam yang mudah dibaca dalam gelap</h2>
+        <p>Tema gelap, tulisan besar dan carian pantas — pelanggan pilih minuman dari meja di tepi pantai, dan menu dikemas kini bila ada minuman baharu.</p>
+        <p class="demo-note" role="note">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada pesanan atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+    </div>
+
+    <section class="credits" aria-labelledby="kredit" data-hide-on-search>
+        <h2 id="kredit">Kredit Gambar</h2>
+        <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar La Oceano PD. Saiz dikecilkan ke lebar 640px; tiada perubahan lain. Senarai penuh: images/CREDITS.txt.</p>
+        <ol>
+            <li>coklat.jpg — Bahnfrend, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Dark_Hot_Chocolate,_San_Churro_Leederville,_2026_(02).jpg</li>
+            <li>hero.jpg — Malaysiaguy2010, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Port-dickson-beach-1.jpg</li>
+            <li>kopi.jpg — Tony Webster, CC BY 2.0 — commons.wikimedia.org/wiki/File:Iced_Coffee_in_Glass_-_Sunshine_Coffee_-_Laramie_Cafe_(53838344552).jpg</li>
+            <li>matcha.jpg — Derjochenmeyer, CC BY-SA 4.0 — commons.wikimedia.org/wiki/File:Matcha_latte_in_tall_glass.jpg</li>
+            <li>milk.jpg — Andy Li, CC0 — commons.wikimedia.org/wiki/File:Iced_latte_-_BROR_2025-04-26.jpg</li>
+        </ol>
+    </section>
+
+    <footer class="page-foot">
+        Design preview · Langkah Pertama
+        <span>Konsep reka bentuk laman web yang disediakan untuk La Oceano PD oleh Langkah Pertama Digital Studio — bukan laman web rasmi.</span>
+        <span>langkahpertama.website © 2026</span>
+    </footer>
+</div>
+
+<button class="cart-bar" id="cartBar" type="button" aria-haspopup="dialog" aria-controls="sheet" tabindex="-1">
+    <span><span class="qty-pill" id="cartQty">0</span>Senarai Pesanan</span>
+    <span id="cartTotal">0 item</span>
+</button>
+<div class="backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1">
+    <h2><span id="sheetTitle">Pesanan Anda</span>
+        <span class="sheet-tools">
+            <button class="clear-btn" type="button" id="clearCart">Kosongkan</button>
+            <button class="close-btn" type="button" id="closeSheet" aria-label="Tutup senarai pesanan">Tutup</button>
+        </span>
+    </h2>
+    <div class="lines" id="cartLines"></div>
+    <p class="fine" id="cartNote" role="status"></p>
+    <div class="field"><input type="text" id="custName" placeholder="Nama" aria-label="Nama" autocomplete="name"></div>
+    <div class="field"><input type="text" id="custWhere" placeholder="No. meja / kawasan" aria-label="No. meja / kawasan"></div>
+    <div class="total-row"><span>Jumlah</span><span id="sheetTotal">akan disahkan</span></div>
+    <button type="button" class="send-btn" id="sendOrder">Hantar pesanan (demo)</button>
+    <p class="demo-stamp" id="demoStamp" role="status" aria-live="polite"></p>
+    <p class="fine">Pratonton — tiada pesanan dihantar dan tiada bayaran dibuat. Harga belum dipaparkan kerana akan disahkan oleh pemilik.</p>
+</div>
+
+<script>
+
+window.MENU = [
+{
+"id": "k1",
+"cat": "kopi",
+"name": "Siri Kopi",
+"price": null,
+"hot": "DIPUJI PELANGGAN",
+"desc": "\"The best coffee shop at the beach\" — ulasan Google.",
+"sah": "Senarai kopi akan disahkan oleh pemilik",
+"img": "kopi.jpg"
+},
+{
+"id": "m1",
+"cat": "susu",
+"name": "Siri Susu (Milk Series)",
+"price": null,
+"desc": "Kategori minuman dalam sorotan Instagram kedai.",
+"sah": "Senarai minuman akan disahkan oleh pemilik",
+"img": "milk.jpg"
+},
+{
+"id": "c1",
+"cat": "coklat",
+"name": "Siri Coklat",
+"price": null,
+"desc": "Kategori minuman dalam sorotan Instagram kedai.",
+"sah": "Senarai minuman akan disahkan oleh pemilik",
+"img": "coklat.jpg"
+},
+{
+"id": "g1",
+"cat": "gas",
+"name": "Minuman Berkarbonat",
+"price": null,
+"desc": "Kategori minuman dalam sorotan Instagram kedai.",
+"sah": "Senarai minuman akan disahkan oleh pemilik"
+},
+{
+"id": "t1",
+"cat": "matcha",
+"name": "Siri Matcha",
+"price": null,
+"desc": "Kategori minuman dalam sorotan Instagram kedai.",
+"sah": "Senarai minuman akan disahkan oleh pemilik",
+"img": "matcha.jpg"
+}
+];
+window.CATS = [
+{
+"key": "kopi",
+"id": "sec-kopi",
+"title": "Kopi",
+"small": "Kegemaran",
+"layoutClass": "wide"
+},
+{
+"key": "susu",
+"id": "sec-susu",
+"title": "Siri Susu",
+"small": "Minuman",
+"layoutClass": "wide"
+},
+{
+"key": "coklat",
+"id": "sec-coklat",
+"title": "Coklat",
+"small": "Minuman",
+"layoutClass": "wide"
+},
+{
+"key": "gas",
+"id": "sec-gas",
+"title": "Minuman Berkarbonat",
+"small": "Minuman",
+"layoutClass": "wide"
+},
+{
+"key": "matcha",
+"id": "sec-matcha",
+"title": "Matcha",
+"small": "Minuman",
+"layoutClass": "wide"
+}
+];
+window.CFG = {"noTotals": true, "noTotalsNote": "Harga akan disahkan oleh pemilik — senarai ini untuk semakan sahaja.", "addLabel": "+ Tambah", "emptyCart": "Belum ada pesanan lagi."};
+</script>
+<script>
+window.CR = {"coklat.jpg": "Bahnfrend · CC BY-SA 4.0", "hero.jpg": "Malaysiaguy2010 · CC BY-SA 4.0", "kopi.jpg": "Tony Webster · CC BY 2.0", "matcha.jpg": "Derjochenmeyer · CC BY-SA 4.0", "milk.jpg": "Andy Li · CC0"};
+
+(function () {
+    'use strict';
+    var MENU = window.MENU, CATS = window.CATS, CFG = window.CFG || {};
+    var IMG = 'images/', CR = window.CR || {};
+    function fmt(n) { return 'RM ' + n.toFixed(2); }
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function byId(id) { for (var i = 0; i < MENU.length; i++) { if (MENU[i].id === id) return MENU[i]; } return null; }
+    var TBA = CFG.tba || 'Harga akan disahkan oleh pemilik';
+    var sel = {}; 
+
+    function choicePrice(it, picks) {
+        var p = it.price;
+        (it.opts || []).forEach(function (g, gi) { var c = g.choices[picks[gi]]; if (c && typeof c.price === 'number') p = c.price; });
+        return p;
+    }
+    function counts(it, picks) { return it.kira !== false && typeof choicePrice(it, picks) === 'number'; }
+
+    function priceHtml(it) {
+        if (it.priceText) return '<span class="pr txt">' + esc(it.priceText) + '</span>';
+        if (typeof it.price !== 'number') {
+            var ps = [];
+            (it.opts || []).forEach(function (g) { g.choices.forEach(function (c) { if (typeof c.price === 'number') ps.push(c.price); }); });
+            if (ps.length) {
+                var lo = Math.min.apply(null, ps), hi = Math.max.apply(null, ps);
+                return '<span class="pr">RM' + lo.toFixed(2) + (hi > lo ? ' – RM' + hi.toFixed(2) : '') + '</span>';
+            }
+            return '<span class="pr tba">' + esc(TBA) + '</span>';
+        }
+        return '<span class="pr">RM' + it.price.toFixed(2) + (it.label ? ' <small>(' + esc(it.label) + ')</small>' : '') + '</span>';
+    }
+    function optsHtml(it) {
+        if (!it.opts) return '';
+        sel[it.id] = it.opts.map(function () { return 0; });
+        return it.opts.map(function (g, gi) {
+            return '<div class="opt" role="group" aria-label="' + esc(g.label + ' untuk ' + it.name) + '"><span class="opt-l">' + esc(g.label) + '</span><div class="chips">' +
+                g.choices.map(function (c, ci) {
+                    return '<button type="button" class="chip" data-pick="' + it.id + '|' + gi + '|' + ci + '" aria-pressed="' + (ci === 0) + '">' + esc(c.v) +
+                        (typeof c.price === 'number' ? ' <b>' + c.price.toFixed(2) + '</b>' : '') + '</button>';
+                }).join('') + '</div></div>';
+        }).join('');
+    }
+
+    
+    var html = '';
+    CATS.forEach(function (c) {
+        var items = MENU.filter(function (m) { return m.cat === c.key; });
+        html += '<section class="menu-sec' + (c.layoutClass ? ' ' + c.layoutClass : '') + '" id="' + c.id + '"><div class="sec-head"><h2>' + esc(c.title) + '</h2>' +
+            (c.small ? '<p class="sec-small">' + esc(c.small) + '</p>' : '') + '</div>' +
+            (c.img ? '<div class="sec-ph"><img src="' + IMG + c.img + '" alt="' + esc(c.alt || c.title) + ' (gambar hiasan)" width="640" height="400" loading="lazy" decoding="async"><span class="cr">' + esc(CR[c.img] || '') + '</span></div>' : '') +
+            (c.note ? '<p class="sec-note">' + c.note + '</p>' : '') +
+            '<div class="' + (c.layout === 'row' ? 'rows' : 'grid') + '">';
+        items.forEach(function (it) {
+            var q = esc((it.name + ' ' + (it.desc || '') + ' ' + (it.tags || '')).toLowerCase());
+            if (c.layout === 'row') {
+                html += '<div class="row item" data-q="' + q + '"><div class="rb"><h3 class="nm">' + esc(it.name) + '</h3>' +
+                    (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + (it.opts ? '' : priceHtml(it)) + (it.opts ? '' : '</div>') +
+                    (it.opts ? '<div class="trio">' + it.opts[0].choices.map(function (ch, ci) {
+                        return '<button type="button" class="tri" data-addc="' + it.id + '~' + ci + '" aria-label="Tambah ' + esc(it.name + ' ' + ch.v) + '">' + esc(ch.v) +
+                            (typeof ch.price === 'number' ? ' <b>' + ch.price.toFixed(2) + '</b>' : '') + '</button>';
+                    }).join('') + '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span></div></div>' :
+                    '<div class="stepper inline"><button type="button" data-rdec="' + it.id + '" aria-label="Kurangkan ' + esc(it.name) + '">−</button>' +
+                    '<span class="q" data-rq="' + it.id + '" aria-live="polite">0</span>' +
+                    '<button type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">+</button></div>') + '</div>';
+            } else {
+                html += '<article class="item" data-q="' + q + '">' +
+                    (it.hot ? '<span class="laku">' + esc(it.hot) + '</span>' : '') +
+                    (it.img ? '<div class="ph"><img src="' + IMG + it.img + '" alt="' + esc(it.name) + ' (gambar hiasan)" width="640" height="' + (it.h || 427) + '" loading="lazy" decoding="async"><span class="cr">' + esc(it.cr || CR[it.img] || '') + '</span></div>' : '') +
+                    '<div class="body"><h3 class="nm">' + esc(it.name) + '</h3>' + (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
+                    (it.src ? '<p class="src">' + esc(it.src) + '</p>' : '') +
+                    (it.sah ? '<span class="sah">' + esc(it.sah) + '</span>' : '') + optsHtml(it) +
+                    '<div class="foot">' + priceHtml(it) + '<button class="add-btn" type="button" data-add="' + it.id + '" aria-label="Tambah ' + esc(it.name) + '">' + esc(CFG.addLabel || '+ Tambah') + '</button></div></div></article>';
+            }
+        });
+        html += '</div></section>';
+    });
+    document.getElementById('menuRoot').innerHTML = html;
+
+    
+    var box = document.getElementById('searchBox');
+    var emptyNote = document.getElementById('emptyNote');
+    box.addEventListener('input', function () {
+        var q = box.value.trim().toLowerCase(), any = false;
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .item'), function (el) {
+            var show = !q || el.getAttribute('data-q').indexOf(q) > -1;
+            el.style.display = show ? '' : 'none';
+            if (show) any = true;
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('#menuRoot .menu-sec'), function (sec) {
+            var vis = Array.prototype.some.call(sec.querySelectorAll('.item'), function (el) { return el.style.display !== 'none'; });
+            sec.style.display = vis ? '' : 'none';
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-hide-on-search]'), function (el) { el.style.display = q ? 'none' : ''; });
+        emptyNote.classList.toggle('show', q.length > 0 && !any);
+    });
+
+    
+    var cart = {}, order = [];
+    var bar = document.getElementById('cartBar'), sheet = document.getElementById('sheet'), backdrop = document.getElementById('backdrop');
+    var stamp = document.getElementById('demoStamp');
+    function parse(key) { var p = key.split('~'); return { it: byId(p[0]), picks: p[1] ? p[1].split('.').map(Number) : [] }; }
+    function label(x) {
+        var extra = (x.it.opts || []).map(function (g, gi) { return x.it.opts[gi].choices[x.picks[gi]].v; }).join(' · ');
+        return x.it.name + (extra ? ' — ' + extra : '');
+    }
+    function total() { var s = 0; order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) s += choicePrice(x.it, x.picks) * cart[k]; }); return s; }
+    function count() { var n = 0; order.forEach(function (k) { n += cart[k]; }); return n; }
+    function qtyOf(id) { var n = 0; order.forEach(function (k) { if (k.split('~')[0] === id) n += cart[k]; }); return n; }
+
+    function render() {
+        var n = count(), h = '', skipped = 0, t = total();
+        document.getElementById('cartQty').textContent = n;
+        
+        var priced = 0, firstNote = '';
+        order.forEach(function (k) { var x = parse(k); if (counts(x.it, x.picks)) priced++; else if (!firstNote) firstNote = x.it.lineNote || 'akan disahkan'; });
+        var tt = CFG.noTotals ? (n + ' item') : (n > 0 && !priced ? firstNote : fmt(t));
+        document.getElementById('cartTotal').textContent = tt;
+        document.getElementById('sheetTotal').textContent = CFG.noTotals ? 'akan disahkan' : (n > 0 && !priced ? firstNote : fmt(t));
+        bar.classList.toggle('show', n > 0);
+        bar.tabIndex = n > 0 ? 0 : -1;
+        order.forEach(function (k) {
+            var x = parse(k), ok = counts(x.it, x.picks);
+            if (!ok) skipped++;
+            h += '<div class="line"><span class="nm">' + esc(label(x)) + '</span>' +
+                (CFG.noTotals ? '' : '<span class="lp">' + (ok ? fmt(choicePrice(x.it, x.picks) * cart[k]) : esc(x.it.lineNote || 'akan disahkan')) + '</span>') +
+                '<span class="stepper"><button type="button" data-dec="' + k + '" aria-label="Kurangkan ' + esc(label(x)) + '">−</button>' +
+                '<span class="q">' + cart[k] + '</span>' +
+                '<button type="button" data-inc="' + k + '" aria-label="Tambah lagi ' + esc(label(x)) + '">+</button></span></div>';
+        });
+        document.getElementById('cartLines').innerHTML = h || '<p class="fine">' + esc(CFG.emptyCart || 'Belum ada pesanan lagi.') + '</p>';
+        document.getElementById('cartNote').textContent = CFG.noTotals ? (CFG.noTotalsNote || '') :
+            (skipped ? skipped + ' baris tidak dikira dalam anggaran (' + (CFG.skipNote || 'harga akan disahkan oleh pemilik') + ').' : '');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-rq]'), function (el) {
+            var q = qtyOf(el.getAttribute('data-rq')); el.textContent = q; var rw = el.closest('.row'); if (rw) rw.classList.toggle('on', q > 0);
+        });
+        stamp.textContent = '';
+        if (n === 0) closeSheet();
+    }
+    function add(key) { if (!cart[key]) { cart[key] = 0; order.push(key); } cart[key]++; render(); }
+    function dec(key) { cart[key]--; if (cart[key] <= 0) { delete cart[key]; order.splice(order.indexOf(key), 1); } render(); }
+
+    var lastFocus = null;
+    function openSheet() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open'); backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { sheet.focus(); }, 60);
+    }
+    function closeSheet() {
+        if (!sheet.classList.contains('open')) return;
+        sheet.classList.remove('open'); backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+        var t = (lastFocus && document.contains(lastFocus) && lastFocus !== document.body) ? lastFocus : (count() ? bar : box);
+        t.focus();
+    }
+    bar.addEventListener('click', openSheet);
+    backdrop.addEventListener('click', closeSheet);
+    document.getElementById('closeSheet').addEventListener('click', closeSheet);
+    document.getElementById('clearCart').addEventListener('click', function () { cart = {}; order = []; render(); });
+    
+    document.getElementById('sendOrder').addEventListener('click', function () {
+        stamp.textContent = 'Pratonton sahaja — tiada pesanan dihantar';
+    });
+    document.addEventListener('keydown', function (e) {
+        if (!sheet.classList.contains('open')) return;
+        if (e.key === 'Escape') { closeSheet(); return; }
+        if (e.key !== 'Tab') return;
+        var f = Array.prototype.filter.call(sheet.querySelectorAll('button, input, select, a[href]'), function (el) { return el.offsetParent !== null; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (!e.shiftKey && (i === f.length - 1 || i === -1)) { e.preventDefault(); f[0].focus(); }
+        else if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    });
+    document.addEventListener('click', function (e) {
+        var t = e.target.closest ? e.target.closest('button') : null;
+        if (!t) return;
+        var a;
+        if ((a = t.getAttribute('data-pick'))) {
+            var p = a.split('|'); sel[p[0]][+p[1]] = +p[2];
+            Array.prototype.forEach.call(t.parentNode.querySelectorAll('.chip'), function (c) { c.setAttribute('aria-pressed', String(c === t)); });
+        } else if ((a = t.getAttribute('data-add'))) {
+            add(a + (sel[a] ? '~' + sel[a].join('.') : ''));
+        } else if ((a = t.getAttribute('data-addc'))) {
+            add(a);
+        } else if ((a = t.getAttribute('data-rdec'))) {
+            for (var i = order.length - 1; i >= 0; i--) { if (order[i].split('~')[0] === a) { dec(order[i]); break; } }
+        } else if ((a = t.getAttribute('data-inc'))) { add(a); }
+        else if ((a = t.getAttribute('data-dec'))) { dec(a); }
+    });
+    render();
+})();
+
+</script>
+</body>
+</html>

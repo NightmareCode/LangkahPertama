@@ -1,0 +1,38 @@
+KREDIT GAMBAR — Summer Break Cafe (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain. Setiap gambar disemak dengan mata.
+
+bagel.jpg
+  Pengarang: 에그란
+  Lesen: CC BY 4.0 creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Homemade_salmon_bagel_sandwich_5.jpg
+
+baguette.jpg
+  Pengarang: jules / stonesoup
+  Lesen: CC BY 2.0 creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Baguettes_-_stonesoup.jpg
+
+banh-mi.jpg
+  Pengarang: Bahnfrend
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Traditional_Viet_Pork_Sausage_B%C3%A1nh_M%C3%AC,_B%C3%A1nh_M%C3%AC_B%C3%A1nh_M%C3%AC_Westfield_Carousel,_2026_(01).jpg
+
+focaccia.jpg
+  Pengarang: Fred Benenson
+  Lesen: CC BY-SA 4.0 creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Focaccia_Crust.jpg
+
+hero.jpg
+  Pengarang: Agelaia
+  Lesen: CC BY 4.0 creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Sourdough_Bread_Loaf.jpg
+
+pastrami.jpg
+  Pengarang: Missvain
+  Lesen: CC BY 4.0 creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Loveski_Deli_-_Febraury_2024_-_Sarah_Stierch_03.jpg
+
+sourdough.jpg
+  Pengarang: Nutrition, Food Safety & Health
+  Lesen: CC0 creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Loaf_of_sourdough_bread_cooling.jpg
