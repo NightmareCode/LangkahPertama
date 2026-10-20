@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2f6b3a">
+<title>Bertih Pandan · Contoh laman web (perniagaan rekaan) | Langkah Pertama</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pandan:#2f6b3a; --pandan-2:#4e9a5a; --pucuk:#cfe7c4; --santan:#fffaf0; --santan-2:#f6edda;
+  --gula:#7a3e1d; --gula-2:#a8582b; --bunga:#e9708b; --ink:#22281f; --muted:#5d6656; --line:#e4dac3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{font:400 16px/1.65 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--santan);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.1}
+:focus-visible{outline:3px solid var(--bunga);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-70px;background:var(--pandan);color:#fff;padding:12px 16px;border-radius:10px;z-index:50;text-decoration:none;font-weight:800}
+.skip:focus{top:12px}
+.wrap{width:min(1080px,100% - 36px);margin-inline:auto}
+/* jalur lapis: motif kuih lapis */
+.lapis{height:14px;background:repeating-linear-gradient(180deg,var(--pandan) 0 3.5px,var(--santan-2) 3.5px 7px,var(--bunga) 7px 10.5px,var(--gula) 10.5px 14px)}
+.contoh-bar{background:var(--ink);color:#f4eed9;font:600 12.5px/1.45 "Plus Jakarta Sans",sans-serif;text-align:center;padding:9px 14px}
+.contoh-bar b{color:var(--pucuk)}
+/* hero */
+.hero{padding:26px 0 34px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;font:800 13px/1 "Plus Jakarta Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--pandan)}
+.brand svg{flex:none}
+.hero h1{font-size:clamp(42px,12.5vw,84px);letter-spacing:-.01em;margin:16px 0 14px;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--pandan);display:block}
+.lead{font-size:17px;color:var(--muted);max-width:30em}
+.tray{position:relative;margin:24px 0 22px;border-radius:28px 28px 120px 28px;overflow:hidden;box-shadow:0 18px 0 -6px var(--pucuk),0 18px 40px -18px rgba(47,107,58,.45)}
+.tray img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.cap{position:absolute;left:12px;bottom:12px;background:rgba(34,40,31,.72);color:#fff;font-size:11px;line-height:1.3;padding:5px 9px;border-radius:8px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;list-style:none}
+.facts li{background:var(--santan-2);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px;border-radius:999px;border:0;font:800 15px/1 "Plus Jakarta Sans",sans-serif;cursor:pointer;text-decoration:none}
+.btn-pandan{background:var(--pandan);color:#fff;box-shadow:0 5px 0 #1e4626}
+.btn-pandan:active{transform:translateY(3px);box-shadow:0 2px 0 #1e4626}
+.btn-ghost{background:transparent;color:var(--pandan);border:2px solid var(--pandan)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.demo-note{display:none;margin-top:16px;background:#fff;color:var(--ink);border:1.5px dashed var(--gula-2);padding:12px 14px;border-radius:14px;font-size:14px}
+.demo-note.show{display:block}
+/* sections */
+section.block{padding:56px 0}
+.eyebrow{font:800 12px/1 "Plus Jakarta Sans",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gula-2)}
+.sec-head{margin-bottom:22px;max-width:600px}
+.sec-head h2{font-size:clamp(32px,8vw,50px);margin:10px 0 8px}
+.sec-head p{color:var(--muted)}
+/* kuih list + filter */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--pandan);background:#fff;color:var(--pandan);font:700 14px/1 "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--pandan);color:#fff}
+.count{font-size:13px;color:var(--muted);margin:6px 0 18px}
+.kuih-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;list-style:none}
+.kuih{background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.kuih[hidden]{display:none}
+.kuih .ph{position:relative}
+.kuih img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.kuih .ph span{position:absolute;right:6px;bottom:6px;background:rgba(34,40,31,.7);color:#fff;font-size:9.5px;line-height:1.2;padding:3px 6px;border-radius:6px;max-width:calc(100% - 12px)}
+.kuih .tx{padding:12px 13px 15px}
+.kuih h3{font-size:19px}
+.kuih p{font-size:13.5px;color:var(--muted);line-height:1.5;margin-top:4px}
+.tag{display:inline-block;margin-top:9px;font:700 11px/1 "Plus Jakarta Sans",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gula);background:var(--santan-2);padding:5px 8px;border-radius:6px}
+/* dulang majlis */
+.majlis{background:var(--pandan);color:#f1f7ec}
+.majlis .eyebrow{color:var(--pucuk)}
+.majlis .sec-head p{color:#d6e8cf}
+.majlis-ph{border-radius:120px 24px 24px 24px;overflow:hidden;position:relative;margin-bottom:22px}
+.majlis-ph img{width:100%;aspect-ratio:6/5;object-fit:cover}
+.sesuai{list-style:none;display:grid;gap:10px}
+.sesuai li{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:14px 16px}
+.sesuai b{display:block;font:400 19px/1.2 "Young Serif",serif;color:#fff}
+.sesuai span.i{font-size:22px;line-height:1}
+/* langkah */
+.steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:18px 18px 18px 74px;background:#fff;border:1px solid var(--line);border-radius:20px}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:16px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:400 22px/1 "Young Serif",serif;color:#fff;background:var(--gula-2)}
+.steps h3{font-size:21px}
+.steps p{color:var(--muted);font-size:15px}
+/* soalan */
+.faq{background:var(--santan-2)}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px}
+.faq summary{cursor:pointer;list-style:none;padding:14px 52px 14px 18px;font:700 16px/1.4 "Plus Jakarta Sans",sans-serif;position:relative;min-height:52px;display:flex;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font:400 26px/1 "Young Serif",serif;color:var(--pandan)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 18px 16px;color:var(--muted)}
+/* cta */
+.cta{text-align:center;padding:60px 0}
+.cta h2{font-size:clamp(34px,9vw,58px);margin:10px 0}
+.cta p{color:var(--muted);margin:0 auto 22px;max-width:30em}
+.cta .cta-row{justify-content:center}
+.cta .demo-note{max-width:520px;margin-inline:auto;text-align:left}
+.foot{background:var(--ink);color:#cfd3c6;padding:30px 0 40px;font-size:13px}
+.foot .preview{font-weight:800;color:#fff;font-size:14px}
+.foot .rekaan{margin:8px 0;color:var(--pucuk);font-weight:600}
+.foot ul{margin-top:12px;font-size:12px;list-style:none}
+.foot li{padding:2px 0}
+@media (min-width:820px){
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .tray{margin:0}
+  .kuih-grid{grid-template-columns:repeat(3,1fr)}
+  .majlis-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  section.block{padding:84px 0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#utama">Langkau ke kandungan</a>
+<div class="contoh-bar" role="note"><b>Contoh laman web</b> · perniagaan rekaan untuk tunjuk cara</div>
+<div class="lapis" aria-hidden="true"></div>
+
+<main id="utama" tabindex="-1">
+  <section class="hero" aria-labelledby="hero-tajuk">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="brand"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M15 2C8 8 6 16 15 28 24 16 22 8 15 2Z" fill="#4e9a5a"/><path d="M15 6v20" stroke="#2f6b3a" stroke-width="1.6"/></svg>Bertih Pandan · Kuala Pilah</p>
+        <h1 id="hero-tajuk">Kuih rumah, <em>dikukus pagi tadi.</em></h1>
+        <p class="lead">Dapur kecil di rumah yang membuat kuih tradisional ikut tempahan: seri muka, kuih lapis, lompang dan bahulu, untuk minum petang atau dulang majlis.</p>
+        <ul class="facts" aria-label="Ringkasan">
+          <li>🌿 Tempahan awal</li>
+          <li>Ambil sendiri</li>
+          <li>Dulang majlis kecil</li>
+        </ul>
+        <div class="cta-row">
+          <button class="btn btn-pandan" type="button" data-demo-cta>Tanya tempahan</button>
+          <a class="btn btn-ghost" href="#kuih">Lihat kuih</a>
+        </div>
+        <p class="demo-note" role="status" aria-live="polite"></p>
+      </div>
+      <figure class="tray">
+        <img src="assets/images/hero.jpg" width="640" height="427" alt="Kuih lapis berlapis warna di atas daun pisang (gambar hiasan)" fetchpriority="high">
+        <figcaption class="cap">Gambar hiasan · Shitadevi · CC BY-SA 4.0</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="lapis" aria-hidden="true"></div>
+
+  <section class="block" id="kuih" aria-labelledby="kuih-tajuk">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Kuih kami</p>
+        <h2 id="kuih-tajuk">Pilih ikut cara masak</h2>
+        <p>Senarai berubah ikut musim dan bahan. Tekan butang untuk tapis.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Tapis kuih">
+        <button class="chip" type="button" data-f="semua" aria-pressed="true">Semua</button>
+        <button class="chip" type="button" data-f="kukus" aria-pressed="false">Kukus</button>
+        <button class="chip" type="button" data-f="bakar" aria-pressed="false">Bakar</button>
+        <button class="chip" type="button" data-f="berinti" aria-pressed="false">Berinti</button>
+      </div>
+      <p class="count" id="kiraan" aria-live="polite">Menunjukkan 6 jenis kuih</p>
+      <ul class="kuih-grid">
+        <li class="kuih" data-t="kukus"><div class="ph"><img src="assets/images/seri-muka.jpg" width="640" height="480" loading="lazy" alt="Dua potong seri muka hijau pandan di atas pulut (gambar hiasan)"><span>SimonLyall · domain awam</span></div><div class="tx"><h3>Seri Muka</h3><p>Pulut lemak di bawah, kastard pandan di atas.</p><span class="tag">Kukus</span></div></li>
+        <li class="kuih" data-t="kukus"><div class="ph"><img src="assets/images/lapis.jpg" width="640" height="441" loading="lazy" alt="Kuih lapis berbentuk bunga berwarna biru dan kuning (gambar hiasan)"><span>Fikku fiq · CC BY-SA 4.0</span></div><div class="tx"><h3>Kuih Lapis</h3><p>Dikukus selapis demi selapis, boleh dikopek satu-satu.</p><span class="tag">Kukus</span></div></li>
+        <li class="kuih" data-t="kukus"><div class="ph"><img src="assets/images/lompang.jpg" width="640" height="481" loading="lazy" alt="Kuih lompang hijau bertabur kelapa parut (gambar hiasan)"><span>Wiki Farazi · CC0</span></div><div class="tx"><h3>Kuih Lompang</h3><p>Lembut dan kenyal, ditabur kelapa parut.</p><span class="tag">Kukus</span></div></li>
+        <li class="kuih" data-t="kukus"><div class="ph"><img src="assets/images/talam.jpg" width="640" height="412" loading="lazy" alt="Kuih talam gula merah dalam bekas daun pandan (gambar hiasan)"><span>Supardisahabu · CC BY-SA 4.0</span></div><div class="tx"><h3>Talam Gula Merah</h3><p>Manis gula merah, berbalut pandan.</p><span class="tag">Kukus</span></div></li>
+        <li class="kuih" data-t="kukus berinti"><div class="ph"><img src="assets/images/koci.jpg" width="640" height="429" loading="lazy" alt="Kuih koci dibuka dari balutan daun pisang (gambar hiasan)"><span>avlxyz · CC BY-SA 2.0</span></div><div class="tx"><h3>Kuih Koci</h3><p>Pulut berinti kelapa manis, dibungkus daun pisang.</p><span class="tag">Kukus · Berinti</span></div></li>
+        <li class="kuih" data-t="bakar"><div class="ph"><img src="assets/images/bahulu.jpg" width="640" height="427" loading="lazy" alt="Bahulu berbentuk labu di atas pinggan (gambar hiasan)"><span>Choo Yut Shing · CC BY 2.0</span></div><div class="tx"><h3>Bahulu</h3><p>Dibakar dalam acuan, rangup di luar, gebu di dalam.</p><span class="tag">Bakar</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block majlis" aria-labelledby="majlis-tajuk">
+    <div class="wrap majlis-grid">
+      <figure class="majlis-ph">
+        <img src="assets/images/dulang.jpg" width="640" height="532" loading="lazy" alt="Dulang bulat penuh kuih pelbagai warna (gambar hiasan)">
+        <figcaption class="cap">Gambar hiasan · Gunawan Kartapranata · CC BY-SA 3.0</figcaption>
+      </figure>
+      <div>
+        <div class="sec-head">
+          <p class="eyebrow">Dulang majlis</p>
+          <h2 id="majlis-tajuk">Satu dulang, banyak warna</h2>
+          <p>Campur beberapa jenis kuih dalam satu dulang untuk majlis kecil. Jenis dan jumlah dibincang semasa tempahan.</p>
+        </div>
+        <ul class="sesuai">
+          <li><span class="i" aria-hidden="true">☕</span><div><b>Minum petang pejabat</b>Kuih kecil yang mudah diambil sambil berbual.</div></li>
+          <li><span class="i" aria-hidden="true">🤲</span><div><b>Kenduri &amp; doa selamat</b>Dulang disusun kemas, sedia dihidang.</div></li>
+          <li><span class="i" aria-hidden="true">🎁</span><div><b>Buah tangan</b>Kotak kecil untuk dibawa berkunjung.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cara-tajuk">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cara tempah</p>
+        <h2 id="cara-tajuk">Tiga langkah mudah</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Hantar mesej</h3><p>Beritahu tarikh, jenis kuih dan anggaran jumlah.</p></li>
+        <li><h3>Sahkan tempahan</h3><p>Kami sahkan tarikh siap dan butiran tempahan.</p></li>
+        <li><h3>Ambil kuih</h3><p>Ambil sendiri pada masa yang dipersetujui.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block faq" aria-labelledby="soalan-tajuk">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Soalan lazim</p>
+        <h2 id="soalan-tajuk">Sebelum menempah</h2>
+      </div>
+      <details><summary>Berapa hari awal perlu tempah?</summary><p>Lebih awal lebih baik, terutama untuk dulang majlis. Pada laman sebenar, tempoh ini ditetapkan oleh pemilik.</p></details>
+      <details><summary>Boleh hantar ke rumah?</summary><p>Contoh ini menunjukkan ambil sendiri sahaja. Laman sebenar boleh menerangkan kawasan dan cara penghantaran pemilik.</p></details>
+      <details><summary>Kuih tahan berapa lama?</summary><p>Kuih kukus paling sedap dimakan pada hari yang sama. Bahulu tahan lebih lama dalam bekas kedap udara.</p></details>
+      <details><summary>Bagaimana dengan status halal?</summary><p>Pada laman sebenar, ruangan ini menyatakan status halal seperti yang disahkan oleh pemilik. Ini perniagaan rekaan, jadi tiada status dinyatakan.</p></details>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-tajuk">
+    <div class="wrap">
+      <p class="eyebrow">Tempahan</p>
+      <h2 id="cta-tajuk">Nak kuih untuk hujung minggu?</h2>
+      <p>Tempah awal supaya kuih siap tepat pada masanya.</p>
+      <div class="cta-row"><button class="btn btn-pandan" type="button" data-demo-cta>Tanya tempahan</button></div>
+      <p class="demo-note" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<div class="lapis" aria-hidden="true"></div>
+<footer class="foot">
+  <div class="wrap">
+    <p class="preview">Design preview · Langkah Pertama</p>
+    <p class="rekaan">Contoh laman web · perniagaan rekaan untuk tunjuk cara</p>
+    <p>"Bertih Pandan" ialah nama rekaan. Laman ini contoh reka bentuk oleh Langkah Pertama Digital Studio, bukan laman web rasmi mana-mana perniagaan. Butang tempahan hanya memaparkan nota demo; tiada apa-apa dihantar.</p>
+    <ul aria-label="Kredit gambar">
+      <li>Gambar hiasan dari Wikimedia Commons (senarai penuh: CREDITS.txt):</li>
+      <li>Kuih lapis atas daun pisang: Shitadevi, CC BY-SA 4.0</li>
+      <li>Seri muka: SimonLyall, domain awam</li>
+      <li>Kuih lapis bunga: Fikku fiq, CC BY-SA 4.0</li>
+      <li>Kuih lompang: Wiki Farazi, CC0</li>
+      <li>Talam gula merah: Supardisahabu, CC BY-SA 4.0</li>
+      <li>Kuih koci: avlxyz, CC BY-SA 2.0</li>
+      <li>Bahulu: Choo Yut Shing, CC BY 2.0</li>
+      <li>Dulang kuih: Gunawan Kartapranata, CC BY-SA 3.0</li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Butang tempahan = nota demo sahaja. Tiada pautan, tiada mesej dihantar. */
+  var MSG='Pratonton sahaja: ini contoh laman untuk perniagaan rekaan. Pada laman sebenar, butang ini membuka saluran tempahan pemilik. Tiada apa-apa dihantar.';
+  document.querySelectorAll('[data-demo-cta]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.closest('.cta-row').parentNode.querySelector('.demo-note');
+      if(n){n.textContent=MSG;n.classList.add('show');}
+    });
+  });
+  /* Tapis kuih ikut cara masak */
+  var chips=document.querySelectorAll('.chip'), items=document.querySelectorAll('.kuih'), out=document.getElementById('kiraan');
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      var f=c.getAttribute('data-f'), n=0;
+      chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+      items.forEach(function(it){var ok=f==='semua'||it.getAttribute('data-t').split(' ').indexOf(f)>-1; it.hidden=!ok; if(ok)n++;});
+      out.textContent='Menunjukkan '+n+' jenis kuih';
+    });
+  });
+})();
+</script>
+</body>
+</html>

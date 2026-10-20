@@ -1,0 +1,51 @@
+KREDIT GAMBAR: Bertih Pandan (contoh laman web, perniagaan rekaan)
+Semua gambar dari Wikimedia Commons, saiz dikecilkan ke lebar 640px (JPEG q72). Tiada perubahan lain.
+Gambar hiasan sahaja: bukan gambar mana-mana perniagaan sebenar.
+
+hero.jpg
+  Fail   : Kue Lapis.jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Kue_Lapis.jpg
+  Oleh   : Shitadevi
+  Lesen  : CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+
+seri-muka.jpg
+  Fail   : Seri Muka1.JPG
+  Sumber : https://commons.wikimedia.org/wiki/File:Seri_Muka1.JPG
+  Oleh   : SimonLyall
+  Lesen  : Public domain (domain awam)
+
+lapis.jpg
+  Fail   : Malaysian Kuih Lapis (Flower-shaped).jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Malaysian_Kuih_Lapis_(Flower-shaped).jpg
+  Oleh   : Fikku fiq
+  Lesen  : CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+
+lompang.jpg
+  Fail   : Kuih lompang 20230924 141321.jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Kuih_lompang_20230924_141321.jpg
+  Oleh   : Wiki Farazi
+  Lesen  : CC0 https://creativecommons.org/publicdomain/zero/1.0
+
+talam.jpg
+  Fail   : Talam Pandan Gula Merah.jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Talam_Pandan_Gula_Merah.jpg
+  Oleh   : Supardisahabu
+  Lesen  : CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+
+bahulu.jpg
+  Fail   : Kueh Bahulu (54330361995).jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Kueh_Bahulu_(54330361995).jpg
+  Oleh   : Choo Yut Shing from Singapore, Singapore
+  Lesen  : CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+
+koci.jpg
+  Fail   : Kuih Kochi.jpg
+  Sumber : https://commons.wikimedia.org/wiki/File:Kuih_Kochi.jpg
+  Oleh   : avlxyz
+  Lesen  : CC BY-SA 2.0 https://creativecommons.org/licenses/by-sa/2.0
+
+dulang.jpg
+  Fail   : Jajan Pasar in Jakarta edit.JPG
+  Sumber : https://commons.wikimedia.org/wiki/File:Jajan_Pasar_in_Jakarta_edit.JPG
+  Oleh   : Gunawan Kartapranata
+  Lesen  : CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0
