@@ -1,0 +1,62 @@
+/* Langkah Pertama · RSVP + Ucapan (struktur dikongsi). Warna/fon setiap tema: blok ".lp-rsvp{--lpr-…}" dalam style.css tema. */
+.lp-rsvp{--lpr-ink:#333;--lpr-muted:#6b6b6b;--lpr-card:#fff;--lpr-card-line:#e5ded2;--lpr-field:#fff;--lpr-field-ink:#2b2b2b;
+  --lpr-field-line:#c9bfae;--lpr-btn:#333;--lpr-btn-ink:#fff;--lpr-sel:#333;--lpr-sel-ink:#fff;--lpr-accent:#b49b74;--lpr-focus:#8a6d3b;
+  --lpr-err:#b3261e;--lpr-err-bg:#fff6f5;--lpr-field-err:#fff6f5;--lpr-radius:14px;--lpr-radius-btn:30px;--lpr-font:inherit;--lpr-head:inherit;--lpr-quote:inherit;
+  --lpr-ok-bg:#eef6ea;--lpr-ok-ink:#2d5a22;--lpr-note-bg:#fffaf1;--lpr-note-ink:#4a3b25;--lpr-wall-bg:var(--lpr-card);
+  color:var(--lpr-ink);font-family:var(--lpr-font);text-align:left}
+.lp-rsvp *,.lp-rsvp *::before,.lp-rsvp *::after{box-sizing:border-box}
+.lp-rsvp [hidden]{display:none!important}
+.lp-rsvp-wrap{max-width:520px;margin:0 auto;position:relative;z-index:2}
+.lp-rsvp .section-title{margin-bottom:12px}
+.lp-lead{text-align:center;color:var(--lpr-muted);font-size:15px;line-height:1.6;margin:0 0 24px}
+.lp-pratonton{margin:0 0 22px;padding:12px 14px;border:1.5px dashed var(--lpr-accent);border-radius:12px;background:var(--lpr-note-bg);
+  color:var(--lpr-note-ink);font:600 13px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif;text-align:center;letter-spacing:0;text-transform:none}
+.lp-card{background:var(--lpr-card);border:1px solid var(--lpr-card-line);border-radius:var(--lpr-radius);padding:22px 18px;margin:0 0 26px}
+.lp-card h4,.lp-wall-head h4{font-family:var(--lpr-head);font-size:24px;line-height:1.25;margin:0 0 16px;text-align:center;color:inherit;font-weight:600}
+.lp-field{margin:0 0 16px}
+.lp-field>label,.lp-field legend{display:block;font-weight:600;font-size:14px;line-height:1.4;margin:0 0 6px;color:inherit;padding:0;letter-spacing:0;text-transform:none}
+.lp-field fieldset{border:0;padding:0;margin:0;min-width:0}
+.lp-input{display:block;width:100%;min-height:48px;margin:0;padding:12px 14px;border:1.5px solid var(--lpr-field-line);border-radius:calc(var(--lpr-radius) - 2px);
+  background:var(--lpr-field);color:var(--lpr-field-ink);font:400 16px/1.4 var(--lpr-font);letter-spacing:0;text-transform:none;-webkit-appearance:none;appearance:none}
+textarea.lp-input{min-height:124px;resize:vertical}
+.lp-input::placeholder{color:var(--lpr-muted);opacity:.8}
+.lp-input:focus-visible,.lp-pill input:focus-visible+span,.lp-btn:focus-visible,.lp-step:focus-visible{outline:3px solid var(--lpr-focus);outline-offset:2px}
+.lp-input[aria-invalid="true"]{border-color:var(--lpr-err);background:var(--lpr-field-err)}
+.lp-pills{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lp-pill{position:relative;display:block;margin:0}
+.lp-pill input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.lp-pill span{display:flex;align-items:center;justify-content:center;min-height:52px;padding:6px 8px;border:1.5px solid var(--lpr-field-line);
+  border-radius:calc(var(--lpr-radius) - 2px);background:var(--lpr-field);color:var(--lpr-field-ink);font-weight:600;font-size:15px;cursor:pointer;text-align:center}
+.lp-pill input:checked+span{background:var(--lpr-sel);border-color:var(--lpr-sel);color:var(--lpr-sel-ink)}
+.lp-pill input[aria-invalid="true"]+span{border-color:var(--lpr-err)}
+.lp-pax{display:flex;align-items:center;gap:10px}
+.lp-pax .lp-input{text-align:center;width:90px;font-weight:600;-moz-appearance:textfield}
+.lp-step{flex:0 0 48px;width:48px;height:48px;padding:0;border-radius:50%;border:1.5px solid var(--lpr-sel);background:var(--lpr-field);
+  color:var(--lpr-field-ink);font:600 22px/1 var(--lpr-font);cursor:pointer}
+.lp-hint{font-size:12.5px;line-height:1.5;color:var(--lpr-muted);margin:6px 0 0}
+.lp-err{color:var(--lpr-err);font-size:13.5px;font-weight:600;line-height:1.45;margin:6px 0 0}
+.lp-err[data-ralat="umum"]{margin:0 0 12px;padding:10px 12px;border-radius:10px;background:var(--lpr-err-bg);border:1px solid var(--lpr-err)}
+.lp-btn{display:flex;width:100%;align-items:center;justify-content:center;min-height:50px;margin:0;padding:12px 18px;border:0;border-radius:var(--lpr-radius-btn);
+  background:var(--lpr-btn);color:var(--lpr-btn-ink);font:600 16px/1.2 var(--lpr-font);letter-spacing:.5px;cursor:pointer;text-transform:none}
+.lp-btn[disabled]{opacity:.65;cursor:progress}
+.lp-btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;margin-top:12px}
+.lp-hp{position:absolute!important;left:-10000px!important;top:auto;width:1px;height:1px;overflow:hidden}
+.lp-done{text-align:center;padding:8px 0}
+.lp-done:focus{outline:none}
+.lp-done .tick{font-size:34px;line-height:1;margin:0 0 8px;color:var(--lpr-accent)}
+.lp-done h5{font-family:var(--lpr-head);font-size:24px;font-weight:600;line-height:1.3;margin:0 0 6px;overflow-wrap:anywhere;color:inherit}
+.lp-done p{margin:0}
+.lp-count{font-size:12.5px;color:var(--lpr-muted);text-align:right;margin:4px 0 0}
+.lp-count.lebih{color:var(--lpr-err);font-weight:700}
+.lp-status{margin:12px 0 0;padding:10px 12px;border-radius:10px;background:var(--lpr-ok-bg);color:var(--lpr-ok-ink);font-weight:600;font-size:14px;text-align:center}
+.lp-privasi{text-align:center;margin-top:10px}
+.lp-wall-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:6px 0 12px}
+.lp-wall-head h4{margin:0;text-align:left}
+.lp-wall-head span{font-size:13px;color:var(--lpr-muted);white-space:nowrap}
+.lp-wall{list-style:none;display:grid;gap:12px;margin:0;padding:0}
+.lp-wall li{background:var(--lpr-wall-bg);border-left:3px solid var(--lpr-accent);border-radius:4px var(--lpr-radius) var(--lpr-radius) 4px;padding:14px 16px;margin:0}
+.lp-ucapan-teks{font-family:var(--lpr-quote);font-size:17px;line-height:1.5;margin:0;overflow-wrap:anywhere;white-space:pre-line}
+.lp-ucapan-nama{margin:8px 0 0;font-size:13px;font-weight:600;color:var(--lpr-muted);overflow-wrap:anywhere}
+.lp-ucapan-masa{font-weight:400}
+.lp-empty{text-align:center;color:var(--lpr-muted);font-style:italic;padding:12px 0;margin:0}
+.lp-more{margin-top:14px}

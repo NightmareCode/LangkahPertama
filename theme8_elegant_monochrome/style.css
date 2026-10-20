@@ -269,3 +269,16 @@ a.map-link.w-full { display: block; }
 
 /* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
 .arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
+
+/* RSVP + Ucapan (lp-rsvp): warna & fon tema. Struktur: ../TemplateAssets/lp-rsvp.css */
+.lp-rsvp{--lpr-ink:var(--warm-white);--lpr-muted:var(--champagne-light);--lpr-card:rgba(255,255,255,.06);--lpr-card-line:rgba(212,165,116,.4);
+  --lpr-field:var(--ivory);--lpr-field-ink:var(--text-dark);--lpr-field-line:var(--champagne);--lpr-btn:var(--champagne);--lpr-btn-ink:#3a2028;
+  --lpr-sel:var(--champagne);--lpr-sel-ink:#3a2028;--lpr-accent:var(--champagne);--lpr-focus:var(--champagne-light);--lpr-err:#ffc2b8;
+  --lpr-err-bg:rgba(255,194,184,.1);--lpr-field-err:#fff1ee;--lpr-ok-bg:rgba(212,165,116,.16);--lpr-ok-ink:var(--champagne-light);
+  --lpr-note-bg:rgba(255,255,255,.08);--lpr-note-ink:var(--warm-white);--lpr-wall-bg:rgba(255,255,255,.06);--lpr-font:var(--font-sans);
+  --lpr-head:var(--font-serif);--lpr-quote:var(--font-serif);--lpr-radius:2px;--lpr-radius-btn:2px}
+.lp-rsvp .lp-card h4,.lp-rsvp .lp-wall-head h4{text-transform:uppercase;letter-spacing:4px;font-size:18px;color:var(--champagne)}
+.lp-rsvp .lp-done h5{font-size:26px}
+.lp-rsvp .section-title{color:var(--champagne)}
+.lp-rsvp .lp-btn{text-transform:uppercase;letter-spacing:3px;font-size:13px}
+.lp-rsvp .lp-ucapan-teks{font-style:italic;font-size:19px}

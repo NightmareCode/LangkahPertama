@@ -2,10 +2,11 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net https://script.google.com https://script.googleusercontent.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walimatul Urus - Fatiha & Irfan</title>
+    <link rel="stylesheet" href="../TemplateAssets/lp-rsvp.css" data-lp-rsvp>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Satisfy&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 
@@ -213,6 +214,84 @@
                 </div>
             </section>
             
+            <!-- LP-RSVP:MULA · Kehadiran & Ucapan (tersembunyi pada demo awam; dipapar hanya pada kad pasangan yang ada RSVP) -->
+            <section class="lp-rsvp section" id="kehadiran" data-lp-rsvp hidden style="display:none" data-endpoint="https://script.google.com/macros/s/GANTI_DENGAN_ID_DEPLOY/exec" data-slug="GANTI_SLUG" aria-labelledby="kehadiran-tajuk">
+                <div class="lp-rsvp-wrap">
+                    <h3 class="section-title text-gradient text-center" id="kehadiran-tajuk">Kehadiran &amp; Ucapan</h3>
+                    <p class="lp-lead">Mohon sahkan kehadiran anda dan titipkan doa buat pengantin.</p>
+                    <p class="lp-pratonton" data-lp-rsvp-pratonton role="note" hidden>Pratonton — borang ini belum disambung ke helaian pengantin. Jawapan ujian sahaja.</p>
+
+                    <div class="lp-card">
+                        <h4>Sahkan Kehadiran</h4>
+                        <form id="borang-rsvp" novalidate>
+                            <p class="lp-err" data-ralat="umum" role="alert" hidden></p>
+                            <div class="lp-field">
+                                <label for="rsvp-nama">Nama</label>
+                                <input class="lp-input" id="rsvp-nama" name="nama" data-medan="nama" type="text" maxlength="60" autocomplete="name" aria-describedby="rsvp-nama-err" required>
+                                <p class="lp-err" id="rsvp-nama-err" data-ralat="nama" hidden></p>
+                            </div>
+                            <div class="lp-field">
+                                <fieldset aria-describedby="rsvp-hadir-err">
+                                    <legend>Kehadiran</legend>
+                                    <div class="lp-pills">
+                                        <label class="lp-pill"><input type="radio" name="hadir" value="ya" data-medan="hadir"><span>Hadir</span></label>
+                                        <label class="lp-pill"><input type="radio" name="hadir" value="tidak"><span>Tidak hadir</span></label>
+                                    </div>
+                                </fieldset>
+                                <p class="lp-err" id="rsvp-hadir-err" data-ralat="hadir" hidden></p>
+                            </div>
+                            <div class="lp-field" id="rsvp-pax-wrap" hidden>
+                                <label for="rsvp-pax">Bilangan tetamu (termasuk anda)</label>
+                                <div class="lp-pax">
+                                    <button type="button" class="lp-step" data-pax="-1" aria-label="Kurangkan bilangan tetamu">−</button>
+                                    <input class="lp-input" id="rsvp-pax" name="pax" data-medan="pax" type="number" inputmode="numeric" min="1" max="10" step="1" aria-describedby="rsvp-pax-hint rsvp-pax-err">
+                                    <button type="button" class="lp-step" data-pax="1" aria-label="Tambah bilangan tetamu">+</button>
+                                </div>
+                                <p class="lp-hint" id="rsvp-pax-hint">1 hingga 10 orang.</p>
+                                <p class="lp-err" id="rsvp-pax-err" data-ralat="pax" hidden></p>
+                            </div>
+                            <div class="lp-hp" aria-hidden="true"><label for="rsvp-web">Laman web</label><input id="rsvp-web" name="laman_web" type="text" tabindex="-1" autocomplete="off"></div>
+                            <button type="submit" class="lp-btn">Hantar Jawapan</button>
+                            <p class="lp-hint lp-privasi">Nama dan bilangan tetamu hanya untuk pengantin. Tidak dipaparkan kepada orang lain.</p>
+                        </form>
+                        <div class="lp-done" id="rsvp-selesai" tabindex="-1" role="status" hidden>
+                            <p class="tick" aria-hidden="true">✓</p>
+                            <h5 data-isi="tajuk"></h5>
+                            <p data-isi="ringkas"></p>
+                            <button type="button" class="lp-btn ghost" id="rsvp-ubah">Ubah jawapan</button>
+                        </div>
+                    </div>
+
+                    <div class="lp-card">
+                        <h4>Titipkan Ucapan</h4>
+                        <form id="borang-ucapan" novalidate>
+                            <p class="lp-err" data-ralat="umum" role="alert" hidden></p>
+                            <div class="lp-field">
+                                <label for="ucapan-nama">Nama</label>
+                                <input class="lp-input" id="ucapan-nama" name="nama" data-medan="nama" type="text" maxlength="40" autocomplete="name" aria-describedby="ucapan-nama-err" required>
+                                <p class="lp-err" id="ucapan-nama-err" data-ralat="nama" hidden></p>
+                            </div>
+                            <div class="lp-field">
+                                <label for="ucapan-teks">Ucapan &amp; doa</label>
+                                <textarea class="lp-input" id="ucapan-teks" name="ucapan" data-medan="ucapan" maxlength="300" rows="4" aria-describedby="ucapan-kiraan ucapan-err" required></textarea>
+                                <p class="lp-count" id="ucapan-kiraan" aria-live="polite">0 / 300</p>
+                                <p class="lp-err" id="ucapan-err" data-ralat="ucapan" hidden></p>
+                            </div>
+                            <div class="lp-hp" aria-hidden="true"><label for="ucapan-web">Laman web</label><input id="ucapan-web" name="laman_web" type="text" tabindex="-1" autocomplete="off"></div>
+                            <button type="submit" class="lp-btn">Hantar Ucapan</button>
+                            <p class="lp-hint lp-privasi">Nama dan ucapan anda akan dipaparkan di Dinding Ucapan di bawah.</p>
+                            <p class="lp-status" id="ucapan-status" role="status" hidden></p>
+                        </form>
+                    </div>
+
+                    <div class="lp-wall-head"><h4 id="dinding-tajuk">Dinding Ucapan</h4><span id="ucapan-jumlah"></span></div>
+                    <p class="lp-empty" id="ucapan-kosong">Belum ada ucapan. Jadilah yang pertama!</p>
+                    <ul class="lp-wall" id="dinding-ucapan" aria-labelledby="dinding-tajuk"></ul>
+                    <button type="button" class="lp-btn ghost lp-more" id="ucapan-lagi" hidden>Lihat lebih banyak ucapan</button>
+                </div>
+            </section>
+            <!-- LP-RSVP:TAMAT -->
+
             <footer class="footer section text-center">
                 <p class="text-muted italic mb-4">Terima kasih atas doa dan kehadiran anda.</p>
                 <h2 class="cursive-title text-gradient text-3xl">Fatiha & Irfan</h2>
@@ -222,6 +301,7 @@
         </main>
     </div>
 
+    <script src="../TemplateAssets/lp-rsvp.js" defer data-lp-rsvp></script>
     <script src="script.js"></script>
 </body>
 </html>

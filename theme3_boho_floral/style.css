@@ -320,3 +320,12 @@ a.map-link.w-full { display: block; }
 
 /* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
 .arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
+
+/* RSVP + Ucapan (lp-rsvp): warna & fon tema. Struktur: ../TemplateAssets/lp-rsvp.css */
+.lp-rsvp{--lpr-ink:var(--text-color);--lpr-muted:#7a716c;--lpr-card:var(--bg-main);--lpr-card-line:rgba(204,112,91,.28);
+  --lpr-field-line:#d9c6b4;--lpr-btn:var(--terracotta);--lpr-sel:var(--olive);--lpr-accent:var(--olive);--lpr-focus:#9c4f3e;
+  --lpr-note-bg:#fbf1e6;--lpr-note-ink:#6d3f33;--lpr-font:var(--font-sans);--lpr-head:var(--font-script);--lpr-quote:var(--font-sans);
+  --lpr-radius:22px;--lpr-radius-btn:50px}
+.lp-rsvp .lp-card{border-radius:120px 120px 22px 22px;padding-top:34px}
+.lp-rsvp .lp-card h4,.lp-rsvp .lp-wall-head h4,.lp-rsvp .lp-done h5{font-size:32px;font-weight:600;color:var(--terracotta)}
+.lp-rsvp .lp-wall li{border-left-color:var(--terracotta)}

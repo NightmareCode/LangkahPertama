@@ -280,3 +280,11 @@ a.map-link.w-full { display: block; }
     .rvsp-gift-wrapper:not(:has(> .gift-section:not([hidden]))) { justify-content: center; }
     .rvsp-gift-wrapper:not(:has(> .gift-section:not([hidden]))) > .itinerary-section { flex: 0 1 720px; }
 }
+
+/* RSVP + Ucapan (lp-rsvp): warna & fon tema. Struktur: ../TemplateAssets/lp-rsvp.css */
+.lp-rsvp{--lpr-ink:var(--dark);--lpr-muted:#7b6f72;--lpr-card:var(--blush);--lpr-card-line:var(--rose-light);--lpr-field-line:#e1bcc3;
+  --lpr-btn:var(--rose);--lpr-sel:var(--rose);--lpr-accent:var(--rose-light);--lpr-focus:#8e4c56;--lpr-note-bg:#fff0f3;--lpr-note-ink:#7a3d47;
+  --lpr-font:var(--font-serif);--lpr-head:var(--font-script);--lpr-quote:var(--font-serif);--lpr-radius:20px}
+.lp-rsvp .lp-card{box-shadow:0 10px 30px rgba(183,110,121,.08)}
+.lp-rsvp .lp-card h4,.lp-rsvp .lp-wall-head h4,.lp-rsvp .lp-done h5{font-size:36px;font-weight:400;color:var(--rose)}
+.lp-rsvp .lp-ucapan-teks{font-style:italic}
