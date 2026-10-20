@@ -446,3 +446,8 @@ a.map-link.w-full { display: block; }
 
 /* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
 .arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
+
+/* Hadiah/QR tersembunyi (data-lp-gift): Tentatif guna lebar penuh di desktop */
+@media (min-width: 768px) {
+    .gift-rsvp .grid-desktop:not(:has(> .gift-box:not([hidden]))) { grid-template-columns: 1fr; max-width: 720px; margin-left: auto; margin-right: auto; }
+}

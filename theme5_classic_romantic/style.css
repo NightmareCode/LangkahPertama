@@ -274,3 +274,9 @@ a.map-link.w-full { display: block; }
 
 /* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
 .arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
+
+/* Hadiah/QR tersembunyi (data-lp-gift): Tentatif di tengah di desktop */
+@media (min-width: 768px) {
+    .rvsp-gift-wrapper:not(:has(> .gift-section:not([hidden]))) { justify-content: center; }
+    .rvsp-gift-wrapper:not(:has(> .gift-section:not([hidden]))) > .itinerary-section { flex: 0 1 720px; }
+}
