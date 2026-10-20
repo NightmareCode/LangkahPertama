@@ -166,9 +166,6 @@
         .s2-copy h2 { margin: 14px 0 18px; }
         .s2-copy p { color: var(--dim); max-width: 54ch; margin-bottom: 14px; }
         .s2-copy p b { color: var(--ink); }
-        .pull { border-left: 2px solid var(--flame); padding: 4px 0 4px 20px; margin-top: 22px; }
-        .pull p { font-family: var(--serif); font-style: italic; font-size: 1.06rem; color: var(--ink); margin-bottom: 8px; }
-        .pull span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--flame); }
         .s2-stat { position: absolute; left: 0; bottom: 5vh; }
         .s2-stat b { display: block; font-family: var(--serif); font-weight: 700; font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
         .s2-stat .u { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--flame); display: block; margin-top: 10px; }
@@ -269,13 +266,6 @@
         .jar span { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
         @media (max-width: 900px) { .addons { grid-template-columns: 1fr; } }
 
-        /* press marquee — carbon band */
-        .press { background: var(--carbon-2); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 26px 0; overflow: hidden; position: relative; z-index: 2; }
-        .press-track { display: flex; gap: 56px; width: max-content; animation: marq 42s linear infinite; }
-        .pq { display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
-        .pq q { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--ink); quotes: '“' '”'; }
-        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--flame); }
-        @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* outlets — carbon */
         #outlets { background: var(--carbon); }
@@ -316,12 +306,12 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .reveal, .sc .reveal { opacity: 1; transform: none; transition: none; }
-            .press-track { animation: none; }
             .scroll-cue s { animation: none; }
             .scene-bg, .ember { transition: none; }
             * { transition-duration: 0.01ms !important; }
         }
     </style>
+    <style id="lp-tap">dd a{display:inline-block;padding:12px 0}.brand{min-height:44px;justify-content:center}</style>
 </head>
 <body data-scene="1">
     <a class="lp-skip" href="#menu">Skip to content</a>
@@ -371,10 +361,6 @@
                         <span class="eyebrow reveal">// The Story</span>
                         <h2 class="fh reveal d2">From a hawker stall<span class="tail">to a Subang legend.</span></h2>
                         <p class="reveal d3">It started in <b>1990</b> — a young hawker couple in Alor Setar, frying rice with a recipe passed down from an aunt. In 2007 they moved to the Klang Valley, and their corner stall in SS15 became the plate every student in Subang swears by. Daughter <b>Soon Te Shian</b> learned the wok at 13 and moved the stall into its own shop at <b>Subang Square</b> in 2021.</p>
-                        <div class="pull reveal d3">
-                            <p>"My parents always hoped that I would learn to cook and carry on the family business."</p>
-                            <span>— Soon Te Shian · Free Malaysia Today</span>
-                        </div>
                     </div>
                     <div class="s2-stat reveal d2">
                         <b>1990</b>
@@ -397,8 +383,6 @@
                         <div class="spec right p4 reveal d3"><span class="lbl">Sambal belacan</span><span class="val">Free with every plate</span><i class="rule" aria-hidden="true"></i></div>
                     </div>
                     <div class="s3-stats reveal d3">
-                        <div class="stat"><b><span data-count="4.3" data-dec="1">0</span>★</b><span>Google rating</span></div>
-                        <div class="stat"><b><span data-count="1321">0</span></b><span>Google reviews</span></div>
                         <div class="stat"><b><span data-count="35">0</span>+</b><span>Years at the wok</span></div>
                         <div class="stat"><b>RM<span data-count="7.5" data-dec="2">0</span></b><span>Plates from</span></div>
                     </div>
@@ -496,20 +480,6 @@
             </div>
         </section>
 
-        <div class="press" aria-label="Press mentions">
-            <div class="press-track">
-                <span class="pq"><q>Rice is consistently fluffy, perfectly seasoned, and never dry.</q><cite>Tatler Asia</cite></span>
-                <span class="pq"><q>Humble yet utterly delicious.</q><cite>Sethlui.com</cite></span>
-                <span class="pq"><q>Each grain has a punch of umami and kissed-by-flames flavour.</q><cite>TheSmartLocal</cite></span>
-                <span class="pq"><q>Simply done well, generous portions, affordable.</q><cite>Time Out KL</cite></span>
-                <span class="pq"><q>Uncle Roger would be proud.</q><cite>OnlyFoodKL</cite></span>
-                <span class="pq"><q>Rice is consistently fluffy, perfectly seasoned, and never dry.</q><cite>Tatler Asia</cite></span>
-                <span class="pq"><q>Humble yet utterly delicious.</q><cite>Sethlui.com</cite></span>
-                <span class="pq"><q>Each grain has a punch of umami and kissed-by-flames flavour.</q><cite>TheSmartLocal</cite></span>
-                <span class="pq"><q>Simply done well, generous portions, affordable.</q><cite>Time Out KL</cite></span>
-                <span class="pq"><q>Uncle Roger would be proud.</q><cite>OnlyFoodKL</cite></span>
-            </div>
-        </div>
 
         <section id="outlets">
             <div class="wrap">
@@ -559,7 +529,7 @@
     <footer>
         <div class="wrap foot-in">
             <span class="badge signal demo-tag"><i></i>Design preview · Langkah Pertama</span>
-            <p>This is a <b>website design concept</b> prepared for Uncle Soon Fried Rice by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, menu items and prices are drawn from public sources and press coverage; all details to be confirmed by the owner. Non-halal.</p>
+            <p>This is a <b>website design concept</b> prepared for Uncle Soon Fried Rice by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, menu items and prices are drawn from public sources; all details to be confirmed by the owner. Non-halal.</p>
         </div>
     </footer>
 

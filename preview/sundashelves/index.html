@@ -92,7 +92,7 @@
         .fh .tail { display: block; font-family: var(--disp); font-style: italic; font-weight: 400; color: var(--dim); }
         .stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: clamp(1.8rem, 3.1vw, 2.5rem); line-height: 1; color: var(--magma-deep); font-variant-numeric: tabular-nums; }
         .stat > span { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
-        .stat b span, .s2-stat b span, .s4-stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
+        .stat b span, .s2-stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
 
         /* badges */
         .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--hairline); color: var(--dim); }
@@ -173,9 +173,6 @@
         .s2-copy h2 { margin: 14px 0 18px; }
         .s2-copy p { color: var(--dim); max-width: 56ch; margin-bottom: 14px; font-size: 0.94rem; }
         .s2-copy p b { color: var(--ink); }
-        .pull { border-left: 2px solid var(--magma-deep); padding: 4px 0 4px 20px; margin-top: 22px; }
-        .pull p { font-family: var(--disp); font-style: italic; font-size: 1.25rem; color: var(--ink); margin-bottom: 8px; line-height: 1.4; }
-        .pull span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--magma-deep); }
         .s2-stat { position: absolute; left: 0; bottom: 5vh; text-shadow: 0 1px 14px rgba(239, 231, 214, 0.8); }
         .s2-stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: clamp(2.4rem, 4.8vw, 4rem); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
         .s2-stat .u { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--magma-deep); display: block; margin-top: 10px; }
@@ -209,8 +206,6 @@
         .s4-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 36px;
             background: rgba(13, 22, 17, 0.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--hairline-d); border-radius: var(--radius-md); padding: 20px 30px; }
-        .s4-stat b { display: block; font-family: var(--disp); font-weight: 600; font-size: var(--text-display); line-height: 1; color: var(--amber); text-shadow: var(--glow-text); font-variant-numeric: tabular-nums; }
-        .s4-stat > span { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dim-d); display: block; margin-top: 10px; }
         .s4-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
 
         @media (max-width: 900px) {
@@ -227,7 +222,6 @@
             .drag-hint { display: none; }
             .s2-copy { position: absolute; right: 0; left: 0; top: auto; bottom: 4vh; transform: none; max-width: none; padding: 0 clamp(20px, 5vw, 56px); }
             .s2-copy p { font-size: 0.84rem; }
-            .s2-copy .pull { display: none; } /* the quote lives on in the press marquee */
             .s2-stat { display: none; }
             .spec { position: static; max-width: none; text-align: left !important; }
             .spec .rule { display: none; }
@@ -264,15 +258,6 @@
         .book-row .t small { display: block; color: var(--dim); font-size: 0.78rem; margin-top: 2px; }
         .book-row b { font-family: var(--mono); font-weight: 700; font-size: 0.86rem; color: var(--magma-deep); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-        /* press marquee — card band */
-        .press { background: var(--card); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 26px 0; overflow: hidden; position: relative; z-index: 2; }
-        .press-track { display: flex; gap: 56px; width: max-content; animation: marq 46s linear infinite; }
-        .press-track:hover { animation-play-state: paused; }
-        .pq { display: flex; align-items: baseline; gap: 14px; white-space: nowrap; }
-        .pq q { font-family: var(--disp); font-style: italic; font-size: 1.14rem; color: var(--ink); quotes: '\201C' '\201D'; }
-        .pq cite { font-family: var(--mono); font-style: normal; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sea-deep); }
-        .pq::after { content: '❧'; color: var(--magma-deep); margin-left: 40px; }
-        @keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         /* café — deeper paper */
         #cafe { background: var(--paper-2); }
@@ -325,12 +310,12 @@
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .reveal, .sc .reveal { opacity: 1; transform: none; transition: none; }
-            .press-track { animation: none; }
             .scroll-cue s { animation: none; }
             .scene-bg, .duskglow { transition: none; }
             * { transition-duration: 0.01ms !important; }
         }
     </style>
+    <style id="lp-tap">dd a{display:inline-block;padding:12px 0}</style>
 </head>
 <body data-scene="1">
     <a class="lp-skip" href="#lp-main">Skip to content</a>
@@ -381,10 +366,6 @@
                         <h2 class="fh reveal d2">From a state park<span class="tail">to a shelf of their own.</span></h2>
                         <p class="reveal d3">Conservationist <b>Surin Suksuwan</b> and biodiversity consultant <b>Dylan Jefri Ong</b> met on the Perlis State Park project in <b>2000</b> — each quietly dreaming of a bookshop full of nature books. In 2022, with their own savings, they decided to build it together.</p>
                         <p class="reveal d3">They named it after the <b>Sunda Shelf</b> — the drowned continental shelf beneath our seas, one of the richest cradles of life on Earth. Day to day the shop is kept by <b>Jennifer Neoh Tan</b>, while chef Sumalee Suksuwan fills it with the smell of hand-rolled curry puffs.</p>
-                        <div class="pull reveal d3">
-                            <p>"We hope these books can nurture a sense of wonder."</p>
-                            <span>— Surin Suksuwan · BERNAMA</span>
-                        </div>
                     </div>
                     <div class="s2-stat reveal d2">
                         <b>2023</b>
@@ -407,7 +388,6 @@
                         <div class="spec right p4 reveal d3"><span class="lbl">Children's corner</span><span class="val">Picture books that grow little naturalists</span><i class="rule" aria-hidden="true"></i></div>
                     </div>
                     <div class="s3-stats reveal d3">
-                        <div class="stat"><b><span data-count="4.9" data-dec="1">0</span>★</b><span>Google rating</span></div>
                         <div class="stat"><b>№1</b><span>Nature bookshop in P. Malaysia</span></div>
                         <div class="stat"><b><span data-count="6">0</span></b><span>Shelf worlds</span></div>
                         <div class="stat"><b>2023</b><span>Est. 24 June</span></div>
@@ -424,10 +404,6 @@
                             <h2 class="fh">Where the wild<span class="tail">things <em>read.</em></span></h2>
                         </div>
                         <div class="s4-bottom">
-                            <div class="s4-stat reveal d2">
-                                <b><span data-count="4.9" data-dec="1">0</span>★</b>
-                                <span>Google rating · Damansara Kim</span>
-                            </div>
                             <div class="s4-ctas reveal d3">
                                 <a class="btn btn-primary armed" href="#shelves">Browse the shelves</a>
                                 <a class="btn btn-ghost" href="#cafe">Visit the café</a>
@@ -469,18 +445,6 @@
             </div>
         </section>
 
-        <div class="press" aria-label="Press mentions">
-            <div class="press-track">
-                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
-                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
-                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
-                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
-                <span class="pq"><q>We believe there's a book for everyone.</q><cite>Jennifer Neoh Tan · FMT</cite></span>
-                <span class="pq"><q>A haven for eco-readers and enthusiasts.</q><cite>The Star</cite></span>
-                <span class="pq"><q>A bijou independent bookshop perched atop one of PJ's most iconic watering holes.</q><cite>Options, The Edge</cite></span>
-                <span class="pq"><q>We hope these books can nurture a sense of wonder.</q><cite>Surin Suksuwan · BERNAMA</cite></span>
-            </div>
-        </div>
 
         <!-- ============ CAFÉ — deeper paper ============ -->
         <section id="cafe">
@@ -488,7 +452,7 @@
                 <div class="sec-head reveal">
                     <span class="eyebrow">// The Café · by Maleepap</span>
                     <h2 class="fh">Books pair well with<span class="tail">curry puffs.</span></h2>
-                    <p>Chef Sumalee Suksuwan hand-rolls her famous karipap pusing in-house — reviewers call them "killer curry puffs."</p>
+                    <p>Chef Sumalee Suksuwan hand-rolls her karipap pusing in-house.</p>
                 </div>
                 <div class="cafe-grid">
                     <article class="puff reveal"><span class="tag">Karipap Pusing · 01</span><h3>The Original</h3><p>Butter-crust spiral, chicken, potato &amp; egg — the one that made the name.</p></article>
@@ -542,7 +506,7 @@
     <footer>
         <div class="wrap foot-in">
             <span class="badge signal demo-tag"><i></i>Design preview · Langkah Pertama</span>
-            <p>This is a <b>website design concept</b> prepared for Sunda Shelves by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, titles and prices are drawn from public sources and press coverage; all details to be confirmed by the owners.</p>
+            <p>This is a <b>website design concept</b> prepared for Sunda Shelves by <b>Langkah Pertama Digital Studio</b> — not the official website. Facts, titles and prices are drawn from public sources; all details to be confirmed by the owners.</p>
         </div>
     </footer>
 
