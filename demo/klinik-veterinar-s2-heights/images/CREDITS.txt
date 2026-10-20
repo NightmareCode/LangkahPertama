@@ -1,0 +1,27 @@
+KREDIT GAMBAR — Klinik Veterinar S2 Heights (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain kecuali yang dinyatakan. Setiap gambar disemak dengan mata.
+
+boarding.jpg
+  Fail: Cats in adoption of the refuge of the Veterinary Clinic Telemascotas.jpg
+  Pengarang: Santamarcanda
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Cats_in_adoption_of_the_refuge_of_the_Veterinary_Clinic_Telemascotas.jpg
+
+carrier.jpg
+  Fail: Cat in soft side cat carrier.jpg
+  Pengarang: Tylervigen
+  Lesen: CC BY 4.0 https://creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Cat_in_soft_side_cat_carrier.jpg
+
+dog.jpg
+  Fail: Small dog watching a hand-held treat at a veterinary clinic in Newark, New Jersey.jpg
+  Pengarang: Veterinarian Pet Alliance
+  Lesen: CC BY 4.0 https://creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Small_dog_watching_a_hand-held_treat_at_a_veterinary_clinic_in_Newark,_New_Jersey.jpg
+
+hero.jpg
+  Fail: Stethoscope examination of an orange cat in Newark, New Jersey.jpg
+  Pengarang: Veterinarian Pet Alliance
+  Lesen: CC BY 4.0 https://creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Stethoscope_examination_of_an_orange_cat_in_Newark,_New_Jersey.jpg

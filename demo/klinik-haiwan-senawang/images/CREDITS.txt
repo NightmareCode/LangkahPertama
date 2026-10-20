@@ -1,0 +1,33 @@
+KREDIT GAMBAR — Klinik Haiwan Senawang (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain kecuali yang dinyatakan. Setiap gambar disemak dengan mata.
+
+grooming.jpg
+  Fail: Grooming Poodle.jpg
+  Pengarang: daveynin
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Grooming_Poodle.jpg
+
+hero.jpg
+  Fail: Veterinary Office with dog.JPG
+  Pengarang: MarkBuckawicki
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Veterinary_Office_with_dog.JPG
+
+kennel.jpg
+  Fail: Dog kennel Mason.jpg
+  Pengarang: behavior training & coaching
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Dog_kennel_Mason.jpg
+
+otoscope.jpg
+  Fail: Otoscope examination of a cat ear in Newark, New Jersey.jpg
+  Pengarang: Veterinarian Pet Alliance
+  Lesen: CC BY 4.0 https://creativecommons.org/licenses/by/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Otoscope_examination_of_a_cat_ear_in_Newark,_New_Jersey.jpg
+
+xray.jpg
+  Fail: Feline tooth resorption - dental radiograph of the left mandibular third premolar (307).png
+  Pengarang: Corak80
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Feline_tooth_resorption_-_dental_radiograph_of_the_left_mandibular_third_premolar_(307).png

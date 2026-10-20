@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="data:,">
+    <meta name="theme-color" content="#e9f6ef">
+    <title>Klinik Veterinar S2 Heights — Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Sample website for Klinik Veterinar S2 Heights, Seremban. Design preview by Langkah Pertama — not the official website.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+:root{--bg:#e9f6ef; --card:#fff; --ink:#123b2e; --muted:#46655a; --line:#cfe7da; --accent:#1d7a55; --btn:#145c43; --btn-ink:#fff; --warn-bg:#fff2d6; --warn:#7d4d00; --pbar:#123b2e; --pbar-b:#9ff0c8; --nav:#e9f6efee; --nav-chip:#fff; --sans:'Atkinson Hyperlegible',system-ui,sans-serif; --h2font:700 1.7rem/1.12 'Lexend',system-ui,sans-serif; --pitch-bg:#145c43; --r:24px; --focus:#1d7a55; --btnr:16px;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;line-height:1.15}
+p{margin:0 0 .8em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus,#1a73e8);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-80px;z-index:90;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.skip:focus{top:12px}
+.pbar{background:var(--pbar,#1d1d1f);color:var(--pbar-ink,#f4f4f4);font:600 12.5px/1.45 var(--sans);text-align:center;padding:9px 14px}
+.pbar b{color:var(--pbar-b,#ffd98a)}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.secnav{position:sticky;top:0;z-index:40;background:var(--nav,var(--bg));border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 12px}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border-radius:var(--navr,99px);text-decoration:none;font:700 14px/1 var(--sans);color:var(--nav-ink,var(--ink));background:var(--nav-chip,transparent);white-space:nowrap}
+.secnav a:hover{background:var(--nav-hover,rgba(0,0,0,.06))}
+section{padding:46px 0}
+.eyebrow{font:800 12px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.h2{font:var(--h2font);margin-bottom:14px}
+.lead{color:var(--muted);max-width:36em}
+.sah{display:inline-block;font:700 12px/1.35 var(--sans);background:var(--warn-bg,#fff1d6);color:var(--warn,#8a4b00);border-radius:6px;padding:3px 8px;margin-top:4px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--btnr,99px);font:700 15px/1 var(--sans);text-decoration:none;background:var(--btn);color:var(--btn-ink)}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px currentColor}
+.demo-note{display:none;margin:14px 0 0;background:var(--note-bg,#fff);color:var(--note-ink,#222);border:1.5px dashed var(--accent);padding:12px 14px;border-radius:14px;font-size:14px;line-height:1.5}
+.demo-note.show{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.chip{appearance:none;cursor:pointer;min-height:42px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px/1 var(--sans)}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.count{font-size:13px;color:var(--muted);margin:-6px 0 12px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);padding-bottom:12px}
+.cr{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font:600 10px/1.3 var(--sans);padding:3px 7px;border-radius:6px;max-width:80%}
+.ph{position:relative;overflow:hidden}
+.pitch{background:var(--pitch-bg,var(--ink));color:var(--pitch-ink,#fff);border-radius:var(--r,20px);padding:26px 22px;margin:10px 0}
+.pitch .lbl{font:800 11.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.pitch h2{font:var(--h2font);margin:8px 0 10px}
+.pitch .studio{border:1.5px dashed currentColor;border-radius:14px;padding:12px 14px;margin-top:14px;font-size:14px;opacity:.95}
+.foot{padding:30px 0 40px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+.foot .brand{font-weight:800;color:var(--ink);font-size:14.5px}
+.foot .contoh{display:inline-block;font-weight:800;background:var(--btn);color:var(--btn-ink);border-radius:6px;padding:2px 8px;margin:6px 0}
+.foot h2{font:800 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:20px 0 8px}
+.foot ol{padding-left:20px;margin:6px 0 0;font-size:12.5px}
+
+.paws{background-image:radial-gradient(circle at 20px 20px,rgba(29,122,85,.09) 7px,transparent 8px),radial-gradient(circle at 8px 8px,rgba(29,122,85,.07) 3px,transparent 4px);background-size:64px 64px,64px 64px}
+.hero{padding:26px 0 30px}
+.hero .lbl{display:inline-block;background:#ffd76a;color:#3d2c00;font:700 12.5px/1 'Lexend',sans-serif;border-radius:99px;padding:8px 12px}
+.hero h1{font:700 clamp(2rem,9vw,2.9rem)/1.05 'Lexend',sans-serif;margin:14px 0 10px}
+.hero h1 small{display:block;font-size:.45em;color:#1d7a55;margin-top:8px;letter-spacing:.02em}
+.hero .sub{color:#46655a;font-size:16.5px}
+.hero .duo{display:grid;grid-template-columns:1.25fr 1fr;gap:10px;margin-top:20px}
+.hero .duo .ph{border-radius:22px;overflow:hidden}
+.hero .duo .ph:nth-child(2){margin-top:34px;border-radius:999px 999px 22px 22px}
+.hero .duo img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+.hero .duo .cr{font-size:8.5px;left:6px;right:6px;max-width:none}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.svc div{background:#fff;border-radius:20px;padding:16px 14px;border:1px solid #cfe7da}
+.svc .e{font-size:26px;display:block;margin-bottom:6px}
+.svc b{font:600 1rem/1.2 'Lexend',sans-serif}
+.svc p{font-size:13.5px;color:#46655a;margin:4px 0 0}
+.svc .wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 120px;gap:12px;align-items:center;padding:0 0 0 14px;overflow:hidden}
+.svc .wide .ph{height:100%}
+.svc .wide img{height:100%;width:100%;object-fit:cover;min-height:130px}
+.svc .wide .cr{font-size:8px;left:4px;right:4px;max-width:none}
+.hours{background:#fff;border-radius:22px;border:1px solid #cfe7da;overflow:hidden}
+.hours .r{display:flex;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid #e3f1e9;font-size:15.5px}
+.hours .r:last-child{border-bottom:0}
+.hours .r b{font-family:'Lexend',sans-serif;font-weight:600}
+.hours .r.off{background:#f5faf7;color:#46655a}
+.notice{margin-top:14px;background:#fff8e6;border:2px solid #ffd76a;border-radius:18px;padding:14px 16px;font-size:14.5px}
+.notice b{display:block;font-family:'Lexend',sans-serif}
+.tips{background:#fff;border-radius:22px;border:2px dashed #9fd2b9;padding:18px}
+.tips .flag{display:inline-block;font:700 11.5px/1.2 'Lexend',sans-serif;background:#123b2e;color:#9ff0c8;border-radius:8px;padding:5px 9px;margin-bottom:10px}
+.tips ul{margin:0;padding-left:20px}
+.tips li{margin:6px 0}
+.tips .ph{border-radius:16px;overflow:hidden;margin-top:12px}
+.tips .ph img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.white{background:#fff}
+@media(min-width:620px){.svc{grid-template-columns:repeat(3,1fr)}}
+
+    </style>
+</head>
+<body>
+<a class="skip" href="#utama">Skip to content</a>
+<div class="pbar" role="note"><b>Contoh / Sample</b> · Design preview by Langkah Pertama — bukan laman web rasmi (not the official website)</div>
+<header class="hero paws"><div class="wrap">
+  <span class="lbl">🐾 Contoh · sample clinic website</span>
+  <h1>Klinik Veterinar S2 Heights<small>Veterinary clinic · S2 Heights, Seremban</small></h1>
+  <p class="sub">General healthcare, vaccination, treatment, surgery and boarding for your pets — in S2 Heights.</p>
+  <div class="cta-row"><button class="btn" type="button" data-demo-cta>Contact the clinic</button><a class="btn alt" href="#hours">Opening hours</a></div>
+  <p class="demo-note" role="status" aria-live="polite"></p>
+  <div class="duo">
+    <div class="ph"><img src="images/hero.jpg" alt="Vet listening to an orange cat with a stethoscope (illustrative photo, not this clinic)" width="640" height="853"><span class="cr">Illustrative · Veterinarian Pet Alliance · CC BY 4.0</span></div>
+    <div class="ph"><img src="images/dog.jpg" alt="Small dog at a vet clinic looking at a treat (illustrative photo)" width="640" height="853" loading="lazy"><span class="cr">Veterinarian Pet Alliance · CC BY 4.0</span></div>
+  </div>
+</div></header>
+<nav class="secnav" aria-label="Page sections">
+<a href="#services">Services</a><a href="#hours">Hours</a><a href="#visit">Before your visit</a><a href="#find">Find us</a><a href="#faq">FAQ</a>
+</nav>
+<main id="utama">
+
+<section id="services" class="white"><div class="wrap">
+  <p class="eyebrow">Services</p>
+  <h2 class="h2">What the clinic offers</h2>
+  <p class="lead">As listed on the clinic's own page. Details for each service <span class="sah">akan disahkan oleh pemilik</span></p>
+  <div class="svc">
+    <div><span class="e" aria-hidden="true">🩺</span><b>General healthcare</b><p>Routine check-ups for your pet.</p></div>
+    <div><span class="e" aria-hidden="true">💉</span><b>Vaccination</b><p>Vaccines for your pet.</p></div>
+    <div><span class="e" aria-hidden="true">🌡️</span><b>Disease treatment</b><p>Care when your pet is unwell.</p></div>
+    <div><span class="e" aria-hidden="true">🏥</span><b>Surgery</b><p>Surgical procedures at the clinic.</p></div>
+    <div class="wide"><div><span class="e" aria-hidden="true">🏠</span><b>Boarding</b><p>A place for your pet while you are away. Space &amp; rates akan disahkan oleh pemilik.</p></div><div class="ph"><img src="images/boarding.jpg" alt="Cats resting in clinic cages (illustrative photo)" width="640" height="480" loading="lazy"><span class="cr">Santamarcanda · CC BY-SA 4.0</span></div></div>
+  </div>
+  <p class="lead" style="margin-top:14px">Animals seen &amp; prices <span class="sah">akan disahkan oleh pemilik</span></p>
+</div></section>
+<section id="hours" class="paws"><div class="wrap">
+  <p class="eyebrow">Opening hours</p>
+  <h2 class="h2">When we're open</h2>
+  <div class="hours">
+    <div class="r off"><b>Monday</b><span>Closed</span></div>
+    <div class="r"><b>Tue – Fri</b><span>10:00am – 6:30pm*</span></div>
+    <div class="r"><b>Sat – Sun</b><span>10:00am – 3:30pm</span></div>
+  </div>
+  <p style="margin-top:8px"><span class="sah">*One listing shows 5:30pm — akan disahkan oleh pemilik</span></p>
+  <div class="notice" role="note"><b>📢 Check notices before coming</b>The clinic posts temporary hour changes and vet-off-duty days on its page. On the real site, these notices would appear right here.</div>
+</div></section>
+<section id="visit" class="white"><div class="wrap">
+  <p class="eyebrow">Before your visit</p>
+  <h2 class="h2">A few easy tips</h2>
+  <div class="tips">
+    <span class="flag">Suggestion for the clinic to approve</span>
+    <ul>
+      <li>Bring cats in a secure carrier and dogs on a leash.</li>
+      <li>Bring your pet's vaccination record if you have one.</li>
+      <li>Check the latest notice for any change in hours.</li>
+    </ul>
+    <div class="ph"><img src="images/carrier.jpg" alt="Cat inside a soft pet carrier (illustrative photo)" width="640" height="836" loading="lazy"><span class="cr">Tylervigen · CC BY 4.0</span></div>
+  </div>
+</div></section>
+<section id="find" class="paws"><div class="wrap">
+  <p class="eyebrow">Find us</p>
+  <h2 class="h2">S2 Heights, Seremban</h2>
+  <p>Ground floor, Jalan Pusat Komersial Saujana 5, S2 Heights, Seremban.</p>
+  <p><span class="sah">Map pin &amp; parking akan disahkan oleh pemilik</span></p>
+  <div class="cta-row"><button class="btn" type="button" data-demo-cta>Open map</button><button class="btn alt" type="button" data-demo-cta>Contact the clinic</button></div>
+  <p class="demo-note" role="status" aria-live="polite"></p>
+</div></section>
+<section id="faq" class="faq white"><div class="wrap">
+  <p class="eyebrow">FAQ</p>
+  <h2 class="h2">Common questions</h2>
+  <details><summary>Is the clinic open on Monday?</summary><p>No — the clinic's page lists Monday as closed.</p></details>
+  <details><summary>Do you offer boarding?</summary><p>Yes, boarding is listed among the clinic's services. Availability &amp; rates akan disahkan oleh pemilik.</p></details>
+  <details><summary>Do I need an appointment?</summary><p>Akan disahkan oleh pemilik. Please contact the clinic through its official channel.</p></details>
+  <details><summary>How much is a vaccination?</summary><p>Prices akan disahkan oleh pemilik.</p></details>
+</div></section>
+
+<div class="wrap">
+<aside class="pitch" aria-label="About this preview">
+    <span class="lbl">Free sample for Klinik Veterinar S2 Heights</span>
+    <h2>One link for services, hours &amp; notices</h2>
+    <p>Pet owners can check services, opening hours and the latest notice in one place — easy to share and quick on any phone. All content is approved by the clinic before going live.</p>
+    <p class="studio">Pratonton sahaja (preview only): every button on this page is a demo — no appointment or message is sent. Prepared by Far, Langkah Pertama.</p>
+</aside>
+</div>
+</main>
+<footer class="foot"><div class="wrap">
+    <div class="contoh">Contoh</div><br><span class="brand">Design preview · Langkah Pertama</span>
+    <p>Contoh / sample website for Klinik Veterinar S2 Heights — bukan laman web rasmi (not the official website). Information is taken from the clinic’s public page; items marked “akan disahkan oleh pemilik” are not yet confirmed. No medical advice is given on this page.</p>
+    <h2>Photo credits</h2>
+    <p>All photos are illustrative, from Wikimedia Commons — not photos of this clinic or its patients. Resized to 640px wide. Full list: images/CREDITS.txt.</p>
+    <ol>
+<li>boarding.jpg — Santamarcanda, CC BY-SA 4.0</li>
+<li>carrier.jpg — Tylervigen, CC BY 4.0</li>
+<li>dog.jpg — Veterinarian Pet Alliance, CC BY 4.0</li>
+<li>hero.jpg — Veterinarian Pet Alliance, CC BY 4.0</li>
+    </ol>
+</div></footer>
+<script>
+(function(){
+  var MSG="Pratonton sahaja (preview only) — no appointment or message is sent. On the real site, this button opens the clinic’s official channel.";
+  document.querySelectorAll('[data-demo-cta]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.closest('.cta-row').parentNode.querySelector('.demo-note');
+      if(n){n.textContent=MSG;n.classList.add('show');}
+    });
+  });
+  document.querySelectorAll('[data-filter]').forEach(function(g){
+    var chips=g.querySelectorAll('.chip'), items=g.querySelectorAll('[data-t]'), out=g.querySelector('.count');
+    chips.forEach(function(c){
+      c.addEventListener('click',function(){
+        var f=c.getAttribute('data-f'), n=0;
+        chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+        items.forEach(function(it){var ok=f==='semua'||it.getAttribute('data-t').split(' ').indexOf(f)>-1; it.hidden=!ok; if(ok)n++;});
+        if(out) out.textContent=(out.getAttribute('data-pre')||'Menunjukkan ')+n+(out.getAttribute('data-post')||' pilihan');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="data:,">
+    <meta name="theme-color" content="#fdeef2">
+    <title>Kakzee Homebakery — Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Pratonton laman untuk Kakzee Homebakery, kek tempahan di Ampangan, Seremban. Design preview oleh Langkah Pertama — bukan laman rasmi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+:root{--bg:#fdeef2; --card:#fff; --ink:#4a2433; --muted:#7a5664; --line:#f6d3dd; --accent:#d9547d; --btn:#d9547d; --btn-ink:#fff; --warn-bg:#fff2d9; --warn:#8a5300; --pbar:#4a2433; --pbar-b:#ffc2d4; --nav:#fdeef2ee; --nav-chip:#fff; --sans:'Nunito',system-ui,sans-serif; --h2font:700 1.75rem/1.1 'Fredoka',system-ui,sans-serif; --pitch-bg:#7b3d58; --r:28px; --focus:#d9547d;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;line-height:1.15}
+p{margin:0 0 .8em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus,#1a73e8);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-80px;z-index:90;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.skip:focus{top:12px}
+.pbar{background:var(--pbar,#1d1d1f);color:var(--pbar-ink,#f4f4f4);font:600 12.5px/1.45 var(--sans);text-align:center;padding:9px 14px}
+.pbar b{color:var(--pbar-b,#ffd98a)}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.secnav{position:sticky;top:0;z-index:40;background:var(--nav,var(--bg));border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 12px}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border-radius:var(--navr,99px);text-decoration:none;font:700 14px/1 var(--sans);color:var(--nav-ink,var(--ink));background:var(--nav-chip,transparent);white-space:nowrap}
+.secnav a:hover{background:var(--nav-hover,rgba(0,0,0,.06))}
+section{padding:46px 0}
+.eyebrow{font:800 12px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.h2{font:var(--h2font);margin-bottom:14px}
+.lead{color:var(--muted);max-width:36em}
+.sah{display:inline-block;font:700 12px/1.35 var(--sans);background:var(--warn-bg,#fff1d6);color:var(--warn,#8a4b00);border-radius:6px;padding:3px 8px;margin-top:4px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--btnr,99px);font:700 15px/1 var(--sans);text-decoration:none;background:var(--btn);color:var(--btn-ink)}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px currentColor}
+.demo-note{display:none;margin:14px 0 0;background:var(--note-bg,#fff);color:var(--note-ink,#222);border:1.5px dashed var(--accent);padding:12px 14px;border-radius:14px;font-size:14px;line-height:1.5}
+.demo-note.show{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.chip{appearance:none;cursor:pointer;min-height:42px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px/1 var(--sans)}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.count{font-size:13px;color:var(--muted);margin:-6px 0 12px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);padding-bottom:12px}
+.cr{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font:600 10px/1.3 var(--sans);padding:3px 7px;border-radius:6px;max-width:80%}
+.ph{position:relative;overflow:hidden}
+.pitch{background:var(--pitch-bg,var(--ink));color:var(--pitch-ink,#fff);border-radius:var(--r,20px);padding:26px 22px;margin:10px 0}
+.pitch .lbl{font:800 11.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.pitch h2{font:var(--h2font);margin:8px 0 10px}
+.pitch .studio{border:1.5px dashed currentColor;border-radius:14px;padding:12px 14px;margin-top:14px;font-size:14px;opacity:.95}
+.foot{padding:30px 0 40px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+.foot .brand{font-weight:800;color:var(--ink);font-size:14.5px}
+.foot .contoh{display:inline-block;font-weight:800;background:var(--btn);color:var(--btn-ink);border-radius:6px;padding:2px 8px;margin:6px 0}
+.foot h2{font:800 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:20px 0 8px}
+.foot ol{padding-left:20px;margin:6px 0 0;font-size:12.5px}
+
+.hero{padding:30px 0 36px;position:relative;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;z-index:0}
+.hero::before{width:260px;height:260px;background:#ffd6e2;right:-90px;top:-70px}
+.hero::after{width:160px;height:160px;background:#e3f3ec;left:-60px;bottom:30px}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font:700 clamp(2.4rem,12vw,3.4rem)/.95 'Fredoka',sans-serif;color:#4a2433}
+.hero h1 span{display:block;color:#d9547d;font-size:.55em;margin-top:6px}
+.hero .sub{margin:14px 0 0;color:#7a5664;font-size:16px}
+.hero .ph{border-radius:28px;overflow:hidden;margin-top:22px;transform:rotate(-1.5deg);border:6px solid #fff;box-shadow:0 14px 30px rgba(74,36,51,.15)}
+.hero .ph img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.stick{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.stick span{background:#fff;border-radius:99px;padding:8px 13px;font:700 13px/1 var(--sans);box-shadow:0 2px 0 #f6d3dd}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat-grid article{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 3px 0 #f6d3dd;display:flex;flex-direction:column}
+.cat-grid article[hidden]{display:none}
+.cat-grid .ph img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.cat-grid .ph .cr{font-size:8.5px;left:5px;right:5px;bottom:5px;max-width:none}
+.cat-grid .emo{aspect-ratio:1/1;display:grid;place-items:center;font-size:52px;background:repeating-linear-gradient(45deg,#fff5f8 0 12px,#ffe9f0 12px 24px)}
+.cat-grid .tx{padding:10px 12px 14px;display:flex;flex-direction:column;gap:3px;flex:1}
+.cat-grid h3{font:600 1.02rem/1.15 'Fredoka',sans-serif}
+.cat-grid p{font-size:13px;color:#7a5664;margin:0;flex:1}
+.cat-grid .sah{font-size:11px}
+.cat{font:800 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#d9547d}
+.how{display:grid;gap:12px;padding:0;margin:0}
+.how li{list-style:none;background:#fff;border-radius:22px;padding:16px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 3px 0 #f6d3dd}
+.how .i{flex:none;width:46px;height:46px;border-radius:16px;background:#ffe3ec;display:grid;place-items:center;font-size:22px}
+.how b{font:600 1.05rem/1.2 'Fredoka',sans-serif}
+.mint{background:#e3f3ec}
+@media(min-width:620px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+
+    </style>
+</head>
+<body>
+<a class="skip" href="#utama">Langkau ke kandungan</a>
+<div class="pbar" role="note"><b>Design preview</b> · Langkah Pertama — bukan laman web rasmi Kakzee</div>
+<header class="hero"><div class="wrap">
+  <h1>Kakzee<span>Homebakery · Ampangan</span></h1>
+  <p class="sub">Kek tempahan dari dapur rumah di Ampangan, Seremban — minimalist, vintaj, tema &amp; hantaran. 🎂</p>
+  <div class="stick"><span>📍 Ampangan, Seremban</span><span>🛵 Ambil sendiri / Grab Express</span></div>
+  <div class="cta-row"><button class="btn" type="button" data-demo-cta>Tanya tarikh kosong</button><a class="btn alt" href="#katalog">Lihat katalog</a></div>
+  <p class="demo-note" role="status" aria-live="polite"></p>
+  <div class="ph"><img src="images/vintage.jpg" alt="Kek berhias krim gaya vintaj (gambar hiasan, bukan hasil Kakzee)" width="640" height="757"><span class="cr">Gambar hiasan · Jay from UK · CC BY 2.0</span></div>
+</div></header>
+<nav class="secnav" aria-label="Bahagian laman">
+<a href="#katalog">Katalog</a><a href="#cara">Cara tempah</a><a href="#ambil">Ambil &amp; hantar</a><a href="#soalan">Soalan</a>
+</nav>
+<main id="utama">
+
+<section id="katalog"><div class="wrap" data-filter>
+  <p class="eyebrow">Katalog</p>
+  <h2 class="h2">Pilih kek anda</h2>
+  <p class="lead">Jenis kek &amp; set yang pernah dikongsi di Instagram Kakzee. Harga, saiz &amp; perisa <span class="sah">akan disahkan oleh pemilik</span></p>
+  <div class="chips" role="group" aria-label="Tapis katalog">
+    <button class="chip" type="button" data-f="semua" aria-pressed="true">Semua</button>
+    <button class="chip" type="button" data-f="kek" aria-pressed="false">Kek</button>
+    <button class="chip" type="button" data-f="set" aria-pressed="false">Set &amp; majlis</button>
+    <button class="chip" type="button" data-f="manis" aria-pressed="false">Manisan</button>
+  </div>
+  <p class="count" role="status" aria-live="polite" data-post=" pilihan">Menunjukkan 12 pilihan</p>
+  <div class="cat-grid">
+<article data-t="kek"><div class="ph"><img src="images/minimalist.jpg" alt="Minimalist Cake (gambar hiasan, bukan hasil Kakzee)" width="640" height="853" loading="lazy"><span class="cr">Alnitak-Alnilam-Mintaka · CC BY-SA 4.0</span></div><div class="tx"><span class="cat">Kek</span><h3>Minimalist Cake</h3><p>Kek ringkas dengan hiasan minimal.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="kek"><div class="ph"><img src="images/vintage.jpg" alt="Minimalist Vintage Cake (gambar hiasan, bukan hasil Kakzee)" width="640" height="757" loading="lazy"><span class="cr">Jay from UK · CC BY 2.0</span></div><div class="tx"><span class="cat">Kek</span><h3>Minimalist Vintage Cake</h3><p>Gaya vintaj — piping berlapis yang lembut.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="kek"><div class="ph"><img src="images/tema.jpg" alt="Kek Tema (gambar hiasan, bukan hasil Kakzee)" width="640" height="853" loading="lazy"><span class="cr">Historiograf · CC0</span></div><div class="tx"><span class="cat">Kek</span><h3>Kek Tema</h3><p>Contoh tema yang pernah dikongsi: jengkaut (excavator).</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="kek"><div class="ph emo" aria-hidden="true">👑</div><div class="tx"><span class="cat">Kek</span><h3>Princess Cake</h3><p>Kek bertema puteri.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="kek"><div class="ph emo" aria-hidden="true">🎉</div><div class="tx"><span class="cat">Kek</span><h3>Birthday Cake</h3><p>Kek hari jadi ikut tema pilihan.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="kek"><div class="ph emo" aria-hidden="true">💐</div><div class="tx"><span class="cat">Kek</span><h3>Kek Hantaran</h3><p>Untuk majlis pertunangan &amp; perkahwinan.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="set"><div class="ph"><img src="images/goodies.jpg" alt="Goodies Mix Box (gambar hiasan, bukan hasil Kakzee)" width="640" height="853" loading="lazy"><span class="cr">User:Keannetamim · CC BY-SA 3.0</span></div><div class="tx"><span class="cat">Set &amp; majlis</span><h3>Goodies Mix Box</h3><p>Kotak campuran manisan — sesuai untuk hadiah.</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="set"><div class="ph"><img src="images/dessert-table.jpg" alt="Dessert Table Package (gambar hiasan, bukan hasil Kakzee)" width="640" height="256" loading="lazy"><span class="cr">Shixart1985 · CC BY 2.0</span></div><div class="tx"><span class="cat">Set &amp; majlis</span><h3>Dessert Table Package</h3><p>Pakej meja pencuci mulut untuk majlis (pakej A / B).</p><span class="sah">Harga akan disahkan oleh pemilik</span></div></article>
+<article data-t="manis"><div class="ph"><img src="images/puff.jpg" alt="Cream Puff (gambar hiasan, bukan hasil Kakzee)" width="640" height="640" loading="lazy"><span class="cr">Fumikas Sagisavas · CC0</span></div><div class="tx"><span class="cat">Manisan</span><h3>Cream Puff</h3><p>Puf krim.</p><span class="sah">Senarai awam — akan disahkan oleh pemilik</span></div></article>
+<article data-t="manis"><div class="ph"><img src="images/pavlova.jpg" alt="Pavlova (gambar hiasan, bukan hasil Kakzee)" width="640" height="507" loading="lazy"><span class="cr">brett jordan · CC BY 2.0</span></div><div class="tx"><span class="cat">Manisan</span><h3>Pavlova</h3><p>Meringue dengan krim &amp; buah.</p><span class="sah">Senarai awam — akan disahkan oleh pemilik</span></div></article>
+<article data-t="manis"><div class="ph"><img src="images/brownies.jpg" alt="Brownies (gambar hiasan, bukan hasil Kakzee)" width="640" height="480" loading="lazy"><span class="cr">Lyzzy (pemuat naik) · CC BY-SA 3.0</span></div><div class="tx"><span class="cat">Manisan</span><h3>Brownies</h3><p>Brownies coklat.</p><span class="sah">Senarai awam — akan disahkan oleh pemilik</span></div></article>
+<article data-t="manis"><div class="ph"><img src="images/cheesecake.jpg" alt="Burnt Cheesecake (gambar hiasan, bukan hasil Kakzee)" width="640" height="480" loading="lazy"><span class="cr">Fumikas Sagisavas · CC0</span></div><div class="tx"><span class="cat">Manisan</span><h3>Burnt Cheesecake</h3><p>Kek keju bakar.</p><span class="sah">Senarai awam — akan disahkan oleh pemilik</span></div></article>
+  </div>
+</div></section>
+<section id="cara" class="mint"><div class="wrap">
+  <p class="eyebrow">Cara tempah</p>
+  <h2 class="h2">Tiga langkah mudah</h2>
+  <ol class="how">
+    <li><span class="i" aria-hidden="true">💬</span><div><b>Kongsi idea</b><br>Jenis kek, tema, tarikh &amp; bilangan tetamu.</div></li>
+    <li><span class="i" aria-hidden="true">🧾</span><div><b>Sahkan tempahan</b><br>Tempahan disahkan dengan bayaran (menurut profil Kakzee).</div></li>
+    <li><span class="i" aria-hidden="true">🎂</span><div><b>Ambil atau hantar</b><br>Ambil sendiri di Ampangan atau melalui Grab Express.</div></li>
+  </ol>
+  <p class="lead" style="margin-top:12px">Tempoh tempahan awal &amp; cara bayaran <span class="sah">akan disahkan oleh pemilik</span></p>
+  <div class="cta-row"><button class="btn" type="button" data-demo-cta>Mula tempah</button></div>
+  <p class="demo-note" role="status" aria-live="polite"></p>
+</div></section>
+<section id="ambil"><div class="wrap">
+  <p class="eyebrow">Ambil &amp; hantar</p>
+  <h2 class="h2">Dari Ampangan</h2>
+  <ul class="how">
+    <li><span class="i" aria-hidden="true">🏠</span><div><b>Ambil sendiri</b><br>Ampangan, Seremban.<br><span class="sah">Lokasi tepat diberi selepas tempahan — akan disahkan oleh pemilik</span></div></li>
+    <li><span class="i" aria-hidden="true">🛵</span><div><b>Grab Express</b><br>Penghantaran melalui Grab Express.<br><span class="sah">Kos &amp; kawasan akan disahkan oleh pemilik</span></div></li>
+    <li><span class="i" aria-hidden="true">🕒</span><div><b>Waktu ambil</b><br><span class="sah">Hari &amp; jam akan disahkan oleh pemilik</span></div></li>
+  </ul>
+</div></section>
+<section id="soalan" class="faq mint"><div class="wrap">
+  <p class="eyebrow">Soalan lazim</p>
+  <h2 class="h2">Sebelum tempah</h2>
+  <details><summary>Boleh buat kek ikut tema?</summary><p>Boleh — contohnya kek tema jengkaut dan puteri pernah dikongsi di Instagram Kakzee. Tema lain akan disahkan oleh pemilik.</p></details>
+  <details><summary>Berapa harga kek?</summary><p>Harga bergantung pada saiz &amp; reka bentuk — akan disahkan oleh pemilik.</p></details>
+  <details><summary>Ada pakej untuk majlis?</summary><p>Ada Dessert Table Package (pakej A / B) dan Kek Hantaran. Isi pakej akan disahkan oleh pemilik.</p></details>
+  <details><summary>Boleh hantar?</summary><p>Melalui Grab Express, atau ambil sendiri di Ampangan.</p></details>
+</div></section>
+
+<div class="wrap">
+<aside class="pitch" aria-label="Tentang pratonton ini">
+    <span class="lbl">Pratonton percuma untuk Kakzee Homebakery</span>
+    <h2>Katalog kek yang mudah dikongsi</h2>
+    <p>Bila pelanggan tanya “ada kek apa?”, cukup hantar satu pautan. Mereka boleh tapis ikut jenis dan terus tanya tarikh — tanpa perlu skrol jauh di Instagram.</p>
+    <p class="studio">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada tempahan atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+</aside>
+</div>
+</main>
+<footer class="foot"><div class="wrap">
+    <span class="brand">Design preview · Langkah Pertama</span>
+    <p>Pratonton percuma untuk Kakzee Homebakery — bukan laman web rasmi. Maklumat diambil daripada profil Instagram awam Kakzee; perkara bertanda “akan disahkan oleh pemilik” belum disemak.</p>
+    <h2>Kredit gambar</h2>
+    <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini. Saiz dikecilkan ke lebar 640px. Senarai penuh: images/CREDITS.txt.</p>
+    <ol>
+<li>brownies.jpg — Lyzzy (pemuat naik), CC BY-SA 3.0</li>
+<li>cheesecake.jpg — Fumikas Sagisavas, CC0</li>
+<li>dessert-table.jpg — Shixart1985, CC BY 2.0</li>
+<li>goodies.jpg — User:Keannetamim, CC BY-SA 3.0</li>
+<li>minimalist.jpg — Alnitak-Alnilam-Mintaka, CC BY-SA 4.0</li>
+<li>pavlova.jpg — brett jordan, CC BY 2.0</li>
+<li>puff.jpg — Fumikas Sagisavas, CC0</li>
+<li>tema.jpg — Historiograf, CC0</li>
+<li>vintage.jpg — Jay from UK, CC BY 2.0</li>
+    </ol>
+</div></footer>
+<script>
+(function(){
+  var MSG="Pratonton sahaja — tiada tempahan atau mesej dihantar. Pada laman sebenar, butang ini membuka saluran tempahan rasmi Kakzee.";
+  document.querySelectorAll('[data-demo-cta]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.closest('.cta-row').parentNode.querySelector('.demo-note');
+      if(n){n.textContent=MSG;n.classList.add('show');}
+    });
+  });
+  document.querySelectorAll('[data-filter]').forEach(function(g){
+    var chips=g.querySelectorAll('.chip'), items=g.querySelectorAll('[data-t]'), out=g.querySelector('.count');
+    chips.forEach(function(c){
+      c.addEventListener('click',function(){
+        var f=c.getAttribute('data-f'), n=0;
+        chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+        items.forEach(function(it){var ok=f==='semua'||it.getAttribute('data-t').split(' ').indexOf(f)>-1; it.hidden=!ok; if(ok)n++;});
+        if(out) out.textContent=(out.getAttribute('data-pre')||'Menunjukkan ')+n+(out.getAttribute('data-post')||' pilihan');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

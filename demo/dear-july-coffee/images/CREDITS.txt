@@ -1,0 +1,75 @@
+KREDIT GAMBAR — Dear July Coffee (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain kecuali yang dinyatakan. Setiap gambar disemak dengan mata.
+
+brownies.jpg
+  Fail: Brownie IMG 001.jpg
+  Pengarang: Phadke09
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Brownie_IMG_001.jpg
+
+cendol.jpg
+  Fail: Cendol in Penang.jpg
+  Pengarang: Xlr8ion
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Cendol_in_Penang.jpg
+
+chaikueh.jpg
+  Fail: Assorted Teochew kueh.jpg
+  Pengarang: Jpatokal
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Assorted_Teochew_kueh.jpg
+
+fishball.jpg
+  Fail: Fish ball soup noodle.jpg
+  Pengarang: ProjectManhattan
+  Lesen: CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Fish_ball_soup_noodle.jpg
+
+hero.jpg
+  Fail: Akaka Cendol Melaka.jpg
+  Pengarang: Dd993f2
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Akaka_Cendol_Melaka.jpg
+
+kari.jpg
+  Fail: Chicken Curry with Rice.jpg
+  Pengarang: Gaurav Dhwaj Khadka
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Chicken_Curry_with_Rice.jpg
+
+krapao.jpg
+  Fail: Kao Rad Pad Kra-pao with chicken and fried egg - Unithai 2025-07-30.jpg
+  Pengarang: Andy Li
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Kao_Rad_Pad_Kra-pao_with_chicken_and_fried_egg_-_Unithai_2025-07-30.jpg
+
+latte.jpg
+  Fail: Latte art.jpg
+  Pengarang: Mortefot from Flickr
+  Lesen: CC BY-SA 2.0 https://creativecommons.org/licenses/by-sa/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Latte_art.jpg
+
+malaigao.jpg
+  Fail: Malagao in Beijing.jpg
+  Pengarang: Shizhao
+  Lesen: Public domain (domain awam)
+  Sumber: https://commons.wikimedia.org/wiki/File:Malagao_in_Beijing.jpg
+
+meegoreng.jpg
+  Fail: Mee goreng Pulau Pinang.jpg
+  Pengarang: Dr.Francostein1975
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Mee_goreng_Pulau_Pinang.jpg
+
+nasilemak.jpg
+  Fail: Nasi Lemak dengan Ayam Rendang dengan Sos chili.jpg
+  Pengarang: Meandkancil2020
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_Lemak_dengan_Ayam_Rendang_dengan_Sos_chili.jpg
+
+pourover.jpg
+  Fail: Coffee pour over using Hario cone.jpg
+  Pengarang: User:GorillaWarfare
+  Lesen: CC BY-SA 1.0 https://creativecommons.org/licenses/by-sa/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Coffee_pour_over_using_Hario_cone.jpg

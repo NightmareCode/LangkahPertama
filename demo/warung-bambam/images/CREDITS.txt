@@ -1,0 +1,51 @@
+KREDIT GAMBAR — Warung Bambam (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain kecuali yang dinyatakan. Setiap gambar disemak dengan mata.
+
+hero.jpg
+  Fail: Stacked packs of nasi lemak, Seremban.jpg
+  Pengarang: AyyanD
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Stacked_packs_of_nasi_lemak,_Seremban.jpg
+
+kuih.jpg
+  Fail: Kuih-muih 2 Bazaar Ramadan BSP.jpg
+  Pengarang: Countryball mys123
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Kuih-muih_2_Bazaar_Ramadan_BSP.jpg
+
+lontong.jpg
+  Fail: Lontong Kuah Lodeh.jpg
+  Pengarang: IzamJ
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Lontong_Kuah_Lodeh.jpg
+
+meekari.jpg
+  Fail: Malaysian noodles-Curry Mee-01.jpg
+  Pengarang: chee.hong
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Malaysian_noodles-Curry_Mee-01.jpg
+
+nasigoreng.jpg
+  Fail: Nasi Goreng Kampung Malaysia.jpg
+  Pengarang: The Bangsawan
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung_Malaysia.jpg
+
+nasilemak.jpg
+  Fail: Nasi Lemak Sambal Sotong Rendang Kerang.jpg
+  Pengarang: Mdsheth1986
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Nasi_Lemak_Sambal_Sotong_Rendang_Kerang.jpg
+
+rotibakar.jpg
+  Fail: Roti bakar.jpg
+  Pengarang: Shadowsnuggles
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Roti_bakar.jpg
+
+rotijala.jpg
+  Fail: Roti jala penang.JPG
+  Pengarang: Popo le Chien
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Roti_jala_penang.JPG

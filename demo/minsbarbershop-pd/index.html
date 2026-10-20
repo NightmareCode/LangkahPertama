@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="data:,">
+    <meta name="theme-color" content="#141414">
+    <title>Min's Barbershop PD — Design Preview · Langkah Pertama</title>
+    <meta name="description" content="Pratonton laman untuk Min's Barbershop, Port Dickson & Lukut. Design preview oleh Langkah Pertama — bukan laman rasmi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+:root{--bg:#141414; --card:#1f1f1f; --ink:#f4efe6; --muted:#b9b1a5; --line:#333; --accent:#e23b3b; --btn:#e23b3b; --btn-ink:#fff; --warn-bg:#3a2a12; --warn:#ffcf7a; --pbar:#e23b3b; --pbar-ink:#fff; --pbar-b:#fff; --nav:#141414f0; --nav-chip:#222; --nav-ink:#f4efe6; --nav-hover:#333; --navr:4px; --btnr:4px; --sans:'Barlow',system-ui,sans-serif; --h2font:400 2.6rem/.95 'Bebas Neue',Impact,sans-serif; --pitch-bg:#f4efe6; --pitch-ink:#141414; --r:6px; --focus:#ffcf7a; --note-bg:#222; --note-ink:#f4efe6;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;line-height:1.15}
+p{margin:0 0 .8em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus,#1a73e8);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-80px;z-index:90;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.skip:focus{top:12px}
+.pbar{background:var(--pbar,#1d1d1f);color:var(--pbar-ink,#f4f4f4);font:600 12.5px/1.45 var(--sans);text-align:center;padding:9px 14px}
+.pbar b{color:var(--pbar-b,#ffd98a)}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.secnav{position:sticky;top:0;z-index:40;background:var(--nav,var(--bg));border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 12px}
+.secnav::-webkit-scrollbar{display:none}
+.secnav a{flex:none;display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border-radius:var(--navr,99px);text-decoration:none;font:700 14px/1 var(--sans);color:var(--nav-ink,var(--ink));background:var(--nav-chip,transparent);white-space:nowrap}
+.secnav a:hover{background:var(--nav-hover,rgba(0,0,0,.06))}
+section{padding:46px 0}
+.eyebrow{font:800 12px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.h2{font:var(--h2font);margin-bottom:14px}
+.lead{color:var(--muted);max-width:36em}
+.sah{display:inline-block;font:700 12px/1.35 var(--sans);background:var(--warn-bg,#fff1d6);color:var(--warn,#8a4b00);border-radius:6px;padding:3px 8px;margin-top:4px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:var(--btnr,99px);font:700 15px/1 var(--sans);text-decoration:none;background:var(--btn);color:var(--btn-ink)}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px currentColor}
+.demo-note{display:none;margin:14px 0 0;background:var(--note-bg,#fff);color:var(--note-ink,#222);border:1.5px dashed var(--accent);padding:12px 14px;border-radius:14px;font-size:14px;line-height:1.5}
+.demo-note.show{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.chip{appearance:none;cursor:pointer;min-height:42px;padding:0 16px;border-radius:99px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 14px/1 var(--sans)}
+.chip[aria-pressed=true]{background:var(--btn);color:var(--btn-ink);border-color:var(--btn)}
+.count{font-size:13px;color:var(--muted);margin:-6px 0 12px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700;padding:10px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--muted);padding-bottom:12px}
+.cr{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font:600 10px/1.3 var(--sans);padding:3px 7px;border-radius:6px;max-width:80%}
+.ph{position:relative;overflow:hidden}
+.pitch{background:var(--pitch-bg,var(--ink));color:var(--pitch-ink,#fff);border-radius:var(--r,20px);padding:26px 22px;margin:10px 0}
+.pitch .lbl{font:800 11.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.pitch h2{font:var(--h2font);margin:8px 0 10px}
+.pitch .studio{border:1.5px dashed currentColor;border-radius:14px;padding:12px 14px;margin-top:14px;font-size:14px;opacity:.95}
+.foot{padding:30px 0 40px;font-size:13.5px;color:var(--muted);border-top:1px solid var(--line)}
+.foot .brand{font-weight:800;color:var(--ink);font-size:14.5px}
+.foot .contoh{display:inline-block;font-weight:800;background:var(--btn);color:var(--btn-ink);border-radius:6px;padding:2px 8px;margin:6px 0}
+.foot h2{font:800 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:20px 0 8px}
+.foot ol{padding-left:20px;margin:6px 0 0;font-size:12.5px}
+
+.pole{height:12px;background:repeating-linear-gradient(-45deg,#e23b3b 0 14px,#f4efe6 14px 28px,#1d4fa8 28px 42px,#f4efe6 42px 56px)}
+.hero{position:relative;min-height:540px;display:flex;align-items:flex-end;padding:0 0 30px;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.55)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.1) 30%,#141414 96%)}
+.hero .wrap{position:relative;z-index:1;width:100%}
+.hero .cr{z-index:2;top:10px;bottom:auto}
+.hero h1{font:400 clamp(4rem,22vw,6.4rem)/.82 'Bebas Neue',Impact,sans-serif;letter-spacing:.01em}
+.hero h1 span{color:#e23b3b}
+.hero .sub{font:700 14px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#f4efe6;margin-top:12px}
+.btn.alt{color:#f4efe6}
+.svc{display:grid;gap:2px;background:#333;border:2px solid #333}
+.svc div{background:#1f1f1f;padding:18px 16px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.svc b{font:400 1.7rem/1 'Bebas Neue',sans-serif;letter-spacing:.03em}
+.svc small{display:block;color:#b9b1a5;font-size:13.5px;margin-top:4px}
+.svc .p{flex:none;text-align:right}
+.outlets{display:grid;gap:16px}
+.outlet{background:#1f1f1f;border-left:6px solid #e23b3b;padding:18px 16px}
+.outlet .no{font:400 1rem/1 'Bebas Neue',sans-serif;letter-spacing:.2em;color:#e23b3b}
+.outlet h3{font:400 2rem/1 'Bebas Neue',sans-serif;margin:6px 0 8px;letter-spacing:.02em}
+.outlet dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.outlet dt{color:#b9b1a5;font-weight:700}
+.outlet dd{margin:0}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.gal .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(.2)}
+.gal .ph:first-child{grid-column:1/-1}
+.gal .ph:first-child img{aspect-ratio:16/10}
+.gal .cr{font-size:9px}
+.stripe{background:#1a1a1a;border-block:1px solid #2a2a2a}
+.pitch{border:0}
+.foot{color:#b9b1a5}
+.sah{border:1px solid #6b4f1d}
+@media(min-width:620px){.outlets{grid-template-columns:1fr 1fr}.gal{grid-template-columns:repeat(3,1fr)}}
+
+    </style>
+</head>
+<body>
+<a class="skip" href="#utama">Langkau ke kandungan</a>
+<div class="pbar" role="note"><b>Design preview</b> · Langkah Pertama — bukan laman web rasmi Min's Barbershop</div>
+<div class="pole" aria-hidden="true"></div>
+<header class="hero">
+  <img src="images/hero.jpg" alt="Kerusi gunting rambut merah gaya klasik (gambar hiasan, bukan kedai sebenar)" width="640" height="427">
+  <span class="cr">Gambar hiasan · PattayaPatrol · CC BY-SA 4.0</span>
+  <div class="wrap">
+    <h1>Min's<br><span>Barber</span>shop</h1>
+    <p class="sub">Port Dickson · Lukut</p>
+    <div class="cta-row"><button class="btn" type="button" data-demo-cta>Tanya giliran</button><a class="btn alt" href="#cawangan">Cari cawangan</a></div>
+    <p class="demo-note" role="status" aria-live="polite"></p>
+  </div>
+</header>
+<nav class="secnav" aria-label="Bahagian laman">
+<a href="#servis">Servis</a><a href="#cawangan">Cawangan</a><a href="#gaya">Gaya</a><a href="#soalan">Soalan</a>
+</nav>
+<main id="utama">
+
+<section id="servis"><div class="wrap">
+  <p class="eyebrow">Servis</p>
+  <h2 class="h2">Kemas. Laju. Tajam. ✂️</h2>
+  <p class="lead">Senarai servis penuh &amp; harga <span class="sah">akan disahkan oleh pemilik</span></p>
+  <div class="svc">
+    <div><span><b>Gunting rambut</b><small>Potongan lelaki</small></span><span class="p sah">Harga akan disahkan</span></div>
+    <div><span><b>Fade / Fast Fade</b><small>Seperti yang dikongsi di Instagram kedai</small></span><span class="p sah">Harga akan disahkan</span></div>
+    <div><span><b>Produk rambut</b><small>Produk penggayaan dijual di kedai</small></span><span class="p sah">Akan disahkan</span></div>
+  </div>
+</div></section>
+<section id="cawangan" class="stripe"><div class="wrap">
+  <p class="eyebrow">Cawangan</p>
+  <h2 class="h2">Dua lokasi di PD</h2>
+  <div class="outlets">
+    <article class="outlet"><span class="no">Cawangan 01</span><h3>Batu 4, Port Dickson</h3>
+      <dl><dt>Lokasi</dt><dd>Bangunan Arked MARA, Batu 4, Port Dickson</dd>
+      <dt>Waktu</dt><dd>12 tgh – 8:30 mlm<br>Jumaat 3 ptg – 8:30 mlm<br>Sabtu tutup<br><span class="sah">Dari senarai Google — akan disahkan oleh pemilik</span></dd></dl></article>
+    <article class="outlet"><span class="no">Cawangan 02</span><h3>Lukut</h3>
+      <dl><dt>Lokasi</dt><dd>Pusat Perniagaan Cahaya Suria, Jalan Seremban, Port Dickson</dd>
+      <dt>Waktu</dt><dd>12 tgh – 9 mlm<br>Tutup setiap Sabtu</dd></dl></article>
+  </div>
+  <p style="margin-top:14px"><span class="sah">Bilangan cawangan &amp; pin peta akan disahkan oleh pemilik</span></p>
+  <div class="cta-row"><button class="btn" type="button" data-demo-cta>Buka peta</button><button class="btn alt" type="button" data-demo-cta>Instagram kedai</button></div>
+  <p class="demo-note" role="status" aria-live="polite"></p>
+</div></section>
+<section id="gaya"><div class="wrap">
+  <p class="eyebrow">Gaya</p>
+  <h2 class="h2">Inspirasi potongan</h2>
+  <p class="lead">Gambar hiasan sahaja. Laman sebenar boleh paparkan hasil kerja kedai sendiri.</p>
+  <div class="gal">
+    <div class="ph"><img src="images/fade.jpg" alt="Potongan rambut fade dari sisi (gambar hiasan)" width="640" height="628" loading="lazy"><span class="cr">Truth678 · CC BY-SA 4.0</span></div>
+    <div class="ph"><img src="images/clipper.jpg" alt="Mesin gunting rambut (gambar hiasan)" width="640" height="480" loading="lazy"><span class="cr">ajay_suresh · CC BY 2.0</span></div>
+    <div class="ph"><img src="images/kerusi.jpg" alt="Deretan kerusi kedai gunting klasik (gambar hiasan)" width="640" height="853" loading="lazy"><span class="cr">Leverageroi · CC0</span></div>
+  </div>
+</div></section>
+<section id="soalan" class="faq stripe"><div class="wrap">
+  <p class="eyebrow">Soalan lazim</p>
+  <h2 class="h2">Sebelum datang</h2>
+  <details><summary>Buka hari Sabtu?</summary><p>Tidak — cawangan Lukut tutup setiap Sabtu, dan senarai Google untuk Batu 4 juga menunjukkan Sabtu tutup (akan disahkan oleh pemilik).</p></details>
+  <details><summary>Perlu buat temujanji?</summary><p>Akan disahkan oleh pemilik.</p></details>
+  <details><summary>Berapa harga gunting?</summary><p>Harga akan disahkan oleh pemilik.</p></details>
+</div></section>
+
+<div class="wrap">
+<aside class="pitch" aria-label="Tentang pratonton ini">
+    <span class="lbl">Pratonton percuma untuk Min's Barbershop</span>
+    <h2>Semua cawangan dalam satu pautan</h2>
+    <p>Pelanggan boleh semak cawangan terdekat, waktu buka dan hari tutup dengan cepat — terus dari telefon, sebelum memandu ke kedai.</p>
+    <p class="studio">Pratonton sahaja: semua butang dalam halaman ini ialah demo — tiada temujanji atau mesej dihantar. Disediakan oleh Far, Langkah Pertama.</p>
+</aside>
+</div>
+</main>
+<footer class="foot"><div class="wrap">
+    <span class="brand">Design preview · Langkah Pertama</span>
+    <p>Pratonton percuma untuk Min's Barbershop — bukan laman web rasmi. Maklumat diambil daripada profil Instagram awam kedai dan senarai Google; perkara bertanda “akan disahkan oleh pemilik” belum disemak.</p>
+    <h2>Kredit gambar</h2>
+    <p>Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini. Saiz dikecilkan ke lebar 640px. Senarai penuh: images/CREDITS.txt.</p>
+    <ol>
+<li>clipper.jpg — ajay_suresh, CC BY 2.0</li>
+<li>fade.jpg — Truth678, CC BY-SA 4.0</li>
+<li>hero.jpg — PattayaPatrol, CC BY-SA 4.0</li>
+<li>kerusi.jpg — Leverageroi, CC0</li>
+    </ol>
+</div></footer>
+<script>
+(function(){
+  var MSG="Pratonton sahaja — tiada temujanji atau mesej dihantar. Pada laman sebenar, butang ini membuka saluran rasmi kedai.";
+  document.querySelectorAll('[data-demo-cta]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var n=b.closest('.cta-row').parentNode.querySelector('.demo-note');
+      if(n){n.textContent=MSG;n.classList.add('show');}
+    });
+  });
+  document.querySelectorAll('[data-filter]').forEach(function(g){
+    var chips=g.querySelectorAll('.chip'), items=g.querySelectorAll('[data-t]'), out=g.querySelector('.count');
+    chips.forEach(function(c){
+      c.addEventListener('click',function(){
+        var f=c.getAttribute('data-f'), n=0;
+        chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+        items.forEach(function(it){var ok=f==='semua'||it.getAttribute('data-t').split(' ').indexOf(f)>-1; it.hidden=!ok; if(ok)n++;});
+        if(out) out.textContent=(out.getAttribute('data-pre')||'Menunjukkan ')+n+(out.getAttribute('data-post')||' pilihan');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

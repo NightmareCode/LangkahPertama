@@ -1,0 +1,58 @@
+KREDIT GAMBAR — Kakzee Homebakery (design preview, Langkah Pertama)
+Semua gambar ialah gambar hiasan dari Wikimedia Commons, bukan gambar sebenar perniagaan ini.
+Diubah: saiz dikecilkan ke lebar 640px (JPEG). Tiada perubahan lain kecuali yang dinyatakan. Setiap gambar disemak dengan mata.
+
+brownies.jpg
+  Fail: Chocolate brownies without table.jpg
+  Pengarang: Lyzzy (pemuat naik)
+  Lesen: CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Chocolate_brownies_without_table.jpg
+
+cheesecake.jpg
+  Fail: Blueberry Basque cake.jpg
+  Pengarang: Fumikas Sagisavas
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Blueberry_Basque_cake.jpg
+
+dessert-table.jpg
+  Fail: Colorful cupcakes with blue frosting are beautifully arranged on a table adorned with white and light blue decorations.jpg
+  Pengarang: Shixart1985
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Colorful_cupcakes_with_blue_frosting_are_beautifully_arranged_on_a_table_adorned_with_white_and_light_blue_decorations.jpg
+  Diubah: dipotong (crop) di bahagian atas.
+
+goodies.jpg
+  Fail: A lovely gift box of cupcakes for mother on her birthday- Done by Gabby's Cupcakes 2013-07-23 09-15.jpg
+  Pengarang: User:Keannetamim
+  Lesen: CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0
+  Sumber: https://commons.wikimedia.org/wiki/File:A_lovely_gift_box_of_cupcakes_for_mother_on_her_birthday-_Done_by_Gabby%27s_Cupcakes_2013-07-23_09-15.jpg
+
+minimalist.jpg
+  Fail: Bento Cake.jpg
+  Pengarang: Alnitak-Alnilam-Mintaka
+  Lesen: CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Bento_Cake.jpg
+
+pavlova.jpg
+  Fail: Pavlova garnished with cream and strawberries.jpg
+  Pengarang: brett jordan
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Pavlova_garnished_with_cream_and_strawberries.jpg
+
+puff.jpg
+  Fail: Cream puffs.jpg
+  Pengarang: Fumikas Sagisavas
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Cream_puffs.jpg
+
+tema.jpg
+  Fail: Mottokuchen bagger.jpg
+  Pengarang: Historiograf
+  Lesen: CC0 https://creativecommons.org/publicdomain/zero/1.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Mottokuchen_bagger.jpg
+
+vintage.jpg
+  Fail: Cake (8444801543).jpg
+  Pengarang: Jay from UK
+  Lesen: CC BY 2.0 https://creativecommons.org/licenses/by/2.0
+  Sumber: https://commons.wikimedia.org/wiki/File:Cake_(8444801543).jpg
