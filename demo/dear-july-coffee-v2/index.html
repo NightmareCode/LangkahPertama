@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="theme-color" content="#24150f">
+<title>Dear July Coffee — Menu · Taman Semarak, Nilai</title>
+<link rel="icon" href="data:,">
+<link rel="preload" href="fonts/instrument.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin> 
+<style>
+@font-face{font-family:Instrument;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/instrument.woff2) format("woff2")}
+@font-face{font-family:Instrument;font-style:italic;font-weight:400;font-display:swap;src:url(fonts/instrument-italic.woff2) format("woff2")}
+@font-face{font-family:DMSans;font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/dmsans.woff2) format("woff2")}
+:root{--board:#24150f;--board2:#301d14;--orange:#e8602c;--orange2:#f6a04a;--chili:#c7442a;--kunyit:#f5b74a;--leaf:#2f6b45;--cream:#fbf3e8;--paper:#f7efe4;--ink:#23160f;--muted:#6b5647;--disp:Instrument,"Times New Roman",serif;--sans:DMSans,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ease:cubic-bezier(.2,.75,.15,1);--spring:cubic-bezier(.34,1.56,.64,1);--ez:cubic-bezier(.22,1,.36,1);--dur:.42s;--strip:0px;--pad:18px;--barh:70px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--strip) + 70px)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:inherit}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--orange);outline-offset:2px;border-radius:8px}
+.skip{position:absolute;left:-999px;top:0;z-index:99;background:#fff;padding:12px}
+.skip:focus{left:8px;top:40px}
+
+/* hero */
+.hero{position:relative;height:100svh;min-height:600px;max-height:980px;color:var(--cream);overflow:hidden;background:var(--board);isolation:isolate}
+.hero .hi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.14) rotate(-1.5deg);transition:transform 2.4s var(--ease)}
+.loaded .hero .hi{transform:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(18,12,8,.6) 0%,rgba(18,12,8,0) 24%,rgba(18,12,8,.05) 34%,rgba(33,22,15,.86) 62%,var(--board) 100%)}
+.top{position:absolute;top:calc(var(--strip) + 14px);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.sign{display:inline-flex;flex-direction:column;align-items:center;background:var(--board);border:2px solid var(--orange);border-radius:10px;padding:7px 12px 6px;box-shadow:0 10px 26px -10px rgba(0,0,0,.6),inset 0 0 0 3px var(--board),inset 0 0 0 4px rgba(242,120,42,.35)}
+.sign b{font-family:var(--disp);font-weight:800;font-stretch:78%;color:var(--orange);font-size:19px;line-height:.95;letter-spacing:.05em;text-transform:uppercase;text-align:center}
+.sign small{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:#e9dccb;margin-top:4px}
+.status{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 12px;border-radius:99px;background:rgba(18,12,8,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:12.5px;font-weight:600;border:1px solid rgba(255,255,255,.12)}
+.status i{width:8px;height:8px;border-radius:50%;background:#9a8b7d;box-shadow:0 0 0 0 rgba(84,214,120,.6)}
+.status.open i{background:#54d678;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(84,214,120,.55)}70%{box-shadow:0 0 0 9px rgba(84,214,120,0)}100%{box-shadow:0 0 0 0 rgba(84,214,120,0)}}
+.hero-in{position:absolute;left:0;right:0;bottom:0;padding:0 var(--pad) 22px}
+.kick{display:inline-block;padding:5px 10px;border-radius:99px;background:rgba(18,12,8,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--kunyit)}
+.hero h1{margin:10px 0 10px!important;font-family:var(--disp);font-weight:800;font-stretch:75%;font-size:clamp(40px,12.6vw,86px);line-height:.98;white-space:nowrap;letter-spacing:-.01em;text-transform:uppercase;margin:12px 0 14px}
+.hero h1 .ln{display:block;overflow:hidden;padding:.04em 0 .08em;margin-bottom:-.06em}
+.hero h1 .ln>span{display:block;transform:translateY(108%);transition:transform 1.1s var(--ease)}
+.hero h1 .ln:nth-child(2)>span{transition-delay:.1s}
+.loaded .hero h1 .ln>span{transform:none}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero p{max-width:35ch;color:rgba(255,246,233,.86);font-size:15px}
+.chips{display:flex;flex-wrap:nowrap;gap:6px;margin-top:12px}
+.hs{margin-top:16px}.hs input{background:rgba(255,246,233,.96);border-color:transparent;box-shadow:0 14px 30px -14px rgba(0,0,0,.6);color:var(--ink)}
+.note{padding:12px var(--pad) 0;font-size:12.5px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;white-space:nowrap;border-radius:99px;background:rgba(255,246,233,.12);border:1px solid rgba(255,246,233,.16);font-size:12.5px;font-weight:600}
+.chip.off{background:rgba(212,61,42,.25);border-color:rgba(212,61,42,.5)}
+.fade{animation:rise .7s var(--ez) both}.d1{animation-delay:.1s}.d2{animation-delay:.16s}.d3{animation-delay:.22s}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+.go{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;width:100%;min-height:54px;border-radius:16px;background:var(--orange);color:var(--board);font-weight:800;font-size:16px;transition:transform .2s var(--ease),background-color .2s;box-shadow:0 12px 30px -12px rgba(242,120,42,.8)}
+.go:active{transform:scale(.97)}
+
+/* sticky tabs */
+.bar{position:sticky;top:var(--strip);z-index:40;background:rgba(247,239,228,.9);-webkit-backdrop-filter:saturate(1.5) blur(14px);backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid rgba(31,22,16,.08);transition:box-shadow .3s}
+.bar.stuck{box-shadow:0 8px 24px -16px rgba(31,22,16,.45)}
+.bar-in{display:flex;align-items:center;gap:4px;height:60px;padding:6px 8px 6px 6px}
+.tabs{position:relative;flex:1;display:flex;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth}
+.tabs::-webkit-scrollbar{display:none}
+.tab{position:relative;flex:0 0 auto;min-height:48px;padding:0 13px;font-weight:700;font-size:14.5px;color:var(--muted);white-space:nowrap;transition:color .3s}
+.tab[aria-selected=true]{color:var(--ink)}
+.ind{position:absolute;left:0;bottom:6px;height:3px;width:100px;border-radius:3px;background:var(--orange);transform-origin:0 0;transition:transform .45s var(--ease);pointer-events:none}
+.sbtn{flex:0 0 48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--board);color:var(--cream);transition:transform .2s var(--ease)}
+.sbtn:active{transform:scale(.92)}
+
+/* search + intro */
+.intro{padding:26px var(--pad) 6px}
+.intro h2{font-family:var(--disp);font-weight:800;font-stretch:82%;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:-.005em}
+.intro p{color:var(--muted);font-size:14px;margin-top:6px}
+.search{position:relative;margin-top:16px}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search input{width:100%;height:54px;border-radius:16px;border:1.5px solid rgba(31,22,16,.12);background:#fff;padding:0 50px 0 46px;font-size:16px;transition:border-color .25s,box-shadow .25s;-webkit-appearance:none;appearance:none}
+.search input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,120,42,.18)}
+.search .clr{position:absolute;right:4px;top:5px;width:44px;height:44px;border-radius:12px;display:none;place-items:center;color:var(--muted)}
+.search.has .clr{display:grid}
+.empty{display:none;margin:20px var(--pad);padding:26px;border-radius:20px;background:#fff;text-align:center;color:var(--muted)}
+.empty b{display:block;font-family:var(--disp);font-size:22px;color:var(--ink);margin-bottom:4px}
+.empty.show{display:block}
+
+/* menu */
+.cat{padding:18px var(--pad) 8px;scroll-margin-top:calc(var(--strip) + 64px)}
+.cat[hidden]{display:none}
+.mend{padding:4px var(--pad) 8px;font-size:12.5px;color:var(--muted);text-align:center;letter-spacing:.01em}
+.cat-h{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.cat-n{font-family:var(--disp);font-weight:800;color:#a84a17;font-size:14px}
+.cat-h h2{font-family:var(--disp);font-weight:800;font-stretch:82%;font-size:30px;line-height:1;text-transform:uppercase}
+.cat-c{margin-left:auto;font-size:12px;color:var(--muted);font-weight:600}
+/* one card system: every item is a horizontal card, 96px thumb or brand tile, same row height */
+.dish{position:relative;display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;min-height:148px;padding:12px;margin-bottom:10px;background:#fff;border-radius:20px;box-shadow:0 1px 0 rgba(31,22,16,.04),0 12px 26px -22px rgba(31,22,16,.4);transition:transform .35s var(--ease),box-shadow .35s}
+.dish[hidden]{display:none}
+.dish:active{transform:scale(.985)}
+@media (hover:hover){.dish:hover{transform:translateY(-2px)}.dish:hover .dmedia img{transform:scale(1.05)}}
+.dmedia{position:relative;display:block;width:96px;height:96px;border-radius:14px;overflow:hidden;background:#efe2cf;align-self:center}
+.dmedia img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.dmedia.tile{display:flex;align-items:flex-end;padding:9px 9px 10px;box-shadow:inset 0 0 0 1px rgba(255,246,233,.16),inset 0 -34px 28px -14px rgba(33,22,15,.55)}
+/* designed tiles for items without a licensed photo: brand gradient + hand-drawn line pattern (net lace for roti jala, songket lattice for roti stim pandan) */
+.tile-rotijala,.lines .th-t.tile-rotijala{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M0 12c3-4.5 9-4.5 12 0s9 4.5 12 0M12 0c4.5 3 4.5 9 0 12s-4.5 9 0 12' fill='none' stroke='%23fff6e9' stroke-opacity='.34' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E") center/24px 24px,radial-gradient(120% 95% at 22% 8%,#ffb35a 0%,#f2782a 46%,#a4441a 100%)}
+.tile-rotistim,.lines .th-t.tile-rotistim{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M11 1.5 20.5 11 11 20.5 1.5 11z' fill='none' stroke='%23f5b622' stroke-opacity='.42' stroke-width='1.1'/%3E%3Cpath d='M11 7l4 4-4 4-4-4z' fill='%23fff6e9' fill-opacity='.16'/%3E%3Ccircle cx='0' cy='0' r='1.2' fill='%23f5b622' fill-opacity='.5'/%3E%3Ccircle cx='22' cy='22' r='1.2' fill='%23f5b622' fill-opacity='.5'/%3E%3C/svg%3E") center/22px 22px,radial-gradient(120% 95% at 22% 8%,#7fa349 0%,#2e6a3a 50%,#18361f 100%)}
+.dmedia.tile .tn{font-family:var(--disp);font-weight:800;font-stretch:80%;font-size:17px;line-height:1;letter-spacing:.01em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 2px rgba(33,22,15,.35);text-align:left}
+.dbody{display:flex;flex-direction:column;min-width:0;align-self:stretch;justify-content:center}
+.dish h3{font-family:var(--disp);font-weight:800;font-stretch:88%;font-size:18.5px;line-height:1.1;letter-spacing:-.005em}
+.dish h3 button{display:flex;align-items:center;width:100%;min-height:44px;text-align:left;margin:-6px 0;line-height:1.08}
+.dish p{font-size:12.8px;color:var(--muted);margin-top:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dfoot{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:8px}
+.dfoot .add{margin-left:auto}
+.ochip{font-size:11.5px;font-weight:700;color:var(--muted);background:rgba(31,22,16,.05);padding:4px 9px;border-radius:99px;white-space:nowrap}
+.add{flex:0 0 46px;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--board);color:var(--cream);transition:transform .25s var(--spring),background-color .25s}
+.add:active{transform:scale(.88)}
+.add.ok{background:var(--leaf);transform:scale(1.08)}
+/* gallery */
+.galsec{padding:40px 0 10px}
+.galsec .hd{padding:0 var(--pad)}
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:16px var(--pad) 4px;scroll-padding:0 var(--pad);scrollbar-width:none;overscroll-behavior-x:contain}
+.gal::-webkit-scrollbar{display:none}
+.gal button{flex:0 0 auto;height:260px;border-radius:18px;overflow:hidden;scroll-snap-align:start;transition:transform .35s var(--ease)}
+.gal button:active{transform:scale(.97)}
+.gal .w{width:70vw;max-width:420px}.gal .n{width:52vw;max-width:300px}
+.gal img{width:100%;height:100%;object-fit:cover}
+.hint{display:flex;justify-content:flex-end;padding:10px var(--pad) 0;font-size:12px;color:var(--muted)}
+.galnote{padding:2px var(--pad) 0;margin-top:-8px;font-size:12px;letter-spacing:.04em;color:var(--muted)}
+
+/* info */
+.info{margin:36px var(--pad) 0;display:grid;gap:12px}
+.card{border-radius:22px;padding:20px;background:#fff}
+.card h3{font-family:var(--disp);font-weight:800;font-stretch:85%;font-size:22px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hours{list-style:none}
+.hours li{display:flex;justify-content:space-between;align-items:center;min-height:38px;border-bottom:1px dashed rgba(31,22,16,.12);font-size:14.5px}
+.hours li:last-child{border-bottom:0}
+.hours li.today{font-weight:800}
+.hours li.today span:first-child::after{content:"Hari ini";margin-left:8px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--kunyit);color:var(--board);padding:2px 7px;border-radius:99px}
+.closed{color:#a8281a;font-weight:800;background:rgba(212,61,42,.1);padding:3px 10px;border-radius:99px;font-size:12.5px}
+.ram{background:var(--board);color:var(--cream);position:relative;overflow:hidden}
+.ram h3 .moon{flex:none;width:30px;height:30px;color:var(--kunyit);margin-right:2px}
+.ram p{color:rgba(255,246,233,.78);font-size:14px;position:relative;max-width:30ch}
+.ram q{display:block;margin-top:10px;font-family:var(--disp);font-weight:700;font-size:18px;color:var(--orange2);quotes:"“" "”"}
+.loc b{font-family:var(--disp);font-size:22px;font-weight:800;font-stretch:88%;display:block}
+.loc p{font-size:13.5px;color:var(--muted)}
+.mini{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none;font-family:var(--sans)}
+
+footer{margin-top:40px;background:var(--board);color:rgba(255,246,233,.7);padding:40px var(--pad) calc(var(--barh) + 44px + env(safe-area-inset-bottom));font-size:13px}
+footer .sign{margin-bottom:16px}
+footer .fl{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:12px}
+footer .fl b{color:var(--cream);font-weight:700}
+
+/* cart bar */
+.cbar{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 8px 8px 10px;border-radius:20px;background:var(--board);color:var(--cream);
+box-shadow:0 20px 40px -18px rgba(0,0,0,.6);transform:translateY(150%);opacity:0;pointer-events:none;transition:transform var(--dur) var(--ez),opacity var(--dur) var(--ez)}
+.cbar.show{transform:none;opacity:1;pointer-events:auto;transition:transform .55s var(--spring),opacity .3s var(--ez)}
+.cbar.bump{animation:bump .45s var(--spring)}
+@keyframes bump{30%{transform:scale(1.04)}}
+.cbar .cnt{min-width:40px;height:40px;border-radius:12px;background:var(--orange);color:var(--board);display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:18px}
+.cbar .lbl{flex:1;font-size:13px;line-height:1.3}
+.cbar .lbl b{display:block;font-size:15px}
+.cbar .cta{display:flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:14px;background:var(--cream);color:var(--board);font-weight:800;font-size:14px}
+
+/* sheets */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(18,12,8,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ez),visibility 0s var(--dur)}
+.scrim.open{opacity:1;visibility:visible;transition:opacity var(--dur) var(--ez),visibility 0s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:81;max-width:560px;margin:0 auto;background:var(--paper);border-radius:26px 26px 0 0;max-height:92svh;display:flex;flex-direction:column;transform:translateY(105%);visibility:hidden;transition:transform var(--dur) var(--ez),visibility 0s var(--dur);will-change:transform}
+.sheet.open{transform:none;visibility:visible;transition:transform var(--dur) var(--ez),visibility 0s}
+.sh-scroll{overflow-y:auto;overscroll-behavior:contain;padding:0 var(--pad) 16px}
+.grab{width:42px;height:4px;border-radius:4px;background:rgba(31,22,16,.2);margin:10px auto 10px;flex:0 0 auto}
+.sh-x{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,246,233,.92);z-index:2;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)}
+.it-img{border-radius:18px;overflow:hidden;aspect-ratio:16/11;background:#efe2cf;margin-top:2px}
+.it-img img{width:100%;height:100%;object-fit:cover}
+.it-img[hidden]{display:none}
+.sheet h3{font-family:var(--disp);font-weight:800;font-stretch:85%;font-size:28px;line-height:1.05;text-transform:uppercase;margin-top:14px}
+.sheet .desc{color:var(--muted);font-size:14px;margin-top:6px}
+.opt{margin-top:16px}
+.opt legend{font-weight:800;font-size:14px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.opt legend small{font-weight:600;color:var(--muted);font-size:11.5px}
+.opt fieldset{border:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative}
+.opts input{position:absolute;opacity:0;pointer-events:none}
+.opts span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:14px;background:#fff;border:1.5px solid rgba(31,22,16,.12);font-weight:700;font-size:14px;transition:background-color .2s,border-color .2s,color .2s,transform .2s var(--spring)}
+.opts input:checked+span{background:var(--board);border-color:var(--board);color:var(--cream)}
+.opts input:focus-visible+span{outline:2.5px solid var(--orange);outline-offset:2px}
+.opts label:active span{transform:scale(.95)}
+.sh-foot{flex:0 0 auto;display:flex;gap:10px;align-items:center;padding:12px var(--pad) calc(14px + env(safe-area-inset-bottom));border-top:1px solid rgba(31,22,16,.08);background:var(--paper)}
+.step{display:flex;align-items:center;background:#fff;border-radius:16px;border:1.5px solid rgba(31,22,16,.1)}
+.step button{width:44px;height:48px;display:grid;place-items:center;font-size:20px;font-weight:700;transition:transform .2s var(--spring)}
+.step button:active{transform:scale(.85)}
+.step output{min-width:26px;text-align:center;font-family:var(--disp);font-weight:800;font-size:18px}
+.primary{flex:1;min-height:52px;border-radius:16px;background:var(--orange);color:var(--board);font-weight:800;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;transition:transform .2s var(--ease)}
+.primary:active{transform:scale(.97)}
+.primary small{font-weight:600;opacity:.75;font-size:12px}
+/* cart */
+.ct-h{display:flex;align-items:baseline;justify-content:space-between;padding:4px 0 6px;transition:opacity .38s var(--ez)}
+.stage[data-v=msg] #ctView .ct-h,.stage[data-v=cart] #waPrev .ct-h{opacity:0}
+.ct-h h3{margin:0}
+.lines{list-style:none;margin-top:6px}
+.lines li{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(31,22,16,.08);animation:inl .4s var(--ease)}
+@keyframes inl{from{opacity:0;transform:translateY(8px)}}
+.lines .th{width:56px;height:56px;border-radius:14px;overflow:hidden;background:#efe2cf}
+.lines .th img{width:100%;height:100%;object-fit:cover}
+.lines .th-t{display:grid;place-items:center;background:var(--board);color:var(--kunyit);font-family:var(--disp);font-weight:800;font-size:16px;letter-spacing:.02em}
+.lines b{display:block;font-size:14.5px;line-height:1.25}
+.lines small{color:var(--muted);font-size:12.5px}
+.lines .step button{width:44px;height:44px}
+.field{display:block;margin-top:14px}
+.field span{display:block;font-size:12.5px;font-weight:700;margin-bottom:6px}
+.field input{width:100%;height:50px;border-radius:14px;border:1.5px solid rgba(31,22,16,.12);background:#fff;padding:0 14px;font-size:16px}
+.field input:focus{outline:none;border-color:var(--orange)}
+.total{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding:14px 16px;border-radius:16px;background:rgba(46,106,58,.08);font-weight:700}
+.total em{font-style:normal;color:var(--leaf)}
+.wa{background:#1fa855;color:#fff}
+.wa svg{flex:0 0 auto}
+/* cart -> message: one sheet, panes slide inside it */
+.stage{position:relative;overflow:hidden;margin:0 calc(-1*var(--pad));transition:height .38s var(--ez)}
+.pane{padding:0 var(--pad);transition:transform .38s var(--ez),opacity .38s var(--ez),visibility 0s}
+.stage[data-v=cart] #waPrev,.stage[data-v=msg] #ctView{position:absolute;left:0;right:0;top:0;visibility:hidden;opacity:1;pointer-events:none;transition:transform .38s var(--ez),opacity .38s var(--ez),visibility 0s .38s}
+.stage[data-v=cart] #waPrev{transform:translateX(100%)}
+.stage[data-v=msg] #ctView{transform:translateX(-100%)}
+.stage.noanim,.stage.noanim .pane{transition:none!important}
+.feet{display:grid;overflow:hidden}
+.feet>.foot{grid-area:1/1;display:flex;gap:10px;align-items:center;transition:opacity .38s var(--ez),transform .38s var(--ez),visibility 0s}
+.feet[data-v=cart] #pvFoot{transform:translateX(calc(100% + 2*var(--pad)));visibility:hidden;pointer-events:none;transition:opacity .38s var(--ez),transform .38s var(--ez),visibility 0s .38s}
+.feet[data-v=msg] #ctFoot{transform:translateX(calc(-100% - 2*var(--pad)));visibility:hidden;pointer-events:none;transition:opacity .38s var(--ez),transform .38s var(--ez),visibility 0s .38s}
+.feet.noanim>.foot{transition:none!important}
+.chat{border-radius:20px;overflow:hidden;border:1px solid rgba(31,22,16,.08);margin-top:4px}
+.chat-h{display:flex;align-items:center;gap:10px;background:#0b5c4d;color:#fff;padding:10px 12px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--orange);color:var(--board);display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:15px}
+.chat-h b{display:block;font-size:14.5px;line-height:1.2}.chat-h small{font-size:11.5px;opacity:.8}
+.chat-b{background:#efe7dc;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px;padding:16px 12px 18px;min-height:220px}
+.day{display:table;margin:0 auto 12px;background:#fff;border-radius:8px;font-size:11px;padding:3px 10px;color:#54656f;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.bub{position:relative;margin-left:auto;max-width:88%;background:#d9fdd3;border-radius:12px 0 12px 12px;padding:9px 10px 20px 11px;font-size:14px;line-height:1.45;color:#111b21;box-shadow:0 1px 0 rgba(0,0,0,.08);white-space:pre-wrap;word-break:break-word;transform-origin:100% 0}
+.stage[data-v=msg] .bub{animation:pop .4s .2s var(--ez) both}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(6px)}}
+.bub::before{content:"";position:absolute;right:-8px;top:0;border-width:0 0 10px 10px;border-style:solid;border-color:transparent transparent transparent #d9fdd3}
+.bub .tm{position:absolute;right:8px;bottom:4px;font-size:10.5px;color:#667781;display:flex;align-items:center;gap:3px}
+.stamp{margin-top:14px;display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:var(--board);color:var(--cream);font-size:13.5px;line-height:1.45}
+.stamp b{display:block;color:var(--orange2);font-size:14.5px}
+.ghost{flex:0 0 auto;min-height:52px;padding:0 16px;border-radius:16px;border:1.5px solid rgba(31,22,16,.15);font-weight:700}
+
+/* lightbox: FLIP from the tapped thumbnail (same system as salon v2) */
+.lb{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;isolation:isolate;visibility:hidden;pointer-events:none;transition:visibility 0s var(--dur)}
+.lb.open{visibility:visible;pointer-events:auto;transition:visibility 0s}
+.lb-bg{position:absolute;inset:0;z-index:-1;background:rgba(12,8,5,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;transition:opacity var(--dur) var(--ez)}
+.lb.open .lb-bg{opacity:1}
+.lb-top,.lb-bot{opacity:0;transition:opacity var(--dur) var(--ez)}
+.lb.open .lb-top,.lb.open .lb-bot{opacity:1}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:calc(var(--strip) + 6px) 8px 6px 18px;color:var(--cream);font-size:13px;font-weight:700}
+.ib{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:var(--cream);border:1px solid rgba(255,255,255,.22);transition:transform .2s}
+.ib:active{transform:scale(.9)}
+.lb-track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-track figure{flex:0 0 100%;scroll-snap-align:center;display:grid;place-items:center;padding:8px 12px}
+.lb-track img{aspect-ratio:4/5;height:auto;max-height:none;width:min(100%,calc((100svh - 190px)*.8));object-fit:cover;border-radius:12px;will-change:transform}
+.lb-bot{display:flex;justify-content:center;gap:14px;padding:8px 0 calc(22px + env(safe-area-inset-bottom))}
+.badge{position:absolute;left:6px;top:6px;z-index:1;padding:3px 7px;border-radius:99px;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(20,14,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18)}
+[data-r]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+[data-r].in{opacity:1;transform:none}
+.no-js [data-r]{opacity:1;transform:none}
+@media (min-width:760px){:root{--pad:32px}main,.bar-in{max-width:720px;margin:0 auto}.cbar{left:50%;right:auto;width:520px;margin-left:-260px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}[data-r],.fade,.hero h1 .ln>span,.hero .hi{opacity:1!important;transform:none!important}.tabs{scroll-behavior:auto}
+ .scrim,.sheet,.lb-bg,.lb-top,.lb-bot{transition:opacity .18s ease,visibility 0s .18s!important}
+ .scrim.open,.sheet.open,.lb.open .lb-bg,.lb.open .lb-top,.lb.open .lb-bot{transition:opacity .18s ease,visibility 0s 0s!important}
+ .lb{transition:visibility 0s .18s!important}.lb.open{transition:visibility 0s 0s!important}
+ .sheet{transform:none;opacity:0}.sheet.open{opacity:1}
+ .stage[data-v=cart] #waPrev,.stage[data-v=msg] #ctView,.feet[data-v=cart] #pvFoot,.feet[data-v=msg] #ctFoot{transform:none;opacity:0}}
+
+/* Dear July: serif display, orange-gradient wordmark (from the IG profile mark) */
+.logo{display:grid;place-items:center;align-content:center;width:72px;height:72px;border-radius:16px;background:linear-gradient(155deg,#f7a84a 0%,#ee7a32 42%,#e0521f 100%);color:#fff7ec;font-family:var(--disp);line-height:.86;text-align:center;box-shadow:0 12px 28px -12px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.18)}
+.logo span{font-size:17px}.logo b{font-weight:400;font-size:19px;letter-spacing:.06em}.logo i{font-size:16px}
+footer .logo{margin-bottom:16px}
+.hero::after{background:linear-gradient(180deg,rgba(20,12,8,.55) 0%,rgba(20,12,8,0) 22%,rgba(20,12,8,.08) 36%,rgba(36,21,15,.82) 64%,var(--board) 100%)}
+.hero h1{font-weight:400;font-stretch:normal;text-transform:none;font-size:clamp(52px,15.5vw,108px);line-height:.98;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--orange2)}
+.kick{color:var(--orange2)}
+.status i{background:var(--orange2)}
+.cat-h h2,.card h3,.sheet h3{font-weight:400;font-stretch:normal;text-transform:none;letter-spacing:-.01em}
+.cat-h h2{font-size:36px}.card h3{font-size:28px}.sheet h3{font-size:34px}
+.dish h3{font-family:var(--sans);font-weight:700;font-stretch:normal;font-size:17px;letter-spacing:-.01em}
+.cat-n{font-family:var(--sans)}
+.cbar .cnt,.step output,.av,.lines .th-t,.empty b,.loc b,.dmedia.tile .tn{font-family:var(--sans)}
+.loc b{font-size:20px}
+.ram q{font-family:var(--disp);font-weight:400;font-style:italic;font-size:24px;line-height:1.1}
+.ram h3 .cup{flex:none;width:34px;height:34px;padding:4px;color:var(--orange2)}
+.pop{background:linear-gradient(150deg,#fff3e2,#fde3c8);border:1px solid rgba(232,96,44,.18)}
+.pop .when{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.pop .when span{display:inline-flex;align-items:center;min-height:30px;padding:0 11px;border-radius:99px;background:var(--board);color:var(--cream);font-size:12.5px;font-weight:700}
+.pop p{font-size:14px;color:var(--muted)}
+.wa{background:var(--board);color:var(--cream)}
+.chat-h{background:#3a2216}.av{background:linear-gradient(155deg,#f7a84a,#e0521f);color:#fff7ec}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#menu">Langkau ke menu</a>
+
+<header class="hero" id="hero">
+ <img class="hi" src="img-public/hero-s.webp" srcset="img-public/hero-s.webp 640w, img-public/hero-m.webp 960w, img-public/hero-l.webp 1280w" width="1280" height="1925" alt="Segelas kopi ais dengan susu dituang perlahan" sizes="100vw" fetchpriority="high" decoding="async">
+ <div class="top">
+  <div class="logo" aria-label="Dear July Coffee"><span>Dear</span><b>JULY</b><i>coffee</i></div>
+  <div class="status" id="status" role="status"><i></i><span>Isnin – Sabtu</span></div>
+ </div>
+ <div class="hero-in">
+  <div class="kick fade">Est. Julai 2021 · Nilai</div>
+  <h1><span class="ln"><span>Kopi &amp; rasa</span></span><span class="ln"><span><em>dari Melaka</em></span></span></h1>
+  <p class="fade d1">Dari kafe kecil di rumah, ke sudut takeaway — kini sebuah ruang kecil di Taman Semarak.</p>
+  <div class="chips fade d2"><span class="chip">☕ Isnin – Sabtu</span><span class="chip">Taman Semarak</span></div>
+  <div class="search hs fade d3" id="sw"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+   <input id="q" type="search" placeholder="Cari: latte, cendol, nasi lemak…" aria-label="Cari menu" autocomplete="off" enterkeyhint="search">
+   <button class="clr" id="clr" aria-label="Kosongkan carian"><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<nav class="bar" id="bar" aria-label="Kategori menu">
+ <div class="bar-in">
+  <div class="tabs" id="tabs" role="tablist"><button role="tab" class="tab" data-t="kopi" aria-controls="c-kopi" aria-selected="true">Kopi</button><button role="tab" class="tab" data-t="harian" aria-controls="c-harian" aria-selected="false">Menu harian</button><button role="tab" class="tab" data-t="popmakan" aria-controls="c-popmakan" aria-selected="false">Pop-up makan</button><button role="tab" class="tab" data-t="popmanis" aria-controls="c-popmanis" aria-selected="false">Minum &amp; manis</button><span class="ind" id="ind" aria-hidden="true"></span></div>
+  <button class="sbtn" id="sbtn" aria-label="Cari menu"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+ </div>
+</nav>
+
+<main id="menu">
+ <div class="empty" id="empty" role="status"><b>Tak jumpa</b>Cuba "latte", "cendol" atau "mee".</div>
+<section class="cat" id="c-kopi" data-cat="kopi"><header class="cat-h" data-r><span class="cat-n">01</span><h2>Kopi</h2><span class="cat-c">2 menu</span></header>
+<article class="dish" data-id="latte" data-name="Latte" data-kw="latte kopi susu espreso coffee">
+ <button class="dmedia" data-open aria-label="Lihat Latte"><img src="img-public/latte-s.webp" srcset="img-public/latte-s.webp 640w, img-public/latte-m.webp 960w, img-public/latte-l.webp 1280w" width="1280" height="960" alt="Latte dengan seni susu" sizes="96px" loading="lazy" decoding="async"></button>
+ <div class="dbody"><h3><button data-open>Latte</button></h3><p>Espreso lembut bersama susu.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Latte"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="filter" data-name="Filter Coffee" data-kw="filter coffee kopi tapis pour over">
+ <button class="dmedia" data-open aria-label="Lihat Filter Coffee"><img src="img-public/filter-s.webp" srcset="img-public/filter-s.webp 640w, img-public/filter-m.webp 960w, img-public/filter-l.webp 1280w" width="1280" height="1920" alt="Kopi tapis dituang melalui penapis" sizes="96px" loading="lazy" decoding="async"></button>
+ <div class="dbody"><h3><button data-open>Filter Coffee</button></h3><p>Kopi tapis, dibancuh perlahan.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Filter Coffee"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+</section>
+<section class="cat" id="c-harian" data-cat="harian"><header class="cat-h" data-r><span class="cat-n">02</span><h2>Menu harian</h2><span class="cat-c">2 menu</span></header>
+<article class="dish" data-id="fishball" data-name="Fish Balls &amp; Beancurd Rolls" data-kw="fish balls beancurd rolls bebola ikan fucuk sos melaka">
+ <button class="dmedia" data-open aria-label="Lihat Fish Balls &amp; Beancurd Rolls"><img src="img-public/fishball-s.webp" srcset="img-public/fishball-s.webp 640w, img-public/fishball-m.webp 960w, img-public/fishball-l.webp 1280w" width="1280" height="1707" alt="Bebola ikan dengan sos" sizes="96px" loading="lazy" decoding="async"></button>
+ <div class="dbody"><h3><button data-open>Fish Balls &amp; Beancurd Rolls</button></h3><p>Bersama sos buatan sendiri gaya Melaka.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Fish Balls &amp; Beancurd Rolls"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="brownies" data-name="Brownies" data-kw="brownies coklat chocolate">
+ <button class="dmedia" data-open aria-label="Lihat Brownies"><img src="img-public/brownies-s.webp" srcset="img-public/brownies-s.webp 640w, img-public/brownies-m.webp 960w, img-public/brownies-l.webp 1280w" width="1280" height="1933" alt="Brownies coklat bertingkat" sizes="96px" loading="lazy" decoding="async"></button>
+ <div class="dbody"><h3><button data-open>Brownies</button></h3><p>Brownies coklat, teman secawan kopi.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Brownies"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+</section>
+<section class="cat" id="c-popmakan" data-cat="popmakan"><header class="cat-h" data-r><span class="cat-n">03</span><h2>Pop-up: makan</h2><span class="cat-c">4 menu</span></header>
+<article class="dish" data-id="meegoreng" data-name="Mee Goreng" data-kw="mee goreng noodles">
+ <button class="dmedia" data-open aria-label="Lihat Mee Goreng"><img src="img-public/meegoreng-s.webp" srcset="img-public/meegoreng-s.webp 640w, img-public/meegoreng-m.webp 960w, img-public/meegoreng-l.webp 1280w" width="1280" height="1919" alt="Mee goreng dengan limau" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Mee Goreng</button></h3><p>Mee goreng panas — menu pop-up Cendol Fam.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Mee Goreng"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="curry" data-name="Curry Chicken Rice" data-kw="curry chicken rice nasi kari ayam">
+ <button class="dmedia" data-open aria-label="Lihat Curry Chicken Rice"><img src="img-public/curry-s.webp" srcset="img-public/curry-s.webp 640w, img-public/curry-m.webp 960w, img-public/curry-l.webp 1280w" width="1280" height="1600" alt="Nasi dengan kari ayam" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Curry Chicken Rice</button></h3><p>Nasi bersama kari ayam.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Curry Chicken Rice"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="basil" data-name="Thai Basil Chicken Rice" data-kw="thai basil chicken rice nasi ayam selasih">
+ <button class="dmedia" data-open aria-label="Lihat Thai Basil Chicken Rice"><img src="img-public/basil-s.webp" srcset="img-public/basil-s.webp 640w, img-public/basil-m.webp 960w, img-public/basil-l.webp 1280w" width="1280" height="1708" alt="Ayam goreng selasih dengan telur mata" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Thai Basil Chicken Rice</button></h3><p>Nasi bersama ayam goreng daun selasih.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Thai Basil Chicken Rice"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="nasilemak" data-name="Nasi Lemak Rendang Chicken" data-kw="nasi lemak rendang chicken ayam">
+ <button class="dmedia" data-open aria-label="Lihat Nasi Lemak Rendang Chicken"><img src="img-public/nasilemak-s.webp" srcset="img-public/nasilemak-s.webp 640w, img-public/nasilemak-m.webp 960w, img-public/nasilemak-l.webp 1280w" width="1280" height="1280" alt="Nasi lemak di atas daun pisang" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Nasi Lemak Rendang Chicken</button></h3><p>Nasi lemak bersama rendang ayam.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Nasi Lemak Rendang Chicken"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+</section>
+<section class="cat" id="c-popmanis" data-cat="popmanis"><header class="cat-h" data-r><span class="cat-n">04</span><h2>Pop-up: manis</h2><span class="cat-c">4 menu</span></header>
+<article class="dish" data-id="cendol" data-name="Gula Melaka Cendol" data-kw="cendol gula melaka">
+ <button class="dmedia" data-open aria-label="Lihat Gula Melaka Cendol"><img src="img-public/cendol-s.webp" srcset="img-public/cendol-s.webp 640w, img-public/cendol-m.webp 960w, img-public/cendol-l.webp 1280w" width="1280" height="1601" alt="Cendol gula Melaka dalam gelas" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Gula Melaka Cendol</button></h3><p>Cendol dengan gula Melaka.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Gula Melaka Cendol"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="lime" data-name="Jasmine Lime" data-kw="jasmine lime limau">
+ <button class="dmedia" data-open aria-label="Lihat Jasmine Lime"><img src="img-public/lime-s.webp" srcset="img-public/lime-s.webp 640w, img-public/lime-m.webp 960w, img-public/lime-l.webp 1280w" width="1280" height="1920" alt="Minuman limau sejuk dengan ais" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Jasmine Lime</button></h3><p>Minuman jasmine &amp; limau yang menyegarkan.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Jasmine Lime"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="chaikueh" data-name="Chai Kueh" data-kw="chai kueh kuih kukus">
+ <button class="dmedia" data-open aria-label="Lihat Chai Kueh"><img src="img-public/chaikueh-s.webp" srcset="img-public/chaikueh-s.webp 640w, img-public/chaikueh-m.webp 960w, img-public/chaikueh-l.webp 1280w" width="1280" height="853" alt="Kuih kukus lutsinar" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Chai Kueh</button></h3><p>Kuih kukus tradisional.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Chai Kueh"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+<article class="dish" data-id="malaigao" data-name="Ma Lai Gao" data-kw="ma lai gao kek kukus">
+ <button class="dmedia" data-open aria-label="Lihat Ma Lai Gao"><img src="img-public/malaigao-s.webp" srcset="img-public/malaigao-s.webp 640w, img-public/malaigao-m.webp 960w, img-public/malaigao-l.webp 1280w" width="1280" height="1707" alt="Kek kukus perang dibelah dua" sizes="96px" loading="lazy" decoding="async"><span class="badge">Pop-up</span></button>
+ <div class="dbody"><h3><button data-open>Ma Lai Gao</button></h3><p>Kek kukus tradisional yang gebu.</p><div class="dfoot"><button class="add" data-add aria-label="Tambah Ma Lai Gao"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button></div></div>
+</article>
+</section>
+<p class="mend" id="mend">Harga &amp; menu disahkan bersama pemilik</p>
+
+ <section class="galsec" id="galeri">
+  <div class="hd cat-h" data-r><span class="cat-n">✦</span><h2>Suasana kopi</h2></div>
+  <p class="galnote" data-r>Gambar hiasan</p>
+  <div class="gal" id="gal"><button class="w" data-i="0" aria-label="Buka gambar 1"><img src="img-public/g1-s.webp" srcset="img-public/g1-s.webp 640w, img-public/g1-m.webp 960w, img-public/g1-l.webp 1080w" width="1080" height="1350" alt="Meja kayu di kafe yang hangat" sizes="70vw" loading="lazy" decoding="async"></button><button class="n" data-i="1" aria-label="Buka gambar 2"><img src="img-public/g2-s.webp" srcset="img-public/g2-s.webp 640w, img-public/g2-m.webp 960w, img-public/g2-l.webp 1280w" width="1280" height="1600" alt="Beberapa cawan latte" sizes="52vw" loading="lazy" decoding="async"></button><button class="w" data-i="2" aria-label="Buka gambar 3"><img src="img-public/g3-s.webp" srcset="img-public/g3-s.webp 640w, img-public/g3-m.webp 960w, img-public/g3-l.webp 1280w" width="1280" height="1600" alt="Kopi dituang ke dalam cawan" sizes="70vw" loading="lazy" decoding="async"></button><button class="n" data-i="3" aria-label="Buka gambar 4"><img src="img-public/g4-s.webp" srcset="img-public/g4-s.webp 640w, img-public/g4-m.webp 960w, img-public/g4-l.webp 1280w" width="1280" height="1600" alt="Kopi ais dalam gelas" sizes="52vw" loading="lazy" decoding="async"></button><button class="w" data-i="4" aria-label="Buka gambar 5"><img src="img-public/g5-s.webp" srcset="img-public/g5-s.webp 640w, img-public/g5-m.webp 960w, img-public/g5-l.webp 1280w" width="1280" height="1600" alt="Meja dan gelas dekat tingkap" sizes="70vw" loading="lazy" decoding="async"></button><button class="n" data-i="5" aria-label="Buka gambar 6"><img src="img-public/g6-s.webp" srcset="img-public/g6-s.webp 640w, img-public/g6-m.webp 960w, img-public/g6-l.webp 1280w" width="1280" height="1600" alt="Espreso mengalir dari portafilter" sizes="52vw" loading="lazy" decoding="async"></button></div>
+  <div class="hint"><span>Leret →</span></div>
+ </section>
+
+ <section class="info" id="info" aria-label="Info">
+  <div class="card" data-r><h3>Waktu buka</h3>
+   <ul class="hours"><li><span>Isnin – Sabtu</span><span>Buka</span></li><li><span>Jam operasi</span><span class="mini">disahkan bersama pemilik</span></li></ul>
+  </div>
+  <div class="card ram" data-r><h3>Kisah kami<svg class="cup" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 11h16v8a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 13h2.5a3.5 3.5 0 0 1 0 7H22" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4c-1 1.5 1 2.5 0 4M16 4c-1 1.5 1 2.5 0 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></h3><p>Kami semua dari Melaka. Bermula sebagai kafe kecil di rumah, kemudian sudut takeaway — kini sebuah ruang kecil di Nilai.</p><q>Dahulunya the lövve space</q></div>
+  <div class="card pop" data-r><h3>Pop-up Cendol Fam</h3><div class="when"><span>Pop-up berkala</span></div><p>Cendol gula Melaka, jasmine lime &amp; hidangan panas, di Dear July Coffee. Tarikh pop-up seterusnya disahkan bersama pemilik.</p></div>
+  <div class="card loc" data-r><h3>Lokasi</h3><b>Taman Semarak, Nilai</b><p>PT 4717, Jalan TS 1/18 — di dalam premis Mexco Tiling Construction.</p></div>
+ </section>
+</main>
+
+<footer>
+ <div class="logo" aria-label="Dear July Coffee"><span>Dear</span><b>JULY</b><i>coffee</i></div>
+ <p>Kopi &amp; rasa dari Melaka · Taman Semarak, Nilai.</p>
+ <p class="fl">Contoh reka bentuk oleh Langkah Pertama</p>
+</footer>
+
+<button class="cbar" id="cartBar" aria-label="Lihat pesanan" aria-hidden="true" tabindex="-1"><span class="cnt">0</span><span class="lbl"><b>Pesanan anda</b><span id="cbl">0 item</span></span><span class="cta">Lihat <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span></button>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet" id="item" role="dialog" aria-modal="true" aria-labelledby="itT" aria-hidden="true">
+ <div class="grab" aria-hidden="true"></div>
+ <button class="sh-x" data-close aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+ <div class="sh-scroll">
+  <div class="it-img" id="itImg"></div>
+  <h3 id="itT">Menu</h3>
+  <p class="desc" id="itD"></p>
+  <div class="opt" id="itO"></div>
+ </div>
+ <div class="sh-foot">
+  <div class="step"><button id="itM" aria-label="Kurang">−</button><output id="itQ">1</output><button id="itP" aria-label="Tambah">+</button></div>
+  <button class="primary" id="itemAdd">Tambah ke pesanan</button>
+ </div>
+</div>
+
+<div class="sheet" id="cart" role="dialog" aria-modal="true" aria-labelledby="ctT" aria-hidden="true">
+ <div class="grab" aria-hidden="true"></div>
+ <button class="sh-x" data-close aria-label="Tutup" id="closeSheet"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+ <div class="sh-scroll" id="ctScroll">
+  <div class="stage" id="stage" data-v="cart">
+   <div class="pane" id="ctView">
+    <div class="ct-h"><h3 id="ctT">Pesanan anda</h3></div>
+    <ul class="lines" id="lines"></ul>
+    <label class="field"><span>Nama (pilihan)</span><input id="nm" autocomplete="off" placeholder="cth. Aisyah"></label>
+    <label class="field"><span>Catatan (pilihan)</span><input id="nt" autocomplete="off" placeholder="cth. kurang manis, bungkus"></label>
+    <div class="total"><span>Jumlah</span><em id="ctN">0 item</em></div>
+   </div>
+   <div class="pane" id="waPrev" aria-live="polite">
+    <div class="ct-h"><h3>Pratonton mesej</h3></div>
+    <div class="chat"><div class="chat-h"><span class="av">DJ</span><span><b>Dear July Coffee</b><small>pratonton · tidak bersambung</small></span></div>
+     <div class="chat-b"><span class="day">Hari ini</span><div class="bub" id="bub"></div></div></div>
+    <div class="stamp" role="status"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span><b>Pratonton sahaja — tiada pesanan dihantar</b></span></div>
+   </div>
+  </div>
+ </div>
+ <div class="sh-foot feet" id="feet" data-v="cart">
+  <div class="foot" id="ctFoot"><button class="primary wa" id="sendOrder"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Hantar pesanan (pratonton)</button></div>
+  <div class="foot" id="pvFoot"><button class="ghost" id="backEdit">Ubah</button><button class="primary" id="doneBtn">Selesai</button></div>
+ </div>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galeri" aria-hidden="true">
+ <div class="lb-bg"></div>
+ <div class="lb-top"><span id="lbc">1 / 6</span><button class="ib" id="lbx" aria-label="Tutup galeri"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+ <div class="lb-track" id="lbt"><figure><img data-src="img-public/g1-l.webp" alt="Meja kayu di kafe yang hangat"></figure><figure><img data-src="img-public/g2-l.webp" alt="Beberapa cawan latte"></figure><figure><img data-src="img-public/g3-l.webp" alt="Kopi dituang ke dalam cawan"></figure><figure><img data-src="img-public/g4-l.webp" alt="Kopi ais dalam gelas"></figure><figure><img data-src="img-public/g5-l.webp" alt="Meja dan gelas dekat tingkap"></figure><figure><img data-src="img-public/g6-l.webp" alt="Espreso mengalir dari portafilter"></figure></div>
+ <div class="lb-bot"><button class="ib" id="lbp" aria-label="Sebelum"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button class="ib" id="lbn" aria-label="Seterusnya"><svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+</div>
+
+<script>
+(function(){
+var KB=0;document.addEventListener('keydown',function(){KB=1},true);document.addEventListener('pointerdown',function(){KB=0},true);
+var d=document,b=d.body,REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches,$=function(s,c){return(c||d).querySelector(s)},$$=function(s,c){return[].slice.call((c||d).querySelectorAll(s))};
+b.classList.remove('no-js');requestAnimationFrame(function(){requestAnimationFrame(function(){b.classList.add('loaded')})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.1});
+$$('[data-r]').forEach(function(el){REDUCE?el.classList.add('in'):io.observe(el)});
+// hours are confirmed with the owner: the status pill shows open days only (no live open/closed claim)
+// tabs: sliding indicator + scroll spy
+var tabs=$('#tabs'),ind=$('#ind'),tabEls=$$('.tab'),bar=$('#bar'),lock=0,curT=null;
+function setTab(t,scrollTabs){if(!t||t===curT)return;curT=t;tabEls.forEach(function(x){x.setAttribute('aria-selected',x===t?'true':'false')});
+ ind.style.transform='translateX('+(t.offsetLeft+12)+'px) scaleX('+((t.offsetWidth-24)/100)+')';
+ if(scrollTabs){var l=t.offsetLeft-tabs.clientWidth/2+t.offsetWidth/2;tabs.scrollTo({left:l,behavior:REDUCE?'auto':'smooth'})}}
+setTab(tabEls[0]);addEventListener('resize',function(){var c=curT;curT=null;setTab(c)},{passive:true});
+tabEls.forEach(function(t){t.addEventListener('click',function(){var s=$('#c-'+t.dataset.t);if(!s||s.hidden)return;setTab(t,true);lock=1;clearTimeout(t._t);t._t=setTimeout(function(){lock=0;spyNow()},900);
+ var y=s.getBoundingClientRect().top+scrollY-(bar.offsetHeight+30)+2;scrollTo({top:y,behavior:REDUCE?'auto':'smooth'})})});
+var spy=new IntersectionObserver(function(es){if(lock)return;es.forEach(function(e){if(e.isIntersecting){setTab($('.tab[data-t="'+e.target.dataset.cat+'"]'),true)}})},{rootMargin:'-120px 0px -62% 0px'});
+$$('.cat').forEach(function(s){spy.observe(s)});
+function spyNow(){var c=null;$$('.cat').forEach(function(s){if(!s.hidden&&s.getBoundingClientRect().top<=innerHeight*.38)c=s});if(c)setTab($('.tab[data-t="'+c.dataset.cat+'"]'),true)}
+new IntersectionObserver(function(es){bar.classList.toggle('stuck',!es[0].isIntersecting);if(!lock&&es[0].intersectionRatio>.3)setTab(tabEls[0],true)},{rootMargin:'-31px 0px 0px 0px',threshold:[0,.3,.6]}).observe($('#hero'));
+// search
+var q=$('#q'),sw=$('#sw');
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function filt(){var v=norm(q.value.trim()),any=0;sw.classList.toggle('has',!!v);
+ $$('.cat').forEach(function(c){var n=0;$$('.dish',c).forEach(function(el){var hit=!v||norm(el.dataset.name+' '+el.dataset.kw).indexOf(v)>-1;el.hidden=!hit;if(hit){n++;el.classList.add('in')}});c.hidden=!n;if(n)any=1});
+ $('#empty').classList.toggle('show',!any);$('#galeri').hidden=!!v}
+q.addEventListener('input',filt);q.addEventListener('keydown',function(e){if(e.key==='Enter'){q.blur();var y=$('#menu').getBoundingClientRect().top+scrollY-(bar.offsetHeight+30);scrollTo({top:y,behavior:REDUCE?'auto':'smooth'})}});$('#clr').addEventListener('click',function(){q.value='';filt();q.focus()});
+$('#sbtn').addEventListener('click',function(){scrollTo({top:0,behavior:REDUCE?'auto':'smooth'});setTimeout(function(){q.focus({preventScroll:true})},REDUCE?0:450)});
+// sheets
+var scrim=$('#scrim'),openSh=null,lastF=null;
+var DUR=420;function lockScroll(on){d.documentElement.style.overflow=on?'hidden':''}
+function show(sh){if(openSh&&openSh!==sh)hide(openSh,1);lastF=lastF||d.activeElement;openSh=sh;sh.offsetHeight;scrim.offsetHeight;sh.classList.add('open');sh.setAttribute('aria-hidden','false');scrim.classList.add('open');lockScroll(1);setTimeout(function(){var f=$('[data-close]',sh);if(f)KB?f.focus({preventScroll:true}):(sh.tabIndex=-1,sh.focus({preventScroll:true}))},50)}
+function hide(sh,keep){sh=sh||openSh;if(!sh)return;sh.classList.remove('open');sh.setAttribute('aria-hidden','true');if(!keep){scrim.classList.remove('open');lockScroll(0);openSh=null;if(lastF)lastF.focus({preventScroll:true});lastF=null}}
+scrim.addEventListener('click',function(){hide()});$$('[data-close]').forEach(function(x){x.addEventListener('click',function(){hide()})});
+// cart state
+var cart=[],cur=null,qty=1;
+function media(el){var m=$('.dmedia',el);if(!m||!$('img',m))return'';var c=m.cloneNode(true);$$('.badge',c).forEach(function(x){x.remove()});var im=$('img',c);if(im){im.loading='eager';im.sizes='100vw'}return c.innerHTML}
+function openItem(el){cur=el;qty=1;$('#itQ').textContent=1;$('#itT').textContent=el.dataset.name;$('#itD').textContent=$('.dbody p',el).textContent;var mh=media(el);$('#itImg').innerHTML=mh;$('#itImg').hidden=!mh;
+ var o=el.dataset.opt?JSON.parse(el.dataset.opt):null,h='';if(o){h='<fieldset><legend>'+o.label+'</legend><div class="opts">'+o.choices.map(function(c,i){return'<label><input type="radio" name="op" value="'+c+'"'+(i?'':' checked')+'><span>'+c+'</span></label>'}).join('')+'</div></fieldset>'}
+ $('#itO').innerHTML=h;show($('#item'))}
+function add(el,n,opt){var key=el.dataset.id+'|'+(opt||''),f=cart.filter(function(x){return x.k===key})[0];if(f)f.q+=n;else cart.push({k:key,id:el.dataset.id,name:el.dataset.name,opt:opt||'',q:n,el:el});render(1)}
+function thumb(el){var m=$('.dmedia img',el);if(m){var c=m.cloneNode();c.removeAttribute('loading');c.sizes='56px';c.alt='';return'<span class="th">'+c.outerHTML+'</span>'}return'<span class="th th-t tile-'+el.dataset.id+'" aria-hidden="true"></span>'}
+function count(){return cart.reduce(function(a,x){return a+x.q},0)}
+function render(bump){var n=count(),cb=$('#cartBar'),lbl=function(){$('.cnt',cb).textContent=n;$('#cbl').textContent=n+' item'};clearTimeout(cb._t);
+ // when the cart empties, the bar eases out still showing its last count; the 0 is written once it is hidden
+ if(n>0||!cb.classList.contains('show'))lbl();else cb._t=setTimeout(lbl,DUR+60);$('#ctN').textContent=n+' item';cb.classList.toggle('show',n>0);cb.setAttribute('aria-hidden',n>0?'false':'true');cb.tabIndex=n>0?0:-1;
+ if(bump&&!REDUCE){cb.classList.remove('bump');void cb.offsetWidth;cb.classList.add('bump')}
+ $('#lines').innerHTML=cart.map(function(x,i){return'<li>'+thumb(x.el)+'<span><b>'+x.name+'</b>'+(x.opt?'<small>'+esc(x.opt)+'</small>':'')+'</span><span class="step"><button class="qminus" data-i="'+i+'" aria-label="Kurang">−</button><output>'+x.q+'</output><button class="qplus" data-i="'+i+'" aria-label="Tambah">+</button></span></li>'}).join('');
+ $('#sendOrder').disabled=!n;if(!n&&openSh===$('#cart'))hide()}
+$('#lines').addEventListener('click',function(e){var t=e.target.closest('button');if(!t)return;var x=cart[+t.dataset.i];x.q+=t.classList.contains('qplus')?1:-1;if(x.q<=0)cart.splice(+t.dataset.i,1);render()});
+$$('.dish').forEach(function(el){$$('[data-open]',el).forEach(function(o){o.addEventListener('click',function(){openItem(el)})});
+ $('[data-add]',el).addEventListener('click',function(e){var bt=e.currentTarget;if(el.dataset.opt){openItem(el);return}add(el,1);bt.classList.add('ok');bt.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+ clearTimeout(bt._t);bt._t=setTimeout(function(){bt.classList.remove('ok');bt.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>'},1100)})});
+$('#itM').addEventListener('click',function(){qty=Math.max(1,qty-1);$('#itQ').textContent=qty});$('#itP').addEventListener('click',function(){qty=Math.min(20,qty+1);$('#itQ').textContent=qty});
+$('#itemAdd').addEventListener('click',function(){var r=$('#itO input:checked');add(cur,qty,r?r.value:'');hide()});
+var stage=$('#stage'),feet=$('#feet'),ctScroll=$('#ctScroll');
+function pv(on,instant){var v=on?'msg':'cart';if(stage.dataset.v===v)return;clearTimeout(stage._t);
+ if(instant||REDUCE){stage.classList.add('noanim');feet.classList.add('noanim');stage.style.height='';stage.dataset.v=v;feet.dataset.v=v;ctScroll.scrollTop=0;stage.offsetHeight;stage.classList.remove('noanim');feet.classList.remove('noanim')}
+ else{var h0=stage.offsetHeight;stage.style.height='';stage.dataset.v=v;feet.dataset.v=v;var h1=stage.offsetHeight;stage.style.height=h0+'px';stage.offsetHeight;stage.style.height=h1+'px';
+  if(ctScroll.scrollTop)ctScroll.scrollTo({top:0,behavior:'smooth'});stage._t=setTimeout(function(){stage.style.height=''},420)}
+ var f=on?$('#doneBtn'):$('#sendOrder');if(KB)setTimeout(function(){f.focus({preventScroll:true})},60)}
+$('#cartBar').addEventListener('click',function(){pv(false,true);show($('#cart'))});
+$('#sendOrder').addEventListener('click',function(){var nm=$('#nm').value.trim(),nt=$('#nt').value.trim();
+ var L=['<b>Pesanan — Dear July Coffee</b>',''];cart.forEach(function(x){L.push(x.q+'× '+esc(x.name)+(x.opt?' ('+esc(x.opt)+')':''))});L.push('');if(nm)L.push('Nama: '+esc(nm));if(nt)L.push('Catatan: '+esc(nt));L.push('Jumlah: '+count()+' item');L.push('','Terima kasih!');
+ var t=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kuala_Lumpur',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+ $('#bub').innerHTML=L.join('\n')+'<span class="tm">'+t+' <svg width="16" height="11" viewBox="0 0 16 11" aria-hidden="true"><path d="M1 6l3 3 6-7M6 9l1 1 6-8" fill="none" stroke="#8696a0" stroke-width="1.5"/></svg></span>';
+ pv(true)});
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+$('#backEdit').addEventListener('click',function(){pv(false)});$('#doneBtn').addEventListener('click',function(){hide();setTimeout(function(){if(openSh!==$('#cart'))pv(false,true);resetCart()},DUR+80)});
+// demo order finished: empty the cart (memory only, nothing is stored), clear the form, bar eases out
+function resetCart(){cart.length=0;$('#nm').value='';$('#nt').value='';render()}
+// lightbox: FLIP scale from the tapped thumbnail + backdrop fade, reversed on close
+var lbOn=false,lb=d.getElementById('lb'),lbt=d.getElementById('lbt'),lbc=d.getElementById('lbc'),figs=lbt.querySelectorAll('img'),N=figs.length,lastG=null,gal=d.getElementById('gal'),gbs=[].slice.call(gal.querySelectorAll('button')),EZ='cubic-bezier(.22,1,.36,1)',lbBusy=0,lbT=0;
+function load(i){var im=figs[i];if(im&&!im.getAttribute('src'))im.src=im.getAttribute('data-src')}
+new IntersectionObserver(function(es,o){if(es[0].isIntersecting){for(var i=0;i<N;i++)load(i);o.disconnect()}},{rootMargin:'600px 0px'}).observe(gal);
+function ready(im,cb){if(im.complete&&im.naturalWidth)return cb();var done=0,f=function(){if(!done){done=1;cb()}};(im.decode?im.decode():Promise.reject()).then(f,f);setTimeout(f,350)}
+function flip(im,th){var r=im.getBoundingClientRect(),t=th.getBoundingClientRect();if(!r.width||!r.height||!t.width||t.bottom<0||t.top>innerHeight)return null;
+ var s=Math.max(t.width/r.width,t.height/r.height),dx=t.left+t.width/2-(r.left+r.width/2),dy=t.top+t.height/2-(r.top+r.height/2),cx=Math.max(0,(r.width-t.width/s)/2),cy=Math.max(0,(r.height-t.height/s)/2);
+ return{tf:'translate('+dx+'px,'+dy+'px) scale('+s+')',clip:'inset('+cy+'px '+cx+'px round '+(16/s)+'px)'}}
+function setIm(im,tr,tf,clip,op){im.style.transition=tr;im.style.transform=tf;im.style.clipPath=clip;im.style.opacity=op}
+function openL(i,btn){if(lbBusy)return;lastG=btn||d.activeElement;load(i);var im=figs[i];lbBusy=1;
+ ready(im,function(){clearTimeout(lbT);lbt.scrollTo({left:i*lbt.clientWidth,behavior:'instant'});lbc.textContent=(i+1)+' / '+N;
+  var f=!REDUCE&&btn&&flip(im,btn);
+  if(f){setIm(im,'none',f.tf,f.clip,'1');btn.style.opacity='0'}else setIm(im,'none',REDUCE?'none':'scale(.94)','',REDUCE?'0':'0');
+  im.getBoundingClientRect();
+  lockScroll(1);lb.offsetHeight;
+  // dim and zoom start on the same frame: the start pose is already flushed, so set the end pose in this same task
+  lb.classList.add('open');lb.setAttribute('aria-hidden','false');
+  setIm(im,f?'transform '+DUR+'ms '+EZ+',clip-path '+DUR+'ms '+EZ:(REDUCE?'opacity 180ms ease':'opacity '+DUR+'ms '+EZ+',transform '+DUR+'ms '+EZ),'none',f?'inset(0px 0px round 10px)':'','1');
+  lbT=setTimeout(function(){setIm(im,'','','','');lbBusy=0},REDUCE?200:DUR+40);
+  d.getElementById('lbx').focus({preventScroll:true})})}
+function closeL(){if(!lb.classList.contains('open'))return;clearTimeout(lbT);var i=idx(),im=figs[i],th=gbs[i];
+ if(th&&!REDUCE){var gr=gal.getBoundingClientRect(),br=th.getBoundingClientRect();if(br.left<gr.left||br.right>gr.right){gal.style.scrollSnapType='none';gal.scrollLeft+=br.left-gr.left-parseFloat(getComputedStyle(gal).paddingLeft);gal.style.scrollSnapType=''}}
+ var f=!REDUCE&&th&&flip(im,th);lbBusy=1;
+ if(f){th.style.opacity='0';setIm(im,'transform '+DUR+'ms '+EZ+',clip-path '+DUR+'ms '+EZ,f.tf,f.clip,'1')}
+ else setIm(im,REDUCE?'opacity 180ms ease':'opacity '+DUR+'ms '+EZ+',transform '+DUR+'ms '+EZ,REDUCE?'none':'scale(.94)','','0');
+ lb.classList.remove('open');lb.setAttribute('aria-hidden','true');
+ lbT=setTimeout(function(){lockScroll(0);gbs.forEach(function(g){g.style.opacity=''});[].forEach.call(figs,function(x){setIm(x,'','','','')});lbBusy=0},REDUCE?200:DUR+30);
+ if(lastG)lastG.focus({preventScroll:true})}
+function idx(){return Math.round(lbt.scrollLeft/lbt.clientWidth)}
+function go(k){var i=Math.max(0,Math.min(N-1,idx()+k));load(i);lbt.scrollTo({left:i*lbt.clientWidth,behavior:REDUCE?'instant':'smooth'})}
+var lt=0;lbt.addEventListener('scroll',function(){if(!lt){lt=1;requestAnimationFrame(function(){lt=0;var i=idx();lbc.textContent=(i+1)+' / '+N;load(i+1);load(i-1)})}},{passive:true});
+gbs.forEach(function(bt){bt.addEventListener('click',function(){openL(+bt.getAttribute('data-i'),bt)})});
+d.getElementById('lbx').addEventListener('click',closeL);d.getElementById('lbp').addEventListener('click',function(){go(-1)});d.getElementById('lbn').addEventListener('click',function(){go(1)});
+d.addEventListener('keydown',function(e){if(e.key==='Escape'){if(lb.classList.contains('open'))closeL();else if(openSh)hide()}else if(lb.classList.contains('open')){if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)}});
+render();
+})();
+</script>
+</body>
+</html>
