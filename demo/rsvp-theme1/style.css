@@ -408,3 +408,12 @@ a.map-link.w-full { display: block; }
 
 /* Arabic verse: dedicated Arabic font so Quranic marks render (no tofu boxes) */
 .arabic[lang="ar"] { font-family: 'Amiri', 'Noto Naskh Arabic', 'Traditional Arabic', serif; text-transform: none; letter-spacing: 0; word-spacing: normal; font-style: normal; }
+
+/* RSVP + Ucapan (lp-rsvp): warna & fon tema. Struktur: ../TemplateAssets/lp-rsvp.css */
+.lp-rsvp{background:#fff;--lpr-ink:var(--text-color);--lpr-muted:#6f6a63;--lpr-card:var(--bg-color);--lpr-card-line:var(--accent-color);
+  --lpr-field-line:#cfc3ae;--lpr-btn:var(--text-color);--lpr-sel:var(--text-color);--lpr-accent:#c9b28c;--lpr-font:var(--primary-font);
+  --lpr-head:var(--serif-font);--lpr-quote:var(--serif-font);--lpr-radius:18px}
+.lp-rsvp .lp-ucapan-teks{font-style:italic}
+
+/* Nama tetamu panjang (?to=, maks. 60 aksara) tidak melimpah */
+#guest-name { overflow-wrap: anywhere; }

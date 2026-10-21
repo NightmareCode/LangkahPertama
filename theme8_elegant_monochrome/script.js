@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // --- Tetamu (?to=), sama seperti tema 1-5: textContent sahaja, tiada HTML ---
+    const namaTetamu = (s) => Array.from(String(s || '').replace(/[\u0000-\u001f\u007f\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]/g, ' ').replace(/\s+/g, ' ').trim()).slice(0, 60).join('').trim();   // ?to= : teks sahaja, maks. 60 aksara
+    const guestEl = document.getElementById('guest-name');
+    const guestName = namaTetamu(new URLSearchParams(window.location.search).get('to'));
+    if (guestEl && guestName) guestEl.textContent = guestName;
+
     // --- 1. Audio and Preview Logic ---
     const bgMusic = document.getElementById("bg-music");
     const musicControl = document.getElementById("music-control");

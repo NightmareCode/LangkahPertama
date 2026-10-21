@@ -414,3 +414,6 @@ a.map-link.w-full { display: block; }
   --lpr-field-line:#cfc3ae;--lpr-btn:var(--text-color);--lpr-sel:var(--text-color);--lpr-accent:#c9b28c;--lpr-font:var(--primary-font);
   --lpr-head:var(--serif-font);--lpr-quote:var(--serif-font);--lpr-radius:18px}
 .lp-rsvp .lp-ucapan-teks{font-style:italic}
+
+/* Nama tetamu panjang (?to=, maks. 60 aksara) tidak melimpah */
+#guest-name { overflow-wrap: anywhere; }

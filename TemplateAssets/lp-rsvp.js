@@ -3,15 +3,18 @@
  * Tersembunyi (atribut hidden / data-lp-rsvp) = modul tidak berbuat apa-apa, tiada permintaan rangkaian.
  *
  * Adapter (semua memulangkan Promise):
- *   hantarRsvp({nama, hadir, pax, rid}) -> {ok, dikemaskini?}
+ *   hantarRsvp({nama, kehadiran:'ya'|'tidak'|'mungkin', pax, rid, catatan}) -> {ok, dikemaskini?}
  *   hantarUcapan({nama, ucapan})         -> {ok, papar?}
  *   senaraiUcapan()                      -> [{nama, ucapan, masa}]   SATU-SATUNYA data awam
+ *   buka()                               -> {ok}  ping "kad dibuka" (hanya jika data-kaunter="1"; sekali sehari / peranti)
  * Data RSVP tidak pernah dibaca semula oleh pelayar; ia hanya dalam Google Sheet pasangan.
+ * Serasi: markup lama (tanpa pilihan Mungkin / medan catatan) tetap berfungsi; jawapan tersimpan lama {hadir:true|false} dibaca.
  * CSP: connect-src https://script.google.com https://script.googleusercontent.com
  */
 (function (global) {
   'use strict';
-  var HAD = { nama: 60, ucapanNama: 40, ucapan: 300, paxMin: 1, paxMax: 10 };
+  var HAD = { nama: 60, ucapanNama: 40, ucapan: 300, paxMin: 1, paxMax: 10, catatan: 100 };
+  var KEHADIRAN = { ya: 1, tidak: 1, mungkin: 1 };
   var ENDPOINT_RE = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]{10,}\/exec$/;
   var SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
   var MESEJ = {
@@ -19,6 +22,7 @@
     NAMA_TERLALU_PANJANG: ['nama', 'Nama terlalu panjang.'],
     HADIR_TIDAK_SAH: ['hadir', 'Sila pilih sama ada anda hadir atau tidak.'],
     PAX_TIDAK_SAH: ['pax', 'Bilangan tetamu mestilah antara 1 hingga 10 orang.'],
+    CATATAN_TERLALU_PANJANG: ['catatan', 'Catatan terlalu panjang (maksimum 100 aksara).'],
     UCAPAN_KOSONG: ['ucapan', 'Sila tulis ucapan anda.'],
     UCAPAN_TERLALU_PANJANG: ['ucapan', 'Ucapan terlalu panjang (maksimum 300 aksara).'],
     RSVP_DITUTUP: ['umum', 'Tempoh pengesahan kehadiran telah tamat. Terima kasih.'],
@@ -56,7 +60,8 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
       }
       return {
-        hantarRsvp: function (r) { return post({ action: 'rsvp', nama: r.nama, hadir: r.hadir ? 'ya' : 'tidak', pax: r.hadir ? r.pax : 0, rid: r.rid, laman_web: '' }); },
+        hantarRsvp: function (r) { return post({ action: 'rsvp', nama: r.nama, hadir: r.kehadiran, pax: r.kehadiran === 'ya' ? r.pax : 0, rid: r.rid, catatan: r.catatan || '', laman_web: '' }); },
+        buka: function () { return post({ action: 'buka' }); },
         hantarUcapan: function (u) { return post({ action: 'ucapan', nama: u.nama, ucapan: u.ucapan, laman_web: '' }); },
         senaraiUcapan: function () {
           return fetchJson(cfg.endpoint + '?action=ucapan&slug=' + encodeURIComponent(cfg.slug), { method: 'GET', credentials: 'omit' })
@@ -69,21 +74,30 @@
       var k = 'lp-rsvp-demo:' + cfg.slug;
       function d() { return ambil(k) || { rsvp: [], ucapan: [] }; }
       return {
-        hantarRsvp: function (r) { var x = d(); x.rsvp = x.rsvp.filter(function (y) { return y.rid !== r.rid; }); x.rsvp.push(r); simpan(k, x); return Promise.resolve({ ok: true }); },
+        hantarRsvp: function (r) { var x = d(); x.rsvp = x.rsvp.filter(function (y) { return y.rid !== r.rid; }); x.rsvp.push(Object.assign({ masa: new Date().toISOString() }, r)); simpan(k, x); return Promise.resolve({ ok: true }); },
         hantarUcapan: function (u) { var x = d(); x.ucapan.push({ nama: u.nama, ucapan: u.ucapan, masa: new Date().toISOString() }); simpan(k, x); return Promise.resolve({ ok: true, papar: true }); },
+        buka: function () { var x = d(); x.buka = (x.buka || 0) + 1; simpan(k, x); return Promise.resolve({ ok: true }); },
         senaraiUcapan: function () { return Promise.resolve(d().ucapan.slice().reverse()); }
       };
     }
   };
 
   function sahRsvp(f) {
-    var e = {}, nama = bersih(f.nama, 500);
+    var e = {}, nama = bersih(f.nama, 500), catatan = bersih(f.catatan, 500);
     if (nama.length < 2) e.nama = MESEJ.NAMA_TIDAK_SAH[1];
     else if (nama.length > HAD.nama) e.nama = 'Nama terlalu panjang (maksimum ' + HAD.nama + ' aksara).';
-    if (f.hadir !== 'ya' && f.hadir !== 'tidak') e.hadir = MESEJ.HADIR_TIDAK_SAH[1];
+    if (!KEHADIRAN.hasOwnProperty(f.hadir)) e.hadir = 'Sila pilih jawapan kehadiran anda.';
     var ps = String(f.pax == null ? '' : f.pax).trim(), pax = parseInt(ps, 10);
     if (f.hadir === 'ya' && (!/^\d{1,2}$/.test(ps) || pax < HAD.paxMin || pax > HAD.paxMax)) e.pax = MESEJ.PAX_TIDAK_SAH[1];
-    return { ralat: e, data: { nama: nama, hadir: f.hadir === 'ya', pax: f.hadir === 'ya' ? pax : 0 } };
+    if (catatan.length > HAD.catatan) e.catatan = MESEJ.CATATAN_TERLALU_PANJANG[1];
+    return { ralat: e, data: { nama: nama, kehadiran: f.hadir, pax: f.hadir === 'ya' ? pax : 0, catatan: catatan } };
+  }
+  /* jawapan tersimpan: format lama {hadir:true|false} -> {kehadiran:'ya'|'tidak'} */
+  function normalJawapan(s) {
+    if (!s || typeof s !== 'object') return null;
+    var k = KEHADIRAN.hasOwnProperty(s.kehadiran) ? s.kehadiran : (s.hadir === true ? 'ya' : s.hadir === false ? 'tidak' : '');
+    if (!k) return null;
+    return { rid: s.rid, nama: s.nama, kehadiran: k, pax: k === 'ya' ? s.pax : 0, catatan: typeof s.catatan === 'string' ? s.catatan : '' };
   }
   function sahUcapan(f) {
     var e = {}, nama = bersih(f.nama, 500), u = bersih(f.ucapan, 2000);
@@ -100,7 +114,7 @@
   }
 
   global.LPRsvp = { HAD: HAD, ENDPOINT_RE: ENDPOINT_RE, SLUG_RE: SLUG_RE, adapters: adapters, sahRsvp: sahRsvp,
-    sahUcapan: sahUcapan, bersih: bersih, ralatPelayan: ralatPelayan, ridBaru: ridBaru,
+    sahUcapan: sahUcapan, bersih: bersih, ralatPelayan: ralatPelayan, ridBaru: ridBaru, normalJawapan: normalJawapan,
     buat: function (cfg) { var a = adapters[cfg.adapter || 'appsScript']; if (!a) throw new Error('Adapter tidak dikenali'); return a(cfg); } };
 })(window);
 
@@ -118,7 +132,17 @@
   var KUNCI = 'lp-rsvp:' + slug;
   var BULAN = ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'];
   function $(id) { return document.getElementById(id); }
-  function jawapanLama() { try { return JSON.parse(localStorage.getItem(KUNCI) || 'null'); } catch (e) { return null; } }
+  function jawapanLama() { try { return R.normalJawapan(JSON.parse(localStorage.getItem(KUNCI) || 'null')); } catch (e) { return null; } }
+
+  /* ---- kaunter buka (pilihan): sekali sehari setiap peranti, tidak pernah mengganggu tetamu ---- */
+  if (root.getAttribute('data-kaunter') === '1' && api.buka) {
+    var KB = 'lp-buka:' + slug, hari = new Date().toISOString().slice(0, 10), akhir = null;
+    try { akhir = localStorage.getItem(KB); } catch (x) {}
+    if (akhir !== hari) {
+      try { localStorage.setItem(KB, hari); } catch (x) {}
+      setTimeout(function () { api.buka().catch(function () {}); }, 1500);
+    }
+  }
 
   function tunjukRalat(form, ralat) {
     var first = null;
@@ -142,6 +166,9 @@
 
   /* ---- RSVP ---- */
   var fr = $('borang-rsvp'), paxWrap = $('rsvp-pax-wrap'), paxIn = $('rsvp-pax'), done = $('rsvp-selesai');
+  var catIn = $('rsvp-catatan'), catKira = $('rsvp-catatan-kiraan');          /* pilihan: markup lama tiada */
+  function kemasCatatan() { if (catIn && catKira) { var n = catIn.value.length; catKira.textContent = n + ' / ' + R.HAD.catatan; catKira.classList.toggle('lebih', n > R.HAD.catatan); } }
+  if (catIn) { catIn.addEventListener('input', kemasCatatan); kemasCatatan(); }
   function segerakPax() {
     var h = fr.querySelector('input[name="hadir"]:checked'), ya = !!h && h.value === 'ya';
     paxWrap.hidden = !ya; paxIn.disabled = !ya; if (ya && !paxIn.value) paxIn.value = '1';
@@ -156,9 +183,12 @@
   function paparSelesai(s, dikemaskini) {
     fr.hidden = true; done.hidden = false;
     done.querySelector('[data-isi="tajuk"]').textContent = 'Terima kasih, ' + s.nama + '!';
-    done.querySelector('[data-isi="ringkas"]').textContent = s.hadir
-      ? 'Kehadiran anda direkodkan: ' + s.pax + ' orang.' + (dikemaskini ? ' (Jawapan dikemas kini.)' : '')
-      : 'Jawapan anda direkodkan: tidak dapat hadir. Doa anda amat dihargai.';
+    var tambah = dikemaskini ? ' (Jawapan dikemas kini.)' : '';
+    done.querySelector('[data-isi="ringkas"]').textContent = s.kehadiran === 'ya'
+      ? 'Kehadiran anda direkodkan: ' + s.pax + ' orang.' + tambah
+      : s.kehadiran === 'mungkin'
+        ? 'Jawapan anda direkodkan: mungkin hadir. Sila kemas kini jawapan apabila sudah pasti.' + tambah
+        : 'Jawapan anda direkodkan: tidak dapat hadir. Doa anda amat dihargai.' + tambah;
   }
   segerakPax();
   var lama = jawapanLama();
@@ -166,7 +196,7 @@
   fr.addEventListener('submit', function (e) {
     e.preventDefault();
     var h = fr.querySelector('input[name="hadir"]:checked');
-    var s = R.sahRsvp({ nama: fr.elements.nama.value, hadir: h ? h.value : '', pax: paxIn.value });
+    var s = R.sahRsvp({ nama: fr.elements.nama.value, hadir: h ? h.value : '', pax: paxIn.value, catatan: catIn ? catIn.value : '' });
     if (!tunjukRalat(fr, s.ralat)) return;
     if (jebak(fr)) { paparSelesai(s.data, false); done.focus(); return; }       /* honeypot: pura-pura berjaya */
     var simpanan = jawapanLama();
@@ -175,7 +205,7 @@
     api.hantarRsvp(s.data).then(function (res) {
       sibuk(fr, false);
       if (!res || !res.ok) { tunjukRalat(fr, R.ralatPelayan(res)); return; }
-      try { localStorage.setItem(KUNCI, JSON.stringify({ rid: s.data.rid, nama: s.data.nama, hadir: s.data.hadir, pax: s.data.pax })); } catch (x) {}
+      try { localStorage.setItem(KUNCI, JSON.stringify({ rid: s.data.rid, nama: s.data.nama, kehadiran: s.data.kehadiran, pax: s.data.pax, catatan: s.data.catatan })); } catch (x) {}
       paparSelesai(s.data, res.dikemaskini); done.focus();
     }).catch(function () { sibuk(fr, false); tunjukRalat(fr, { umum: 'Maaf, sambungan gagal. Sila semak internet anda dan cuba lagi.' }); });
   });
@@ -183,8 +213,9 @@
     var s = jawapanLama();
     if (s) {
       fr.elements.nama.value = s.nama || '';
-      var r = fr.querySelector('input[name="hadir"][value="' + (s.hadir ? 'ya' : 'tidak') + '"]'); if (r) r.checked = true;
-      paxIn.value = s.hadir ? s.pax : ''; segerakPax();
+      var r = fr.querySelector('input[name="hadir"][value="' + s.kehadiran + '"]'); if (r) r.checked = true;
+      paxIn.value = s.kehadiran === 'ya' ? s.pax : ''; segerakPax();
+      if (catIn) { catIn.value = s.catatan || ''; kemasCatatan(); }
     }
     done.hidden = true; fr.hidden = false; fr.elements.nama.focus();
   });

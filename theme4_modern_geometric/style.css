@@ -286,3 +286,6 @@ a.map-link.w-full { display: block; }
 .lp-rsvp .lp-btn{text-transform:uppercase;letter-spacing:2px;font-size:14px}
 .lp-rsvp .lp-step{border-radius:4px}
 .lp-rsvp .lp-wall li{border-left-width:4px}
+
+/* Nama tetamu panjang (?to=, maks. 60 aksara) tidak melimpah */
+#guest-name { overflow-wrap: anywhere; }

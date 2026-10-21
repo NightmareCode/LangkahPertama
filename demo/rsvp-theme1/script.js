@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if we are in preview mode (hash #preview instead of query string for local file:// support)
     const isPreview = window.location.hash === '#preview';
     const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('to') || 'Tetamu Dihormati';
+    const namaTetamu = (s) => Array.from(String(s || '').replace(/[\u0000-\u001f\u007f\u200b-\u200f\u202a-\u202e\u2066-\u2069\ufeff]/g, ' ').replace(/\s+/g, ' ').trim()).slice(0, 60).join('').trim();   // ?to= : teks sahaja, maks. 60 aksara
+    const guestName = namaTetamu(urlParams.get('to')) || 'Tetamu Dihormati';
     document.getElementById('guest-name').textContent = guestName;
 
     // --- Open Invitation Logic ---
@@ -118,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     // --- Countdown Timer ---
-    // Sasaran kiraan detik: 2027-03-20T11:00:00+08:00
+    // Sasaran kiraan detik: 2027-03-20T11:00:00+08:00 (diisi oleh isi_ekad.py)
     const weddingDate = new Date("2027-03-20T11:00:00+08:00").getTime();
 
     const countdownInterval = setInterval(() => {

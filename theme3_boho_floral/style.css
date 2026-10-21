@@ -329,3 +329,6 @@ a.map-link.w-full { display: block; }
 .lp-rsvp .lp-card{border-radius:120px 120px 22px 22px;padding-top:34px}
 .lp-rsvp .lp-card h4,.lp-rsvp .lp-wall-head h4,.lp-rsvp .lp-done h5{font-size:32px;font-weight:600;color:var(--terracotta)}
 .lp-rsvp .lp-wall li{border-left-color:var(--terracotta)}
+
+/* Nama tetamu panjang (?to=, maks. 60 aksara) tidak melimpah */
+#guest-name { overflow-wrap: anywhere; }

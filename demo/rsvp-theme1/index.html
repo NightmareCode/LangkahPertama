@@ -1,17 +1,24 @@
 <!DOCTYPE html>
+<!--
+  E-KAD PRATONTON (Design preview · Langkah Pertama), dijana oleh isi_ekad.py
+  Tema 1 (theme1_minimalist) · dijana 2026-10-21 22:30 · kiraan detik ke 2027-03-20T11:00:00+08:00
+  Kehadiran & Ucapan: slug demo-dahlia-iqbal -> PLACEHOLDER (pratonton)
+  Bukan kad rasmi. Tiada pautan mesej, kod QR hanya placeholder melainkan diberi.
+  Edit butiran dalam fail JSON dan jana semula; jangan edit tangan jika boleh.
+-->
 
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net https://script.google.com https://script.googleusercontent.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walimatul Urus | Dahlia &amp; Iqbal (Pratonton)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../TemplateAssets/lp-rsvp.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="rsvp.css">
     <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
@@ -103,6 +110,7 @@
                             <p class="time-text">8:30 Malam - 10:00 Malam</p>
                             <p class="location">Masjid Contoh Rekaan<br><span style="font-size:.85em;opacity:.85">Alamat contoh, 70000 Seremban, Negeri Sembilan</span></p>
                             
+                            
                         </div>
 
                         <div class="event-card fade-in-up">
@@ -110,6 +118,7 @@
                             <p class="date-text">Sabtu, 20 Mac 2027</p>
                             <p class="time-text">11:00 Pagi - 4:00 Petang</p>
                             <p class="location">Dewan Contoh Seri Rekaan<br><span style="font-size:.85em;opacity:.85">Alamat contoh, 70300 Seremban, Negeri Sembilan</span></p>
+                            <span class="lp-map-links" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;width:100%"><a class="btn-outline mt-3 map-link" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px;flex:1 1 0;white-space:nowrap;padding-left:12px;padding-right:12px;margin-top:12px;" href="https://www.google.com/maps/search/?api=1&amp;query=2.7258,101.9424" target="_blank" rel="noopener">Google Maps</a><a class="btn-outline mt-3 map-link" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px;flex:1 1 0;white-space:nowrap;padding-left:12px;padding-right:12px;margin-top:12px;" href="https://waze.com/ul?ll=2.7258,101.9424&amp;navigate=yes" target="_blank" rel="noopener">Waze</a></span>
                             
                         </div>
                     </div>
@@ -155,16 +164,20 @@
                 </div>
             </section>
 
-            <!-- RSVP + Ucapan (prototaip, adapter demo: localStorage sahaja) -->
-            <section class="lp-rsvp section" id="kehadiran" data-adapter="demo" data-kad="demo-dahlia-iqbal" aria-labelledby="kehadiran-tajuk">
-                <div class="container">
+            <!-- Gift Section -->
+            <!-- Sumbangan hadiah: tiada kod QR daripada pelanggan, bahagian dibuang -->
+
+            <!-- LP-RSVP:MULA · Kehadiran & Ucapan (tersembunyi pada demo awam; dipapar hanya pada kad pasangan yang ada RSVP) -->
+            <section class="lp-rsvp section" id="kehadiran" data-adapter="demo" data-slug="demo-dahlia-iqbal" data-kaunter="1" aria-labelledby="kehadiran-tajuk">
+                <div class="lp-rsvp-wrap">
                     <h3 class="section-title" id="kehadiran-tajuk">Kehadiran &amp; Ucapan</h3>
                     <p class="lp-lead">Mohon sahkan kehadiran anda dan titipkan doa buat pengantin.</p>
-                    <p class="lp-demo-note" role="note">Pratonton — jawapan disimpan dalam pelayar anda sahaja. Tiada apa-apa dihantar.<br><a href="pasangan.html">Lihat paparan pasangan (demo)</a></p>
+                    <p class="lp-pratonton" role="note">Pratonton — jawapan disimpan dalam pelayar anda sahaja. Tiada apa-apa dihantar. Butang hubungi tuan rumah tidak dipaparkan dalam demo (hanya dalam kad sebenar pasangan).<br><a href="pasangan.html">Lihat paparan pasangan (demo)</a></p>
 
                     <div class="lp-card">
                         <h4>Sahkan Kehadiran</h4>
                         <form id="borang-rsvp" novalidate>
+                            <p class="lp-err" data-ralat="umum" role="alert" hidden></p>
                             <div class="lp-field">
                                 <label for="rsvp-nama">Nama</label>
                                 <input class="lp-input" id="rsvp-nama" name="nama" data-medan="nama" type="text" maxlength="60" autocomplete="name" aria-describedby="rsvp-nama-err" required>
@@ -175,6 +188,7 @@
                                     <legend>Kehadiran</legend>
                                     <div class="lp-pills">
                                         <label class="lp-pill"><input type="radio" name="hadir" value="ya" data-medan="hadir"><span>Hadir</span></label>
+                                        <label class="lp-pill"><input type="radio" name="hadir" value="mungkin"><span>Mungkin</span></label>
                                         <label class="lp-pill"><input type="radio" name="hadir" value="tidak"><span>Tidak hadir</span></label>
                                     </div>
                                 </fieldset>
@@ -190,9 +204,15 @@
                                 <p class="lp-hint" id="rsvp-pax-hint">1 hingga 10 orang.</p>
                                 <p class="lp-err" id="rsvp-pax-err" data-ralat="pax" hidden></p>
                             </div>
+                            <div class="lp-field">
+                                <label for="rsvp-catatan">Catatan <span class="lp-pilihan">(pilihan)</span></label>
+                                <input class="lp-input" id="rsvp-catatan" name="catatan" data-medan="catatan" type="text" maxlength="100" autocomplete="off" aria-describedby="rsvp-catatan-hint rsvp-catatan-err">
+                                <div class="lp-hint-baris"><p class="lp-hint" id="rsvp-catatan-hint">Cth: alahan makanan, datang lewat.</p><p class="lp-count" id="rsvp-catatan-kiraan" aria-live="polite">0 / 100</p></div>
+                                <p class="lp-err" id="rsvp-catatan-err" data-ralat="catatan" hidden></p>
+                            </div>
                             <div class="lp-hp" aria-hidden="true"><label for="rsvp-web">Laman web</label><input id="rsvp-web" name="laman_web" type="text" tabindex="-1" autocomplete="off"></div>
                             <button type="submit" class="lp-btn">Hantar Jawapan</button>
-                            <p class="lp-hint lp-privasi">Nama dan bilangan tetamu hanya untuk pengantin. Tidak dipaparkan kepada orang lain.</p>
+                            <p class="lp-hint lp-privasi">Nama, bilangan tetamu dan catatan hanya untuk pengantin. Tidak dipaparkan kepada orang lain.</p>
                         </form>
                         <div class="lp-done" id="rsvp-selesai" tabindex="-1" role="status" hidden>
                             <p class="tick" aria-hidden="true">✓</p>
@@ -205,6 +225,7 @@
                     <div class="lp-card">
                         <h4>Titipkan Ucapan</h4>
                         <form id="borang-ucapan" novalidate>
+                            <p class="lp-err" data-ralat="umum" role="alert" hidden></p>
                             <div class="lp-field">
                                 <label for="ucapan-nama">Nama</label>
                                 <input class="lp-input" id="ucapan-nama" name="nama" data-medan="nama" type="text" maxlength="40" autocomplete="name" aria-describedby="ucapan-nama-err" required>
@@ -226,11 +247,11 @@
                     <div class="lp-wall-head"><h4 id="dinding-tajuk">Dinding Ucapan</h4><span id="ucapan-jumlah"></span></div>
                     <p class="lp-empty" id="ucapan-kosong">Belum ada ucapan. Jadilah yang pertama!</p>
                     <ul class="lp-wall" id="dinding-ucapan" aria-labelledby="dinding-tajuk"></ul>
+                    <button type="button" class="lp-btn ghost lp-more" id="ucapan-lagi" hidden>Lihat lebih banyak ucapan</button>
                 </div>
             </section>
-
-            <!-- Gift Section -->
-            <!-- Sumbangan hadiah: tiada kod QR daripada pelanggan, bahagian dibuang -->
+            <!-- LP-RSVP:TAMAT -->
+            
 
             <footer class="footer section">
                 <p>Terima Kasih.</p>
@@ -243,7 +264,7 @@
         </main>
     </div>
 
+    <script src="../../TemplateAssets/lp-rsvp.js" defer></script>
     <script src="script.js"></script>
-    <script src="rsvp.js"></script>
 </body>
 </html>

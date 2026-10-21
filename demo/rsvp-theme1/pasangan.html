@@ -10,36 +10,44 @@
     <title>Paparan Pasangan (DEMO) | Dahlia &amp; Iqbal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="rsvp.css">
+    <link rel="stylesheet" href="../../TemplateAssets/lp-rsvp.css">
     <style>
     body{background:#f0ebe1}
     .pv{max-width:560px;margin:0 auto;background:var(--bg-color);min-height:100vh;padding:0 0 40px}
-    .pv-banner{background:#7a1f1a;color:#fff;text-align:center;font:700 13px/1.45 var(--primary-font);padding:10px 14px;letter-spacing:.02em}
+    .pv-banner{background:#7a1f1a;color:#fff;text-align:center;font:700 13px/1.45 var(--primary-font);padding:10px 14px;letter-spacing:.02em;margin:0}
     .pv-head{padding:28px 20px 6px;text-align:center}
     .pv-head h1{font-family:var(--serif-font);font-size:34px;font-weight:600}
     .pv-head p{color:#6b6b6b;font-size:14px}
     .pv-body{padding:0 18px}
-    .pv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
-    .pv-stat{background:#fff;border:1px solid var(--accent-color);border-radius:16px;padding:14px 8px;text-align:center}
+    .pv-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0}
+    .pv-stat{background:#fff;border:1px solid var(--accent-color);border-radius:16px;padding:14px 6px;text-align:center;min-width:0}
     .pv-stat b{display:block;font:600 30px/1.1 var(--serif-font);color:#2f2f2f}
     .pv-stat span{font-size:12.5px;color:#6b6b6b;font-weight:600}
     .pv-stat.main{background:var(--text-color);border-color:var(--text-color)}
     .pv-stat.main b,.pv-stat.main span{color:#fff}
     .pv h2{font-family:var(--serif-font);font-size:24px;margin:26px 0 10px}
-    .pv-list{list-style:none;display:grid;gap:8px}
-    .pv-list li{display:flex;justify-content:space-between;gap:12px;align-items:center;background:#fff;border:1px solid var(--accent-color);border-radius:12px;padding:12px 14px;font-size:15px}
+    .pv-list{list-style:none;display:grid;gap:8px;padding:0;margin:0}
+    .pv-list li{background:#fff;border:1px solid var(--accent-color);border-radius:12px;padding:12px 14px;font-size:15px}
+    .pv-row{display:flex;justify-content:space-between;gap:12px;align-items:center}
     .pv-list .nm{font-weight:600;overflow-wrap:anywhere;min-width:0}
+    .pv-cat{margin:6px 0 0;font-size:13.5px;color:#555;overflow-wrap:anywhere}
     .pv-tag{flex:none;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;white-space:nowrap}
     .pv-tag.ya{background:#e7f2e2;color:#2d5a22}
+    .pv-tag.mungkin{background:#f6efd9;color:#6b5312}
     .pv-tag.tidak{background:#f6e6e4;color:#8a2a22}
+    .pv-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--accent-color);border-radius:12px;overflow:hidden;font-size:14px;table-layout:fixed}
+    .pv-table th,.pv-table td{padding:10px 10px;text-align:left;border-bottom:1px solid #eee5d6;overflow-wrap:anywhere;vertical-align:top}
+    .pv-table th{font-size:12.5px;color:#6b6b6b}
+    .pv-table .px{width:48px;text-align:center}
     .pv-actions{display:grid;gap:10px;margin-top:26px}
+    .pv-actions .lp-btn.ghost{margin-top:0}
     .pv-note{font-size:13px;color:#6b6b6b;margin-top:16px;line-height:1.6}
     .pv-foot{margin:30px 18px 0;padding:12px 14px;border:1px dashed #8a8a8a;border-radius:10px;background:#fffdf8;color:#2b2b2b;font:600 12px/1.5 system-ui,sans-serif;text-align:center}
     .pv-foot span{font-weight:400}
     </style>
 </head>
 <body>
-<main class="pv" id="pasangan">
+<main class="pv lp-rsvp" id="pasangan">
     <p class="pv-banner" role="note">DEMO · Paparan pasangan contoh. Data hanya dari pelayar ini (localStorage). Versi sebenar: senarai RSVP kekal dalam Google Sheet peribadi pasangan.</p>
     <div class="pv-head">
         <h1>Dahlia &amp; Iqbal</h1>
@@ -48,13 +56,28 @@
     <div class="pv-body">
         <div class="pv-stats" aria-live="polite">
             <div class="pv-stat"><b id="s-hadir">0</b><span>Hadir</span></div>
+            <div class="pv-stat"><b id="s-mungkin">0</b><span>Mungkin</span></div>
             <div class="pv-stat"><b id="s-tidak">0</b><span>Tidak hadir</span></div>
             <div class="pv-stat main"><b id="s-pax">0</b><span>Jumlah pax</span></div>
+            <div class="pv-stat"><b id="s-jumlah">0</b><span>Jawapan</span></div>
+            <div class="pv-stat"><b id="s-buka">0</b><span>Kad dibuka*</span></div>
         </div>
+        <p class="pv-note">* Anggaran: sekali sehari bagi setiap pelayar, hanya jika kaunter diaktifkan untuk pasangan. Dalam versi sebenar ia masuk ke tab Bukaan dalam Sheet pasangan, tidak pernah dipaparkan kepada tetamu.</p>
 
         <h2>Senarai jawapan</h2>
         <p class="lp-empty" id="r-kosong">Belum ada jawapan RSVP.</p>
         <ul class="pv-list" id="r-senarai"></ul>
+
+        <h2>Senarai Katering</h2>
+        <p class="pv-note" style="margin-top:0">Hanya tetamu yang hadir, ikut abjad. Catatan (cth. alahan makanan) untuk pihak katering.</p>
+        <p class="lp-empty" id="k-kosong">Belum ada tetamu yang hadir.</p>
+        <table class="pv-table" id="k-jadual" hidden>
+            <thead><tr><th scope="col">Nama</th><th scope="col" class="px">Pax</th><th scope="col">Catatan</th></tr></thead>
+            <tbody id="k-badan"></tbody>
+        </table>
+        <div class="pv-actions">
+            <button type="button" class="lp-btn ghost" id="k-csv">Muat turun CSV (Senarai Katering)</button>
+        </div>
 
         <h2>Ucapan</h2>
         <p class="lp-empty" id="u-kosong">Belum ada ucapan.</p>
@@ -65,35 +88,63 @@
             <a class="lp-btn ghost" href="index.html#kehadiran">Kembali ke kad jemputan</a>
             <button type="button" class="lp-btn ghost" id="padam">Padam semua data demo</button>
         </div>
-        <p class="pv-note">Dalam versi sebenar, pasangan melihat jumlah dan senarai ini dalam Google Sheet mereka sendiri (atau ringkasan yang hanya boleh dibuka oleh akaun Google mereka). Data dipadam selepas majlis.</p>
+        <p class="pv-note">Dalam versi sebenar, pasangan melihat jumlah dan senarai ini dalam Google Sheet mereka sendiri (tab Ringkasan, RSVP, Senarai Katering, Ucapan). CSV dimuat turun melalui Fail &gt; Muat turun &gt; CSV. Data dipadam selepas majlis.</p>
     </div>
     <div class="pv-foot">Design preview · Langkah Pertama<br><span>Pratonton prototaip RSVP oleh Langkah Pertama Digital Studio. Nama dan data di sini rekaan.</span></div>
 </main>
-<script src="rsvp.js"></script>
 <script>
 (function(){
-  var api=LPRsvp.buat({adapter:'demo',kadId:'demo-dahlia-iqbal'});
-  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
-  function lukis(){
-    var d=api._semua(), h=0,t=0,p=0, ul=document.getElementById('r-senarai'), uw=document.getElementById('u-senarai');
-    ul.innerHTML='';uw.innerHTML='';
-    d.rsvp.slice().sort(function(a,b){return a.masa<b.masa?1:-1;}).forEach(function(r){
-      if(r.hadir){h++;p+=r.pax;}else t++;
-      var li=el('li');li.appendChild(el('span','nm',r.nama));
-      li.appendChild(el('span','pv-tag '+(r.hadir?'ya':'tidak'),r.hadir?('Hadir · '+r.pax+' pax'):'Tidak hadir'));ul.appendChild(li);
-    });
-    d.ucapan.slice().reverse().forEach(function(u){var li=el('li');li.appendChild(el('p','lp-ucapan-teks',u.ucapan));li.appendChild(el('p','lp-ucapan-nama','— '+u.nama));uw.appendChild(li);});
-    document.getElementById('s-hadir').textContent=h;document.getElementById('s-tidak').textContent=t;document.getElementById('s-pax').textContent=p;
-    document.getElementById('r-kosong').hidden=d.rsvp.length>0;document.getElementById('u-kosong').hidden=d.ucapan.length>0;
+  'use strict';
+  var K='lp-rsvp-demo:demo-dahlia-iqbal';
+  var LABEL={ya:'Hadir',mungkin:'Mungkin',tidak:'Tidak hadir'};
+  function baca(){try{var d=JSON.parse(localStorage.getItem(K)||'null');if(d&&Array.isArray(d.rsvp)&&Array.isArray(d.ucapan))return d;}catch(e){}return {rsvp:[],ucapan:[]};}
+  function tulis(d){try{localStorage.setItem(K,JSON.stringify(d));}catch(e){}}
+  function jenis(r){return LABEL.hasOwnProperty(r.kehadiran)?r.kehadiran:(r.hadir===true?'ya':'tidak');}
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=String(x);return e;}
+  function kosongkan(n){while(n.firstChild)n.removeChild(n.firstChild);}
+  function $(id){return document.getElementById(id);}
+  function katering(d){
+    return d.rsvp.filter(function(r){return jenis(r)==='ya';})
+      .map(function(r){return {nama:String(r.nama||''),pax:Number(r.pax)||0,catatan:String(r.catatan||'')};})
+      .sort(function(a,b){return a.nama.localeCompare(b.nama,'ms');});
   }
-  document.getElementById('isi-contoh').addEventListener('click',function(){
-    var k='lp-rsvp:demo-dahlia-iqbal', d=JSON.parse(localStorage.getItem(k)||'{"rsvp":[],"ucapan":[]}'), now=Date.now();
-    [['Contoh: Mak Long Rekaan',true,4],['Contoh: Rakan Pejabat',true,2],['Contoh: Sepupu Rekaan',false,0],['Contoh: Jiran Rekaan',true,3]].forEach(function(x,i){
-      d.rsvp.push({id:'c'+now+i,nama:x[0],hadir:x[1],pax:x[2],masa:new Date(now-i*6e4).toISOString()});});
-    d.ucapan.push({nama:'Contoh: Rakan Pejabat',ucapan:'Selamat pengantin baru! Semoga berbahagia hingga ke syurga.',masa:new Date(now).toISOString()});
-    localStorage.setItem(k,JSON.stringify(d));lukis();
+  /* sel bermula = + - @ dijadikan teks (elak suntikan formula dalam Excel/Sheets) */
+  function selCsv(v){var s=String(v);if(/^[=+\-@]/.test(s))s="'"+s;return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
+  function lukis(){
+    var d=baca(),n={ya:0,mungkin:0,tidak:0},pax=0,ul=$('r-senarai'),uw=$('u-senarai'),tb=$('k-badan');
+    kosongkan(ul);kosongkan(uw);kosongkan(tb);
+    d.rsvp.slice().sort(function(a,b){return String(a.masa)<String(b.masa)?1:-1;}).forEach(function(r){
+      var j=jenis(r);n[j]++;if(j==='ya')pax+=Number(r.pax)||0;
+      var li=el('li'),row=el('div','pv-row');row.appendChild(el('span','nm',r.nama));
+      row.appendChild(el('span','pv-tag '+j,j==='ya'?('Hadir · '+r.pax+' pax'):LABEL[j]));li.appendChild(row);
+      if(r.catatan)li.appendChild(el('p','pv-cat','Catatan: '+r.catatan));
+      ul.appendChild(li);
+    });
+    var k=katering(d);
+    k.forEach(function(r){var tr=el('tr');tr.appendChild(el('td','',r.nama));tr.appendChild(el('td','px',r.pax));tr.appendChild(el('td','',r.catatan));tb.appendChild(tr);});
+    d.ucapan.slice().reverse().forEach(function(u){var li=el('li');li.appendChild(el('p','lp-ucapan-teks',u.ucapan));li.appendChild(el('p','lp-ucapan-nama','— '+u.nama));uw.appendChild(li);});
+    $('s-hadir').textContent=n.ya;$('s-mungkin').textContent=n.mungkin;$('s-tidak').textContent=n.tidak;
+    $('s-pax').textContent=pax;$('s-jumlah').textContent=d.rsvp.length;$('s-buka').textContent=Number(d.buka)||0;
+    $('r-kosong').hidden=d.rsvp.length>0;$('u-kosong').hidden=d.ucapan.length>0;
+    $('k-kosong').hidden=k.length>0;$('k-jadual').hidden=k.length===0;$('k-csv').disabled=k.length===0;
+  }
+  $('k-csv').addEventListener('click',function(){
+    var baris=[['Nama','Pax','Catatan']].concat(katering(baca()).map(function(r){return [r.nama,r.pax,r.catatan];}));
+    var csv='\ufeff'+baris.map(function(b){return b.map(selCsv).join(',');}).join('\r\n')+'\r\n';
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+    a.download='senarai-katering-dahlia-iqbal-DEMO.csv';document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},0);
   });
-  document.getElementById('padam').addEventListener('click',function(){api._padam();lukis();});
+  $('isi-contoh').addEventListener('click',function(){
+    var d=baca(),now=Date.now();
+    [['Contoh: Mak Long Rekaan','ya',4,'2 kanak-kanak'],['Contoh: Rakan Pejabat','ya',2,'Vegetarian, tiada udang'],['Contoh: Sepupu Rekaan','tidak',0,''],
+     ['Contoh: Jiran Rekaan','mungkin',0,'Sahkan minggu depan'],['=Contoh formula (diselamatkan)','ya',1,'@alahan kacang']].forEach(function(x,i){
+      d.rsvp.push({rid:'c'+now+i,nama:x[0],kehadiran:x[1],pax:x[2],catatan:x[3],masa:new Date(now-i*6e4).toISOString()});});
+    d.ucapan.push({nama:'Contoh: Rakan Pejabat',ucapan:'Selamat pengantin baru! Semoga berbahagia hingga ke syurga.',masa:new Date(now).toISOString()});
+    d.buka=(Number(d.buka)||0)+12;
+    tulis(d);lukis();
+  });
+  $('padam').addEventListener('click',function(){try{localStorage.removeItem(K);localStorage.removeItem('lp-rsvp:demo-dahlia-iqbal');localStorage.removeItem('lp-buka:demo-dahlia-iqbal');}catch(e){}lukis();});
   lukis();
 })();
 </script>
