@@ -262,6 +262,7 @@
         }
     </style>
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+    <style id="lp-tap">.mburger{background:none;border:0;border-radius:8px;min-width:44px;min-height:44px;justify-content:center;align-items:center}.foot-inner a{display:inline-block;padding:15px 6px;margin:-15px -6px}.met{min-width:0}.met .num{font-size:clamp(1.7rem,4vw,3.2rem)}</style>
     <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
 </head>
 <body>
@@ -297,8 +298,8 @@
 <span id="lp-main" tabindex="-1"></span>
         <div class="rail-foot">
             <div class="rail-tele">
-                <span>ALT <b>547 km</b> · VEL <b>7.59 km/s</b></span>
-                <span>CRAFT <b>128</b> · UPLINK <b class="on" style="color:var(--cyan)">STABLE</b></span>
+                <span>ORBIT <b>LEO</b> · FRAME <b>J2000</b></span>
+                <span>MODE <b>DEMO</b> · UPLINK <b class="on" style="color:var(--cyan)">STABLE</b></span>
             </div>
             <a class="rail-cta" href="#contact">Request access</a>
         </div>
@@ -311,7 +312,7 @@
             <div class="hero-scrim"></div>
             <div class="hero-scan"></div>
             <span class="hud-corner tl"></span><span class="hud-corner tr"></span><span class="hud-corner br"></span>
-            <div class="hud-coord mono">LEO · INC 53.0°<br>LON 101.6° E<br>FRAME J2000</div>
+            <div class="hud-coord mono">LEO · SAMPLE ORBIT<br>CONCEPT HUD<br>FRAME J2000</div>
             <div class="hero-inner">
                 <p class="seclabel reveal">Orbital infrastructure</p>
                 <h1 class="reveal" style="--d:0.06s">The backbone of the <span class="o">orbital</span> economy.</h1>
@@ -328,10 +329,10 @@
             <p class="seclabel reveal">// Overview</p>
             <h2 class="reveal" style="--d:0.06s">Most teams stitch together a dozen vendors to reach space. <b>Apogee is the whole stack — bus, propulsion, ground and ops — under one roof.</b></h2>
             <div class="over-stats reveal" style="--d:0.12s">
-                <div class="s"><b data-count="128">0</b><span>Craft in orbit</span></div>
-                <div class="s"><b data-count="14">0</b><span>Ground stations</span></div>
-                <div class="s"><b data-count="99.98" data-dec="2" data-suffix="%">0</b><span>Uptime</span></div>
-                <div class="s"><b data-count="6" data-suffix=" yrs">0</b><span>Heritage</span></div>
+                <div class="s"><b>BUS</b><span>Platform</span></div>
+                <div class="s"><b>PROP</b><span>Propulsion</span></div>
+                <div class="s"><b>GROUND</b><span>Network</span></div>
+                <div class="s"><b>OPS</b><span>Console</span></div>
             </div>
         </section>
 
@@ -355,12 +356,12 @@
             <div class="prog-grid">
                 <div class="prog-intro reveal">
                     <p class="seclabel">// Program</p>
-                    <h2>Whiteboard to working orbit in 18 months.</h2>
+                    <h2>Whiteboard to working orbit, one team.</h2>
                     <p>One integrated team carries your payload from first sketch to live telemetry — no hand-offs, no finger-pointing.</p>
                 </div>
                 <div class="tline reveal" style="--d:0.08s">
                     <div class="tnode"><div class="ph">Phase 01</div><h4>Design</h4><p>We co-design the bus around your payload, mass and power budget. Digital twin from day one.</p></div>
-                    <div class="tnode"><div class="ph">Phase 02</div><h4>Build</h4><p>In-house cleanrooms and a vertically-integrated supply chain compress the build to weeks.</p></div>
+                    <div class="tnode"><div class="ph">Phase 02</div><h4>Build</h4><p>In-house cleanrooms and a vertically-integrated supply chain keep the build moving.</p></div>
                     <div class="tnode"><div class="ph">Phase 03</div><h4>Launch</h4><p>Rideshare or dedicated — we manage integration, licensing and the road to the pad.</p></div>
                     <div class="tnode"><div class="ph">Phase 04</div><h4>Operate</h4><p>Hand off to Apogee Console, or fly it yourself. We keep it healthy on orbit.</p></div>
                 </div>
@@ -370,10 +371,10 @@
         <!-- METRICS -->
         <section class="metrics pad">
             <div class="met-grid">
-                <div class="met reveal"><div class="num"><em data-count="128">0</em></div><div class="lbl">Satellites deployed</div></div>
-                <div class="met reveal" style="--d:0.06s"><div class="num"><em data-count="2.4" data-dec="1">0</em>M km</div><div class="lbl">Flown on orbit</div></div>
-                <div class="met reveal" style="--d:0.12s"><div class="num"><em data-count="100">0</em>%</div><div class="lbl">Clean deorbit rate</div></div>
-                <div class="met reveal" style="--d:0.18s"><div class="num"><em data-count="60">0</em>+</div><div class="lbl">Missions flown</div></div>
+                <div class="met reveal"><div class="num"><em>Build</em></div><div class="lbl">Satellite buses</div></div>
+                <div class="met reveal" style="--d:0.06s"><div class="num"><em>Fly</em></div><div class="lbl">Launch, managed</div></div>
+                <div class="met reveal" style="--d:0.12s"><div class="num"><em>Track</em></div><div class="lbl">Live telemetry</div></div>
+                <div class="met reveal" style="--d:0.18s"><div class="num"><em>Clean</em></div><div class="lbl">Deorbit by design</div></div>
             </div>
         </section>
 
@@ -383,15 +384,15 @@
                 <div class="reveal">
                     <p class="seclabel">// Contact</p>
                     <h2 style="margin-top:16px;">Let's get you to orbit.</h2>
-                    <p class="lead">Tell us what you're flying. Our mission team replies within one orbit.</p>
+                    <p class="lead">Tell us what you're flying and our mission team will be in touch.</p>
                     <div class="rail-tele" style="margin-top:30px;font-size:0.62rem;">
-                        <span>HQ <b>El Segundo, California</b></span>
-                        <span>OPS <b>24/7 · 14 ground stations</b></span>
-                        <span>GENERAL <b>hello@apogee.demo</b></span>
+                        <span>HQ <b>Jalan Contoh 1, Bandar Contoh</b></span>
+                        <span>OPS <b>Sample text · demo console</b></span>
+                        <span>GENERAL <b>hello@example.com</b></span>
                     </div>
                 </div>
                 <form class="console-form reveal" style="--d:0.08s" id="contactForm" autocomplete="off">
-                    <div class="cf-head"><span>AP-INTAKE · SECURE CHANNEL</span><span class="on">● OPEN</span></div>
+                    <div class="cf-head"><span>AP-INTAKE · DEMO CHANNEL</span><span class="on">● OPEN</span></div>
                     <div class="cf-body">
                         <div class="ff"><label for="cName">Name</label><input id="cName" type="text" placeholder="Your name"></div>
                         <div class="ff"><label for="cOrg">Organisation</label><input id="cOrg" type="text" placeholder="Company / agency"></div>
@@ -423,11 +424,11 @@
 
         /* systems list */
         var SYS = [
-            { n: 'Satellite buses', d: 'Modular platforms from 12U cubesats to 500 kg ESPA-class craft — qualified, flight-proven and configurable in weeks.', t: 'AP-BUS SERIES' },
+            { n: 'Satellite buses', d: 'Modular platforms from compact cubesats to larger ESPA-class craft — configurable around your payload.', t: 'AP-BUS SERIES' },
             { n: 'In-orbit propulsion', d: 'High-efficiency electric thrusters for precise station-keeping, phasing and controlled end-of-life maneuvers.', t: 'ION DRIVE' },
-            { n: 'Ground network', d: '14 owned stations across five continents delivering 24/7 contact windows and sub-second latency.', t: '14 STATIONS' },
+            { n: 'Ground network', d: 'A ground network designed for frequent contact windows and low-latency links.', t: 'AP-GROUND' },
             { n: 'Mission control', d: 'Real-time telemetry, autonomous fault recovery and one console for your entire constellation.', t: 'AP-CONSOLE' },
-            { n: 'Responsible deorbit', d: 'Every craft is built to leave no trace — controlled re-entry within five years of mission end.', t: 'ZERO DEBRIS' }
+            { n: 'Responsible deorbit', d: 'Designed to leave no trace — a controlled re-entry plan at mission end.', t: 'AP-DEORBIT' }
         ];
         var sl = document.getElementById('sysList');
         if (sl) { sl.innerHTML = SYS.map(function (s, i) {
@@ -439,10 +440,10 @@
 
         /* fleet */
         var FLEET = [
-            { cls: 'Cubesat', n: 'AP-12', p: 'A 12U workhorse for tech demo and constellation infill.', specs: [['Mass','18 kg'],['Power','64 W'],['Life','3 yrs']], g: '▣' },
-            { cls: 'ESPA', n: 'Apogee-1', p: 'Our flagship ESPA-class bus, flown across 60+ missions.', specs: [['Mass','180 kg'],['Power','640 W'],['Life','7 yrs']], g: '◈' },
-            { cls: 'ESPA-XL', n: 'Apogee-1X', p: 'Extended payload volume and power for heavier sensors.', specs: [['Mass','320 kg'],['Power','1.1 kW'],['Life','8 yrs']], g: '◆' },
-            { cls: 'Heavy', n: 'AP-500', p: 'A 500 kg platform for high-power comms and observation.', specs: [['Mass','500 kg'],['Power','2.4 kW'],['Life','10 yrs']], g: '⬢' }
+            { cls: 'Cubesat', n: 'Apogee-C', p: 'A compact workhorse for tech demos and constellation infill.', specs: [['Mass','Light'],['Power','Low'],['Role','Tech demo']], g: '▣' },
+            { cls: 'ESPA', n: 'Apogee-1', p: 'The flagship ESPA-class bus concept, built for general missions.', specs: [['Mass','Medium'],['Power','Medium'],['Role','General']], g: '◈' },
+            { cls: 'ESPA-XL', n: 'Apogee-1X', p: 'Extended payload volume and power for heavier sensors.', specs: [['Mass','Medium+'],['Power','High'],['Role','Sensors']], g: '◆' },
+            { cls: 'Heavy', n: 'Apogee-H', p: 'A heavy platform for high-power comms and observation.', specs: [['Mass','Heavy'],['Power','Very high'],['Role','Comms · EO']], g: '⬢' }
         ];
         var fs = document.getElementById('fleetScroll');
         if (fs) { fs.innerHTML = FLEET.map(function (c) {
@@ -473,13 +474,6 @@
             }, { rootMargin: '-45% 0px -50% 0px' });
             spied.forEach(function (s) { sio.observe(s); });
         }
-
-        /* counters */
-        function ez(t){return 1-Math.pow(1-t,3);}
-        function run(el){ var tg=parseFloat(el.getAttribute('data-count')),dc=parseInt(el.getAttribute('data-dec')||'0',10),sf=el.getAttribute('data-suffix')||''; if(reduce){el.textContent=tg.toFixed(dc)+sf;return;} var d=1500,s=null; function st(ts){if(!s)s=ts;var p=Math.min((ts-s)/d,1);el.textContent=(tg*ez(p)).toFixed(dc)+sf;if(p<1)requestAnimationFrame(st);else el.textContent=tg.toFixed(dc)+sf;} requestAnimationFrame(st); setTimeout(function(){el.textContent=tg.toFixed(dc)+sf;},d+250); }
-        var cs = document.querySelectorAll('[data-count]');
-        if ('IntersectionObserver' in window && !reduce) { var cio = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { run(e.target); cio.unobserve(e.target); } }); }, { threshold: 0.6 }); cs.forEach(function (c) { cio.observe(c); }); }
-        else { cs.forEach(run); }
 
         /* fleet drag-to-scroll */
         var fsc = document.getElementById('fleetScroll');

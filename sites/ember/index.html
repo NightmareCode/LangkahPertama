@@ -154,8 +154,8 @@
         .plan:hover { border-color: var(--caramel); transform: translateX(5px); box-shadow: var(--sh-2); }
         .plan.best { border-color: var(--caramel); background: rgba(191,106,48,0.06); box-shadow: 0 0 0 1px rgba(191,106,48,0.35), var(--sh-1); margin-top: 20px; }
         .plan.best:hover { box-shadow: 0 0 0 1px var(--caramel), var(--sh-2); }
-        /* "Most popular" badge on the Fortnightly plan */
-        .plan.best::before { content: 'Most popular'; position: absolute; top: -11px; left: 18px; background: linear-gradient(180deg, var(--caramel), var(--caramel-deep)); color: var(--cream); font-family: var(--sans); font-weight: 700; font-size: 0.6rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; box-shadow: var(--sh-caramel); }
+        /* "Our pick" badge on the Fortnightly plan */
+        .plan.best::before { content: 'Our pick'; position: absolute; top: -11px; left: 18px; background: linear-gradient(180deg, var(--caramel), var(--caramel-deep)); color: var(--cream); font-family: var(--sans); font-weight: 700; font-size: 0.6rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 4px 12px; border-radius: 999px; box-shadow: var(--sh-caramel); }
         .plan .pname { font-family: var(--serif); font-size: 1.3rem; flex-shrink: 0; min-width: 130px; }
         .plan .pdesc { color: var(--ink-soft); font-size: 0.86rem; flex: 1; }
         .plan .pprice { font-family: var(--serif); font-size: 1.4rem; font-variant-numeric: tabular-nums; }
@@ -237,7 +237,7 @@
     </style>
     <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
     <style id="lp-a11y">.lp-skip{position:fixed;top:10px;left:10px;z-index:99999;background:#0c0d11;color:#fff;padding:11px 18px;border-radius:8px;font:600 14px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(-160%);transition:transform .18s ease}.lp-skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}@media (prefers-reduced-motion:reduce){.lp-skip{transition:none}}</style>
-    <style id="lp-tap">.pbtn-line{min-height:44px}.p-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}.c-foot a{padding:12px 4px}</style>
+    <style id="lp-tap">.pbtn-line{min-height:44px}.p-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px}.c-foot a{padding:14px 4px}.m-add,.plan .padd,.bagbar .bgo{min-height:44px}.m-price,.plan .pprice{font-size:.92rem;font-style:italic;color:var(--ink-soft);white-space:nowrap}</style>
 </head>
 <body>
 <a href="#lp-main" class="lp-skip">Skip to content</a>
@@ -249,7 +249,7 @@
         <aside class="panel">
             <div class="p-top">
                 <span class="p-brand"><span class="seed"></span> Ember Lane</span>
-                <span class="p-est">Est. 2014 · Bangsar</span>
+                <span class="p-est">Concept roastery · Bandar Contoh</span>
             </div>
             <div class="p-3d">
                 <div class="steam" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -258,7 +258,7 @@
             </div>
             <div class="p-bottom">
                 <h1 class="p-head">Coffee worth<br>slowing down <em>for.</em></h1>
-                <p class="p-sub">Small-batch, single-origin, roasted in Bangsar the week you drink it.</p>
+                <p class="p-sub">Small-batch, single-origin, roasted fresh in Bandar Contoh.</p>
                 <div class="p-actions">
                     <a class="pbtn pbtn-fill" href="#menu">Shop coffee →</a>
                     <a class="pbtn pbtn-line" href="#story">Our story</a>
@@ -280,7 +280,7 @@
                 <section class="sblock" id="menu">
                     <p class="slabel reveal">This week's roast</p>
                     <h2 class="reveal" style="--d:0.04s">The menu.</h2>
-                    <p class="sintro reveal" style="--d:0.08s">Six origins on rotation — whole bean or ground to your brew method. Add a few; your bag's at the bottom.</p>
+                    <p class="sintro reveal" style="--d:0.08s">A rotating line-up of origins — whole bean or ground to your brew method. Add a few; your bag's at the bottom.</p>
                     <div id="menuList"></div>
                 </section>
 
@@ -288,11 +288,11 @@
                     <p class="slabel reveal">Our craft</p>
                     <h2 class="reveal" style="--d:0.04s">Roasted in small drums.</h2>
                     <div class="roaster reveal" style="--d:0.08s" aria-hidden="true"><div class="drum"></div><div class="beans" id="beans"></div></div>
-                    <p class="sintro reveal">We roast in 12-kilo batches to chase the sweet spot of every origin — never a second past it. Each batch is cupped the morning after, and only the ones we'd happily drink ourselves make it to your door.</p>
+                    <p class="sintro reveal">We roast in small batches to chase the sweet spot of every origin — never a second past it. Each batch is cupped the morning after, and only the ones we'd happily drink ourselves make it to your door.</p>
                     <div class="ministats reveal">
-                        <div><b>12kg</b><span>Batch size</span></div>
-                        <div><b>9</b><span>Farm partners</span></div>
-                        <div><b>72hr</b><span>Rest, then ship</span></div>
+                        <div><b>Small</b><span>Batch roasts</span></div>
+                        <div><b>Cupped</b><span>Before it ships</span></div>
+                        <div><b>Rested</b><span>Then packed</span></div>
                     </div>
                 </section>
 
@@ -301,19 +301,19 @@
                     <h2 class="reveal" style="--d:0.04s">Subscribe your way.</h2>
                     <p class="sintro reveal" style="--d:0.08s">Pick a rhythm. Pause, skip or change any time — no lock-in.</p>
                     <div class="reveal" style="--d:0.1s">
-                        <div class="plan"><span class="pname">Weekly</span><span class="pdesc">250g every Tuesday, rotating single origin.</span><span class="pprice">RM 38</span><button class="padd" data-plan="Weekly">Choose</button></div>
-                        <div class="plan best"><span class="pname">Fortnightly</span><span class="pdesc">Every two weeks, pick origin or surprise. Most popular.</span><span class="pprice">RM 36</span><button class="padd" data-plan="Fortnightly">Choose</button></div>
-                        <div class="plan"><span class="pname">Monthly</span><span class="pdesc">Once a month, house blend default. Easiest on the wallet.</span><span class="pprice">RM 34</span><button class="padd" data-plan="Monthly">Choose</button></div>
+                        <div class="plan"><span class="pname">Weekly</span><span class="pdesc">A fresh bag every week, rotating single origin.</span><span class="pprice">Price here</span><button class="padd" data-plan="Weekly">Choose</button></div>
+                        <div class="plan best"><span class="pname">Fortnightly</span><span class="pdesc">Every two weeks, pick origin or surprise.</span><span class="pprice">Price here</span><button class="padd" data-plan="Fortnightly">Choose</button></div>
+                        <div class="plan"><span class="pname">Monthly</span><span class="pdesc">Once a month, house blend by default. The easy rhythm.</span><span class="pprice">Price here</span><button class="padd" data-plan="Monthly">Choose</button></div>
                     </div>
                 </section>
 
                 <section class="sblock" id="cafes">
                     <p class="slabel reveal">Come say hi</p>
-                    <h2 class="reveal" style="--d:0.04s">Three little rooms.</h2>
+                    <h2 class="reveal" style="--d:0.04s">Little rooms, slow mornings.</h2>
                     <div class="reveal" style="--d:0.08s">
-                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--caramel))"></span><div class="cb"><h3>Bangsar Roastery</h3><div class="addr">14 Jalan Telawi 3 — the flagship, with the roaster humming out back.</div><div class="hrs">Mon–Sun · 7:30am – 7pm</div></div></div>
-                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--sage))"></span><div class="cb"><h3>Bukit Damansara</h3><div class="addr">Ground floor, Plaza Damansara — quiet corner, good light.</div><div class="hrs">Mon–Sat · 8am – 6pm</div></div></div>
-                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--espresso-2))"></span><div class="cb"><h3>TTDI</h3><div class="addr">Lorong Datuk Sulaiman — our smallest, six seats and a window.</div><div class="hrs">Tue–Sun · 8am – 5pm</div></div></div>
+                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--caramel))"></span><div class="cb"><h3>The Roastery</h3><div class="addr">Jalan Contoh 1, Bandar Contoh — the flagship, with the roaster humming out back.</div><div class="hrs">Sample address · opening hours here</div></div></div>
+                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--sage))"></span><div class="cb"><h3>The Corner</h3><div class="addr">Lot Contoh 2, Plaza Contoh — quiet corner, good light.</div><div class="hrs">Sample address · opening hours here</div></div></div>
+                        <div class="cafe"><span class="ci" style="background:linear-gradient(150deg,var(--cream-3),var(--espresso-2))"></span><div class="cb"><h3>The Window</h3><div class="addr">Lorong Contoh 3, Taman Contoh — our smallest, a few seats and a window.</div><div class="hrs">Sample address · opening hours here</div></div></div>
                     </div>
                 </section>
 
@@ -335,7 +335,7 @@
 
     <!-- sticky bag bar -->
     <div class="bagbar" id="bagbar">
-        <span class="bsum"><b id="bagN">0</b> in bag <span>· RM <b id="bagT">0</b></span></span>
+        <span class="bsum"><b id="bagN">0</b> in bag <span>· demo bag</span></span>
         <button class="bgo" id="bagGo">Checkout →</button>
     </div>
     <div class="toast-wrap" id="toastWrap"></div>
@@ -352,18 +352,18 @@
 
         /* menu */
         var COFFEE = [
-            { o: 'Ethiopia', n: 'Yirgacheffe', notes: 'Jasmine, bergamot, ripe peach', roast: 'Light', price: 42 },
-            { o: 'Colombia', n: 'Huila', notes: 'Caramel, red apple, cocoa', roast: 'Medium', price: 38 },
-            { o: 'Sumatra', n: 'Mandheling', notes: 'Dark chocolate, cedar, brown sugar', roast: 'Dark', price: 40 },
-            { o: 'Kenya', n: 'Nyeri AA', notes: 'Blackcurrant, grapefruit, syrupy', roast: 'Light-medium', price: 46 },
-            { o: 'Guatemala', n: 'Antigua', notes: 'Toffee, baking spice, cocoa nib', roast: 'Medium', price: 39 },
-            { o: 'House', n: 'Ember Blend', notes: 'Hazelnut, toffee, easy & smooth', roast: 'Medium-dark', price: 34 }
+            { o: 'Ethiopia', n: 'Yirgacheffe', notes: 'Jasmine, bergamot, ripe peach', roast: 'Light' },
+            { o: 'Colombia', n: 'Huila', notes: 'Caramel, red apple, cocoa', roast: 'Medium' },
+            { o: 'Sumatra', n: 'Mandheling', notes: 'Dark chocolate, cedar, brown sugar', roast: 'Dark' },
+            { o: 'Kenya', n: 'Nyeri AA', notes: 'Blackcurrant, grapefruit, syrupy', roast: 'Light-medium' },
+            { o: 'Guatemala', n: 'Antigua', notes: 'Toffee, baking spice, cocoa nib', roast: 'Medium' },
+            { o: 'House', n: 'Ember Blend', notes: 'Hazelnut, toffee, easy & smooth', roast: 'Medium-dark' }
         ];
         var ml = document.getElementById('menuList');
         if (ml) { ml.innerHTML = COFFEE.map(function (k) {
             return '<div class="m-item"><div class="m-l"><span class="m-name">' + esc(k.n) + '</span><span class="m-meta">' + esc(k.o) + ' · ' + esc(k.notes) + '</span><span class="m-roast">' + esc(k.roast) + ' roast · whole bean</span></div>' +
                 '<span class="m-lead"></span>' +
-                '<div class="m-r"><span class="m-price">RM ' + k.price + '</span><button class="m-add" data-add="' + esc(k.n) + '" data-price="' + k.price + '">Add</button></div></div>';
+                '<div class="m-r"><span class="m-price">Price here</span><button class="m-add" data-add="' + esc(k.n) + '">Add</button></div></div>';
         }).join(''); }
 
         /* beans */
@@ -378,11 +378,11 @@
         } else { revs.forEach(function (el) { el.classList.add('in'); }); }
 
         /* bag + toast */
-        var toastWrap = document.getElementById('toastWrap'), bagbar = document.getElementById('bagbar'), bagN = document.getElementById('bagN'), bagT = document.getElementById('bagT'), n = 0, t = 0;
+        var toastWrap = document.getElementById('toastWrap'), bagbar = document.getElementById('bagbar'), bagN = document.getElementById('bagN'), n = 0;
         function toast(msg) { var el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); el.textContent = msg; toastWrap.appendChild(el); setTimeout(function () { el.style.transition = 'opacity .3s'; el.style.opacity = '0'; setTimeout(function () { el.remove(); }, 320); }, 2200); }
         document.addEventListener('click', function (e) {
             var a = e.target.closest('[data-add]');
-            if (a) { n++; t += parseInt(a.getAttribute('data-price'), 10) || 0; bagN.textContent = n; bagT.textContent = t; bagbar.classList.add('show'); toast('Added ' + a.getAttribute('data-add') + ' — demo only'); return; }
+            if (a) { n++; bagN.textContent = n; bagbar.classList.add('show'); toast('Added ' + a.getAttribute('data-add') + ' — demo only'); return; }
             var p = e.target.closest('[data-plan]');
             if (p) { toast(p.getAttribute('data-plan') + ' subscription — demo only'); }
         });
