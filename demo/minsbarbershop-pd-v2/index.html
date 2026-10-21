@@ -345,7 +345,7 @@ h2 em{font-style:normal}
    <div class="cb"><h3>Produk Rambut</h3><p>Produk penggayaan rambut dijual di kedai.</p><div class="row"><button class="mini" data-demo="Produk Rambut">Pilih</button></div></div></article>
  </div>
  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
- <p class="svc-note">Harga &amp; menu disahkan bersama pemilik</p>
+ <p class="svc-note">Harga &amp; servis disahkan bersama pemilik</p>
 </section>
 
 <section class="space" id="ruang">
@@ -465,6 +465,7 @@ d.querySelectorAll('[data-demo]').forEach(function(el){el.addEventListener('clic
 d.getElementById('shX').addEventListener('click',closeS);scrim.addEventListener('click',closeS);
 // lightbox: FLIP scale from the tapped thumbnail + backdrop fade, reversed on close
 var lb=d.getElementById('lb'),lbt=d.getElementById('lbt'),lbc=d.getElementById('lbc'),figs=lbt.querySelectorAll('img'),N=figs.length,lastG=null,gal=d.getElementById('gal'),gbs=[].slice.call(gal.querySelectorAll('button')),DUR=420,EZ='cubic-bezier(.22,1,.36,1)',lbBusy=0,lbT=0;
+function capW(im){if(im&&im.naturalWidth)im.style.maxWidth='min(100%,'+(im.naturalWidth/(window.devicePixelRatio||1))+'px)'}[].forEach.call(figs,function(im){im.addEventListener('load',function(){capW(im)})});
 function load(i){var im=figs[i];if(im&&!im.getAttribute('src'))im.src=im.getAttribute('data-src')}
 new IntersectionObserver(function(es,o){if(es[0].isIntersecting){for(var i=0;i<N;i++)load(i);o.disconnect()}},{rootMargin:'600px 0px'}).observe(gal);
 function ready(im,cb){if(im.complete&&im.naturalWidth)return cb();var done=0,f=function(){if(!done){done=1;cb()}};(im.decode?im.decode():Promise.reject()).then(f,f);setTimeout(f,350)}
@@ -474,7 +475,7 @@ function flip(im,th){var r=im.getBoundingClientRect(),t=th.getBoundingClientRect
 function setIm(im,tr,tf,clip,op){im.style.transition=tr;im.style.transform=tf;im.style.clipPath=clip;im.style.opacity=op}
 function lockScroll(on){d.documentElement.style.overflow=on?'hidden':''}
 function openL(i,btn){if(lbBusy)return;lastG=btn||d.activeElement;load(i);var im=figs[i];lbBusy=1;
- ready(im,function(){clearTimeout(lbT);lbt.scrollTo({left:i*lbt.clientWidth,behavior:'instant'});lbc.textContent=(i+1)+' / '+N;
+ ready(im,function(){capW(im);clearTimeout(lbT);lbt.scrollTo({left:i*lbt.clientWidth,behavior:'instant'});lbc.textContent=(i+1)+' / '+N;
   var f=!REDUCE&&btn&&flip(im,btn);
   if(f){setIm(im,'none',f.tf,f.clip,'1');btn.style.opacity='0'}else setIm(im,'none',REDUCE?'none':'scale(.94)','',REDUCE?'0':'0');
   im.getBoundingClientRect();
