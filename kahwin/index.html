@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6efe4">
+    <title>E-Kad Kahwin RM30 — Langkah Pertama</title>
+    <meta name="description" content="E-kad kahwin siap dengan 8 tema: lagu, galeri, kiraan hari, tentatif dan QR hadiah. E-Kad Tema RM30. Tengok demo dulu, percuma.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ms_MY">
+    <meta property="og:title" content="E-Kad Kahwin RM30 — Langkah Pertama">
+    <meta property="og:description" content="8 tema e-kad kahwin siap. Tetamu buka dari satu link. Tengok demo dulu, percuma.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image-2.png">
+    <link rel="icon" href="/assets/icon-512.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Albert+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink:#2b2219; --soft:#6b5d4d; --bg:#f6efe4; --card:#fffaf2; --gold:#a8792f; --gold2:#c9a25a; --line:rgba(43,34,25,.14); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { transition:none !important; animation:none !important; } }
+        body { font-family:'Albert Sans',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; font-size:1.02rem; overflow-x:hidden; }
+        img { max-width:100%; display:block; }
+        a { color:inherit; }
+        .skip { position:absolute; left:-999px; top:8px; background:var(--ink); color:#fff; padding:12px 16px; z-index:9; }
+        .skip:focus { left:8px; }
+        :focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+        .wrap { width:min(1080px, 100% - 40px); margin-inline:auto; }
+        header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0; }
+        .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; min-height:44px; }
+        .brand img { width:38px; height:auto; }
+        .brand span small { display:block; font-weight:500; font-size:.72rem; color:var(--soft); letter-spacing:.08em; text-transform:uppercase; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:48px; padding:12px 22px; border-radius:999px; font-weight:700; text-decoration:none; border:1.5px solid var(--ink); transition:transform .2s, background .2s; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-gold { background:var(--ink); color:#fff7e8; border-color:var(--ink); }
+        .btn-line { background:transparent; }
+        .btn-sm { min-height:44px; padding:8px 16px; font-size:.92rem; }
+        .hero { padding:24px 0 56px; display:grid; gap:32px; }
+        .eyebrow { font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+        h1, h2, h3 { font-family:'Bodoni Moda',Georgia,serif; font-weight:500; line-height:1.12; }
+        h1 { font-size:clamp(2.2rem, 9vw, 4rem); margin:10px 0 16px; }
+        h1 em, h2 em { color:var(--gold); }
+        .lead { font-size:1.1rem; color:var(--soft); max-width:36ch; }
+        .price { display:inline-flex; align-items:baseline; gap:10px; margin:22px 0; padding:12px 18px; border:1px solid var(--gold2); border-radius:14px; background:var(--card); }
+        .price b { font-family:'Bodoni Moda',serif; font-size:2rem; color:var(--gold); }
+        .actions { display:flex; flex-wrap:wrap; gap:12px; }
+        .hero-pics { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .hero-pics img { border-radius:18px; width:100%; aspect-ratio:3/4; object-fit:cover; }
+        .hero-pics img:nth-child(2) { margin-top:36px; }
+        section { padding:56px 0; border-top:1px solid var(--line); }
+        h2 { font-size:clamp(1.8rem, 6.5vw, 2.8rem); margin-bottom:12px; }
+        .sub { color:var(--soft); max-width:56ch; margin-bottom:28px; }
+        .grid { display:grid; gap:14px; grid-template-columns:1fr; }
+        .card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:20px; }
+        .card h3 { font-size:1.25rem; margin-bottom:6px; }
+        .card p { color:var(--soft); font-size:.96rem; }
+        .list { list-style:none; display:grid; gap:10px; }
+        .list li { padding-left:26px; position:relative; }
+        .list li::before { content:''; position:absolute; left:4px; top:.62em; width:9px; height:9px; border-radius:50%; background:var(--gold2); }
+        .steps { counter-reset:s; display:grid; gap:14px; }
+        .steps li { list-style:none; counter-increment:s; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px 18px 18px 64px; position:relative; }
+        .steps li::before { content:counter(s); position:absolute; left:18px; top:16px; width:32px; height:32px; border-radius:50%; background:var(--ink); color:#fff7e8; display:grid; place-items:center; font-weight:700; }
+        .steps b { display:block; }
+        .special { background:var(--ink); color:#f6efe4; border-radius:24px; padding:28px 22px; display:grid; gap:20px; }
+        .special p { color:#d9ccb8; }
+        .special img { border-radius:16px; width:100%; max-width:260px; aspect-ratio:9/16; object-fit:cover; object-position:top; }
+        .special .btn { border-color:#f6efe4; color:#f6efe4; }
+        details { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:0 18px; }
+        details + details { margin-top:10px; }
+        summary { cursor:pointer; min-height:52px; display:flex; align-items:center; font-weight:700; }
+        details p { padding-bottom:16px; color:var(--soft); }
+        .cta { text-align:center; }
+        .cta .actions { justify-content:center; margin-top:20px; }
+        footer { padding:32px 0 40px; border-top:1px solid var(--line); font-size:.9rem; color:var(--soft); text-align:center; }
+        footer a { display:inline-flex; align-items:center; min-height:44px; padding:0 8px; }
+        @media (min-width: 760px) {
+            .hero { grid-template-columns:1.1fr .9fr; align-items:center; padding-top:48px; }
+            .grid { grid-template-columns:repeat(3, 1fr); }
+            .steps { grid-template-columns:repeat(2, 1fr); }
+            .special { grid-template-columns:1fr auto; align-items:center; padding:40px; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip" href="#isi">Langkau ke kandungan</a>
+<div class="wrap">
+    <header class="top">
+        <a class="brand" href="../" aria-label="Langkah Pertama — laman utama">
+            <img src="/assets/lp-mark-gold.png" width="183" height="188" alt="Logo Langkah Pertama">
+            <span>Langkah Pertama<small>E-Kad Kahwin</small></span>
+        </a>
+        <a class="btn btn-gold btn-sm" href="#dm">DM kami</a>
+    </header>
+
+    <main id="isi">
+        <div class="hero">
+            <div>
+                <p class="eyebrow">Untuk pasangan yang nak kahwin</p>
+                <h1>E-kad kahwin yang tetamu buka <em>terus dari satu link</em>.</h1>
+                <p class="lead">Pilih tema, hantar maklumat majlis, kami siapkan. Kongsi di WhatsApp, IG atau FB. Tengok demo dulu, percuma.</p>
+                <div class="price"><span>E-Kad Tema</span><b>RM30</b></div>
+                <div class="actions">
+                    <a class="btn btn-gold" href="/wedding/">Tengok 8 tema →</a>
+                    <a class="btn btn-line" href="#dm">DM untuk mula</a>
+                </div>
+            </div>
+            <div class="hero-pics">
+                <img src="/TemplateAssets/galleri2.jpg" width="722" height="1328" alt="Pengantin memegang jambangan bunga putih">
+                <img src="/TemplateAssets/galleri1.jpg" width="736" height="1105" alt="Pasangan pengantin dengan jambangan bunga">
+            </div>
+        </div>
+
+        <section aria-labelledby="h-isi">
+            <h2 id="h-isi">Apa yang ada <em>dalam kad</em></h2>
+            <p class="sub">Semua 8 tema siap dengan bahagian ini. Tetamu tak perlu muat turun apa-apa aplikasi.</p>
+            <div class="grid">
+                <div class="card"><h3>Lagu latar</h3><p>Lagu pilihan anda mula berbunyi bila tetamu buka kad. Ada butang untuk tutup lagu.</p></div>
+                <div class="card"><h3>Kiraan hari</h3><p>Tetamu nampak berapa hari lagi ke majlis anda.</p></div>
+                <div class="card"><h3>Gambar &amp; galeri</h3><p>Gambar pasangan, kisah cinta ringkas dan galeri gambar.</p></div>
+                <div class="card"><h3>Tentatif majlis</h3><p>Masa dan aturcara majlis, senang dibaca di telefon bimbit.</p></div>
+                <div class="card"><h3>Kod QR hadiah</h3><p>Letak kod QR anda sendiri untuk tetamu yang nak beri hadiah wang.</p></div>
+                <div class="card"><h3>Nama tetamu</h3><p>Tema 1 hingga 5 boleh tunjuk nama tetamu di kad, guna link khas untuk setiap tetamu.</p></div>
+            </div>
+        </section>
+
+        <section aria-labelledby="h-hantar">
+            <h2 id="h-hantar">Apa yang <em>anda perlu hantar</em></h2>
+            <p class="sub">DM sahaja maklumat ini. Kalau belum lengkap pun tak apa, kami boleh mula dengan demo dulu.</p>
+            <ul class="list">
+                <li>Nama pasangan dan nama ibu bapa</li>
+                <li>Tarikh, masa dan tempat majlis</li>
+                <li>Tentatif majlis dan kisah cinta ringkas</li>
+                <li>4 gambar untuk galeri dan 2 gambar pasangan</li>
+                <li>Satu lagu pilihan</li>
+                <li>Kod QR hadiah anda sendiri (kalau mahu)</li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="h-cara">
+            <h2 id="h-cara">Cara <em>tempah</em></h2>
+            <ol class="steps">
+                <li><b>DM kami</b>Beritahu tema yang anda suka dan tarikh majlis.</li>
+                <li><b>Demo percuma</b>Kami siapkan contoh kad dengan maklumat anda. Tengok dulu sebelum bayar.</li>
+                <li><b>Boleh minta ubah</b>Nak tukar ayat atau gambar? Beritahu je.</li>
+                <li><b>Bayar &amp; kongsi</b>Deposit 50%, kemudian link akhir diberi selepas bayaran penuh RM30.</li>
+            </ol>
+        </section>
+
+        <section aria-labelledby="h-khas">
+            <div class="special">
+                <div>
+                    <p class="eyebrow" style="color:#d9b36a">Nak lebih istimewa?</p>
+                    <h2 id="h-khas">E-Kad Khas 3D</h2>
+                    <p>Jemputan yang dibuat khas untuk majlis anda. Bila tetamu skrol, mereka seperti berjalan masuk ke majlis. Tengok contoh majlis sebenar dalam Arkib Majlis. DM untuk sebut harga.</p>
+                    <div class="actions" style="margin-top:18px"><a class="btn btn-line" href="/arkib/">Buka Arkib Majlis →</a></div>
+                </div>
+                <img src="/assets/arkib/pertunangan-2026-08-cover.jpg" width="600" height="1299" loading="lazy" alt="Muka depan jemputan pertunangan 3D dalam Arkib Majlis">
+            </div>
+        </section>
+
+        <section aria-labelledby="h-soalan">
+            <h2 id="h-soalan">Soalan <em>biasa</em></h2>
+            <details><summary>Tetamu kena muat turun aplikasi ke?</summary><p>Tak perlu. Tetamu tekan link dan kad terus terbuka di telefon bimbit.</p></details>
+            <details><summary>Berapa harga?</summary><p>E-Kad Tema RM30. E-Kad Khas 3D atau reka bentuk lain, DM untuk sebut harga.</p></details>
+            <details><summary>Ada borang RSVP?</summary><p>Belum ada dalam tema siap sekarang. Kalau anda perlukan, DM dan kita bincang.</p></details>
+            <details><summary>Boleh tengok dulu sebelum bayar?</summary><p>Boleh. Demo dengan maklumat anda adalah percuma. Bayar hanya bila anda setuju.</p></details>
+        </section>
+
+        <section class="cta" id="dm" aria-labelledby="h-dm">
+            <h2 id="h-dm">Jom siapkan <em>e-kad anda</em></h2>
+            <p class="sub" style="margin-inline:auto">DM kami di Instagram, TikTok atau Facebook. Kami balas secepat mungkin.</p>
+            <div class="actions">
+                <a class="btn btn-gold" href="https://www.instagram.com/_langkahpertama_/" target="_blank" rel="noopener noreferrer">DM di Instagram</a>
+                <a class="btn btn-line" href="https://www.tiktok.com/@langkahpertama26" target="_blank" rel="noopener noreferrer">DM di TikTok</a>
+                <a class="btn btn-line" href="https://www.facebook.com/profile.php?id=61595196002458" target="_blank" rel="noopener noreferrer">Mesej di Facebook</a>
+            </div>
+            <p class="sub" style="margin:18px auto 0;font-style:italic">Demo percuma dulu, tengok dulu baru buat keputusan.</p>
+        </section>
+    </main>
+</div>
+<footer>
+    <div class="wrap">
+        <p><a href="../">Langkah Pertama</a> · <a href="/wedding/">8 Tema</a> · <a href="/arkib/">Arkib Majlis</a> · <a href="../kedai/">Untuk Kedai</a></p>
+        <p>&copy; 2026 Langkah Pertama</p>
+    </div>
+</footer>
+</body>
+</html>
