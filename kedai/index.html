@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#14532d">
+    <title>Menu QR &amp; Laman Web untuk Kedai — Langkah Pertama</title>
+    <meta name="description" content="Menu QR, landing page dan laman web ringkas untuk kedai makan, kafe dan salon di Malaysia. Demo percuma dulu. DM untuk sebut harga.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ms_MY">
+    <meta property="og:title" content="Menu QR &amp; Laman Web untuk Kedai — Langkah Pertama">
+    <meta property="og:description" content="Menu QR, landing page dan laman web ringkas untuk kedai. Demo percuma dulu.">
+    <meta property="og:image" content="https://langkahpertama.website/assets/og-image-2.png">
+    <link rel="icon" href="/assets/icon-512.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --ink:#16211b; --soft:#4d5a52; --bg:#fbf7ef; --green:#14532d; --chili:#d9480f; --yellow:#ffd43b; --card:#fff; --line:rgba(22,33,27,.14); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
+        body { font-family:'Rubik',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.6; overflow-x:hidden; }
+        img { max-width:100%; display:block; }
+        a { color:inherit; }
+        .skip { position:absolute; left:-999px; top:8px; background:var(--ink); color:#fff; padding:12px 16px; z-index:9; }
+        .skip:focus { left:8px; }
+        :focus-visible { outline:3px solid var(--chili); outline-offset:3px; }
+        .wrap { width:min(1100px, 100% - 36px); margin-inline:auto; }
+        .bar { background:var(--green); color:#fff; }
+        .bar .wrap { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; }
+        .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:700; min-height:44px; }
+        .brand img { width:36px; height:auto; }
+        .brand small { display:block; font-weight:400; font-size:.72rem; opacity:.8; letter-spacing:.06em; text-transform:uppercase; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 22px; border-radius:12px; font-weight:700; text-decoration:none; border:2px solid var(--ink); box-shadow:4px 4px 0 var(--ink); background:var(--yellow); color:var(--ink); transition:transform .15s, box-shadow .15s; }
+        .btn:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+        .btn-w { background:#fff; }
+        .btn-sm { min-height:44px; padding:8px 14px; box-shadow:3px 3px 0 #0b2e18; border-color:#0b2e18; }
+        h1, h2, h3 { font-family:'Bricolage Grotesque',system-ui,sans-serif; line-height:1.08; }
+        .hero { padding:36px 0 48px; display:grid; gap:28px; }
+        .tag { display:inline-block; background:var(--chili); color:#fff; font-weight:700; font-size:.8rem; padding:6px 12px; border-radius:999px; }
+        h1 { font-size:clamp(2.3rem, 10vw, 4.4rem); font-weight:800; margin:14px 0; }
+        h1 mark { background:var(--yellow); padding:0 .12em; color:inherit; }
+        .lead { font-size:1.1rem; color:var(--soft); max-width:38ch; margin-bottom:22px; }
+        .actions { display:flex; flex-wrap:wrap; gap:14px; }
+        .collage { display:grid; grid-template-columns:1.2fr 1fr; gap:10px; }
+        .collage img { width:100%; height:100%; object-fit:cover; border-radius:16px; border:2px solid var(--ink); }
+        .collage img:first-child { grid-row:span 2; aspect-ratio:3/4; }
+        .collage img:not(:first-child) { aspect-ratio:4/3; }
+        section { padding:52px 0; }
+        h2 { font-size:clamp(1.9rem, 7vw, 3rem); font-weight:800; margin-bottom:10px; }
+        .sub { color:var(--soft); max-width:58ch; margin-bottom:26px; }
+        .svc { display:grid; gap:16px; }
+        .s { background:var(--card); border:2px solid var(--ink); border-radius:18px; padding:22px; box-shadow:5px 5px 0 var(--green); }
+        .s h3 { font-size:1.45rem; margin-bottom:6px; }
+        .s p { color:var(--soft); }
+        .s .q { display:inline-block; margin-top:12px; font-weight:700; color:var(--chili); }
+        .why { background:var(--green); color:#fff; border-radius:24px; padding:30px 22px; }
+        .why h2 { color:var(--yellow); }
+        .why ul { list-style:none; display:grid; gap:14px; margin-top:16px; }
+        .why li { padding-left:30px; position:relative; }
+        .why li::before { content:''; position:absolute; left:2px; top:.45em; width:14px; height:14px; border-radius:4px; background:var(--yellow); }
+        .demos { display:grid; gap:14px; }
+        .d { display:block; text-decoration:none; background:var(--card); border:2px solid var(--ink); border-radius:18px; overflow:hidden; }
+        .d img { width:100%; aspect-ratio:16/10; object-fit:cover; }
+        .d span { display:block; padding:14px 16px; font-weight:700; min-height:48px; }
+        .d small { display:block; font-weight:400; color:var(--soft); }
+        .note { font-size:.9rem; color:var(--soft); margin-top:12px; }
+        .steps { counter-reset:s; display:grid; gap:12px; }
+        .steps li { list-style:none; counter-increment:s; background:#fff; border:2px solid var(--ink); border-radius:16px; padding:16px 16px 16px 62px; position:relative; }
+        .steps li::before { content:counter(s); position:absolute; left:14px; top:14px; width:34px; height:34px; border-radius:10px; background:var(--yellow); border:2px solid var(--ink); display:grid; place-items:center; font-weight:800; }
+        .steps b { display:block; }
+        .cta { text-align:center; background:var(--yellow); border:2px solid var(--ink); border-radius:24px; padding:36px 20px; margin-bottom:40px; }
+        .cta .actions { justify-content:center; margin-top:18px; }
+        .cta .btn { background:#fff; }
+        footer { padding:24px 0 36px; font-size:.9rem; color:var(--soft); text-align:center; }
+        footer a { display:inline-flex; align-items:center; min-height:44px; padding:0 8px; }
+        @media (min-width: 760px) {
+            .hero { grid-template-columns:1.05fr .95fr; align-items:center; padding-top:56px; }
+            .svc, .demos { grid-template-columns:repeat(3, 1fr); }
+            .steps { grid-template-columns:repeat(2, 1fr); }
+            .why { padding:44px; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip" href="#isi">Langkau ke kandungan</a>
+<div class="bar">
+    <div class="wrap">
+        <a class="brand" href="../" aria-label="Langkah Pertama — laman utama">
+            <img src="/assets/lp-mark-gold.png" width="183" height="188" alt="Logo Langkah Pertama">
+            <span>Langkah Pertama<small>Untuk Kedai</small></span>
+        </a>
+        <a class="btn btn-sm" href="#dm">DM kami</a>
+    </div>
+</div>
+
+<main id="isi" class="wrap">
+    <div class="hero">
+        <div>
+            <span class="tag">Kedai makan · Kafe · Salon</span>
+            <h1>Kedai anda, <mark>senang dijumpai</mark> di telefon bimbit.</h1>
+            <p class="lead">Menu QR, landing page atau laman web ringkas untuk kedai kecil. Kami buat demo dulu guna gambar dan menu kedai anda, percuma.</p>
+            <div class="actions">
+                <a class="btn" href="#dm">DM untuk demo percuma</a>
+                <a class="btn btn-w" href="#contoh">Tengok contoh</a>
+            </div>
+        </div>
+        <div class="collage">
+            <img src="/assets/menu/img/hub-mamak.jpg" width="640" height="1137" alt="Roti canai, kari dan teh tarik di atas meja">
+            <img src="/assets/menu/img/ty-t1.jpg" width="640" height="360" alt="Semangkuk tomyam merah">
+            <img src="/assets/menu/img/mk-d1.jpg" width="640" height="821" alt="Segelas teh tarik">
+        </div>
+    </div>
+
+    <section aria-labelledby="h-servis">
+        <h2 id="h-servis">Apa yang kami buat</h2>
+        <p class="sub">Pilih yang sesuai dengan kedai anda. Semua servis kedai: DM untuk sebut harga.</p>
+        <div class="svc">
+            <div class="s"><h3>Menu QR</h3><p>Menu digital dengan gambar makanan sebenar. Pelanggan imbas QR di meja, terus nampak menu. Harga naik? Kami ubah, tak perlu cetak semula.</p><span class="q">DM untuk sebut harga</span></div>
+            <div class="s"><h3>Landing page</h3><p>Satu halaman kemas: apa yang anda jual, waktu buka, lokasi dan cara DM. Sesuai untuk link di bio IG, TikTok atau FB.</p><span class="q">DM untuk sebut harga</span></div>
+            <div class="s"><h3>Laman web ringkas</h3><p>Beberapa halaman untuk bisnes yang nak nampak lebih dipercayai: tentang kedai, servis atau produk, gambar dan cara hubungi.</p><span class="q">DM untuk sebut harga</span></div>
+        </div>
+    </section>
+
+    <section aria-labelledby="h-kenapa">
+        <div class="why">
+            <h2 id="h-kenapa">Kenapa kedai perlu ni?</h2>
+            <ul>
+                <li>Pelanggan sekarang cari kedai di telefon bimbit dulu sebelum datang.</li>
+                <li>Menu bercetak mahal untuk diubah. Menu digital boleh ditukar bila-bila.</li>
+                <li>Gambar sebenar buat pelanggan lebih yakin nak order.</li>
+                <li>Satu link untuk semua: bio IG, TikTok, FB dan Google.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contoh" aria-labelledby="h-contoh">
+        <h2 id="h-contoh">Contoh menu digital</h2>
+        <p class="sub">Buka dan cuba di telefon bimbit anda. Tiga gaya berbeza untuk tiga jenis kedai.</p>
+        <div class="demos">
+            <a class="d" href="/menu/mamak/"><img src="/assets/menu/img/hub-mamak.jpg" width="640" height="1137" loading="lazy" alt="Hidangan mamak"><span>Mamak Kilat<small>Kedai mamak 24 jam · buka demo →</small></span></a>
+            <a class="d" href="/menu/tomyam/"><img src="/assets/menu/img/ty-t1.jpg" width="640" height="360" loading="lazy" alt="Tomyam"><span>Tomyam Halilintar<small>Gerai pasar malam · buka demo →</small></span></a>
+            <a class="d" href="/menu/luxe/"><img src="/assets/menu/img/lx-hero.jpg" width="640" height="477" loading="lazy" alt="Hidangan restoran mewah"><span>LANGIT 56<small>Restoran mewah · buka demo →</small></span></a>
+        </div>
+        <p class="note">Kedai dalam contoh ini adalah rekaan, untuk tunjuk gaya sahaja.</p>
+    </section>
+
+    <section aria-labelledby="h-cara">
+        <h2 id="h-cara">Cara kita mula</h2>
+        <ol class="steps">
+            <li><b>DM kami</b>Beritahu nama kedai dan apa yang anda perlukan.</li>
+            <li><b>Demo percuma</b>Kami siapkan contoh guna gambar dan menu kedai anda.</li>
+            <li><b>Ubah sampai puas hati</b>Tukar harga, gambar atau ayat. Beritahu je.</li>
+            <li><b>Bayar &amp; guna</b>Deposit 50% bila setuju. Link akhir diberi selepas bayaran penuh.</li>
+        </ol>
+    </section>
+
+    <section class="cta" id="dm" aria-labelledby="h-dm">
+        <h2 id="h-dm">Jom tengok demo kedai anda</h2>
+        <p>DM kami di Instagram, TikTok atau Facebook. Kami balas dengan idea dan demo percuma.</p>
+        <div class="actions">
+            <a class="btn" href="https://www.instagram.com/_langkahpertama_/" target="_blank" rel="noopener noreferrer">DM di Instagram</a>
+            <a class="btn" href="https://www.tiktok.com/@langkahpertama26" target="_blank" rel="noopener noreferrer">DM di TikTok</a>
+            <a class="btn" href="https://www.facebook.com/profile.php?id=61595196002458" target="_blank" rel="noopener noreferrer">Mesej di Facebook</a>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="wrap">
+        <p><a href="../">Langkah Pertama</a> · <a href="/menu/">Contoh Menu</a> · <a href="/sites/">Contoh Laman Web</a> · <a href="../kahwin/">Untuk Pasangan</a></p>
+        <p>&copy; 2026 Langkah Pertama</p>
+    </div>
+</footer>
+</body>
+</html>
