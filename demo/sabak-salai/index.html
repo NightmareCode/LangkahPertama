@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#140f0c">
+<title>Sabak Salai · Produk salai Rembau (contoh)</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --bg:#140f0c;--bg2:#1d1612;--card:#241c17;--line:#3a2e26;
+  --ink:#f6ebe0;--muted:#b9a594;--ember:#e07830;--ember2:#f0a35a;
+  --cream:#f3e6d4;--deep:#0b0806;--ok:#c4a882;
+  --ez:cubic-bezier(.22,1,.36,1);--dur:400ms;
+  --pad:clamp(18px,4.5vw,28px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.skip{position:fixed;top:10px;left:10px;z-index:9999;background:var(--cream);color:var(--deep);padding:12px 16px;border-radius:10px;font-weight:600;text-decoration:none;transform:translateY(-160%);transition:transform .18s ease}
+.skip:focus{transform:none;outline:2px solid var(--ember);outline-offset:2px}
+.wrap{width:min(560px,100%);margin:0 auto}
+.top{position:sticky;top:0;z-index:40;backdrop-filter:saturate(1.2) blur(10px);background:rgba(20,15,12,.88);border-bottom:1px solid rgba(58,46,38,.7)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--pad);min-height:56px}
+.brand{font-weight:700;letter-spacing:.02em;font-size:15px}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.top-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px 14px;border-radius:999px;background:var(--ember);color:#1a0f08;font-weight:700;font-size:13px;text-decoration:none;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez)}
+.top-cta:active{transform:scale(.97)}
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;isolation:isolate}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(11,8,6,.25) 0%,rgba(11,8,6,.55) 42%,rgba(11,8,6,.94) 78%,var(--bg) 100%)}
+.hero-in{padding:28px var(--pad) 36px}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid rgba(224,120,48,.45);background:rgba(224,120,48,.12);color:var(--ember2);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.hero h1{margin:14px 0 10px;font-size:clamp(34px,9vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--ember2)}
+.hero .lead{color:var(--cream);max-width:34ch;font-size:16.5px}
+.hero-actions{display:grid;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 18px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez),border-color var(--dur) var(--ez),color var(--dur) var(--ez)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--ember);color:#1a0f08}
+.btn-ghost{background:rgba(255,255,255,.06);border-color:rgba(243,230,212,.18);color:var(--cream)}
+.btn svg{width:18px;height:18px;flex:none}
+section{padding:42px var(--pad)}
+.sec-kicker{color:var(--ember2);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(26px,7vw,34px);line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
+.muted{color:var(--muted)}
+.about{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.facts{display:grid;gap:12px;margin-top:22px}
+.fact{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start;padding:14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.fact i{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:rgba(224,120,48,.14);color:var(--ember2)}
+.fact h3{font-size:15px;margin-bottom:2px}
+.fact p{color:var(--muted);font-size:14px}
+.menu{background:var(--bg2)}
+.menu-grid{display:grid;gap:10px;margin-top:20px}
+.card{padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line);transition:transform var(--dur) var(--ez),border-color var(--dur) var(--ez)}
+.card:active{transform:scale(.99)}
+.card .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ember2);margin-bottom:6px}
+.card h3{font-size:17px;margin-bottom:4px}
+.card p{color:var(--muted);font-size:14px}
+.gal{background:var(--bg)}
+.gal-note{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal-grid button{appearance:none;border:0;padding:0;background:transparent;color:inherit;cursor:pointer;position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;min-height:44px;isolation:isolate}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform 450ms var(--ez)}
+.gal-grid button:active img{transform:scale(1.03)}
+.gal-grid .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 10px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72));font-size:12px;font-weight:600}
+.gal-grid .cap small{display:block;color:var(--ember2);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.loc{background:var(--bg2)}
+.loc-card{margin-top:16px;padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.loc-card+ .loc-card{margin-top:10px}
+.loc-card h3{font-size:16px;margin-bottom:6px}
+.loc-card p{color:var(--muted);font-size:14.5px}
+.loc-card a.map{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;min-height:44px;padding:10px 14px;border-radius:12px;background:rgba(224,120,48,.12);color:var(--ember2);text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(224,120,48,.28);transition:background var(--dur) var(--ez)}
+.contact{background:linear-gradient(180deg,var(--bg2),var(--deep));padding-bottom:110px}
+.contact .lead{margin:8px 0 18px;color:var(--muted)}
+.cta-stack{display:grid;gap:10px}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:14px;background:rgba(224,120,48,.1);border:1px solid rgba(224,120,48,.25);color:var(--cream);font-size:13.5px}
+.note svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--ember2)}
+footer{padding:28px var(--pad) 36px;text-align:center;border-top:1px solid var(--line);background:var(--deep)}
+footer .mark{height:48px;width:auto;margin:0 auto 12px}
+footer .name{font-weight:700;margin-bottom:4px}
+footer .sub{color:var(--muted);font-size:13px;margin-bottom:14px}
+footer .lp{color:var(--ok);font-size:12.5px;margin-top:8px}
+.dock{transition:transform var(--dur) var(--ez);position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(11,8,6,.92) 28%,rgba(11,8,6,.98));pointer-events:none}
+.dock-in{pointer-events:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px;width:min(560px,100%);margin:0 auto}
+.dock .btn{box-shadow:0 10px 28px rgba(0,0,0,.35)}.dock.hide{transform:translateY(110%)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.gal-grid img,.btn,.top-cta{transition:none}}
+.lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(8,6,5,.94);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ez),visibility var(--dur) var(--ez);padding:16px}
+.lb.open{opacity:1;visibility:visible}
+.lb figure{margin:0;max-width:min(100%,520px);transform:scale(.96) translateY(10px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.lb.open figure{transform:none}
+.lb img{max-width:100%;max-height:min(78vh,820px);width:auto;height:auto;margin:0 auto;border-radius:12px}
+.lb figcaption{text-align:center;color:var(--muted);font-size:13px;margin-top:10px}
+.lb-bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:12px}
+.lb-bar button{appearance:none;border:0;min-width:48px;min-height:48px;border-radius:14px;background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer}
+.lb-nav{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px}.lb-nav button{appearance:none;border:0;min-width:48px;min-height:48px;border-radius:14px;background:rgba(255,255,255,.08);color:#fff;font-size:22px;cursor:pointer}
+</style>
+</head>
+<body>
+<a class="skip" href="#utama">Langkau ke kandungan</a>
+<header class="top">
+  <div class="top-in wrap">
+    <div class="brand">Sabak Salai<small>Rembau · N9</small></div>
+    <a class="top-cta" href="https://www.instagram.com/sabaksalaiofficial/" rel="noopener" target="_blank">IG</a>
+  </div>
+</header>
+<main id="utama">
+<section class="hero">
+  <picture>
+    <source type="image/webp" srcset="img/hero-s.webp 750w, img/hero-l.webp 900w" sizes="100vw">
+    <img src="img/hero-l.webp" width="900" height="1200" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="hero-in wrap">
+    <span class="pill">Kilang &amp; kedai produk salai</span>
+    <h1>Asap kayu buah.<br><em>Rasa Rembau.</em></h1>
+    <p class="lead">Sabak Salai menyalai daging, itik &amp; ikan dalam sabak stainless steel — guna kayu rambutan &amp; tempurung kelapa.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#produk">Tengok produk</a>
+      <a class="btn btn-ghost" href="#hubungi">Mesej di Instagram / Facebook</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="tentang">
+  <div class="wrap">
+    <p class="sec-kicker rv">Tentang</p>
+    <h2 class="rv">Dari Rembau sejak 2014</h2>
+    <p class="muted rv">Kilang Sabak Salai mula beroperasi di Rembau, Negeri Sembilan pada Januari 2014. Proses dari a sampai z: menyiang, menyalai &amp; membungkus.</p>
+    <div class="facts">
+      <article class="fact rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c2 3 2 5 0 8 3-1 5 1 5 4a5 5 0 1 1-10 0c0-4 3-7 5-12z"/></svg></i><div><h3>Sabak (rumah asap)</h3><p>Dinding stainless steel tahan suhu tinggi — tempat menyalai produk mereka.</p></div></article>
+      <article class="fact rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c4-6 6-10 8-16 2 6 4 10 8 16"/><path d="M8 14h8"/></svg></i><div><h3>Kayu rambutan &amp; tempurung kelapa</h3><p>Asap daripada kayu buah-buahan terpilih &amp; tempurung kelapa — aroma tersendiri.</p></div></article>
+      <article class="fact rv"><i aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></i><div><h3>Kedai &amp; kilang</h3><p>Ada Sabak Salai Shop di Bazar MARA Chembong, dan kilang di Kampung Kundur Tengah.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="produk">
+  <div class="wrap">
+    <p class="sec-kicker rv">Produk</p>
+    <h2 class="rv">Apa yang biasa dicari</h2>
+    <p class="muted rv">Antara produk yang dikongsi di laman &amp; page mereka. Senarai penuh &amp; stok — sahkan terus dengan Sabak Salai.</p>
+    <div class="menu-grid">
+      <article class="card rv"><span class="tag">Salai</span><h3>Daging salai</h3><p>Antara produk popular — tempahan restoran di seluruh Malaysia.</p></article>
+      <article class="card rv"><span class="tag">Salai</span><h3>Itik salai</h3><p>Disalai dalam sabak supaya aroma asap melekat pada daging.</p></article>
+      <article class="card rv"><span class="tag">Salai</span><h3>Keli salai</h3><p>Ikan keli disalai dengan tempurung &amp; kayu buah-buahan.</p></article>
+      <article class="card rv"><span class="tag">Premium</span><h3>Kambing perap salai</h3><p>Kambing diperap, disalai, sering digandingkan dengan sos lada hitam.</p></article>
+      <article class="card rv"><span class="tag">Premium</span><h3>Dada itik salai</h3><p>Bahagian dada itik dengan aroma salai.</p></article>
+      <article class="card rv"><span class="tag">Pes &amp; RTE</span><h3>Pes masak lemak cili api</h3><p>Pes siap untuk masak lemak cili api di rumah.</p></article>
+      <article class="card rv"><span class="tag">Pes &amp; RTE</span><h3>Masak lemak cili api daging salai</h3><p>Hidangan sedia makan (retort) rasa masak lemak cili api.</p></article>
+      <article class="card rv"><span class="tag">Sampingan</span><h3>Garlic chili oil</h3><p>Ada versi pedas &amp; mild — untuk mi, nasi goreng atau cicah.</p></article>
+      <article class="card rv"><span class="tag">Rempah</span><h3>Rempah Diraja &amp; Rempah Qween</h3><p>Rempah ratus dari Rembau untuk sup, kari &amp; perapan.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="gal" id="galeri">
+  <div class="wrap">
+    <p class="sec-kicker rv">Galeri</p>
+    <h2 class="rv">Rasa asap, dari dapur contoh</h2>
+    <p class="gal-note rv">Gambar di bawah ialah <b>gambar contoh</b> (stok), bukan foto produk atau premis Sabak Salai. Foto sebenar ada di Instagram &amp; Facebook mereka.</p>
+    <div class="gal-grid" id="gal">
+      <button type="button" data-i="0" aria-label="Besarkan gambar daging salai contoh"><picture><source type="image/webp" srcset="img/g1-s.webp 540w, img/g1-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g1-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Daging salai</span></button>
+      <button type="button" data-i="1" aria-label="Besarkan gambar itik salai contoh"><picture><source type="image/webp" srcset="img/g2-s.webp 540w, img/g2-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g2-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Itik / ayam salai</span></button>
+      <button type="button" data-i="2" aria-label="Besarkan gambar ikan salai contoh"><picture><source type="image/webp" srcset="img/g3-s.webp 540w, img/g3-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g3-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Ikan salai</span></button>
+      <button type="button" data-i="3" aria-label="Besarkan gambar rempah contoh"><picture><source type="image/webp" srcset="img/g4-s.webp 540w, img/g4-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g4-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Rempah</span></button>
+      <button type="button" data-i="4" aria-label="Besarkan gambar cili &amp; pes contoh"><picture><source type="image/webp" srcset="img/g5-s.webp 540w, img/g5-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g5-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Cili &amp; pes</span></button>
+      <button type="button" data-i="5" aria-label="Besarkan gambar lesung contoh"><picture><source type="image/webp" srcset="img/g6-s.webp 540w, img/g6-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g6-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Lesung &amp; rempah</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="loc" id="lokasi">
+  <div class="wrap">
+    <p class="sec-kicker rv">Lokasi</p>
+    <h2 class="rv">Jumpa di Rembau</h2>
+    <article class="loc-card rv">
+      <h3>Sabak Salai Shop</h3>
+      <p>No. 5, Bazar MARA, Kawasan Perindustrian Chembong, 71300 Rembau, Negeri Sembilan</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=No.5%20Bazar%20MARA%20Kawasan%20Perindustrian%20Chembong%2071300%20Rembau" rel="noopener" target="_blank">Buka di Google Maps</a>
+    </article>
+    <article class="loc-card rv">
+      <h3>Kilang Sabak Salai</h3>
+      <p>Lot 1626, Kampung Kundur Tengah, 71400 Rembau, Negeri Sembilan</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Lot%201626%20Kampung%20Kundur%20Tengah%2071400%20Rembau" rel="noopener" target="_blank">Buka di Google Maps</a>
+    </article>
+  </div>
+</section>
+
+<section class="contact" id="hubungi">
+  <div class="wrap">
+    <p class="sec-kicker rv">Hubungi</p>
+    <h2 class="rv">Nak tanya stok atau tempahan?</h2>
+    <p class="lead rv">Mesej terus di Instagram atau Facebook Sabak Salai. Bagitahu produk yang dicari.</p>
+    <div class="cta-stack rv">
+      <a class="btn btn-primary" href="https://www.instagram.com/sabaksalaiofficial/" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram @sabaksalaiofficial</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/1423087281282779" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>Page Facebook Sabak Salai</a>
+    </div>
+    <p class="note rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>Harga &amp; menu disahkan bersama pemilik</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <img class="mark" src="img/lp-mark-gold.png" width="183" height="188" alt="Langkah Pertama">
+  <p class="name">Sabak Salai</p>
+  <p class="sub">Rembau, Negeri Sembilan · Gambar yang dipaparkan ialah gambar contoh.</p>
+  <p class="lp">Contoh reka bentuk oleh Langkah Pertama</p>
+</footer>
+
+<div class="dock" id="dock" aria-hidden="false">
+  <div class="dock-in">
+    <a class="btn btn-primary" href="https://www.instagram.com/sabaksalaiofficial/" rel="noopener" target="_blank">IG</a>
+    <a class="btn btn-ghost" href="https://www.facebook.com/1423087281282779" rel="noopener" target="_blank">Facebook</a>
+  </div>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gambar besar" aria-hidden="true">
+  <div class="lb-bar"><button type="button" id="lbP" aria-label="Gambar sebelum">‹</button><button type="button" id="lbX" aria-label="Tutup">✕</button></div>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <div class="lb-nav"><button type="button" id="lbN" aria-label="Gambar seterusnya">›</button></div>
+</div>
+
+<script>
+(()=>{const ez='cubic-bezier(.22,1,.36,1)';
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+const items=[
+ {s:'img/g1-s.webp',l:'img/g1-l.webp',c:'Gambar contoh · Daging salai',w:900,h:1125},
+ {s:'img/g2-s.webp',l:'img/g2-l.webp',c:'Gambar contoh · Itik / ayam salai',w:900,h:1125},
+ {s:'img/g3-s.webp',l:'img/g3-l.webp',c:'Gambar contoh · Ikan salai',w:900,h:1125},
+ {s:'img/g4-s.webp',l:'img/g4-l.webp',c:'Gambar contoh · Rempah',w:900,h:1125},
+ {s:'img/g5-s.webp',l:'img/g5-l.webp',c:'Gambar contoh · Cili & pes',w:900,h:1125},
+ {s:'img/g6-s.webp',l:'img/g6-l.webp',c:'Gambar contoh · Lesung & rempah',w:900,h:1125}
+];
+const lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+let i=0,last=null;
+function fit(){const maxW=Math.min(innerWidth-32,items[i].w,520);const maxH=Math.min(innerHeight*0.78,items[i].h);const r=Math.min(1,maxW/items[i].w,maxH/items[i].h);img.style.width=Math.round(items[i].w*r)+'px';img.style.height=Math.round(items[i].h*r)+'px'}
+function show(n){i=(n+items.length)%items.length;const it=items[i];img.removeAttribute('src');img.onload=()=>fit();img.src=it.l;img.alt=it.c;cap.textContent=it.c}
+function open(n){last=document.activeElement;show(n);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.getElementById('lbX').focus()}
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
+document.querySelectorAll('#gal button').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.i)));
+document.getElementById('lbX').onclick=close;
+document.getElementById('lbN').onclick=()=>show(i+1);
+document.getElementById('lbP').onclick=()=>show(i-1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+addEventListener('resize',()=>{if(lb.classList.contains('open'))fit()},{passive:true});
+const dock=document.getElementById('dock');let ly=0;
+addEventListener('scroll',()=>{const y=scrollY;if(y>ly+8)dock.classList.add('hide');else if(y<ly-8)dock.classList.remove('hide');ly=y},{passive:true});
+})();
+</script>
+</body>
+</html>
