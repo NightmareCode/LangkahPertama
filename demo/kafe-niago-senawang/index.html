@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#3a2418">
+<title>Kafe NIAGO · Taman Senawang Indah (contoh)</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --cocoa:#3a2418;--cocoa2:#5a3826;--butter:#e4b23c;--butter2:#f0cc6a;
+  --milk:#fbf6ee;--flour:#f3ead9;--ink:#22170f;--muted:#6b5a4a;--line:#e6d7c3;
+  --lemon:#f6de7a;--ez:cubic-bezier(.22,1,.36,1);--dur:400ms;
+  --pad:clamp(18px,4.8vw,28px);--dock:78px;
+  --sans:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 16px/1.55 var(--sans);background:var(--milk);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.skip{position:fixed;top:10px;left:10px;z-index:9999;background:var(--butter);color:var(--ink);padding:12px 16px;border-radius:10px;font-weight:800;text-decoration:none;transform:translateY(-160%);transition:transform .18s ease}
+.skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
+.wrap{width:min(560px,100%);margin:0 auto}
+.top{position:sticky;top:0;z-index:40;background:rgba(58,36,24,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(240,204,106,.22);color:#fff}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--pad);min-height:58px}
+.brand{font-weight:800;font-size:15px;letter-spacing:.04em;line-height:1.15}
+.brand small{display:block;font-weight:650;color:rgba(255,255,255,.62);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+.top-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px 16px;border-radius:999px;background:var(--butter);color:var(--ink);font-weight:800;font-size:13px;text-decoration:none;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez)}
+.top-cta:active{transform:scale(.97)}
+.hero{position:relative;min-height:92svh;display:grid;align-items:end;isolation:isolate;color:#fff;background:var(--cocoa);padding:0}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(58,36,24,.15) 0%,rgba(58,36,24,.08) 32%,rgba(58,36,24,.55) 62%,rgba(58,36,24,.96) 100%)}
+.hero-cap{position:absolute;top:14px;right:var(--pad);z-index:2;display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:999px;background:rgba(58,36,24,.62);border:1px solid rgba(240,204,106,.4);color:var(--butter2);font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.hero-in{padding:28px var(--pad) 40px}
+.eyebrow{display:inline-flex;align-items:center;min-height:34px;padding:5px 12px;border-radius:999px;border:1px solid rgba(228,178,60,.5);background:rgba(228,178,60,.16);color:var(--butter2);font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.hero h1{margin:14px 0 12px;font-size:clamp(32px,8.6vw,48px);line-height:1.04;font-weight:850;letter-spacing:-.03em}
+.hero h1 span{display:block;color:var(--butter2)}
+.hero .lead{max-width:36ch;color:rgba(255,255,255,.9);font-size:16.5px}
+.hero-actions{display:grid;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 18px;border-radius:14px;font-weight:800;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez),border-color var(--dur) var(--ez),color var(--dur) var(--ez)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--butter);color:var(--ink)}
+.btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
+.btn-line{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+section{padding:48px var(--pad)}
+.sec-kicker{color:var(--cocoa2);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(26px,7vw,34px);line-height:1.12;letter-spacing:-.025em;margin-bottom:12px;font-weight:800}
+.muted{color:var(--muted)}
+.best{background:var(--lemon);color:var(--ink);padding:52px var(--pad)}
+.best .sec-kicker{color:var(--cocoa2)}
+.best-card{margin-top:18px;padding:20px 18px;border-radius:20px;background:rgba(255,255,255,.72);border:1px dashed var(--cocoa2);box-shadow:0 10px 28px rgba(58,36,24,.06)}
+.best-card .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cocoa2);margin-bottom:8px}
+.best-card h3{font-size:22px;margin-bottom:8px}
+.menu{background:var(--flour)}
+.ticket{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(58,36,24,.05)}
+.item{display:grid;gap:4px;padding:16px 18px;border-bottom:1px dashed var(--line);min-height:52px}
+.item:last-child{border-bottom:0}
+.item h3{font-size:16.5px}
+.item p{font-size:13.5px;color:var(--muted)}
+.note-sm{margin-top:14px;font-size:13.5px;color:var(--muted)}
+.hours-sec{background:var(--milk)}
+.table{margin-top:18px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.row{display:grid;grid-template-columns:1.15fr 1.5fr;gap:10px;padding:14px 16px;min-height:48px;align-items:center;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.row strong{font-weight:800}
+.row.unknown strong{color:var(--cocoa2)}
+.confirm{margin-top:12px;font-size:12.5px;color:var(--cocoa2);font-weight:700}
+.pop{margin-top:14px;font-size:14px;color:var(--muted)}
+.loc{background:var(--flour)}
+.loc-card{margin-top:16px;padding:18px 16px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.loc-card h3{font-size:17px;margin-bottom:8px}
+.loc-card p{color:var(--muted);font-size:14.5px}
+.map{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;min-height:48px;padding:12px 16px;border-radius:14px;background:rgba(228,178,60,.18);color:#6a4a0e;text-decoration:none;font-weight:800;font-size:14px;border:1px solid rgba(228,178,60,.4);transition:background var(--dur) var(--ez)}
+.gal{background:var(--milk)}
+.gal-note{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal-grid button{appearance:none;border:0;padding:0;background:transparent;color:inherit;cursor:pointer;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;min-height:44px;isolation:isolate}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform 420ms var(--ez)}
+.gal-grid button:active img{transform:scale(1.03)}
+.gal-grid .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 10px 10px;background:linear-gradient(180deg,transparent,rgba(58,36,24,.82));color:#fff;font-size:12px;font-weight:700;text-align:left}
+.gal-grid .cap small{display:block;color:var(--butter2);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.contact{background:linear-gradient(180deg,var(--flour),#e8d8bf);padding-bottom:calc(var(--dock) + 36px)}
+.contact .lead{margin:8px 0 18px;color:var(--muted)}
+.cta-stack{display:grid;gap:10px}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:14px;background:rgba(228,178,60,.16);border:1px solid rgba(228,178,60,.35);color:var(--ink);font-size:13.5px}
+.note svg{flex:none;width:18px;height:18px;margin-top:2px;color:#6a4a0e}
+footer{padding:28px var(--pad) 36px;text-align:center;border-top:1px solid #2a1810;background:var(--cocoa);color:rgba(255,255,255,.7)}
+footer .mark{height:48px;width:auto;margin:0 auto 12px}
+footer .name{font-weight:800;color:#fff;margin-bottom:4px}
+footer .sub{font-size:13px;margin-bottom:14px}
+footer .lp{color:var(--butter2);font-size:12.5px;margin-top:8px}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(58,36,24,.9) 28%,rgba(58,36,24,.98));pointer-events:none;transition:transform var(--dur) var(--ez);transform:translateY(110%)}
+.dock.on{transform:none}
+.dock-in{pointer-events:auto;width:min(560px,100%);margin:0 auto}
+.dock .btn{width:100%;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.gal-grid img,.btn,.top-cta,.dock{transition:none}}
+.lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(58,36,24,.94);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ez),visibility var(--dur) var(--ez);padding:16px}
+.lb.open{opacity:1;visibility:visible}
+.lb figure{margin:0;max-width:min(100%,520px);transform:scale(.96) translateY(10px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.lb.open figure{transform:none}
+.lb img{max-width:100%;max-height:min(78vh,820px);width:auto;height:auto;margin:0 auto;border-radius:12px}
+.lb figcaption{text-align:center;color:rgba(255,255,255,.7);font-size:13px;margin-top:10px}
+.lb-bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:12px}
+.lb-bar button,.lb-nav button{appearance:none;border:0;min-width:48px;min-height:48px;border-radius:14px;background:rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer}
+.lb-nav{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+<a class="skip" href="#utama">Langkau ke kandungan</a>
+<header class="top">
+  <div class="top-in wrap">
+    <div class="brand">Kafe NIAGO<small>Taman Senawang Indah</small></div>
+    <a class="top-cta" href="https://m.me/100809744867200" rel="noopener" target="_blank">Mesej</a>
+  </div>
+</header>
+<main id="utama">
+<section class="hero">
+  <picture>
+    <source type="image/webp" srcset="img/hero-s.webp 750w, img/hero-l.webp 900w" sizes="100vw">
+    <img src="img/hero-l.webp" width="900" height="1200" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <span class="hero-cap">Gambar contoh</span>
+  <div class="hero-in wrap">
+    <span class="eyebrow">Bakeri &amp; kafe</span>
+    <h1>Salt bread lembut.<span>Buttercake &amp; kek batik.</span></h1>
+    <p class="lead">Kafe NIAGO di dalam NIA ZAIRA Gallery, Taman Senawang Indah. Hirisan makan di kafe, atau bawa loaf pulang.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://m.me/100809744867200" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Mesej di Facebook</a>
+      <a class="btn btn-ghost" href="#menu">Tengok menu</a>
+    </div>
+  </div>
+</section>
+
+<section class="best" id="best">
+  <div class="wrap">
+    <p class="sec-kicker rv">Best seller</p>
+    <h2 class="rv">Buttercake Lemon Poppyseed</h2>
+    <p class="muted rv">Page mereka sendiri tulis, ini masih best seller NIAGO.</p>
+    <div class="best-card rv">
+      <span class="tag">Buttercake</span>
+      <h3>Lemon Poppyseed</h3>
+      <p>Sesuai dihiris makan di kafe, atau dibawa pulang dalam bentuk loaf.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <p class="sec-kicker rv">Menu</p>
+    <h2 class="rv">Roti, buttercake &amp; kek batik</h2>
+    <p class="muted rv">Yang kelihatan di page mereka. Untuk yang tersedia hari ini, mesej Facebook.</p>
+    <div class="ticket rv">
+      <div class="item">
+        <h3>Salt Bread / Shiopan</h3>
+        <p>Fluffy &amp; buttery — lembut dan bermentega.</p>
+      </div>
+      <div class="item">
+        <h3>Kek Batik Crunchy</h3>
+        <p>Ready stock di page mereka.</p>
+      </div>
+      <div class="item">
+        <h3>Buttercake Original</h3>
+        <p>Hirisan di kafe, atau loaf / segi empat bawa pulang.</p>
+      </div>
+      <div class="item">
+        <h3>Buttercake Orange</h3>
+        <p>Hirisan di kafe, atau loaf / segi empat bawa pulang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hours-sec" id="waktu">
+  <div class="wrap">
+    <p class="sec-kicker rv">Waktu buka</p>
+    <h2 class="rv">Isnin–Khamis sampai 7 malam</h2>
+    <div class="table rv">
+      <div class="row"><strong>Isnin–Khamis</strong><span>11:00 pagi – 7:00 malam</span></div>
+      <div class="row"><strong>Jumaat–Sabtu</strong><span>11:00 pagi – 4:30 petang</span></div>
+      <div class="row unknown"><strong>Ahad</strong><span>Tidak disenaraikan</span></div>
+    </div>
+    <p class="confirm">Waktu Ahad sila sahkan bersama page — listing tidak nyatakan hari Ahad.</p>
+    <p class="pop rv">Ikuti Facebook NIAGO untuk pop-up.</p>
+  </div>
+</section>
+
+<section class="loc" id="lokasi">
+  <div class="wrap">
+    <p class="sec-kicker rv">Lokasi</p>
+    <h2 class="rv">Dalam NIA ZAIRA Gallery, Senawang</h2>
+    <div class="loc-card rv">
+      <h3>Kafe NIAGO</h3>
+      <p>Di dalam NIA ZAIRA Gallery, No. 40, Jalan Orkid 2, Taman Senawang Indah, Seremban 70450.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=No.%2040%20Jalan%20Orkid%202%20Taman%20Senawang%20Indah%20Seremban%2070450" rel="noopener" target="_blank">Buka di Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="gal" id="galeri">
+  <div class="wrap">
+    <p class="sec-kicker rv">Galeri</p>
+    <h2 class="rv">Suasana roti &amp; kek contoh</h2>
+    <p class="gal-note rv">Gambar di bawah ialah <strong>gambar contoh</strong> stok — bukan foto dapur atau kek NIAGO. Untuk gambar sebenar, mesej page.</p>
+    <div class="gal-grid" id="gal">
+      <button type="button" data-i="0" aria-label="Besarkan gambar buttercake contoh"><picture><source type="image/webp" srcset="img/g1-s.webp 540w, img/g1-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g1-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Buttercake loaf</span></button>
+      <button type="button" data-i="1" aria-label="Besarkan gambar hirisan lemon contoh"><picture><source type="image/webp" srcset="img/g2-s.webp 540w, img/g2-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g2-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Hirisan lemon</span></button>
+      <button type="button" data-i="2" aria-label="Besarkan gambar loaf lemon contoh"><picture><source type="image/webp" srcset="img/g3-s.webp 540w, img/g3-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g3-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Loaf lemon</span></button>
+      <button type="button" data-i="3" aria-label="Besarkan gambar roti contoh"><picture><source type="image/webp" srcset="img/g4-s.webp 540w, img/g4-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g4-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Roti</span></button>
+      <button type="button" data-i="4" aria-label="Besarkan gambar hirisan kek contoh"><picture><source type="image/webp" srcset="img/g5-s.webp 540w, img/g5-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g5-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Hirisan kek</span></button>
+      <button type="button" data-i="5" aria-label="Besarkan gambar buttercake hirisan contoh"><picture><source type="image/webp" srcset="img/g6-s.webp 540w, img/g6-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g6-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Hirisan buttercake</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="hubungi">
+  <div class="wrap">
+    <p class="sec-kicker rv">Hubungi</p>
+    <h2 class="rv">Nak tanya stok atau waktu buka?</h2>
+    <p class="lead rv">Mesej terus page Facebook NIAGO. Mereka balas di Messenger.</p>
+    <div class="cta-stack rv">
+      <a class="btn btn-primary" href="https://m.me/100809744867200" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Mesej NIAGO di Facebook</a>
+      <a class="btn btn-line" href="https://www.facebook.com/100809744867200" rel="noopener" target="_blank">Buka page Facebook</a>
+    </div>
+    <p class="note rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>Harga &amp; menu disahkan bersama pemilik</p>
+  </div>
+</section>
+</main>
+<footer>
+  <img class="mark" src="img/lp-mark-gold.png" width="183" height="188" alt="Langkah Pertama">
+  <p class="name">Kafe NIAGO</p>
+  <p class="sub">Taman Senawang Indah · Gambar yang dipaparkan ialah gambar contoh.</p>
+  <p class="lp">Contoh reka bentuk oleh Langkah Pertama</p>
+</footer>
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="dock-in">
+    <a class="btn btn-primary" href="https://m.me/100809744867200" rel="noopener" target="_blank" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Mesej di Facebook</a>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gambar besar" aria-hidden="true">
+  <div class="lb-bar"><button type="button" id="lbP" aria-label="Gambar sebelum">‹</button><button type="button" id="lbX" aria-label="Tutup">✕</button></div>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <div class="lb-nav"><button type="button" id="lbN" aria-label="Gambar seterusnya">›</button></div>
+</div>
+<script>
+(()=>{
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+const items=[
+ {s:'img/g1-s.webp',l:'img/g1-l.webp',c:'Gambar contoh · Buttercake loaf',w:900,h:1125},
+ {s:'img/g2-s.webp',l:'img/g2-l.webp',c:'Gambar contoh · Hirisan lemon',w:900,h:1125},
+ {s:'img/g3-s.webp',l:'img/g3-l.webp',c:'Gambar contoh · Loaf lemon',w:900,h:1125},
+ {s:'img/g4-s.webp',l:'img/g4-l.webp',c:'Gambar contoh · Roti',w:900,h:1125},
+ {s:'img/g5-s.webp',l:'img/g5-l.webp',c:'Gambar contoh · Hirisan kek',w:900,h:1125},
+ {s:'img/g6-s.webp',l:'img/g6-l.webp',c:'Gambar contoh · Hirisan buttercake',w:900,h:1125}
+];
+const lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+let i=0,last=null;
+function fit(){const maxW=Math.min(innerWidth-32,items[i].w,520);const maxH=Math.min(innerHeight*0.78,items[i].h);const r=Math.min(1,maxW/items[i].w,maxH/items[i].h);img.style.width=Math.round(items[i].w*r)+'px';img.style.height=Math.round(items[i].h*r)+'px'}
+function show(n){i=(n+items.length)%items.length;const it=items[i];img.removeAttribute('src');img.onload=()=>fit();img.src=it.l;img.alt=it.c;cap.textContent=it.c}
+function open(n){last=document.activeElement;show(n);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.getElementById('lbX').focus()}
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
+document.querySelectorAll('#gal button').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.i)));
+document.getElementById('lbX').onclick=close;
+document.getElementById('lbN').onclick=()=>show(i+1);
+document.getElementById('lbP').onclick=()=>show(i-1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+addEventListener('resize',()=>{if(lb.classList.contains('open'))fit()},{passive:true});
+const dock=document.getElementById('dock'),hero=document.querySelector('.hero'),con=document.getElementById('hubungi'),foot=document.querySelector('footer');
+const st=new IntersectionObserver(()=>{
+  const heroOut=hero.getBoundingClientRect().bottom<80;
+  const hide=con.getBoundingClientRect().top<innerHeight*0.85||foot.getBoundingClientRect().top<innerHeight;
+  const on=heroOut&&!hide;
+  dock.classList.toggle('on',on);dock.setAttribute('aria-hidden',on?'false':'true');
+  const a=dock.querySelector('a'); if(a) a.tabIndex=on?0:-1;
+},{threshold:[0,.01,.1]});
+[hero,con,foot].forEach(el=>st.observe(el));
+})();
+</script>
+</body>
+</html>
