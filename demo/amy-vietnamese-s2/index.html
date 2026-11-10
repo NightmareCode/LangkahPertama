@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#faf6f0">
+<title>Amy Vietnamese Restaurant · Uptown Avenue, Seremban 2 (sample)</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --lacquer:#8a1f1a;--lacquer2:#b4332a;--herb:#1f4a34;--herb2:#2e6a48;
+  --ink:#1b1612;--cream:#faf6f0;--paper:#f3ece2;--sand:#e8dccb;--muted:#6a6158;--line:#e2d5c4;
+  --ez:cubic-bezier(.22,1,.36,1);--dur:400ms;
+  --pad:clamp(18px,4.8vw,28px);--dock:78px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.skip{position:fixed;top:10px;left:10px;z-index:9999;background:var(--lacquer);color:#fff;padding:12px 16px;border-radius:10px;font-weight:800;text-decoration:none;transform:translateY(-160%);transition:transform .18s ease}
+.skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
+.wrap{width:min(560px,100%);margin:0 auto}
+.top{position:sticky;top:0;z-index:40;background:rgba(250,246,240,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);color:var(--ink)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--pad);min-height:58px}
+.brand{font-family:var(--serif);font-weight:700;font-size:16px;line-height:1.15;letter-spacing:-.02em}
+.brand small{display:block;font-family:system-ui,sans-serif;font-weight:650;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+.top-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px 16px;border-radius:999px;background:var(--lacquer);color:#fff;font-weight:800;font-size:13px;text-decoration:none;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez)}
+.top-cta:active{transform:scale(.97)}
+.hero{background:var(--cream);padding:0}
+.hero-pic{position:relative;height:56svh;min-height:380px;max-height:520px;background:#2a2118;isolation:isolate}
+.hero-pic picture,.hero-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.hero-cap{position:absolute;top:14px;right:var(--pad);z-index:2;display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:999px;background:rgba(27,22,18,.62);border:1px solid rgba(255,255,255,.28);color:#f3e6d4;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.hero-sheet{position:relative;margin-top:-72px;background:var(--cream);border-radius:28px 28px 0 0;padding:22px var(--pad) 8px;box-shadow:0 -18px 40px rgba(27,22,18,.12)}
+.hero-sheet::before{content:"";display:block;width:44px;height:4px;border-radius:4px;background:var(--lacquer);margin:0 auto 18px}
+.eyebrow{display:inline-block;color:var(--lacquer);font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.hero h1{margin:10px 0 12px;font-family:var(--serif);font-size:clamp(32px,8.6vw,46px);line-height:1.06;font-weight:700;letter-spacing:-.03em}
+.hero h1 em{font-style:italic;color:var(--lacquer);font-weight:600}
+.hero .lead{max-width:36ch;color:var(--muted);font-size:16.5px}
+.hero-actions{display:grid;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 18px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez),border-color var(--dur) var(--ez),color var(--dur) var(--ez)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--lacquer);color:#fff}
+.btn-primary:hover{background:var(--lacquer2)}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+section{padding:48px var(--pad)}
+.sec-kicker{color:var(--lacquer);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+h2{font-family:var(--serif);font-size:clamp(26px,7vw,36px);line-height:1.12;letter-spacing:-.025em;margin-bottom:12px;font-weight:700}
+.muted{color:var(--muted)}
+.sig{background:var(--herb);color:#f4efe6;padding:52px var(--pad)}
+.sig .sec-kicker{color:#d7e8d8}
+.sig h2{color:#fff}
+.sig .muted{color:rgba(244,239,230,.78)}
+.sig-card{margin-top:20px;padding:20px 18px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.sig-card .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#d7e8d8;margin-bottom:8px}
+.sig-card h3{font-family:var(--serif);font-size:22px;margin-bottom:8px;color:#fff}
+.sig-card p{color:rgba(244,239,230,.82);font-size:15px}
+.lunch{background:var(--paper)}
+.lunch-card{margin-top:18px;padding:20px 18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 28px rgba(27,22,18,.05);border-left:4px solid var(--lacquer)}
+.lunch-card h3{font-family:var(--serif);font-size:20px;margin-bottom:8px}
+.hours-sec{background:var(--cream)}
+.table{margin-top:20px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.row{display:grid;grid-template-columns:1.1fr 1.6fr;gap:10px;padding:14px 16px;min-height:48px;align-items:center;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.row strong{font-weight:800}
+.row.closed strong{color:var(--lacquer)}
+.confirm{margin-top:12px;font-size:12.5px;color:var(--lacquer);font-weight:700}
+.loc{background:var(--paper)}
+.loc-card{margin-top:16px;padding:18px 16px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.loc-card h3{font-family:var(--serif);font-size:18px;margin-bottom:8px}
+.loc-card p{color:var(--muted);font-size:14.5px}
+.map{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;min-height:48px;padding:12px 16px;border-radius:999px;background:rgba(138,31,26,.08);color:var(--lacquer);text-decoration:none;font-weight:800;font-size:14px;border:1px solid rgba(138,31,26,.22);transition:background var(--dur) var(--ez)}
+.gal{background:var(--cream)}
+.gal-note{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal-grid button{appearance:none;border:0;padding:0;background:transparent;color:inherit;cursor:pointer;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;min-height:44px;isolation:isolate}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform 420ms var(--ez)}
+.gal-grid button:active img{transform:scale(1.03)}
+.gal-grid .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 10px 10px;background:linear-gradient(180deg,transparent,rgba(27,22,18,.8));color:#fff;font-size:12px;font-weight:700;text-align:left}
+.gal-grid .cap small{display:block;color:#f0d2c6;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.contact{background:linear-gradient(180deg,var(--paper),#eadfcf);padding-bottom:calc(var(--dock) + 36px)}
+.contact .lead{margin:8px 0 18px;color:var(--muted)}
+.cta-stack{display:grid;gap:10px}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:14px;background:rgba(138,31,26,.08);border:1px solid rgba(138,31,26,.18);color:var(--ink);font-size:13.5px}
+.note svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--lacquer)}
+footer{padding:28px var(--pad) 36px;text-align:center;border-top:1px solid var(--line);background:#2a1c18;color:rgba(255,255,255,.7)}
+footer .mark{height:48px;width:auto;margin:0 auto 12px}
+footer .name{font-family:var(--serif);font-weight:700;color:#fff;margin-bottom:4px}
+footer .sub{font-size:13px;margin-bottom:14px}
+footer .lp{color:#e8c4b8;font-size:12.5px;margin-top:8px}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(27,22,18,.88) 28%,rgba(27,22,18,.98));pointer-events:none;transition:transform var(--dur) var(--ez);transform:translateY(110%)}
+.dock.on{transform:none}
+.dock-in{pointer-events:auto;width:min(560px,100%);margin:0 auto}
+.dock .btn{width:100%;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.gal-grid img,.btn,.top-cta,.dock{transition:none}}
+.lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(27,22,18,.94);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ez),visibility var(--dur) var(--ez);padding:16px}
+.lb.open{opacity:1;visibility:visible}
+.lb figure{margin:0;max-width:min(100%,520px);transform:scale(.96) translateY(10px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.lb.open figure{transform:none}
+.lb img{max-width:100%;max-height:min(78vh,820px);width:auto;height:auto;margin:0 auto;border-radius:12px}
+.lb figcaption{text-align:center;color:rgba(255,255,255,.7);font-size:13px;margin-top:10px}
+.lb-bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:12px}
+.lb-bar button,.lb-nav button{appearance:none;border:0;min-width:48px;min-height:48px;border-radius:14px;background:rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer}
+.lb-nav{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in wrap">
+    <div class="brand">Amy Vietnamese<small>Uptown Avenue · Seremban 2</small></div>
+    <a class="top-cta" href="https://m.me/103078684943819" rel="noopener" target="_blank">Message</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="hero-pic">
+    <picture>
+      <source type="image/webp" srcset="img/hero-s.webp 750w, img/hero-l.webp 900w" sizes="100vw">
+      <img src="img/hero-l.webp" width="900" height="1200" alt="" fetchpriority="high" decoding="async">
+    </picture>
+    <span class="hero-cap">Gambar contoh</span>
+  </div>
+  <div class="hero-sheet wrap">
+    <span class="eyebrow">Authentic Vietnamese cuisine</span>
+    <h1>Handmade <em>ikan tenggiri</em> fish paste.</h1>
+    <p class="lead">At Uptown Avenue, Seremban 2. Open for lunch and dinner — Thursday is their off day.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://m.me/103078684943819" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Message us on Facebook</a>
+      <a class="btn btn-ghost" href="#menu">See highlights</a>
+    </div>
+  </div>
+</section>
+
+<section class="sig" id="menu">
+  <div class="wrap">
+    <p class="sec-kicker rv">Must-try</p>
+    <h2 class="rv">Handmade fish paste</h2>
+    <p class="muted rv">A favourite called out on their page — fish paste made from ikan tenggiri.</p>
+    <div class="sig-card rv">
+      <span class="tag">Ikan tenggiri</span>
+      <h3>Handmade fish paste</h3>
+      <p>The kitchen makes its own mackerel fish paste. Message the page to ask what’s on today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="lunch" id="lunch">
+  <div class="wrap">
+    <p class="sec-kicker rv">Lunch</p>
+    <h2 class="rv">A lunch menu, 11am to 4pm</h2>
+    <div class="lunch-card rv">
+      <h3>Lunch window</h3>
+      <p class="muted">A lunch menu is served from 11:00am to 4:00pm. For the day’s dishes, message the Facebook page.</p>
+    </div>
+  </div>
+</section>
+
+<section class="hours-sec" id="hours">
+  <div class="wrap">
+    <p class="sec-kicker rv">Hours</p>
+    <h2 class="rv">Open after 11. Kitchen last order 9:30pm.</h2>
+    <p class="muted rv">Thursday is their off day.</p>
+    <div class="table rv">
+      <div class="row"><strong>Fri–Wed</strong><span>11:00am – 10:00pm, kitchen last order 9:30pm</span></div>
+      <div class="row closed"><strong>Thursday</strong><span>Closed</span></div>
+    </div>
+    <p class="confirm">Waktu buka sila sahkan — one post lists 11:00am–10:00pm with last order at 9:30pm; another lists 11:00am–9:30pm.</p>
+  </div>
+</section>
+
+<section class="loc" id="location">
+  <div class="wrap">
+    <p class="sec-kicker rv">Location</p>
+    <h2 class="rv">Uptown Avenue, Seremban 2</h2>
+    <div class="loc-card rv">
+      <h3>Amy Vietnamese Restaurant</h3>
+      <p>301, Jalan S2 B13, Uptown Avenue, Seremban 2, 70300.</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=301%20Jalan%20S2%20B13%20Uptown%20Avenue%20Seremban%202%2070300" rel="noopener" target="_blank">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<section class="gal" id="gallery">
+  <div class="wrap">
+    <p class="sec-kicker rv">Gallery</p>
+    <h2 class="rv">Sample Vietnamese cooking</h2>
+    <p class="gal-note rv">The photos below are <strong>gambar contoh</strong> stock images — not Amy Vietnamese Restaurant’s own dishes. Message the page for real photos.</p>
+    <div class="gal-grid" id="gal">
+      <button type="button" data-i="0" aria-label="Enlarge sample photo of fresh rolls"><picture><source type="image/webp" srcset="img/g1-s.webp 540w, img/g1-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g1-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Fresh rolls</span></button>
+      <button type="button" data-i="1" aria-label="Enlarge sample photo of fresh spring rolls"><picture><source type="image/webp" srcset="img/g2-s.webp 540w, img/g2-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g2-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Gỏi cuốn</span></button>
+      <button type="button" data-i="2" aria-label="Enlarge sample photo of a noodle soup bowl"><picture><source type="image/webp" srcset="img/g3-s.webp 540w, img/g3-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g3-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Broth &amp; herbs</span></button>
+      <button type="button" data-i="3" aria-label="Enlarge sample photo of fried rolls"><picture><source type="image/webp" srcset="img/g4-s.webp 540w, img/g4-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g4-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Fried rolls</span></button>
+      <button type="button" data-i="4" aria-label="Enlarge sample photo of a clay pot dish"><picture><source type="image/webp" srcset="img/g5-s.webp 540w, img/g5-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g5-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Clay pot</span></button>
+      <button type="button" data-i="5" aria-label="Enlarge sample photo of a Vietnamese table"><picture><source type="image/webp" srcset="img/g6-s.webp 540w, img/g6-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g6-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>A Vietnamese table</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="sec-kicker rv">Contact</p>
+    <h2 class="rv">Message us on Facebook</h2>
+    <p class="lead rv">Reach the Amy Vietnamese Restaurant page on Messenger. They also asked guests to follow the page.</p>
+    <div class="cta-stack rv">
+      <a class="btn btn-primary" href="https://m.me/103078684943819" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Message us on Facebook</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/103078684943819" rel="noopener" target="_blank">Open Facebook Page</a>
+    </div>
+    <p class="note rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>Harga &amp; menu disahkan bersama pemilik</p>
+  </div>
+</section>
+</main>
+<footer>
+  <img class="mark" src="img/lp-mark-gold.png" width="183" height="188" alt="Langkah Pertama">
+  <p class="name">Amy Vietnamese Restaurant</p>
+  <p class="sub">Uptown Avenue, Seremban 2 · Photos shown are sample images.</p>
+  <p class="lp">Contoh reka bentuk oleh Langkah Pertama</p>
+</footer>
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="dock-in">
+    <a class="btn btn-primary" href="https://m.me/103078684943819" rel="noopener" target="_blank" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Message us on Facebook</a>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Larger photo" aria-hidden="true">
+  <div class="lb-bar"><button type="button" id="lbP" aria-label="Previous photo">‹</button><button type="button" id="lbX" aria-label="Close">✕</button></div>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <div class="lb-nav"><button type="button" id="lbN" aria-label="Next photo">›</button></div>
+</div>
+<script>
+(()=>{
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+const items=[
+ {s:'img/g1-s.webp',l:'img/g1-l.webp',c:'Gambar contoh · Fresh rolls',w:900,h:1125},
+ {s:'img/g2-s.webp',l:'img/g2-l.webp',c:'Gambar contoh · Gỏi cuốn',w:900,h:1125},
+ {s:'img/g3-s.webp',l:'img/g3-l.webp',c:'Gambar contoh · Broth & herbs',w:900,h:1125},
+ {s:'img/g4-s.webp',l:'img/g4-l.webp',c:'Gambar contoh · Fried rolls',w:900,h:1125},
+ {s:'img/g5-s.webp',l:'img/g5-l.webp',c:'Gambar contoh · Clay pot',w:900,h:1125},
+ {s:'img/g6-s.webp',l:'img/g6-l.webp',c:'Gambar contoh · A Vietnamese table',w:900,h:1125}
+];
+const lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+let i=0,last=null;
+function fit(){const maxW=Math.min(innerWidth-32,items[i].w,520);const maxH=Math.min(innerHeight*0.78,items[i].h);const r=Math.min(1,maxW/items[i].w,maxH/items[i].h);img.style.width=Math.round(items[i].w*r)+'px';img.style.height=Math.round(items[i].h*r)+'px'}
+function show(n){i=(n+items.length)%items.length;const it=items[i];img.removeAttribute('src');img.onload=()=>fit();img.src=it.l;img.alt=it.c;cap.textContent=it.c}
+function open(n){last=document.activeElement;show(n);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.getElementById('lbX').focus()}
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
+document.querySelectorAll('#gal button').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.i)));
+document.getElementById('lbX').onclick=close;
+document.getElementById('lbN').onclick=()=>show(i+1);
+document.getElementById('lbP').onclick=()=>show(i-1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+addEventListener('resize',()=>{if(lb.classList.contains('open'))fit()},{passive:true});
+const dock=document.getElementById('dock'),hero=document.querySelector('.hero'),con=document.getElementById('contact'),foot=document.querySelector('footer');
+const st=new IntersectionObserver(()=>{
+  const heroOut=hero.getBoundingClientRect().bottom<80;
+  const hide=con.getBoundingClientRect().top<innerHeight*0.85||foot.getBoundingClientRect().top<innerHeight;
+  const on=heroOut&&!hide;
+  dock.classList.toggle('on',on);dock.setAttribute('aria-hidden',on?'false':'true');
+  const a=dock.querySelector('a'); if(a) a.tabIndex=on?0:-1;
+},{threshold:[0,.01,.1]});
+[hero,con,foot].forEach(el=>st.observe(el));
+})();
+</script>
+</body>
+</html>
