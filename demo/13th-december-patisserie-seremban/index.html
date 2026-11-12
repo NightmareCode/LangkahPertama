@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#241c16">
+<title>13th December Patisserie · Seremban (contoh)</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#241c16;--ink2:#1c1612;--teal:#2c5e52;--teal2:#3f7a6b;--copper:#c47a4a;--copper2:#d49264;
+  --ivory:#f6f0e8;--paper:#efe6d8;--card:#fffaf4;--text:#2a221c;--muted:#6b5e54;--line:#e4d6c6;
+  --ez:cubic-bezier(.22,1,.36,1);--dur:400ms;
+  --pad:clamp(18px,4.8vw,28px);--dock:78px;
+  --serif:"Cormorant Garamond","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--ivory);color:var(--text);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.skip{position:fixed;top:10px;left:10px;z-index:9999;background:var(--copper);color:#fff;padding:12px 16px;border-radius:8px;font-weight:700;text-decoration:none;transform:translateY(-160%);transition:transform .18s ease}
+.skip:focus{transform:none;outline:2px solid #fff;outline-offset:2px}
+.wrap{width:min(560px,100%);margin:0 auto}
+.top{position:sticky;top:0;z-index:40;background:rgba(36,28,22,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--copper);color:#fff}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--pad);min-height:56px}
+.brand{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.01em;line-height:1.15}
+.brand small{display:block;font-family:system-ui,sans-serif;font-weight:700;color:rgba(255,255,255,.62);font-size:10px;letter-spacing:.12em;margin-top:3px;text-transform:uppercase}
+.top-cta{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px 16px;border-radius:999px;background:var(--copper);color:#fff;font-weight:700;font-size:13px;text-decoration:none;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez)}
+.top-cta:active{transform:scale(.97)}
+.hero{position:relative;min-height:min(88svh,calc(100svh - 56px));display:grid;align-items:end;isolation:isolate;color:#fff;background:var(--ink);padding:0}
+.hero picture,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(36,28,22,.12) 0%,rgba(36,28,22,.08) 32%,rgba(36,28,22,.58) 64%,rgba(36,28,22,.96) 100%)}
+.hero-cap{position:absolute;top:14px;right:var(--pad);z-index:2;display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid rgba(255,255,255,.9);color:var(--ink);font-family:system-ui,-apple-system,sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.hero-in{padding:18px var(--pad) 28px}
+.eyebrow{display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border-radius:999px;border:1px solid rgba(196,122,74,.55);background:rgba(196,122,74,.2);color:#f3d2b4;font-size:12px;font-weight:700;letter-spacing:.06em}
+.hero h1{margin:10px 0 8px;font-family:var(--serif);font-size:clamp(30px,8vw,44px);line-height:1.05;font-weight:700;letter-spacing:-.02em}
+.hero h1 span{display:block;font-size:.46em;font-weight:600;color:var(--copper2);letter-spacing:.08em;line-height:1.3;margin-top:6px;text-transform:uppercase}
+.hero .lead{max-width:38ch;color:rgba(255,255,255,.9);font-size:15px;line-height:1.45}
+.hero-actions{display:grid;gap:10px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 18px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform var(--dur) var(--ez),background var(--dur) var(--ez),border-color var(--dur) var(--ez),color var(--dur) var(--ez)}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--copper);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
+.btn-line{background:transparent;border-color:var(--line);color:var(--text)}
+.btn svg{width:18px;height:18px;flex:none}
+section{padding:48px var(--pad)}
+.sec-kicker{color:var(--teal);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+h2{font-family:var(--serif);font-size:clamp(26px,6.6vw,34px);line-height:1.12;letter-spacing:-.02em;margin-bottom:12px;font-weight:700}
+h2::after{content:"";display:block;width:42px;height:1px;background:var(--copper);margin-top:10px}
+.muted{color:var(--muted)}
+.intro{background:var(--ink);color:var(--ivory);padding:48px var(--pad)}
+.intro .sec-kicker{color:var(--copper2)}
+.intro .muted{color:rgba(246,240,232,.75)}
+.intro h2::after{background:var(--copper)}
+.svc{background:var(--ivory)}
+.cards{display:grid;gap:12px;margin-top:18px}
+.card{padding:20px 18px;border-radius:8px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal)}
+.card h3{font-family:var(--serif);font-size:22px;margin-bottom:8px;font-weight:700}
+.hours-sec{background:var(--paper)}
+.table{margin-top:18px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.row{display:grid;grid-template-columns:1.2fr 1.5fr;gap:10px;padding:14px 16px;min-height:48px;align-items:center;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.row strong{font-weight:700}
+.confirm{margin-top:12px;font-size:13px;color:var(--teal);font-weight:700}
+.loc{background:var(--ivory)}
+.loc-card{margin-top:16px;padding:18px 16px;border-radius:8px;background:#fff;border:1px solid var(--line)}
+.loc-card h3{font-family:var(--serif);font-size:20px;margin-bottom:8px}
+.loc-card p{color:var(--muted);font-size:14.5px}
+.map{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;min-height:48px;padding:12px 16px;border-radius:10px;background:rgba(44,94,82,.08);color:var(--teal);text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(44,94,82,.28);transition:background var(--dur) var(--ez)}
+.map svg{width:18px;height:18px;flex:none}
+.gal{background:var(--paper)}
+.gal-note{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.gal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gal-grid button{appearance:none;border:0;padding:0;background:transparent;color:inherit;cursor:pointer;position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;min-height:44px;isolation:isolate}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur) var(--ez)}
+.gal-grid button:active img{transform:scale(1.03)}
+.gal-grid .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 10px 10px;background:linear-gradient(180deg,transparent,rgba(36,28,22,.86));color:#fff;font-size:12px;font-weight:700;text-align:left}
+.gal-grid .cap small{display:block;color:#f3d2b4;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.contact{background:linear-gradient(180deg,var(--ivory),var(--paper));padding-bottom:calc(var(--dock) + 36px)}
+.contact .lead{margin:8px 0 18px;color:var(--muted)}
+.cta-stack{display:grid;gap:10px}
+.note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:12px 14px;border-radius:8px;background:rgba(196,122,74,.12);border:1px solid rgba(196,122,74,.4);color:var(--text);font-size:13.5px}
+.note svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--copper)}
+footer{padding:28px var(--pad) 36px;text-align:center;border-top:1px solid var(--copper);background:var(--ink);color:rgba(246,240,232,.68)}
+footer .mark{height:48px;width:auto;margin:0 auto 12px}
+footer .name{font-family:var(--serif);font-weight:700;color:#fff;margin-bottom:4px;font-size:20px}
+footer .sub{font-size:13px;margin-bottom:14px}
+footer .lp{color:var(--copper2);font-size:12.5px;margin-top:8px}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(36,28,22,.9) 28%,rgba(36,28,22,.98));pointer-events:none;transition:transform var(--dur) var(--ez);transform:translateY(110%)}
+.dock.on{transform:none}
+.dock-in{pointer-events:auto;width:min(560px,100%);margin:0 auto}
+.dock .btn{width:100%;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.gal-grid img,.btn,.top-cta,.dock{transition:none}}
+.lb{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(36,28,22,.94);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ez),visibility var(--dur) var(--ez);padding:16px}
+.lb.open{opacity:1;visibility:visible}
+.lb figure{margin:0;max-width:min(100%,520px);transform:scale(.96) translateY(10px);transition:opacity var(--dur) var(--ez),transform var(--dur) var(--ez)}
+.lb.open figure{transform:none}
+.lb img{max-width:100%;max-height:min(78vh,820px);width:auto;height:auto;margin:0 auto;border-radius:4px}
+.lb figcaption{text-align:center;color:rgba(255,255,255,.7);font-size:13px;margin-top:10px}
+.lb-bar{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:12px}
+.lb-bar button,.lb-nav button{appearance:none;border:0;min-width:48px;min-height:48px;border-radius:6px;background:rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer}
+.lb-nav{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in wrap">
+    <div class="brand">13th December<small>Seremban</small></div>
+    <a class="top-cta" href="https://ig.me/m/13thdecemberpatisserie" rel="noopener" target="_blank">Message</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero wrap" aria-label="Introduction">
+  <picture>
+    <source type="image/webp" srcset="img/hero-s.webp 750w, img/hero-l.webp 900w" sizes="100vw">
+    <img src="img/hero-s.webp" width="750" height="1000" alt="Sample photograph of a cafe interior, not 13th December Patisserie" decoding="async">
+  </picture>
+  <span class="hero-cap">Gambar contoh</span>
+  <div class="hero-in">
+    <p class="eyebrow">Cafe &amp; patisserie</p>
+    <h1>13th December<span>Patisserie · Seremban</span></h1>
+    <p class="lead">A cafe and patisserie on Jalan Campbell. Pastries, coffee, and plates named on their recent posts.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://ig.me/m/13thdecemberpatisserie" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>Message on Instagram</a>
+      <a class="btn btn-ghost" href="#menu">See the menu</a>
+    </div>
+  </div>
+</section>
+<section class="intro wrap" id="about">
+  <p class="sec-kicker rv">The cafe</p>
+  <h2 class="rv">A patisserie in town</h2>
+  <p class="muted rv">13th December Patisserie is a cafe and patisserie in Seremban. This sample page gathers what they have named on their own Instagram posts, with the listed Jalan Campbell address and hours marked for the owner to confirm.</p>
+</section>
+<section class="svc wrap" id="menu">
+  <p class="sec-kicker rv">On the menu</p>
+  <h2 class="rv">Named on their posts</h2>
+  <p class="muted rv">These are dishes and bakes they have posted themselves. Stock photographs later on this page are samples only, not their food.</p>
+  <div class="cards">
+    <article class="card rv">
+      <h3>Truffle Fries</h3>
+      <p class="muted">A limited-edition plate, from their 7 November post.</p>
+    </article>
+    <article class="card rv">
+      <h3>Ayam Gepuk</h3>
+      <p class="muted">With crispy boneless chicken tenders, golden enoki, crunchy tempeh and tauhu pok, from their 4 November post.</p>
+    </article>
+    <article class="card rv">
+      <h3>Original Shiopan and Roti Boy</h3>
+      <p class="muted">Fresh from the oven, from their 5 November post.</p>
+    </article>
+    <article class="card rv">
+      <h3>Coffee</h3>
+      <p class="muted">Coffee, as served at the cafe.</p>
+    </article>
+  </div>
+</section>
+<section class="hours-sec wrap" id="hours">
+  <p class="sec-kicker rv">When to visit</p>
+  <h2 class="rv">Hours</h2>
+  <div class="table rv">
+    <div class="row"><strong>Thursday–Tuesday</strong><span>8:30am–6:00pm</span></div>
+    <div class="row"><strong>Wednesday</strong><span>Closed</span></div>
+  </div>
+  <p class="confirm rv">Waktu sila sahkan — hours from public write-ups, not from their own dated posts. Please confirm the Wednesday closure with the owner.</p>
+</section>
+<section class="loc wrap" id="visit">
+  <p class="sec-kicker rv">Find the cafe</p>
+  <h2 class="rv">Jalan Campbell</h2>
+  <div class="loc-card rv">
+    <h3>13th December Patisserie</h3>
+    <p>13, Jalan Campbell, Bandar Seremban, 70000 Seremban, Negeri Sembilan</p>
+    <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=13%20Jalan%20Campbell%20Bandar%20Seremban%2070000%20Seremban" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg>Open in Maps</a>
+  </div>
+  <p class="confirm rv">Alamat sila sahkan — widely listed for this cafe; please confirm the Jalan Campbell unit with the owner.</p>
+</section>
+<section class="gal wrap" id="gallery">
+  <p class="sec-kicker rv">Photographs</p>
+  <h2 class="rv">A look at the page</h2>
+  <p class="gal-note rv">The photographs below are <strong>gambar contoh</strong> — stock images, not photographs from 13th December Patisserie. They are here only to show how a page can look.</p>
+  <div class="gal-grid" id="gal">
+    <button type="button" data-i="0" aria-label="Enlarge sample fries photo"><picture><source type="image/webp" srcset="img/g1-s.webp 540w, img/g1-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g1-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Fries</span></button>
+    <button type="button" data-i="1" aria-label="Enlarge sample fried dish photo"><picture><source type="image/webp" srcset="img/g2-s.webp 540w, img/g2-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g2-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>A fried dish</span></button>
+    <button type="button" data-i="2" aria-label="Enlarge sample baked swirls photo"><picture><source type="image/webp" srcset="img/g3-s.webp 540w, img/g3-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g3-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Baked swirls</span></button>
+    <button type="button" data-i="3" aria-label="Enlarge sample coffee photo"><picture><source type="image/webp" srcset="img/g4-s.webp 540w, img/g4-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g4-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>Coffee</span></button>
+    <button type="button" data-i="4" aria-label="Enlarge sample chocolate dessert photo"><picture><source type="image/webp" srcset="img/g5-s.webp 540w, img/g5-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g5-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>A chocolate dessert</span></button>
+    <button type="button" data-i="5" aria-label="Enlarge sample plated dessert photo"><picture><source type="image/webp" srcset="img/g6-s.webp 540w, img/g6-l.webp 900w" sizes="(max-width:560px) 46vw, 260px"><img src="img/g6-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async"></picture><span class="cap"><small>Gambar contoh</small>A plated dessert</span></button>
+  </div>
+</section>
+<section class="contact wrap" id="contact">
+  <p class="sec-kicker rv">Get in touch</p>
+  <h2 class="rv">Message on Instagram</h2>
+  <p class="lead rv">Send a message on the Instagram they already use, or open the profile.</p>
+  <div class="cta-stack rv">
+    <a class="btn btn-primary" href="https://ig.me/m/13thdecemberpatisserie" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>Message on Instagram</a>
+    <a class="btn btn-line" href="https://www.instagram.com/13thdecemberpatisserie/" rel="noopener" target="_blank">Open Instagram</a>
+  </div>
+  <p class="note rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>Harga &amp; menu disahkan bersama pemilik</p>
+</section>
+</main>
+<footer>
+  <img class="mark" src="img/lp-mark-gold.png" width="183" height="188" alt="Langkah Pertama">
+  <p class="name">13th December Patisserie</p>
+  <p class="sub">Jalan Campbell, Seremban · Gambar yang dipaparkan ialah gambar contoh.</p>
+  <p class="lp">Contoh reka bentuk oleh Langkah Pertama</p>
+</footer>
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="dock-in">
+    <a class="btn btn-primary" href="https://ig.me/m/13thdecemberpatisserie" rel="noopener" target="_blank" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>Message on Instagram</a>
+  </div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Larger sample photograph" aria-hidden="true">
+  <div class="lb-bar"><button type="button" id="lbP" aria-label="Previous photograph">‹</button><button type="button" id="lbX" aria-label="Close">✕</button></div>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <div class="lb-nav"><button type="button" id="lbN" aria-label="Next photograph">›</button></div>
+</div>
+<script>
+(()=>{
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+const items=[
+ {s:'img/g1-s.webp',l:'img/g1-l.webp',c:'Gambar contoh · Fries',w:900,h:1125},
+ {s:'img/g2-s.webp',l:'img/g2-l.webp',c:'Gambar contoh · A fried dish',w:900,h:1125},
+ {s:'img/g3-s.webp',l:'img/g3-l.webp',c:'Gambar contoh · Baked swirls',w:900,h:1125},
+ {s:'img/g4-s.webp',l:'img/g4-l.webp',c:'Gambar contoh · Coffee',w:900,h:1125},
+ {s:'img/g5-s.webp',l:'img/g5-l.webp',c:'Gambar contoh · A chocolate dessert',w:900,h:1125},
+ {s:'img/g6-s.webp',l:'img/g6-l.webp',c:'Gambar contoh · A plated dessert',w:900,h:1125}
+];
+const lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+let i=0,last=null;
+function fit(){const maxW=Math.min(innerWidth-32,items[i].w,520);const maxH=Math.min(innerHeight*0.78,items[i].h);const r=Math.min(1,maxW/items[i].w,maxH/items[i].h);img.style.width=Math.round(items[i].w*r)+'px';img.style.height=Math.round(items[i].h*r)+'px'}
+function show(n){i=(n+items.length)%items.length;const it=items[i];img.removeAttribute('src');img.onload=()=>fit();img.src=it.l;img.alt=it.c;cap.textContent=it.c}
+function open(n){last=document.activeElement;show(n);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';document.getElementById('lbX').focus()}
+function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
+document.querySelectorAll('#gal button').forEach(b=>b.addEventListener('click',()=>open(+b.dataset.i)));
+document.getElementById('lbX').onclick=close;
+document.getElementById('lbN').onclick=()=>show(i+1);
+document.getElementById('lbP').onclick=()=>show(i-1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+addEventListener('resize',()=>{if(lb.classList.contains('open'))fit()},{passive:true});
+const dock=document.getElementById('dock'),hero=document.querySelector('.hero'),con=document.getElementById('contact'),foot=document.querySelector('footer');
+const st=new IntersectionObserver(()=>{
+  const heroOut=hero.getBoundingClientRect().bottom<80;
+  const hide=con.getBoundingClientRect().top<innerHeight*0.85||foot.getBoundingClientRect().top<innerHeight;
+  const on=heroOut&&!hide;
+  dock.classList.toggle('on',on);dock.setAttribute('aria-hidden',on?'false':'true');
+  const a=dock.querySelector('a'); if(a) a.tabIndex=on?0:-1;
+},{threshold:[0,.01,.1]});
+[hero,con,foot].forEach(el=>st.observe(el));
+})();
+</script>
+</body>
+</html>
