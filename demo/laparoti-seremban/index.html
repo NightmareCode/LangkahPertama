@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LaPaROTI · Seremban (contoh)</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14241f;
+  --river:#16302c;
+  --water:#4a7d78;
+  --crust:#c0894a;
+  --sand:#f6f0e4;
+  --paper:#ebe4d4;
+  --foam:#faf7f0;
+  --muted:#5a6864;
+  --line:#d5ccb8;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{font:400 16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--sand);-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--crust);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-70px;background:var(--river);color:#fff;padding:10px 16px;border-radius:8px;z-index:80;text-decoration:none;font-weight:700}
+.skip:focus{top:12px}
+.wrap{width:min(1080px,100% - 40px);margin-inline:auto}
+.stock{
+  position:absolute;top:10px;left:10px;z-index:2;
+  background:#fff;color:var(--ink);
+  font:700 10px/1 system-ui,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 9px;border-radius:999px;
+  box-shadow:0 1px 8px rgba(20,36,31,.25);
+}
+/* top bar */
+.bar{position:absolute;left:0;right:0;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;color:#f6f0e4}
+.bar .mark{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;font-family:Lora,Georgia,serif;font-weight:700;font-size:18px;letter-spacing:.01em;text-decoration:none}
+.bar nav{display:flex;gap:4px}
+.bar nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 12px;text-decoration:none;font:600 13px/1 system-ui,sans-serif;color:#f6f0e4;opacity:.92}
+.bar nav a:hover{opacity:1}
+/* hero */
+.hero{padding:0;position:relative;background:var(--river);color:var(--sand)}
+.hero-frame{position:relative;aspect-ratio:3/4;overflow:hidden}
+.hero-frame img{width:100%;height:100%;object-fit:cover}
+.hero-frame > .stock{top:58px}
+.hero-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,36,31,.28) 0 18%,rgba(22,48,44,0) 36%,rgba(22,48,44,.2) 55%,rgba(14,28,26,.92) 100%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 20px 28px}
+.kicker{font:700 11px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--crust)}
+.hero h1{font-size:clamp(40px,11vw,68px);margin:10px 0 8px;color:#faf7f0}
+.hero .lead{font-size:16px;line-height:1.5;color:#e8e2d4;max-width:28em}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;text-decoration:none;font:700 15px/1 system-ui,sans-serif;transition:background-color 400ms var(--ease),color 400ms var(--ease),border-color 400ms var(--ease)}
+.btn-fill{background:var(--crust);color:#1a140c}
+.btn-fill:hover{background:#d09a58}
+.btn-ghost{background:transparent;color:#f6f0e4;border:1.5px solid rgba(246,240,228,.7)}
+.btn-ghost:hover{border-color:#f6f0e4;background:rgba(255,255,255,.08)}
+/* river ripple */
+.ripple{height:20px;background:var(--sand);position:relative;overflow:hidden}
+.ripple svg{display:block;width:100%;height:20px}
+/* setting */
+.setting{padding:52px 0 20px}
+.setting .sec-head{max-width:36em;margin-bottom:22px}
+.setting h2{font-size:clamp(26px,6.4vw,44px);margin:8px 0 12px;max-width:16em}
+.setting .lead{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--foam);font-size:14px}
+/* gallery */
+.pics{padding:28px 0 56px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid figure{position:relative;margin:0;background:var(--paper);border-radius:16px;overflow:hidden}
+.grid img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.grid figcaption{padding:10px 12px 12px;font-size:13px;color:var(--muted)}
+/* menu */
+.menu{background:var(--river);color:var(--sand);padding:64px 0}
+.menu .kicker{color:var(--crust)}
+.menu h2{font-size:clamp(28px,7vw,44px);margin:8px 0 12px;color:#faf7f0}
+.menu .lead{color:#cfc6b4;max-width:34em;margin-bottom:28px}
+.dishes{display:grid;gap:10px}
+.dish{padding:16px 18px;border:1px solid rgba(197,137,74,.28);border-radius:14px;background:rgba(255,255,255,.04)}
+.dish h3{font-size:22px;font-weight:600;color:#faf7f0}
+.dish p{margin-top:4px;color:#cfc6b4;font-size:14px}
+/* visit */
+.visit{padding:64px 0;background:var(--sand)}
+.visit-grid{display:grid;gap:28px}
+.visit h2{font-size:clamp(28px,7vw,40px);margin:8px 0 14px}
+.hours-list{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.hours-list li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hours-list .day{font-weight:700}
+.note{margin-top:12px;font-size:13px;color:var(--muted)}
+.addr{font-size:16px;line-height:1.6}
+.addr strong{display:block;font-family:Lora,Georgia,serif;font-size:20px;font-weight:600;margin-bottom:6px}
+.map-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:14px;padding:0 18px;border-radius:999px;border:1.5px solid var(--ink);text-decoration:none;font:700 14px/1 system-ui,sans-serif}
+/* contact */
+.contact{background:#1b3530;color:var(--sand);padding:64px 0 56px}
+.contact h2{font-size:clamp(28px,7vw,42px);margin:8px 0 12px;color:#faf7f0}
+.contact .lead{color:#cfc6b4;max-width:32em}
+.price-line{margin:18px 0 0;font-size:14px;color:#d9c9a8}
+.contact .cta-row{margin-top:22px}
+/* footer */
+footer{background:#101c19;color:#cfc6b4;padding:28px 0 36px;text-align:center}
+footer .lp{width:52px;height:auto;margin:0 auto 12px}
+footer p{font-size:13px}
+footer a{color:#e8d3a8;text-decoration:underline;text-underline-offset:3px}
+@media (min-width:720px){
+  .hero-frame{aspect-ratio:16/10;max-height:760px}
+  .hero-copy{padding:0 48px 48px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:14px}
+  .dishes{grid-template-columns:1fr 1fr}
+  .visit-grid{grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langkau ke isi</a>
+
+<header class="bar">
+  <a class="mark" href="#atas">LaPaROTI</a>
+  <nav aria-label="Utama">
+    <a href="#menu">Menu</a>
+    <a href="#lokasi">Lokasi</a>
+    <a href="#hubungi">Hubungi</a>
+  </nav>
+</header>
+
+<section class="hero" id="atas">
+  <div class="hero-frame">
+    <picture>
+      <source type="image/webp" srcset="img/hero-s.webp 750w, img/hero-l.webp 900w" sizes="100vw">
+      <img src="img/hero-s.webp" width="750" height="1000" alt="" decoding="async" fetchpriority="high">
+    </picture>
+    <span class="stock">Gambar contoh</span>
+    <div class="hero-copy">
+      <p class="kicker">Bakery cafe · Seremban</p>
+      <h1>LaPaROTI</h1>
+      <p class="lead">Makan tepi sungai kat Seremban. Kawasan luas, banyak tempat duduk.</p>
+      <div class="cta-row hero-actions">
+        <a class="btn btn-fill" href="https://ig.me/m/laparoti">Mesej di Instagram</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/laparoti/">Lihat Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ripple" aria-hidden="true">
+  <svg viewBox="0 0 1200 20" preserveAspectRatio="none"><path fill="#16302c" d="M0 0h1200v6C800 22 400 22 0 6V0z"/></svg>
+</div>
+
+<main id="isi">
+  <section class="setting">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Port lepak</p>
+        <h2>Tepi sungai.</h2>
+        <p class="lead">LaPaROTI ialah bakery cafe tepi sungai kat Seremban. Tempat duduk banyak, sesuai lepak dengan kawan atau keluarga. Jom datang makan roti, nasi atau kudapan, sambil duduk dekat sungai.</p>
+      </div>
+      <div class="chips" aria-label="Suasana">
+        <span>Tepi sungai</span>
+        <span>Kawasan luas</span>
+        <span>Banyak tempat duduk</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pics" aria-label="Gambar contoh">
+    <div class="wrap">
+      <div class="grid">
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g1-s.webp 540w, img/g1-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g1-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Sungai</figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g2-s.webp 540w, img/g2-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g2-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Roti</figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g3-s.webp 540w, img/g3-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g3-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Meja cafe</figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g4-s.webp 540w, img/g4-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g4-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Kek</figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g5-s.webp 540w, img/g5-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g5-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Biskut</figcaption>
+        </figure>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="img/g6-s.webp 540w, img/g6-l.webp 900w" sizes="(min-width:720px) 30vw, 48vw">
+            <img src="img/g6-s.webp" width="540" height="675" alt="" loading="lazy" decoding="async">
+          </picture>
+          <span class="stock">Gambar contoh</span>
+          <figcaption>Minuman</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <p class="kicker">Menu</p>
+      <h2>Roti, dan lagi-lagi.</h2>
+      <p class="lead">LaPaROTI bukan roti semata. Ada juga nasi, mee dan kudapan.</p>
+      <div class="dishes">
+        <article class="dish"><h3>Roti</h3></article>
+        <article class="dish">
+          <h3>Nasi Khao Mok</h3>
+          <p>Beriani Thai</p>
+        </article>
+        <article class="dish"><h3>Nasi Lemak</h3></article>
+        <article class="dish"><h3>Mee Kari</h3></article>
+        <article class="dish"><h3>Lempeng Ikan Sekor</h3></article>
+        <article class="dish"><h3>Pisang Goreng</h3></article>
+        <article class="dish"><h3>ABC</h3></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="lokasi">
+    <div class="wrap visit-grid">
+      <div>
+        <p class="kicker">Waktu buka</p>
+        <h2>Bila nak datang</h2>
+        <ul class="hours-list">
+          <li><span class="day">Selasa–Ahad</span><span>10:00 pagi – 6:30 petang</span></li>
+          <li><span class="day">Isnin</span><span>Tutup</span></li>
+        </ul>
+        <p class="note">Waktu cuti umum sila sahkan.</p>
+      </div>
+      <div>
+        <p class="kicker">Lokasi</p>
+        <h2>Kat mana</h2>
+        <p class="addr">
+          <strong>Port Lepak Makan Tepi Sungai, Seremban</strong>
+          Lot 8068, Batu 2, Jalan Jelebu, Taman Setia Jaya, 70400 Seremban
+        </p>
+        <p class="note">Alamat penuh sila sahkan.</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Lot%208068%20Batu%202%20Jalan%20Jelebu%20Taman%20Setia%20Jaya%2070400%20Seremban">Buka dalam Peta</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="hubungi">
+    <div class="wrap">
+      <p class="kicker">Hubungi</p>
+      <h2>Mesej terus kat Instagram.</h2>
+      <p class="lead">Ada soalan pasal menu atau nak tanya waktu, mesej je kat Instagram LaPaROTI.</p>
+      <p class="price-line">Harga &amp; menu disahkan bersama pemilik</p>
+      <div class="cta-row">
+        <a class="btn btn-fill" href="https://ig.me/m/laparoti">Mesej di Instagram</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/laparoti/">Lihat profil Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="lp" src="img/lp-mark-gold.png" width="52" height="52" alt="Langkah Pertama">
+    <p>Contoh reka bentuk oleh Langkah Pertama</p>
+  </div>
+</footer>
+</body>
+</html>
